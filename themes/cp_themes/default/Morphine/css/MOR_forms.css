@@ -1,0 +1,29 @@
+/* Form Elements */
+thead input[type=checkbox]{margin:0;}
+label.checkbox,
+label.radio,
+fieldset.radio-grp label{
+	cursor:pointer;
+	display:block;
+	line-height:18px;
+ 	margin:4px 9px 5px 0;
+	padding-left:18px;
+	position:relative;
+}
+label.checkbox input,
+label.radio input,
+fieldset.radio-grp input{position:absolute; top:2px; left:0; margin:0;}
+
+label.checkbox:first-child,
+label.radio:first-child{margin-top:0;}
+label.checkbox:last-child,
+label.radio:last-child{margin-bottom:0;}
+
+.config label.checkbox,
+.config label.radio{margin:0 18px 0 0;}
+
+.mor table fieldset{margin:0; padding:0; border:none;}
+.mor table fieldset label{padding-right:18px;}
+
+.mor table input[type=text],
+.mor table textarea{width:99%;}

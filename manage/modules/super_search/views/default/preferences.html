@@ -1,0 +1,55 @@
+<?php echo $this->view('header.html'); ?>
+
+	<div class="itemWrapper">
+		<div class="tableHeading"><?=$LANG->line('preferences'); ?></div>
+		<div class="tableHeadingAlt"><?=$LANG->line('preferences_exp'); ?></div>
+		<form method="post" id="prefs_form" action="<?php echo $this->output($base_uri.'&P=preferences');?>">
+		<table class="tableBorder" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+<!--
+			<tr>
+				<td class="tableCellOne" style="width:30%;"><?=$LANG->line('allow_keyword_search_on_relationship_fields'); ?></td>
+				<td class="tableCellOne" style="width:20%;">
+<?php
+$rel_yes	= '';
+$rel_no	= ' checked="checked"';
+	
+if ( $prefs['allow_keyword_search_on_relationship_fields'] == 'y' )
+{
+	$rel_yes	= ' checked="checked"';
+	$rel_no	= '';
+}
+?>
+					<input type="radio" name="allow_keyword_search_on_relationship_fields" value="y" <?=$rel_yes; ?> /> <?=$LANG->line('yes'); ?>
+					<input type="radio" name="allow_keyword_search_on_relationship_fields" value="n" <?=$rel_no; ?> /> <?=$LANG->line('no'); ?>
+				</td>
+				<td class="tableCellOne"><?=$LANG->line('allow_keyword_search_on_relationship_fields_exp'); ?></td>
+			</tr>
+-->
+			<!-- Keywords on Relationships -->
+			
+			<tr>
+				<td class="tableCellOne" style="width:30%;"><?=$LANG->line('allow_keyword_search_on_playa_fields'); ?></td>
+				<td class="tableCellOne" style="width:20%;">
+<?php
+$playa_yes	= '';
+$playa_no	= ' checked="checked"';
+	
+if ( $prefs['allow_keyword_search_on_playa_fields'] == 'y' )
+{
+	$playa_yes	= ' checked="checked"';
+	$playa_no	= '';
+}
+?>
+					<input type="radio" name="allow_keyword_search_on_playa_fields" value="y" <?=$playa_yes; ?> /> <?=$LANG->line('yes'); ?>
+					<input type="radio" name="allow_keyword_search_on_playa_fields" value="n" <?=$playa_no; ?> /> <?=$LANG->line('no'); ?>
+				</td>
+				<td class="tableCellOne"><?=$LANG->line('allow_keyword_search_on_playa_fields_exp'); ?></td>
+			</tr>
+			<!-- Keywords on Playa -->
+			
+		</table>
+		<input type="submit" value="<?=$LANG->line('submit'); ?>" />
+		</form>
+	</div>
+	
+<?php echo $this->view('footer.html'); ?>

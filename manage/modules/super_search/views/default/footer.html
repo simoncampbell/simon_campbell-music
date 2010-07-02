@@ -1,0 +1,34 @@
+</div>
+
+<?=$DSP->copyright();?>
+
+<?=$DSP->_menu_js();?>
+<?=$DSP->_global_javascript();?>
+<?=$this->js_magic_checkboxes()?>
+
+<script type="text/javascript"> 
+<!--
+
+function styleswitch(link)
+{                 
+	if (document.getElementById(link).className == 'altTabs')
+	{
+		document.getElementById(link).className = 'altTabsHover';
+	}
+}
+
+function stylereset(link)
+{                 
+	if (document.getElementById(link).className == 'altTabsHover')
+	{
+		document.getElementById(link).className = 'altTabs';
+	}
+}
+
+<?php if ( empty( $_GET['field_id'] ) === FALSE ) { $this->view('js/fields.js'); } ?>
+
+-->
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?php echo $this->view('header.html');?>
+
+	<div class="itemWrapper">
+		<form action="<?=$base_uri; ?>&P=<?=$method; ?>" method="post">
+			<input type="hidden" name="field_id" value="<?=$field_id; ?>" />
+			<input type="hidden" name="sql" value="<?=$sql; ?>" />
+			<div class="alertHeading"><?=$LANG->line('edit_confirm'); ?></div>			
+			<div class="box">
+				<div class="defaultBold"><?=$question; ?></div>				
+				<div class="alert"><br /><?=$LANG->line('action_can_not_be_undone'); ?></div>			
+				<div class="default"><br />
+					<input type="submit" class="submit" value="<?=$LANG->line('submit'); ?>" />
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<?php echo $this->view('footer.html'); ?>

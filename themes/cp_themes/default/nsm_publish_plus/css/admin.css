@@ -1,0 +1,126 @@
+/**
+* CSS file for NSM Publish Plus
+* 
+* This file must be placed in the
+* /themes/cp_themes/default/nsm_publish_plus/css/ folder in your ExpressionEngine installation.
+*
+* @package NSMPublishPlus
+* @version 1.1.0
+* @author Leevi Graham <http://newism.com.au>
+* @see http://leevigraham.com/cms-customisation/expressionengine/addon/nsm-publish-plus/
+* @copyright Copyright (c) 2007-2009 Leevi Graham
+* @license http://leevigraham.com/cms-customisation/commercial-license-agreement/
+*/
+.nsm-tab-block{display:none; margin:0; padding:0; zoom:1;}
+.nsm-tab-block h5{border-bottom:1px solid #AFBBCF; font-size:14px; margin-bottom:9px; margin-top:36px; padding-bottom:9px;}
+.nsm-tab-block .clusterBox h5:first-child{margin-top:0;}
+.nsm-tab-block p{margin:18px 0;}
+.nsm-tab-block div.clusterBox{background:#fff; border:1px solid #AFBBCF; padding:15px;}
+.nsm-tab-block .comments{background:transparent; border:none; clear:both; position:relative;}
+.nsm-tab-block h5 + .comments{margin-top:-9px;}
+.nsm-tab-block table{font-size:11px;}
+
+tr > .publishTabWidth {width:auto;}
+.publishTabWidth div{padding:6px 9px;}
+input#title, input#url_title{width:99%!important;}
+
+#blocknsm_pp_notes .new-comment {zoom:1;}
+#blocknsm_pp_notes .new-comment label{border-top:1px dotted #AFBBCF; display:block; padding-top:9px;}
+#blocknsm_pp_notes .new-comment div{background:#fff; border:1px solid #6F7CA2; margin-top:9px; padding:3px; }
+#blocknsm_pp_notes .new-comment textarea{border:none; font-size:11px; height:150px; width:100%;}
+
+#blocknsm_pp_notes .comments strong{margin:0;}
+#blocknsm_pp_notes .comments ol{margin:0; padding:0; list-style-type:none;}
+#blocknsm_pp_notes .comments ol li{border-bottom:1px dotted #AFBBCF; margin:0; overflow:auto; padding:0 0 0 150px;}
+#blocknsm_pp_notes .comments ol li:last-child{border-bottom:0;}
+#blocknsm_pp_notes .comments ol li.preview{border-top:3px solid #AFBBCF; margin-top:-1px;}
+
+#blocknsm_pp_notes .comments ol li p.preview{margin:9px 0 18px -150px;}
+#blocknsm_pp_notes .comments ol li .author{display:inline; font-size:10px; float:left; margin-left:-150px; width:150px;}
+#blocknsm_pp_notes .comments ol li.preview .author{margin-top:0px;}
+#blocknsm_pp_notes .comments ol li .author a{font-size:11px;}
+#blocknsm_pp_notes .comments ol li .author small{display:block; font-size:10px; font-weight:normal; }
+
+#blocknsm_pp_notes .box{margin-bottom:0;}
+
+#blocknsm_pp_workflow span.approved{color:#8dc63f; font-weight:bold;}
+#blocknsm_pp_workflow span.denied{color:#ff0000; font-weight:bold;}
+#blocknsm_pp_workflow span.pending{color:#f26522; font-weight:bold;}
+#blocknsm_pp_workflow span.changed{color:#666; font-weight:bold;}
+
+#blocknsm_pp_workflow table {border-bottom:1px solid #B1B6D2;}
+#blocknsm_pp_workflow table tr td{border-bottom:0;}
+#blocknsm_pp_workflow table tr td{border-top:1px solid #CAD0D5;}
+#blocknsm_pp_workflow table tr.notes{display:none;}
+#blocknsm_pp_workflow table tr.notes p {margin:9px 18px 18px 9px;}
+#blocknsm_pp_workflow table tr.notes td{border-top:1px dotted #CAD0D5;}
+.note-trigger a{background:url(../../../../cp_global_images/page_edit.png); display:block; padding-top:18px; height:0; margin:0 auto; overflow:hidden; width:18px;}
+
+#blockrevisions .success{font-size:11px; font-weight:normal; margin:0 6px;}
+#blockrevisions .highlight{display:inline;}
+#blockrevisions tr:first-child + tr .highlight{margin-left:6px;}
+#blockrevisions a b{font-weight:normal;}
+
+.msg-box{border-width:1px; border-style:solid; font-size:11px; margin:0 0 9px 0; padding:9px 9px 0 9px; zoom:1;}
+	.msg-box ul{padding:0; margin:9px 18px;}
+		.msg-box li{list-style-type:none; line-height:18px; margin:0 0 9px 0; padding:0; zoom:1;}
+
+.success-box{background:#FFFFFF url("../../images/box_bg.gif") repeat-x scroll left top; border-color:#DBDB8E;  color:#009933; font-size:13px; font-weight:bold;}
+.error-box{background:#f4e5e5; border-color:#CF9B9B; color:#980001;}
+	.error-box li{color:#980001; font-weight:normal;}
+.info-box{background:#E4EAF1; border:1px solid #C5CFDA;}
+
+#action-buttons{width:400px;}
+#action-buttons{ *width:500px; } /* IE 7 */
+#action-buttons .submitBox button,
+#action-buttons .submitBox input{float:left; margin:0 2px;}
+
+#notification_templates td{border-left:1px dotted #B1B6D2; vertical-align:top;}
+#notification_templates td:first-child{border-left:none;}
+#notification_templates tbody td{font-size:11px; padding:10px 15px}
+#notification_templates tbody td h6 {clear:both; border-top:1px dotted #B1B6D2; font-weight:bold; font-size:11px; margin:0 0 10px 0; padding-top:10px;}
+#notification_templates tbody td fieldset:first-child h6:first-child{border-top:0; margin-top:0; padding-top:0;}
+#notification_templates tbody td fieldset{border:none; padding:0; margin:0;}
+#notification_templates tbody td fieldset.statuses{display:none;}
+
+#notification_templates label input,
+#notification_templates label textarea,
+#notification_templates label select{color:#000; font-family:arial; font-size:11px; width:95%;}
+#notification_templates label textarea{height:330px;}
+
+#notification_templates label{display:block; clear:both; margin-bottom:9px; position:relative;}
+* html #notification_templates label{height:1%;} /* IE 6 */
+#notification_templates label.checkbox,
+#notification_templates .checkbox label{padding-left:20px; position:relative;}
+#notification_templates .checkbox input{height:14px; margin:0; padding:0; position:absolute; top:-2px; left:-2px; width:14px;}
+#notification_templates label span{display:block;; margin:10px 0;}
+#notification_templates label.checkbox span,
+#notification_templates .checkbox label span{margin:0 0 10px 0;}
+
+#notification_templates label.checkbox{border-bottom:1px solid #CAD0D5; margin:0 0 18px 0; position:relative; width:auto;}
+#notification_templates td label:first-child span{margin-top:0;}
+
+#notification_templates tbody p{clear:both; margin:9px 0;}
+#notification_templates small{font-weight:normal;}
+
+#add-template{background:url('../../../../cp_global_images/add.png') no-repeat 0 0; padding-left:16px;}
+td a.delete{background:url('../../../../cp_global_images/delete.png') no-repeat 0 0; display:block; margin:0 auto; padding-top:16px; height:0; overflow:hidden; width:16px;}
+
+span.work-state{background-image:url('../../../../cp_global_images/orb_grey.png'); background-repeat:no-repeat; background-position:0 0; display:block; height:0; margin:0; overflow:hidden; padding:16px 0 0 0; width:16px; cursor: help;}
+span.work-state-approved{background-image:url('../../../../cp_global_images/orb_green.png');}
+span.work-state-pending{background-image:url('../../../../cp_global_images/orb_orange.png');}
+span.work-state-denied{background-image:url('../../../../cp_global_images/orb_red.png');}
+span.work-state-unassigned{background-image:url('../../../../cp_global_images/orb_grey.png');}
+span.work-state-changed{background-image:url('../../../../cp_global_images/orb_dark_grey.png');}
+
+#action-buttons .submitBox:after,
+.clearfix:after{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+#action-buttons .submitBox,
+.clearfix { *display:inline-block; } /* IE 7 */

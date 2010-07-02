@@ -1,0 +1,42 @@
+/* Tab styles */
+
+
+.mor.pt{
+	background:#E4EAF1;
+	border:1px solid #C5CFDA;
+	border-top:0;
+	display:none;
+	font-size:11px;
+	margin:0;
+	padding:14px 14px 0 14px;
+	zoom:1;
+}
+
+.mor.pt > div:first-child{
+	background:#fff;
+	border:1px solid #C5CFDA;
+	margin-bottom:14px;
+	padding:10px;
+	position:relative;
+}
+
+.mor.pt h1{
+	border-bottom:1px solid #AFBBCF;
+	font-size:14px;
+	line-height:18px;
+	margin-bottom:9px;
+	margin-top:36px;
+	padding-bottom:9px;
+	padding-left:9px;
+}
+
+.mor.pt h1:first-child{
+	margin-top:3px;
+}
+
+.mor.pt > div:first-child .highlight,
+.mor.pt > div:first-child .success{font-size:inherit;}
+.mor.pt > div:first-child .submitBox{margin:9px 0; padding:9px; text-align:center;}
+
+.mor.pt > div:first-child .tg.form{border:none;}
+.mor.pt > div:first-child .tg.form h2{margin-left:0; margin-right:0;}

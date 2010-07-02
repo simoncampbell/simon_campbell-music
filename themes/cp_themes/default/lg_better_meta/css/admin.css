@@ -1,0 +1,11 @@
+/* LG Better Meta Styles */
+#blockbm tbody th{width:210px;}
+#blockbm tbody .sub-heading{width:150px;}
+
+.counter {color:#666; font-size:10px!important; margin-top:5px;}
+.toomuch{color:#990000; font-weight:bold;}
+.meta-template-vars li{width:150px; float:left;}
+.address-search{margin-top:7px;}
+.address-search input{width:300px;}
+
+form#Lg_better_meta_settings .tg tbody > tr > th:first-child{width:200px;}

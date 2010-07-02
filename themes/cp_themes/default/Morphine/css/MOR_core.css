@@ -1,0 +1,174 @@
+/* Typography */
+.mor h1{
+	font-size:18px;
+	line-height:27px;
+	margin-bottom:18px;
+}
+.mor h1 span{color:#aaa; font-weight:normal; font-size:14px;}
+.mor h2{padding-top:8px; margin-top:18px; font-size:16px; color:#666;}
+.mor p{margin-top:9px;}
+
+
+/* Buttons */
+.btn{
+	background:no-repeat left center;
+	cursor:pointer;
+	display:block;
+	line-height:18px;
+	padding-left:24px;
+	font-size:11px;
+	vertical-align:middle;
+	white-space:nowrap;
+}
+
+.btn.add{background-image: url('../../../../cp_global_images/morphine/add.png'); color:#709567;}
+.btn.delete{background-image: url('../../../../cp_global_images/morphine/delete.png');}
+.btn.sticky-note--pencil{background-image: url('../../../../cp_global_images/fugue-icons/sticky-note--pencil.png');}
+.btn.reload{background-image: url('../../../../cp_global_images/fugue-icons/document-convert.png');}
+.btn.sort{background-image: url('../../../../cp_global_images/morphine/sort.png'); cursor:move;}
+.btn.gear{background-image: url('../../../../cp_global_images/morphine/gear.png'); color:#709567;}
+.btn.toggle{background-image: url('../../../../cp_global_images/morphine/toggle.png');}
+.btn.toggle.collapse{background-image: url('../../../../cp_global_images/morphine/toggle-collapse.png');}
+.btn.save{background-image: url('../../../../cp_global_images/morphine/tick.png'); color:#709567;}
+.btn.cancel{background-image: url('../../../../cp_global_images/morphine/cross.png'); color:#990000;}
+.btn.user{background-image: url('../../../../cp_global_images/fugue-icons/user.png');}
+.btn.pencil-small{background-image: url('../../../../cp_global_images/fugue-icons/pencil-small.png');}
+.btn.chart{background-image: url('../../../../cp_global_images/fugue-icons/chart.png');}
+.btn.flag-small{background-image: url('../../../../cp_global_images/fugue-icons/flag-small.png');}
+.btn.mail{background-image: url('../../../../cp_global_images/fugue-icons/mail.png');}
+.btn.mail-small{background-image: url('../../../../cp_global_images/fugue-icons/mail-small.png');}
+.btn.globe{background-image: url('../../../../cp_global_images/fugue-icons/globe.png');}
+.btn.globe-small{background-image: url('../../../../cp_global_images/fugue-icons/globe-small.png');}
+
+/* Donate buttons */
+.donate{
+	position:absolute;
+	right:15px;
+	top:6px;
+}
+.donate.paypal{top:12px;}
+.donate .button{
+	background:transparent no-repeat scroll left top;
+	display:block;
+	height:0;
+	overflow:hidden;
+	text-decoration:none;
+}
+
+.donate.paypal .button{
+    background-image:url("http://leevigraham.com/themes/site_themes/default/img/btn_paypal-donation.png");
+	padding-top:27px;
+	width:175px
+}
+
+.donate.pledgie .button{
+	padding-top:37px;
+	width:149px
+}
+
+/* Icons */
+.icon{
+	background-position:center center;
+	background-repeat:none;
+	display:inline-block;
+	height:0 !important;
+	overflow:hidden;
+	padding-left:0;
+	padding-top:16px;
+	width:16px;
+}
+
+/* Orbs */
+.work-state{background-image:url('../../../../cp_global_images/morphine/orb_grey.png');}
+.work-state-approved{background-image:url('../../../../cp_global_images/morphine/orb_green.png');}
+.work-state-pending{background-image:url('../../../../cp_global_images/morphine/orb_orange.png');}
+.work-state-denied{background-image:url('../../../../cp_global_images/morphine/orb_red.png');}
+.work-state-unassigned{background-image:url('../../../../cp_global_images/morphine/orb_grey.png');}
+.work-state-changed{background-image:url('../../../../cp_global_images/morphine/orb_dark_grey.png');}
+
+.summary-bar{
+	background:#fafafa;
+	border:1px solid rgba(0,0,0,.2);
+	border-top:1px solid rgba(0,0,0,.25);
+	border-bottom:1px solid rgba(0,0,0,.1);
+	color:#666;
+	font-size:11px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	margin:18px 0;
+	list-style-type:none;
+	padding:9px;
+}
+.summary-bar li{float:left; margin:0; padding:5px 14px; border-right:1px dotted #CCC9A4;}
+.summary-bar li .desc{display:block; font-size:24px; line-height:30px; font-weight:bold;}
+.summary-bar li span.desc{color:#333;}
+.summary-bar li.text{clear:both; float:none; border-top:1px dotted #CCC9A4; border-right:none; padding-top:0; padding-bottom:0;}
+.summary-bar li.text div.desc{font-size:13px;}
+.summary-bar li.text div.desc p{margin:18px 0;}
+
+.menu{margin:0; padding:0; list-style-type:none;}
+.menu.horizontal li,
+.menu a{display:block;}
+
+.info{
+	background-color:#fefee7;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.2)), to(rgba(255,255,255,0)));
+	font-size:11px;
+	overflow:auto;
+	padding:9px;
+}
+.info code{padding:2px; background:rgba(255,255,255,.8);}
+.info .tabs{ border-bottom:1px dotted #CCC9A4; margin-bottom:9px; padding-bottom:5px;}
+.info .tabs li a{background-color:rgba(255,255,255,0.5); -webkit-border-radius:9px; border:1px solid rgba(204,201,164,.6); padding-left:13px; padding-right:13px;}
+.info .tabs li.active a{background:rgba(204,201,164,.6); border-top-color:rgba(204,201,164,1);}
+.info.summary-bar{text-shadow: #fff 0 1px 0; padding:0; overflow:hidden;}
+
+#nav-00{position:absolute; top:14px; right:14px;}
+#nav-00 li{float:left;}
+#nav-00 a{
+	background:#f2f2f2;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#e2e2e2));
+	border:1px solid #ccc;
+	border-top:1px solid #bbb;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	font-size:11px;
+	padding:6px 13px;
+	text-shadow:rgba(255,255,255,1) 0 1px 0;
+	margin-left:9px;
+}
+#nav-00 li.active a,
+#nav-00 li a:active,
+#nav-00 li a:focus{
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#ddd), to(#fff), color-stop(.1, #eee));
+}
+
+.mor-alert,
+#blockrevisions h1 + .highlight{
+	border:1px solid #ccc;
+	background:#f2f2f2;
+	color:#333;
+	font-weight:normal;
+	font-size:12px;
+	line-height:inherit;
+	margin:0 0 9px 0;
+	padding:8px;
+	list-style-type:none;
+}
+.mor-alert.success{background-color:#f4f9ed; border-color:#c0da97;}
+.mor-alert.error, #blockrevisions h1 + .highlight{background-color:#faf3f3; border-color:#ebcccc;}
+#blockrevisions h1 + .highlight{display:block;}
+.mor-alert.info{
+	background-color:#fefee7;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.2)), to(rgba(255,255,255,0)));
+	border-color:#efe9a4;
+}
+.mor-alert li{margin:0;}
+.mor table .mor-alert{border-left:0; border-right:0; margin:0;}
+.mor table .mor-alert strong{color:inherit;}
+.mor table.data tr.mor-alert th,
+.mor table.data tr.mor-alert td{padding:9px;}
+.mor-alert p{margin-top:9px; margin-bottom:9px; line-height:normal;}
+.mor-alert p:first-child{margin-top:0;}
+.mor-alert p:last-child{margin-bottom:0;}
+.submitBoxAlt{margin-top:9px;}

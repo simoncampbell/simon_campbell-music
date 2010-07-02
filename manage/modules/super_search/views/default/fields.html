@@ -1,0 +1,108 @@
+<?php echo $this->view('header.html');?>
+
+
+	<script type="text/javascript"> 
+	<!--
+		
+	function switchGroup(group_id, form_id)
+	{
+		document.getElementById('group_loader').style.display = 'inline';
+		
+		// The group loader image is given a second to be seen before we switch to the new Site
+		// Origins of image: http://www.ajaxload.info/
+		setTimeout('switchGroup_action(' + group_id + ', "' + form_id + '")', 350);
+	}
+	
+	function switchGroup_action(group_id, form_id)
+	{		
+		if (document.getElementById(form_id))
+		{
+			var groupDivs = document.getElementById(form_id).getElementsByTagName('div');
+			
+			for(var i = 0, s = groupDivs.length; i < s; i++)
+			{
+				if (groupDivs[i].id.indexOf('_field_group') != -1)
+				{
+					groupDivs[i].style.display = 'none';
+				}
+			}
+		}
+	
+		if (document.getElementById(group_id + '_field_group'))
+		{
+			document.getElementById(group_id + '_field_group').style.display = 'block';
+		}
+		
+		document.getElementById('group_loader').style.display = 'none';
+	}
+	
+	//-->
+	</script>
+
+
+
+
+	<div class="tableHeading"><?php echo $page_title;?></div>
+
+	<table border='0'  cellspacing='0' cellpadding='0' style='width:100%;' id="edit_weblog_fields" >
+	<tr>
+		<td valign='top' style='width:220px;'>
+		
+				<div class='tableHeadingAlt' ><?php echo $LANG->line('custom_field_group');?></div>
+				
+				<div class='profileMenuInner' >
+					<select name="group_list_pulldown" class="select" onchange="switchGroup(this.value, 'edit_weblog_fields')">
+						<?php foreach($this->output($field_groups) as $group_id => $group_label) : ?>
+							<option value='<?php echo $group_id;?>' <?php echo ($group_id == $default_group_id) ? 'selected="selected"' : '';?>><?php echo $group_label; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<span id="group_loader" style="display:none;"><img src="<?php echo PATH_CP_IMG;?>loader.gif" width="16" height="16" style="vertical-align:sub;" /></span>
+				</div>
+				
+		</td>
+		
+		<td class='default' style='width:8px;'></td>
+		
+		<td valign='top'>
+
+			<?php foreach($field_groups as $group_id => $group_label) :?>
+			
+				<div id="<?php echo $group_id;?>_field_group" style="display: <?php echo ($group_id == $default_group_id) ? 'block' : 'none';?>; padding:0; margin: 0;">		
+					<?php if ( ! isset($fields[$group_id]) OR count( $fields[$group_id] ) == 0 ) : ?>
+						<div class="itemWrapper">
+							<div class="itemWrapper">
+								<div class="highlight"><?=$LANG->line('no_fields'); ?></div>
+							</div>
+						</div>
+					<?php else: ?>
+						<table id="main_table" class="tableBorder" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
+						<thead>
+							<tr>
+								<td class="tableHeadingAlt" style="width:5%;"><?=$LANG->line('id'); ?></td>
+								<td class="tableHeadingAlt" style="width:45%;"><?=$LANG->line('name'); ?></td>
+								<td class="tableHeadingAlt" style="width:10%;"><?=$LANG->line('type'); ?></td>
+								<td class="tableHeadingAlt" style="width:5%;"><?=$LANG->line('length'); ?></td>
+								<td class="tableHeadingAlt" style="width:25%;"><?=$LANG->line('precision'); ?></td>
+							</tr>
+						</thead>
+						<tbody>
+					<?php foreach ( $fields[$group_id] as $key => $val ) : ?>
+					<?php $switch = $this->cycle( 'tableCellOne', 'tableCellTwo' ); ?>
+							<tr>
+								<td class="<?=$switch; ?>"><?=$key; ?></td>
+								<td class="<?=$switch; ?>"><a href="<?php echo $this->output( $this->base.'&P=edit_field_form&field_id='.$key ); ?>"><?=$val['field_label']; ?></a></td>
+								<td class="<?=$switch; ?>"><?=ucfirst( $val['type'] ); ?></td>
+								<td class="<?=$switch; ?>"><?=$val['length']; ?></td>
+								<td class="<?=$switch; ?>"><?=$val['precision']; ?></td>
+							</tr>
+					<?php endforeach; ?>
+						</tbody>
+						</table>
+					<?php endif; ?>
+				</div>
+			<?php endforeach; ?>
+		</td>
+	</tr>
+</table>
+	
+<?php echo $this->view('footer.html'); ?>

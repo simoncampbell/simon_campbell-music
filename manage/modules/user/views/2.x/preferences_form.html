@@ -1,0 +1,56 @@
+
+<?php $this->load->view('header.html');?>
+
+<div class="clear_left"></div>
+
+<div class="pageContents">
+
+<form action="<?php echo $caller->output($base_uri.'&method=update_preferences');?>" method="post">
+	<input type="hidden" name="XID" value="<?php echo XID_SECURE_HASH;?>" />
+
+		<table id="entries" class="mainTable padTable" border="0" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th style='width:50%;'><?php echo $this->lang->line('user_preference');?></th>
+					<th style='width:50%;'><?php echo $this->lang->line('user_setting');?></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<?php foreach($form_fields as $field_name => $field) : ?>
+					<?php $style = $caller->cycle('odd', 'even'); ?>
+					<tr class="<?php echo $style;?>">
+						<td valign="top" style="width: 25%;">
+							<label for="<?php echo $field_name;?>"><?php echo $this->lang->line($field_name);?></label>
+							
+							<?php if ($this->lang->line($field_name.'_subtext') != $field_name.'_subtext') : ?>
+								<div class="subtext"><?php echo $this->lang->line($field_name.'_subtext');?></div>
+							<?php endif; ?>
+							
+						</td>
+						<td valign="top" style="width: 75%;">
+							<?php if (is_array($field)) : ?>
+								<?php foreach($field as $subfield_name => $subfield) : ?>
+									<p>
+										<?php echo $subfield->output(); ?> &nbsp; 
+										<label for="<?php echo $field_name.'_'.$subfield_name;?>"><?php echo $this->lang->line($subfield_name);?></label>
+									</p>
+								<?php endforeach;?>
+							<?php else: ?>
+								<?php echo $field->output(); ?>
+							<?php endif;?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+
+	<p>
+		<input type="submit" name="submit" value="<?php echo $this->lang->line('update');?>" class="submit"  />
+	</p>
+
+</form>
+
+</div>
+
+<?php $this->load->view('footer.html');?>

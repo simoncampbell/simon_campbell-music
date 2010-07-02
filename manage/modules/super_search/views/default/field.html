@@ -1,0 +1,98 @@
+<?php echo $this->view('header.html');?>
+
+	<div class="itemWrapper">
+	<div class="tableHeading"><?php echo $page_title;?></div>
+		<form action="<?php echo $this->output($base_uri.'&P=edit_field_confirm');?>" method="post" id="edit_field_form">
+			<input type="hidden" name="field_id" value="<?=$field_id; ?>" />
+		
+			<table border="0" cellspacing="0" cellpadding="0" style="width:100%;" class="tableBorder">
+			<thead>
+				<tr>
+					<td class="tableHeadingAlt" colspan="3">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="tableCellTwo" colspan="3"><?=$LANG->line('field_explanation'); ?></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tableCellOne" style="width:20%;">
+						<div class="defaultBold"><?=$LANG->line('name'); ?></div>					
+					</td>
+					<td class="tableCellOne" style="width:20%;">					
+						<div class="defaultBold">
+						<div class="itemWrapper"><input  dir="ltr" style="width:100%" type="text" name="field_name" id="field_name" value="<?=$field_name; ?>" size="35" maxlength="150" class="input" readonly />
+						</div>
+						</div>
+					</td>
+					<td class="tableCellOne" style="width:60%;">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="tableCellTwo">
+						<div class="defaultBold"><?=$LANG->line('label'); ?></div>
+					</td>
+					<td class="tableCellTwo">
+						<div class="defaultBold">
+						<div class="itemWrapper"><input  dir="ltr"  style="width:100%" type="text" name="field_label" id="field_label" value="<?=$field_label; ?>" size="35" maxlength="150" class="input" readonly />
+						</div>
+						</div>
+					</td>
+					<td class="tableCellTwo">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="tableCellOne">
+						<div class="defaultBold"><?=$LANG->line('type'); ?></div>
+					</td>
+					<td class="tableCellOne">
+						<div class="defaultBold">
+						<div class="itemWrapper">
+							<select id="type" name="type">
+<?php 
+foreach ( array( 'character', 'decimal', 'integer', 'small integer', 'text', 'tiny integer', 'varchar' ) as $val ) : 
+	$selected = ( $val == $type ) ? 'selected="selected"': '';
+?>
+								<option value="<?=$val; ?>" <?=$selected; ?>><?=ucfirst( $val ); ?></option>
+<?php endforeach; ?>
+							</select>
+						</div>
+						</div>
+					</td>
+					<td class="tableCellOne"><div id="type_explanation"></div></td>
+				</tr>
+				<tr id="length">
+					<td class="tableCellTwo">
+						<div class="defaultBold"><?=$LANG->line('length'); ?></div>
+					</td>
+					<td class="tableCellTwo">
+						<div class="defaultBold">
+						<div class="itemWrapper">
+							<input  dir="ltr"  style="width:25%" type="text" name="length" id="length" value="<?=$length; ?>" size="35" maxlength="7" class="input" />
+						</div>
+						</div>
+					</td>
+					<td class="tableCellTwo">&nbsp;</td>
+				</tr>
+				<tr id="precision">
+					<td class="tableCellOne">
+						<div class="defaultBold"><?=$LANG->line('precision'); ?></div>
+					</td>
+					<td class="tableCellOne">
+						<div class="defaultBold">
+						<div class="itemWrapper">
+							<select name="precision">
+<?php foreach ( range( 0,5 ) as $val ) : $selected = ( $val == $precision ) ? 'selected="selected"': ''; ?>
+								<option value="<?=$val; ?>" <?=$selected; ?>><?=$val; ?></option>
+<?php endforeach; ?>
+							</select>
+						</div>
+						</div>
+					</td>
+					<td class="tableCellOne"><?=$LANG->line('precision_explanation'); ?></td>
+				</tr>
+			</tbody>
+			</table>			
+			<div class="itemWrapperTop"><input  type="submit" class="submit" value="<?=$LANG->line('update'); ?>" /></div>
+		</form>
+	</div>	
+	
+<?php echo $this->view('footer.html'); ?>

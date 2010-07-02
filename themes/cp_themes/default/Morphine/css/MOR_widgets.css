@@ -1,0 +1,72 @@
+/* Deletable */
+ol.deletable{margin:0; padding:0; list-style-type:none;}
+ol.deletable li{position:relative;}
+ol.deletable > li{padding-right:27px;}
+ol.deletable > li > .btn.icon.delete{position:absolute; top:0; right:0;}
+ol.deletable > li:first-child > .btn.icon.delete{display:none;}
+
+/* Sortables */
+ol.sortable{margin:0; padding:0; list-style-type:none;}
+ol.sortable li{position:relative;}
+ol.sortable > li{padding-left:27px;}
+ol.sortable > li.ui-sortable-helper .mor table{
+	margin-top:0;
+	-webkit-box-shadow: 0px 5px 5px rgba(0,0,0,.3)
+}
+
+ol.sortable > li > .btn.icon.sort{position:absolute; top:0; left:0;}
+ol.sortable .ui-state-highlight{
+	background:#27343c url('../../../../cp_global_images/morphine/drop_target_large.png') no-repeat center center;
+	background:url('../../../../cp_global_images/morphine/drop_target_large.png') no-repeat center center, -webkit-gradient(linear, left top, left bottom, from(#000), to(#27343c), color-stop(0.05, #192329));
+	border-bottom:1px solid #fff;
+	border-bottom:1px solid #000;
+	margin-left:21px;
+	margin-right:20px;
+	margin-bottom:18px;
+	padding:9px;
+}
+
+table.col-sortable thead th.order-trigger{
+	background-image:url('../../../../cp_global_images/morphine/unsorted.png');
+	background-repeat:no-repeat;
+	background-position:center right;
+	cursor:pointer;
+	padding-right:20px;
+}
+table.col-sortable thead th.order-trigger:hover{background-image:url('../../../../cp_global_images/morphine/unsorted-hover.png');}
+table.col-sortable thead th.order-trigger-asc,
+table.col-sortable thead th.order-trigger-desc{background-color:rgba(255,255,255,.3);}
+table.col-sortable thead th.order-trigger-asc{background-image: url('../../../../cp_global_images/morphine/asc.png')!important; }
+table.col-sortable thead th.order-trigger-desc{background-image: url('../../../../cp_global_images/morphine/desc.png')!important; }
+
+/* Editables */
+.editable{display:block; position:relative;}
+.editable .placeholder:hover{
+	background:url('../../../../cp_global_images/fugue-icons/pencil-small.png') no-repeat right center;
+	cursor:pointer;
+	padding-right:20px;
+}
+.editable .edit_area{font-size:11px;}
+.editable .edit_area div{margin-top:9px;}
+.editable .edit_area .cancel{text-decoration:underline;}
+
+.editable input,
+.editable textarea{font-size:inherit; margin:0; font-size:11px;}
+.mor .tg h2 .editable .edit_area div{color:#fff; font-weight:normal;}
+
+/*.mor .tg h2 .editable.editing input{width:100%;}*/
+/* Draggable */
+.mor table tr.tDnD_whileDrag,
+.mor table tr.odd.tDnD_whileDrag{
+	background-color:#232f37;
+	background-image:-webkit-gradient(linear, left top, left bottom, from(#07090a), to(#27343c), color-stop(0.05, #171f24));
+	border-top-style:solid;
+	border-top-color:#000;
+	border-bottom-color:#000;
+	border-bottom-width:1px;
+	border-bottom-style:solid;
+	cursor:move;
+}
+.mor table tr.tDnD_whileDrag .dragHandle{opacity:.3;}
+.mor table tr.tDnD_whileDrag th,
+.mor table tr.tDnD_whileDrag td{color:#fff; text-shadow:#000 0 -1px 0;}

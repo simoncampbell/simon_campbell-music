@@ -1,0 +1,52 @@
+@import url("MOR_clearfix.css");
+@import url("MOR_core.css");
+@import url("MOR_tables.css");
+@import url("MOR_forms.css");
+@import url("MOR_widgets.css");
+@import url("MOR_custom_fields.css");
+@import url("MOR_publish_tab.css");
+
+/* EE Theme Tweaks */
+.breadcrumbRight span{ text-shadow: rgba(0,0,0,.3) 0 -1px 0 ;}
+.navCell div , .helpLinks{text-shadow: rgba(0,0,0,1) 0 -1px 0 ;}
+.navCell div.cpNavOn, .cpNavOff{
+	text-shadow:none;
+}
+.cpNavOn, .cpNavHover{
+	border:0;
+	margin-top:-5px;
+	margin-right:2px;
+	margin-left:1px;
+	padding-bottom:6px;
+	border-top:2px solid rgba(255,255,255,.1);
+}
+.cpNavOn{
+	border-top:2px solid rgb(69, 167, 220);
+	padding-bottom:7px;
+	margin-top:-6px; 
+}
+.cpNavOff{
+	background-image:-webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(0,0,0,0)),
+		to(rgba(0,0,0,.5))
+	);
+}
+.publishTabs, .publishTabsHover{
+	background-image:-webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(rgba(255,255,255,.5)),
+		to(rgba(255,255,255,.0))
+	);
+}
+.publishTabs{text-shadow: rgba(255,255,255,1) 0 1px 0 ;}
+.publishTabSelected{border-top:2px solid rgb(69, 167, 220); text-shadow: rgba(255,255,255,1) 0 1px 0 ; margin-top:-2px; padding-bottom:7px;}
+.publishTabsHover{text-shadow: rgba(255,255,255,.5) 0 1px 0 ;}
+
+#publishdropmenu{z-index:1000;}
+#content{position:relative;}
+.publishRows:first-child{border-bottom:0; padding-bottom:9px;}

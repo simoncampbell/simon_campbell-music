@@ -1,0 +1,10 @@
+.clear:after,
+.box:after,
+.menu:after,
+.mor .tg h2:after {
+    display:block; 
+    visibility:hidden; 
+    clear:both; 
+    height:0; 
+    content: "."; 
+}

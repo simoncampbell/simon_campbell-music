@@ -1,0 +1,72 @@
+<?php echo $this->view('header.html'); ?>
+
+	<div class="itemWrapper">
+	<div class="tableHeading"><?php echo $page_title;?></div>
+		
+		<form action="<?php echo $this->output($base_uri.'&P=home&msg=cache_cleared');?>" method="post" id="clear_cache_form">
+			<div class="tableHeadingAlt"><?=$LANG->line('current_cache');?></div>
+			<div class="profileMenuInner">
+				<input type="hidden" name="cache" value="clear" />
+				<input type="submit" name="submit" value="<?=$LANG->line('clear_search_cache'); ?>" />
+			</div>
+		</form>
+	
+		<form action="<?php echo $this->output($base_uri.'&P=edit_refresh_rule');?>" method="post" id="edit_refresh_rule_form">		
+			<table border="0" cellspacing="0" cellpadding="0" style="width:100%;" class="tableBorder">
+				<thead>
+				<tr>
+					<td class="tableHeadingAlt" colspan="2"><?=$LANG->line('refresh_rules'); ?> <?=$next_refresh;?></td>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td class="tableCellOne">					
+						<div class="defaultBold"><?=$LANG->line('refresh'); ?></div>
+						<div class="default"><?=$LANG->line('refresh_explanation'); ?></div>
+					</td>
+					<td class="tableCellOne" style="vertical-align:top;">
+						<div class="itemWrapper"><input dir="ltr" style="width:5%" type="text" name="refresh" id="refresh" value="<?=$refresh; ?>" size="35" maxlength="6" class="input" /> <?=$LANG->line('in_minutes'); ?>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableCellOne" style="vertical-align:top;">
+						<div class="defaultBold"><?=$LANG->line('template_refresh'); ?></div>
+						<div class="default"><?=$LANG->line('template_refresh_explanation'); ?></div>
+					</td>
+					<td class="tableCellOne" style="vertical-align:top;">
+						<div class="itemWrapper">
+							<?php echo $template_id_field->output(); ?>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableCellOne" style="vertical-align:top;">
+						<div class="defaultBold"><?=$LANG->line('weblog_refresh'); ?></div>
+						<div class="default"><?=$LANG->line('weblog_refresh_explanation'); ?></div>
+					</td>
+					<td class="tableCellOne" style="vertical-align:top; width:75%;">
+						<div class="itemWrapper">
+							<?=$weblog_id_field->output();?>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableCellOne" style="vertical-align:top;">
+						<div class="defaultBold"><?=$LANG->line('category_refresh'); ?></div>
+						<div class="default"><?=$LANG->line('category_refresh_explanation'); ?></div>
+					</td>
+					<td class="tableCellOne" style="vertical-align:top; width:75%;">
+						<div class="itemWrapper">
+							<?=$category_group_id_field->output();?>
+						</div>
+					</td>
+				</tr>
+				
+				</tbody>
+			</table>			
+			<div class="itemWrapperTop"><input type="submit" class="submit" value="<?=$LANG->line('update'); ?>" /></div>
+		</form>
+	</div>	
+	
+<?php echo $this->view('footer.html'); ?>
