@@ -1,4 +1,4 @@
-{embed="layout/_start"
+{embed="_layout/_start"
     body_class="home"
     body_id=""
     section=""
@@ -16,4 +16,4 @@
 
 
     
-{embed="layout/_end"}
+{embed="_layout/_end"}
