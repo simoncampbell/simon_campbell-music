@@ -1,0 +1,20 @@
+HOW TO SETUP
+============
+
+1. Create a database and import the .sql file found in /setup/
+2. Rename config.local.sample.php to config.local.php
+3. Add the database settings to config.local.php
+4. Update the $conf['site_url'] setting in config.local.php (this will depend on how you setup your virtual host)
+5. Repeat steps 3 and 4 for the dev and live environments
+6. CHMOD 777 the directories, /uploads, /manage/cache, and /assets/templates
+7. Make sure config.php is not writeable or it's contents will get overwritten.
+
+Special cases:
+----------------------
+
+* Arnold (dev server) is set up strangely to you may need to change this line in your config file:
+
+$conf['document_root'] = $_SERVER['DOCUMENT_ROOT'];
+
+To actually hold a hardcoded server path. i.e. $conf['document_root'] = '/var/www/html/subdomains/etc/etc/public'
+
