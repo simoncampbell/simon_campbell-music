@@ -4,14 +4,27 @@ if ( ! defined('EXT')){
 exit('Invalid file request');
 }
 
+/* EDIT THESE TO SUIT YOUR ENVIRONMENT
+-----------------------------------------------------------------*/
+
+$conf['db_hostname'] 	= "127.0.0.1";
+$conf['db_username'] 	= "username";
+$conf['db_password'] 	= "password";
+$conf['db_name'] 		= "db-name";
+
+$conf['site_url'] 		= "http://ee-package.local"; /* i.e. "http://virtualhost.local" */
+$conf['document_root'] 	= $_SERVER['DOCUMENT_ROOT'];  /* This can be hardcoded is necessary */
+
+$global_vars['ev_environment'] = 'local'; /* Can be development, local, stage, or production */
+
+
+/* THE REST CAN NORMALLY STAY AS THEY ARE
+-----------------------------------------------------------------*/
+
 $conf['app_version'] = "169";
 $conf['license_number'] = "";
 $conf['debug'] = "1";
 $conf['install_lock'] = "1";
-$conf['db_hostname'] = "localhost";
-$conf['db_username'] = "enter-the-username";
-$conf['db_password'] = "enter-the-password";
-$conf['db_name'] = "enter-the-db-name";
 $conf['db_type'] = "mysql";
 $conf['db_prefix'] = "exp";
 $conf['db_conntype'] = "0";
@@ -25,8 +38,6 @@ $conf['multiple_sites_enabled'] = "n";
 /* General
 -------------------------------------------------------------------*/
 $conf['site_index'] = "";
-$conf['site_url'] = "http://ee-package.local";
-$conf['document_root'] = $_SERVER['DOCUMENT_ROOT'];
 $conf['server_path'] = $conf['document_root'];
 $conf['cp_url'] = $conf['site_url']."/".$conf['system_folder'];
 
@@ -67,7 +78,7 @@ $conf['disable_all_tracking'] = "n";  // (y/n) - Emergency preference which when
 -------------------------------------------------------------------*/
 $conf['save_tmpl_files'] = "y";
 $conf['tmpl_file_basepath'] = $conf['server_path']."/assets/templates/";
-$conf['site_404'] = "404/index";
+$conf['site_404'] = "";
 $conf['strict_urls'] = "n";
 
 
@@ -97,7 +108,7 @@ $conf['admin_session_type'] = "cs";
 /* Enable some hidden variables - http://expressionengine.com/wiki/Hidden_Configuration_Variables/
 -------------------------------------------------------------------*/
 $conf['weblog_nomenclature'] = "channel";
-$conf['hidden_template_indicator'] = "_";
+$conf['hidden_template_indicator'] = "."; // do not set this to "_" because then templates laoded via ajax will be hidden
 $conf['protect_javascript'] = "y";
 
 
@@ -116,4 +127,9 @@ $conf['ed_cache_path'] = $conf['server_path'].'/uploads/images/resizer_cache/';
 /* User Module settings
 --------------------------------------------------------------------*/
 $conf['user_module_key_expiration'] = "30";
+
+/* Super Search settings
+--------------------------------------------------------------------*/
+$conf['allow_keyword_search_on_playa_fields'] = "y"; 
+
 ?>
