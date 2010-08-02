@@ -1,39 +1,7 @@
 /*
 
-    ENERGYNATION
+	[PROJECT] by ERSKINE DESIGN
 	VERSION 1.0
 	IE7 OVERRIDE STYLES
-
+	
 */
-
-
-
-/* @group 3.HEADINGS
----------------------------------------------------------------------- */
-
-h3 a.rss { margin-top:-32px; }
-
-
-
-/* NAVIGATION
----------------------------------------------------------------------- */
-
-ul#navigation_pri { position:relative; z-index:999; }
-
-
-
-/* GLOBAL ELEMENTS
----------------------------------------------------------------------- */
-
-/* MEDIA LISTING ---------- */
-
-    ul.media_listing li h4 { margin-top:-32px; }
-
-
-
-/* 11.HOMEPAGE
----------------------------------------------------------------------- */
-
-/* WELCOME ---------- */
-
-    div#homepage_welcome { padding-bottom:19px; }

@@ -36,15 +36,6 @@ $min_enableBuilder = false;
 
 
 /**
- * For best performance, specify your temp directory here. Otherwise Minify
- * will have to load extra code to guess. Some examples below:
- */
-//$min_cachePath = 'c:\\WINDOWS\\Temp';
-//$min_cachePath = '/tmp';
-//$min_cachePath = preg_replace('/^\\d+;/', '', session_save_path());
-
-
-/**
  * Leave an empty string to use PHP's $_SERVER['DOCUMENT_ROOT'].
  *
  * On some servers, this value may be misconfigured or missing. If so, set this 
@@ -54,10 +45,18 @@ $min_enableBuilder = false;
  * If /min/ is directly inside your document root, just uncomment the 
  * second line. The third line might work on some Apache servers.
  */
-//$min_documentRoot = '';
-$min_documentRoot = substr(__FILE__, 0, strlen(__FILE__) - 21);
-//$min_documentRoot = substr(__FILE__, 0, strlen(__FILE__) - 15);
+$min_documentRoot = '';
+$min_documentRoot = substr(__FILE__, 0, strlen(__FILE__) - 15);
 //$min_documentRoot = $_SERVER['SUBDOMAIN_DOCUMENT_ROOT'];
+
+
+/**
+ * For best performance, specify your temp directory here. Otherwise Minify
+ * will have to load extra code to guess. Some examples below:
+ */
+//$min_cachePath = 'c:\\WINDOWS\\Temp';
+$min_cachePath = $min_documentRoot.'/min/cache';
+//$min_cachePath = preg_replace('/^\\d+;/', '', session_save_path());
 
 
 /**

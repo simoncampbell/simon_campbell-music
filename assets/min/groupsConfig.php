@@ -33,18 +33,6 @@ function is_ignored($file)
    return in_array($file, $ignore, true);
 }
 
-function order_files_array($files)
-{
-    sort($files['js']);
-    // foreach ( $files['js'] as $key => $script ) {
-    //     if ( preg_match('/^jquery-[0-9]\./', $script) ) {
-    //         unset ( $files['js'][$key] );
-    //         array_unshift($files['js'],$script);
-    //     }
-    // }
-    return $files;
-}  
-
 function build_groups($path)
 {
     $files = build_files_array($path);
@@ -54,5 +42,5 @@ function build_groups($path)
 
 }
 
-return build_groups('../js/build');
+return build_groups('../js');
 
