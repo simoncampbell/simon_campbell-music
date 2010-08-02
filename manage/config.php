@@ -45,6 +45,7 @@ $conf['captcha_path'] = $conf['server_path']."/images/captchas/";
 $conf['captcha_url'] = $conf['site_url']."/images/captchas/";
 $conf['emoticon_path'] = $conf['site_url']."/uploads/system/smileys/";
 $conf['enable_emoticons'] = "n";
+$conf['cache_path'] = $conf['server_path'].'/manage/cache/';
 
 
 /* Extreme traffic options - http://expressionengine.com/docs/general/handling_extreme_traffic.html
