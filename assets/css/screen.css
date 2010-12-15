@@ -1,20 +1,20 @@
 /*
 
-	[PROJECT] by ERSKINE DESIGN
-	VERSION 1.0
-	
-	CONTENTS ----------
-	
+    [PROJECT] by ERSKINE DESIGN
+    VERSION 1.0
+    
+    CONTENTS ----------
+    
         1.BODY
-	    2.DEFAULT STYLING
-	    3.HEADINGS
-	    4.LINKS
-	    5.IMAGES
-	    6.LAYOUT
-	    7.BRANDING/MASTHEAD
-	    8.NAVIGATION
-	    9.SITEINFO/FOOTER
-	   
+        2.DEFAULT STYLING
+        3.HEADINGS
+        4.LINKS
+        5.LAYOUT
+        6.BRANDING/MASTHEAD
+        7.NAVIGATION
+        8.SITEINFO/FOOTER
+        9.GLOBAL ELEMENTS
+    
     -------------------
     
     COLOURS -----------
@@ -23,47 +23,39 @@
         white #FFFFFF
     
     -------------------
-	
+    
 */
 
-
-
-@import url(reset.css);
-@import url(scratch.css);
-
+@import url(min/reset.min.css);
 
 
 /* @group 1.BODY
 ---------------------------------------------------------------------- */
 
 body {
-	
+    
 }
-ul#nav_access { 
-	margin: 0; 
-	height: 0; 
-	position: relative; 
-	list-style: none; 
+ul#nav_access {
+    position: relative;
 }
-ul#nav_access li { 
-	margin: 0; 
-	height: 0; 
+ul#nav_access li {
+    height: 0;
 }
-ul#nav_access li a { 
-	position: absolute; 
-	left: -9999px; 
-	top: 0; 
-	font-size: 11px; 
-	font-weight: bold; 
-	background: #FFFFCC; 
-	border: 2px solid #ddd; 
-	padding: 10px; 
-	display: block; 
+ul#nav_access li a {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    font-size: 11px;
+    font-weight: bold;
+    background: #FFFFCC;
+    border: 2px solid #ddd;
+    padding: 10px;
+    display: block;
 }
 ul#nav_access li a:focus,
-ul#nav_access li a.focus { 
-	left: 0; 
-	color: #333; 
+ul#nav_access li a.focus {
+    left: 0; 
+    color: #333; 
 }
 
 /* @end */
@@ -73,123 +65,128 @@ ul#nav_access li a.focus {
 /* @group 2.DEFAULT STYLING
 ---------------------------------------------------------------------- */
 
-p,ul,dl,ol { 
-	 
+.ds p,
+.ds ul,
+.ds dl,
+.ds ol {
+    
 }
-ul { 
-	 
+.ds ul {
+    
 }
-ul li { 
-	 
+.ds ul li {
+     
 }
-dl { 
-	 
+.ds dl {
+     
 }
-dt { 
-	 
+.ds dl dt {
+    
 }
-dd { 
-	 
+.ds dl dd {
+    
 }
-ol { 
-	 
+.ds ol {
+    
 }
-ol li { 
-	 
+.ds ol li {
+    
 }
-hr { 
-	 
+.ds hr {
+    
 }
-blockquote { 
-	 
+.ds blockquote {
+    
 }
-blockquote p { 
-	 
+.ds blockquote p {
+    
 }
-blockquote cite { 
-	 
+.ds blockquote cite {
+    
 }
-pre { 
-	 
+.ds pre {
+
 }
-pre code { 
-	 
+.ds pre code {
+    font-family: monospace;
+    white-space: pre;
 }
-code { 
-	 
+.ds code {
+    
 }
-abbr { 
-	 
+.ds abbr {
+    
 }
-abbr:hover { 
-	 
+.ds abbr:hover {
+    
 }
-del { 
-	 
+.ds del {
+    
 }
-strong { 
-	 
+.ds strong {
+    
 }
-em { 
-	 
+.ds em {
+    
 }
-sup { 
-	 
+.ds sup {
+    
 }
-sub { 
-	 
+.ds sub {
+    
 }
 
 
+/* FORMS
+-------------------------------------- */
 
-/* FORMS ----------------- */
+.ds form {
+    
+}
+.ds form fieldset {
+    
+}
+.ds form fieldset div {
+    
+}
+.ds label {
 
-form { 
-	 
 }
-form fieldset { 
-	 
+.ds label em {
+    
 }
-form fieldset div { 
-	 
+.ds input[type="input"],
+.ds input[type="password"] {
+    
 }
-label { 
-	 
+.ds textarea {
+    
 }
-label em { 
-	 
+.ds input[type="submit"] {
+    
 }
-input[type="input"],
-input[type="password"] { 
-	 
+/* TABLES
+-------------------------------------- */
+.ds table {
+    
 }
-textarea { 
-	 
+.ds caption {
+    
 }
-input[type="submit"] { 
-	 
+.ds thead {
+    
 }
-/* TABLES ----------------- */
-table { 
-	 
+.ds tbody {
+    
 }
-caption { 
-	 
+.ds tr {
+    
 }
-thead { 
-	 
+.ds th {
+    
 }
-tbody { 
-	 
-}
-tr { 
-	 
-}
-th { 
-	 
-}
-td { 
-	 
+.ds td {
+    
 }
 
 /* @end */
@@ -199,26 +196,31 @@ td {
 /* @group 3.HEADINGS
 ---------------------------------------------------------------------- */
 
-h1,h2,h3,h4,h5,h6 { 
-	 
+.ds h1,
+.ds h2,
+.ds h3,
+.ds h4,
+.ds h5,
+.ds h6 { 
+    
 }
-h1 { 
-	 
+.ds h1 {
+    
 }
-h2 { 
-	 
+.ds h2 { 
+    
 }
-h3 { 
-	 
+.ds h3 { 
+    
 }
-h4 { 
-	 
+.ds h4 { 
+    
 }
-h5 { 
-	 
+.ds h5 { 
+    
 }
-h6 { 
-	 
+.ds h6 { 
+    
 }
 
 /* @end */
@@ -228,77 +230,63 @@ h6 {
 /* @group 4.LINKS
 ---------------------------------------------------------------------- */
 
-a { 
-	 
+a {
+    
 }
 a:hover,
-a:focus { 
-	 
+a:focus {
+    
 }
 
 /* @end */
 
 
 
-/* @group 5.IMAGES
----------------------------------------------------------------------- */
-
-img { 
-	 
-}
-
-/* @end */
-
-
-
-/* @group 6.LAYOUT
+/* @group 5.LAYOUT
 
 ---------------------------------------------------------------------- */
-div#page { 
-	 
-}
-div#content_wrapper { 
-	 
+div#page {
+    
 }
 
 /* @end */
 
 
 
-/* @group 7.BRANDING/MASTHEAD
+/* @group 6.MASTHEAD
 ---------------------------------------------------------------------- */
 
-div#branding { 
-	 
+div#masthead {
+    
 }
 
 /* @end */
 
 
 
-/* @group 8.NAVIGATION
+/* @group 7.NAVIGATION
 ---------------------------------------------------------------------- */
 
-ul#navigation_pri { 
-	 
+ul#navigation_pri {
+    
 }
 
 /* @end */
 
 
 
-/* @group 9.SITEINFO/FOOTER
+/* @group 8.SITEINFO/FOOTER
 ---------------------------------------------------------------------- */
 
-div#siteinfo { 
-	 
+div#footer {
+    
 }
 
 /* @end */
 
 
 
-/* @group 10.GLOBAL ELEMENTS
+/* @group 9.GLOBAL ELEMENTS
 ---------------------------------------------------------------------- */
 
 

@@ -1,0 +1,2 @@
+@import url(reset.min.css);
+ul#nav_access{position:relative;}ul#nav_access li{height:0;}ul#nav_access li a{position:absolute;left:-9999px;top:0;font-size:11px;font-weight:bold;background:#FFC;border:2px solid #ddd;padding:10px;display:block;}ul#nav_access li a:focus,ul#nav_access li a.focus{left:0;color:#333;}.ds pre code{font-family:monospace;white-space:pre;}
