@@ -5,7 +5,7 @@
 -----------------------------------------------------
  http://expressionengine.com/
 -----------------------------------------------------
- Copyright (c) 2003 - 2008 EllisLab, Inc.
+ Copyright (c) 2003 - 2010 EllisLab, Inc.
 =====================================================
  THIS IS COPYRIGHTED SOFTWARE
  PLEASE READ THE LICENSE AGREEMENT
@@ -14,8 +14,6 @@
  File: index.php
 -----------------------------------------------------
  Purpose: Triggers the main engine
-=====================================================
- v0.1 CJM 16-04-2008 Add definition for translator
 =====================================================
 */
 
@@ -31,8 +29,7 @@ $qtype = 0;
 
 // DO NOT EDIT BELOW THIS!!! 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+error_reporting(0);
 
 if (isset($_GET['URL'])) 
 { 
@@ -74,19 +71,10 @@ if (isset($_GET['URL']))
 
 $uri  = '';
 $pathinfo = pathinfo(__FILE__);
-
-define('ESK_PATH_TO_ROOT', $pathinfo['dirname']);  // v0.1 CJM 16-04-2008 Added
-
 $ext  = ( ! isset($pathinfo['extension'])) ? '.php' : '.'.$pathinfo['extension'];
 $self = ( ! isset($pathinfo['basename'])) ? 'index'.$ext : $pathinfo['basename'];
 
-if ( '127.0.0.1' == $_SERVER['SERVER_ADDR'] || '::1' == $_SERVER['SERVER_ADDR'] )
-{
-    $path_info = (isset($_SERVER['PATH_INFO'])) ? $_SERVER['PATH_INFO'] : @getenv('PATH_INFO');
-} else {
-    $path_info = (isset($_SERVER['ORIG_PATH_INFO'])) ? $_SERVER['ORIG_PATH_INFO'] : @getenv('PATH_INFO');
-}
-
+$path_info = (isset($_SERVER['PATH_INFO'])) ? $_SERVER['PATH_INFO'] : @getenv('PATH_INFO');
 $query_str = (isset($_SERVER['QUERY_STRING'])) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 
 switch ($qtype)
