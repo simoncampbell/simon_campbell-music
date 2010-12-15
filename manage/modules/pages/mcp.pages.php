@@ -132,7 +132,7 @@ class Pages_CP {
         $pages = $PREFS->ini('site_pages');
 		$pages = $pages[$PREFS->ini('site_id')];
 
-        if ($pages === FALSE OR sizeof($pages) == 0)
+        if ($pages === FALSE OR isset($pages['uris']) == FALSE OR sizeof($pages['uris']) == 0)
         {
 			$DSP->body .= $DSP->div('box');
             $DSP->body .= $DSP->qdiv('itemWrapper', '<b>'.$LANG->line('no_pages').'</b>');      
@@ -512,17 +512,17 @@ class Pages_CP {
 		
 		$num = 0;
 		
-		foreach($pages['uris'] as $entry_id => $value)
+		foreach($pages[$PREFS->ini('site_id')]['uris'] as $entry_id => $value)
 		{
 			if (isset($ids[$entry_id]))
 			{
-				unset($pages['uris'][$entry_id]);
-				unset($pages['templates'][$entry_id]);
+				unset($pages[$PREFS->ini('site_id')]['uris'][$entry_id]);
+				unset($pages[$PREFS->ini('site_id')]['templates'][$entry_id]);
 				$num++;
 			}
 		}
 		
-		$PREFS->core_ini['site_pages'][$PREFS->ini('site_id')] = $pages;
+		$PREFS->core_ini['site_pages'] = $pages;
 		
 		$DB->query($DB->update_string('exp_sites', 
 									  array('site_pages' => addslashes(serialize($pages))),

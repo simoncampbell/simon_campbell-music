@@ -56,6 +56,7 @@ class Wiki {
 	var $auto_links				= "n";
 	var $upload_dir				= '';
 	var $valid_upload_dir		= 'n';
+	var $can_upload				= 'n';	
 	var $moderation_emails		= '';
 	var $revision_limit			= 100;
 	var $author_limit			= 75;
@@ -278,9 +279,14 @@ class Wiki {
 			if ($query->row['count'] > 0)
 			{
 				$this->valid_upload_dir = 'y';
+				$this->can_upload = 'y';				
 				
-				if ($SESS->userdata['group_id'] != 1)
-				{         	
+				if (in_array($SESS->userdata['group_id'], array(2, 3, 4)))
+				{
+					$this->can_upload = 'n'; 
+				}
+				elseif ($SESS->userdata['group_id'] != 1)
+				{
 					$query = $DB->query("SELECT upload_id FROM exp_upload_no_access WHERE member_group = '".$SESS->userdata['group_id']."'");
 				
 					if ($query->num_rows > 0)
@@ -289,7 +295,7 @@ class Wiki {
 						{
 							if ($query->row['upload_id'] == $this->upload_dir)
 							{
-								$this->valid_upload_dir = 'n'; 
+								$this->can_upload = 'n'; 
 								break;
 							}
 						}
@@ -297,7 +303,6 @@ class Wiki {
 				}
 			}
 		}
-		
 		
 		/** ----------------------------------------
 		/**  Load Theme
@@ -435,7 +440,7 @@ class Wiki {
 			}
     	}
 		
-		if ($this->valid_upload_dir == 'y')
+		if ($this->can_upload == 'y')
 		{
 			$this->return_data = $this->_allow_if('uploads', $this->return_data);
 		}
@@ -900,7 +905,7 @@ class Wiki {
 		
 		if (isset($this->seg_parts['1']) && strtolower($this->seg_parts['1']) == 'delete')
 		{
-			if ($this->valid_upload_dir == 'y' && in_array($SESS->userdata['group_id'], $this->admins))
+			if ($this->can_upload == 'y' && in_array($SESS->userdata['group_id'], $this->admins))
 			{
 				$query = $DB->query("SELECT COUNT(*) AS count FROM exp_wiki_uploads
 							 		 WHERE file_name = '".$DB->escape_str($topic)."'");
@@ -2508,11 +2513,11 @@ class Wiki {
     	/**  Current Revision's Content
     	/** ----------------------------------------*/
     	
-		$results = $DB->query("SELECT page_content, revision_date
-							   FROM exp_wiki_revisions
-							   WHERE page_id = '".$query->row['page_id']."'
+		$results = $DB->query("SELECT page_content, revision_date, revision_notes, page_redirect  
+							   FROM exp_wiki_page p LEFT JOIN  exp_wiki_revisions r ON r.page_id = p.page_id
+							   WHERE p.page_id = '".$query->row['page_id']."'
 							   AND revision_id = '".$DB->escape_str($revision_id)."'
-							   AND wiki_id = '".$DB->escape_str($this->wiki_id)."'
+							   AND p.wiki_id = '".$DB->escape_str($this->wiki_id)."'
 							   ORDER BY revision_date DESC LIMIT 1");
 								   
 		if ($results->row['revision_date'] < $query->row['last_updated'])
@@ -2525,7 +2530,9 @@ class Wiki {
 		}
 			
 		$content = ($results->num_rows == 0) ? '' :  $results->row['page_content'];
-		
+		$revision_notes = ($results->num_rows == 0) ? '' :  $results->row['revision_notes'];
+		$redirect = ($results->num_rows == 0) ? '' :  $results->row['page_redirect'];
+				
 		$this->conditionals['redirect_page'] = '';
 		
 		/** ----------------------------------------
@@ -2542,8 +2549,8 @@ class Wiki {
 									  
 		$this->files();
 		
-		$this->return_data = str_replace(array('{form_declaration:wiki:edit}', '{content}', '{redirect_page}'), 
-										array($FNS->form_declaration($data), $this->encode_ee_tags($REGX->form_prep($content)), ''), 
+		$this->return_data = str_replace(array('{form_declaration:wiki:edit}', '{content}', '{redirect_page}', '{revision_notes}', '{rename}'), 
+										array($FNS->form_declaration($data), $this->encode_ee_tags($REGX->form_prep($content)), $redirect, $revision_notes, ''), 
 										$this->return_data);
 	}
 	/* END */
@@ -5300,7 +5307,7 @@ class Wiki {
 		
 		$this->return_data = str_replace('{wiki:page}', wiki_special_upload_form(), $this->return_data);
 		
-		if ($this->valid_upload_dir != 'y') 
+		if ($this->can_upload != 'y') 
 		{
 			return;
 		}
@@ -5383,11 +5390,17 @@ class Wiki {
 			
 			$UP->new_name = $new_name;
 			
-			if (file_exists($query->row['server_path'].$UP->new_name))
+			if (file_exists($query->row['server_path'].$new_name))
 			{        
 				return $OUT->show_user_error('general', array($LANG->line('file_exists')));
 			}
 			
+			if (strlen($new_name) > 60)
+			{        
+				return $OUT->show_user_error('general', array($LANG->line('filename_too_long')));
+			}
+			
+
 			/** -------------------------------------
 			/**  Process the Upload
 			/** -------------------------------------*/

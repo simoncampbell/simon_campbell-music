@@ -1,10 +1,10 @@
 # Sequel Pro dump
-# Version 2210
+# Version 2492
 # http://code.google.com/p/sequel-pro
 #
-# Host: 127.0.0.1 (MySQL 5.1.47)
-# Database: ee-package
-# Generation Time: 2010-07-05 18:37:27 +0100
+# Host: localhost (MySQL 5.1.44)
+# Database: scb_dev
+# Generation Time: 2010-12-15 10:45:39 +0000
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -228,7 +228,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=235 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=239 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -467,7 +467,11 @@ VALUES
 	(231,1,1,'jamiepittock','127.0.0.1',1278254063,'Logged in'),
 	(232,1,1,'jamiepittock','127.0.0.1',1278307223,'Logged in'),
 	(233,1,1,'jamiepittock','127.0.0.1',1278339411,'Logged in'),
-	(234,1,1,'jamiepittock','127.0.0.1',1278347366,'Logged in');
+	(234,1,1,'jamiepittock','127.0.0.1',1278347366,'Logged in'),
+	(235,1,7,'gregwood','127.0.0.1',1292409756,'Logged in'),
+	(236,1,7,'gregwood','127.0.0.1',1292409816,'Member profile created:&nbsp;&nbsp;philhowell'),
+	(237,1,7,'gregwood','127.0.0.1',1292409859,'Channel Created:&nbsp;&nbsp;rofl'),
+	(238,1,7,'gregwood','127.0.0.1',1292409871,'Channel Deleted:&nbsp;&nbsp;rofl');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1199,7 +1203,8 @@ VALUES
 	(8,'','','','','',''),
 	(10,'','','','','',''),
 	(15,'','','','','',''),
-	(16,'','','','','','');
+	(16,'','','','','',''),
+	(17,'','','','','','');
 
 /*!40000 ALTER TABLE `exp_member_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1362,7 +1367,8 @@ VALUES
 	(7,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(10,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(15,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
-	(16,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
+	(16,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
+	(17,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
 
 /*!40000 ALTER TABLE `exp_member_homepage` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1474,7 +1480,7 @@ CREATE TABLE `exp_members` (
   KEY `group_id` (`group_id`),
   KEY `unique_id` (`unique_id`),
   KEY `password` (`password`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
@@ -1483,9 +1489,10 @@ VALUES
 	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1278339412,1278347366,0,0,0,0,1277478429,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1278091001,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1265134044,1278090832,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1278090832,1292409756,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0);
+	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2350,26 +2357,33 @@ VALUES
 	(1277804247,'88.97.41.224','f9f3b316d236307c2d9abf13106e41a2b5f424ff'),
 	(1277804283,'88.97.41.224','c4588f35ae031affed7fd5b70061cf93406a6dea'),
 	(1277804296,'88.97.41.224','ff487d01c5b27f3a03fec0204dfae10b3acaaab8'),
-	(1278350975,'127.0.0.1','e1500766423402b334d53028f6398a43f6409a7b'),
-	(1278350953,'127.0.0.1','3b6eb77b75515c425d951af756d3ba17663a0afb'),
-	(1278347393,'127.0.0.1','0a7bb1059bf2eb6fcd978a39cf6996b90b57e434'),
-	(1278343087,'127.0.0.1','359387e8640489709e2534bbf73743e11239fc60'),
-	(1278343081,'127.0.0.1','3916e30f3c87de8adf2bda7ea727282196bca6a4'),
-	(1278343049,'127.0.0.1','1282f4be6a9f32fb2cdf1aee497b16cb6e29a838'),
-	(1278342999,'127.0.0.1','e6ceed0669c4938759208f4b16400d9860a6b5ff'),
-	(1278337530,'127.0.0.1','b1bc0010d219af7f53afcb28033a6e14e29015fc'),
-	(1278330783,'127.0.0.1','db9280f85736185cf5cc15d6ab7cac501864c703'),
-	(1278325581,'127.0.0.1','c0601bbac7c6cba2b406b84e5d52060d74c944e8'),
-	(1278321233,'127.0.0.1','543ac040bee668d60815f8cd5f586ccc2e39ece9'),
-	(1278315337,'127.0.0.1','c2ad2f555934c6bbb000e75ecd8e37cd696434fe'),
-	(1278314651,'127.0.0.1','0f42acb6b08e2d786070880285d513d266be383e'),
-	(1278314644,'127.0.0.1','da0eef0ceff18713ab1fdf24d70c1a9ceb3605a3'),
-	(1278314642,'127.0.0.1','ee4e2d8ad6a387fa6c3fc56593e5503d64de0d18'),
-	(1278314625,'127.0.0.1','135755f383401d6f7dc8b34b5c21dda10686ae9e'),
-	(1278314612,'127.0.0.1','19af3707748de77c25c14f3e26454a584c3072e0'),
-	(1278310674,'127.0.0.1','ed84938265731e3705b64035358665cb819ada80'),
-	(1278310813,'127.0.0.1','1a4d1696bb1583840d6a0e984982db253ff20039'),
-	(1278310833,'127.0.0.1','c4feeeeb74459741baa4d41cb12110aaac894318');
+	(1292409914,'127.0.0.1','5e94a263caec8b50d510ddba1f43fbe3cf06a5c6'),
+	(1292409906,'127.0.0.1','da5b7ec4705161d22ec188287ec21cbe8c666286'),
+	(1292409898,'127.0.0.1','693b4023d621511584f5ddcbdc75ca2270d1692d'),
+	(1292409896,'127.0.0.1','d7ed202c129a1ec07be2216cf807769aebe6beb3'),
+	(1292409888,'127.0.0.1','8de940a50df7eb72bebbca3ceeddcc6c5fed86da'),
+	(1292409880,'127.0.0.1','b4cb37e66ddc951ea1a508841b05e25a734c2a24'),
+	(1292409880,'127.0.0.1','8608b4fd01faa2fce4f8b009dd625d4d4686eea2'),
+	(1292409876,'127.0.0.1','7a15b361a4ea240b334ea54c58c0f2dec3bb9200'),
+	(1292409870,'127.0.0.1','b9afb4508fcbc3102d3d33d41e2dc157a5a6782f'),
+	(1292409863,'127.0.0.1','6d6e06ce2a0b00864b08975bf562f9861116428e'),
+	(1292409854,'127.0.0.1','908c67cb8fafcdc17a8351ef899755d829ea7122'),
+	(1292409845,'127.0.0.1','f7e3c803098f3e795711b57f6ca2fff5a303df4d'),
+	(1292409844,'127.0.0.1','3884d03acaa24b27a599e92b36bf6aa0f109c68f'),
+	(1292409843,'127.0.0.1','193582aaf6ee50c6fff10bece7a7940ffbc87c8d'),
+	(1292409841,'127.0.0.1','8629120a43d74a0fe059a57e5c9a51b4a189c05b'),
+	(1292409836,'127.0.0.1','83b687f6308121c60f0edf5d0ceeff6d1ac05557'),
+	(1292409817,'127.0.0.1','1262b7e7907aed4ced3f5ce27524ab17cf545d86'),
+	(1292409817,'127.0.0.1','7636b64071ce7b9e3f3dadac938ab85a0b7db526'),
+	(1292407889,'127.0.0.1','ea7bb1d6c907c3586784c5c43de0d5512e1e5ef3'),
+	(1292409748,'127.0.0.1','c61f20fbb9b5edcc4acbc8e8af84cd026bc471b1'),
+	(1292409754,'127.0.0.1','3e25932b6ca7f11f74270440517b7fb1a40cc49a'),
+	(1292409759,'127.0.0.1','94e3a394809fac0015fdf68e93c61a2547f3d2c4'),
+	(1292409761,'127.0.0.1','29a4aba020db1472031edf204b0f4485f39d0ae6'),
+	(1292409766,'127.0.0.1','9594f26919a9728e1c5ecabcd5f498577bde0ed1'),
+	(1292409766,'127.0.0.1','6ee474d92b717e214914d7383af560a5543ee97d'),
+	(1292409780,'127.0.0.1','2e60cb917006f7952e11df5c2e28fd95acc4aa43'),
+	(1292409783,'127.0.0.1','0be4313a640578abb81ad6595def9ed6ecfb1968');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2397,8 +2411,7 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('4808f6389e46ac860fa64f3cf5a06b1e8267cdd0',1,1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; ',1278339504),
-	('6bae2bb15af3e9d6d04c712cf5b51fed2671b9d0',1,1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; ',1278347374);
+	('31d571e7622c5d6d4f9b1917e95bb7ff2a54b7ca',1,7,1,'127.0.0.1','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_5; ',1292409914);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2509,7 +2522,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,6,16,'James Willock',0,0,0,0,0,0,0,0,0,1265120889,4,1249281451,1266667446);
+	(0,1,7,17,'Phil Howell',0,0,0,0,0,0,0,0,0,1265120889,4,1249281451,1266667446);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3273,7 +3286,7 @@ CREATE TABLE `exp_weblogs` (
   KEY `field_group` (`field_group`),
   KEY `is_user_blog` (`is_user_blog`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 
 

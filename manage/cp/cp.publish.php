@@ -876,6 +876,7 @@ class Publish {
 			
 			NewText = NewTextTemp;
 			
+			
 			NewText = NewText.replace('/<(.*?)>/g', '');
 			NewText = NewText.replace(/\s+/g, separator);
 			NewText = NewText.replace(/\//g, separator);
@@ -890,11 +891,11 @@ class Publish {
 			
 			if (document.getElementById("url_title"))
 			{
-				document.getElementById("url_title").value = "{$url_title_prefix}" + NewText;			
+				document.getElementById("url_title").value = ("{$url_title_prefix}" + NewText).substring(0,75);			
 			}
 			else
 			{
-				document.forms['entryform'].elements['url_title'].value = "{$url_title_prefix}" + NewText; 
+				document.forms['entryform'].elements['url_title'].value = ("{$url_title_prefix}" + NewText).substring(0,75);
 			}		
 		}
 
@@ -1135,12 +1136,13 @@ class Publish {
         	}
         }
 
-        // Remove the Preview from the DOM so it isn't added to submitted content
 		document.getElementById('entryform').onsubmit = function()
 		{
-			if (document.getElementById('entryform').hasChildNodes(document.getElementById('previewBox')) == true)
+			prevBox = document.getElementById('previewBox');
+			
+			if (prevBox != null)
 			{
-				document.getElementById('entryform').removeChild(document.getElementById('previewBox'));
+				document.getElementById('entryform').removeChild(prevBox);
 			}
 		}
 
@@ -3470,12 +3472,17 @@ EOT;
         $LANG->fetch_language_file('publish_ad');
         
         /** ---------------------------------
-        /**  No entry title? Assign error.
+        /**  No entry title or title too long? Assign error.
         /** ---------------------------------*/
         
         if ( ! $title = strip_tags(trim(stripslashes($IN->GBL('title', 'POST')))))
         {
             $error[] = $LANG->line('missing_title');
+        }
+
+		if (strlen($title) > 100)
+        {
+            $error[] = $LANG->line('title_too_long');
         }
    
         /** ---------------------------------------------
@@ -3759,6 +3766,13 @@ EOT;
 				}
 			}
 			
+			// Is the url_title too long?  Warn them
+			if (strlen($url_title) > 75)
+			{
+				$this->url_title_error = TRUE;
+				$error[] = $LANG->line('url_title_too_long');
+			}			
+			
             /** ---------------------------------
             /**  Is URL title unique?
             /** ---------------------------------*/
@@ -3774,7 +3788,7 @@ EOT;
 				$e_sql = " AND entry_id != '$entry_id'";
 			}
 			
-			$query = $DB->query($sql);
+			$query = $DB->query($sql.$e_sql);
 				 
 			if ($query->row['count'] > 0)
 			{				 
@@ -7921,7 +7935,11 @@ function changemenu(index)
 				
 				if ($status_query->num_rows == 0)
 				{					
-					$menu_status .= $DSP->input_select_option('open', $LANG->line('open'), ($row['status'] == 'open') ? 1 : '');				
+					// if there is no status group assigned, only Super Admins can create 'open' entries
+					if ($SESS->userdata('group_id') == 1)
+					{
+						$menu_status .= $DSP->input_select_option('open', $LANG->line('open'), ($row['status'] == 'open') ? 1 : '');	}
+							
 					$menu_status .= $DSP->input_select_option('closed', $LANG->line('closed'), ($row['status'] == 'closed') ? 1 : '');
 				}
 				else

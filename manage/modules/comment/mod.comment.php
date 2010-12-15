@@ -2199,23 +2199,18 @@ class Comment {
         	return false;
         }
                 
-        // If the comment is empty, bounce them back
-        
-        if ($_POST['comment'] == '')
-        {
-        	if ( ! isset($_POST['RET']) OR $_POST['RET'] == '')
-        	{
-        		return false;
-        	}
-        	
-            $FNS->redirect($_POST['RET']);
-        }
-               
         /** ----------------------------------------
         /**  Fetch the comment language pack
         /** ----------------------------------------*/
         
         $LANG->fetch_language_file('comment');
+
+        // If the comment is empty, bounce them back
+        
+        if ($_POST['comment'] == '')
+        {
+			return $OUT->show_user_error('general', array($LANG->line('cmt_comment_missing')));
+        }
         
         /** ----------------------------------------
         /**  Is the user banned?

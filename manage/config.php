@@ -5,7 +5,7 @@ require('config.inc.php');
 /* THE REST CAN NORMALLY STAY AS THEY ARE
 -----------------------------------------------------------------*/
 
-$conf['app_version'] = "169";
+$conf['app_version'] = "170";
 $conf['license_number'] = "";
 $conf['debug'] = "1";
 $conf['install_lock'] = "1";

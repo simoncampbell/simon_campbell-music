@@ -364,7 +364,7 @@ class Modules {
 
 		$MOD->$method();
 
-        $LANG->fetch_language_file($module);        
+		$LANG->fetch_language_file(( ! isset($this->lang_overrides[$module])) ? $module : $this->lang_overrides[$module]);      
 
         $line = (stristr($method, 'deinstall')) ? $LANG->line('module_has_been_removed') : $LANG->line('module_has_been_installed');
 	
@@ -403,10 +403,13 @@ class Modules {
         								array('DO' => 'TRUE')
         								);
 
+		$LANG->fetch_language_file(( ! isset($this->lang_overrides[$module])) ? $module : $this->lang_overrides[$module]); 
+		$name = ($LANG->line($module.'_module_name') == FALSE) ? ucfirst($module) : $LANG->line($module.'_module_name');
+		
 		$DSP->body .= $DSP->qdiv('alertHeading', $LANG->line('delete_module'));
 		$DSP->body .= $DSP->div('box');
 		$DSP->body .= $DSP->qdiv('defaultBold', $LANG->line('delete_module_confirm'));		
-		$DSP->body .= $DSP->qdiv('defaultBold', BR.ucfirst($module));
+		$DSP->body .= $DSP->qdiv('defaultBold', BR.$name);
 		$DSP->body .= $DSP->qdiv('alert', BR.$LANG->line('data_will_be_lost')).BR;
 		$DSP->body .= $DSP->div_c();
 		

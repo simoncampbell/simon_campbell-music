@@ -668,7 +668,7 @@ class Member_settings extends Member {
 
 			if (isset($query->row[$val]))
 			{           
-				$content = $this->_var_swap_single($val, $query->row[$val], $content);
+				$content = $this->_var_swap_single($val, strip_tags($query->row[$val]), $content);
 			}
 		}        
 

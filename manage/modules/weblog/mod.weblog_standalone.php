@@ -758,9 +758,7 @@ EOT;
 		
 			$tagdata = str_replace(LD.'formatting_buttons'.RD, str_replace(	'.entryform.', 
 																			".getElementById('entryform').", 
-																			$PUB->html_formatting_buttons($SESS->userdata('member_id'), 
-																										  $field_group)), 
-																										  $tagdata);
+$PUB->html_formatting_buttons($SESS->userdata('member_id'), $field_group, TRUE, $weblog_allow_img_urls)), $tagdata);
 		}
 
 		/** -------------------------------------

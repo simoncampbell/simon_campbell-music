@@ -260,7 +260,7 @@ class XML_RPC_Client extends XML_RPC
 	var $errno			= '';
 	var $errstring		= '';
 	var $timeout		= 5;
-	var $no_multicall	= false;
+	var $no_multicall	= FALSE;
 
 	function XML_RPC_Client($path, $server, $port=80)
 	{
@@ -337,6 +337,7 @@ class XML_RPC_Response
 	var $errno = 0;
 	var $errstr = '';
 	var $headers = array();
+	var $xss_clean = TRUE;
 
 	function XML_RPC_Response($val, $code = 0, $fstr = '')
 	{

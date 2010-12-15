@@ -139,6 +139,18 @@ class Preferences {
 				}
 				
 				$this->core_ini['site_pages'] = $REGX->array_stripslashes(unserialize($data));
+				
+				// Double check that the variables are set.
+				if ( ! isset($this->core_ini['site_pages'][$query->row['site_id']]['uris']))
+				{
+					$this->core_ini['site_pages'][$query->row['site_id']]['uris'] = ( ! isset($this->config['site_pages']['uris'])) ? array() : $this->config['site_pages']['uris'];
+				}
+			
+				if ( ! isset($this->config['site_pages'][$query->row['site_id']]['templates']))
+				{
+					$this->config['site_pages'][$query->row['site_id']]['templates'] = ( ! isset($this->config['site_pages']['templates'])) ? array() : $this->config['site_pages']['templates'];
+				}					
+				
 			}
 			else
 			{

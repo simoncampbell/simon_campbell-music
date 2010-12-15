@@ -433,24 +433,44 @@ class Member_memberlist extends Member {
 			}
         }
         
-		
         /** ----------------------------------------
         /**  Assign default variables
         /** ----------------------------------------*/
-                                                                     			
-		$vars = array(
-						'group_id'		=>	0, 
-						'order_by'		=>	($PREFS->ini('memberlist_order_by') == '') ? 'total_posts' : $PREFS->ini('memberlist_order_by'), 
-						'sort_order'	=>	($PREFS->ini('memberlist_sort_order') == '') ? 'desc' : $PREFS->ini('memberlist_sort_order'),
-						'row_limit'		=>	($PREFS->ini('memberlist_row_limit') == '') ? 20 : $PREFS->ini('memberlist_row_limit'),
-						'row_count'		=>	0
-					);
-					
+
+		$valid_order_bys = array(
+				'screen_name','total_posts', 'join_date'
+			);
 		
-		foreach ($vars as $key => $val)
+		$sort_orders = array('asc', 'desc');
+		
+		if (($group_id = (int) $IN->GBL('group_id', 'post')) === 0)
 		{
-			$$key = ( ! isset($_POST[$key])) ? $val : $_POST[$key];
+			$group_id = 0;
 		}
+		
+		$sort_order = ( ! in_array($IN->GBL('sort_order', 'post'), $sort_orders)) ? 
+			$PREFS->ini('memberlist_sort_order') : $IN->GBL('sort_order', 'post');
+		
+		if (($row_limit = (int) $IN->GBL('row_limit')) === 0)
+		{
+			$row_limit = $PREFS->ini('memberlist_row_limit');
+		}
+		
+		if ($IN->GBL('order_by', 'post'))
+		{
+			$order_by = $IN->GBL('order_by', 'post');
+			
+			if ( ! in_array($order_by, $valid_order_bys))
+			{
+				$order_by = $PREFS->ini('memberlist_order_by');
+			}
+		}
+		else
+		{
+			$order_by = $PREFS->ini('memberlist_order_by');
+		}
+		
+		$row_count = 0;
 		
 		/* ----------------------------------------
         /*  Check for Search URL
@@ -490,19 +510,32 @@ class Member_memberlist extends Member {
 		{
 			$x = explode("-", $this->cur_id);
 		
-			$group_id	= $x['0'];
-			$order_by 	= $x['1'];
-			$sort_order	= $x['2'];
-			$row_limit	= $x['3'];
-			$row_count	= $x['4'];
+			if (($group_id = (int) $x[0]) === 0)
+			{
+				$group_id = 0;
+			} 
+			$order_by 	= (in_array($x[1], $valid_order_bys) ?
+											$x[1] : $PREFS->ini('memberlist_order_by'));
+			$sort_order	= (in_array($IN->GBL('sort_order', 'post'), $sort_orders) ?
+											$x[2] : $PREFS->ini('memberlist_sort_order'));
+
+			if (($row_limit = (int) $x[3]) === 0)
+			{
+				$row_limit = 20;
+			}
+
+			if (($row_count = (int) $x[4]) === 0)
+			{
+				$row_count = 20;
+			}
 									
-			$path = '/'.$x['0'].'-'.$x['1'].'-'.$x['2'].'-'.$x['3'].'-';
+			$path = '/'.$group_id.'-'.$order_by.'-'.$sort_order.'-'.$row_limit.'-';
 		}
 		else
 		{
 			$path = '/'.$group_id.'-'.$order_by.'-'.$sort_order.'-'.$row_limit.'-';
 		}
-        
+
         /** ----------------------------------------
         /**  Build the query
         /** ----------------------------------------*/
@@ -525,7 +558,7 @@ class Member_memberlist extends Member {
 						
 		if ($group_id != 0)
 		{
-			$sql .= " AND g.group_id = '$group_id'";
+			$sql .= " AND g.group_id = '$DB->escape_str($group_id)'";
 		}
 		
 		/** ----------------------------------------
@@ -568,11 +601,11 @@ class Member_memberlist extends Member {
 		
  		if ($order_by == 'total_posts')
  		{
-			$sql .= " ORDER BY ".$order_by." ".$sort_order;
+			$sql .= " ORDER BY ".$DB->escape_str($order_by)." ".$DB->escape_str($sort_order);
  		}
 		else
 		{
-			$sql .= " ORDER BY m.".$order_by." ".$sort_order;
+			$sql .= " ORDER BY m.".$DB->escape_str($order_by)." ".$DB->escape_str($sort_order);
 		}
 		
 				

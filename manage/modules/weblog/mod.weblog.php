@@ -410,7 +410,7 @@ class Weblog {
 		$TMPL->tagparams = array('rdf'=> "off");
 			
 		$return_data = $this->return_data;
-	
+		
 		foreach ($templates as $temp)
 		{
 			foreach ($query->result as $row)
@@ -545,8 +545,10 @@ class Weblog {
 		
 		$entry_data = array();
 		
-		foreach($query->result as $row)
-		{	
+		for ($i = 0, $total = count($query->result); $i < $total; $i++)
+		{
+    		$row = array_shift($query->result);
+
 			/* --------------------------------------
 			/*  If the data is emptied (cache cleared or first process), then we 
 			/*  rebuild it with fresh data so processing can continue.
@@ -641,13 +643,15 @@ class Weblog {
 				if ( ! in_array($order, $base_orders))
 				{
 					$set = 'n';
+
 					foreach($this->cfields as $site_id => $cfields)
 					{
 						if ( isset($cfields[$order]))
 						{
-							$order = 'field_id_'.$cfields[$order]; 
+							$multi_order[] = 'field_id_'.$cfields[$order]; 
 							$set = 'y';
-							break;
+							$str_sort[] = 'field_id_'.$cfields[$order];
+							//break;
 						}
 					}
 				
@@ -733,21 +737,48 @@ class Weblog {
 					if ( ! isset($params['weblog']) OR array_key_exists($relating_data['query']->row['weblog_id'], $allowed))
 					{
 						$post_fix = ' '.$r;
+						$order_set = FALSE;
 					
-						if (isset($stati) && ! empty($stati) && isset($relating_data['query']->row[$order]))
+						if (isset($multi_order))
 						{
+							foreach ($multi_order as $field_val)
+							{
+								if (isset($relating_data['query']->row[$field_val]))
+								{
+								 	$order_set = TRUE;
+									$order_key = '';
+									
+									if ($relating_data['query']->row[$field_val] != '')
+									{
+										$order_key = $relating_data['query']->row[$field_val];
+										$order = $field_val;
+										break;
+									}
+								}
+							}
+						}
+						elseif (isset($relating_data['query']->row[$order]))
+						{
+							$order_set = TRUE;
+							$order_key = $relating_data['query']->row[$order];
+						}
+						
+						if (isset($stati) && ! empty($stati) && $order_set == TRUE)
+						{
+							// Note- custom fields may have duplicate names across sites- so....
+							
 							if ($status_state == 'negative' && ! in_array(strtolower($relating_data['query']->row['status']), $stati))
 							{
-								$new[$relating_data['query']->row[$order].$post_fix] = $relating_data;
+								$new[$order_key.$post_fix] = $relating_data;
 							}
 							elseif($status_state == 'positive' && in_array(strtolower($relating_data['query']->row['status']), $stati))
 							{
-								$new[$relating_data['query']->row[$order].$post_fix] = $relating_data;
+								$new[$order_key.$post_fix] = $relating_data;
 							}
 						}
 						elseif (strtolower($relating_data['query']->row['status']) == 'open')
 						{
-							$new[$relating_data['query']->row[$order].$post_fix] = $relating_data;
+							$new[$order_key.$post_fix] = $relating_data;
 						}
 						
 						++$r;
@@ -755,7 +786,6 @@ class Weblog {
 				}
 				
 				// Note uksort($new, 'strnatcasecmp'); did not handle spaces well so used ksort instead
-		
 				if ($random === TRUE)
 				{
 					shuffle($new);
@@ -1425,6 +1455,7 @@ class Weblog {
 					
 					$qstring = $REGX->trim_slashes(str_replace($match['0'], '', $qstring));
 				}
+				
 		
 				/** --------------------------------------
 				/**  Parse URL title
@@ -1436,15 +1467,24 @@ class Weblog {
 					{
 						$xe = explode('/', $qstring);
 						$qstring = current($xe);
+						
 					}
 					
 					if ($dynamic == TRUE)
 					{
 						$sql = "SELECT count(*) AS count 
 								FROM  exp_weblog_titles, exp_weblogs 
-								WHERE exp_weblog_titles.weblog_id = exp_weblogs.weblog_id
-								AND   exp_weblog_titles.url_title = '".$DB->escape_str($qstring)."'";
+								WHERE exp_weblog_titles.weblog_id = exp_weblogs.weblog_id";
 						
+						if ($entry_id != '')
+						{
+							$sql .= " AND exp_weblog_titles.entry_id = '".$DB->escape_str($entry_id)."'";							
+						}
+						else
+						{
+							$sql .= " AND exp_weblog_titles.url_title = '".$DB->escape_str($qstring)."'";
+						}
+
 						if (USER_BLOG !== FALSE)
 						{
 							$sql .= " AND exp_weblogs.weblog_id = '".UB_BLOG_ID."'";
@@ -1493,6 +1533,14 @@ class Weblog {
         
 		if ($TMPL->fetch_param('show_pages') !== FALSE && in_array($TMPL->fetch_param('show_pages'), array('only', 'no')) && ($pages = $PREFS->ini('site_pages')) !== FALSE)
 		{
+			
+			$pages_uris = array();
+			
+			foreach ($pages as $data)
+			{
+				$pages_uris += $data['uris'];
+			}
+
 			// consider entry_id
 			if ($TMPL->fetch_param('entry_id') !== FALSE)
 			{
@@ -1510,29 +1558,35 @@ class Weblog {
 				{
 					if ($not === TRUE)
 					{
-						$entry_id = implode('|', array_diff(array_flip($pages['uris']), explode('|', $ids)));
+						$entry_id = implode('|', array_diff(array_flip($pages_uris), explode('|', $ids)));
 					}
 					else
 					{
-						$entry_id = implode('|',array_diff($ids, array_diff($ids, array_flip($pages['uris']))));
+						$entry_id = implode('|',array_diff($ids, array_diff($ids, array_flip($pages_uris))));
 					}
 				}
 				else
 				{
 					if ($not === TRUE)
 					{
-						$entry_id = "not {$entry_id}|".implode('|', array_flip($pages['uris']));
+						$entry_id = "not {$entry_id}|".implode('|', array_flip($pages_uris));
 					}
 					else
 					{
-						$entry_id = implode('|',array_diff($ids, array_flip($pages['uris'])));
+						$entry_id = implode('|',array_diff($ids, array_flip($pages_uris)));
 					}
 				}
-				echo $entry_id;
 			}
 			else
 			{
-				$entry_id = (($TMPL->fetch_param('show_pages') == 'no') ? 'not ' : '').implode('|', array_flip($pages['uris']));
+				$entry_id = (($TMPL->fetch_param('show_pages') == 'no') ? 'not ' : '').implode('|', array_flip($pages_uris));
+			}
+
+			//  No pages and show_pages only
+			if ($entry_id == '' && $TMPL->fetch_param('show_pages') == 'only')
+			{
+				$this->sql = '';
+				return;
 			}
 		}	
 
@@ -1655,7 +1709,7 @@ class Weblog {
 		}
 		
 		// fixed entry id ordering
-		if (($fixed_order = $TMPL->fetch_param('fixed_order')) === FALSE OR preg_match('/[^0-9\|]/', $fixed_order))
+		if (($fixed_order = $TMPL->fetch_param('fixed_order')) === FALSE OR $fixed_order == '' OR preg_match('/[^0-9\|]/', $fixed_order))
 		{
 			$fixed_order = FALSE;
 		}

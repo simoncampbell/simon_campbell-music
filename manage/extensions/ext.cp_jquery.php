@@ -7,7 +7,7 @@
  *
  * @package		ExpressionEngine
  * @author		nGen Works and the ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008, nGen Works and EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2010, nGen Works and EllisLab, Inc.
  * @license		http://creativecommons.org/licenses/by-sa/3.0/
  * @link		http://www.ngenworks.com/software/ee/cp_jquery/
  * @since		Version 1.1
@@ -23,7 +23,7 @@ class Cp_jquery {
 
 	var $settings		= array();
 	var $name			= 'jQuery for the Control Panel';
-	var $version		= '1.1.2';
+	var $version		= '1.1.1';
 	var $description	= 'Adds the jQuery javascript library for use in the control panel.';
 	var $settings_exist	= 'y';
 	var $docs_url		= 'http://www.ngenworks.com/software/ee/cp_jquery/';

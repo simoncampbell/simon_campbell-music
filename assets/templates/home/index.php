@@ -14,6 +14,6 @@
     canonical_url="/"
 }
 
-
+<h1> It works! </h1>
     
 {embed="_layout/_end"}

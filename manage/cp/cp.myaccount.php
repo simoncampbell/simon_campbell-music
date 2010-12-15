@@ -4850,7 +4850,7 @@ class MyAccount {
         
         $safari = (isset($_POST['safari'])) ? TRUE : FALSE;
         
-        $path = $PREFS->ini('cp_url').'?C=publish'.AMP.'Z=1'.AMP.'BK=1'.AMP.'weblog_id='.$weblog_id.AMP;
+        $path = $PREFS->ini('cp_url').'?C=publish'.AMP.'BK=1'.AMP.'weblog_id='.$weblog_id.AMP;
         
         $type = ($safari) ? "window.getSelection()" : "document.selection?document.selection.createRange().text:document.getSelection()";   
                         

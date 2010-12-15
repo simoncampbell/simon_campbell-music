@@ -146,7 +146,7 @@
 // ----------------------------------------------
 
     define('APP_NAME'	,	'ExpressionEngine');
-    define('APP_BUILD'	,	'20100415');   
+    define('APP_BUILD'	,	'20101018');   
     define('CONFIG_FILE',	$config_file); 
     define('PATH_CACHE'	,	$system_path.'cache/'); 
     define('PATH_LANG'	,	$system_path.'language/'); 
@@ -366,7 +366,7 @@
     {
     	$DB->enable_cache = FALSE;
     }
-    
+
 // ----------------------------------------------
 //  Fetch input data: GET, POST, COOKIE, SERVER
 // ----------------------------------------------
@@ -902,7 +902,7 @@ switch (REQ)
                 // version of the control panel.  We use this mainly for pop-up pages in
                 // which we don't need the navigation.
             
-                if ($IN->GBL('Z'))
+                if ($IN->GBL('Z') && ! $IN->GBL('BK'))
                 {
                     $DSP->show_restricted_control_panel();
                 }

@@ -252,6 +252,12 @@ $L = array(
 "entry_date" => 
 "Entry Date",
 
+"title_too_long" =>
+"Entry Titles may be no longer than 100 characters.",
+
+"url_title_too_long" =>
+"URL Titles may be no longer than 75 characters.",
+
 "url_title_is_numeric" =>
 "Numbers can not be used as URL Titles",
 

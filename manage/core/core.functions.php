@@ -170,18 +170,28 @@ class Functions {
 
 	function create_page_url($base_url, $segment, $trailing_slash = true)
 	{
-       global $REGX;
-       
-       $base = $base_url.'/'.$REGX->trim_slashes($segment);
-       
-       if (substr($base, -1) != '/' && $trailing_slash == TRUE)
-       {
-           $base .= '/';
-       }
-       
-       $out = $this->remove_double_slashes($base);
-               
-       return $out;          
+		global $REGX, $PREFS;
+		
+		if ($PREFS->core_ini['force_query_string'] == 'y')
+		{
+			if (strpos($base_url, $PREFS->core_ini['site_index'] . '/') !== FALSE)
+			{
+				$base_url = rtrim($base_url, '/');
+			}
+			
+			$base_url .= '?';
+		}
+
+		$base = $base_url.'/'.$REGX->trim_slashes($segment);
+
+		if (substr($base, -1) != '/' && $trailing_slash == TRUE)
+		{
+			$base .= '/';
+		}
+
+		$out = $this->remove_double_slashes($base);
+
+		return $out;          
 	}
 
 

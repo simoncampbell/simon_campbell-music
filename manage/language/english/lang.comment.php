@@ -32,6 +32,9 @@ $L = array(
 "cmt_comments_not_allowed" =>
 "Comments are not allowed in this weblog",
 
+"cmt_comment_missing" =>
+"The comment field is required",
+
 "cmt_missing_name" =>
 "The name field is required",
 

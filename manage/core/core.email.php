@@ -832,7 +832,15 @@ class EEmail {
 		// wrap each line with the shebang, charset, and transfer encoding
 		// the preceding space on successive lines is required for header "folding"
 		$str = trim(str_replace($this->crlf, "\n", $str));
-		$str = trim(preg_replace('/^(.*)$/m', ' =?'.$PREFS->ini('charset').'?Q?$1?=', $str));
+		
+		if (preg_match('/[^\x00-\x7F]/', $str))
+		{
+			$str = trim(preg_replace('/^(.*)$/m', ' =?'.$PREFS->ini('charset').'?Q?$1?=', $str));
+		}
+		else
+		{
+			$str = trim($str);
+		}
 
 		if ($this->get_protocol() == 'mail')
 		{

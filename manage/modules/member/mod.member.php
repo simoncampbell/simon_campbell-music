@@ -3026,8 +3026,17 @@ class Member {
 				
 				if (strncmp('last_visit', $key, 10) == 0)
 				{			
-					$TMPL->tagdata = $this->_var_swap_single($key, ($default_fields['last_activity'] > 0) ? $LOC->decode_date($val, $default_fields['last_activity']) : '', $TMPL->tagdata);
+					$TMPL->tagdata = $this->_var_swap_single($key, ($default_fields['last_visit'] > 0) ? $LOC->decode_date($val, $default_fields['last_visit']) : '', $TMPL->tagdata);
 				}
+				
+				/** ----------------------------------------
+				/**  "last_activity" 
+				/** ----------------------------------------*/
+				
+				if (strncmp('last_activity', $key, 10) == 0)
+				{			
+					$TMPL->tagdata = $this->_var_swap_single($key, ($default_fields['last_activity'] > 0) ? $LOC->decode_date($val, $default_fields['last_activity']) : '', $TMPL->tagdata);
+				}				
 			  
 				/** ----------------------------------------
 				/**  "join_date" 
