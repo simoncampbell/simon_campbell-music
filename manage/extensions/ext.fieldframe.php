@@ -8,7 +8,7 @@ if ( ! defined('FF_CLASS'))
 {
 	define('FF_CLASS',   'Fieldframe');
 	define('FF_NAME',    'FieldFrame');
-	define('FF_VERSION', '1.4.2');
+	define('FF_VERSION', '1.4.3');
 }
 
 
@@ -397,7 +397,7 @@ class Fieldframe_Main {
 	{
 		global $REGX, $PREFS;
 
-		if ($vals && (preg_match('/^(i|s|a|o|d):(.*);/si', $vals) !== FALSE) && ($tmp_vals = @unserialize($vals)) !== FALSE)
+		if ($vals && is_string($vals) && (preg_match('/^(i|s|a|o|d):(.*);/si', $vals) !== FALSE) && ($tmp_vals = @unserialize($vals)) !== FALSE)
 		{
 			$vals = $REGX->array_stripslashes($tmp_vals);
 
@@ -564,7 +564,7 @@ class Fieldframe_Main {
 							'ftype' => $ftypes_by_id[$ftype_id],
 							'settings' => array_merge(
 							                           (isset($ftypes_by_id[$ftype_id]->default_field_settings) ? $ftypes_by_id[$ftype_id]->default_field_settings : array()),
-							                           ($row['ff_settings'] ? $this->_unserialize($row['ff_settings']) : array())
+							                           ($row['ff_settings'] ? (array)$this->_unserialize($row['ff_settings']) : array())
 							                          )
 						);
 					}
@@ -589,20 +589,20 @@ class Fieldframe_Main {
 		$file = is_array($ftype) ? $ftype['class'] : $ftype;
 		$class_name = ucfirst($file);
 
-		if ( ! class_exists($class_name))
+		if ( ! class_exists($class_name) && ! class_exists($class_name.'_ft'))
 		{
 			// import the file
 			@include(FT_PATH.$file.'/ft.'.$file.EXT);
 
 			// skip if the class doesn't exist
-			if ( ! class_exists($class_name))
+			if ( ! class_exists($class_name) && ! class_exists($class_name.'_ft'))
 			{
 				return FALSE;
 			}
 		}
 
-		// initialize object
-		$OBJ = new $class_name();
+		$_class_name = $class_name . (class_exists($class_name) ? '' : '_ft');
+		$OBJ = new $_class_name();
 
 		// is this a FieldFrame fieldtype?
 		if ( ! isset($OBJ->_fieldframe)) return FALSE;
@@ -2135,17 +2135,15 @@ var prev_ftype_id = '<?php echo $prev_ftype_id ?>';
 		// parse fieldtype tags
 		$tagdata = $this->weblog_entries_tagdata($tagdata);
 
-		//if ($this->saef_tag_count)
-		//{
-			// append all snippets to the end of $tagdata
-			foreach($this->snippets as $placement => $snippets)
-			{
-				foreach(array_unique($snippets) as $snippet)
-				{
-					$tagdata .= "\n".$snippet."\n";
-				}
-			}
-		//}
+		$all_snippets = array();
+
+		foreach($this->snippets as $placement => $snippets)
+		{
+			$all_snippets = array_merge($all_snippets, $snippets);
+		}
+
+		//$tagdata = str_replace('</form>', '</form>'.implode(NL, $all_snippets), $tagdata);
+		$tagdata .= NL.implode(NL, $all_snippets).NL;
 
 		$this->saef = FALSE;
 		unset($this->saef_tag_count);

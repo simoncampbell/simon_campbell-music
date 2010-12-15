@@ -19,7 +19,7 @@ class Ff_checkbox_group extends Fieldframe_Multi_Fieldtype {
 	 */
 	var $info = array(
 		'name'     => 'FF Checkbox Group',
-		'version'  => '1.4.2',
+		'version'  => '1.4.3',
 		'docs_url' => 'http://pixelandtonic.com/fieldframe/docs/ff-checkbox-group',
 		'no_lang'  => TRUE
 	);
@@ -76,7 +76,7 @@ class Ff_checkbox_group extends Fieldframe_Multi_Fieldtype {
 	 */
 	function save_field($field_data, $field_settings)
 	{
-		return $field_data == 'n' ? '' : implode("\n", $field_data);
+		return is_array($field_data) ? implode("\n", $field_data) : '';
 	}
 
 	/**
