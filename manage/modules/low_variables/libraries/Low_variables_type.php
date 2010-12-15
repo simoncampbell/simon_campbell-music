@@ -6,9 +6,9 @@
 * The Low Variables Type base class, to be extended by other classes
 *
 * @package		low-variables-ee_addon
-* @version		1.2.4
+* @version		1.3.4
 * @author		Lodewijk Schutte <low@loweblog.com>
-* @link			http://loweblog.com/freelance/
+* @link			http://loweblog.com/software/low-variables/
 * @copyright	Copyright (c) 2009, Low
 */
 
@@ -140,7 +140,7 @@ class Low_variables_type {
 		/**  Set url for assets
 		/** -------------------------------------*/
 
-		$this->asset_url = 	$PREFS->ini('theme_folder_url') . "low_variables/types/{$this->type}/";
+		$this->asset_url = $PREFS->ini('theme_folder_url') . "third_party/low_variables/types/{$this->type}/";
 
 		/** -------------------------------------
 		/**  Load CSS files

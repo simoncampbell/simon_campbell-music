@@ -4,7 +4,7 @@ class Low_checkbox extends Low_variables_type {
 
 	var $info = array(
 		'name'		=> 'Checkbox',
-		'version'	=> '1.2.4'
+		'version'	=> LOW_VAR_VERSION
 	);
 
 	var $default_settings = array(

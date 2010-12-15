@@ -6,9 +6,9 @@
 * Borrowed from the CodeIgniter Form Helper file
 *
 * @package		low-variables-ee_addon
-* @version		1.2.4
+* @version		1.3.4
 * @author		Lodewijk Schutte <low@loweblog.com>
-* @link			http://loweblog.com/freelance/
+* @link			http://loweblog.com/software/low-variables/
 * @copyright	Copyright (c) 2009, Low
 * @since		1.2.0
 */

@@ -22,18 +22,41 @@
 		<input type="hidden" name="all_ids" value="<?=$all_ids?>" />
 	</div>
 
-<?php if($settings['group'] == 'y'): ?>
+<?php if ($group_count > 1): ?>
 
-	<div id="low-grouplist">
+	<div id="low-grouplist"<?php if ($settings['is_manager']): ?> class="low-manager"<?php endif; ?>>
 		<div class="tableHeading"><?=lang('groups')?></div>
 		<div class="profileMenuInner">
+			<ul id="low-sortable-groups" class="ee1">
+				<?php foreach ($group_list AS $group_id => $row): ?>
+					<?php if ($group_id == 0) continue; ?>
+					<li>
+						<?php if ($settings['is_manager']): ?>
+							<a href="<?=$base_url?>&amp;P=group_delete_confirmation&amp;id=<?=$group_id?>"
+								class="low-delete" title="<?=lang('delete_group').' '.htmlspecialchars($row['group_label'])?>"><?=lang('delete_group')?></a>
+							<a href="<?=$base_url?>&amp;P=groups&amp;id=<?=$group_id?>&amp;from=home"
+								class="low-edit" title="<?=lang('edit_group').' '.htmlspecialchars($row['group_label'])?>"><?=lang('edit_group')?></a>
+							<span class="low-handle"></span>
+						<?php endif; ?>
+						<?php if ($row['count'] == 0): ?>
+							<span class="low-grouplink" id="group_id_<?=$group_id?>"><?=htmlspecialchars($row['group_label'])?></span>
+						<?php else: ?>
+							<a href="#group-<?=$group_id?>" class="low-grouplink" id="group_id_<?=$group_id?>"><?=htmlspecialchars($row['group_label'])?> (<?=$row['count']?>)</a>
+						<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
 			<ul>
-			<?php foreach ($variables AS $group => $rows): ?>
-				<li><a href="#group-<?=$group?>" class="low-grouplink"><?=ucwords($group)?> (<?=count($rows)?>)</a></li>
-			<?php endforeach; ?>
-			<?php if (count($variables) > 1): ?>
+				<?php if (isset($group_list['0'])): ?>
+					<li>
+						<?php if ($settings['is_manager']): ?>
+							<a href="<?=$base_url?>&amp;P=groups&amp;id=0&amp;from=home"
+								class="low-edit" title="<?=lang('edit_group').' '.htmlspecialchars($group_list['0']['group_label'])?>"><?=lang('edit_group')?></a>
+						<?php endif; ?>
+						<a href="#group-0" class="low-grouplink"><?=$group_list['0']['group_label']?> (<?=$group_list['0']['count']?>)</a>
+					</li>
+				<?php endif; ?>
 				<li><a href="#all" class="low-grouplink"><?=lang('show_all')?></a></li>
-			<?php endif; ?>
 			</ul>
 		</div>
 	</div>
@@ -42,8 +65,8 @@
 
 <?php endif; ?>
 
-		<?php foreach($variables AS $group => $rows): ?>
-			<table class="tableBorder low-vargroup" cellspacing="0" cellpadding="0" id="group-<?=$group?>">
+		<?php foreach($variables AS $group_id => $rows): ?>
+			<table class="tableBorder low-vargroup" cellspacing="0" cellpadding="0" id="group-<?=$group_id?>">
 				<colgroup>
 					<col class="label" />
 					<col class="input" />
@@ -51,7 +74,7 @@
 				<thead>
 					<?php if($settings['group'] == 'y'): ?>
 					<tr>
-						<td class="tableHeading" colspan="2"><?=ucwords($group)?></td>
+						<td class="tableHeading" colspan="2"><?=htmlspecialchars($groups[$group_id]['group_label'])?></td>
 					</tr>
 					<?php else: ?>
 					<tr>
@@ -60,6 +83,11 @@
 					</tr>
 					<?php endif; ?>
 				<tbody>
+				<?php if($groups[$group_id]['group_notes']): ?>
+					<tr>
+						<td class="low-group-notes" colspan="2"><div class="box"><?=$groups[$group_id]['group_notes']?></div></td>
+					</tr>
+				<?php endif; ?>
 				<?php foreach($rows AS $i => $row): ?>
 					<tr>
 						<td class="tableCell<?=(($i%2)?'One':'Two')?>" style="vertical-align:top">

@@ -1,5 +1,14 @@
 <?php
 
+/**
+* Low Variables Language file for EE1
+*
+* @package			low-variables-ee_addon
+* @version			1.3.4
+* @author			Lodewijk Schutte ~ Low <low@lochannel.com>
+* @link				http://loweblog.com/software/low-variables/
+*/
+
 $L = array(
 
 //----------------------------------------
@@ -74,8 +83,11 @@ $L = array(
 "variable_label" =>
 "Variable Label",
 
+"is_hidden_th" =>
+"Hidden",
+
 "variable_type" =>
-"Variable Type",
+"Variable&nbsp;Type",
 
 "early_parsing" =>
 "Early&nbsp;Parsing",
@@ -91,6 +103,15 @@ $L = array(
 "with_selected" =>
 "With selected: ",
 
+"show-hide" =>
+"Show/Hide",
+
+"show" =>
+"Show",
+
+"hide" =>
+"Hide",
+
 "enable_early_parsing" =>
 "Enable early parsing",
 
@@ -99,6 +120,9 @@ $L = array(
 
 "change_type_to" =>
 "Change variable type to...",
+
+"change_group_to" =>
+"Change group to...",
 
 //----------------------------------------
 // Manage variables change order screen
@@ -124,6 +148,22 @@ $L = array(
 "Variables deleted",
 
 //----------------------------------------
+// Delete group
+//----------------------------------------
+
+"low_variables_group_delete_confirmation" =>
+"Delete group confirm",
+
+"low_variables_group_delete_confirmation_one" =>
+"Are you sure you want to delete this variable group? Variables in this group will be ungrouped.",
+
+"low_variables_group_delete_confirmation_many" =>
+"Are you sure you want to delete these variable groups?",
+
+"low_variable_group_deleted" =>
+"Variable group deleted",
+
+//----------------------------------------
 // Create/Edit Variable screen
 //----------------------------------------
 
@@ -133,7 +173,7 @@ $L = array(
 // General items
 
 "variable_name_help" =>
-"Name of the variable you can use in your templates: prefix_group_somename",
+"Name of the variable you can use in your templates, e.g.: <em>lv_myvar</em>",
 
 "variable_label_help" =>
 "Label of the variable users see in the Low Variables module home page",
@@ -150,17 +190,35 @@ $L = array(
 "early_parsing_disabled_msg" =>
 "Early parsing is disabled in the Extension Settings",
 
+"is_hidden" =>
+"Hide variable",
+
+"is_hidden_help" =>
+"Only show variable to variable managers",
+
+"is_hidden_label" =>
+"Hide from non-managers",
+
 "variable_type_help" =>
 "Choose type of input field",
 
 "settings_for" =>
 "Settings for:",
 
+"creation_options" =>
+"Creation options",
+
 "initiate_variable_data" =>
 "Initiate variable data",
 
 "variable_data_help" =>
 "Enter the initial value of this variable",
+
+"variable_suffix" =>
+"Variable suffix",
+
+"variable_suffix_help" =>
+"If entered, Low Variables will create a new variable for each given suffix.<br />Separate suffixes with spaces, e.g.: <em>en es nl</em>",
 
 //----------------------------------------
 // Settings per type
@@ -246,7 +304,7 @@ $L = array(
 "no_category_groups_selected" =>
 "No category groups selected",
 
-// Select Weblogs
+// Select Channels
 
 "allow_multiple_weblogs" =>
 "Select multiple weblogs?",
@@ -254,7 +312,7 @@ $L = array(
 "allow_multiple_weblogs_label" =>
 "Allow for multiple weblogs to be selected",
 
-"weblog_ids" =>
+"channel_ids" =>
 "Select weblogs",
 
 "no_weblogs_selected" =>
@@ -268,7 +326,7 @@ $L = array(
 "allow_multiple_entries_label" =>
 "Allow for multiple entries to be selected",
 
-"weblogs" =>
+"weblog_ids" =>
 "Select weblogs",
 
 "no_weblog_selected" =>
@@ -307,6 +365,43 @@ $L = array(
 "Upload folder not found",
 
 //----------------------------------------
+// Variable groups
+//----------------------------------------
+
+"variable_group" =>
+"Group",
+
+"manage_groups" =>
+"Manage groups",
+
+"create_new_group" =>
+"Create new group",
+
+"edit_group" =>
+"Edit variable group",
+
+"delete_group" =>
+"Delete variable group",
+
+"group_label" =>
+"Group label",
+
+"group_notes" =>
+"Group notes",
+
+"group_notes_help" =>
+"Add notes or instructions to this group &mdash; markup is allowed",
+
+"low_variable_groups_saved" =>
+"Variable groups saved",
+
+"low_variables_moved" =>
+"Moved variables to group",
+
+"group_saved" =>
+"Saved changes to group",
+
+//----------------------------------------
 // Feedback messages
 //----------------------------------------
 
@@ -332,41 +427,17 @@ $L = array(
 "license_key_help" =>
 "Enter you license key you received",
 
-"prefix" =>
-"Variable prefix",
-
-"prefix_help" =>
-"Enter an optional prefix, ex: <em>lv</em>",
-
-"with_prefixed" =>
-"Do what with prefixed variables?",
-
-"with_prefixed_help" =>
-"You can choose to show or hide prefixed variables",
-
-"show_prefixed" =>
-"Show prefixed variables",
-
-"hide_prefixed" =>
-"Hide prefixed variables",
-
 "can_manage" =>
 "Select Variable Managers",
 
 "can_manage_help" =>
 "Select member groups allowed to manage the variables",
 
-"ignore_prefixes" =>
-"Ignore prefix rules for Variable Managers?",
+"register_member_data" =>
+"Add member data to early parsed variables?",
 
-"ignore_prefixes_help" =>
-"If set to Yes, Variable Managers will see all available variables",
-
-"group" =>
-"Group variables?",
-
-"group_help" =>
-"Groups variables based on their name, ex: <em>prefix_groupname_varname</em>",
+"register_member_data_help" =>
+"If set to Yes, all {logged_in_&hellip;} variables will be parsed early in the parsing order",
 
 "register_globals" =>
 "Enable early parsing?",
@@ -374,6 +445,11 @@ $L = array(
 "register_globals_help" =>
 "If set to Yes, you can choose which variables are parsed early in the parsing order",
 
+"variable_types" =>
+"Variable types",
+
+"variable_types_help" =>
+"Select which variable types are enabled",
 /* END */
 ''=>''
 );

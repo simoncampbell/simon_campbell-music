@@ -4,7 +4,7 @@ class Low_radio_group extends Low_variables_type {
 
 	var $info = array(
 		'name'		=> 'Radio Group',
-		'version'	=> '1.2.4'
+		'version'	=> LOW_VAR_VERSION
 	);
 
 	var $default_settings = array(

@@ -4,7 +4,7 @@ class Low_select_categories extends Low_variables_type {
 
 	var $info = array(
 		'name'		=> 'Select Categories',
-		'version'	=> '1.2.4'
+		'version'	=> LOW_VAR_VERSION
 	);
 
 	var $default_settings = array(

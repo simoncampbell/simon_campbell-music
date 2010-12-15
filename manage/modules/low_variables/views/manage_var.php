@@ -1,6 +1,7 @@
 <form method="post" action="<?=$base_url?>&amp;P=save_var" id="low-variable-form">
 	<div>
 		<input type="hidden" name="variable_id" value="<?=$variable_id?>" />
+		<input type="hidden" name="variable_order" value="<?=$variable_order?>" />
 	</div>
 	<table cellpadding="0" cellspacing="0" class="tableBorder">
 		<colgroup>
@@ -43,18 +44,34 @@
 			</tr>
 			<tr>
 				<td class="tableCellTwo">
-					<label class="low-label" for="low_variable_order"><?=lang('variable_order')?></label>
+					<label class="low-label" for="low_variable_group"><?=lang('variable_group')?></label>
 				</td>
 				<td class="tableCellTwo">
-					<input type="text" name="variable_order" id="low_variable_order" class="x-small" maxlength="4" value="<?=htmlspecialchars($variable_order)?>" />
+					<select name="group_id" id="low_variable_group">
+						<?php foreach($variable_groups AS $vg_id => $vg_label): ?>
+							<option value="<?=$vg_id?>"<?php if($group_id == $vg_id): ?> selected="selected"<?php endif; ?>><?=htmlspecialchars($vg_label)?></option>
+						<?php endforeach; ?>
+					</select>
 				</td>
 			</tr>
 			<tr>
 				<td class="tableCellOne">
+					<strong class="low-label"><?=lang('is_hidden')?></strong>
+					<div class="low-var-notes"><?=lang('is_hidden_help')?></div>
+				</td>
+				<td class="tableCellOne">
+					<label class="low-checkbox">
+						<input type="checkbox" name="is_hidden" value="y"<?php if($is_hidden == 'y'):?> checked="checked"<?php endif; ?>>
+						<?=lang('is_hidden_label')?>
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableCellTwo">
 					<strong class="low-label"><?=lang('early_parsing')?></strong>
 					<div class="low-var-notes"><?=lang('early_parsing_help')?></div>
 				</td>
-				<td class="tableCellOne">
+				<td class="tableCellTwo">
 					<?php if ($settings['register_globals'] == 'y'): ?>
 						<label class="low-checkbox">
 							<input type="checkbox" name="early_parsing" id="early_parsing" value="y"<?php if($early_parsing == 'y'):?> checked="checked"<?php endif; ?>>
@@ -66,14 +83,14 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tableCellTwo" style="vertical-align:top;">
+				<td class="tableCellOne" style="vertical-align:top;">
 					<label class="low-label" for="low-select-type"><?=lang('variable_type')?></label>
 					<div class="low-var-notes"><?=lang('variable_type_help')?></div>
 				</td>
-				<td class="tableCellTwo">
+				<td class="tableCellOne">
 					<select name="variable_type" id="low-select-type" class="select">
 					<?php foreach($types AS $type => $row): ?>
-						<option value="<?=$type?>"<?php if ($type == $variable_type): ?> selected="selected"<?php endif; ?>><?=htmlspecialchars($row['name'])?></option>
+						<option value="<?=$type?>"<?php if ($type == $variable_type): ?> selected="selected"<?php endif; ?>><?=$row['name']?></option>
 					<?php endforeach; ?>
 					</select>
 				</td>
@@ -94,12 +111,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($row['settings'] AS $cells): ?>
+				<?php foreach($row['settings'] AS $index => $cells): ?>
+					<?php $class = ($index % 2) ? 'tableCellTwo' : 'tableCellOne'; ?>
 					<tr>
-						<td class="tableCellOne">
+						<td class="<?=$class?>">
 							<?=isset($cells[0])?$cells[0]:''?>
 						</td>
-						<td class="tableCellOne">
+						<td class="<?=$class?>">
 							<?=isset($cells[1])?$cells[1]:''?>
 						</td>
 					</tr>
@@ -116,17 +134,26 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<td colspan="2" class="tableHeadingAlt"><?=lang('initiate_variable_data')?></td>
+					<td colspan="2" class="tableHeadingAlt"><?=lang('creation_options')?></td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="tableCellTwo" style="vertical-align:top">
+					<td class="tableCellOne" style="vertical-align:top">
 						<label class="low-label" for="low_variable_data"><?=lang('variable_data')?></label>
 						<div class="low-var-notes"><?=lang('variable_data_help')?></div>
 					</td>
-					<td class="tableCellTwo">
+					<td class="tableCellOne">
 						<textarea name="variable_data" id="low_variable_data" rows="4" cols="40"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tableCellTwo">
+						<label class="low-label" for="low_variable_suffix"><?=lang('variable_suffix')?></label>
+						<div class="low-var-notes"><?=lang('variable_suffix_help')?></div>
+					</td>
+					<td class="tableCellTwo">
+						<input type="text" name="variable_suffix" id="low_variable_suffix" class="medium" value="" />
 					</td>
 				</tr>
 			</tbody>

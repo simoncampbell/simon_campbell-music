@@ -1,14 +1,17 @@
 <?php if ( ! defined('EXT')) exit('Invalid file request');
 
+// Include config.php
+include(PATH_MOD.'low_variables/config.php');
+
 /**
 * Low Variables Module Class
 *
 * Class to be used in templates
 *
 * @package		low-variables-ee_addon
-* @version		1.2.4
+* @version		1.3.4
 * @author		Lodewijk Schutte <low@loweblog.com>
-* @link			http://loweblog.com/freelance/
+* @link			http://loweblog.com/software/low-variables/
 * @copyright	Copyright (c) 2009, Low
 */
 
@@ -30,7 +33,7 @@ class Low_variables {
 	*	@since	1.1.4
 	*/
 	function Low_variables()
-    {
+	{
 		$this->__construct();
 	}
 
@@ -44,14 +47,7 @@ class Low_variables {
 	*/
 	function __construct()
 	{
-		/** -------------------------------------
-		/**  Include library class
-		/** -------------------------------------*/
-
-		if ( ! class_exists('Low_variables_type') )
-		{
-			include_once PATH_MOD.'low_variables/libraries/Low_variables_type'.EXT;
-		}
+		// Nuthin...
 	}
 
 	// --------------------------------------------------------------------
@@ -72,6 +68,21 @@ class Low_variables {
 		$var = $TMPL->fetch_param('var');
 
 		/** -------------------------------------
+		/**  Site specific var?
+		/** -------------------------------------*/
+
+		if (strpos($var, ':') !== FALSE)
+		{
+			$tmp = explode(':', $var, 2);
+			$site_id = $this->_get_site_id($tmp[0]);
+			$var = $tmp[1];
+		}
+		else
+		{
+			$site_id = $PREFS->ini('site_id');
+		}
+
+		/** -------------------------------------
 		/**  Set returndata
 		/** -------------------------------------*/
 
@@ -81,11 +92,11 @@ class Low_variables {
 		/**  Get variable data from cache or DB
 		/** -------------------------------------*/
 
-		if (isset($SESS->cache['low']['variables']['data']))
+		if (isset($SESS->cache['low']['variables']['data'][$site_id]))
 		{
 			$TMPL->log_item('Low Variables: Getting variable data from Session Cache');
 
-			$data = $SESS->cache['low']['variables']['data'];
+			$data = $SESS->cache['low']['variables']['data'][$site_id];
 		}
 		else
 		{
@@ -101,7 +112,7 @@ class Low_variables {
 			/**  Query DB
 			/** -------------------------------------*/
 
-			$rows = $this->_get_variables(array("ee.site_id = '".$DB->escape_str($PREFS->ini('site_id'))."'"));
+			$rows = $this->_get_variables(array("ee.site_id = '".$DB->escape_str($site_id)."'"));
 
 			/** -------------------------------------
 			/**  Get results
@@ -120,14 +131,27 @@ class Low_variables {
 			/**  Register to cache
 			/** -------------------------------------*/
 
-			$SESS->cache['low']['variables']['data'] = $data;
+			$SESS->cache['low']['variables']['data'][$site_id] = $data;
+		}
+
+		/** -------------------------------------
+		/**  Get variable types from cache or db
+		/** -------------------------------------*/
+
+		if (isset($SESS->cache['low']['variables']['types']))
+		{
+			$types = $SESS->cache['low']['variables']['types'];
+		}
+		else
+		{
+			$types = $SESS->cache['low']['variables']['types'] = Low_variables_ext::get_types($SESS->cache['low']['variables']['settings']['enabled_types']);
 		}
 
 		/** -------------------------------------
 		/**  Replace variables
 		/** -------------------------------------*/
 
-		if ( !empty($var) && isset($data[$var]) )
+		if ( ! empty($var) && isset($data[$var]))
 		{
 			/** -------------------------------------
 			/**  Single variable defined: try to call its class
@@ -137,20 +161,17 @@ class Low_variables {
 			$type = $data[$var]['variable_type'];
 
 			// If class doesn't exist, include its file
-			if ( ! class_exists(ucfirst($type)) )
+			if ( ! class_exists($types[$type]['class']) )
 			{
-				$TMPL->log_item('Low Variables: Including type class '.$type);
+				$TMPL->log_item('Low Variables: Including type class '.$types[$type]['class']);
 
-				// Determine file path
-				$file = PATH_MOD."low_variables/types/{$type}/vt.{$type}".EXT;
-
-				if (file_exists($file))
+				if (isset($types[$type]) && file_exists($types[$type]['path'].$types[$type]['file']))
 				{
-					include_once $file;
+					include_once $types[$type]['path'].$types[$type]['file'];
 				}
 				else
 				{
-					$TMPL->log_item("Low Variables: Could not find variable type {$type} in {$file}");
+					$TMPL->log_item("Low Variables: Variable type {$type} is not installed or enabled");
 					return;
 				}
 			}
@@ -160,18 +181,28 @@ class Low_variables {
 			/** -------------------------------------*/
 
 			// Create object
-			$OBJ = new $type;
+			$OBJ = ($types[$type]['is_fieldtype'] === TRUE) ? new Low_fieldtype_bridge($types[$type]) : new $types[$type]['class'];
 
-			if (method_exists($type, 'display_output'))
+			if (method_exists($OBJ, 'display_output'))
 			{
-				$TMPL->log_item('Low Variables: Calling '.$type.'::display_output()');
+				$TMPL->log_item('Low Variables: Calling '.get_class($OBJ).'::display_output()');
 
 				// Call function
-				$tagdata = $OBJ->display_output($tagdata, $data[$var]);
+				$output = $OBJ->display_output($tagdata, $data[$var]);
 			}
 			else
 			{
-				$TMPL->log_item('Low Variables: '.$type.'::display_output() not found, default parsing now');
+				$output = FALSE;
+			}
+
+			// Assign output to tagdata if valid
+			if ($output !== FALSE)
+			{
+				$tagdata = $output;
+			}
+			else
+			{
+				$TMPL->log_item('Low Variables: '.get_class($OBJ).'::display_output() was not valid, default parsing now');
 
 				// Check for multiple values
 				if ($TMPL->fetch_param('multiple') == 'yes' && (($sep = $OBJ->get_setting('separator', $data[$var]['variable_settings'])) !== FALSE) )
@@ -251,9 +282,22 @@ class Low_variables {
 
 			$TMPL->log_item('Low Variables: Replacing all variables inside tag pair with their data');
 
+			// Initiate variables array
+			$variables = array();
+
+			// Add regular variable
 			foreach ($data AS $key => $row)
 			{
-				$tagdata = str_replace(LD.$key.RD, $row['variable_data'], $tagdata); 
+				$variables[$key] = $row['variable_data'];
+			}
+
+			// Process conditionals
+			$tagdata = $FNS->prep_conditionals($tagdata, $variables);
+
+			// Replace single variables
+			foreach ($variables AS $k => $v)
+			{
+				$tagdata = $TMPL->swap_var_single($k, $v, $tagdata);
 			}
 		}
 
@@ -298,8 +342,28 @@ class Low_variables {
 		}
 
 		/** -------------------------------------
+		/**  Site specific var?
+		/** -------------------------------------*/
+
+		if (strpos($var, ':') !== FALSE)
+		{
+			$tmp = explode(':', $var, 2);
+			$site_id = $this->_get_site_id($tmp[0]);
+			$var = $tmp[1];
+		}
+		else
+		{
+			$site_id = $PREFS->ini('site_id');
+		}
+
+		/** -------------------------------------
 		/**  Include helper class
 		/** -------------------------------------*/
+
+		if ( ! class_exists('Low_variables_type'))
+		{
+			require PATH_MOD.'low_variables/libraries/Low_variables_type'.EXT;
+		}
 
 		$TYPE = new Low_variables_type(FALSE);
 
@@ -307,11 +371,11 @@ class Low_variables {
 		/**  Get variable data from cache or DB
 		/** -------------------------------------*/
 
-		if (isset($SESS->cache['low']['variables']['data'][$var]))
+		if (isset($SESS->cache['low']['variables']['data'][$site_id][$var]))
 		{
 			$TMPL->log_item("Low Variables: Getting variable data for {$var} from Session Cache");
 
-			$row = $SESS->cache['low']['variables']['data'][$var];
+			$row = $SESS->cache['low']['variables']['data'][$site_id][$var];
 		}
 		else
 		{
@@ -319,7 +383,7 @@ class Low_variables {
 
 			$where = array(
 				"ee.variable_name = '".$DB->escape_str($var)."'",
-				"ee.site_id = '".$DB->escape_str($PREFS->ini('site_id'))."'"
+				"ee.site_id = '".$DB->escape_str($site_id)."'"
 			);
 
 			$rows = $this->_get_variables($where, 1);
@@ -332,7 +396,7 @@ class Low_variables {
 				$row['variable_settings'] = $this->_get_type_settings($row['variable_type'], $row['variable_settings']);
 
 				// add row to cache
-				$SESS->cache['low']['variables']['data'][$var] = $row;
+				$SESS->cache['low']['variables']['data'][$site_id][$var] = $row;
 			}
 			else
 			{
@@ -381,7 +445,7 @@ class Low_variables {
 					'active' => (in_array($key, $current)?'y':''),
 					'checked' => (in_array($key, $current)?' checked="checked"':''),
 					'selected' => (in_array($key, $current)?' selected="selected"':''),
-					'total' => count($options),
+					'total_results' => count($options),
 					'count' => ++$count
 				);
 
@@ -391,7 +455,7 @@ class Low_variables {
 				// replace stuff in chunk
 				foreach ($data AS $k => $v)
 				{
-					$chunk = str_replace(LD.'option:'.$k.RD, $v, $chunk);
+					$chunk = str_replace(LD.$k.RD, $v, $chunk);
 				}
 
 				// append chunk to return data
@@ -444,7 +508,7 @@ class Low_variables {
 		global $DB;
 
 		$sql = "SELECT
-				ee.variable_id, ee.variable_name, ee.variable_data,
+				ee.variable_id, ee.variable_name, ee.variable_data, ee.site_id,
 				low.variable_label, low.variable_type, low.variable_settings
 			FROM
 				exp_global_variables AS ee
@@ -471,5 +535,31 @@ class Low_variables {
 	}
 
 	// --------------------------------------------------------------------
+
+	/**
+	*	Get site id for given site name from cache or DB
+	*
+	*	@param	string	$site_name
+	*	@return	int
+	*	@since	1.3.3
+	*/
+	function _get_site_id($site_name)
+	{
+		global $SESS, $DB, $PREFS;
+
+		if (isset($SESS->cache['low']['variables']['sites']))
+		{
+			// Return site id from cache
+			$sites = $SESS->cache['low']['variables']['sites'];
+		}
+		else
+		{
+			$query = $DB->query("SELECT site_id, site_name FROM exp_sites");
+			$SESS->cache['low']['variables']['sites'] = $sites = Low_variables_ext::flatten_results($query->result, 'site_id', 'site_name');
+		}
+
+		// Return site id, fallback to current site
+		return array_key_exists($site_name, $sites) ? $sites[$site_name] : $PREFS->ini('site_id');
+	}
 
 }

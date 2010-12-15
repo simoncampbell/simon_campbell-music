@@ -4,7 +4,7 @@ class Low_select_entries extends Low_variables_type {
 
 	var $info = array(
 		'name'		=> 'Select Entries',
-		'version'	=> '1.2.4'
+		'version'	=> LOW_VAR_VERSION
 	);
 
 	var $default_settings = array(

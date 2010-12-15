@@ -27,31 +27,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tableCellTwo">
-					<span class="defaultBold">
-						<label for="prefix"><?=lang('prefix')?></label>
-					</span>
-					<div class="itemWrapper"><?=lang('prefix_help')?></div>
-				</td>
-				<td class="tableCellTwo">
-					<input type="text" name="prefix" id="prefix" style="width:50px" value="<?=htmlspecialchars($prefix)?>" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tableCellOne">
-					<span class="defaultBold">
-						<label for="with_prefixed"><?=lang('with_prefixed')?></label>
-					</span>
-					<div class="itemWrapper"><?=lang('with_prefixed_help')?></div>
-				</td>
-				<td class="tableCellOne">
-					<select name="with_prefixed" id="with_prefixed">
-						<option value="show"<?php if ($with_prefixed == 'show'): ?> selected="selected"<?php endif; ?>><?=lang('show_prefixed')?></option>
-						<option value="hide"<?php if ($with_prefixed == 'hide'): ?> selected="selected"<?php endif; ?>><?=lang('hide_prefixed')?></option>
-					</select>
-				</td>
-			</tr>
-			<tr>
 				<td class="tableCellTwo" style="vertical-align:top">
 					<span class="defaultBold">
 						<label><?=lang('can_manage')?></label>
@@ -70,30 +45,6 @@
 			<tr>
 				<td class="tableCellOne">
 					<span class="defaultBold">
-						<?=lang('ignore_prefixes')?>
-					</span>
-					<div class="itemWrapper"><?=lang('ignore_prefixes_help')?></div>
-				</td>
-				<td class="tableCellOne">
-					<label style="cursor:pointer"><input type="radio" name="ignore_prefixes" value="y"<?php if ($ignore_prefixes == 'y'): ?> checked="checked"<?php endif; ?> /> <?=lang('yes')?></label>
-					<label style="cursor:pointer;margin-left:10px"><input type="radio" name="ignore_prefixes" value="n"<?php if ($ignore_prefixes == 'n'): ?> checked="checked"<?php endif; ?> /> <?=lang('no')?></label>
-				</td>
-			</tr>
-			<tr>
-				<td class="tableCellTwo">
-					<span class="defaultBold">
-						<?=lang('group')?>
-					</span>
-					<div class="itemWrapper"><?=lang('group_help')?></div>
-				</td>
-				<td class="tableCellTwo">
-					<label style="cursor:pointer"><input type="radio" name="group" value="y"<?php if ($group == 'y'): ?> checked="checked"<?php endif; ?> /> <?=lang('yes')?></label>
-					<label style="cursor:pointer;margin-left:10px"><input type="radio" name="group" value="n"<?php if ($group == 'n'): ?> checked="checked"<?php endif; ?> /> <?=lang('no')?></label>
-				</td>
-			</tr>
-			<tr>
-				<td class="tableCellOne">
-					<span class="defaultBold">
 						<?=lang('register_globals')?>
 					</span>
 					<div class="itemWrapper"><?=lang('register_globals_help')?></div>
@@ -101,6 +52,33 @@
 				<td class="tableCellOne">
 					<label style="cursor:pointer"><input type="radio" name="register_globals" value="y"<?php if ($register_globals == 'y'): ?> checked="checked"<?php endif; ?> /> <?=lang('yes')?></label>
 					<label style="cursor:pointer;margin-left:10px"><input type="radio" name="register_globals" value="n"<?php if ($register_globals == 'n'): ?> checked="checked"<?php endif; ?> /> <?=lang('no')?></label>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableCellTwo">
+					<span class="defaultBold">
+						<?=lang('register_member_data')?>
+					</span>
+					<div class="itemWrapper"><?=lang('register_member_data_help')?></div>
+				</td>
+				<td class="tableCellTwo">
+					<label style="cursor:pointer"><input type="radio" name="register_member_data" value="y"<?php if ($register_member_data == 'y'): ?> checked="checked"<?php endif; ?> /> <?=lang('yes')?></label>
+					<label style="cursor:pointer;margin-left:10px"><input type="radio" name="register_member_data" value="n"<?php if ($register_member_data == 'n'): ?> checked="checked"<?php endif; ?> /> <?=lang('no')?></label>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableCellOne" style="vertical-align:top">
+					<span class="defaultBold">
+						<?=lang('variable_types')?>
+					</span>
+					<div class="itemWrapper"><?=lang('variable_types_help')?></div>
+				</td>
+				<td class="tableCellOne">
+					<?php foreach($variable_types AS $type => $info): ?>
+						<label style="display:block;cursor:pointer"><input type="checkbox" name="enabled_types[]" value="<?=$type?>" <?php if(in_array($type, $enabled_types)): ?>checked="checked" <?php endif; ?>
+							<?php if($info['is_default']): ?> disabled="disabled"<?php endif; ?> />
+						<?=$info['name']?> &ndash; <small><?=$info['version']?></small></label>
+					<?php endforeach; ?>
 				</td>
 			</tr>
 		</tbody>

@@ -1,46 +1,35 @@
 <?php if ( ! defined('EXT')) exit('Invalid file request');
 
+// Include config.php
+include(PATH_MOD.'low_variables/config.php');
+
 /**
 * Low Variables Module Class - CP
 *
 * The Low Variables Control Panel master class that handles all of the CP Requests and Displaying
 *
 * @package		low-variables-ee_addon
-* @version		1.2.4
+* @version		1.3.4
 * @author		Lodewijk Schutte <low@loweblog.com>
-* @link			http://loweblog.com/freelance/
+* @link			http://loweblog.com/software/low-variables/
 * @copyright	Copyright (c) 2009, Low
 */ 
 
 class Low_variables_CP {
 
 	/**
-	* Module name
-	*
-	* @var	string
-	*/
-	var $module_name = 'Low_variables';
-
-	/**
 	* Module version
 	*
 	* @var	string
 	*/
-	var $version = '1.2.4';
-
-	/**
-	* Default variable type
-	*
-	* @var	string
-	*/
-	var $default_type = 'low_textarea';
+	var $version = LOW_VAR_VERSION;
 
 	/**
 	* URL to module docs
 	*
 	* @var	string
 	*/
-	var $docs_url = 'http://loweblog.com/software/low-variables/';
+	var $docs_url = LOW_VAR_DOCS;
 
 	/**
 	* Data array for views
@@ -57,7 +46,7 @@ class Low_variables_CP {
 	* @see	__construct()
 	*/
 	function Low_variables_CP()
-    {
+	{
 		$this->__construct();
 	}
 
@@ -69,7 +58,7 @@ class Low_variables_CP {
 	* @return	void
 	*/
 	function __construct()
-    {
+	{
 		global $IN, $DSP;
 
 		/** -------------------------------------
@@ -95,7 +84,7 @@ class Low_variables_CP {
 		/**  Define base url for module
 		/** -------------------------------------*/
 
-		$this->base_url = $this->data['base_url'] = BASE.AMP.'C=modules'.AMP.'M='.$this->module_name;
+		$this->base_url = $this->data['base_url'] = BASE.AMP.'C=modules'.AMP.'M='.LOW_VAR_CLASS_NAME;
 
 		/** -------------------------------------
 		/**  Define base path for module
@@ -175,26 +164,11 @@ class Low_variables_CP {
 		$DSP->title = $DSP->crumb = $LANG->line('low_variables_module_name');
 
 		/** -------------------------------------
-		/**  Right crumb - Manage vars link
-		/** -------------------------------------*/
-
-		if ($this->settings['is_manager'])
-		{
-			// set prefix filter
-			$filter = ($this->settings['ignore_prefixes'] == 'n') ? TRUE : FALSE;
-		}
-		else
-		{
-			// always filter for non-managers
-			$filter = TRUE;
-		}
-
-		/** -------------------------------------
 		/**  Prep SQL variables
 		/** -------------------------------------*/
 
-		$sql_where_prefix	= $filter ? $this->_sql_where_prefix('ee.variable_name') : '';
-		$sql_site_id		= $DB->escape_str($PREFS->ini('site_id'));
+		$sql_where_hidden = $this->settings['is_manager'] ? '' : "AND low.is_hidden = 'n'";
+		$sql_site_id      = $DB->escape_str($PREFS->ini('site_id'));
 
 		/** -------------------------------------
 		/**  Get variables
@@ -204,6 +178,7 @@ class Low_variables_CP {
 				ee.variable_id AS var_id,
 				ee.variable_name AS var_name,
 				ee.variable_data AS var_data,
+				IFNULL(low.group_id,0) AS var_group_id,
 				low.variable_label AS var_label,
 				low.variable_notes AS var_notes,
 				low.variable_type AS var_type,
@@ -216,10 +191,16 @@ class Low_variables_CP {
 				exp_low_variables AS low
 			ON
 				ee.variable_id = low.variable_id
+			LEFT JOIN
+				exp_low_variable_groups AS vg
+			ON
+				low.group_id = vg.group_id
 			WHERE
 				ee.site_id = '{$sql_site_id}'
-				{$sql_where_prefix}
+				{$sql_where_hidden}
 			ORDER BY
+				vg.group_order ASC,
+				vg.group_label ASC,
 				var_order ASC,
 				var_name ASC
 		";
@@ -248,37 +229,24 @@ class Low_variables_CP {
 				/**  Strip prefix from name
 				/** -------------------------------------*/
 
-				$row['var_name'] = preg_replace('/^'.$this->settings['prefix'].'/', '', $row['var_name']);
+				// $row['var_name'] = preg_replace('/^'.$this->settings['prefix'].'/', '', $row['var_name']);
 
 				/** -------------------------------------
 				/**  Check if var is grouped
 				/** -------------------------------------*/
 
-				$group = $LANG->line('ungrouped');
-
-				if ($this->settings['group'] == 'y')
-				{
-					$tmp = explode('_', $row['var_name'], 2);
-
-					if (count($tmp) == 2)
-					{
-						$group = $tmp[0];
-						$row['var_name'] = $tmp[1];
-					}
-
-					unset($tmp);
-				}
+				$group = $row['var_group_id'];
 
 				/** -------------------------------------
 				/**  Check type and settings
 				/** -------------------------------------*/
 
-				if ( !$row['var_type'] || !isset($this->types[$row['var_type']]) )
+				if ( ! $row['var_type'] || !isset($this->types[$row['var_type']]))
 				{
-					$row['var_type'] = $this->default_type;
+					$row['var_type'] = LOW_VAR_DEFAULT_TYPE;
 				}
 
-				if ( ! ($row['var_settings'] = $this->_sql_unserialize($row['var_settings'])) )
+				if ( ! ($row['var_settings'] = $this->_sql_unserialize($row['var_settings'])))
 				{
 					$row['var_settings'] = array();
 				}
@@ -325,7 +293,56 @@ class Low_variables_CP {
 				$rows[$group][] = $row;
 			}
 
+			/** -------------------------------------
+			/**  Create list of relevant groups
+			/** -------------------------------------*/
+
+			// Get all groups first
+			$groups = Low_variables_ext::associate_results($this->_get_variable_groups(FALSE), 'group_id');
+
+			// add the Ungrouped group at the end, if necessary
+			if (isset($rows['0']))
+			{
+				$groups['0'] = array(
+					'group_label' => $LANG->line('ungrouped'),
+					'group_notes' => ''
+				);
+
+				// If first item in rows is ungrouped group, move it to the end of the array
+				if (key($rows) == '0')
+				{
+					// Slice off ungrouped group, preserving keys
+					$ungrouped = array_slice($rows, 0, 1, TRUE);
+
+					// Remove ungrouped group from original
+					unset($rows['0']);
+
+					// Append ungrouped group to the end of the array
+					$rows += $ungrouped;
+				}
+			}
+
+			// Initiate group list
+			$group_list = array();
+
+			// Loop through all groups
+			foreach ($groups AS $group_id => $row)
+			{
+				// Add # of vars in group to group row
+				$row['count'] = isset($rows[$group_id]) ? count($rows[$group_id]) : 0;
+
+				// Skip empty groups for non-managers
+				if ( ! $this->settings['is_manager'] && $row['count'] == 0) continue;
+
+				// Add row to group list
+				$group_list[$group_id] = $row;
+			}
+
 			$this->data['variables'] = $rows;
+			$this->data['groups'] = $groups;
+			$this->data['group_list'] = $group_list;
+			$this->data['group_count'] = count($group_list);
+			$this->data['empty_groups'] = array_keys(array_diff_key($groups, $rows));
 			$this->data['all_ids'] = implode('|', $all_ids);
 			$this->data['skipped'] = $alert;
 			$this->data['active'] = 'home';
@@ -355,7 +372,7 @@ class Low_variables_CP {
 	* @param	string	$message
 	* @return	void
 	*/
-    function manage()
+	function manage()
 	{
 		global $IN, $SESS, $FNS;
 
@@ -398,7 +415,7 @@ class Low_variables_CP {
 	* @access	private
 	* @return	void
 	*/
-    function _show_all()
+	function _show_all()
 	{
 		global $DSP, $LANG, $PREFS, $DB;
 
@@ -415,33 +432,25 @@ class Low_variables_CP {
 		/**  Get variables
 		/** -------------------------------------*/
 
-		$sql_where_prefix = ($this->settings['ignore_prefixes'] == 'n') ? $this->_sql_where_prefix('ee.variable_name') : '';
 		$sql_site_id = $DB->escape_str($PREFS->ini('site_id'));
-		$sql_default_type = $DB->escape_str($this->default_type);
+		$sql_default_type = $DB->escape_str(LOW_VAR_DEFAULT_TYPE);
 
 		/** -------------------------------------
 		/**  Compose query and execute
 		/** -------------------------------------*/
 
-		$sql = "SELECT
-				ee.variable_id, ee.variable_name,
-				low.variable_label,
-				IF(low.variable_type != '',low.variable_type,'{$sql_default_type}') AS variable_type,
-				IF(low.variable_order != '',low.variable_order,0) AS variable_order,
-				IF(IFNULL(low.early_parsing,'n')='y','yes','no') AS early_parsing
-			FROM
-				exp_global_variables AS ee
-			LEFT JOIN
-				exp_low_variables AS low
-			ON
-				ee.variable_id = low.variable_id
-			WHERE
-				ee.site_id = '{$sql_site_id}'
-				{$sql_where_prefix}
-			ORDER BY
-				variable_order ASC,
-				ee.variable_name ASC
-		";
+		$sql = "SELECT ee.variable_id, ee.variable_name, low.variable_label, low.group_id,
+					IF(low.variable_type != '',low.variable_type,'{$sql_default_type}') AS variable_type,
+					IF(low.variable_order != '',low.variable_order,0) AS variable_order,
+					IF(IFNULL(low.early_parsing,'n')='y','yes','no') AS early_parsing,
+					IF(IFNULL(low.is_hidden,'n')='y','yes','no') AS is_hidden
+				FROM exp_global_variables AS ee
+				LEFT JOIN exp_low_variables AS low
+				ON ee.variable_id = low.variable_id
+				LEFT JOIN exp_low_variable_groups AS vg
+				ON low.group_id = vg.group_id
+				WHERE ee.site_id = '{$sql_site_id}'
+				ORDER BY vg.group_order ASC, vg.group_label ASC, variable_order ASC, ee.variable_name ASC";
 		$query = $DB->query($sql);
 
 		if ($query->num_rows)
@@ -450,7 +459,38 @@ class Low_variables_CP {
 			/**  Initiate rows
 			/** -------------------------------------*/
 
-			$this->data['variables'] = $query->result;
+			$rows = $query->result;
+			$grouped = $ungrouped = array();
+
+			// Put ungrouped vars at the bottom
+			foreach ($rows AS $row)
+			{
+				if ( ! strlen($row['group_id']))
+				{
+					$row['group_id'] = '0';
+				}
+
+				if ($row['group_id'])
+				{
+					$grouped[] = $row;
+				}
+				else
+				{
+					$ungrouped[] = $row;
+				}
+			}
+
+			/** -------------------------------------
+			/**  Get variable groups
+			/** -------------------------------------*/
+
+			$this->data['variable_groups'] = $this->_get_variable_groups() + array('0' => $LANG->line('ungrouped'));
+
+			/** -------------------------------------
+			/**  Initiate rows
+			/** -------------------------------------*/
+
+			$this->data['variables'] = array_merge($grouped, $ungrouped);
 			$this->data['types'] = $this->types;
 			$this->data['active'] = 'manage';
 
@@ -513,7 +553,7 @@ class Low_variables_CP {
 	* @access	private
 	* @return	null
 	*/
-    function _edit_var()
+	function _edit_var()
 	{
 		global $DSP, $LANG, $PREFS, $DB, $IN, $FNS, $SESS;
 
@@ -534,30 +574,31 @@ class Low_variables_CP {
 		$var_id   = $IN->GBL('id', 'GET');
 		$clone_id = $IN->GBL('clone', 'GET');
 
+		/** -------------------------------------
+		/**  Get variable groups
+		/** -------------------------------------*/
+
+		$this->data['variable_groups'] = array('0' => '--') + $this->_get_variable_groups();
+
 		if ($var_id == 'new')
 		{
 			$this->data['active'] = 'create_new';
-
-			/** -------------------------------------
-			/**  Get default value for new sort order
-			/** -------------------------------------*/
-
-			$query = $DB->query("SELECT MAX(variable_order) AS max FROM exp_low_variables");
-			$order = ($query->num_rows ? $query->row['max'] : 0) + 1;
 
 			/** -------------------------------------
 			/**  Init new array if var is new
 			/** -------------------------------------*/
 
 			$this->data = array_merge($this->data, array(
-				'variable_id'	=> 'new',
-				'variable_name'	=> '',
+				'variable_id'   => 'new',
+				'group_id'      => '0',
+				'variable_name' => '',
 				'variable_label'=> '',
 				'variable_notes'=> '',
-				'variable_type'	=> $this->default_type,
+				'variable_type' => LOW_VAR_DEFAULT_TYPE,
 				'variable_settings' => array(),
-				'variable_order'=> $order,
-				'early_parsing'	=> 'n'
+				'variable_order'=> '0',
+				'early_parsing' => 'n',
+				'is_hidden'     => 'n'
 			));
 		}
 		else
@@ -576,11 +617,13 @@ class Low_variables_CP {
 			/** -------------------------------------*/
 
 			$select = array(
-				"IF(low.variable_type != '',low.variable_type,'".$DB->escape_str($this->default_type)."') AS variable_type",
+				"IF(low.variable_type != '',low.variable_type,'".$DB->escape_str(LOW_VAR_DEFAULT_TYPE)."') AS variable_type",
+				'low.group_id',
 				'low.variable_label',
 				'low.variable_notes',
 				'low.variable_settings',
-				'low.early_parsing'
+				'low.early_parsing',
+				'low.is_hidden'
 			);
 
 			/** -------------------------------------
@@ -665,85 +708,381 @@ class Low_variables_CP {
 	// --------------------------------------------------------------------
 
 	/**
-	* Show sort order change form
+	* Manage variable groups
 	*
 	* @return	null
 	*/
-    function sort_order()
+	function groups()
 	{
-		global $DSP, $LANG, $IN, $SESS, $DB, $PREFS;
+		global $IN, $FNS;
 
 		/** -------------------------------------
-		/**  Check permissions
+		/**  Retrieve feedback message
 		/** -------------------------------------*/
 
-		if (!in_array($SESS->userdata['group_id'], $this->settings['can_manage']))
+		$this->data['message'] = $this->_get_flashdata('msg');
+
+		/** -------------------------------------
+		/**  Check if there's an ID to edit
+		/** -------------------------------------*/
+
+		if ($IN->GBL('id', 'GET') !== FALSE)
+		{
+			return $this->_edit_group();
+		}
+		else
 		{
 			$FNS->redirect($this->base_url);
-			exit;
 		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	* Show edit group form
+	*
+	* @return	null
+	*/
+	function _edit_group()
+	{
+		global $DSP, $LANG, $PREFS, $DB, $IN, $FNS, $SESS;
 
 		/** -------------------------------------
 		/**  Title and Crumbs
 		/** -------------------------------------*/
 
-		$DSP->title = $LANG->line('change_sort_order');
+		$DSP->title = $LANG->line('edit_group');
 
 		$DSP->crumb = $DSP->anchor($this->base_url, $LANG->line('low_variables_module_name'))
-					. $DSP->crumb_item($DSP->anchor($this->base_url.AMP.'P=manage', $LANG->line('manage_variables')))
 					. $DSP->crumb_item($DSP->title);
 
 		/** -------------------------------------
-		/**  Get sql variables
+		/**  Do we have errors in flashdata?
 		/** -------------------------------------*/
 
-		$sql_where_prefix = ($this->settings['ignore_prefixes'] == 'n') ? $this->_sql_where_prefix('ee.variable_name') : '';
+		$this->data['errors'] = $this->_get_flashdata('errors');
+		$this->data['from'] = $IN->GBL('from');
+		$this->data['active'] = 'manage';
+
+		/** -------------------------------------
+		/**  Create new or edit?
+		/** -------------------------------------*/
+
+		$group_id = $IN->GBL('id', 'GET');
+		$sql_group_id = $DB->escape_str($group_id);
 		$sql_site_id = $DB->escape_str($PREFS->ini('site_id'));
 
 		/** -------------------------------------
-		/**  Compose query and execute
+		/**  Get group details
 		/** -------------------------------------*/
 
-		$sql = "SELECT
-				ee.variable_id, ee.variable_name,
-				low.variable_type, low.variable_label,
-				IFNULL(low.variable_order,0) AS variable_order
-			FROM
-				exp_global_variables AS ee
-			LEFT JOIN
-				exp_low_variables AS low
-			ON
-				ee.variable_id = low.variable_id
-			WHERE
-				ee.site_id = '{$sql_site_id}'
-				{$sql_where_prefix}
-			ORDER BY
-				variable_order ASC,
-				ee.variable_name ASC
-		";
-		$query = $DB->query($sql);
+		$this->data['variables'] = array();
 
-		/** -------------------------------------
-		/**  Add results to data array
-		/** -------------------------------------*/
+		if ($group_id != 'new')
+		{
+			if ($group_id != '0')
+			{
+				$sql = "SELECT group_id, group_label, group_notes
+						FROM exp_low_variable_groups
+						WHERE group_id = '{$sql_group_id}'";
+				$query = $DB->query($sql);
 
-		$this->data['variables'] = $query->result;
-		$this->data['active'] = 'manage';
+				$this->data = array_merge($this->data, $query->row);
+			}
+			else
+			{
+				$this->data['group_id'] = $group_id;
+				$this->data['group_label'] = $LANG->line('ungrouped');
+				$this->data['group_notes'] = '';
+			}
+
+			/** -------------------------------------
+			/**  Get variables in group
+			/** -------------------------------------*/
+
+			$sql_site_id = $DB->escape_str($PREFS->ini('site_id'));
+
+			/** -------------------------------------
+			/**  Compose query and execute
+			/** -------------------------------------*/
+
+			$sql = "SELECT ee.variable_id, ee.variable_name, low.variable_type, low.variable_label, IFNULL(low.variable_order,0) AS variable_order
+					FROM exp_global_variables AS ee, exp_low_variables AS low
+					WHERE ee.variable_id = low.variable_id
+					AND ee.site_id = '{$sql_site_id}'
+					AND low.group_id = '{$sql_group_id}' 
+					ORDER BY variable_order ASC, ee.variable_name ASC";
+			$query = $DB->query($sql);
+
+			/** -------------------------------------
+			/**  Add results to data array
+			/** -------------------------------------*/
+
+			$this->data['variables'] = $query->result;
+
+			$this->_load_assets();
+		}
+		else
+		{
+			$this->data['group_id'] = 'new';
+			$this->data['group_label'] = '';
+			$this->data['group_notes'] = '';
+			$this->data['active'] = 'create_group';
+		}
 
 		$this->_load_assets();
-
-		// Extra IE CSS and JS
-		$DSP->extra_header .= <<<EOH
-			<!--[if lte IE 7]>
-				<style type="text/css">
-					#low-variables-list {zoom:1}
-					#low-variables-list li {margin:-4px 0 0 0}
-				</style>
-			<![endif]-->
-EOH;
-
 		$DSP->body .= $DSP->view('manage_menu', $this->data, TRUE);
-		$DSP->body .= $DSP->view('manage_sort_order', $this->data, TRUE);
+		$DSP->body .= $DSP->view('group_edit', $this->data, TRUE);
+
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	* Save group
+	*
+	* @return	null
+	*/
+	function save_group()
+	{
+		global $DB, $IN, $FNS, $PREFS;
+
+		/** -------------------------------------
+		/**  Return url
+		/** -------------------------------------*/
+
+		$return_url = $this->base_url;
+
+		/** -------------------------------------
+		/**  Get group_id
+		/** -------------------------------------*/
+
+		if (($group_id = $IN->GBL('group_id', 'POST')) === FALSE)
+		{
+			// No id found, exit!
+			$FNS->redirect($return_url);
+			exit;
+		}
+		else
+		{
+			$group_id = $DB->escape_str($group_id);
+		}
+
+		// Skip the following for Ungrouped
+		if ($group_id != '0')
+		{
+			/** -------------------------------------
+			/**  Get group_label
+			/** -------------------------------------*/
+
+			if ( ! ($group_label = trim($IN->GBL('group_label', 'POST'))) )
+			{
+				// No label found, exit!
+				// TODO: create proper error message
+				$FNS->redirect($return_url);
+				exit;
+			}
+			else
+			{
+				$group_label = $DB->escape_str($group_label);
+			}
+
+			/** -------------------------------------
+			/**  Insert / update group
+			/** -------------------------------------*/
+
+			$data = array(
+				'group_label' => $group_label,
+				'group_notes' => $IN->GBL('group_notes', 'POST'),
+				'site_id' => $PREFS->ini('site_id')
+			);
+		}
+
+		if ($group_id == 'new')
+		{
+			$DB->query($DB->insert_string('exp_low_variable_groups', $data));
+			$group_id = $DB->insert_id;
+		}
+		else
+		{
+			if ($group_id > 0)
+			{
+				$DB->query($DB->update_string('exp_low_variable_groups', $data, "group_id = '{$group_id}'"));
+			}
+
+			/** -------------------------------------
+			/**  Variable order
+			/** -------------------------------------*/
+
+			if ($vars = $IN->GBL('vars', 'POST'))
+			{
+				foreach ($vars AS $var_order => $var_id)
+				{
+					/** -------------------------------------
+					/**  Escape variables
+					/** -------------------------------------*/
+
+					$sql_var_id = $DB->escape_str($var_id);
+					$sql_var_order = $DB->escape_str($var_order + 1);
+
+					/** -------------------------------------
+					/**  Update record
+					/** -------------------------------------*/
+
+					$sql = "UPDATE `exp_low_variables` SET `variable_order` = '{$sql_var_order}' WHERE `variable_id` = '{$sql_var_id}'";
+					$DB->query($sql);
+				}
+			}
+
+		}
+
+		if ($IN->GBL('from', 'POST') == 'manage')
+		{
+			$return_url .= '&amp;P=manage';
+		}
+
+		$this->_set_flashdata('msg', 'group_saved');
+		$FNS->redirect($return_url);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	* Save new sort order for groups
+	*
+	* @return	null
+	*/
+	function save_group_order($redirect = FALSE)
+	{
+		global $DB, $IN;
+
+		/** -------------------------------------
+		/**  Return url
+		/** -------------------------------------*/
+
+		$return_url = $this->base_url; 
+
+		/** -------------------------------------
+		/**  Get POST variable
+		/** -------------------------------------*/
+
+		if ($groups = $IN->GBL('groups'))
+		{
+			if ( ! is_array($groups))
+			{
+				$groups = explode('|', $groups);
+			}
+
+			foreach ($groups AS $group_order => $group_id)
+			{
+				/** -------------------------------------
+				/**  Escape variables
+				/** -------------------------------------*/
+
+				$sql_group_id = $DB->escape_str($group_id);
+				$sql_group_order = $DB->escape_str($group_order + 1);
+
+				/** -------------------------------------
+				/**  Update/Insert record
+				/** -------------------------------------*/
+
+				$sql = "UPDATE `exp_low_variable_groups` SET `group_order` = '{$sql_group_order}' WHERE `group_id` = '{$sql_group_id}'";
+				$DB->query($sql);
+			}
+
+			/** -------------------------------------
+			/**  Add feedback to return  url
+			/** -------------------------------------*/
+
+			// $this->EE->session->set_flashdata('msg', 'low_variable_groups_saved');
+			$return_url .= AMP.'P=groups';
+		}
+
+		/** -------------------------------------
+		/**  Go home
+		/** -------------------------------------*/
+
+		if ($redirect) $FNS->redirect($return_url);
+
+		die('ok');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	* Deletes variable group
+	*
+	* @return	null
+	*/
+	function delete_group()
+	{
+		global $DB, $IN, $FNS;
+
+		/** -------------------------------------
+		/**  Get group id
+		/** -------------------------------------*/
+
+		if ($group_id = $IN->GBL('group_id', 'POST'))
+		{
+			$sql_group_id = $DB->escape_str($group_id);
+
+			/** -------------------------------------
+			/**  Delete from both table, update vars
+			/** -------------------------------------*/
+
+			$DB->query("DELETE FROM `exp_low_variable_groups` WHERE `group_id` = '{$sql_group_id}'");
+			$DB->query("UPDATE `exp_low_variables` SET `group_id` = '0' WHERE `group_id` = '{$sql_group_id}'");
+		}
+
+		/** -------------------------------------
+		/**  Go to manage screen and show message
+		/** -------------------------------------*/
+
+		$this->_set_flashdata('msg', 'low_variable_group_deleted');
+		$FNS->redirect($this->base_url);
+		exit;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	* Asks for group deletion confirmation
+	*
+	* @return	null
+	*/
+	function group_delete_confirmation()
+	{
+		global $DSP, $LANG, $DB, $IN;
+
+		/** -------------------------------------
+		/**  Title and Crumbs
+		/** -------------------------------------*/
+
+		$DSP->title = $LANG->line('low_variables_group_delete_confirmation');
+
+		$DSP->crumb = $DSP->anchor($this->base_url, $LANG->line('low_variables_module_name'))
+					. $DSP->crumb_item($DSP->title);
+
+		/** -------------------------------------
+		/**  Get group name
+		/** -------------------------------------*/
+
+		$sql_group = $DB->escape_str($IN->GBL('id', 'GET'));
+		$query = $DB->query("SELECT `group_label` FROM `exp_low_variable_groups` WHERE `group_id` = '{$sql_group}' LIMIT 1");
+		$row = $query->row;
+
+		/** -------------------------------------
+		/**  Show confirm message
+		/** -------------------------------------*/
+
+		$DSP->body = $DSP->delete_confirmation(array(
+			'url'		=> 'C=modules'.AMP.'M='.LOW_VAR_CLASS_NAME.AMP.'P=delete_group',
+			'heading'	=> 'low_variables_group_delete_confirmation',
+			'message'	=> 'low_variables_group_delete_confirmation_one',
+			'item'		=> $row['group_label'],
+			'extra'		=> '',
+			'hidden'	=> array('group_id' => $sql_group)
+		));
 
 	}
 
@@ -754,7 +1093,7 @@ EOH;
 	*
 	* @return	null
 	*/
-    function save()
+	function save()
 	{
 		global $IN, $DB, $FNS;
 
@@ -800,10 +1139,10 @@ EOH;
 
 			foreach ($query->result AS $row)
 			{
-				// Set type to default id not found
-				if ( ! $row['variable_type'] )
+				// Set type to default if not found
+				if ( ! $row['variable_type'] || ! in_array($row['variable_type'], $this->settings['enabled_types']) )
 				{
-					$row['variable_type'] = $this->default_type;
+					$row['variable_type'] = LOW_VAR_DEFAULT_TYPE;
 				}
 
 				// populate the types + settings array
@@ -830,8 +1169,8 @@ EOH;
 				if ( ! isset($types[$var_id]) )
 				{
 					$types[$var_id]= array(
-						'type' => $this->default_type,
-						'settings' => $this->_get_type_settings($this->default_type)
+						'type' => LOW_VAR_DEFAULT_TYPE,
+						'settings' => $this->_get_type_settings(LOW_VAR_DEFAULT_TYPE)
 					);
 				}
 
@@ -896,7 +1235,7 @@ EOH;
 	*
 	* @return	null
 	*/
-    function save_list()
+	function save_list()
 	{
 		global $IN, $FNS, $DSP;
 
@@ -910,40 +1249,52 @@ EOH;
 		/**  Get vars from POST
 		/** -------------------------------------*/
 
-		$vars = $IN->GBL('toggle', 'POST');
+		if ($vars = $IN->GBL('toggle', 'POST'))
+		{
+			/** -------------------------------------
+			/**  Get action to perform with list
+			/** -------------------------------------*/
 
-		/** -------------------------------------
-		/**  Get action to perform with list
-		/** -------------------------------------*/
+			$action = $IN->GBL('action', 'POST');
 
-		$action = $IN->GBL('action', 'POST');
+			if ($action == 'delete')
+			{
+				// Show delete confirmation
+				return $this->_delete_confirmation($vars);
+			}
+			elseif (in_array($action, array_keys($this->types)))
+			{
+				// Change variable type of given items
+				$this->_change_type($vars, $action);
+			}
+			elseif ($action == 'show')
+			{
+				// Set is_hidden to 'n'
+				$this->_set_is_hidden($vars, 'n');
+			}
+			elseif ($action == 'hide')
+			{
+				// Set is_hidden to 'y'
+				$this->_set_is_hidden($vars, 'y');
+			}
+			elseif ($action == 'enable_early_parsing')
+			{
+				// Turn on early parsing for these ids
+				$this->_set_early_parsing($vars, 'y');
+			}
+			elseif ($action == 'disable_early_parsing')
+			{
+				// Turn off early parsing for these ids
+				$this->_set_early_parsing($vars, 'n');
+			}
+			elseif (is_numeric($action))
+			{
+				// Move to different group
+				$this->_move_to_group($vars, $action);
+			}
+		}
 
-		if ($vars && $action == 'delete')
-		{
-			// Show delete confirmation
-			$this->_delete_confirmation($vars);
-		}
-		elseif ($vars && in_array($action, array_keys($this->types)))
-		{
-			// Change variable type of given items
-			$this->_change_type($vars, $action);
-		}
-		elseif ($vars && $action == 'enable_early_parsing')
-		{
-			// Turn on early parsing for these ids
-			$this->_set_early_parsing($vars, TRUE);
-		}
-		elseif ($vars && $action == 'disable_early_parsing')
-		{
-			// Turn off early parsing for these ids
-			$this->_set_early_parsing($vars, FALSE);
-		}
-		else
-		{
-			$FNS->redirect($return_url);
-			exit;
-		}
-
+		$FNS->redirect($return_url);
 	}
 
 	// --------------------------------------------------------------------
@@ -988,7 +1339,7 @@ EOH;
 		/** -------------------------------------*/
 
 		$DSP->body = $DSP->delete_confirmation(array(
-			'url'		=> 'C=modules'.AMP.'M='.$this->module_name.AMP.'P=delete',
+			'url'		=> 'C=modules'.AMP.'M='.LOW_VAR_CLASS_NAME.AMP.'P=delete',
 			'heading'	=> 'low_variables_delete_confirmation',
 			'message'	=> 'low_variables_delete_confirmation_'.(count($vars)==1?'one':'many'),
 			'item'		=> implode('<br />', $var_names),
@@ -1043,66 +1394,44 @@ EOH;
 	* @param	string	$type
 	* @return	null
 	*/
-	function _change_type($vars = array(), $type = '')
+	function _change_type($vars = array(), $type = LOW_VAR_DEFAULT_TYPE)
 	{
-		global $IN, $DB, $FNS;
+		global $DB;
 
-		/** -------------------------------------
-		/**  Return url
-		/** -------------------------------------*/
+		// Prep sql bits
+		$sql_vars = $this->_sql_in_array($vars);
+		$sql_type = $DB->escape_str($type);
 
-		$return_url = $this->base_url.AMP.'P=manage';
+		// Execute query
+		$DB->query("UPDATE `exp_low_variables` SET variable_type = '{$sql_type}' WHERE `variable_id` IN ({$sql_vars})");
 
-		/** -------------------------------------
-		/**  Loop through vars and update
-		/** -------------------------------------*/
+		// Set feedback message
+		$this->_set_flashdata('msg', 'low_variables_saved');
+	}
 
-		if ($vars && $type && in_array($type, array_keys($this->types)))
-		{
-			/** -------------------------------------
-			/**  Get ids to update, insert others
-			/** -------------------------------------*/
+	// --------------------------------------------------------------------
 
-			$update = $this->_get_existing_ids();
+	/**
+	* Changes is_hidden of variables
+	*
+	* @access	private
+	* @param	array	$vars
+	* @param	string	$val
+	* @return	null
+	*/
+	function _set_is_hidden($vars = array(), $val = 'n')
+	{
+		global $DB;
 
-			foreach ($vars AS $var_id)
-			{
-				/** -------------------------------------
-				/**  Escape variables
-				/** -------------------------------------*/
+		// Prep sql bits
+		$sql_vars = $this->_sql_in_array($vars);
+		$sql_val = $DB->escape_str($val);
 
-				$sql_var_id = $DB->escape_str($var_id);
-				$sql_var_type = $DB->escape_str($type);
+		// Execute query
+		$DB->query("UPDATE `exp_low_variables` SET is_hidden = '{$sql_val}' WHERE `variable_id` IN ({$sql_vars})");
 
-				/** -------------------------------------
-				/**  Update/Insert record
-				/** -------------------------------------*/
-
-				if (in_array($var_id, $update))
-				{
-					$sql = "UPDATE `exp_low_variables` SET `variable_type` = '{$sql_var_type}' WHERE `variable_id` = '{$sql_var_id}'";
-				}
-				else
-				{
-					$sql = "INSERT INTO `exp_low_variables` (`variable_id`, `variable_type`) VALUES ('{$sql_var_id}', '{$sql_var_type}')";
-				}
-
-				$DB->query($sql);
-			}
-
-			/** -------------------------------------
-			/**  Add feedback
-			/** -------------------------------------*/
-
-			$this->_set_flashdata('msg', 'low_variables_saved');
-		}
-
-		/** -------------------------------------
-		/**  Go home
-		/** -------------------------------------*/
-
-		$FNS->redirect($return_url);
-		exit;
+		// Set feedback message
+		$this->_set_flashdata('msg', 'low_variables_saved');
 	}
 
 	// --------------------------------------------------------------------
@@ -1112,69 +1441,46 @@ EOH;
 	*
 	* @access	private
 	* @param	array	$vars
-	* @param	bool	$enable
+	* @param	string	$val
 	* @return	null
 	*/
-	function _set_early_parsing($vars = array(), $enable = FALSE)
+	function _set_early_parsing($vars = array(), $val = 'n')
 	{
-		global $IN, $DB, $FNS;
+		global $DB;
 
-		/** -------------------------------------
-		/**  Return url
-		/** -------------------------------------*/
+		// Prep sql bits
+		$sql_vars = $this->_sql_in_array($vars);
+		$sql_val = $DB->escape_str($val);
 
-		$return_url = $this->base_url.AMP.'P=manage';
+		// Execute query
+		$DB->query("UPDATE `exp_low_variables` SET early_parsing = '{$sql_val}' WHERE `variable_id` IN ({$sql_vars})");
 
-		/** -------------------------------------
-		/**  Loop through vars and update
-		/** -------------------------------------*/
+		// Set feedback message
+		$this->_set_flashdata('msg', 'low_variables_saved');
+	}
 
-		if ($vars)
-		{
-			/** -------------------------------------
-			/**  Get ids to update, insert others
-			/** -------------------------------------*/
+	// --------------------------------------------------------------------
 
-			$update = $this->_get_existing_ids();
+	/**
+	* Move given variables to given group
+	*
+	* @param	array	Variable ids
+	* @param	int		Group id
+	* @return	null
+	*/
+	function _move_to_group($vars = array(), $group_id = 0)
+	{
+		global $DB;
 
-			foreach ($vars AS $var_id)
-			{
-				/** -------------------------------------
-				/**  Escape variables
-				/** -------------------------------------*/
+		// Prep sql bits
+		$sql_vars = $this->_sql_in_array($vars);
+		$sql_group_id = $DB->escape_str($group_id);
 
-				$sql_var_id = $DB->escape_str($var_id);
-				$sql_var_ep = $enable ? 'y' : 'n';
+		// Execute query
+		$DB->query("UPDATE `exp_low_variables` SET group_id = '{$sql_group_id}' WHERE `variable_id` IN ({$sql_vars})");
 
-				/** -------------------------------------
-				/**  Update/Insert record
-				/** -------------------------------------*/
-
-				if (in_array($var_id, $update))
-				{
-					$sql = "UPDATE `exp_low_variables` SET `early_parsing` = '{$sql_var_ep}' WHERE `variable_id` = '{$sql_var_id}'";
-				}
-				else
-				{
-					$sql = "INSERT INTO `exp_low_variables` (`variable_id`, `early_parsing`) VALUES ('{$sql_var_id}', '{$sql_var_ep}')";
-				}
-
-				$DB->query($sql);
-			}
-
-			/** -------------------------------------
-			/**  Add feedback
-			/** -------------------------------------*/
-
-			$this->_set_flashdata('msg', 'low_variables_saved');
-		}
-
-		/** -------------------------------------
-		/**  Go home
-		/** -------------------------------------*/
-
-		$FNS->redirect($return_url);
-		exit;
+		// Set feedback message
+		$this->_set_flashdata('msg', 'low_variables_moved');
 	}
 
 	// --------------------------------------------------------------------
@@ -1184,7 +1490,7 @@ EOH;
 	*
 	* @return	null
 	*/
-    function save_var()
+	function save_var()
 	{
 		global $IN, $DB, $FNS, $DSP, $LANG, $PREFS;
 
@@ -1241,7 +1547,7 @@ EOH;
 		/**  Check boolean values
 		/** -------------------------------------*/
 
-		foreach (array('early_parsing') AS $var)
+		foreach (array('early_parsing', 'is_hidden') AS $var)
 		{
 			$low_vars[$var] = ($value = $IN->GBL($var, 'POST')) ? 'y' : 'n';
 		}
@@ -1250,9 +1556,9 @@ EOH;
 		/**  Check other regular vars
 		/** -------------------------------------*/
 
-		foreach (array('variable_label', 'variable_notes', 'variable_type', 'variable_order') AS $var)
+		foreach (array('group_id', 'variable_label', 'variable_notes', 'variable_type', 'variable_order') AS $var)
 		{
-			$low_vars[$var] = ($value = $IN->GBL($var, 'POST')) ? $value : '';
+			$low_vars[$var] = (($value = $IN->GBL($var, 'POST')) !== FALSE) ? $value : '';
 		}
 
 		/** -------------------------------------
@@ -1261,11 +1567,23 @@ EOH;
 
 		if (is_array($var_settings = $IN->GBL('variable_settings', 'POST')) && is_object($this->types[$low_vars['variable_type']]))
 		{
-			foreach (array_keys($this->types[$low_vars['variable_type']]->default_settings) AS $setting)
+			if (method_exists($this->types[$low_vars['variable_type']], 'save_settings'))
 			{
-				if (!isset($var_settings[$low_vars['variable_type']][$setting]))
+				// Settings?
+				$settings = isset($var_settings[$low_vars['variable_type']]) ? $var_settings[$low_vars['variable_type']] : $this->types[$low_vars['variable_type']]->default_settings;
+
+				// Call API for custom handling of settings
+				$var_settings[$low_vars['variable_type']] = $this->types[$low_vars['variable_type']]->save_settings($variable_id, $settings);
+			}
+			else
+			{
+				// Default handling of settings
+				foreach (array_keys($this->types[$low_vars['variable_type']]->default_settings) AS $setting)
 				{
-					$var_settings[$low_vars['variable_type']][$setting] = '';
+					if ( ! isset($var_settings[$low_vars['variable_type']][$setting]))
+					{
+						$var_settings[$low_vars['variable_type']][$setting] = '';
+					}
 				}
 			}
 		}
@@ -1290,6 +1608,27 @@ EOH;
 		}
 
 		/** -------------------------------------
+		/**  Check for suffixes
+		/** -------------------------------------*/
+
+		// init vars
+		$suffixes = $suffixed = array();
+
+		if ($variable_id == 'new' && ($suffix = $IN->GBL('variable_suffix')))
+		{
+			foreach (explode(' ', $suffix) AS $sfx)
+			{
+				// Skip illegal ones
+				if ( ! preg_match('/^[a-zA-Z0-9\-_]+$/', $sfx)) continue;
+
+				// Remove underscore if it's there
+				if (substr($sfx, 0, 1) == '_') $sfx = substr($sfx, 1);
+
+				$suffixes[] = $sfx;
+			}
+		}
+
+		/** -------------------------------------
 		/**  Update EE table
 		/** -------------------------------------*/
 
@@ -1304,13 +1643,31 @@ EOH;
 
 				$ee_vars['site_id'] = $PREFS->ini('site_id');
 
-				$DB->query($DB->insert_string('exp_global_variables', $ee_vars));
+				if ($suffixes)
+				{
+					foreach ($suffixes AS $sfx)
+					{
+						// Add suffix to name
+						$data = $ee_vars;
+						$data['variable_name'] = $ee_vars['variable_name'] . '_' . $sfx;
 
-				$variable_id = $DB->insert_id;
+						// Insert row
+						$DB->query($DB->insert_string('exp_global_variables', $data));
+
+						// Keep track of inserted rows
+						$suffixed[$DB->insert_id] = $sfx;
+					}
+				}
+				else
+				{
+					$DB->query($DB->insert_string('exp_global_variables', $ee_vars));
+
+					$variable_id = $DB->insert_id;
+				}
 			}
 			else
 			{
-				$DB->query($DB->update_string('exp_global_variables', $ee_vars, "variable_id = '{$variable_id}'"));	
+				$DB->query($DB->update_string('exp_global_variables', $ee_vars, "variable_id = '{$variable_id}'"));
 			}
 		}
 
@@ -1318,26 +1675,49 @@ EOH;
 		/**  Update low_variables table
 		/** -------------------------------------*/
 
-		if (!empty($low_vars))
+		if ( ! empty($low_vars))
 		{
 			$update = $this->_get_existing_ids();
 
-			/** -------------------------------------
-			/**  INSERT/UPDATE row
-			/** -------------------------------------*/
-
-			if (in_array($variable_id, $update))
+			if ($suffixed)
 			{
-				$sql = $DB->update_string('exp_low_variables', $low_vars, "variable_id = '{$variable_id}'");
+				$i = (int) $low_vars['variable_order'];
+
+				foreach ($suffixed AS $var_id => $sfx)
+				{
+					$row = $low_vars;
+					$row['variable_label']
+						= (strpos($low_vars['variable_label'], '{suffix}') !== FALSE)
+						? str_replace('{suffix}', $sfx, $low_vars['variable_label'])
+						: $low_vars['variable_label'] . " ({$sfx})";
+					$row['variable_order'] = $i++;
+					$rows[$var_id] = $row;
+				}
 			}
 			else
 			{
-				$low_vars['variable_id'] = $variable_id;
-
-				$sql = $DB->insert_string('exp_low_variables', $low_vars);
+				$rows[$variable_id] = $low_vars;
 			}
 
-			$DB->query($sql);
+			/** -------------------------------------
+			/**  INSERT/UPDATE rows
+			/** -------------------------------------*/
+
+			foreach ($rows AS $var_id => $data)
+			{
+				if (in_array($var_id, $update))
+				{
+					$sql = $DB->update_string('exp_low_variables', $data, "variable_id = '{$var_id}'");
+				}
+				else
+				{
+					$data['variable_id'] = $var_id;
+
+					$sql = $DB->insert_string('exp_low_variables', $data);
+				}
+
+				$DB->query($sql);
+			}
 		}
 		else
 		{
@@ -1354,81 +1734,6 @@ EOH;
 
 		$this->_set_flashdata('msg', 'low_variables_saved');
 		$FNS->redirect($return_url);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	* Saves variable sort order
-	*
-	* @return	null
-	*/
-    function save_order()
-	{
-		global $IN, $DB, $FNS;
-
-		/** -------------------------------------
-		/**  Return url
-		/** -------------------------------------*/
-
-		$return_url = $this->base_url;
-
-		/** -------------------------------------
-		/**  Get POST variable
-		/** -------------------------------------*/
-
-		if ($vars = $IN->GBL('vars', 'POST'))
-		{
-			/** -------------------------------------
-			/**  Get ids to update, insert others
-			/** -------------------------------------*/
-
-			$update = $this->_get_existing_ids();
-
-			/** -------------------------------------
-			/**  Loop through vars and update DB
-			/** -------------------------------------*/
-
-			foreach ($vars AS $var_order => $var_id)
-			{
-				/** -------------------------------------
-				/**  Escape variables
-				/** -------------------------------------*/
-
-				$sql_var_id = $DB->escape_str($var_id);
-				$sql_var_order = $DB->escape_str($var_order + 1);
-
-				/** -------------------------------------
-				/**  Update/Insert record
-				/** -------------------------------------*/
-
-				if (in_array($var_id, $update))
-				{
-					$sql = "UPDATE `exp_low_variables` SET `variable_order` = '{$sql_var_order}' WHERE `variable_id` = '{$sql_var_id}'";
-				}
-				else
-				{
-					$sql = "INSERT INTO `exp_low_variables` (`variable_id`, `variable_order`) VALUES ('{$sql_var_id}', '{$sql_var_order}')";
-				}
-
-				$DB->query($sql);
-			}
-
-			/** -------------------------------------
-			/**  Add feedback to return  url
-			/** -------------------------------------*/
-
-			$this->_set_flashdata('msg', 'low_variables_saved');
-			$return_url .= AMP.'P=manage';
-
-		}
-
-		/** -------------------------------------
-		/**  Go home
-		/** -------------------------------------*/
-
-		$FNS->redirect($return_url);
-		exit;
 	}
 
 	// --------------------------------------------------------------------
@@ -1459,15 +1764,6 @@ EOH;
 
 		if ( ! empty($this->settings))
 		{
-			/** -------------------------------------
-			/**  We have settings? Fix prefix
-			/** -------------------------------------*/
-
-			if ($this->settings['prefix'] && substr($this->settings['prefix'], -1) != '_')
-			{
-				$this->settings['prefix'] .= '_';
-			}
-
 			/** -------------------------------------
 			/**  Is current user a Variable Manager?
 			/** -------------------------------------*/
@@ -1507,56 +1803,28 @@ EOH;
 	function _include_types()
 	{
 		/** -------------------------------------
-		/**  Get Low_variables_types.php library
+		/**  Check extension settings to get which types
 		/** -------------------------------------*/
 
-		if ( ! class_exists('Low_variables_type') )
+		$which = is_array($this->settings['enabled_types']) ? $this->settings['enabled_types'] : FALSE;
+
+		/** -------------------------------------
+		/**  Get the types using extension function
+		/** -------------------------------------*/
+
+		$types = Low_variables_ext::get_types($which);
+
+		/** -------------------------------------
+		/**  Initiate class for each enabled type
+		/** -------------------------------------*/
+
+		foreach ($types AS $type => $info)
 		{
-			require_once $this->base_path.'libraries/Low_variables_type'.EXT;
-		}
-
-		/** -------------------------------------
-		/**  Set variable types path
-		/** -------------------------------------*/
-
-		$types_path = $this->base_path.'types/';
-
-		/** -------------------------------------
-		/**  If path is not valid, bail
-		/** -------------------------------------*/
-
-		if ( ! is_dir($types_path) ) return;
-
-		/** -------------------------------------
-		/**  Read dir, create instances
-		/** -------------------------------------*/
-
-		$dir = opendir($types_path);
-		while (($type = readdir($dir)) !== FALSE)
-		{
-			// skip these
-			if ($type == '.' || $type == '..' || !is_dir($types_path.$type)) continue;
-
-			// determine file name
-			$file = $types_path.$type.'/vt.'.$type.EXT;
-
-			if (!class_exists($type) && file_exists($file))
+			if ( class_exists($info['class']) || (($info['is_fieldtype'] === TRUE) && class_exists($info['class'].'_ft')) )
 			{
-				include($file);
-
-				if (class_exists($type))
-				{
-					$this->types[$type] = new $type();
-				}
+				$this->types[$type] = ($info['is_fieldtype'] === TRUE) ? new Low_fieldtype_bridge($info) : new $info['class'];
 			}
-
 		}
-		// clean up
-		closedir($dir);
-		unset($dir);
-
-		// Sort types by alpha
-		ksort($this->types);
 	}
 
 	// --------------------------------------------------------------------
@@ -1614,7 +1882,7 @@ EOH;
 		// Set type to default type if not defined
 		if (!$type)
 		{
-			$type = $this->default_type;
+			$type = LOW_VAR_DEFAULT_TYPE;
 		}
 
 		// unserialize if necessary
@@ -1644,31 +1912,26 @@ EOH;
 	// --------------------------------------------------------------------
 
 	/**
-	* Returns SUBSTRING statement to use in WHERE clause
+	* Get variable groups
 	*
 	* @access	private
-	* @param	string	$attr	attribute to check
-	* @return	string
+	* @param	bool
+	* @return	array
+	* @since	1.3.2
 	*/
-	function _sql_where_prefix($attr = 'variable_name')
+	function _get_variable_groups($flat = TRUE)
 	{
-		global $DB, $SESS;
+		global $DB, $PREFS;
 
-		// init return value
-		$r = '';
+		$sql_site_id = $DB->escape_str($PREFS->ini('site_id'));
 
-		// Only add prefix-where if there is a prefix
-		if ($this->settings['prefix'] != '')
-		{
-			$sql_attr = $DB->escape_str($attr);
-			$sql_prefix = $DB->escape_str($this->settings['prefix']);
-			$sql_prefix_length = strlen($this->settings['prefix']);
-			$sql_operator = $this->settings['with_prefixed'] == 'show' ? '=' : '!=';
+		$sql = "SELECT group_id, group_label, group_notes
+				FROM exp_low_variable_groups
+				WHERE site_id = '{$sql_site_id}'
+				ORDER BY group_order ASC, group_label ASC";
+		$query = $DB->query($sql);
 
-			$r = "AND SUBSTRING({$sql_attr}, 1, {$sql_prefix_length}) {$sql_operator} '{$sql_prefix}'";
-		}
-
-		return $r;
+		return $flat ? Low_variables_ext::flatten_results($query->result, 'group_label', 'group_id') : $query->result;
 	}
 
 	// --------------------------------------------------------------------
@@ -1784,23 +2047,43 @@ EOH;
 		$query = $DB->query("SELECT variable_id FROM exp_global_variables");
 
 		/** -------------------------------------
-		/**  Loop thru results
+		/**  Get ids in array
 		/** -------------------------------------*/
 
-		foreach ($query->result AS $row)
-		{
-			$ids[] = $row['variable_id'];
-		}
+		$ee_ids = Low_variables_ext::flatten_results($query->result, 'variable_id');
 
 		/** -------------------------------------
 		/**  Delete non-existing rows in exp_low_variables
 		/** -------------------------------------*/
 
-		if (!empty($ids))
+		if ( ! empty($ee_ids))
 		{
-			$DB->query("DELETE FROM exp_low_variables WHERE variable_id NOT IN (".implode(',', $ids).")");	
-		}
+			$DB->query("DELETE FROM exp_low_variables WHERE variable_id NOT IN (".implode(',', $ee_ids).")");	
 
+			/** -------------------------------------
+			/**  Get 'empty' references in exp_low_variables table
+			/** -------------------------------------*/
+
+			$query = $DB->query("SELECT variable_id FROM exp_low_variables");
+
+			/** -------------------------------------
+			/**  Get ids in array
+			/** -------------------------------------*/
+
+			$low_ids = Low_variables_ext::flatten_results($query->result, 'variable_id');
+
+			/** -------------------------------------
+			/**  Get EE ids that are not present in Low
+			/** -------------------------------------*/
+
+			if ($missing_ids = array_diff($ee_ids, $low_ids))
+			{
+				foreach ($missing_ids AS $var_id)
+				{
+					$DB->query("INSERT INTO exp_low_variables (variable_id, variable_type) VALUES ('{$var_id}', '".LOW_VAR_DEFAULT_TYPE."')");
+				}
+			}
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -1881,7 +2164,7 @@ EOH;
 		/**  Loop through assets
 		/** -------------------------------------*/
 
-		$asset_url = $PREFS->ini('theme_folder_url') . 'low_variables/';
+		$asset_url = $PREFS->ini('theme_folder_url') . 'third_party/low_variables/';
 
 		foreach ($assets AS $file)
 		{
@@ -1918,19 +2201,19 @@ EOH;
 	*/
 	function _upgrade()
 	{
-		global $DB;
+		global $DB, $SESS;
 
 		/** -------------------------------------
 		/**  Check version in DB
 		/** -------------------------------------*/
 
-		$query = $DB->query("SELECT module_version FROM exp_modules WHERE module_name = '".$DB->escape_str($this->module_name)."' LIMIT 1");
+		$query = $DB->query("SELECT module_version FROM exp_modules WHERE module_name = '".LOW_VAR_CLASS_NAME."' LIMIT 1");
 
 		/** -------------------------------------
 		/**  Same version? A-okay, daddy-o!
 		/** -------------------------------------*/
 
-		if (version_compare($query->row['module_version'], $this->version) === 0)
+		if (version_compare($query->row['module_version'], LOW_VAR_VERSION) === 0)
 		{
 			return;
 		}
@@ -1945,10 +2228,106 @@ EOH;
 		}
 
 		/** -------------------------------------
+		/**  Upgrade to 1.3.2
+		/** -------------------------------------*/
+
+		if (version_compare($query->row['module_version'], '1.3.2', '<'))
+		{
+			// Add group_id foreign key in table
+			$DB->query("ALTER TABLE `exp_low_variables` ADD `group_id` INT(6) UNSIGNED NOT NULL AFTER `variable_id`");
+			$this->_create_groups_table();
+
+			// Pre-populate groups, only if settings are found
+			if (isset($SESS->cache['low']['variables']['settings']))
+			{
+				// Easy access for settings
+				$settings = $SESS->cache['low']['variables']['settings'];
+
+				// Do not pre-populate groups if group settings was not Y
+				if (isset($settings['group']) && $settings['group'] != 'y') return;
+
+				// Initiate groups array
+				$groups = array();
+
+				// Get all variables that have a low variables reference
+				$sql = "SELECT ee.variable_id AS var_id, ee.variable_name AS var_name, ee.site_id
+						FROM exp_global_variables AS ee, exp_low_variables AS low
+						WHERE ee.variable_id = low.variable_id";
+				$query = $DB->query($sql);
+
+				// Loop through each variable, see if group applies
+				foreach ($query->result AS $row)
+				{
+					// strip off prefix
+					if ($settings['prefix'])
+					{
+						$row['var_name'] = preg_replace('#^'.preg_quote($settings['prefix']).'_#', '', $row['var_name']);
+					}
+
+					// Get faux group name
+					$tmp = explode('_', $row['var_name'], 2);
+					$group = $tmp[0];
+					unset($tmp);
+
+					// Create new group if it does not exist
+					if ( ! array_key_exists($group, $groups))
+					{
+						$DB->query($DB->insert_string('exp_low_variable_groups', array(
+							'group_label' => ucfirst($group),
+							'site_id' => $row['site_id']
+						)));
+						$groups[$group] = $DB->insert_id;
+					}
+
+					// Update Low Variable
+					$DB->query($DB->update_string('exp_low_variables', array(
+						'group_id' => $groups[$group]
+					), "variable_id = '{$row['var_id']}'"));
+				}
+			}
+		} // End Upgrade to 1.3.2
+
+		/** -------------------------------------
+		/**  Upgrade to 1.3.4
+		/** -------------------------------------*/
+
+		if (version_compare($query->row['module_version'], '1.3.4', '<'))
+		{
+			// Add group_id foreign key in table
+			$DB->query("ALTER TABLE `exp_low_variables` ADD `is_hidden` CHAR(1) NOT NULL DEFAULT 'n'");
+
+			// Set new attribute, only if settings are found
+			if (isset($SESS->cache['low']['variables']['settings']))
+			{
+				// Easy access for settings
+				$settings = $SESS->cache['low']['variables']['settings'];
+
+				// Only update variables if prefix was filled in
+				if ($prefix_length = strlen(@$settings['prefix']))
+				{
+					$sql = "SELECT variable_id FROM `exp_global_variables` WHERE LEFT(variable_name, {$prefix_length}) = '".$DB->escape_str($settings['prefix'])."'";
+					$query = $DB->query($sql);
+					if ($ids = Low_variables_ext::flatten_results($query->result, 'variable_id'))
+					{
+						// Hide wich vars
+						$sql_in = $settings['with_prefixed'] == 'show' ? 'NOT IN' : 'IN';
+
+						// Execute query
+						$DB->query("UPDATE `exp_low_variables` SET is_hidden = 'y' WHERE variable_id {$sql_in} (".implode(',', $ids).")");
+					}
+				}
+
+				// Update settings
+				unset($settings['prefix'], $settings['with_prefixed'], $settings['ignore_prefixes']);
+				$DB->query("UPDATE `exp_extensions` SET settings = '".$DB->escape_str(serialize($settings))."' WHERE class = 'Low_variables_ext'");
+			}
+		}
+
+		/** -------------------------------------
 		/**  Update version number in DB
 		/** -------------------------------------*/
 
-		$DB->query("UPDATE exp_modules SET module_version = '".$DB->escape_str($this->version)."' WHERE module_name = '".$DB->escape_str($this->module_name)."'");
+		$DB->query("UPDATE exp_modules SET module_version = '".LOW_VAR_VERSION."' WHERE module_name = '".LOW_VAR_CLASS_NAME."'");
 
 	}
 
@@ -1970,17 +2349,21 @@ EOH;
 
 		$sql[] = "CREATE TABLE IF NOT EXISTS `exp_low_variables` (
 					`variable_id` int(6) unsigned NOT NULL,
+					`group_id` int(6) unsigned NOT NULL,
 					`variable_label` varchar(100) NOT NULL,
 					`variable_notes` text NOT NULL,
 					`variable_type` varchar(50) NOT NULL,
 					`variable_settings` text NOT NULL,
 					`variable_order` int(4) unsigned NOT NULL,
 					`early_parsing` char(1) default 'n' NOT NULL,
+					`is_hidden` char(1) default 'n' NOT NULL,
 					PRIMARY KEY (`variable_id`))";
 
+		$this->_create_groups_table();
+
 		$sql[] = $DB->insert_string('exp_modules', array(
-					'module_name'		=> $this->module_name,
-					'module_version'	=> $this->version,
+					'module_name'		=> LOW_VAR_CLASS_NAME,
+					'module_version'	=> LOW_VAR_VERSION,
 					'has_cp_backend'	=> 'y'));
 
 		/** -------------------------------------
@@ -2011,6 +2394,24 @@ EOH;
 	// --------------------------------------------------------------------
 
 	/**
+	* Create groups table
+	*/
+	private function _create_groups_table()
+	{
+		global $DB;
+
+		$DB->query("CREATE TABLE IF NOT EXISTS `exp_low_variable_groups` (
+					`group_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+					`site_id` int(6) unsigned NOT NULL,
+					`group_label` varchar(100) NOT NULL,
+					`group_notes` text NOT NULL,
+					`group_order` int(4) unsigned NOT NULL,
+					PRIMARY KEY (`group_id`))");
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	* Module Uninstallation
 	*
 	* @param	bool	$disable_ext
@@ -2025,7 +2426,8 @@ EOH;
 		/** -------------------------------------*/
 
 		$sql[] = "DROP TABLE IF EXISTS `exp_low_variables`";
-		$sql[] = "DELETE FROM exp_modules WHERE module_name = '".$DB->escape_str($this->module_name)."'";
+		$sql[] = "DROP TABLE IF EXISTS `exp_low_variable_groups`";
+		$sql[] = "DELETE FROM exp_modules WHERE module_name = '".LOW_VAR_CLASS_NAME."'";
 
 		/** -------------------------------------
 		/**  Execute queries
