@@ -1,15 +1,19 @@
+(function($){
+	$.fn.clearDefault = function(){
+		return this.each(function(){
+			var default_value = $(this).val();
+			$(this).focus(function(){
+				if ($(this).val() == default_value) $(this).val("");
+			});
+			$(this).blur(function(){
+				if ($(this).val() == "") $(this).val(default_value);
+			});
+		});
+	};
+})(jQuery);
+
 $(document).ready(function(){
+
+    $("input[name=cm-bxdii-bxdii]").clearDefault(); // Hide value of newsletter input on focus
     
-    nav_access();
-        
-}); // end document.ready
-
-
-
-/* Accessibility navigation enhancements
---------------------------------------------------------------------------------- */
-function nav_access(){
-    $('ul#nav_access li a')
-        .focus(function(){ $(this).addClass('focus'); })
-        .blur(function(){ $(this).removeClass('focus'); });
-}
+});

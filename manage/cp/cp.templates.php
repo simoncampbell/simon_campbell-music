@@ -1860,6 +1860,15 @@ function showHideTemplate(htmlObj)
 												 )
 										 )
 						);
+				// BEGIN ERSKINE HACK -- auto create template file.
+    			$the_id = $DB->insert_id;
+    			$data = $DB->query("SELECT *, exp_template_groups.group_name as template_group 
+    								FROM exp_templates 
+    								LEFT JOIN exp_template_groups ON exp_templates.group_id = exp_template_groups.group_id
+    								WHERE template_id = '".$DB->escape_str($the_id)."'");        
+    			$data->row['template_data'] = '';					
+    			$this->update_template_file( $data->row );
+    			// END ERSKINE HACK  -- auto create template file.
             }
             else
             {				
@@ -2427,6 +2436,15 @@ function showHideTemplate(htmlObj)
 						 );
         
         	$DB->query($DB->insert_string('exp_templates', $data));
+        	// BEGIN ERSKINE HACK -- auto create template file.
+			$the_id = $DB->insert_id;
+			$data = $DB->query("SELECT *, exp_template_groups.group_name as template_group 
+								FROM exp_templates 
+								LEFT JOIN exp_template_groups ON exp_templates.group_id = exp_template_groups.group_id
+								WHERE template_id = '".$DB->escape_str($the_id)."'");        
+			$data->row['template_data'] = '';					
+			$this->update_template_file( $data->row );
+			// END ERSKINE HACK  -- auto create template file.
         }
         
 		$append = ($IN->GBL('tgpref', 'GP')) ? AMP.'tgpref='.$IN->GBL('tgpref', 'GP') : '';
