@@ -624,6 +624,21 @@ div#footer p.credit {
             background: rgba(255, 255, 255, 0.25);
             font-weight: bold;
         }
+        
+        /* GALLERY */
+        ul#navigation_gallery {
+            list-style: none;
+        }
+        ul#navigation_gallery,
+        ul#navigation_gallery li {
+            float: left;
+        }
+        ul#navigation_gallery li {
+            display: inline;
+        }
+        ul#navigation_gallery a {
+            display: block;
+        }
     
     /* CONTENT SEC */
     div#content_sec h2 {
