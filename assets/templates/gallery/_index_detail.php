@@ -22,7 +22,7 @@
             <a href="#" class="gallery_skip prev">Previous image</a>
             <a href="#" class="gallery_skip next">Next image</a>
         </div><!-- // #photo_active -->
-        <ul id="navigation_gallery">
+        <ul id="gallery_grid">
             <li>
                 <a href="#">
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
@@ -53,7 +53,7 @@
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
-        </ul><!-- // #navigation_gallery -->
+        </ul><!-- // #gallery_grid -->
         
     </div> <!-- // #content_pri -->
     
