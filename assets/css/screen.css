@@ -581,14 +581,19 @@ div#footer p.credit {
             float: left;
         }
         div#posts div.post ul.post_meta li {
+            background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
             color: rgb(255, 255, 255);
             display: inline;
             font-size: 10px;
-            margin: 0 5px;
+            padding: 0 8px 0 5px;
             text-transform: uppercase;
         }
         div#posts div.post ul.post_meta li:first-child {
-            margin-left: 0;
+            padding-left: 0;
+        }
+        div#posts div.post ul.post_meta li:last-child {
+            background: none;
+            padding-right: 0;
         }
         div#posts div.post ul.post_meta time {
             font-weight: bold;
