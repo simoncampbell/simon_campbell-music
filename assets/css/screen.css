@@ -418,24 +418,49 @@ ul#navigation_pri li {
     float: left;
     font-family: 'TradeGothicLTStdBold';
     font-size: 18px;
+    letter-spacing: 1px;
     line-height: 1;
     text-transform: uppercase;
 }
 ul#navigation_pri li:first-child {
     margin-left: 15px;
 }
-ul#navigation_pri li:last-child {
+/*ul#navigation_pri li:last-child {
     margin-right: 15px;
-}
+}*/
 ul#navigation_pri a {
+    background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
     display: block;
-    padding: 15px 0;
+    padding: 12px 11px 12px 8px;
     text-decoration: none;
+}
+ul#navigation_pri li:first-child a {
+    padding-left: 0;
+}
+ul#navigation_pri li:nth-of-type(7) a {
+    background: none;
 }
 ul#navigation_pri a:hover,
 ul#navigation_pri li.cur a {
     color: rgb(255, 255, 255);
+}
+ul#navigation_pri li.account {
+    float: right;
+    margin-right: 15px;
+}
+ul#navigation_pri li.account li {
+    font-family: 'TradeGothicLTStdCondensedNo18';
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 1;
+}
+ul#navigation_pri li.account li a {
+    background-image: url(../images/site/nav/navigation_pri/bullet_light.png);
+}
+ul#navigation_pri li.account li:last-child a {
+    background-image: none;
+    padding-right: 0;
 }
 
 /* @end */
