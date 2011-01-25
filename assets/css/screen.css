@@ -165,8 +165,8 @@ sub {
 
 }
 small {
+    font-family: 'TradeGothicLTStdBold';
     font-size: 14px;
-    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -299,6 +299,7 @@ h1 {
 
 }
 h2 { 
+    font-family: 'TradeGothicLTStdBold';
     font-size: 24px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -416,26 +417,51 @@ ul#navigation_pri {
 ul#navigation_pri li {
     display: inline;
     float: left;
+    font-family: 'TradeGothicLTStdBold';
     font-size: 18px;
-    font-weight: bold;
+    letter-spacing: 1px;
     line-height: 1;
     text-transform: uppercase;
 }
 ul#navigation_pri li:first-child {
     margin-left: 15px;
 }
-ul#navigation_pri li:last-child {
+/*ul#navigation_pri li:last-child {
     margin-right: 15px;
-}
+}*/
 ul#navigation_pri a {
+    background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
     display: block;
-    padding: 15px 0;
+    padding: 12px 11px 12px 8px;
     text-decoration: none;
+}
+ul#navigation_pri li:first-child a {
+    padding-left: 0;
+}
+ul#navigation_pri li:nth-of-type(7) a {
+    background: none;
 }
 ul#navigation_pri a:hover,
 ul#navigation_pri li.cur a {
     color: rgb(255, 255, 255);
+}
+ul#navigation_pri li.account {
+    float: right;
+    margin-right: 15px;
+}
+ul#navigation_pri li.account li {
+    font-family: 'TradeGothicLTStdCondensedNo18';
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 1;
+}
+ul#navigation_pri li.account li a {
+    background-image: url(../images/site/nav/navigation_pri/bullet_light.png);
+}
+ul#navigation_pri li.account li:last-child a {
+    background-image: none;
+    padding-right: 0;
 }
 
 /* @end */
@@ -498,6 +524,10 @@ div#footer p.credit {
             /* NOTE: Not sure how important it is that this is the same height as the aside promo box */
             min-height: 175px;
         }
+        div#intro h2 {
+            font-size: 30px;
+            margin-top: 6px;
+        }
         div#intro img {
             background: rgb(50, 50, 50);
             float: left;
@@ -510,12 +540,8 @@ div#footer p.credit {
         div#intro a:hover img {
             background: rgb(60, 60, 60);
         }
-        /* NOTE: Temporary styling to fix small formatting while I dont have the correct fonts */
-        div#intro small {
-            font-size: 12px;
-        }
         div#intro #audio_player {
-            margin-top: 12px;
+            margin-top: 8px;
         }
         
         div#intro,
@@ -544,7 +570,7 @@ div#footer p.credit {
         }
         div#posts div.post p.post_date {
             color: rgb(255, 255, 255);
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
