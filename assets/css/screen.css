@@ -515,7 +515,7 @@ div#footer p.credit {
     }
     #content_pri img.img_right {
         float: right;
-        margin: 10px 0 0 20px;
+        margin: 5px 0 0 20px;
     }
     
         /* CONTENT PRI: INTRO */
@@ -555,27 +555,49 @@ div#footer p.credit {
         
         /* POSTS */
         div#posts {
+            float: left;
             padding-bottom: 0;
         }
         div#posts div.post {
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            float: left;
             margin-bottom: 20px;
-            padding-bottom: 10px;
+            padding-bottom: 20px;
         }
         div#posts div.post:last-child {
             border: none;
+            padding-bottom: 0;
         }
         div#posts div.post h2 {
             margin-bottom: 8px;
         }
-        div#posts div.post p.post_date {
-            color: rgb(255, 255, 255);
-            font-size: 10px;
-            text-transform: uppercase;
+        div#posts div.post ul.post_meta {
+            list-style: none;
             margin-bottom: 10px;
+            width: 100%;
         }
-        div#posts div.post p.post_date sup {
-            font-size: 8px;
+        div#posts div.post ul.post_meta,
+        div#posts div.post ul.post_meta li {
+            float: left;
+        }
+        div#posts div.post ul.post_meta li {
+            color: rgb(255, 255, 255);
+            display: inline;
+            font-size: 10px;
+            margin: 0 5px;
+            text-transform: uppercase;
+        }
+        div#posts div.post ul.post_meta li:first-child {
+            margin-left: 0;
+        }
+        div#posts div.post ul.post_meta time {
+            font-weight: bold;
+        }
+        div#posts div.post ul.post_meta a {
+            display: block;
+        }
+        div#posts div.post ul.post_meta a:hover {
+            text-decoration: none;
         }
     
     /* CONTENT SEC */
