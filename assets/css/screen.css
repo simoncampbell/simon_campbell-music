@@ -88,6 +88,16 @@ p.meta {
     margin-bottom:1em;
 }
 
+p.more {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-align: right;
+}
+p.more a:hover {
+    text-decoration: none;
+}
+
 p,
 ul,
 dl,
@@ -675,15 +685,6 @@ div#footer p.credit {
     div#content_sec p {
         color: rgb(255, 255, 255);
     }
-    div#content_sec p.more {
-        font-size: 12px;
-        font-weight: bold;
-        margin-bottom: 0;
-        text-align: right;
-    }
-    div#content_sec p.more a:hover {
-        text-decoration: none;
-    }
     
     /* SIDEBAR WIDGETS */
     #content_sec .widget {
@@ -723,7 +724,7 @@ div#footer p.credit {
         }
     
     /* WIDGET: Promo Block */
-    #promo_block {
+    #promo_block.widget {
         padding: 0;
         position: relative;
         width: 300px;
