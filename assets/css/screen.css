@@ -501,6 +501,14 @@ div#footer p.credit {
 /* @group 9.GLOBAL ELEMENTS
 ---------------------------------------------------------------------- */
     
+    .widget {
+        background: rgba(255, 255, 255, 0.025);
+        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        margin-bottom: 40px;
+        padding: 15px;
+    }
+    
     /* CONTENT PRI */
     #content_pri img,
     #content_pri iframe {
@@ -514,7 +522,6 @@ div#footer p.credit {
     
         /* CONTENT PRI: INTRO */
         div#intro {
-            margin-bottom: 40px;
             /* NOTE: Not sure how important it is that this is the same height as the aside promo box */
             min-height: 175px;
         }
@@ -536,15 +543,6 @@ div#footer p.credit {
         }
         div#intro #audio_player {
             margin-top: 8px;
-        }
-        
-        div#intro,
-        div#posts {
-            background: rgba(255, 255, 255, 0.025);
-            border-top: 1px dashed rgba(255, 255, 255, 0.3);
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-            margin-bottom: 40px;
-            padding: 15px;
         }
         
         /* POSTS */
@@ -660,13 +658,8 @@ div#footer p.credit {
     }
     
     /* SIDEBAR WIDGETS */
-    .widget {
-        background: rgba(255, 255, 255, 0.025);
-        border-top: 1px dashed rgba(255, 255, 255, 0.3);
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    #content_sec .widget {
         float: left;
-        margin-bottom: 40px;
-        padding: 15px;
         width: 270px;
     }
     
