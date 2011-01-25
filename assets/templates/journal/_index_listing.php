@@ -16,7 +16,7 @@
     
     <div id="content_pri">
         
-        <div id="posts" class="widget">
+        <div id="posts">
             
             <div class="post">
                 <h2><a href="#">Album launch party on March 26</a></h2>
