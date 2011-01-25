@@ -396,9 +396,13 @@ div#content_sec {
 div#header {
     margin: 40px 10px 30px;
 }
-h1#branding {
+h1#branding,
+p#branding {
     margin: 0 auto;
     width: 907px;
+}
+p#branding a img {
+    border: none;
 }
 
 /* @end */
@@ -412,7 +416,7 @@ ul#navigation_pri {
     border-top: 1px dashed rgba(255, 255, 255, 0.3);
     border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
     list-style: none;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 ul#navigation_pri li {
     display: inline;
@@ -571,6 +575,7 @@ div#footer p.credit {
         div#posts div.post h2 {
             margin-bottom: 8px;
         }
+        
         div#posts div.post ul.post_meta {
             list-style: none;
             margin-bottom: 10px;
@@ -603,6 +608,31 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta a:hover {
             text-decoration: none;
+        }
+        
+        div#posts p#pagination {
+            color: rgb(255, 255, 255);
+            font-size: 11px;
+            float: left;
+            margin-bottom: 16px;
+            margin-top: -4px;
+        }
+        div#posts p#pagination a:first-child {
+            margin-left: 8px;
+        }
+        div#posts p#pagination a {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgb(212, 212, 212);
+            font-size: 12px;
+            font-weight: normal;
+            padding: 4px 8px;
+            height: 30px;
+            text-decoration: none;
+        }
+        div#posts p#pagination a:hover,
+        div#posts p#pagination a.cur {
+            background: rgba(255, 255, 255, 0.25);
+            font-weight: bold;
         }
     
     /* CONTENT SEC */
