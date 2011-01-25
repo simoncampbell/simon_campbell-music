@@ -629,8 +629,10 @@ div#footer p.credit {
         background: rgba(255, 255, 255, 0.025);
         border-top: 1px dashed rgba(255, 255, 255, 0.3);
         border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        float: left;
         margin-bottom: 40px;
         padding: 15px;
+        width: 270px;
     }
     
         /* SIDEBAR WIDGETS: Item Listings */
@@ -668,6 +670,7 @@ div#footer p.credit {
     #promo_block {
         padding: 0;
         position: relative;
+        width: 300px;
     }
     #promo_block small {
         bottom: 0;
@@ -709,6 +712,21 @@ div#footer p.credit {
         margin-left: 15px;
         padding: 4px 8px;
         text-decoration: none;
+    }
+    
+    /* WIDGET: Payments */
+    #payments_block ul {
+        list-style: none;
+        margin: 8px 0 6px 0;
+        width: 100%;
+    }
+    #payments_block ul,
+    #payments_block ul li {
+        float: left;
+    }
+    #payments_block ul li {
+        display: inline;
+        margin-right: 10px;
     }
     
     /* WIDGET: Newsletter Signup */

@@ -76,7 +76,7 @@
         </p>
     </div> <!-- // #store_block -->
     
-    <div id="payments" class="widget">
+    <div id="payments_block" class="widget">
         <h2>Payments</h2>
         <p>
             The Simon Campbell Music store currently accepts the following payment options:
@@ -85,7 +85,7 @@
             <li><img src="/assets/images/site/icons/visa.jpg" width="28px" height="18px" alt="Visa"></li>
             <li><img src="/assets/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
         </ul>
-    </div> <!-- // #newsletter_signup -->
+    </div> <!-- // #payments_block -->
     
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>
