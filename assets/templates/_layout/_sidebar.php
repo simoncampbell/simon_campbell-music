@@ -76,6 +76,17 @@
         </p>
     </div> <!-- // #store_block -->
     
+    <div id="payments" class="widget">
+        <h2>Payments</h2>
+        <p>
+            The Simon Campbell Music store currently accepts the following payment options:
+        </p>
+        <ul>
+            <li><img src="/assets/images/site/icons/visa.jpg" width="28px" height="18px" alt="Visa"></li>
+            <li><img src="/assets/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
+        </ul>
+    </div> <!-- // #newsletter_signup -->
+    
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>
         <p>
