@@ -335,13 +335,6 @@ a:focus {
     color:rgb(232, 232, 232);
 }
 
-a img {
-    border: 1px solid rgb(75, 75, 75);
-}
-a:hover img {
-    border: 1px solid rgb(95, 95, 95);
-}
-
 h1 a,
 h2 a {
     text-decoration: none;
@@ -400,9 +393,6 @@ h1#branding,
 p#branding {
     margin: 0 auto;
     width: 907px;
-}
-p#branding a img {
-    border: none;
 }
 
 /* @end */
@@ -714,9 +704,6 @@ div#footer p.credit {
     #promo_block a:hover {
         text-decoration: underline;
     }
-    #promo_block a img {
-        border: none;
-    }
     
     /* WIDGET: Tour Dates */
     #tour_dates {
@@ -742,6 +729,12 @@ div#footer p.credit {
         margin-left: 15px;
         padding: 4px 8px;
         text-decoration: none;
+    }
+    #store_block a img {
+        border: 1px solid rgb(75, 75, 75);
+    }
+    #store_block a:hover img {
+        border: 1px solid rgb(95, 95, 95);
     }
     
     /* WIDGET: Payments */
