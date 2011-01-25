@@ -416,8 +416,8 @@ ul#navigation_pri {
 ul#navigation_pri li {
     display: inline;
     float: left;
+    font-family: 'TradeGothicLTStdBold';
     font-size: 18px;
-    font-weight: bold;
     line-height: 1;
     text-transform: uppercase;
 }

@@ -34,6 +34,8 @@
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
+    <!-- TEMP WEBFONT STYLESHEET -->
+    <link href="{pv_assets_url}/tools/fonts/tradegothic/stylesheet.css" rel="stylesheet" media="screen" />
     
     <!--[if lte IE 7]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
