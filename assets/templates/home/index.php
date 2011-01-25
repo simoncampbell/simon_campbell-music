@@ -51,7 +51,7 @@
             <div class="post">
                 <h2><a href="#">Album launch party on March 26</a></h2>
                 <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
-                <p class="post_date">Posted: <time datetime="" pubdate>Monday 10<sup>th</sup> January, 2011</time></p>
+                <p class="post_date"><time datetime="" pubdate>10-01-12</time></p>
                 <p>
                     <strong>The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel.</strong> Vivamus id mollis quam. Morbi ac iklisese commodo nulla.
                 </p>
@@ -62,7 +62,7 @@
         
             <div class="post">
                 <h2><a href="#">My thoughts on fame &amp; fortune</a></h2>
-                <p class="post_date">Posted: <time datetime="" pubdate>Tuesday 2<sup>nd</sup> January, 2011</time></p>
+                <p class="post_date"><time datetime="" pubdate>10-01-12</time></p>
                 <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
             </div> <!-- // .post -->
             
