@@ -16,44 +16,44 @@
     
     <div id="content_pri">
         
-        <div id="photo_active">
-            <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
-            <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+        <p id="gallery_nav">
             <a href="#" class="gallery_skip prev">Previous image</a>
             <a href="#" class="gallery_skip next">Next image</a>
-        </div><!-- // #photo_active -->
-        <ul id="gallery_grid">
-            <li>
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li class="cur">
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-        </ul><!-- // #gallery_grid -->
+        </p>
+        
+        <div id="gallery_photos">
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+        </div><!-- // #gallery_photos -->
         
         <p class="more"><a href="#">See all galleries on Flickr</a></p>
         
