@@ -106,7 +106,7 @@ $conf['ft_url'] = $conf['cp_url']."/extensions/fieldtypes/";
 /* Image Resizer Settings
 --------------------------------------------------------------------*/
 $conf['ed_server_path'] = $conf['server_path'];
-$conf['ed_cache_path'] = $conf['server_path'].'/assets/images/resizer_cache/';
+$conf['ed_cache_path'] = $conf['server_path'].'/uploads/images/resizer_cache/';
 
 
 /* User Module settings
