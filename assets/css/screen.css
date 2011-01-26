@@ -74,14 +74,15 @@ body {
 ---------------------------------------------------------------------- */
 
 img.album {
-    padding:10px;
+    padding: 10px;
     background:rgba(255, 255, 255, 0.1);
     margin:0 0 1.8em 0;
 }
 
 p {
+    color: rgb(255, 255, 255);
     font-size: 13px;
-    margin-bottom:0.5em;
+    margin-bottom:0.8em;
 }
 
 p.meta {
@@ -351,8 +352,9 @@ h2 {
     text-transform: uppercase;
 }
 
-h3 { 
-
+h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
 }
 h4 { 
 
@@ -556,7 +558,8 @@ div#footer p.credit {
         padding: 15px;
         width: 590px;
     }
-    body.home div#content_pri {
+    body.home div#content_pri,
+    body.bio div#content_pri {
         background: none;
         border: none;
         margin-bottom: 0;
@@ -565,6 +568,10 @@ div#footer p.credit {
     }
     
     /* CONTENT PRI */
+    #content_pri h3 {
+        font-family: 'TradeGothicLTStdCondensedNo18';
+        letter-spacing: 1px;
+    }
     #content_pri img,
     #content_pri iframe {
         background: rgba(255, 255, 255,0.1);
@@ -759,7 +766,7 @@ div#footer p.credit {
             display: block;
         }
         
-        /* FORM ASIDE */
+        /* FORM ASIDE - (Make more generic later) */
         div#form_aside {
             float: left;
             margin: 12px 0 0 15px;
@@ -774,6 +781,53 @@ div#footer p.credit {
         }
         div#form_aside address {
             margin-left: 25px;
+        }
+        
+        /* BIO EDITORIAL - (Make more generic later) */
+        body.bio #content_pri h3 {
+            text-transform: uppercase;
+        }
+        
+        body.bio #content_pri div.widget {
+            border-top: none;
+            margin-bottom: 0;
+        }
+        body.bio #content_pri div.widget:first-of-type {
+            border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+        body.bio #content_pri div.widget:nth-of-type(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        body.bio #beginnings {
+            background: url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
+        }
+        body.bio #beginnings p {
+            width: 365px;
+        }
+        body.bio #beginnings p:first-of-type {
+            width: 410px;
+        }
+        body.bio div#beginnings h3 + p:first-letter {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgb(255, 255, 255);
+            display: block;
+            float: left;
+            font-size: 33px;
+            margin: 5px 8px 25px 0;
+            padding: 5px 3px;
+        }
+        body.bio #tribute {
+            background: url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
+        }
+        body.bio #tribute p:first-of-type {
+            width: 340px;
+        }
+        body.bio #tribute p:nth-of-type(2) {
+            width: 335px;
+        }
+        body.bio #tribute p:last-of-type {
+            width: 355px;
         }
     
     /* CONTENT SEC */
