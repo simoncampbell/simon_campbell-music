@@ -17,45 +17,46 @@
     <div id="content_pri">
         
         <div id="posts">
-            
+        {exp:weblog:entries
+            weblog="journal"
+            limit="5"
+            disable="member_data|trackbacks|categories"
+            orderby=""
+            sort=""
+            }    
             <div class="post">
-                <h2><a href="#">Album launch party on March 26</a></h2>
+                <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
                 <ul class="post_meta">
-                    <li><time datetime="" pubdate>10-01-12</time></li>
-                    <li><a href="#">Permalink</a></li>
+                    <li><time datetime="">{entry_date format="{pv_date_journal}"}</time></li>
+                    <li><a href="{pv_site_url}{comment_url_title_auto_path}">Permalink</a></li>
                     <li><a href="#">Share on Twitter</a></li>
                     <li><a href="#">Share on Facebook</a></li>
                 </ul>
-                <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
-                <p>
-                    <strong>The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel.</strong> Vivamus id mollis quam. Morbi ac iklisese commodo nulla.
-                </p>
-                <p>
-                    In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.
-                </p>
-            </div> <!-- // .post -->
-            
-            <div class="post">
-                <h2><a href="#">My thoughts on fame &amp; fortune</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="" pubdate>10-01-12</time></li>
-                    <li><a href="#">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
-                </ul>
+                
+                {cf_journal_image}
+                    {exp:ed_imageresizer 
+                        maxWidth="{ffm_image_position}"
+                        image="{ffm_image_file}" 
+                        alt=""
+                        class="img_right"
+                        }
+                {/cf_journal_image}
+
+                {cf_journal_body}
+                
                 <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
             </div> <!-- // .post -->
+            {paginate}
+			{if "{total_pages}" > "1"}
+			<p id="pagination">
+			    Go to page: 
+				{pagination_links}
+	        </p><!-- // #pagination -->
+			{/if}
+			{/paginate}
+        {/exp:weblog:entries}
             
-            <p id="pagination">
-                Go to page: 
-                <a href="#">&lt;</a>
-                <a class="cur" href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">&gt;</a>
-            </p><!-- // #pagination -->
+
             
         </div><!-- // #posts -->
         
