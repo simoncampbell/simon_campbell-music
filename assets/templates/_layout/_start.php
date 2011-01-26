@@ -34,8 +34,6 @@
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
-    <!-- TEMP WEBFONT STYLESHEET -->
-    <link href="{pv_assets_url}/tools/fonts/tradegothic/stylesheet.css" rel="stylesheet" media="screen" />
     
     <!--[if lte IE 7]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
@@ -50,6 +48,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script src="{pv_assets_url}/js/onload.js"></script>
     
+    <script type="text/javascript" src="http://fast.fonts.com/jsapi/d8bd6128-b18f-4a44-a9cc-7175e6b50fa2.js"></script>
     <script src="{pv_assets_url}/jwplayer/jwplayer.js"></script>
     <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
     

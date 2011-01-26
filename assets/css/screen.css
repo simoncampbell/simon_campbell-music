@@ -176,7 +176,6 @@ sub {
 
 }
 small {
-    font-family: 'TradeGothicLTStdBold';
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -346,7 +345,6 @@ h1 {
 
 }
 h2 { 
-    font-family: 'TradeGothicLTStdBold';
     font-size: 24px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -459,7 +457,6 @@ ul#navigation_pri {
 ul#navigation_pri li {
     display: inline;
     float: left;
-    font-family: 'TradeGothicLTStdBold';
     font-size: 18px;
     letter-spacing: 1px;
     line-height: 1;
@@ -490,7 +487,6 @@ ul#navigation_pri li.account {
     margin-right: 15px;
 }
 ul#navigation_pri li.account li {
-    font-family: 'TradeGothicLTStdCondensedNo18';
     font-size: 18px;
     letter-spacing: 0;
     line-height: 1;
@@ -582,7 +578,6 @@ div#footer p.credit {
     
     /* CONTENT PRI */
     #content_pri h3 {
-        font-family: 'TradeGothicLTStdCondensedNo18';
         letter-spacing: 1px;
     }
     #content_pri img,
@@ -828,7 +823,7 @@ div#footer p.credit {
             float: left;
             font-size: 33px;
             margin: 5px 8px 0 0;
-            padding: 5px 3px;
+            padding: 5px;
         }
         body.bio #tribute {
             background: #202020 url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
