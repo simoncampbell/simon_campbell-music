@@ -657,6 +657,25 @@ div#footer p.credit {
             background: rgba(255, 255, 255,0.12);
             padding: 5px;
         }
+        
+        div#photo_active {
+            position: relative;
+        }
+        div#photo_active p.photo_meta {
+            background: rgba(0, 0, 0, 0.8);
+            font-size: 12px;
+            height: 18px;
+            padding: 8px 12px;
+            position: absolute;
+            width: 556px;
+            right: 5px;
+            top: 351px;
+        }
+        div#photo_active p.photo_meta em {
+            font-style: normal;
+            font-weight: bold;
+        }
+        
         ul#gallery_grid {
             list-style: none;
         }
