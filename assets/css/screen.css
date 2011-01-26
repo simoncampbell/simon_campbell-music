@@ -185,13 +185,26 @@ small {
         overflow:hidden;
         margin:15px 0 0 0;
     }
+    body.contact #content_pri form {
+        border-right: 1px dashed rgba(255, 255, 255, 0.3);
+        float: left;
+        width: 320px;
+    }
+    
     form fieldset {
     }
     form fieldset div {
-
+        margin-bottom: 10px;
     }
     label {
-
+        color: rgb(255, 255, 255);
+        display: block;
+        float: left;
+        font-size: 12px;
+        margin-top: 3px;
+        margin-right: 15px;
+        text-align: right;
+        width: 80px;
     }
     label em {
 
@@ -200,9 +213,11 @@ small {
     textarea {
         
     }
+    input[type="text"],
     input[type="input"],
     input[type="password"],
-    input[type="email"] {
+    input[type="email"],
+    textarea {
         width:213px;
         height:10px;
         border:0;
@@ -215,19 +230,36 @@ small {
         float:left;
         outline:none;
     }
+    input[type="text"],
+    textarea {
+        float: none;
+        height: auto;
+        padding: 5px 8px;
+        width: 195px;
+    }
     input[type="input"]:focus,
     input[type="input"]:hover,
     input[type="password"]:focus,
     input[type="password"]:hover,
     input[type="email"]:focus,
-    input[type="email"]:hover {
+    input[type="email"]:hover,
+    input[type="text"]:focus,
+    input[type="text"]:hover,
+    textarea:focus,
+    textarea:hover {
         padding:7px;
         border:1px dashed rgb(0, 0, 0);
+    }
+    input[type="text"]:focus,
+    input[type="text"]:hover,
+    textarea:focus,
+    textarea:hover {
+        padding: 4px 7px;
     }
     
     
     textarea {
-    
+        height: 95px;
     }
     
     /* SUBMIT ---------- */
@@ -247,12 +279,16 @@ small {
             letter-spacing: 0;
             margin: 0;
             min-height:26px;
-            padding:6px 10px;
+            padding: 4px 10px;
             text-transform: none;
             
             -moz-border-radius:5px;
             -webkit-border-radius:5px;
             border-radius:5px;
+        }
+        body.contact #content_pri input.submit {
+            float: right;
+            margin-right: 15px;
         }
         input.submit:hover,
         a.button:hover {
@@ -721,6 +757,23 @@ div#footer p.credit {
         }
         ul#gallery_grid a {
             display: block;
+        }
+        
+        /* FORM ASIDE */
+        div#form_aside {
+            float: left;
+            margin: 12px 0 0 15px;
+            width: 254px;
+        }
+        div#form_aside p {
+            font-size: 12px;
+        }
+        div#form_aside p,
+        div#form_aside address {
+            color: rgb(255, 255, 255);
+        }
+        div#form_aside address {
+            margin-left: 25px;
         }
     
     /* CONTENT SEC */

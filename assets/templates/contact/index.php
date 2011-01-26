@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class=""
+    body_class="contact"
     body_id=""
     section="contact"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -18,33 +18,30 @@
         
         <form id="contact_form" action="" autocomplete="">
             <fieldset>
-                <ol>
-                    <li>
-                        <label for="name">Text Field <em>*</em></label><br>
-                        <input id="name" name="name" type="text">
-                    </li>
-                    <li>
-                        <label for="email">Email Address <em>*</em></label><br>
-                        <input id="email" name="email" type="text">
-                    </li>
-                    <li>
-                        <label for="message">Message <em>*</em></label><br>
-                        <textarea id="message" name="message"></textarea>
-                        <div>Total characters left: <span id="counter"></span></div>
-                    </li>
-                </ol>
+                <div>
+                    <label for="name">Text Field</label>
+                    <input id="name" name="name" type="text">
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input id="email" name="email" type="text">
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
             </fieldset>
-            <input type="submit" value="Send message">
+            <input class="submit" type="submit" value="Send message">
         </form><!-- // #contact_form -->
         <div id="form_aside">
             <p>
-                Simon would love to hear from you. If you’d like to drop him a line, either use the form on this page or drop him a line at me@simoncampbell.com.
+                <strong>Simon would love to hear from you.</strong> If you’d like to drop him a line, either use the form on this page or drop him a line at <a href="#">me@simoncampbell.com</a>.
             </p>
             <p>If you want to get in touch with Simon’s agent for booking details, contact Suzy:</p>
             <address>
-                Suzy Starlit<br>
+                <strong>Suzy Starlit</strong><br>
                 Starlite Events &amp; Project Management<br>
-                suzy@starlite-events.net<br>
+                <a href="#">suzy@starlite-events.net</a><br>
                 +44 7658 734 456<br>
             </address>
         </div><!-- // #form_aside -->
