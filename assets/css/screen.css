@@ -814,7 +814,7 @@ div#footer p.credit {
             color: rgb(255, 255, 255);
             float: left;
             font-size: 33px;
-            margin: 5px 8px 25px 0;
+            margin: 5px 8px 0 0;
             padding: 5px 3px;
         }
         body.bio #tribute {
