@@ -16,7 +16,7 @@
 
     <div id="content_pri">
         
-        <div id="intro">
+        <div id="intro" class="widget">
             <a href="#"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
             <h2><a href="#">New album: "ThirtySix"</a></h2>
             <p>
@@ -46,7 +46,7 @@
             </script>
         </div> <!-- // #intro -->
         
-        <div id="posts">
+        <div id="posts" class="widget">
             
             <div class="post">
                 <h2><a href="#">Album launch party on March 26</a></h2>
