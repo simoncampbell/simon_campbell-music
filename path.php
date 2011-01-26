@@ -39,9 +39,8 @@ $global_vars['pv_disable_titles']   = 'categories|custom_fields|member_data|pagi
 
 
 /* DATE FORMATTING */
-$global_vars['pv_date_short'] 		= '%F %d, %Y';
-$global_vars['pv_date_time'] 		= '%g:%i %a';
-$global_vars['pv_date_full'] 		= '%F %d %Y, %g:%i %a';
+$global_vars['pv_date_event'] 		= '%F %d, %Y';
+$global_vars['pv_date_journal'] 	= '%d-%m-%y';
 
 
 /* PAGE TYPES */
