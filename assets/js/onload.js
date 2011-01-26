@@ -25,7 +25,7 @@ $(document).ready(function(){
         next: '.next',
         pager: '#gallery_grid',
         pagerAnchorBuilder: function(idx, slide) {
-            return '<li><a href="#"><img src="' + slide.src + '" width="180" height="180" /></a></li>';
+            return '<li><a href="#"><img src="' + slide.src + '" width="180" height="180"></a></li>';
         }
     });
     
