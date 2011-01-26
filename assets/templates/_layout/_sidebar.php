@@ -1,5 +1,11 @@
 <div id="content_sec">
     
+    <ul id="navigation_sec" class="item_listing">
+        <li><a href="#">Subpage one</a></li>
+        <li><a href="#">Subpage two</a></li>
+        <li><a href="#">Subpage three</a></li>
+    </ul><!-- // .navigation_sec -->
+    
     <div id="promo_block" class="widget">
         <a href="#">
             <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">

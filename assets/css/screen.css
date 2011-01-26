@@ -468,9 +468,6 @@ ul#navigation_pri li {
 ul#navigation_pri li:first-child {
     margin-left: 15px;
 }
-/*ul#navigation_pri li:last-child {
-    margin-right: 15px;
-}*/
 ul#navigation_pri a {
     background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
@@ -504,6 +501,22 @@ ul#navigation_pri li.account li a {
 ul#navigation_pri li.account li:last-child a {
     background-image: none;
     padding-right: 0;
+}
+
+/* Navigation Sec */
+ul#navigation_sec {
+    background: rgba(255, 255, 255, 0.025);
+    margin-bottom: 40px;
+    margin-top: 0;
+}
+ul#navigation_sec li:nth-of-type(even) {
+    background: rgba(255, 255, 255, 0.025);
+}
+ul#navigation_sec li:nth-of-type(odd) {
+    background: none;
+}
+ul#navigation_sec a {
+    font-weight: normal;
 }
 
 /* @end */
