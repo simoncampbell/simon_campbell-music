@@ -647,21 +647,21 @@ div#footer p.credit {
             background: none;
             padding: 0;
         }
-        #content_pri div#photo_active img,
+        #content_pri div.gallery_photo img,
         #content_pri ul#gallery_grid a img {
             background: rgba(255, 255, 255,0.07);
             padding: 5px;
         }
         #content_pri ul#gallery_grid a:hover img,
-        #content_pri ul#gallery_grid li.cur a img {
+        #content_pri ul#gallery_grid li.activeSlide a img {
             background: rgba(255, 255, 255,0.12);
             padding: 5px;
         }
         
-        div#photo_active {
+        div.gallery_photo {
             position: relative;
         }
-        div#photo_active p.photo_meta {
+        div.gallery_photo p.photo_meta {
             background: rgba(0, 0, 0, 0.8);
             font-size: 12px;
             height: 18px;
@@ -671,7 +671,7 @@ div#footer p.credit {
             right: 5px;
             top: 351px;
         }
-        div#photo_active p.photo_meta em {
+        div.gallery_photo p.photo_meta em {
             font-style: normal;
             font-weight: bold;
         }
