@@ -811,7 +811,6 @@ div#footer p.credit {
         body.bio div#beginnings h3 + p:first-letter {
             background: rgba(255, 255, 255, 0.1);
             color: rgb(255, 255, 255);
-            display: block;
             float: left;
             font-size: 33px;
             margin: 5px 8px 25px 0;
