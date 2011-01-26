@@ -16,10 +16,27 @@
     
     <div id="content_pri">
         
-        <a href="#" class="gallery_skip prev">Previous image</a>
-        <a href="#" class="gallery_skip next">Next image</a>
+        <p id="gallery_nav">
+            <a href="#" class="gallery_skip prev">Previous image</a>
+            <a href="#" class="gallery_skip next">Next image</a>
+        </p>
         
         <div id="gallery_photos">
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
+            
+            <div class="gallery_photo">
+                <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
+                <p class="photo_meta"><em>Simon enjoying life on the island</em> &ndash; &copy; 2010 Phil Keen</p>
+            </div><!-- // .gallery_photo -->
             
             <div class="gallery_photo">
                 <img src="/assets/images/site/dev/temp_gallery.gif" width="580" height="380" alt="">
