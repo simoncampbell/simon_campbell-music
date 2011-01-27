@@ -603,7 +603,9 @@ div#footer p.credit {
             background: rgb(50, 50, 50);
             float: left;
             margin: -20px 20px 0 -30px;
+            -moz-transform: rotate(-2deg);
             -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
         }
         div#intro a img {
             border: none;
