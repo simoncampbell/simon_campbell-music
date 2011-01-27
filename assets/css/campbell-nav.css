@@ -30,13 +30,38 @@
     }
     
         /* Sites */
+        div#navigation_network ul li#nn_simon {
+            margin-left: 17px;
+        }
         div#navigation_network ul li#nn_simon a,
         div#navigation_network ul li#nn_music a {
-            /* This image may need to live somewhere universal */
             background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
             padding: 14px 8px 14px 2px;
         }
         div#navigation_network ul li#nn_simon a {
             padding-left: 0;
+        }
+        
+        div#navigation_network ul li#nn_rss {
+            margin-left: 440px;
+        }
+        div#navigation_network ul li#nn_rss a,
+        div#navigation_network ul li#nn_twitter a,
+        div#navigation_network ul li#nn_facebook a {
+            background-position: 0 0;
+            background-repeat: no-repeat;
+            height: 16px;
+            margin-right: 12px;
+            padding: 0 0 0 21px;
+        }
+        div#navigation_network ul li#nn_rss a {
+            background-image: url(../images/site/nav/network/nn_rss.png);
+        }
+        div#navigation_network ul li#nn_twitter a {
+            background-image: url(../images/site/nav/network/nn_twitter.png);
+        }
+        div#navigation_network ul li#nn_facebook a {
+            background-image: url(../images/site/nav/network/nn_facebook.png);
+            margin-right: 0;
         }
         
