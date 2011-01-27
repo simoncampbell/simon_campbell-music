@@ -5,49 +5,38 @@
         background:rgb(0, 0, 0);
         border-bottom:1px solid rgb(59, 59, 59);
     }
+
     div#navigation_network ul {
-        list-style:none;
-        text-align:center;
-        margin-bottom:0 !important;
+        list-style: none;
+        margin: 0 auto;
+        margin-bottom: 0 !important;
+        width: 940px;
     }
     div#navigation_network ul li {
-        display:inline-block;
-        margin:1em 0;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 1;
+        text-transform: uppercase;
     }
-    div#navigation_network ul li a {
-        display:block;
-        height:15px;
-        font-size:0;
-        text-indent:-9999px;
-        background-repeat:no-repeat;
-        border:0;
+    div#navigation_network ul a {
+        color: rgb(107, 107, 107);
+        display: block;
+        padding: 14px 0;
+        text-decoration: none;
+    }
+    div#navigation_network ul a:hover,
+    div#navigation_network ul li.cur a {
+        color: rgb(255, 255, 255);
     }
     
         /* Sites */
-        div#navigation_network ul li#campbell a {
-            width:122px;
-            background-image:url(../images/site/nav/network/simon_campbell.png);
+        div#navigation_network ul li#nn_simon a,
+        div#navigation_network ul li#nn_music a {
+            /* This image may need to live somewhere universal */
+            background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
+            padding: 14px 8px 14px 2px;
         }
-        div#navigation_network ul li#campbell.cur a,
-        div#navigation_network ul li#campbell a:hover,
-        div#navigation_network ul li#campbell a:focus {
-            background-image:url(../images/site/nav/network/simon_campbell_active.png);
+        div#navigation_network ul li#nn_simon a {
+            padding-left: 0;
         }
-        div#navigation_network ul li#music a {
-            width:55px;
-            background-image:url(../images/site/nav/network/music.png);
-        }
-        div#navigation_network ul li#music.cur a,
-        div#navigation_network ul li#music a:hover,
-        div#navigation_network ul li#music a:focus {
-            background-image:url(../images/site/nav/network/music_active.png);
-        }
-        div#navigation_network ul li#blog a {
-            width:38px;
-            background-image:url(../images/site/nav/network/blog.png);
-        }
-        div#navigation_network ul li#blog.cur a,
-        div#navigation_network ul li#blog a:hover,
-        div#navigation_network ul li#blog a:focus {
-            background-image:url(../images/site/nav/network/blog_active.png);
-        }
+        
