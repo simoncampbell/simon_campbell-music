@@ -36,7 +36,7 @@
 ---------------------------------------------------------------------- */
 
 body {
-    font:normal normal normal 0.81em/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;  
+    font:normal normal normal 0.81em/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: rgb(212, 212, 212);
     background:url(../images/site/bgs/bg.jpg) top left repeat rgb(0, 0, 0);
 }
@@ -373,7 +373,6 @@ h6 {
 
 a {
     color:rgb(255, 255, 255);
-    font-weight:bold;
     text-decoration:underline;
 }
 a:hover,
@@ -603,7 +602,9 @@ div#footer p.credit {
             background: rgb(50, 50, 50);
             float: left;
             margin: -20px 20px 0 -30px;
+            -moz-transform: rotate(-2deg);
             -webkit-transform: rotate(-2deg);
+            transform: rotate(-2deg);
         }
         div#intro a img {
             border: none;

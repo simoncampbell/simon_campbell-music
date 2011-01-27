@@ -91,13 +91,14 @@
 
 <div id="navigation_network" class="music">
     <ul>
-        <li id="campbell"><a href="http://simoncampbell.com">Simon Campbell</a></li>
-        <li id="music" class="cur"><a href="http://music.simoncampbell.com">Music</a></li>
-        <li id="blog"><a href="http://blog.simoncampbell.com">Blog</a></li>
-        <li id="twitter"><a href="#">Twitter</a></li>
-        <li id="facebook"><a href="#">Facebook</a></li>
+        <li id="nn_simon"><a href="http://simoncampbell.com">Simon Campbell</a></li>
+        <li id="nn_music" class="cur"><a href="http://music.simoncampbell.com">Music</a></li>
+        <li id="nn_blog"><a href="http://blog.simoncampbell.com">Blog</a></li>
+        <li id="nn_rss"><a href="#">RSS Feed</a></li>
+        <li id="nn_twitter"><a href="#">Twitter</a></li>
+        <li id="nn_facebook"><a href="#">Facebook</a></li>
     </ul>
-</div>
+</div><!-- // #navigation_network -->
 
 <div id="page">
     
