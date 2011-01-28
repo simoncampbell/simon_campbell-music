@@ -598,19 +598,28 @@ div#footer p.credit {
             font-size: 30px;
             margin-top: 6px;
         }
+        div#intro h2 strong,
+        div#intro small strong {
+            font-weight: normal;
+        
+        }
         div#intro img {
             background: rgb(50, 50, 50);
             float: left;
-            margin: -20px 20px 0 -30px;
-            -moz-transform: rotate(-2deg);
-            -webkit-transform: rotate(-2deg);
-            transform: rotate(-2deg);
+            margin: -18px 20px 0 -30px;
+            -moz-transform: rotate(-1.5deg);
+            -webkit-transform: rotate(-1.5deg);
+            transform: rotate(-1.5deg);
         }
         div#intro a img {
             border: none;
         }
         div#intro a:hover img {
             background: rgb(60, 60, 60);
+        }
+        div#intro small {
+            color: rgb(255, 255, 255);
+            font-size: 23px;
         }
         div#intro #audio_player {
             margin-top: 8px;
@@ -648,9 +657,9 @@ div#footer p.credit {
             background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
             color: rgb(255, 255, 255);
             display: inline;
-            font-size: 10px;
+            font-size: 12px;
+            letter-spacing: 1px;
             padding: 0 8px 0 5px;
-            text-transform: uppercase;
         }
         div#posts div.post ul.post_meta li:first-child {
             padding-left: 0;
@@ -658,9 +667,6 @@ div#footer p.credit {
         div#posts div.post ul.post_meta li:last-child {
             background: none;
             padding-right: 0;
-        }
-        div#posts div.post ul.post_meta time {
-            font-weight: bold;
         }
         div#posts div.post ul.post_meta a {
             display: block;
@@ -830,14 +836,8 @@ div#footer p.credit {
             background: #202020 url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
             background: url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
         }
-        body.bio #tribute p:first-of-type {
-            width: 340px;
-        }
-        body.bio #tribute p:nth-of-type(2) {
-            width: 335px;
-        }
-        body.bio #tribute p:last-of-type {
-            width: 355px;
+        body.bio #tribute p {
+            width: 360px;
         }
     
     /* CONTENT SEC */
