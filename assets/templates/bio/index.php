@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="bio"
+    body_class="editorial"
     body_id=""
     section="bio"
     {!-- LG BETTER META OPTIONS BELOW --}
