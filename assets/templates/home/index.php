@@ -18,11 +18,11 @@
         
         <div id="intro" class="widget">
             <a href="#"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="#">New album: "ThirtySix"</a></h2>
+            <h2><a href="#"><strong>"ThirtySix"</strong> The new album</a></h2>
             <p>
                 The debut solo album, ThirtySix, by Simon Campbell will be released on <strong>March 26, 2011</strong>. ThirtySix years in the making, the release will be followed by a UK and mainland European tour.
             </p>
-            <small>Preview the lead single from ThirtySix, "Brother"</small>
+            <small><strong>"Brother"</strong> Lead single preview</small>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
@@ -73,7 +73,7 @@
                     <li><a href="#">Share on Twitter</a></li>
                     <li><a href="#">Share on Facebook</a></li>
                 </ul>
-                <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
+                <!-- <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe> -->
             </div> <!-- // .post -->
             
         </div><!-- // #posts -->

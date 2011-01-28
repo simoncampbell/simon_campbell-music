@@ -598,19 +598,28 @@ div#footer p.credit {
             font-size: 30px;
             margin-top: 6px;
         }
+        div#intro h2 strong,
+        div#intro small strong {
+            font-weight: normal;
+        
+        }
         div#intro img {
             background: rgb(50, 50, 50);
             float: left;
-            margin: -20px 20px 0 -30px;
-            -moz-transform: rotate(-2deg);
-            -webkit-transform: rotate(-2deg);
-            transform: rotate(-2deg);
+            margin: -18px 20px 0 -30px;
+            -moz-transform: rotate(-1.5deg);
+            -webkit-transform: rotate(-1.5deg);
+            transform: rotate(-1.5deg);
         }
         div#intro a img {
             border: none;
         }
         div#intro a:hover img {
             background: rgb(60, 60, 60);
+        }
+        div#intro small {
+            color: rgb(255, 255, 255);
+            font-size: 23px;
         }
         div#intro #audio_player {
             margin-top: 8px;
