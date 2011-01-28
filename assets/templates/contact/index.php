@@ -16,7 +16,12 @@
     
     <div id="content_pri">
         
-        <form id="contact_form" action="" autocomplete="">
+        {exp:freeform:form
+            form:id="contact_form"
+            notify=""
+            return="contact/thanks"
+            template="contact_form"
+        }
             <fieldset>
                 <div>
                     <label for="name">Text Field</label>
@@ -32,7 +37,8 @@
                 </div>
             </fieldset>
             <input class="submit" type="submit" value="Send message">
-        </form><!-- // #contact_form -->
+        {/exp:freeform:form}<!-- // #contact_form -->
+        
         <div id="form_aside">
             <p>
                 <strong>Simon would love to hear from you.</strong> If you’d like to drop him a line, either use the form on this page or drop him a line at <a href="#">me@simoncampbell.com</a>.
