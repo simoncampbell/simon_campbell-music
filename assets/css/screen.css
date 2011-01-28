@@ -703,7 +703,7 @@ div#footer p.credit {
             z-index: 2;
         }
         p#gallery_nav a.gallery_skip {
-            background-image: url(../images/site/icons/gallery_nav.gif);
+            background-image: url(../images/site/icons/gallery_nav.png);
             background-repeat: no-repeat;
             display: block;
             height: 18px;
@@ -741,7 +741,7 @@ div#footer p.credit {
             position: relative;
         }
         div.gallery_photo p.photo_meta {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             font-size: 12px;
             height: 18px;
             padding: 8px 12px;
