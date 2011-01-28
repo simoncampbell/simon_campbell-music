@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-01-28 11:40:22 -0600
+# Generation Time: 2011-01-28 16:18:51 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,7 @@ CREATE TABLE `exp_actions` (
   `class` varchar(50) NOT NULL,
   `method` varchar(50) NOT NULL,
   PRIMARY KEY (`action_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1013 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1016 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_actions` WRITE;
 /*!40000 ALTER TABLE `exp_actions` DISABLE KEYS */;
@@ -72,7 +72,10 @@ VALUES
 	(1009,'Cartthrob','_jquery_plugin_action'),
 	(1010,'Cartthrob','_multi_add_to_cart_form_submit'),
 	(1011,'Cartthrob','payment_return'),
-	(1012,'Cartthrob','_download_file_form_submit');
+	(1012,'Cartthrob','_download_file_form_submit'),
+	(1013,'Freeform','insert_new_entry'),
+	(1014,'Freeform','retrieve_entries'),
+	(1015,'Freeform_CP','delete_freeform_notification');
 
 /*!40000 ALTER TABLE `exp_actions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -240,7 +243,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=259 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=260 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -503,7 +506,8 @@ VALUES
 	(255,1,1,'Member Utilities','127.0.0.1',1296235665,'User garrett.winder has updated their profile'),
 	(256,1,18,'garrett.winder','76.238.177.203',1296235858,'Field Group Created:&nbsp;&nbsp;Gallery'),
 	(257,1,18,'garrett.winder','76.238.177.203',1296236262,'Channel Created:&nbsp;&nbsp;Events'),
-	(258,1,18,'garrett.winder','76.238.177.203',1296236342,'Channel Created:&nbsp;&nbsp;Gallery');
+	(258,1,18,'garrett.winder','76.238.177.203',1296236342,'Channel Created:&nbsp;&nbsp;Gallery'),
+	(259,1,18,'garrett.winder','173.185.20.98',1296253032,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -940,6 +944,135 @@ VALUES
 	(17,1,'Gallery');
 
 /*!40000 ALTER TABLE `exp_field_groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table exp_freeform_attachments
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_attachments`;
+
+CREATE TABLE `exp_freeform_attachments` (
+  `attachment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(10) unsigned NOT NULL,
+  `pref_id` int(10) unsigned NOT NULL,
+  `entry_date` int(10) NOT NULL,
+  `server_path` varchar(150) NOT NULL,
+  `filename` varchar(150) NOT NULL,
+  `extension` varchar(7) NOT NULL,
+  `filesize` int(10) NOT NULL,
+  `emailed` char(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`attachment_id`),
+  KEY `entry_id` (`entry_id`),
+  KEY `pref_id` (`pref_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table exp_freeform_entries
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_entries`;
+
+CREATE TABLE `exp_freeform_entries` (
+  `entry_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `weblog_id` int(4) unsigned NOT NULL,
+  `author_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `form_name` varchar(50) NOT NULL,
+  `template` varchar(150) NOT NULL,
+  `entry_date` int(10) NOT NULL,
+  `edit_date` int(10) NOT NULL,
+  `status` char(10) NOT NULL DEFAULT 'open',
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`entry_id`),
+  KEY `author_id` (`author_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table exp_freeform_fields
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_fields`;
+
+CREATE TABLE `exp_freeform_fields` (
+  `field_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `field_order` int(10) NOT NULL DEFAULT '0',
+  `field_type` varchar(50) NOT NULL DEFAULT 'text',
+  `field_length` int(3) NOT NULL DEFAULT '150',
+  `form_name` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `name_old` varchar(50) NOT NULL,
+  `label` varchar(100) NOT NULL,
+  `weblog_id` int(4) unsigned NOT NULL,
+  `author_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `entry_date` int(10) NOT NULL,
+  `edit_date` int(10) NOT NULL,
+  `editable` char(1) NOT NULL DEFAULT 'y',
+  `status` char(10) NOT NULL DEFAULT 'open',
+  PRIMARY KEY (`field_id`),
+  KEY `name` (`name`),
+  KEY `author_id` (`author_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+LOCK TABLES `exp_freeform_fields` WRITE;
+/*!40000 ALTER TABLE `exp_freeform_fields` DISABLE KEYS */;
+INSERT INTO `exp_freeform_fields` (`field_id`,`field_order`,`field_type`,`field_length`,`form_name`,`name`,`name_old`,`label`,`weblog_id`,`author_id`,`entry_date`,`edit_date`,`editable`,`status`)
+VALUES
+	(1,1,'text',150,'','name','','Name',0,0,0,0,'n',''),
+	(2,2,'text',150,'','email','','Email',0,0,0,0,'n',''),
+	(14,3,'textarea',150,'','message','','Message',0,0,0,0,'y','open');
+
+/*!40000 ALTER TABLE `exp_freeform_fields` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table exp_freeform_params
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_params`;
+
+CREATE TABLE `exp_freeform_params` (
+  `params_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_date` int(10) NOT NULL,
+  `data` text NOT NULL,
+  PRIMARY KEY (`params_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table exp_freeform_templates
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_templates`;
+
+CREATE TABLE `exp_freeform_templates` (
+  `template_id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `enable_template` char(1) NOT NULL DEFAULT 'y',
+  `wordwrap` char(1) NOT NULL DEFAULT 'y',
+  `html` char(1) NOT NULL DEFAULT 'n',
+  `template_name` varchar(150) NOT NULL,
+  `template_label` varchar(150) NOT NULL,
+  `data_from_name` varchar(150) NOT NULL,
+  `data_from_email` varchar(200) NOT NULL,
+  `data_title` varchar(80) NOT NULL,
+  `template_data` text NOT NULL,
+  PRIMARY KEY (`template_id`),
+  KEY `template_name` (`template_name`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+LOCK TABLES `exp_freeform_templates` WRITE;
+/*!40000 ALTER TABLE `exp_freeform_templates` DISABLE KEYS */;
+INSERT INTO `exp_freeform_templates` (`template_id`,`enable_template`,`wordwrap`,`html`,`template_name`,`template_label`,`data_from_name`,`data_from_email`,`data_title`,`template_data`)
+VALUES
+	(1,'y','y','n','default_template','Default Template','','','Someone has posted to Freeform','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}'),
+	(2,'y','n','n','contact_form','Contact Form','{name}','{email}','Form Submission: Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}');
+
+/*!40000 ALTER TABLE `exp_freeform_templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -1583,7 +1716,7 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296233661,1296236457,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296236457,1296253032,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1747,7 +1880,7 @@ CREATE TABLE `exp_modules` (
   `module_version` varchar(12) NOT NULL,
   `has_cp_backend` char(1) NOT NULL DEFAULT 'n',
   PRIMARY KEY (`module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_modules` WRITE;
 /*!40000 ALTER TABLE `exp_modules` DISABLE KEYS */;
@@ -1766,7 +1899,8 @@ VALUES
 	(18,'Super_search','1.1.0.b2','y'),
 	(19,'User','3.1.0','y'),
 	(20,'Pur_member_utilities','1.0.3','y'),
-	(22,'Cartthrob','0.9457','y');
+	(22,'Cartthrob','0.9457','y'),
+	(23,'Freeform','2.7.2','y');
 
 /*!40000 ALTER TABLE `exp_modules` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2301,7 +2435,10 @@ VALUES
 	(1272453376,'0.0.0.0','e7b48ec69cf2c7415c055d20b02e64c1260eb64b'),
 	(1272453382,'0.0.0.0','1b1722c1a4620979ef12f9c588077bd63a434619'),
 	(1272453590,'0.0.0.0','4270ca9609ec03f2c47e641a016bf1cd6385464d'),
+	(1296253167,'173.185.20.98','ffdf625649c440dc587097e7a563fa370453a7d0'),
 	(1277935292,'12.170.156.2','90e0505ec94ef6fd1844c48eb6015835be4292eb'),
+	(1296253163,'173.185.20.98','a43e18cea94607fc69fb000bedef9bb360a68270'),
+	(1296253075,'173.185.20.98','b6da382468c26d3f4a1e3274e49d856c499c83d5'),
 	(1277935287,'12.170.156.2','805b8d2764bcaada092219e09d223952a4c42eef'),
 	(1277909537,'88.97.41.224','7c033685fc10704e5223a86c3f897673fc72a72a'),
 	(1277909511,'88.97.41.224','8d780d2539c1dce3cd0bbd443509993944cf4857'),
@@ -2316,9 +2453,12 @@ VALUES
 	(1277909488,'88.97.41.224','ee535f11c0ca90ddde2ff0e40789187061cdf6bb'),
 	(1276700418,'76.99.35.250','776b7a939273acb1c06911413fe19b272d193988'),
 	(1277909481,'88.97.41.224','9bab10c63d6243dd763a244c30f5615dd64bbf03'),
+	(1296253069,'173.185.20.98','69e45dec8aa9b2e3ac0153bf980ed20f68b21f63'),
 	(1277908996,'88.97.41.224','0e2e7907db8e156d6a7e99be55c1d0a76c0858d9'),
 	(1276700335,'76.99.35.250','68548830ba4f2ffe291d15cf03f6a9bd98d5f115'),
 	(1277908989,'88.97.41.224','047ce96a4d5a2166a98544d82821e0b4543e62d6'),
+	(1296253033,'173.185.20.98','81281debf1ba377d4d4920d1674a37a123f51ad8'),
+	(1296253025,'173.185.20.98','fbb10b59a34946565407d901ebeec729e5715825'),
 	(1276526027,'89.194.100.70','cc64f9a3855292a18e4104449dce7bf57928d16e'),
 	(1276526195,'89.194.100.70','41410e5a5cb3d4f72300d2adb16f1fe304e050ab'),
 	(1276526222,'89.194.100.70','c2ae63292ef92c4232257f6a5c9c9045d9189501'),
@@ -2504,7 +2644,12 @@ VALUES
 	(1296232846,'88.97.41.226','068c7db0ee24947063afd82eb1215002f68cbda2'),
 	(1296232846,'88.97.41.226','319a5b20872bb32f111ef4b876b1800546eefac2'),
 	(1296232851,'88.97.41.226','727c8d5afaa09d231f90b88105107c97ee64bdac'),
-	(1296232855,'88.97.41.226','85c0db4269a2811590b2ed3ebc48c5cbc1babbe5');
+	(1296232855,'88.97.41.226','85c0db4269a2811590b2ed3ebc48c5cbc1babbe5'),
+	(1296253181,'173.185.20.98','c361bb76f43f5294b93fadf5a77322a4234ae631'),
+	(1296253184,'173.185.20.98','4817c19dcac882b363c287310172c5f9e4404f81'),
+	(1296253188,'173.185.20.98','aeee705b68c3b629ac1635ef955010e04b50be6b'),
+	(1296253204,'173.185.20.98','cccd8f22f86f88bc8cf20257290b5471408f7d02'),
+	(1296253210,'173.185.20.98','640670dc40648f0ab07717ee63465d9df1653064');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2533,7 +2678,8 @@ LOCK TABLES `exp_sessions` WRITE;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
 	('ce1a133a685936ff07692dc8a744249a9f3b276e',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296233446),
-	('274d099085f6639e2eae726cc85ff49fdfc7b3fd',1,18,1,'76.238.177.203','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296236502);
+	('274d099085f6639e2eae726cc85ff49fdfc7b3fd',1,18,1,'76.238.177.203','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296236502),
+	('a3f5f0dd21871634dd5cc1529cce9be8847dc919',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296253211);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
