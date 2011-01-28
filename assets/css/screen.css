@@ -836,14 +836,8 @@ div#footer p.credit {
             background: #202020 url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
             background: url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
         }
-        body.bio #tribute p:first-of-type {
-            width: 340px;
-        }
-        body.bio #tribute p:nth-of-type(2) {
-            width: 335px;
-        }
-        body.bio #tribute p:last-of-type {
-            width: 355px;
+        body.bio #tribute p {
+            width: 360px;
         }
     
     /* CONTENT SEC */
