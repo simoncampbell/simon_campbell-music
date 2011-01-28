@@ -1,10 +1,10 @@
 # Sequel Pro dump
-# Version 2210
+# Version 2492
 # http://code.google.com/p/sequel-pro
 #
-# Host: 127.0.0.1 (MySQL 5.1.47)
-# Database: erskine_simoncampbell_music
-# Generation Time: 2011-01-28 13:56:05 +0000
+# Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
+# Database: simoncampbell_music
+# Generation Time: 2011-01-28 11:40:22 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -240,7 +240,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=251 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=259 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -495,7 +495,15 @@ VALUES
 	(247,1,1,'Member Utilities','127.0.0.1',1296046069,'User jamiepittock has updated their profile'),
 	(248,1,1,'Member Utilities','127.0.0.1',1296046096,'User jamiepittock has updated their profile'),
 	(249,1,1,'Member Utilities','127.0.0.1',1296046116,'User jamiepittock has updated their profile'),
-	(250,1,1,'jamiepittock','127.0.0.1',1296046917,'Channel Created:&nbsp;&nbsp;Journal');
+	(250,1,1,'jamiepittock','127.0.0.1',1296046917,'Channel Created:&nbsp;&nbsp;Journal'),
+	(251,1,1,'jamiepittock','88.97.41.226',1296232839,'Logged in'),
+	(252,1,1,'jamiepittock','88.97.41.226',1296232888,'Member profile created:&nbsp;&nbsp;garrett.winder'),
+	(253,1,18,'garrett.winder','76.238.177.203',1296233661,'Logged in'),
+	(254,1,18,'garrett.winder','76.238.177.203',1296234511,'Field Group Created:&nbsp;&nbsp;Event'),
+	(255,1,1,'Member Utilities','127.0.0.1',1296235665,'User garrett.winder has updated their profile'),
+	(256,1,18,'garrett.winder','76.238.177.203',1296235858,'Field Group Created:&nbsp;&nbsp;Gallery'),
+	(257,1,18,'garrett.winder','76.238.177.203',1296236262,'Channel Created:&nbsp;&nbsp;Events'),
+	(258,1,18,'garrett.winder','76.238.177.203',1296236342,'Channel Created:&nbsp;&nbsp;Gallery');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -514,7 +522,7 @@ CREATE TABLE `exp_dc_required_cat` (
   `exact_cat` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `WEBLOG_ID` (`weblog_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_dc_required_cat` WRITE;
 /*!40000 ALTER TABLE `exp_dc_required_cat` DISABLE KEYS */;
@@ -532,7 +540,9 @@ VALUES
 	(10,12,0,0,0),
 	(11,13,0,0,0),
 	(12,14,0,0,0),
-	(13,16,0,0,0);
+	(13,16,0,0,0),
+	(14,17,0,0,0),
+	(15,18,0,0,0);
 
 /*!40000 ALTER TABLE `exp_dc_required_cat` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -887,7 +897,22 @@ VALUES
 	(69,'none'),
 	(70,'textile'),
 	(70,'xhtml'),
-	(70,'none');
+	(70,'none'),
+	(71,'textile'),
+	(71,'xhtml'),
+	(71,'none'),
+	(72,'textile'),
+	(72,'xhtml'),
+	(72,'none'),
+	(73,'textile'),
+	(73,'xhtml'),
+	(73,'none'),
+	(74,'textile'),
+	(74,'xhtml'),
+	(74,'none'),
+	(75,'textile'),
+	(75,'xhtml'),
+	(75,'none');
 
 /*!40000 ALTER TABLE `exp_field_formatting` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -904,13 +929,15 @@ CREATE TABLE `exp_field_groups` (
   `group_name` varchar(50) NOT NULL,
   PRIMARY KEY (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_field_groups` WRITE;
 /*!40000 ALTER TABLE `exp_field_groups` DISABLE KEYS */;
 INSERT INTO `exp_field_groups` (`group_id`,`site_id`,`group_name`)
 VALUES
-	(15,1,'Journal');
+	(15,1,'Journal'),
+	(16,1,'Events'),
+	(17,1,'Gallery');
 
 /*!40000 ALTER TABLE `exp_field_groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1121,7 +1148,7 @@ CREATE TABLE `exp_matrix_cols` (
   PRIMARY KEY (`col_id`),
   KEY `site_id` (`site_id`),
   KEY `field_id` (`field_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_matrix_cols` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_cols` DISABLE KEYS */;
@@ -1148,7 +1175,10 @@ VALUES
 	(20,1,NULL,'ffm_audio_caption','Caption','','text','n','n',0,'50%','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
 	(21,1,NULL,'ffm_audio_file','File','','text','n','n',1,'50%','YToxOntzOjQ6Im1heGwiO3M6MzoiMjU1Ijt9'),
 	(22,1,NULL,'ffm_video_caption','Caption','','text','n','n',0,'50%','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
-	(23,1,NULL,'ffm_video_code','Video code','','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MDoiIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5Ijt9');
+	(23,1,NULL,'ffm_video_code','Video code','','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MDoiIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5Ijt9'),
+	(24,1,NULL,'ffm_images_image','Image','','ngen_file_field','n','n',0,'33%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMTciO30='),
+	(25,1,NULL,'ffm_images_title','Image title','','text','n','n',1,'33%','YToyOntzOjQ6Im1heGwiO3M6MjoiNjAiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
+	(26,1,NULL,'ffm_images_credit','Image credit','','text','n','n',2,'33%','YToxOntzOjQ6Im1heGwiO3M6MjoiNDAiO30=');
 
 /*!40000 ALTER TABLE `exp_matrix_cols` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1187,6 +1217,9 @@ CREATE TABLE `exp_matrix_data` (
   `col_id_21` text,
   `col_id_22` text,
   `col_id_23` text,
+  `col_id_24` text,
+  `col_id_25` text,
+  `col_id_26` text,
   PRIMARY KEY (`row_id`),
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
@@ -1195,19 +1228,19 @@ CREATE TABLE `exp_matrix_data` (
 
 LOCK TABLES `exp_matrix_data` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_data` DISABLE KEYS */;
-INSERT INTO `exp_matrix_data` (`row_id`,`site_id`,`entry_id`,`field_id`,`row_order`,`col_id_1`,`col_id_2`,`col_id_3`,`col_id_4`,`col_id_5`,`col_id_6`,`col_id_8`,`col_id_9`,`col_id_10`,`col_id_11`,`col_id_12`,`col_id_13`,`col_id_14`,`col_id_15`,`col_id_16`,`col_id_17`,`col_id_18`,`col_id_19`,`col_id_20`,`col_id_21`,`col_id_22`,`col_id_23`)
+INSERT INTO `exp_matrix_data` (`row_id`,`site_id`,`entry_id`,`field_id`,`row_order`,`col_id_1`,`col_id_2`,`col_id_3`,`col_id_4`,`col_id_5`,`col_id_6`,`col_id_8`,`col_id_9`,`col_id_10`,`col_id_11`,`col_id_12`,`col_id_13`,`col_id_14`,`col_id_15`,`col_id_16`,`col_id_17`,`col_id_18`,`col_id_19`,`col_id_20`,`col_id_21`,`col_id_22`,`col_id_23`,`col_id_24`,`col_id_25`,`col_id_26`)
 VALUES
-	(3,1,27,16,0,'55,000 Pennsylvanians have jobs related to energy production','','http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(4,1,27,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Is hydraulic fracturing growing local economies while supplying clean-burning natural gas?','<p>\n	Across the country, we are unlocking vast amounts of clean-burning natural gas through hydraulic fracturing. This proven, safe technology has allowed us to expand America&rsquo;s energy reserves by more than 7 billion barrels of oil and 600 trillion cubic feet of natural gas. Hydraulic fracturing not only helps us bring clean, affordable natural gas to people who need it, it also creates thousands of jobs throughout Appalachia, Texas and the West, as well as revenue for local, state and federal governments.</p>\n<p>\n	It seems some outside our industry, including politicians in Washington, do not understand what we do and are seeking ways to limit hydraulic fracturing. Washington must not be permitted to enact measures that would add needless regulation to an industry-standard practice we know very well.</p>\n<p>\n	We know hydraulic fracturing is safe and effective&mdash;that&rsquo;s why we&rsquo;ve used it for more than 60 years. And we&rsquo;re ready to use it for many more to deliver reliable supplies of clean natural gas.</p>\n','55,000 Pennsylvanians have jobs related to energy production','Pittsburgh Post-Gazette','http://http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(5,1,27,55,0,NULL,NULL,NULL,'This is the video heading','','<p>\n	This is a transcript</p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>\n	<object height=\"385\" width=\"480\"><param name=\"movie\" value=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" /><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><embed allowfullscreen=\"true\" allowscriptaccess=\"always\" height=\"385\" src=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" type=\"application/x-shockwave-flash\" width=\"480\"></embed></object></p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(7,1,29,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What do the oil sands mean to you and your job?','<p>\n	Beneath the sands of Alberta lie 173 billion barrels of oil, reserves second only to those in Saudi Arabia. We are ready to deliver this important source of energy to the American people.</p>\n<p>\n	By responsibly developing these resources in Canada, we can create jobs here in America through refinery expansion and pipeline construction. By some accounts, this activity could support 600,000 new jobs by 2025, as well as add nearly $130 billion to the economy. Access to oil sands in Canada could provide a reliable supply of energy to more consumers in more parts of the country.</p>\n<p>\n	The refinery projects we are undertaking and the development of new technologies to better process oil from Canada will allow us to provide an important, affordable and reliable source of energy America needs.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(8,1,0,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'How does offshore drilling provide America the energy it needs?','<p>\n	We know perhaps better than anyone else the immense opportunity in exploring the waters along the Outer Continental Shelf for oil and natural gas. We also know it can be done in a responsible way that takes the environment into consideration.</p>\n<p>\n	By some estimates, the Outer Continental Shelf contains more than 14 billion barrels of oil and 55 trillion cubic feet of natural gas. Tapping these resources could generate $1.7 trillion in revenue for governments and 160,000 new jobs.</p>\n<p>\n	Above anyone, we remain committed to the responsible development of offshore resources of oil and natural gas. It&rsquo;s an opportunity to produce domestic oil and natural gas while providing well-paying jobs and strengthening America&rsquo;s economy.</p>\n','â€œ30% of the oil and 25% of the natural gas we produce in the United States comes from thousands of wells in the Gulf of Mexico.â€','The Hill','http://thehill.com/blogs/congress-blog/energy-a-environment/103299-clean-energy-and-oil-spill-response-sen-lamar-alexander  ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(9,1,31,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will a ban on deepwater drilling affect future energy supply?','<p>\n	Following the tragic Deepwater Horizon accident, we are mobilizing a tremendous amount of resources to aid in responding to the spill. Our industry understands the need to respond in a coordinated manner and we are&mdash;swiftly creating a task force to examine the spill&rsquo;s cause and working hard to assess and address its impact.</p>\n<p>\n	Unfortunately, Members of Congress, as well as the President and his Administration, have halted new deepwater drilling for at least six months. This move places our jobs and communities in economic peril.</p>\n<p>\n	According to one study, a ban on new deepwater drilling, when combined with tighter regulations and longer permitting timeframes, could result in the equivalent of 340,000 barrels of oil per day in lost production by 2015. This means nearly 50,000 jobs idled in the short term and potentially more than 120,000 if restrictions are extended. In this economy, we can&rsquo;t afford to lose more jobs and deprive Americans of the reliable and affordable energy they need.</p>\n','â€œA moratorium on deepwater drilling could jeopardize 100,000 jobs.â€ ','Rep. Pete Olson, quoted in The Hill','http://thehill.com/blogs/e2-wire/677-e2-wire/102885-texas-lawmaker-to-introduce-bill-lifting-drilling-pause',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(10,1,32,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What does climate change legislation mean for you and your family?','<p>\n	As an industry, we&rsquo;re committed to reducing greenhouse gas emissions and lower our environmental footprint. We&rsquo;re constantly enhancing efficiency and investing in new technologies that are changing the environmental effects of our work as we bring energy to consumers.</p>\n<p>\n	Congress continues to propose and debate well-intentioned measures that require companies to reduce their impact on the environment. We support this goal and are committed to finding solutions that promote environmental responsibility. However, many of the proposed measures would have unintended negative consequences, potentially putting millions of jobs at risk and raising costs for companies in our industry and others. Our elected officials must understand the need to balance the positive intent of legislation against the negative implications for consumers, jobs and the economy.</p>\n<p>\n	We are committed to protecting the environment. In fact, we&rsquo;re already working to reduce our carbon footprint. But we must be careful of proposals that could take away jobs from the hardworking people in our industry, make our industry less competitive or raise costs for the people that rely on us for affordable energy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(11,1,33,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Could additional regulations stifle economic growth?','<p>\n	We recognize that we must be careful about our impact on the environment. Our companies are taking steps every day to reduce that impact, knowing that we must be able to provide affordable, responsibly produced energy to Americans for decades to come.</p>\n<p>\n	We are concerned, however, that heavy regulations, while well-intentioned, could have unintended but severe negative effects on the economy, the job market and on American businesses&mdash;without significantly improving our nation&rsquo;s carbon footprint. While we support the goal of taking measures to reduce emissions, we want to ensure that doing so will not be at the expense of jobs and the economy.</p>\n<p>\n	We&rsquo;re constantly taking steps to produce energy responsibly. One such example is our commitment to expand production and use of ultra-low sulfur diesel and other technologies, which would lead to a reduction of six common emissions by 60 percent. We remain committed to working with Congress and the administration to make positive changes that lower our environmental impact.&nbsp;&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(12,1,34,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will new taxes threaten jobs and weaken energy independence?','<p>\n	Producing America&rsquo;s resources of oil and natural gas isn&rsquo;t cheap. Our industry spends hundreds of billions of dollars every year on wages, technology and investment in research and development of energy resources.</p>\n<p>\n	What&rsquo;s more, the energy industry is one of the most heavily taxed industries in America. Industry taxes provide billions of dollars that support schools, first responders and our transportation system, among other vital public services. Yet Congress and the administration continue to propose new taxes on the industry. The latest proposal would mean at least $80 billion in new taxes.</p>\n<p>\n	We oppose new taxes not just because of their impact directly on our businesses, but of the far-reaching negative effects that they could bring to industry workers, consumers and the businesses and organizations that depend on our industry for reliable, affordable energy.</p>\n<p>\n	Instead of passing new taxes, we can show Congress and the administration that we are ready to lead an economic recovery by producing more oil and natural gas right here at home.&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(13,1,35,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Just exactly how important is our industry to the American economy?','<p>\n	We know how important our work is. More than 9.2 million people are directly or indirectly employed by America&rsquo;s oil and natural gas industry. That&rsquo;s 9.2 million people working hard to deliver the energy our country needs.</p>\n<p>\n	Whether it&rsquo;s passing new laws, regulations or taxes, Washington has a profound impact on our industry and jobs. New laws and regulations that raise the cost of energy or restrict access to resources of oil and natural gas could put thousands of jobs at risk and increase the costs of everything from food and transportation to heating a home.</p>\n<p>\n	We are part of the solution. Our 9.2 million jobs and more than a trillion dollars in value added to the economy play a major role in providing this country the energy it needs and driving the economy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL);
+	(3,1,27,16,0,'55,000 Pennsylvanians have jobs related to energy production','','http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(4,1,27,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Is hydraulic fracturing growing local economies while supplying clean-burning natural gas?','<p>\n	Across the country, we are unlocking vast amounts of clean-burning natural gas through hydraulic fracturing. This proven, safe technology has allowed us to expand America&rsquo;s energy reserves by more than 7 billion barrels of oil and 600 trillion cubic feet of natural gas. Hydraulic fracturing not only helps us bring clean, affordable natural gas to people who need it, it also creates thousands of jobs throughout Appalachia, Texas and the West, as well as revenue for local, state and federal governments.</p>\n<p>\n	It seems some outside our industry, including politicians in Washington, do not understand what we do and are seeking ways to limit hydraulic fracturing. Washington must not be permitted to enact measures that would add needless regulation to an industry-standard practice we know very well.</p>\n<p>\n	We know hydraulic fracturing is safe and effective&mdash;that&rsquo;s why we&rsquo;ve used it for more than 60 years. And we&rsquo;re ready to use it for many more to deliver reliable supplies of clean natural gas.</p>\n','55,000 Pennsylvanians have jobs related to energy production','Pittsburgh Post-Gazette','http://http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,1,27,55,0,NULL,NULL,NULL,'This is the video heading','','<p>\n	This is a transcript</p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>\n	<object height=\"385\" width=\"480\"><param name=\"movie\" value=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" /><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><embed allowfullscreen=\"true\" allowscriptaccess=\"always\" height=\"385\" src=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" type=\"application/x-shockwave-flash\" width=\"480\"></embed></object></p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(7,1,29,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What do the oil sands mean to you and your job?','<p>\n	Beneath the sands of Alberta lie 173 billion barrels of oil, reserves second only to those in Saudi Arabia. We are ready to deliver this important source of energy to the American people.</p>\n<p>\n	By responsibly developing these resources in Canada, we can create jobs here in America through refinery expansion and pipeline construction. By some accounts, this activity could support 600,000 new jobs by 2025, as well as add nearly $130 billion to the economy. Access to oil sands in Canada could provide a reliable supply of energy to more consumers in more parts of the country.</p>\n<p>\n	The refinery projects we are undertaking and the development of new technologies to better process oil from Canada will allow us to provide an important, affordable and reliable source of energy America needs.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(8,1,0,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'How does offshore drilling provide America the energy it needs?','<p>\n	We know perhaps better than anyone else the immense opportunity in exploring the waters along the Outer Continental Shelf for oil and natural gas. We also know it can be done in a responsible way that takes the environment into consideration.</p>\n<p>\n	By some estimates, the Outer Continental Shelf contains more than 14 billion barrels of oil and 55 trillion cubic feet of natural gas. Tapping these resources could generate $1.7 trillion in revenue for governments and 160,000 new jobs.</p>\n<p>\n	Above anyone, we remain committed to the responsible development of offshore resources of oil and natural gas. It&rsquo;s an opportunity to produce domestic oil and natural gas while providing well-paying jobs and strengthening America&rsquo;s economy.</p>\n','â€œ30% of the oil and 25% of the natural gas we produce in the United States comes from thousands of wells in the Gulf of Mexico.â€','The Hill','http://thehill.com/blogs/congress-blog/energy-a-environment/103299-clean-energy-and-oil-spill-response-sen-lamar-alexander  ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(9,1,31,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will a ban on deepwater drilling affect future energy supply?','<p>\n	Following the tragic Deepwater Horizon accident, we are mobilizing a tremendous amount of resources to aid in responding to the spill. Our industry understands the need to respond in a coordinated manner and we are&mdash;swiftly creating a task force to examine the spill&rsquo;s cause and working hard to assess and address its impact.</p>\n<p>\n	Unfortunately, Members of Congress, as well as the President and his Administration, have halted new deepwater drilling for at least six months. This move places our jobs and communities in economic peril.</p>\n<p>\n	According to one study, a ban on new deepwater drilling, when combined with tighter regulations and longer permitting timeframes, could result in the equivalent of 340,000 barrels of oil per day in lost production by 2015. This means nearly 50,000 jobs idled in the short term and potentially more than 120,000 if restrictions are extended. In this economy, we can&rsquo;t afford to lose more jobs and deprive Americans of the reliable and affordable energy they need.</p>\n','â€œA moratorium on deepwater drilling could jeopardize 100,000 jobs.â€ ','Rep. Pete Olson, quoted in The Hill','http://thehill.com/blogs/e2-wire/677-e2-wire/102885-texas-lawmaker-to-introduce-bill-lifting-drilling-pause',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(10,1,32,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What does climate change legislation mean for you and your family?','<p>\n	As an industry, we&rsquo;re committed to reducing greenhouse gas emissions and lower our environmental footprint. We&rsquo;re constantly enhancing efficiency and investing in new technologies that are changing the environmental effects of our work as we bring energy to consumers.</p>\n<p>\n	Congress continues to propose and debate well-intentioned measures that require companies to reduce their impact on the environment. We support this goal and are committed to finding solutions that promote environmental responsibility. However, many of the proposed measures would have unintended negative consequences, potentially putting millions of jobs at risk and raising costs for companies in our industry and others. Our elected officials must understand the need to balance the positive intent of legislation against the negative implications for consumers, jobs and the economy.</p>\n<p>\n	We are committed to protecting the environment. In fact, we&rsquo;re already working to reduce our carbon footprint. But we must be careful of proposals that could take away jobs from the hardworking people in our industry, make our industry less competitive or raise costs for the people that rely on us for affordable energy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(11,1,33,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Could additional regulations stifle economic growth?','<p>\n	We recognize that we must be careful about our impact on the environment. Our companies are taking steps every day to reduce that impact, knowing that we must be able to provide affordable, responsibly produced energy to Americans for decades to come.</p>\n<p>\n	We are concerned, however, that heavy regulations, while well-intentioned, could have unintended but severe negative effects on the economy, the job market and on American businesses&mdash;without significantly improving our nation&rsquo;s carbon footprint. While we support the goal of taking measures to reduce emissions, we want to ensure that doing so will not be at the expense of jobs and the economy.</p>\n<p>\n	We&rsquo;re constantly taking steps to produce energy responsibly. One such example is our commitment to expand production and use of ultra-low sulfur diesel and other technologies, which would lead to a reduction of six common emissions by 60 percent. We remain committed to working with Congress and the administration to make positive changes that lower our environmental impact.&nbsp;&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(12,1,34,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will new taxes threaten jobs and weaken energy independence?','<p>\n	Producing America&rsquo;s resources of oil and natural gas isn&rsquo;t cheap. Our industry spends hundreds of billions of dollars every year on wages, technology and investment in research and development of energy resources.</p>\n<p>\n	What&rsquo;s more, the energy industry is one of the most heavily taxed industries in America. Industry taxes provide billions of dollars that support schools, first responders and our transportation system, among other vital public services. Yet Congress and the administration continue to propose new taxes on the industry. The latest proposal would mean at least $80 billion in new taxes.</p>\n<p>\n	We oppose new taxes not just because of their impact directly on our businesses, but of the far-reaching negative effects that they could bring to industry workers, consumers and the businesses and organizations that depend on our industry for reliable, affordable energy.</p>\n<p>\n	Instead of passing new taxes, we can show Congress and the administration that we are ready to lead an economic recovery by producing more oil and natural gas right here at home.&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(13,1,35,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Just exactly how important is our industry to the American economy?','<p>\n	We know how important our work is. More than 9.2 million people are directly or indirectly employed by America&rsquo;s oil and natural gas industry. That&rsquo;s 9.2 million people working hard to deliver the energy our country needs.</p>\n<p>\n	Whether it&rsquo;s passing new laws, regulations or taxes, Washington has a profound impact on our industry and jobs. New laws and regulations that raise the cost of energy or restrict access to resources of oil and natural gas could put thousands of jobs at risk and increase the costs of everything from food and transportation to heating a home.</p>\n<p>\n	We are part of the solution. Our 9.2 million jobs and more than a trillion dollars in value added to the economy play a major role in providing this country the energy it needs and driving the economy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `exp_matrix_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1259,7 +1292,8 @@ VALUES
 	(10,'','','','','',''),
 	(15,'','','','','',''),
 	(16,'','','','','',''),
-	(17,'','','','','','');
+	(17,'','','','','',''),
+	(18,'','','','','','');
 
 /*!40000 ALTER TABLE `exp_member_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1423,7 +1457,8 @@ VALUES
 	(10,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(15,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(16,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
-	(17,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
+	(17,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
+	(18,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
 
 /*!40000 ALTER TABLE `exp_member_homepage` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1535,19 +1570,20 @@ CREATE TABLE `exp_members` (
   KEY `group_id` (`group_id`),
   KEY `unique_id` (`unique_id`),
   KEY `password` (`password`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
 INSERT INTO `exp_members` (`member_id`,`group_id`,`weblog_id`,`tmpl_group_id`,`upload_id`,`username`,`screen_name`,`password`,`unique_id`,`authcode`,`email`,`url`,`location`,`occupation`,`interests`,`bday_d`,`bday_m`,`bday_y`,`aol_im`,`yahoo_im`,`msn_im`,`icq`,`bio`,`signature`,`avatar_filename`,`avatar_width`,`avatar_height`,`photo_filename`,`photo_width`,`photo_height`,`sig_img_filename`,`sig_img_width`,`sig_img_height`,`ignore_list`,`private_messages`,`accept_messages`,`last_view_bulletins`,`last_bulletin_date`,`ip_address`,`join_date`,`last_visit`,`last_activity`,`total_entries`,`total_comments`,`total_forum_topics`,`total_forum_posts`,`last_entry_date`,`last_comment_date`,`last_forum_post_date`,`last_email_date`,`in_authorlist`,`accept_admin_email`,`accept_user_email`,`notify_by_default`,`notify_of_pm`,`display_avatars`,`display_signatures`,`smart_notifications`,`language`,`timezone`,`daylight_savings`,`localization_is_site_default`,`time_format`,`cp_theme`,`profile_theme`,`forum_theme`,`tracker`,`template_size`,`notepad`,`notepad_size`,`quick_links`,`quick_tabs`,`pmember_id`,`profile_views`)
 VALUES
-	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1295806375,1296049020,1,0,0,0,1296047981,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296049020,1296233354,1,0,0,0,1296047981,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1292416546,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1292409756,1292422434,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
+	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296233661,1296236457,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2265,10 +2301,7 @@ VALUES
 	(1272453376,'0.0.0.0','e7b48ec69cf2c7415c055d20b02e64c1260eb64b'),
 	(1272453382,'0.0.0.0','1b1722c1a4620979ef12f9c588077bd63a434619'),
 	(1272453590,'0.0.0.0','4270ca9609ec03f2c47e641a016bf1cd6385464d'),
-	(1277932622,'88.97.41.226','5e59ad13440e0236acf4fd769e5d3d5a495425e7'),
 	(1277935292,'12.170.156.2','90e0505ec94ef6fd1844c48eb6015835be4292eb'),
-	(1277932617,'88.97.41.226','15fbde1a56428ab7aecadf4225733f6c17f67c50'),
-	(1277932609,'88.97.41.226','27da9d00ddcd143e4b8ca7b4499a8421320cc12c'),
 	(1277935287,'12.170.156.2','805b8d2764bcaada092219e09d223952a4c42eef'),
 	(1277909537,'88.97.41.224','7c033685fc10704e5223a86c3f897673fc72a72a'),
 	(1277909511,'88.97.41.224','8d780d2539c1dce3cd0bbd443509993944cf4857'),
@@ -2283,12 +2316,9 @@ VALUES
 	(1277909488,'88.97.41.224','ee535f11c0ca90ddde2ff0e40789187061cdf6bb'),
 	(1276700418,'76.99.35.250','776b7a939273acb1c06911413fe19b272d193988'),
 	(1277909481,'88.97.41.224','9bab10c63d6243dd763a244c30f5615dd64bbf03'),
-	(1277932491,'88.97.41.226','b7315b2cbf76598386c8e131e2eb39995268950c'),
 	(1277908996,'88.97.41.224','0e2e7907db8e156d6a7e99be55c1d0a76c0858d9'),
 	(1276700335,'76.99.35.250','68548830ba4f2ffe291d15cf03f6a9bd98d5f115'),
 	(1277908989,'88.97.41.224','047ce96a4d5a2166a98544d82821e0b4543e62d6'),
-	(1277932455,'88.97.41.226','311a2cfd9409197549b0b8a614789afffd42445d'),
-	(1277932450,'88.97.41.226','d9f0e9fc533c9a7e3287b9d35702fe34cfcbbf21'),
 	(1276526027,'89.194.100.70','cc64f9a3855292a18e4104449dce7bf57928d16e'),
 	(1276526195,'89.194.100.70','41410e5a5cb3d4f72300d2adb16f1fe304e050ab'),
 	(1276526222,'89.194.100.70','c2ae63292ef92c4232257f6a5c9c9045d9189501'),
@@ -2305,63 +2335,63 @@ VALUES
 	(1277932219,'12.170.156.2','8e542457783933c17407b4c12f4843beddee5e4f'),
 	(1277932216,'12.170.156.2','adfb5dfa43961df8fbdd583fc3300bfb82356265'),
 	(1277908920,'88.97.41.224','dd446f6e2a6c03128961eed156f2ce412eab0056'),
-	(1277931734,'88.97.41.226','8d0cd619f96e56505994ead2cab284b7ffc09a00'),
-	(1277931728,'88.97.41.226','ace4c708218d9b108b801ebe492a9008cc989f58'),
-	(1277931721,'88.97.41.226','f80d7b13fb8a74e46b2dbeee7b53b16f1d6f9b0a'),
+	(1296236486,'76.238.177.203','696a2216adfebb0ab6976e286394b5597edc1090'),
+	(1296236479,'76.238.177.203','0d3776d41c8d7fd4316a1a056252e91af564a32f'),
+	(1296236454,'76.238.177.203','da012c5e8978ead86b4e45b1172dc7a2202f13f8'),
 	(1277904972,'88.97.41.224','ff5ebb75ffecf76fd9a0ad7850bfa743e2488dd6'),
 	(1277734617,'71.206.168.11','c83ce67bb32b46b0b72cd85e60a35656bbe5be2e'),
 	(1277734447,'71.206.168.11','2118b38b5297e43bbe6ab1cacf282528331a109c'),
 	(1277734378,'71.206.168.11','9dfdbe7b5bad434570db4a28477f3baa858f4ba9'),
-	(1277938246,'88.97.41.226','61de64a3fc4c44acc7c21ce0bd30ad69f7d74a49'),
-	(1277937395,'88.97.41.226','b60f82bfa620e8bb5bec43c5f2e3d60ebfdbf8c6'),
-	(1277938186,'88.97.41.226','fb10334be66d0f8cbf7e561191ddc5f94e4fac01'),
-	(1277938235,'88.97.41.226','96326d1b0b53375b1401bb8135a85085d081eb1b'),
+	(1296236367,'76.238.177.203','d3112e38a5003a96187113292d10ac690f17fb6c'),
+	(1296236362,'76.238.177.203','e1e77cfa5878648aebbe5585f1c87a2388a9dbbd'),
+	(1296236352,'76.238.177.203','ed0fe66540a44c6d9b6971ce462c3037956981d2'),
+	(1296236327,'76.238.177.203','3ab6a8ec8374164522ee4760caf2f9ad2163d2f4'),
 	(1277950230,'98.117.73.11','a4733c9f7899e62e1b55f007bfd54e25b41cff44'),
 	(1277950221,'98.117.73.11','ce71efdabea96895bc572a42d8ade333cab691f7'),
-	(1277937389,'88.97.41.226','4f4fb2d557201b2522a796823488a5592d194e72'),
-	(1277937382,'88.97.41.226','4f6284e12004770d8f1cd2e52389d69fa1f3e8e4'),
-	(1277937292,'88.97.41.226','3e26dc6b25d7a9d3405a00ad70977ea0332d7983'),
-	(1277937272,'88.97.41.226','f6e98c2e6eb862c894872d8c6fec92e3a0b51e1e'),
-	(1277937257,'88.97.41.226','b3c59b842d52bab75e4fa994cb6cfd4e76f4fe5a'),
-	(1277937009,'88.97.41.226','a2f183803590a6df90fee18610ecda42d191e3e0'),
-	(1277936137,'88.97.41.226','118ca16b3a3d971a5c83b552733062051823c997'),
+	(1296236311,'76.238.177.203','861c4e8b7f56e2da926a60d146bba84f56fc4d33'),
+	(1296236264,'76.238.177.203','6c3d9e95265c0f484ba12b465ff6ae198adac34f'),
+	(1296236224,'76.238.177.203','da78a75a621165329464786d95c43b2aecb8d789'),
+	(1296236218,'76.238.177.203','243b38e9d8e2dc1f14ef351d375b03b3be07fac0'),
+	(1296236207,'76.238.177.203','6a45259149fb33a319f173cb279e54e71f4ba154'),
+	(1296236197,'76.238.177.203','5715da6f94a001828e362c3e7001762ff969ce3d'),
+	(1296236186,'76.238.177.203','1e4b6ec0c9df8a66f8ef0992b90205d8e1067f35'),
 	(1277935583,'12.170.156.2','f464931baa694dd73f76be2329caf6569b451bdd'),
 	(1277935538,'12.170.156.2','5b330b1bd18f58dad6bc69592b5faddc03f1059c'),
 	(1277935558,'12.170.156.2','14620860d97213dbad8a3538716cde01963c9d9a'),
 	(1277934861,'12.170.156.2','d3fecbe1f8d26ac32520f167a6ff3c8b9f0b83b6'),
 	(1277934855,'12.170.156.2','aa795c40cf8915d52eb4ecefdc59490fa02cfbf7'),
 	(1277934855,'12.170.156.2','ce403ee8b8bf5bdfe46a4d0610cc670a95b6fe09'),
-	(1277933217,'88.97.41.226','15634b7c5d388d6b6e05d7926abb70c09abf5be4'),
-	(1277933222,'88.97.41.226','60c07f3a992f8043c603633efd987c0cb11d4b9d'),
-	(1277933226,'88.97.41.226','640288c20155746d8ca4e3b6ac9ffda7a5b4e0b5'),
+	(1296235889,'76.238.177.203','02ca41ba74d6824d2e914a69f02890cf1e86b326'),
+	(1296235875,'76.238.177.203','f4d4695a3fee7902859ffa320c8a7456ecce5758'),
+	(1296235852,'76.238.177.203','54ee8afa41c6c837c9af67099874f7919ca8e28e'),
 	(1277950211,'98.117.73.11','8fbd15edd7b7b18489abcfaead32245e3fea609d'),
-	(1277938401,'88.97.41.226','79ca7724eca2422992fee0768b212accb1796e76'),
-	(1277938384,'88.97.41.226','8c8aed32e30cd31990710ba0ceea427316726070'),
-	(1277938256,'88.97.41.226','0d2dd1e490e0261d1b96a98596ce7171f84517cf'),
-	(1277933208,'88.97.41.226','00b14c27ac4b95584a649c1ce6dc44844e8132ad'),
-	(1277932636,'88.97.41.226','3980a92aaed943e914a088e6d434a96adce4ba97'),
-	(1277932629,'88.97.41.226','351451e7736bb477dbe1bbf5133d704550b81e68'),
-	(1277931660,'88.97.41.226','7fb06017503dcc88752432d4e8f7cebe335391e4'),
-	(1277931651,'88.97.41.226','e3eb44cfb77dd4db60b06a79d6fe3a9a647bec25'),
-	(1277931645,'88.97.41.226','b55c64300d57c938569f00f921fba433bc641529'),
-	(1277931632,'88.97.41.226','70bbde7d95f318c42194a3128051d4039e59f0e0'),
+	(1296235836,'76.238.177.203','8e84cde64706f6d25628bbd0c95b08827d376768'),
+	(1296235670,'76.238.177.203','46bec22de9ea2456394efedf7e284a6caff1f262'),
+	(1296235630,'76.238.177.203','e675fc39376080c6ec4b712ccc3217180c68914c'),
+	(1296235617,'76.238.177.203','87f998f461e869b4a21da13cde376291ed9d45d0'),
+	(1296235607,'76.238.177.203','431575ac8814b33a8ff9ddb80aad259a3dc9522a'),
+	(1296235605,'76.238.177.203','fea21a8613cfa4aeab1c5dcd1919a3dc1ae8e3df'),
+	(1296234948,'76.238.177.203','445bd121b65b470443b9a37ccc79a51386d47081'),
+	(1296234911,'76.238.177.203','03c0df5f4d43261f929a624f66cb6197c2755fe4'),
+	(1296234857,'76.238.177.203','b7b11d9a2586b25ac0af428f3b9ccda8be512e31'),
+	(1296234846,'76.238.177.203','06ee28b6c2c4d9031c24f5bb82065609f544162f'),
 	(1277920588,'68.34.105.173','32cab91db71ef322388a61abc5b5a727b47f5f2e'),
-	(1277937380,'88.97.41.226','1630b703af02a5219c273bb8e65f02f304870977'),
+	(1296234637,'76.238.177.203','9c28ad1dabf232eaf39b8cfdb906641e10b2c45f'),
 	(1277917585,'68.34.105.173','106c4f020c0b9003b9bca85b6826b5993ea6f1d2'),
 	(1277917701,'68.34.105.173','c93b09d2e50e0bc2dc0f76621a34496139ae51d5'),
-	(1277937299,'88.97.41.226','1bae0cc4c9e6b4141eba034c7df0607f18f3a18d'),
-	(1277937302,'88.97.41.226','4ca8019d9553f2cf32e0f76a645b34c5e744d86f'),
-	(1277937307,'88.97.41.226','efe26abb09474d0bce985344e038c6944509e039'),
+	(1296234598,'76.238.177.203','9915960a60d9991c45240edc8af9b08dfd99e11d'),
+	(1296234503,'76.238.177.203','cad0a6e854cc10e78482515b7307baf02acb15e1'),
+	(1296233933,'76.238.177.203','1bbd6760f2a8562e5a9f4b5f6f53363fbe5e4a00'),
 	(1277935287,'12.170.156.2','2f4278ebe316726bbba81a0f1b22b692527d11a7'),
 	(1277823506,'88.97.41.224','0cfaf86e7b159268470ac60d61fe5dda1126c96f'),
-	(1277931698,'88.97.41.226','89d27cdcaebe4e479d10e6556e117c25b3c44769'),
-	(1277931690,'88.97.41.226','3c523794b1aeeda88c9f5801b67133bfd3029898'),
-	(1277931686,'88.97.41.226','36e9bea5260075bb3c6d8429e5ad95f97a3823a2'),
+	(1296233816,'76.238.177.203','0d97ceac36cc0f582e6253b65e5af3b86e187600'),
+	(1296233805,'76.238.177.203','bc872275ef253b5bd128120f305384cb3e71f84e'),
+	(1296233746,'76.238.177.203','8e989dcf55f1190c05e0df9ed459b760d0c32712'),
 	(1277280574,'89.194.97.99','cb1489c351fe084a4131417c1718c4dfb0565728'),
 	(1277280603,'89.194.97.99','ccc517b04966327732397d1254506724bf4d085e'),
-	(1277931680,'88.97.41.226','3323054ed529b2211c9e3fbb99f03e984025fc79'),
-	(1277931675,'88.97.41.226','3b66faf5d43a536f3f2dbeac0516ef8a584e1127'),
-	(1277931671,'88.97.41.226','15b14a39be15449ad8e48b0a6006766c9f815119'),
+	(1296233662,'76.238.177.203','3d4c2d18d5400b6c057bb85bfdd0610a44700514'),
+	(1296233656,'76.238.177.203','3e473899784b40f9cf3939c537807ea7ca649677'),
+	(1296232888,'88.97.41.226','0b04db1191252b271c53153a8c0c8db9cee3a1c2'),
 	(1277826936,'88.97.41.224','5e8099843bd4fb83609721a543d6063c21e95a2e'),
 	(1277826934,'88.97.41.224','335d44ccdb24c05e12993f0c7d40c86d839ba222'),
 	(1277826934,'88.97.41.224','3ffd5200de32aaff8dfb6741136475d80c19ef70'),
@@ -2374,7 +2404,7 @@ VALUES
 	(1277335201,'89.194.0.180','dce85bd4e3d72422686136eb467e673e6c056a2b'),
 	(1277335230,'89.194.0.180','2e574833d6b076d54d5701496b75c40bfc0d6759'),
 	(1277337886,'89.194.0.180','171cae0c58760f87698ef734ea14f8d0642a52b8'),
-	(1277931667,'88.97.41.226','b14e49b4263a5c96014f2d8473375267c9757607'),
+	(1296232888,'88.97.41.226','22ec215899b8836bfd2ed8972dd87c2a90644340'),
 	(1277826225,'71.206.168.11','dc76bedbc6d1d3a294b2376382a3a59bd6c97214'),
 	(1277935257,'12.170.156.2','56dc43b7b7299106ea694bb9a2b805b970f7f70d'),
 	(1277935257,'12.170.156.2','8d45a5cde1c5ea3138be85cb075db05cdd1d61e2'),
@@ -2464,7 +2494,17 @@ VALUES
 	(1296046074,'127.0.0.1','a2cde7c862f5203881edb97289d70bd44b9d6c70'),
 	(1296046039,'127.0.0.1','4d285bb6dbdd77865b4480d9cfd12e9b5310629f'),
 	(1296046032,'127.0.0.1','4e5706c8203bda62bfa232cfc0a7cddb045ba8c2'),
-	(1296046027,'127.0.0.1','ffa6bdf5052ef2dcff2f651b29a324b2c79c2fad');
+	(1296046027,'127.0.0.1','ffa6bdf5052ef2dcff2f651b29a324b2c79c2fad'),
+	(1296223848,'88.97.41.226','bf87800af5ad44b5e9b0518aef7ee9879993fe2a'),
+	(1296223848,'88.97.41.226','7e340ee6c039b935ae999a07c4a98f6427bb605f'),
+	(1296230288,'88.97.41.226','65299443d633f70b152d97af2e78a6feef0decb6'),
+	(1296230288,'88.97.41.226','c17f44adea66e3d63c9dbbdfd3fdc9c2c9138d04'),
+	(1296232833,'88.97.41.226','e3e5a446e6c6458fb5c8277a36e0428325bc8869'),
+	(1296232842,'88.97.41.226','80cc19dee95d10273188bf30873a3adff776bcd7'),
+	(1296232846,'88.97.41.226','068c7db0ee24947063afd82eb1215002f68cbda2'),
+	(1296232846,'88.97.41.226','319a5b20872bb32f111ef4b876b1800546eefac2'),
+	(1296232851,'88.97.41.226','727c8d5afaa09d231f90b88105107c97ee64bdac'),
+	(1296232855,'88.97.41.226','85c0db4269a2811590b2ed3ebc48c5cbc1babbe5');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2492,7 +2532,8 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('c06a11b2dde78cee2bad741a0fb6ca56a00cc6af',1,1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296049319);
+	('ce1a133a685936ff07692dc8a744249a9f3b276e',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296233446),
+	('274d099085f6639e2eae726cc85ff49fdfc7b3fd',1,18,1,'76.238.177.203','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296236502);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2603,7 +2644,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,7,17,'Phil Howell',1,0,0,0,0,1296047899,0,0,0,1265120889,4,1249281451,1266667446);
+	(0,1,8,18,'Garrett Winder',1,0,0,0,0,1296047899,0,0,0,1265120889,4,1249281451,1266667446);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2969,7 +3010,9 @@ VALUES
 	(15,'cp',7),
 	(15,'cp',5),
 	(16,'cp',7),
-	(16,'cp',5);
+	(16,'cp',5),
+	(17,'cp',7),
+	(17,'cp',5);
 
 /*!40000 ALTER TABLE `exp_upload_no_access` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2999,7 +3042,7 @@ CREATE TABLE `exp_upload_prefs` (
   `file_post_format` varchar(120) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_upload_prefs` WRITE;
 /*!40000 ALTER TABLE `exp_upload_prefs` DISABLE KEYS */;
@@ -3009,7 +3052,8 @@ VALUES
 	(11,1,'n','Images: General','../uploads/images/general/','/uploads/images/general/','img','','','','alt=\"\"','','','','',''),
 	(14,1,'n','Images: Journal','../uploads/images/journal/','/uploads/images/journal/','img','','','','alt=\"\"','','','','',''),
 	(15,1,'n','Videos','../uploads/videos/','/uploads/videos/','all','','','','','','','','',''),
-	(16,1,'n','Audio','../uploads/audio/','/uploads/audio/','all','','','','','','','','','');
+	(16,1,'n','Audio','../uploads/audio/','/uploads/audio/','all','','','','','','','','',''),
+	(17,1,'n','Images: Galleries','../uploads/images/galleries/','/uploads/images/galleries/','img','','','','alt=\"\"','','','','','');
 
 /*!40000 ALTER TABLE `exp_upload_prefs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3113,13 +3157,14 @@ CREATE TABLE `exp_user_params` (
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`),
   KEY `hash` (`hash`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_user_params` WRITE;
 /*!40000 ALTER TABLE `exp_user_params` DISABLE KEYS */;
 INSERT INTO `exp_user_params` (`params_id`,`hash`,`entry_date`,`data`)
 VALUES
-	(14,'UyFoDptINVi1wmiYK4P1uI7gp',1296045732,'a:11:{s:8:\"group_id\";s:0:\"\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:31:\"email|password|password_confirm\";s:15:\"override_return\";s:19:\"account&#47;pending\";}');
+	(15,'qUn8nQfbMLHFs7bJiuA4x0W1o',1296223847,'a:11:{s:8:\"group_id\";s:0:\"\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:31:\"email|password|password_confirm\";s:15:\"override_return\";s:19:\"account&#47;pending\";}'),
+	(16,'3e0Jd4ZghX8LlwNufK0VBwyae',1296230288,'a:11:{s:8:\"group_id\";s:0:\"\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:31:\"email|password|password_confirm\";s:15:\"override_return\";s:19:\"account&#47;pending\";}');
 
 /*!40000 ALTER TABLE `exp_user_params` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3215,6 +3260,17 @@ CREATE TABLE `exp_weblog_data` (
   `field_ft_69` tinytext,
   `field_id_70` text NOT NULL,
   `field_ft_70` tinytext,
+  `field_id_71` text NOT NULL,
+  `field_ft_71` tinytext,
+  `field_id_72` text NOT NULL,
+  `field_ft_72` tinytext,
+  `field_id_73` int(10) NOT NULL,
+  `field_ft_73` tinytext,
+  `field_dt_73` varchar(8) NOT NULL,
+  `field_id_74` text NOT NULL,
+  `field_ft_74` tinytext,
+  `field_id_75` text NOT NULL,
+  `field_ft_75` tinytext,
   KEY `entry_id` (`entry_id`),
   KEY `weblog_id` (`weblog_id`),
   KEY `site_id` (`site_id`)
@@ -3222,9 +3278,9 @@ CREATE TABLE `exp_weblog_data` (
 
 LOCK TABLES `exp_weblog_data` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_data` DISABLE KEYS */;
-INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`)
+INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_dt_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`)
 VALUES
-	(42,1,16,'The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','1','none','','none','','none','The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.\n\nThe ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile');
+	(42,1,16,'The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','1','none','','none','','none','The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.\n\nThe ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','','none','','none',0,NULL,'','','none','','none');
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3265,7 +3321,7 @@ CREATE TABLE `exp_weblog_fields` (
   PRIMARY KEY (`field_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_fields` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_fields` DISABLE KEYS */;
@@ -3275,7 +3331,12 @@ VALUES
 	(67,1,15,'cf_journal_image','Photo','','ftype_id_10','','n',0,0,'blog',16,'title','desc',0,6,128,'n','ltr','n','n','none','n',2,'a:2:{s:8:\"max_rows\";s:1:\"1\";s:7:\"col_ids\";a:3:{i:0;s:2:\"17\";i:1;s:2:\"18\";i:2;s:2:\"19\";}}'),
 	(68,1,15,'cf_journal_audio','Audio','','ftype_id_10','','n',0,0,'blog',0,'title','desc',0,6,128,'n','ltr','n','n','none','n',3,'a:2:{s:8:\"max_rows\";s:1:\"1\";s:7:\"col_ids\";a:2:{i:0;s:2:\"20\";i:1;s:2:\"21\";}}'),
 	(69,1,15,'cf_journal_video','Video','','ftype_id_10','','n',0,0,'blog',0,'title','desc',0,6,128,'n','ltr','n','n','none','n',4,'a:2:{s:8:\"max_rows\";s:1:\"1\";s:7:\"col_ids\";a:2:{i:0;s:2:\"22\";i:1;s:2:\"23\";}}'),
-	(70,1,15,'cf_journal_extended','Extended content','','textarea','','n',0,0,'blog',0,'title','desc',0,20,128,'n','ltr','y','n','textile','n',5,'');
+	(70,1,15,'cf_journal_extended','Extended content','','textarea','','n',0,0,'blog',0,'title','desc',0,20,128,'n','ltr','y','n','textile','n',5,''),
+	(71,1,16,'cf_event_venue','Venue','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',6,''),
+	(72,1,16,'cf_event_city','City','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',7,''),
+	(73,1,16,'cf_event_date','Date','','date','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','y',8,''),
+	(74,1,16,'cf_event_fburl','Facebook URL','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',9,''),
+	(75,1,17,'cf_gallery_images','Images','','ftype_id_10','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',10,'a:2:{s:8:\"max_rows\";s:0:\"\";s:7:\"col_ids\";a:3:{i:0;s:2:\"24\";i:1;s:2:\"25\";i:2;s:2:\"26\";}}');
 
 /*!40000 ALTER TABLE `exp_weblog_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3455,13 +3516,15 @@ CREATE TABLE `exp_weblogs` (
   KEY `field_group` (`field_group`),
   KEY `is_user_blog` (`is_user_blog`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblogs` WRITE;
 /*!40000 ALTER TABLE `exp_weblogs` DISABLE KEYS */;
 INSERT INTO `exp_weblogs` (`weblog_id`,`site_id`,`is_user_blog`,`blog_name`,`blog_title`,`blog_url`,`blog_description`,`blog_lang`,`blog_encoding`,`total_entries`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_comment_date`,`last_trackback_date`,`cat_group`,`status_group`,`deft_status`,`field_group`,`search_excerpt`,`enable_trackbacks`,`trackback_use_url_title`,`trackback_max_hits`,`trackback_field`,`deft_category`,`deft_comments`,`deft_trackbacks`,`weblog_require_membership`,`weblog_max_chars`,`weblog_html_formatting`,`weblog_allow_img_urls`,`weblog_auto_link_urls`,`weblog_notify`,`weblog_notify_emails`,`comment_url`,`comment_system_enabled`,`comment_require_membership`,`comment_use_captcha`,`comment_moderate`,`comment_max_chars`,`comment_timelock`,`comment_require_email`,`comment_text_formatting`,`comment_html_formatting`,`comment_allow_img_urls`,`comment_auto_link_urls`,`comment_notify`,`comment_notify_authors`,`comment_notify_emails`,`comment_expiration`,`search_results_url`,`tb_return_url`,`ping_return_url`,`show_url_title`,`trackback_system_enabled`,`show_trackback_field`,`trackback_use_captcha`,`show_ping_cluster`,`show_options_cluster`,`show_button_cluster`,`show_forum_cluster`,`show_pages_cluster`,`show_show_all_cluster`,`show_author_menu`,`show_status_menu`,`show_categories_menu`,`show_date_menu`,`rss_url`,`enable_versioning`,`enable_qucksave_versioning`,`max_revisions`,`default_entry_title`,`url_title_prefix`,`live_look_template`)
 VALUES
-	(16,1,'n','journal','Journal','/journal/','','en','utf-8',1,0,0,1296047899,0,0,'',1,'open',15,66,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0);
+	(16,1,'n','journal','Journal','/journal/','','en','utf-8',1,0,0,1296047899,0,0,'',1,'open',15,66,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(17,1,'n','event','Event','/events/','','en','utf-8',0,0,0,0,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',0,0,0,0,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0);
 
 /*!40000 ALTER TABLE `exp_weblogs` ENABLE KEYS */;
 UNLOCK TABLES;
