@@ -16,30 +16,20 @@
     <div id="tour_dates" class="widget">
         <h2>ThirtySix on tour</h2>
         <ul class="item_listing">
+        {exp:weblog:entries
+            weblog="event"
+            limit="5"
+            disable="{pv_disable_defaults}"
+            orderby="cf_event_date"
+            sort="desc"
+            }
             <li>
-                <a href="#">
-                    <h3><strong>The Creek</strong>, Peel</h3>
-                    <p><time datetime="">20 Jan 2011</time></p>
+                <a href="{cf_event_fburl}">
+                    <h3><strong>{cf_event_venue}</strong>, {cf_event_city}</h3>
+                    <p><time datetime="{cf_event_date format='{DATE_ATOM}'}">{cf_event_date format="{pv_date_event}"}</time></p>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <h3><strong>Shepard's Bush</strong>, London</h3>
-                    <p><time datetime="">1 Feb 2011</time></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3><strong>Rock City</strong>, Nottingham</h3>
-                    <p><time datetime="">4 Feb 2011</time></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3><strong>Glastonbury Festival</strong></h3>
-                    <p><time datetime="">22 Mar 2011</time></p>
-                </a>
-            </li>
+            {/exp:weblog:entries}
         </ul>
         <p class="more"><a href="#">See all events</a></p>
     </div> <!-- // #tour_dates -->
