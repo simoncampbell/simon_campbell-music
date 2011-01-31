@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-01-28 16:18:51 -0600
+# Generation Time: 2011-01-31 13:41:10 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -243,7 +243,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=260 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=261 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -507,7 +507,8 @@ VALUES
 	(256,1,18,'garrett.winder','76.238.177.203',1296235858,'Field Group Created:&nbsp;&nbsp;Gallery'),
 	(257,1,18,'garrett.winder','76.238.177.203',1296236262,'Channel Created:&nbsp;&nbsp;Events'),
 	(258,1,18,'garrett.winder','76.238.177.203',1296236342,'Channel Created:&nbsp;&nbsp;Gallery'),
-	(259,1,18,'garrett.winder','173.185.20.98',1296253032,'Logged in');
+	(259,1,18,'garrett.winder','173.185.20.98',1296253032,'Logged in'),
+	(260,1,18,'garrett.winder','173.185.20.98',1296501529,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1716,7 +1717,7 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296236457,1296253032,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296253032,1296502745,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2435,10 +2436,10 @@ VALUES
 	(1272453376,'0.0.0.0','e7b48ec69cf2c7415c055d20b02e64c1260eb64b'),
 	(1272453382,'0.0.0.0','1b1722c1a4620979ef12f9c588077bd63a434619'),
 	(1272453590,'0.0.0.0','4270ca9609ec03f2c47e641a016bf1cd6385464d'),
-	(1296253167,'173.185.20.98','ffdf625649c440dc587097e7a563fa370453a7d0'),
+	(1296502299,'173.185.20.98','ce20cf6ede4695884f365a9af6f655de29cc0dc8'),
 	(1277935292,'12.170.156.2','90e0505ec94ef6fd1844c48eb6015835be4292eb'),
-	(1296253163,'173.185.20.98','a43e18cea94607fc69fb000bedef9bb360a68270'),
-	(1296253075,'173.185.20.98','b6da382468c26d3f4a1e3274e49d856c499c83d5'),
+	(1296502258,'173.185.20.98','b328ae1e43c7dd1ed174eb82f2fac104ef517045'),
+	(1296502186,'173.185.20.98','943e2166511b536a29e8b8f70f31b611676f6b39'),
 	(1277935287,'12.170.156.2','805b8d2764bcaada092219e09d223952a4c42eef'),
 	(1277909537,'88.97.41.224','7c033685fc10704e5223a86c3f897673fc72a72a'),
 	(1277909511,'88.97.41.224','8d780d2539c1dce3cd0bbd443509993944cf4857'),
@@ -2453,12 +2454,12 @@ VALUES
 	(1277909488,'88.97.41.224','ee535f11c0ca90ddde2ff0e40789187061cdf6bb'),
 	(1276700418,'76.99.35.250','776b7a939273acb1c06911413fe19b272d193988'),
 	(1277909481,'88.97.41.224','9bab10c63d6243dd763a244c30f5615dd64bbf03'),
-	(1296253069,'173.185.20.98','69e45dec8aa9b2e3ac0153bf980ed20f68b21f63'),
+	(1296502131,'173.185.20.98','d842de7fd22ae02a7d2e86e22ef8d1a12af46091'),
 	(1277908996,'88.97.41.224','0e2e7907db8e156d6a7e99be55c1d0a76c0858d9'),
 	(1276700335,'76.99.35.250','68548830ba4f2ffe291d15cf03f6a9bd98d5f115'),
 	(1277908989,'88.97.41.224','047ce96a4d5a2166a98544d82821e0b4543e62d6'),
-	(1296253033,'173.185.20.98','81281debf1ba377d4d4920d1674a37a123f51ad8'),
-	(1296253025,'173.185.20.98','fbb10b59a34946565407d901ebeec729e5715825'),
+	(1296502108,'173.185.20.98','1fbd7dc80acf107460151a8677ce07ee5e94d106'),
+	(1296501963,'173.185.20.98','ffade0e7ec39173e279d190ba11539834b0701d9'),
 	(1276526027,'89.194.100.70','cc64f9a3855292a18e4104449dce7bf57928d16e'),
 	(1276526195,'89.194.100.70','41410e5a5cb3d4f72300d2adb16f1fe304e050ab'),
 	(1276526222,'89.194.100.70','c2ae63292ef92c4232257f6a5c9c9045d9189501'),
@@ -2645,11 +2646,17 @@ VALUES
 	(1296232846,'88.97.41.226','319a5b20872bb32f111ef4b876b1800546eefac2'),
 	(1296232851,'88.97.41.226','727c8d5afaa09d231f90b88105107c97ee64bdac'),
 	(1296232855,'88.97.41.226','85c0db4269a2811590b2ed3ebc48c5cbc1babbe5'),
-	(1296253181,'173.185.20.98','c361bb76f43f5294b93fadf5a77322a4234ae631'),
-	(1296253184,'173.185.20.98','4817c19dcac882b363c287310172c5f9e4404f81'),
-	(1296253188,'173.185.20.98','aeee705b68c3b629ac1635ef955010e04b50be6b'),
-	(1296253204,'173.185.20.98','cccd8f22f86f88bc8cf20257290b5471408f7d02'),
-	(1296253210,'173.185.20.98','640670dc40648f0ab07717ee63465d9df1653064');
+	(1296501930,'173.185.20.98','505cf84e033aaf596a8d7572684d38c1342ae2d4'),
+	(1296501919,'173.185.20.98','794784de88a0bcfcd0aa7a7a5bffc9dc8ddb3c1f'),
+	(1296501895,'173.185.20.98','8fff47bef53c96cb7f29f8d711c1583b2a330898'),
+	(1296501884,'173.185.20.98','2f3d372ca1eb63a27a03b0077eda9dfa7c2660d2'),
+	(1296501867,'173.185.20.98','5b1a789579f49f2ba42bd112a6406ca9154385ad'),
+	(1296501528,'173.185.20.98','bc811fd2de7b34560dfcb8a5000abf69467360c4'),
+	(1296501532,'173.185.20.98','1c0d55e315d5611bf5b645c22955b7de005ef06d'),
+	(1296501686,'173.185.20.98','684dbd3edfc9459ada3e338140083175415c7e14'),
+	(1296501722,'173.185.20.98','7ae7ab446f694c7f3099fdd94abff3d7fa35f7f9'),
+	(1296502319,'173.185.20.98','02c9210741325b660ee3bec67c7eed073cb297f8'),
+	(1296502755,'173.185.20.98','d6af587b452bf8cb42ae1cbe17321aa3cec20823');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2677,9 +2684,7 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('ce1a133a685936ff07692dc8a744249a9f3b276e',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296233446),
-	('274d099085f6639e2eae726cc85ff49fdfc7b3fd',1,18,1,'76.238.177.203','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296236502),
-	('a3f5f0dd21871634dd5cc1529cce9be8847dc919',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296253211);
+	('9f497460f6bda81bbd1acbc91d7dd0a88d4c62ea',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296502941);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3410,9 +3415,8 @@ CREATE TABLE `exp_weblog_data` (
   `field_ft_71` tinytext,
   `field_id_72` text NOT NULL,
   `field_ft_72` tinytext,
-  `field_id_73` int(10) NOT NULL,
+  `field_id_73` text NOT NULL,
   `field_ft_73` tinytext,
-  `field_dt_73` varchar(8) NOT NULL,
   `field_id_74` text NOT NULL,
   `field_ft_74` tinytext,
   `field_id_75` text NOT NULL,
@@ -3424,9 +3428,9 @@ CREATE TABLE `exp_weblog_data` (
 
 LOCK TABLES `exp_weblog_data` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_data` DISABLE KEYS */;
-INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_dt_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`)
+INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`)
 VALUES
-	(42,1,16,'The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','1','none','','none','','none','The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.\n\nThe ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','','none','','none',0,NULL,'','','none','','none');
+	(42,1,16,'The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','1','none','','none','','none','The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.\n\nThe ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel. Vivamus id mollis quam. Morbi ac iklisese commodo nulla.\nIn condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.','textile','','none','','none','0','none','','none','','none');
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3478,10 +3482,10 @@ VALUES
 	(68,1,15,'cf_journal_audio','Audio','','ftype_id_10','','n',0,0,'blog',0,'title','desc',0,6,128,'n','ltr','n','n','none','n',3,'a:2:{s:8:\"max_rows\";s:1:\"1\";s:7:\"col_ids\";a:2:{i:0;s:2:\"20\";i:1;s:2:\"21\";}}'),
 	(69,1,15,'cf_journal_video','Video','','ftype_id_10','','n',0,0,'blog',0,'title','desc',0,6,128,'n','ltr','n','n','none','n',4,'a:2:{s:8:\"max_rows\";s:1:\"1\";s:7:\"col_ids\";a:2:{i:0;s:2:\"22\";i:1;s:2:\"23\";}}'),
 	(70,1,15,'cf_journal_extended','Extended content','','textarea','','n',0,0,'blog',0,'title','desc',0,20,128,'n','ltr','y','n','textile','n',5,''),
-	(71,1,16,'cf_event_venue','Venue','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',6,''),
-	(72,1,16,'cf_event_city','City','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',7,''),
-	(73,1,16,'cf_event_date','Date','','date','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','y',8,''),
-	(74,1,16,'cf_event_fburl','Facebook URL','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',9,''),
+	(71,1,16,'cf_events_venue','Venue','The name of the venue. <strong>Example</strong>: <em>Rock City</em>','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',6,''),
+	(72,1,16,'cf_events_city','City','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',7,''),
+	(73,1,16,'cf_events_date','Date','','ftype_id_13','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',8,'a:2:{s:11:\"date_format\";s:4:\"unix\";s:10:\"year_range\";s:9:\"2011-2020\";}'),
+	(74,1,16,'cf_events_fburl','Facebook URL','Copy/paste the Facebook Event URL here.','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',9,''),
 	(75,1,17,'cf_gallery_images','Images','','ftype_id_10','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',10,'a:2:{s:8:\"max_rows\";s:0:\"\";s:7:\"col_ids\";a:3:{i:0;s:2:\"24\";i:1;s:2:\"25\";i:2;s:2:\"26\";}}');
 
 /*!40000 ALTER TABLE `exp_weblog_fields` ENABLE KEYS */;
@@ -3669,7 +3673,7 @@ LOCK TABLES `exp_weblogs` WRITE;
 INSERT INTO `exp_weblogs` (`weblog_id`,`site_id`,`is_user_blog`,`blog_name`,`blog_title`,`blog_url`,`blog_description`,`blog_lang`,`blog_encoding`,`total_entries`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_comment_date`,`last_trackback_date`,`cat_group`,`status_group`,`deft_status`,`field_group`,`search_excerpt`,`enable_trackbacks`,`trackback_use_url_title`,`trackback_max_hits`,`trackback_field`,`deft_category`,`deft_comments`,`deft_trackbacks`,`weblog_require_membership`,`weblog_max_chars`,`weblog_html_formatting`,`weblog_allow_img_urls`,`weblog_auto_link_urls`,`weblog_notify`,`weblog_notify_emails`,`comment_url`,`comment_system_enabled`,`comment_require_membership`,`comment_use_captcha`,`comment_moderate`,`comment_max_chars`,`comment_timelock`,`comment_require_email`,`comment_text_formatting`,`comment_html_formatting`,`comment_allow_img_urls`,`comment_auto_link_urls`,`comment_notify`,`comment_notify_authors`,`comment_notify_emails`,`comment_expiration`,`search_results_url`,`tb_return_url`,`ping_return_url`,`show_url_title`,`trackback_system_enabled`,`show_trackback_field`,`trackback_use_captcha`,`show_ping_cluster`,`show_options_cluster`,`show_button_cluster`,`show_forum_cluster`,`show_pages_cluster`,`show_show_all_cluster`,`show_author_menu`,`show_status_menu`,`show_categories_menu`,`show_date_menu`,`rss_url`,`enable_versioning`,`enable_qucksave_versioning`,`max_revisions`,`default_entry_title`,`url_title_prefix`,`live_look_template`)
 VALUES
 	(16,1,'n','journal','Journal','/journal/','','en','utf-8',1,0,0,1296047899,0,0,'',1,'open',15,66,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(17,1,'n','event','Event','/events/','','en','utf-8',0,0,0,0,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(17,1,'n','events','Events','/events/','','en','utf-8',0,0,0,0,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
 	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',0,0,0,0,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0);
 
 /*!40000 ALTER TABLE `exp_weblogs` ENABLE KEYS */;
