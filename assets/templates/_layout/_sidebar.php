@@ -20,6 +20,7 @@
             weblog="event"
             limit="5"
             disable="{pv_disable_defaults}"
+            dynamic="off"
             orderby="cf_event_date"
             sort="desc"
             }
