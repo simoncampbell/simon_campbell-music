@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-01-31 13:41:10 -0600
+# Generation Time: 2011-01-31 14:23:56 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -1064,14 +1064,15 @@ CREATE TABLE `exp_freeform_templates` (
   `template_data` text NOT NULL,
   PRIMARY KEY (`template_id`),
   KEY `template_name` (`template_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_templates` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_templates` DISABLE KEYS */;
 INSERT INTO `exp_freeform_templates` (`template_id`,`enable_template`,`wordwrap`,`html`,`template_name`,`template_label`,`data_from_name`,`data_from_email`,`data_title`,`template_data`)
 VALUES
 	(1,'y','y','n','default_template','Default Template','','','Someone has posted to Freeform','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}'),
-	(2,'y','n','n','contact_form','Contact Form','{name}','{email}','Form Submission: Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}');
+	(2,'y','n','n','contact_form','Contact Form','{name}','{email}','Form Submission: Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}'),
+	(3,'y','n','n','contact_form_user','Contact Form - User Confirmation','Simon Campbell Music','mail@simoncampbell.com','Thank you for contacting Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}');
 
 /*!40000 ALTER TABLE `exp_freeform_templates` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1717,7 +1718,7 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296253032,1296502745,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296253032,1296505495,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2656,7 +2657,13 @@ VALUES
 	(1296501686,'173.185.20.98','684dbd3edfc9459ada3e338140083175415c7e14'),
 	(1296501722,'173.185.20.98','7ae7ab446f694c7f3099fdd94abff3d7fa35f7f9'),
 	(1296502319,'173.185.20.98','02c9210741325b660ee3bec67c7eed073cb297f8'),
-	(1296502755,'173.185.20.98','d6af587b452bf8cb42ae1cbe17321aa3cec20823');
+	(1296502755,'173.185.20.98','d6af587b452bf8cb42ae1cbe17321aa3cec20823'),
+	(1296504831,'173.185.20.98','d062cf262ad09ac4b2620533d07cc0a720ac987f'),
+	(1296504843,'173.185.20.98','1bbace461a54a7c3572b4e0c64bf76f85985cb14'),
+	(1296504856,'173.185.20.98','17c4e25f930869b28c9ad7e512427fba149ce7d2'),
+	(1296504867,'173.185.20.98','592848b52f1782820ccb3feb84fe990878fd23e3'),
+	(1296504871,'173.185.20.98','23956d5103e33d543cae64d07761e0f1babe6230'),
+	(1296505495,'173.185.20.98','85031273c8b93c818c0cf4eeec8b2feeda52216e');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2684,7 +2691,7 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('9f497460f6bda81bbd1acbc91d7dd0a88d4c62ea',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296502941);
+	('9f497460f6bda81bbd1acbc91d7dd0a88d4c62ea',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296505496);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
