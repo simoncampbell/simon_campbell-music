@@ -29,4 +29,22 @@ $(document).ready(function(){
         }
     });
     
+    // Contact Form Validation
+    $('form#freeform').validate({
+        rules: {
+            name: {
+                required: true,
+                rangelength: [4, 30]
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            message: {
+                required: true,
+                rangelength: [15, 250]
+            }
+        }
+    });
+    
 });

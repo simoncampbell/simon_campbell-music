@@ -44,13 +44,13 @@
     <link rel="apple-touch-startup-image" href="{pv_assets_url}/images/site/icons/apple_touch-startup.png" />
     
     <!-- JAVASCRIPT -->
-    {!-- These 2 were only showing if !IE6 but onload.js wasn't working? --}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script src="{pv_assets_url}/js/onload.js"></script>
     
     <script type="text/javascript" src="http://fast.fonts.com/jsapi/d8bd6128-b18f-4a44-a9cc-7175e6b50fa2.js"></script>
     <script src="{pv_assets_url}/jwplayer/jwplayer.js"></script>
     <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     
     <!--[if IE 6]>
         <script src="{pv_assets_url}/js/ie6/DD_belatedPNG_0.0.8a.js"></script>
