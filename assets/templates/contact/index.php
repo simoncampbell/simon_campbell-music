@@ -17,10 +17,12 @@
     <div id="content_pri">
         
         {exp:freeform:form
-            form:id="contact_form"
             notify="mail@simoncampbell.com"
+            required="name|email|message"
             return="contact/thanks"
+            send_user_email="yes"
             template="contact_form"
+            user_email_template="contact_form_user"
         }
             <fieldset>
                 <div>
