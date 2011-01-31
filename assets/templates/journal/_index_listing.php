@@ -27,10 +27,9 @@
             <div class="post">
                 <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
                 <ul class="post_meta">
-                    <li><time datetime="">{entry_date format="{pv_date_journal}"}</time></li>
-                    <li><a href="{pv_site_url}{comment_url_title_auto_path}">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
+                    <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
+                    <li id="pm_twitter"><a href="#">Share on Twitter</a></li>
+                    <li id="pm_facebook"><a href="#">Share on Facebook</a></li>
                 </ul>
                 
                 {cf_journal_image}
