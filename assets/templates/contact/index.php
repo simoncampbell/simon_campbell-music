@@ -17,14 +17,16 @@
     <div id="content_pri">
         
         {exp:freeform:form
-            form:id="contact_form"
-            notify=""
+            notify="mail@simoncampbell.com"
+            required="name|email|message"
             return="contact/thanks"
+            send_user_email="yes"
             template="contact_form"
+            user_email_template="contact_form_user"
         }
             <fieldset>
                 <div>
-                    <label for="name">Text Field</label>
+                    <label for="name">Name</label>
                     <input id="name" name="name" type="text">
                 </div>
                 <div>
@@ -40,8 +42,15 @@
         {/exp:freeform:form}<!-- // #contact_form -->
         
         <div id="form_aside">
+            {!-- Needs Low Variables integration --}
+            {if segment_2 == 'thanks'}
             <p>
-                <strong>Simon would love to hear from you.</strong> If you’d like to drop him a line, either use the form on this page or drop him a line at <a href="#">me@simoncampbell.com</a>.
+                <strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong>
+            </p>
+            <p>You’ll soon be receiving updates about Simon's musical adventures - and maybe some free goodies!</p>
+            {if:else}
+            <p>
+                <strong>Simon would love to hear from you.</strong> If you’d like to drop him a line, either use the form on this page or drop him a line at <a href="#">mail@simoncampbell.com</a>.
             </p>
             <p>If you want to get in touch with Simon’s agent for booking details, contact Suzy:</p>
             <address>
@@ -50,6 +59,7 @@
                 <a href="#">suzy@starlite-events.net</a><br>
                 +44 7658 734 456<br>
             </address>
+            {/if}
         </div><!-- // #form_aside -->
         
     </div> <!-- // #content_pri -->
