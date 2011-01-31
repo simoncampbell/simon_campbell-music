@@ -9,7 +9,7 @@
     <div id="promo_block" class="widget">
         <a href="#">
             <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
-            <small>ThirtySix launch on 26 March 2011</small>
+            <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
     
