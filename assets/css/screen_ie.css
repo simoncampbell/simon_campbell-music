@@ -1,64 +1,32 @@
-ul#nav_access {
-    display:none;
+/*../images/site/ie6/opacity_10.png
+../images/site/ie6/opacity_5.png*/
+
+ul.item_listing {
+    background: #232323;
+}
+ul.item_listing li.odd {
+    background: #1C1C1C;
+}
+#newsletter_signup input.submit {
+    padding: 0px 4px;
+}
+label {
+    margin: 0;
+    text-align: left;
+    width: 90px;
+}
+body.contact #content_pri input.submit {
+    margin-right: 20px;
 }
 
-div#navigation_network ul li {
-    display:inline;
+div.gallery_photo p.photo_meta {
+    background: #000;
 }
-
-img.album,
-div#thirtysix img {
-    background:rgb(47, 47, 47);
+ul#gallery_grid li.odd {
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
-ul.social li {
-    display:block;
-}
-ul.social li a {
-    display:block;
-    padding-left:30px;
-    border:1px dotted rgb(47, 47, 47);
-    background-position:8px 8px;
-}
-
-div#brother_info {
-    border-bottom:1px dashed rgb(95, 95, 95);
-}
-
-div#launch_event {
-    border-top:1px dashed rgb(95, 95, 95);
-    border-bottom:1px dashed rgb(95, 95, 95);
-    background:rgb(47, 47, 47);
-}
-
-ul.event_cta {
-    width:120px;
-}
-
-ul.event_cta li {
-    padding:0;
-}
-
-ul.event_cta li a {
-    background:rgb(47, 47, 47);
-}
-
-input {
-    float:left;
-}
-
-input.submit {
-    width:auto;
-    display:block;
-    padding:3px;
-    background:rgb(47, 47, 47);
-    border:1px dashed rgb(95, 95, 95);
-    float:left;
-    color:rgb(255, 255, 255);
-    cursor:pointer;
-    margin-left:10px;
-}
-input.submit:hover,
-input.submit:focus {
-    background:rgb(47, 47, 47);
+#content_pri img,
+#content_pri iframe {
+    background: #363636;
 }

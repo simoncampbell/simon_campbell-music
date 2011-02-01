@@ -35,7 +35,7 @@
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
     
-    <!--[if lte IE 7]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
+    <!--[if lte IE 8]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
         
     <!-- ICONS -->
@@ -51,6 +51,8 @@
     <script src="{pv_assets_url}/jwplayer/jwplayer.js"></script>
     <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    
+    <!--[if lt IE 9]><script src="{pv_assets_url}/js/ie.js"></script><![endif]-->
     
     <!--[if IE 6]>
         <script src="{pv_assets_url}/js/ie6/DD_belatedPNG_0.0.8a.js"></script>
