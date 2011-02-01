@@ -1,16 +1,2 @@
-img.album,
-ul.social li a,
-input.submit,
-ul.event_cta li a,
-div#thirtysix img,
-div#launch_event {
-    background:url(../images/site/ie6/opacity_10.png) !important;
-}
-
-div#launch_event {
-    border-color:#666;
-}
-
-ul.social li a {
-    padding-left:8px;
-}
+/*../images/site/ie6/opacity_10.png
+../images/site/ie6/opacity_5.png*/
