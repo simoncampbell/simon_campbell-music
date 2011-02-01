@@ -16,17 +16,19 @@
     
     <div id="content_pri">
         
-        <h1>Thirtysix</h1>
-        <h2>The solo album by Simon Campbell</h2>
+        <div class="widget">
+            <h1>Thirtysix</h1>
+            <h2>The solo album by Simon Campbell</h2>
+        </div><!-- // .widget -->
         
-        <blockquote>
+        <blockquote class="widget">
             <p>
                 There are very few records in the last 32 years that I have worked on that I am proud of both musically and technically. Simon Campbell’s forthcoming release is one of them and joins an elite team which can now be counted on one hand!
             </p>
             <cite>Steve (Dr Beat) Boyce-Buckley</cite>
         </blockquote>
         
-        <div id="album_promo_inline">
+        <div class="widget">
             <small>Preview the lead single, <strong>"Brother"</strong></small>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
@@ -55,14 +57,16 @@
             </div>
         </div><!-- // #album_promo_inline -->
         
-        <p>
-            Well this is it, my first solo album in thirty six years of spanking the plank. It’s not blues, it’s not rock, it’s not folk; it is an eclectic mix that will take you on my very personal musical journey. Each song is written about real people, with real lives.
-        </p>
-        <p>You can read my incredible tale of how this all came to be on the journey. Thank you for listening, and most importantly—enjoy.</p>
-        <p>
-            Love,<br>
-            Simon x
-        </p>
+        <div class="widget">
+            <p>
+                Well this is it, my first solo album in thirty six years of spanking the plank. It’s not blues, it’s not rock, it’s not folk; it is an eclectic mix that will take you on my very personal musical journey. Each song is written about real people, with real lives.
+            </p>
+            <p>You can read my incredible tale of how this all came to be on the journey. Thank you for listening, and most importantly—enjoy.</p>
+            <p>
+                Love,<br>
+                Simon x
+            </p>
+        </div><!-- // .widget -->
         
     </div> <!-- // #content_pri -->
     

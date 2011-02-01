@@ -869,6 +869,18 @@ div#footer p.credit {
             body.editorial #tribute p {
                 width: 360px;
             }
+        
+        /* THIRTYSIX TEMPLATE */
+        body.thirtysix div#content_pri {
+            background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
+        }
+        body.thirtysix div#content_pri .widget {
+            background: rgba(0, 0, 0, 0.85);
+            border: none;
+            margin-bottom: 30px;
+            padding: 15px 50px;
+            width: auto;
+        }
     
     /* CONTENT SEC */
     div#content_sec h2 {
