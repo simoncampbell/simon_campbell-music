@@ -25,7 +25,26 @@ $(document).ready(function(){
         next: '.next',
         pager: '#gallery_grid',
         pagerAnchorBuilder: function(idx, slide) {
-            return '<li><a href="#"><img src="' + slide.src + '" width="180" height="180"></a></li>';
+            var img = $(slide).children().eq(0).attr("src");
+            return '<li><a href="#"><img src="' + img + '" width="180" height="180"></a></li>';
+        }
+    });
+    
+    // Contact Form Validation
+    $('form#freeform').validate({
+        rules: {
+            name: {
+                required: true,
+                rangelength: [4, 30]
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            message: {
+                required: true,
+                rangelength: [15, 250]
+            }
         }
     });
     

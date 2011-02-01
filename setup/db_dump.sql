@@ -4,7 +4,11 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
+<<<<<<< HEAD
 # Generation Time: 2011-02-01 08:39:19 +0000
+=======
+# Generation Time: 2011-01-31 16:50:41 -0600
+>>>>>>> cf1ceffa9082c78941e7b749119ffc181fa090e2
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;

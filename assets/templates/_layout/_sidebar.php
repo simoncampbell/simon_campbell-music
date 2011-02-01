@@ -9,7 +9,7 @@
     <div id="promo_block" class="widget">
         <a href="#">
             <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
-            <small>ThirtySix launch on 26 March 2011</small>
+            <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
     
@@ -17,16 +17,17 @@
         <h2>ThirtySix on tour</h2>
         <ul class="item_listing">
         {exp:weblog:entries
-            weblog="event"
+            weblog="events"
             limit="5"
             disable="{pv_disable_defaults}"
-            orderby="cf_event_date"
-            sort="desc"
+            dynamic="off"
+            orderby="cf_events_date"
+            sort="asc"
             }
             <li>
-                <a href="{cf_event_fburl}">
-                    <h3><strong>{cf_event_venue}</strong>, {cf_event_city}</h3>
-                    <p><time datetime="{cf_event_date format='{DATE_ATOM}'}">{cf_event_date format="{pv_date_event}"}</time></p>
+                <a href="{cf_events_fburl}">
+                    <h3><strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
+                    <p><time datetime="{cf_events_date format='{DATE_ATOM}'}">{cf_events_date format="{pv_date_event}"}</time></p>
                 </a>
             </li>
             {/exp:weblog:entries}

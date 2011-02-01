@@ -21,10 +21,9 @@
             <div class="post">
                 <h2>Album launch party on March 26</h2>
                 <ul class="post_meta">
-                    <li><time datetime="" pubdate>10-01-12</time></li>
-                    <li><a href="#">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
+                    <li><time datetime="" pubdate>10 March 2011</time></li>
+                    <li id="pm_twitter"><a href="#">Share</a></li>
+                    <li id="pm_facebook"><a href="#">Share</a></li>
                 </ul>
                 <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
                 <p>

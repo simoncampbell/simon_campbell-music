@@ -209,6 +209,15 @@ small {
     label em {
 
     }
+    label.error {
+        background: url(../images/site/icons/form_error.png) no-repeat center left;
+        color: rgb(255, 186, 0);
+        float: none;
+        margin-right: 0;
+        padding-left: 15px;
+        text-align: left;
+        width: 300px;
+    }
     input,
     textarea {
         
@@ -254,6 +263,13 @@ small {
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
+        padding: 4px 7px;
+    }
+    input.error,
+    input.error:focus,
+    input.error:hover,
+    textarea.error {
+        border: 2px solid rgb(255, 186, 0);
         padding: 4px 7px;
     }
     
@@ -654,12 +670,11 @@ div#footer p.credit {
             float: left;
         }
         div#posts div.post ul.post_meta li {
-            background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
             color: rgb(255, 255, 255);
             display: inline;
             font-size: 12px;
             letter-spacing: 1px;
-            padding: 0 8px 0 5px;
+            padding: 0 5px;
         }
         div#posts div.post ul.post_meta li:first-child {
             padding-left: 0;
@@ -670,9 +685,23 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta a {
             display: block;
+            font-weight: bold;
         }
         div#posts div.post ul.post_meta a:hover {
             text-decoration: none;
+        }
+        div#posts div.post ul.post_meta li#pm_twitter a,
+        div#posts div.post ul.post_meta li#pm_facebook a {
+            background-position: 0 2px;
+            background-repeat: no-repeat;
+            margin-right: 2px;
+            padding: 0 0 0 20px;
+        }
+        div#posts div.post ul.post_meta li#pm_twitter a {
+            background-image: url(../images/site/nav/network/nn_twitter.png);
+        }
+        div#posts div.post ul.post_meta li#pm_facebook a {
+            background-image: url(../images/site/nav/network/nn_facebook.png);
         }
         
         div#posts p#pagination {
