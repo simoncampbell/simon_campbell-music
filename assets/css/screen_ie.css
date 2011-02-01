@@ -1,64 +1,65 @@
-ul#nav_access {
-    display:none;
+/*../images/site/ie6/opacity_10.png
+../images/site/ie6/opacity_5.png*/
+
+/* IMAGE GALLERY */
+div.gallery_photo p.photo_meta {
+    background: #000;
+}
+ul#gallery_grid li.odd {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#content_pri div.gallery_photo img,
+#content_pri ul#gallery_grid a img {
+    background: #292929;
+}
+#content_pri ul#gallery_grid a:hover img,
+#content_pri ul#gallery_grid li.activeSlide a img {
+    background: #3A3A3A;
 }
 
-div#navigation_network ul li {
-    display:inline;
+/* CONTACT FORM */
+label {
+    margin: 0;
+    text-align: left;
+    width: 90px;
+}
+body.contact #content_pri input.submit {
+    margin-right: 20px;
 }
 
-img.album,
-div#thirtysix img {
-    background:rgb(47, 47, 47);
+/* EDITORIAL TEMPLATE P:FIRST-LETTER */
+body.editorial div#beginnings h3 + p:first-letter {
+    padding-bottom: 3px;
+    padding-top: 10px;
 }
 
-ul.social li {
-    display:block;
-}
-ul.social li a {
-    display:block;
-    padding-left:30px;
-    border:1px dotted rgb(47, 47, 47);
-    background-position:8px 8px;
+/* THIRTYSIX TEMPLATE */
+body.thirtysix div#content_pri .widget {
+    background: #000;
 }
 
-div#brother_info {
-    border-bottom:1px dashed rgb(95, 95, 95);
+/* PAGINATION */
+div#posts p#pagination a:hover,
+div#posts p#pagination a.cur {
+    background: #5B5B5B;
 }
 
-div#launch_event {
-    border-top:1px dashed rgb(95, 95, 95);
-    border-bottom:1px dashed rgb(95, 95, 95);
-    background:rgb(47, 47, 47);
+/* CONTENT SEC */
+ul.item_listing {
+    background: #232323;
+}
+ul.item_listing li.odd {
+    background: #1C1C1C;
+}
+#newsletter_signup input.submit {
+    padding: 0px 4px;
 }
 
-ul.event_cta {
-    width:120px;
-}
-
-ul.event_cta li {
-    padding:0;
-}
-
-ul.event_cta li a {
-    background:rgb(47, 47, 47);
-}
-
-input {
-    float:left;
-}
-
-input.submit {
-    width:auto;
-    display:block;
-    padding:3px;
-    background:rgb(47, 47, 47);
-    border:1px dashed rgb(95, 95, 95);
-    float:left;
-    color:rgb(255, 255, 255);
-    cursor:pointer;
-    margin-left:10px;
-}
-input.submit:hover,
-input.submit:focus {
-    background:rgb(47, 47, 47);
+/* MISCELLANEOUS RGBA BACKGROUNDS/BORDERS */
+#content_pri img,
+#content_pri iframe,
+body.editorial div#beginnings h3 + p:first-letter,
+div#posts p#pagination a {
+    background: #363636;
 }
