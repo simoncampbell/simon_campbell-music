@@ -186,6 +186,7 @@ small {
         margin:15px 0 0 0;
     }
     body.contact #content_pri form {
+        border-right: 1px dashed #585858;
         border-right: 1px dashed rgba(255, 255, 255, 0.3);
         float: left;
         width: 320px;
@@ -853,7 +854,7 @@ div#footer p.credit {
         
             /* EDITORIAL: Bio Page */
             body.editorial #beginnings {
-                background: #202020 url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
+                background: #1E1E1E url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
             }
             body.editorial #beginnings p {
@@ -871,7 +872,7 @@ div#footer p.credit {
                 padding: 5px;
             }
             body.editorial #tribute {
-                background: #202020 url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
+                background: #1E1E1E url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
             }
             body.editorial #tribute p {
