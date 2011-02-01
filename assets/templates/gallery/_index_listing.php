@@ -20,13 +20,14 @@
             <a href="#" class="gallery_skip prev">Previous image</a>
             <a href="#" class="gallery_skip next">Next image</a>
         </p>
-        {!-- THIS IS BASICALLY DETAIL CODE, BUT NOT FINISHED YET --}
+        
         <div id="gallery_photos">
             {exp:weblog:entries
                 weblog="gallery"
                 disable="{pv_disable_defaults}"
+                limit="1"
                 orderby=""
-                sort="desc"
+                sort="asc"
             }
             {cf_gallery_images}
             <div class="gallery_photo">
