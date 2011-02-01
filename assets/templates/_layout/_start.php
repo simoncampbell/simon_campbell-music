@@ -36,6 +36,7 @@
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
     
     <!--[if lte IE 8]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
+    <!--[if IE 7]><link href="{pv_assets_url}/css/screen_ie7.css" rel="stylesheet" media="screen" /><![endif]-->
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
         
     <!-- ICONS -->
