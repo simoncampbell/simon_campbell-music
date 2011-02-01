@@ -42,24 +42,13 @@
         {/exp:freeform:form}<!-- // #contact_form -->
         
         <div id="form_aside">
-            {!-- Needs Low Variables integration --}
-            {if segment_2 == 'thanks'}
-            <p>
-                <strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong>
-            </p>
-            <p>You’ll soon be receiving updates about Simon's musical adventures - and maybe some free goodies!</p>
-            {if:else}
-            <p>
-                <strong>Simon would love to hear from you.</strong> If you’d like to drop him a line, either use the form on this page or drop him a line at <a href="#">mail@simoncampbell.com</a>.
-            </p>
-            <p>If you want to get in touch with Simon’s agent for booking details, contact Suzy:</p>
-            <address>
-                <strong>Suzy Starlit</strong><br>
-                Starlite Events &amp; Project Management<br>
-                <a href="#">suzy@starlite-events.net</a><br>
-                +44 7658 734 456<br>
-            </address>
-            {/if}
+        {if segment_2 == 'thanks'}
+            {lv_contact_form_thanks}
+        {if:elseif segment_2 == 'subscribed'}
+            {lv_contact_newsletter_thanks}
+        {if:else}
+            {lv_contact_aside}
+        {/if}
         </div><!-- // #form_aside -->
         
     </div> <!-- // #content_pri -->
