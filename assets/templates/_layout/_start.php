@@ -39,7 +39,7 @@
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
         
     <!-- ICONS -->
-    <link rel="shortcut icon" href="{pv_assets_url}/images/site/icons/favicon.png"/>
+    <link rel="shortcut icon" href="{pv_assets_url}/images/site/icons/favicon.ico" />
     <link rel="apple-touch-icon" href="{pv_assets_url}/images/site/icons/apple_touch-icon.png" />
     <link rel="apple-touch-startup-image" href="{pv_assets_url}/images/site/icons/apple_touch-startup.png" />
     
