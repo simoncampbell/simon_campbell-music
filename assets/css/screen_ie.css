@@ -27,6 +27,11 @@ ul#gallery_grid li.odd {
     margin-right: 10px;
 }
 #content_pri img,
-#content_pri iframe {
+#content_pri iframe,
+body.editorial div#beginnings h3 + p:first-letter {
     background: #363636;
+}
+body.editorial div#beginnings h3 + p:first-letter {
+    padding-bottom: 3px;
+    padding-top: 10px;
 }
