@@ -25,11 +25,11 @@
             <p>
                 There are very few records in the last 32 years that I have worked on that I am proud of both musically and technically. Simon Campbell’s forthcoming release is one of them and joins an elite team which can now be counted on one hand!
             </p>
-            <cite>Steve (Dr Beat) Boyce-Buckley</cite>
+            <cite>&ndash; Steve (Dr Beat) Boyce-Buckley</cite>
         </blockquote>
         
-        <div class="widget">
-            <small>Preview the lead single, <strong>"Brother"</strong></small>
+        <div class="widget" id="album_promo_inline">
+            <h3>Preview the lead single, <strong>"Brother"</strong></h3>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
@@ -53,7 +53,7 @@
             </script>
             <div>
                 <h3>Buy the album</h3>
-                <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
+                <a class="button" href="#">Go to the store &rsaquo;&rsaquo;</a>
             </div>
         </div><!-- // #album_promo_inline -->
         

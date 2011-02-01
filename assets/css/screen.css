@@ -873,15 +873,56 @@ div#footer p.credit {
         /* THIRTYSIX TEMPLATE */
         body.thirtysix div#content_pri {
             background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
+            padding: 0;
+            width: 620px;
         }
         body.thirtysix div#content_pri .widget {
             background: rgba(0, 0, 0, 0.85);
             border: none;
             margin-bottom: 30px;
-            padding: 15px 50px;
+            padding: 15px 60px;
             width: auto;
         }
-    
+        body.thirtysix div#content_pri .widget:first-child {
+            padding: 20px 15px;
+            width: 285px;
+        }
+        body.thirtysix div#content_pri .widget:first-child h2 {
+            margin-bottom: 0;
+        }
+        body.thirtysix div#content_pri h1,
+        body.thirtysix div#content_pri h2,
+        body.thirtysix div#content_pri h3 {
+            text-transform: uppercase;
+        }
+        body.thirtysix div#content_pri h1 {
+            color: rgb(255, 255, 255);
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+        body.thirtysix div#content_pri h2 {
+            font-size: 18px;
+        }
+        body.thirtysix div#content_pri h3 {
+            color: rgb(255, 255, 255);
+        }
+        body.thirtysix div#content_pri blockquote {
+            color: rgb(255, 255, 255);
+            font-style: italic;
+        }
+        body.thirtysix div#content_pri blockquote p:before {
+            content: '"';
+        }
+        body.thirtysix div#content_pri blockquote p:after {
+            content: '"';
+        }
+        body.thirtysix div#content_pri blockquote cite {
+            display: block;
+            font-style: normal;
+            font-weight: bold;
+            text-align: right;
+        }
+        
     /* CONTENT SEC */
     div#content_sec h2 {
         color: rgb(255, 255, 255);
@@ -967,11 +1008,7 @@ div#footer p.credit {
         margin-top: -12px;
     }
     #store_block a.button {
-        color: rgb(60, 60, 60);
-        display: inline;
         margin-left: 15px;
-        padding: 4px 8px;
-        text-decoration: none;
     }
     #store_block a img {
         border: 1px solid rgb(75, 75, 75);
@@ -1006,6 +1043,32 @@ div#footer p.credit {
     /* MISCELLANEOUS */
     #audio_player {
         width:380px;
+    }
+    
+    div#album_promo_inline {
+        position: relative;
+    }
+    div#album_promo_inline div {
+        float: right;
+        width: 115px;
+        position: absolute;
+        top: 15px;
+        right: 60px;
+    }
+    div#album_promo_inline div h3 {
+        margin-bottom: 16px;
+    }
+    div#album_promo_inline #audio_player {
+        width: 365px;
+    }
+    div#album_promo_inline a.button {
+        padding: 6px 10px;
+    }
+    a.button {
+        color: rgb(60, 60, 60);
+        display: inline;
+        padding: 4px 8px;
+        text-decoration: none;
     }
     
     .hide {
