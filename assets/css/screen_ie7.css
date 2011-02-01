@@ -1,0 +1,11 @@
+div#content_sec input {
+    width: 175px;
+}
+div#content_sec {
+    padding-bottom: 50px;
+}
+div#content_sec input.submit {
+    line-height: 20px;
+    margin-top: -27px;
+    width: 70px;
+}
