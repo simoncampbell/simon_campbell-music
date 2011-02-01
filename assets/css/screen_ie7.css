@@ -1,3 +1,9 @@
+/* HOMEPAGE INTRO IMAGE */
+div#intro img {
+    margin: -5px 20px -4px -30px;
+}
+
+/* CONTENT SEC */
 div#content_sec input {
     width: 175px;
 }
