@@ -5,6 +5,9 @@ div#content_pri,
 #content_sec .widget {
     background: url(../images/site/ie6/opacity_5.png);
 }
+ul#navigation_pri li.account ul li.last a {
+    background: none;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {
