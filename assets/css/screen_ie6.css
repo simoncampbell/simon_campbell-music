@@ -42,3 +42,15 @@ div#intro #audio_player {
 div#posts div.post ul.post_meta li.first {
     padding-left: 0;
 }
+
+div#posts p#pagination a {
+    background: none;
+    display: inline;
+    text-decoration: none;
+}
+div#posts p#pagination a:hover,
+div#posts p#pagination a.cur {
+    background: none;
+    font-weight: bold;
+    text-decoration: underline;
+}

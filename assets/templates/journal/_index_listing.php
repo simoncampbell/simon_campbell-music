@@ -96,6 +96,7 @@
                 
                 
             </div> <!-- // .post -->
+            
             {paginate}
 			{if "{total_pages}" > "1"}
 			<p id="pagination">
@@ -105,8 +106,17 @@
 			{/if}
 			{/paginate}
         {/exp:weblog:entries}
-            
-
+        
+            {!-- UNCOMMENT TO TEST
+            <p id="pagination">
+                Go to page: 
+                <a href="#">1</a> 
+                <a class="cur" href="#">2</a> 
+                <a href="#">3</a> 
+                <a href="#">4</a> 
+                <a href="#">5</a> 
+            </p>
+            --}
             
         </div><!-- // #posts -->
         
