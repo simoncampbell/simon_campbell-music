@@ -1,3 +1,17 @@
+/* NETWORK NAVIGATION */
+div#navigation_network {
+    margin-top: -42px;
+}
+div#navigation_network ul li {
+    display: inline;
+}
+div#navigation_network ul li#nn_rss,
+div#navigation_network ul li#nn_twitter,
+div#navigation_network ul li#nn_facebook {
+    position: relative;
+    top: -12px;
+}
+
 /* HOMEPAGE INTRO IMAGE */
 div#intro img {
     margin: -5px 20px -4px -30px;
