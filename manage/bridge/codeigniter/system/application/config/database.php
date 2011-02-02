@@ -41,7 +41,7 @@ $db['default']['hostname'] = $GLOBALS['db_config']['hostname'];
 $db['default']['username'] = $GLOBALS['db_config']['username'];
 $db['default']['password'] = $GLOBALS['db_config']['password'];
 $db['default']['database'] = ''; // $GLOBALS['db_config']['database'];
-$db['default']['dbdriver'] = (function_exists('mysqli_connect')) ? 'mysqli' : "mysql";
+$db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = $GLOBALS['db_config']['prefix'];
 $db['default']['swap_pre'] = 'exp';
 $db['default']['pconnect'] = FALSE;
@@ -50,6 +50,8 @@ $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = ''; // "utf8";
 $db['default']['dbcollat'] = ''; // "utf8_general_ci";
+$db['default']['dbprefix'] = rtrim($GLOBALS['db_config']['prefix'], '_').'_';
+$db['default']['swap_pre'] = 'exp_';
 
 
 

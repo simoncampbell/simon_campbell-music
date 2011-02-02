@@ -7,7 +7,7 @@
  * @author		Solspace DevTeam
  * @copyright	Copyright (c) 2008-2010, Solspace, Inc.
  * @link		http://solspace.com/docs/
- * @version		1.0.4
+ * @version		1.1.5
  * @filesource 	./system/bridge/
  * 
  */
@@ -21,24 +21,24 @@
  * @package 	Bridge:Expansion
  * @subpackage	Add-On Builder
  * @category	Data
- * @author		Paul Burdick <paul.burdick@solspace.com>
+ * @author		Solspace DevTeam
  * @link		http://solspace.com/docs/
  * @filesource 	./system/bridge/lib/addon_builder/data.addon_builder.php
  */
  
 if (APP_VER < 2.0)
 {
-	require_once PATH.'bridge/lib/addon_builder/addon_builder.php';
+	require_once PATH . 'bridge/lib/addon_builder/addon_builder.php';
 }
 else
 {
-	require_once BASEPATH.'expressionengine/third_party/bridge/lib/addon_builder/addon_builder.php';
+	require_once PATH_THIRD . 'bridge/lib/addon_builder/addon_builder.php';
 }
 
 class Addon_builder_data_bridge {
 
-	var $cached			= array();
-	var $nomenclature	= array(
+	public $cached			= array();
+	public $nomenclature	= array(
 		'site_weblog_preferences'	=> 'site_channel_preferences',
 		'can_admin_weblogs'			=> 'can_admin_channels',
 		'weblog_id'					=> 'channel_id',
@@ -56,18 +56,49 @@ class Addon_builder_data_bridge {
 		'weblog_notify_emails'		=> 'channel_notify_emails',
 		'field_pre_blog_id'			=> 'field_pre_channel_id'
 	);
-    
+	
+	//names of methods from AOB that should NOT be used by call
+	//if the method already exists in this class, then the point is moot
+	//because __call will not be activated
+	private $aob_non_static_friendly = array(
+		'actions',
+		'database_version',
+		'preference',
+		'extensions_enabled',
+		'ee_cp_view',
+		'retrieve_remote_file',
+		'cycle',
+		'output',
+		'build_crumbs',
+		'add_crumb',
+		'fetch_stylesheet',
+		'view',
+		'file_view'
+	);
+	
+	public $parent_aob_instance;
+	
     // --------------------------------------------------------------------
 
 	/**
 	 * Constructor
 	 *
 	 * @access	public
+	 * @param	object	this should be an instance of the parent object
 	 * @return	null
 	 */
     
-	function Addon_builder_data_bridge()
+	function Addon_builder_data_bridge(&$parent_aob_instance = FALSE)
     {	
+		//this way we have a pointer to AOB
+		//however, since this gets called from the child constructor,
+		//AOB has to point itself to it.
+		//this is just here in case
+		if (is_object($parent_aob_instance))
+		{
+			$this->parent_aob_instance =& $parent_aob_instance;
+		}
+	
     	/** --------------------------------------------
         /**  Prepare the Cache
         /** --------------------------------------------*/
@@ -101,23 +132,40 @@ class Addon_builder_data_bridge {
  		} 		
     }
     /* END Addon_builder_data_bridge() */
-    
+
+
     // --------------------------------------------------------------------
 
 	/**
-	 * Implodes an Array and Hashes It
+	 * __call
+	 *
+	 * intercepts calls to methods that do not exist. Magic ;)
+	 * if the method is in AOB, return it
 	 *
 	 * @access	public
 	 * @return	string
 	 */
+
+	public function __call($method, $args) 
+	{			
+		//attempt to first call it on the parent AOB object
+		if (isset($this->parent_aob_instance) AND
+			is_object($this->parent_aob_instance) AND 
+			is_callable(array($this->parent_aob_instance, $method))) 
+		{					
+			return call_user_func_array(array($this->parent_aob_instance, $method), $args);
+		}
+		
+		//we have an array of items that should NOT be attempted to call
+		if ( ! in_array($method, $this->aob_non_static_friendly) AND 
+			 is_callable(array('Addon_builder_bridge', $method))) 
+		{						
+			return call_user_func_array(array('Addon_builder_bridge', $method), $args);
+		}
+	}
+ 	//end __call
     
-	function _imploder($arguments)
-    {
-    	return md5(serialize($arguments));
-    }
-    /* END */
-    
-    
+
 	// --------------------------------------------------------------------
 	
 	/**
@@ -134,7 +182,7 @@ class Addon_builder_data_bridge {
         /**  No Process for Non, Empty, or Already 2.0 Ready Arrays
         /** --------------------------------------------*/
     
- 		if ( ! is_array($data) OR sizeof($data) == 0 OR APP_VER >= 2.0)
+ 		if ( ! is_array($data) OR count($data) == 0 OR APP_VER >= 2.0)
  		{
  			return $data;
  		}
@@ -171,6 +219,92 @@ class Addon_builder_data_bridge {
 		return $data;
  	}
  	/* END translate_keys() */
+
+
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Get author id from entry id
+	 *
+	 * @access	public
+	 * @param	params	entry id
+	 * @return	integer
+	 */
+    
+	function get_author_id_from_entry_id( $entry_id = '' )
+    {
+    	if ( is_numeric( $entry_id ) === FALSE ) return FALSE;
+    
+ 		/** --------------------------------------------
+        /**  Prep Cache, Return if Set
+        /** --------------------------------------------*/
+ 		
+ 		$cache_name = __FUNCTION__;
+ 		$cache_hash = $this->_imploder(func_get_args());
+ 		
+ 		if (isset($this->cached[$cache_name][$cache_hash]))
+ 		{
+ 			return $this->cached[$cache_name][$cache_hash];
+ 		}
+ 		
+ 		$this->get_channel_id_from_entry_id( $entry_id );
+ 		
+ 		if (isset($this->cached[$cache_name][$cache_hash]))
+ 		{
+ 			return $this->cached[$cache_name][$cache_hash];
+ 		}
+ 		
+ 		$this->cached[$cache_name][$cache_hash] = FALSE;
+        
+        return $this->cached[$cache_name][$cache_hash];
+	}
+	
+	/*	End get author id from entry id */
+
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Get channel id from entry id
+	 *
+	 * @access	public
+	 * @param	params	entry id
+	 * @return	integer
+	 */
+    
+	function get_channel_id_from_entry_id( $entry_id = '' )
+    {
+    	if ( is_numeric( $entry_id ) === FALSE ) return FALSE;
+    
+ 		/** --------------------------------------------
+        /**  Prep Cache, Return if Set
+        /** --------------------------------------------*/
+ 		
+ 		$cache_name = __FUNCTION__;
+ 		$cache_hash = $this->_imploder(func_get_args());
+ 		
+ 		if (isset($this->cached[$cache_name][$cache_hash]))
+ 		{
+ 			return $this->cached[$cache_name][$cache_hash];
+ 		}
+ 		
+ 		$this->cached[$cache_name][$cache_hash] = FALSE;
+ 		
+ 		/** --------------------------------------------
+        /**  Grab from DB
+        /** --------------------------------------------*/
+        
+        $query	= ee()->db->query( "SELECT author_id, " . $this->sc->db->channel_id . " AS channel_id FROM " . $this->sc->db->channel_titles . " WHERE entry_id = '" . ee()->db->escape_str( $entry_id ) . "' LIMIT 1" );
+        
+        if ( $query->num_rows > 0 )
+        {
+        	$this->cached[$cache_name][$cache_hash]	= $query->row('channel_id');
+        	$this->cached['get_author_id_from_entry_id'][$cache_hash]	= $query->row('author_id');
+        }
+        
+        return $this->cached[$cache_name][$cache_hash];
+	}
+	
+	/*	End get channel id from entry id */
 
 	// --------------------------------------------------------------------
 	

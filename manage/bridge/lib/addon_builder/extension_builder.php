@@ -7,7 +7,7 @@
  * @author		Solspace DevTeam
  * @copyright	Copyright (c) 2008-2010, Solspace, Inc.
  * @link		http://solspace.com/docs/
- * @version		1.0.4
+ * @version		1.1.5
  * @filesource 	./system/bridge/
  * 
  */
@@ -21,7 +21,7 @@
  * @package 	Bridge:Expansion
  * @subpackage	Add-On Builder
  * @category	Extensions
- * @author		Paul Burdick <paul.burdick@solspace.com>
+ * @author		Solspace DevTeam
  * @link		http://solspace.com/docs/
  * @filesource 	./system/bridge/lib/addon_builder/extension_builder.php
  */
@@ -32,7 +32,7 @@ if (APP_VER < 2.0)
 }
 else
 {
-	require_once BASEPATH.'expressionengine/third_party/bridge/lib/addon_builder/addon_builder.php';
+	require_once PATH_THIRD . 'bridge/lib/addon_builder/addon_builder.php';
 }
 
 class Extension_builder_bridge extends Addon_builder_bridge {
