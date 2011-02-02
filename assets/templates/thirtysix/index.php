@@ -53,7 +53,7 @@
             </script>
             <div>
                 <h3>Buy the album</h3>
-                <a class="button" href="#">Go to the store &rsaquo;&rsaquo;</a>
+                <a class="button" href="{pv_site_url}/store/">Go to the store &rsaquo;</a>
             </div>
         </div><!-- // #album_promo_inline -->
         
