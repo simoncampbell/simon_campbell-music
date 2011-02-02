@@ -30,6 +30,24 @@
         latitude="{embed:latitude}"
         longitude="{embed:longitude}"
     }
+    {if embed:og_title != ""}
+    <meta property="og:title" content="{embed:og_title}" /> 
+    {/if}
+    {if embed:og_description != ""}
+    <meta property="og:description" content="{embed:og_description}" />
+    {/if}
+    {if embed:og_image != ""}
+    <meta property="og:image" content="{embed:og_image}" />
+    {/if}
+    {if embed:og_audio != ""}
+    <meta property="og:audio" content="{embed:og_audio}" /> 
+    {/if}
+    {if embed:og_audio_type != ""}
+    <meta property="og:audio:type" content="{embed:og_audio_type}" />
+    {/if}
+    {if embed:og_audio_artist != ""}
+    <meta property="og:audio:artist" content="{embed:og_audio_artist}" /> 
+    {/if}
     
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
