@@ -992,9 +992,6 @@ div#footer p.credit {
     #promo_block a {
         text-decoration: none;
     }
-    #promo_block a:hover {
-        text-decoration: underline;
-    }
     
     /* WIDGET: Tour Dates */
     #tour_dates {
