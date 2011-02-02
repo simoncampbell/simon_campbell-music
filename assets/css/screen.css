@@ -610,7 +610,6 @@ div#footer p.credit {
     body.editorial div#content_pri {
         background: none;
         border: none;
-        margin-bottom: 0;
         padding: 0;
         width: 620px;
     }
