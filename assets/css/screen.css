@@ -1040,8 +1040,14 @@ div#footer p.credit {
     }
     
     /* WIDGET: Newsletter Signup */
-    #newsletter_signup input[type="email"] {
+    #newsletter_signup input[type="text"] {
+        float: left;
+        height: 10px;
+        padding: 8px;
         width: 165px;
+    }
+    #newsletter_signup input[type="text"]:hover {
+        padding:7px;
     }
     #newsletter_signup input.submit {
         float: right;

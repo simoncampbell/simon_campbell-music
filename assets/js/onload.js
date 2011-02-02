@@ -1,20 +1,21 @@
 (function($){
-	$.fn.clearDefault = function(){
-		return this.each(function(){
-			var default_value = $(this).val();
-			$(this).focus(function(){
-				if ($(this).val() == default_value) $(this).val("");
-			});
-			$(this).blur(function(){
-				if ($(this).val() == "") $(this).val(default_value);
-			});
-		});
-	};
+ $.fn.clearDefault = function(){
+     return this.each(function(){
+         var default_value = $(this).val();
+         $(this).focus(function(){
+             if ($(this).val() == default_value) $(this).val("");
+         });
+         $(this).blur(function(){
+             if ($(this).val() == "") $(this).val(default_value);
+         });
+     });
+ };
 })(jQuery);
 
 $(document).ready(function(){
-
-    $("input[name=cm-bxdii-bxdii]").clearDefault(); // Hide value of newsletter input on focus
+    
+    // Hide value of newsletter input on focus
+    $("input[name=cm-bxdii-bxdii]").clearDefault();
     
     // Gallery
     if($("body").hasClass("gallery")) {
@@ -56,5 +57,15 @@ $(document).ready(function(){
             }
         }
     });
+    
+    // Campaign Monitor subscribe validation
+    // $('div#newsletter_signup form').validate({
+    //     rules: {
+    //         cm_bxdii_bxdii: {
+    //             required: true,
+    //             email: true
+    //         }
+    //     }
+    // });
     
 });

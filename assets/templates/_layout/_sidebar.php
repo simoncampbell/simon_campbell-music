@@ -95,7 +95,7 @@
         </p>
         <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
             <fieldset>
-                <input type="email" name="cm-bxdii-bxdii" id="bxdii-bxdii" value="please enter email address" />
+                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" value="please enter email address" />
                 <!-- NOTE: Height of submit button is messed up in firefox -->
                 <input type="submit" value="Subscribe" class="submit" />
             </fieldset>
