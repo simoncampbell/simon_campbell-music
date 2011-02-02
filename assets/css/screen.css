@@ -867,7 +867,7 @@ div#footer p.credit {
                 float: left;
                 font-size: 33px;
                 margin: 5px 8px 0 0;
-                padding: 5px;
+                padding: 10px 5px;
             }
             body.editorial #tribute {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
@@ -1079,6 +1079,25 @@ div#footer p.credit {
     .hide {
         display: none;
     }
+    
+/* FONT SPACING */
+
+    /* Add some spacing to anywhere we're using Trade Gothic */
+    #content_pri h3,
+    #content_pri h3 strong,
+    small,
+    small strong,
+    body.thirtysix div#content_pri h2,
+    body.thirtysix div#content_pri h1,
+    ul#navigation_pri li.account li {
+        letter-spacing:0.1em;
+    }
+
+    div#intro h2,
+    div#intro h2 strong {
+        letter-spacing:0.05em;
+    }
+
 
 /* iPhone media query */
 @media only screen and (max-device-width: 480px) {
