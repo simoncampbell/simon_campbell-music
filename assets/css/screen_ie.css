@@ -8,6 +8,9 @@ div#content_pri,
 ul#navigation_pri li.account ul li.last a {
     background: none;
 }
+div#navigation_network ul li#nn_rss {
+    margin-left: 385px;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {

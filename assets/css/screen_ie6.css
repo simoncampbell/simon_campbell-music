@@ -10,6 +10,9 @@ div#navigation_network ul a {
     display: inline;
     padding: 12px 4px;
 }
+div#navigation_network ul li#nn_rss {
+    margin-left: 402px;
+}
 
 div#content_pri,
 #content_sec .widget {
