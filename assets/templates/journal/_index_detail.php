@@ -1,10 +1,19 @@
+{exp:weblog:entries
+    weblog="journal_notes|journal_videos|journal_photos|journal_audio"
+    limit="1"
+    url_title="{segment_2}"
+    disable="{pv_disable_default}"
+}
+{if no_results}    
+    {redirect="404"}
+{/if}
 {embed="_layout/_start"
     body_class=""
     body_id=""
     section="journal"
     {!-- LG BETTER META OPTIONS BELOW --}
-    title="Journal"
-    title_suffix=""   
+    title="{title}"
+    title_suffix="Journal"   
     title_prefix=""   
     description=""
     keywords=""
@@ -19,25 +28,55 @@
         <div id="posts">
             
             <div class="post">
-                <h2>Album launch party on March 26</h2>
+                <h2>{title}</h2>
                 <ul class="post_meta">
-                    <li><time datetime="" pubdate>10 March 2011</time></li>
+                    <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
                     <li id="pm_twitter"><a href="#">Share</a></li>
                     <li id="pm_facebook"><a href="#">Share</a></li>
                 </ul>
-                <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
-                <p>
-                    <strong>The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel.</strong> Vivamus id mollis quam. Morbi ac iklisese commodo nulla.
-                </p>
-                <p>
-                    In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.
-                </p>
-                <p>
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-                </p>
-                <p>
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-                </p>
+                
+                {if weblog_short_name == "journal_notes"}
+                
+                    {cf_journal_notes_note}
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_photos"}
+                
+                    {cf_journal_photos_lead}
+                    
+                    {exp:ed_imageresizer 
+                        maxWidth="585"
+                        forceWidth="yes"
+                        image="{cf_journal_photos_image}" 
+                        alt=""
+                        }
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_videos"}
+                
+                    {cf_journal_videos_lead}
+                    
+                    <iframe 
+                        src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}" 
+                        width="580" 
+                        height="325" 
+                        frameborder="0">
+                    </iframe>
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_audio"}
+                    
+                    {cf_journal_audio_lead}
+                    
+                    <audio id="audio_player" controls>
+                        <source src="{cf_journal_audio_file}" type="audio/mpeg" />
+                    </audio> <!-- // #audio_player -->
+                    
+                {/if}
+                
             </div> <!-- // .post -->
             
         </div><!-- // #posts -->
@@ -47,3 +86,4 @@
     {embed="_layout/_sidebar"}
 
 {embed="_layout/_end"}
+{/exp:weblog:entries}
