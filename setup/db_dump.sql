@@ -1,10 +1,10 @@
 # Sequel Pro dump
-# Version 2210
+# Version 2492
 # http://code.google.com/p/sequel-pro
 #
-# Host: 127.0.0.1 (MySQL 5.1.47)
-# Database: erskine_simoncampbell_music
-# Generation Time: 2011-02-02 11:07:05 +0000
+# Host: brad.erskinedev.com (MySQL 5.1.41-3ubuntu12.8)
+# Database: simoncampbell_music
+# Generation Time: 2011-02-02 13:57:15 +0000
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -243,7 +243,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=284 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=285 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -531,7 +531,8 @@ VALUES
 	(280,1,1,'jamiepittock','88.97.41.226',1296642405,'Channel Created:&nbsp;&nbsp;Journal: Audio'),
 	(281,1,1,'jamiepittock','88.97.41.226',1296642431,'Channel Created:&nbsp;&nbsp;Journal: Photos'),
 	(282,1,1,'jamiepittock','88.97.41.226',1296642458,'Channel Created:&nbsp;&nbsp;Journal: Notes'),
-	(283,1,1,'jamiepittock','88.97.41.226',1296642467,'Channel Deleted:&nbsp;&nbsp;Journal');
+	(283,1,1,'jamiepittock','88.97.41.226',1296642467,'Channel Deleted:&nbsp;&nbsp;Journal'),
+	(284,1,7,'gregwood','88.97.41.224',1296655004,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -961,7 +962,10 @@ VALUES
 	(82,'none'),
 	(83,'textile'),
 	(83,'xhtml'),
-	(83,'none');
+	(83,'none'),
+	(84,'textile'),
+	(84,'xhtml'),
+	(84,'none');
 
 /*!40000 ALTER TABLE `exp_field_formatting` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1090,14 +1094,19 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
 	(2,1296644751,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(3,1296644789,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
+	(3,1296644789,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(4,1296646242,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(5,1296647135,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(6,1296647222,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(7,1296648246,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(8,1296648249,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1149,18 +1158,21 @@ CREATE TABLE `exp_global_variables` (
   PRIMARY KEY (`variable_id`),
   KEY `variable_name` (`variable_name`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_global_variables` WRITE;
 /*!40000 ALTER TABLE `exp_global_variables` DISABLE KEYS */;
 INSERT INTO `exp_global_variables` (`variable_id`,`site_id`,`variable_name`,`variable_data`,`user_blog_id`)
 VALUES
-	(2,1,'lv_services_google_analytics','',0),
+	(2,1,'lv_services_google_analytics','<script type=\"text/javascript\">\n\n    var _gaq = _gaq || [];\n    _gaq.push([\'_setAccount\', \'UA-3386644-6\']);\n    _gaq.push([\'_trackPageview\']);\n\n    (function() {\n        var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\n        ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\n        var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n    })();\n\n</script>',0),
 	(14,1,'lv_services_google_analytics_toggle','On',0),
-	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line at <a href=\"#\">mail@simoncampbell.com</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlit</strong><br>\nStarlite Events &amp; Project Management<br>\n<a href=\"#\">suzy@starlite-events.net</a><br>\n+44 7658 734 456<br>\n</address>',0),
+	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line <a href=\"mailto:mail@simoncampbell.com\">via email</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br>\nStarlite Events &amp; Project Management<br>\n<a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a><br>\n+44 7624 245881<br>\n</address>',0),
 	(27,1,'lv_contact_form_thanks','<p><strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong></p>\n<p>Youâ€™ll soon be receiving updates about Simon\'s musical adventures - and maybe some free goodies!</p>',0),
 	(28,1,'lv_contact_newsletter_thanks','<p><strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong></p>\n<p>Youâ€™ll soon be receiving updates about Simon\'s musical adventures - and maybe some free goodies!</p>',0),
-	(29,1,'lv_journal_homepage_limit','3',0);
+	(29,1,'lv_journal_homepage_limit','2',0),
+	(30,1,'lv_services_facebook_url','http://www.facebook.com/SimonCampbellBand',0),
+	(31,1,'lv_services_twitter_url','http://twitter.com/simoncampbell',0),
+	(32,1,'lv_services_master_rss','',0);
 
 /*!40000 ALTER TABLE `exp_global_variables` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1347,7 +1359,10 @@ VALUES
 	(26,2,'Basic sidebar','','low_textarea','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:2:\"10\";}}',0,'n','n'),
 	(27,2,'Form submitted sidebar','The sidebar that the user will see once successfully submitting the contact form.','low_textarea','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:2:\"10\";}}',0,'n','n'),
 	(28,2,'Newsletter subscribed sidebar','The sidebar that the user will see once successfully subscribing to the newsletter.','low_textarea','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:2:\"10\";}}',0,'n','n'),
-	(29,3,'Homepage limit','Select how many items to show on the stream on the homepage. this can be useful if the number sidebar blocks increases/decreases','low_select','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:4:{s:7:\"options\";s:7:\"2\n3\n4\n5\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";s:8:\"multiple\";s:0:\"\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n');
+	(29,3,'Homepage limit','Select how many items to show on the stream on the homepage. this can be useful if the number sidebar blocks increases/decreases','low_select','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:4:{s:7:\"options\";s:7:\"2\n3\n4\n5\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";s:8:\"multiple\";s:0:\"\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(30,1,'Facebook URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(31,1,'Twitter URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(32,1,'Master RSS feed','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n');
 
 /*!40000 ALTER TABLE `exp_low_variables` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1403,7 +1418,7 @@ VALUES
 	(22,1,NULL,'ffm_video_caption','Caption','','text','n','n',0,'50%','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
 	(23,1,NULL,'ffm_video_code','Video code','','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MDoiIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5Ijt9'),
 	(24,1,NULL,'ffm_images_image','Image','Will be cropped to 580x380 pixels.','ngen_file_field','n','n',0,'33%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMTciO30='),
-	(25,1,NULL,'ffm_images_title','Image title','Short title/description of the image.','text','n','n',1,'33%','YToyOntzOjQ6Im1heGwiO3M6MjoiNjAiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
+	(25,1,NULL,'ffm_images_title','Image title','Short title/description of the image.','text','n','n',1,'33%','YToyOntzOjQ6Im1heGwiO3M6MjoiNTYiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
 	(26,1,NULL,'ffm_images_credit','Image credit','Example: 2010 Phil Keen','text','n','n',2,'33%','YToxOntzOjQ6Im1heGwiO3M6MjoiNDAiO30=');
 
 /*!40000 ALTER TABLE `exp_matrix_cols` ENABLE KEYS */;
@@ -1450,7 +1465,7 @@ CREATE TABLE `exp_matrix_data` (
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
   KEY `row_order` (`row_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_matrix_data` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_data` DISABLE KEYS */;
@@ -1466,7 +1481,14 @@ VALUES
 	(11,1,33,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Could additional regulations stifle economic growth?','<p>\n	We recognize that we must be careful about our impact on the environment. Our companies are taking steps every day to reduce that impact, knowing that we must be able to provide affordable, responsibly produced energy to Americans for decades to come.</p>\n<p>\n	We are concerned, however, that heavy regulations, while well-intentioned, could have unintended but severe negative effects on the economy, the job market and on American businesses&mdash;without significantly improving our nation&rsquo;s carbon footprint. While we support the goal of taking measures to reduce emissions, we want to ensure that doing so will not be at the expense of jobs and the economy.</p>\n<p>\n	We&rsquo;re constantly taking steps to produce energy responsibly. One such example is our commitment to expand production and use of ultra-low sulfur diesel and other technologies, which would lead to a reduction of six common emissions by 60 percent. We remain committed to working with Congress and the administration to make positive changes that lower our environmental impact.&nbsp;&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(12,1,34,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will new taxes threaten jobs and weaken energy independence?','<p>\n	Producing America&rsquo;s resources of oil and natural gas isn&rsquo;t cheap. Our industry spends hundreds of billions of dollars every year on wages, technology and investment in research and development of energy resources.</p>\n<p>\n	What&rsquo;s more, the energy industry is one of the most heavily taxed industries in America. Industry taxes provide billions of dollars that support schools, first responders and our transportation system, among other vital public services. Yet Congress and the administration continue to propose new taxes on the industry. The latest proposal would mean at least $80 billion in new taxes.</p>\n<p>\n	We oppose new taxes not just because of their impact directly on our businesses, but of the far-reaching negative effects that they could bring to industry workers, consumers and the businesses and organizations that depend on our industry for reliable, affordable energy.</p>\n<p>\n	Instead of passing new taxes, we can show Congress and the administration that we are ready to lead an economic recovery by producing more oil and natural gas right here at home.&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(13,1,35,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Just exactly how important is our industry to the American economy?','<p>\n	We know how important our work is. More than 9.2 million people are directly or indirectly employed by America&rsquo;s oil and natural gas industry. That&rsquo;s 9.2 million people working hard to deliver the energy our country needs.</p>\n<p>\n	Whether it&rsquo;s passing new laws, regulations or taxes, Washington has a profound impact on our industry and jobs. New laws and regulations that raise the cost of energy or restrict access to resources of oil and natural gas could put thousands of jobs at risk and increase the costs of everything from food and transportation to heating a home.</p>\n<p>\n	We are part of the solution. Our 9.2 million jobs and more than a trillion dollars in value added to the economy play a major role in providing this country the energy it needs and driving the economy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(17,1,46,75,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon.png','Simon Campbell','2010 Phil Kneen'),
+	(18,1,46,75,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-scream.png','Mannifest, 2010. Perhaps getting a little carried away','2010 Phil Kneen'),
+	(20,1,46,75,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-beach_1.png','At Gansey Beach, Isle of Man','2010 Phil Kneen'),
+	(21,1,46,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracilands.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
+	(22,1,46,75,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-peel-beach.png','At Peel Beach','2010 Phil Kneen'),
+	(23,1,46,75,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland2.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
+	(24,1,46,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland3.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen');
 
 /*!40000 ALTER TABLE `exp_matrix_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1782,10 +1804,10 @@ LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
 INSERT INTO `exp_members` (`member_id`,`group_id`,`weblog_id`,`tmpl_group_id`,`upload_id`,`username`,`screen_name`,`password`,`unique_id`,`authcode`,`email`,`url`,`location`,`occupation`,`interests`,`bday_d`,`bday_m`,`bday_y`,`aol_im`,`yahoo_im`,`msn_im`,`icq`,`bio`,`signature`,`avatar_filename`,`avatar_width`,`avatar_height`,`photo_filename`,`photo_width`,`photo_height`,`sig_img_filename`,`sig_img_width`,`sig_img_height`,`ignore_list`,`private_messages`,`accept_messages`,`last_view_bulletins`,`last_bulletin_date`,`ip_address`,`join_date`,`last_visit`,`last_activity`,`total_entries`,`total_comments`,`total_forum_topics`,`total_forum_posts`,`last_entry_date`,`last_comment_date`,`last_forum_post_date`,`last_email_date`,`in_authorlist`,`accept_admin_email`,`accept_user_email`,`notify_by_default`,`notify_of_pm`,`display_avatars`,`display_signatures`,`smart_notifications`,`language`,`timezone`,`daylight_savings`,`localization_is_site_default`,`time_format`,`cp_theme`,`profile_theme`,`forum_theme`,`tracker`,`template_size`,`notepad`,`notepad_size`,`quick_links`,`quick_tabs`,`pmember_id`,`profile_views`)
 VALUES
-	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296553377,1296644746,3,0,0,0,1296643033,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296553377,1296654916,5,0,0,0,1296654301,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1292416546,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1292409756,1292422434,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1292422434,1296655004,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
@@ -2513,8 +2535,6 @@ VALUES
 	(1296641839,'88.97.41.226','a70d6e555d8e3bf3a3ece4c653c8072679e0cbbe'),
 	(1296641830,'88.97.41.226','e15cef92f476b1c9b8d704b5d6184daf84640993'),
 	(1277935287,'12.170.156.2','805b8d2764bcaada092219e09d223952a4c42eef'),
-	(1277909537,'88.97.41.224','7c033685fc10704e5223a86c3f897673fc72a72a'),
-	(1277909511,'88.97.41.224','8d780d2539c1dce3cd0bbd443509993944cf4857'),
 	(1276701603,'76.99.35.250','2aacfa576874292a4341b16319315ed7932c134b'),
 	(1276701564,'76.99.35.250','47eec74ddc28be4d5dd5d2727f2cbc540bcc5c06'),
 	(1276701529,'76.99.35.250','bfd94d298ba5775612698703c756246b991a0139'),
@@ -2522,14 +2542,9 @@ VALUES
 	(1276701354,'76.99.35.250','14c45c589a96901e4614250be61e52db5213b2f7'),
 	(1276701201,'76.99.35.250','4ef41a7bd97f8c77101b5977d210fa6ba8a907b1'),
 	(1276700860,'76.99.35.250','da7176e8fdc34a1dfeeb6195a1fc513cf6c79209'),
-	(1277909509,'88.97.41.224','85d47a0fcd18eab7571bf2038dc7e5cf81181d89'),
-	(1277909488,'88.97.41.224','ee535f11c0ca90ddde2ff0e40789187061cdf6bb'),
 	(1276700418,'76.99.35.250','776b7a939273acb1c06911413fe19b272d193988'),
-	(1277909481,'88.97.41.224','9bab10c63d6243dd763a244c30f5615dd64bbf03'),
-	(1296639604,'88.97.41.226','4d239710097d91c275a789d92e82728fa19bef13'),
-	(1277908996,'88.97.41.224','0e2e7907db8e156d6a7e99be55c1d0a76c0858d9'),
+	(1296654289,'88.97.41.226','20de60c937139e0dbd084bf03003f582c42f4d21'),
 	(1276700335,'76.99.35.250','68548830ba4f2ffe291d15cf03f6a9bd98d5f115'),
-	(1277908989,'88.97.41.224','047ce96a4d5a2166a98544d82821e0b4543e62d6'),
 	(1296579019,'89.195.128.195','87cbbdb91447f078ef67c05604c2eb5729bb46f1'),
 	(1296577467,'173.185.20.98','d2b38864d61e37abde041b970433f39cd8f4d4ed'),
 	(1276526027,'89.194.100.70','cc64f9a3855292a18e4104449dce7bf57928d16e'),
@@ -2547,11 +2562,9 @@ VALUES
 	(1276531374,'89.194.98.159','2b7b3247831ae305b16bb68a5bd348f4562c90d9'),
 	(1277932219,'12.170.156.2','8e542457783933c17407b4c12f4843beddee5e4f'),
 	(1277932216,'12.170.156.2','adfb5dfa43961df8fbdd583fc3300bfb82356265'),
-	(1277908920,'88.97.41.224','dd446f6e2a6c03128961eed156f2ce412eab0056'),
 	(1296236486,'76.238.177.203','696a2216adfebb0ab6976e286394b5597edc1090'),
 	(1296236479,'76.238.177.203','0d3776d41c8d7fd4316a1a056252e91af564a32f'),
 	(1296236454,'76.238.177.203','da012c5e8978ead86b4e45b1172dc7a2202f13f8'),
-	(1277904972,'88.97.41.224','ff5ebb75ffecf76fd9a0ad7850bfa743e2488dd6'),
 	(1277734617,'71.206.168.11','c83ce67bb32b46b0b72cd85e60a35656bbe5be2e'),
 	(1277734447,'71.206.168.11','2118b38b5297e43bbe6ab1cacf282528331a109c'),
 	(1277734378,'71.206.168.11','9dfdbe7b5bad434570db4a28477f3baa858f4ba9'),
@@ -2596,7 +2609,6 @@ VALUES
 	(1296234503,'76.238.177.203','cad0a6e854cc10e78482515b7307baf02acb15e1'),
 	(1296233933,'76.238.177.203','1bbd6760f2a8562e5a9f4b5f6f53363fbe5e4a00'),
 	(1277935287,'12.170.156.2','2f4278ebe316726bbba81a0f1b22b692527d11a7'),
-	(1277823506,'88.97.41.224','0cfaf86e7b159268470ac60d61fe5dda1126c96f'),
 	(1296233816,'76.238.177.203','0d97ceac36cc0f582e6253b65e5af3b86e187600'),
 	(1296233805,'76.238.177.203','bc872275ef253b5bd128120f305384cb3e71f84e'),
 	(1296233746,'76.238.177.203','8e989dcf55f1190c05e0df9ed459b760d0c32712'),
@@ -2605,10 +2617,6 @@ VALUES
 	(1296233662,'76.238.177.203','3d4c2d18d5400b6c057bb85bfdd0610a44700514'),
 	(1296233656,'76.238.177.203','3e473899784b40f9cf3939c537807ea7ca649677'),
 	(1296642216,'88.97.41.226','a248dabc0640847a8df8f1a3ee1d1fd110eede80'),
-	(1277826936,'88.97.41.224','5e8099843bd4fb83609721a543d6063c21e95a2e'),
-	(1277826934,'88.97.41.224','335d44ccdb24c05e12993f0c7d40c86d839ba222'),
-	(1277826934,'88.97.41.224','3ffd5200de32aaff8dfb6741136475d80c19ef70'),
-	(1277826893,'88.97.41.224','4cb34920b0b93016c620d7e4f8db15ba21f7074e'),
 	(1277935260,'12.170.156.2','ad54ee39281511d1b0ab8d49aea73b8137d189dc'),
 	(1277826232,'71.206.168.11','d5e37580febce5a508df1951a57ff8afb81dab55'),
 	(1277826229,'71.206.168.11','3a1df479f9577516cb7a616b7adabf943849e441'),
@@ -2635,13 +2643,6 @@ VALUES
 	(1277934912,'12.170.156.2','d86a1c44ec00f0f913e9eb2cbee05db7eab3e1a1'),
 	(1277934907,'12.170.156.2','3adfe48e5ae49cd3eae7e294fc0a3e89c55e78a9'),
 	(1277934907,'12.170.156.2','3c912e9e192ab9cbb17a97110e420fdba272ab52'),
-	(1277823506,'88.97.41.224','757c4bd1698eba68b0ce06d97e7666b0675b782a'),
-	(1277822931,'88.97.41.224','282928236b34795c1ff90bb0ad1141b465f8e0ee'),
-	(1277822931,'88.97.41.224','8447a549cbb2e2bf70bca229d82dedd695528280'),
-	(1277822547,'88.97.41.224','4ef363fb440e78647e6704624237a95fff9d14da'),
-	(1277822539,'88.97.41.224','9ad3d08f17e1dc36c43791f75f2cf6e8262ff91a'),
-	(1277822529,'88.97.41.224','da4be160dbde647d0039b45d84f4cbaf4c23e198'),
-	(1277822520,'88.97.41.224','9c178b2d5573eb70ee86d0f552fcd025aab9eb37'),
 	(1277808520,'68.48.105.10','6ac6bae743e6fce98cb2a2685d9a4257c453e7ab'),
 	(1277808502,'68.48.105.10','fa61d94190b68bb59577ef7abb1ccb0c6338a86a'),
 	(1277808502,'68.48.105.10','28d1df480a978c33973701b336dae2a46da875a6'),
@@ -2649,13 +2650,6 @@ VALUES
 	(1277808501,'68.48.105.10','6c0794ab7117610273608107667487a230663d50'),
 	(1277808484,'68.48.105.10','42b8f8dfe0a290cb36782c27c5988c35a189103b'),
 	(1277808476,'68.48.105.10','89bbe941aff5920b73d2df5cd33d96a59c457dd5'),
-	(1277804318,'88.97.41.224','6368d9562df1fdad32927704d769aee26ab7b0db'),
-	(1277804301,'88.97.41.224','e2b459534e990418bd917a12b811243a4df68b8d'),
-	(1277804226,'88.97.41.224','ff0d69aedf3d335c820d8287d26768db849acdac'),
-	(1277804237,'88.97.41.224','e381b7461010da729de294f20d3f3c7bd9fa4d7f'),
-	(1277804247,'88.97.41.224','f9f3b316d236307c2d9abf13106e41a2b5f424ff'),
-	(1277804283,'88.97.41.224','c4588f35ae031affed7fd5b70061cf93406a6dea'),
-	(1277804296,'88.97.41.224','ff487d01c5b27f3a03fec0204dfae10b3acaaab8'),
 	(1296644789,'127.0.0.1','6a4083b09106c8ca7c62bad2620ec637b4afac5f'),
 	(1296644751,'127.0.0.1','5b92d7aad7f9d91acb68a87c0f370088a22c9960'),
 	(1296643840,'127.0.0.1','f897cec91e9cfa6032a7846ff5984d402d585b32'),
@@ -2707,8 +2701,8 @@ VALUES
 	(1296642899,'127.0.0.1','d378933bee4d8fe79dc5d049ff1c0bd43d2c7480'),
 	(1296642834,'127.0.0.1','27a55294f33f77f603252b6d27360c7866beda80'),
 	(1296642787,'127.0.0.1','028416d9343869f2a6f7b9add8b99760c878ac89'),
-	(1296553365,'88.97.41.224','ed52ceaa0245974e84a204c35b2f525907fb5673'),
-	(1296553377,'88.97.41.224','163a8c4b287f75d6771c0cb3ac161ef237b0c126'),
+	(1296655190,'88.97.41.224','b286b7592edef5017da6bf2835b8a0945849812e'),
+	(1296655077,'88.97.41.224','2a96c3efd9474764b8404fea8aab234631a501b0'),
 	(1296576510,'173.185.20.98','30cbc4f74246bdc1d500e9bff4426eae07a57340'),
 	(1296576515,'173.185.20.98','beba5d659805e4a5003c52f0564f06058e4b66a6'),
 	(1296576531,'173.185.20.98','c4598e578d8387ed5331763e6bbc9a58f9cfa1c9'),
@@ -2732,7 +2726,83 @@ VALUES
 	(1296642436,'88.97.41.226','1fc26a491382489a387dd34d6ed486808020246e'),
 	(1296642462,'88.97.41.226','cd9f003cd797df732d2f86277e508fe141504f60'),
 	(1296642466,'88.97.41.226','8c8ffe171576aa007aa40fe5b55c171c0bab18b1'),
-	(1296642774,'127.0.0.1','500ecf0d979b9aebc95dfd9f3665a0cb2f7b2b23');
+	(1296642774,'127.0.0.1','500ecf0d979b9aebc95dfd9f3665a0cb2f7b2b23'),
+	(1296645226,'88.97.41.226','1402950ab033391545390c4340b91f3cca8cd8d5'),
+	(1296645230,'88.97.41.226','ad09bd1ff9548e7744b9b44685dae4edf2477265'),
+	(1296645298,'88.97.41.226','5ef05aab3f1dd3c2bfc092d4c0d4538b46fe3bfe'),
+	(1296645303,'88.97.41.226','e1d09ca59093478528ae0b6caa1ec1ca402bb172'),
+	(1296645326,'88.97.41.226','5b6206ba5f9ae22976362161011e164a9f09e204'),
+	(1296645329,'88.97.41.226','191098f36023803a373a6db4b87f5772ce2e0cc4'),
+	(1296645349,'88.97.41.226','a0f54e5c18e1c5d84e49f26fc4fda200cb5e6a47'),
+	(1296645351,'88.97.41.226','ce768e3fb74a033a7ea25e2baf3aa703e0bd5b40'),
+	(1296645376,'88.97.41.226','4288f0bca433855372ccd41286453e784b27c69f'),
+	(1296645378,'88.97.41.226','3338edbfe734df7f192c43e4d264ea3c10bf2a02'),
+	(1296645519,'88.97.41.226','e9bec79a33bfb4e9cb3ca3092b23851b77f8e41e'),
+	(1296645523,'88.97.41.226','08faea8ed7ebfdce9e69b6d1a5b98a4c8f6150a9'),
+	(1296645528,'88.97.41.226','bc12f86e2ff77cc5846bd73fe501e5302d914c9c'),
+	(1296645532,'88.97.41.226','34254c72f913052abff9e7504cc30590038b706b'),
+	(1296645535,'88.97.41.226','030f2222759a2c9070944572bb567521b6d7f137'),
+	(1296645540,'88.97.41.226','1885c0892053ef68e662fd236aaa7ef9a9c2cbbb'),
+	(1296645577,'88.97.41.226','cb3107e7384dd4729104e39315dbe6339d33f58b'),
+	(1296645604,'88.97.41.226','ece6a9c285bc4c730b2cfbc5dde8774210defef0'),
+	(1296645605,'88.97.41.226','a8b6ae1d325bad9546054ad779a6d09c3ba21e74'),
+	(1296646243,'88.97.41.226','035abff335c7425ee63d203fe97c11c8e8f951f3'),
+	(1296646519,'88.97.41.226','f9b668207c1386961ac4e6382aafec01d77aa0d6'),
+	(1296646522,'88.97.41.226','1d83752cd21c34254fa0d611e2c3995c61b2c1ca'),
+	(1296646812,'88.97.41.226','8a35b013ed72d21b1563beba0c92ca2e99c99e85'),
+	(1296646814,'88.97.41.226','8b70d306f61dff3892eb69b14d93899be54397b1'),
+	(1296646879,'88.97.41.226','234d1ea2facc19136ff1f04583b14357cc9cb0d0'),
+	(1296646977,'88.97.41.226','331614002739e70eb3c1e5519b461ce396b8b50c'),
+	(1296647016,'88.97.41.226','283781f19dd354a44fdbb98b9a589870bd130fad'),
+	(1296647135,'88.97.41.226','3274369881b18d216ba7befded34dfe0ce9317c2'),
+	(1296647222,'88.97.41.226','a919e81aea64d75bd55df09828c82ce38aeb464b'),
+	(1296648246,'88.97.41.226','ee5ccb6251b7314da6edb2fd8f30161a5f385cc5'),
+	(1296648249,'88.97.41.226','37081005038da297cbda857f001af77d25f55bb2'),
+	(1296649682,'88.97.41.226','c3a406a26f7516d2a0e3941ec4a18faed3eb158a'),
+	(1296650273,'88.97.41.226','31042be07b6bee92dea7d85b770ab42b025b8bf4'),
+	(1296650293,'88.97.41.226','7d2451d18c9af9959ad99c321b4de7089c1476ae'),
+	(1296650316,'88.97.41.226','1aa0a1875b617db88eaeb2ae798b18814a4b417a'),
+	(1296650339,'88.97.41.226','1327ace0e0c5ab532913fa2bc2d9bb440e405dc9'),
+	(1296650339,'88.97.41.226','f37ac5e906551351bccd5a2a62d72062a4d914eb'),
+	(1296650340,'88.97.41.226','7f339efce1fb77be59b3bfafc4abdd12cf77dba0'),
+	(1296650346,'88.97.41.226','4fdcd5125e0f0cd2a760d96a9e004673bfe6b817'),
+	(1296650379,'88.97.41.226','3cd0495762eff298535617a2d41f34835740f92a'),
+	(1296651344,'88.97.41.226','a3bc638e1bf97acf636e86b1c0e8d321603057b8'),
+	(1296651344,'88.97.41.226','373ee3e1bc4d6ba2a9c362f6c9e615512a1e2e67'),
+	(1296651345,'88.97.41.226','6c1a86498a88610470a4663bafc7e55e31dfa40e'),
+	(1296651371,'88.97.41.226','70df58e57c32015bb5f2046a874f21da226da649'),
+	(1296651468,'88.97.41.226','b8a6cef981dcca664665297d233b61ec4b2e55f8'),
+	(1296651486,'88.97.41.226','d4fae61e63262de7f689d87a439533f21605958c'),
+	(1296651499,'88.97.41.226','bae492e1290dafee75a809db48e65f619b8547ef'),
+	(1296651635,'88.97.41.226','c16a9cdaaf957e6817dea7add8d9e90d22e4697d'),
+	(1296651666,'88.97.41.226','3b7cd102cb945656efe2c6b2285db7f838590a7a'),
+	(1296651770,'88.97.41.226','d8862ae9464078d7f8c90f23cd2b6e971c037bc7'),
+	(1296651804,'88.97.41.226','25fd0ab6d571bd384cc3c2eb341d03dbc7c09113'),
+	(1296651907,'88.97.41.226','c88e6ac3a818cc74812b63e0c8ddaef8d4e3bf99'),
+	(1296652015,'88.97.41.226','c3f23ad60abe9aadac9d1903f2edbb08a439eeac'),
+	(1296652057,'88.97.41.226','a4e002de18fa3209dd48c7359809bb5b14905bfd'),
+	(1296652059,'88.97.41.226','62045db352d5b81a1b6255a690a0d19c3265be9e'),
+	(1296652065,'88.97.41.226','65fe920de58e1a61e00c51d15bbd1b147c934076'),
+	(1296652100,'88.97.41.226','9aea241f82e4fc8ce16a3b1fa2d84eba62bf6ab4'),
+	(1296652103,'88.97.41.226','e6730e2118841d715d32bfc9ec8215f853ca3728'),
+	(1296652103,'88.97.41.226','c25c7ce4726a4c6dce36970f0ab31204c25ca403'),
+	(1296652105,'88.97.41.226','12a6c8c55547c3cacfa579892ea6c30ee6f855ad'),
+	(1296652126,'88.97.41.226','f1086da8df88e5ba0c94a1aa570af2dd69a6bf77'),
+	(1296652200,'88.97.41.226','2f9edf3b2165ec776c1d8738ad169d05becfc4e8'),
+	(1296654252,'88.97.41.226','a22c8cd662d34dc4d4a7c4469e34fb563e25ed43'),
+	(1296654255,'88.97.41.226','e6379235789770216198d49133a42893d014e396'),
+	(1296654301,'88.97.41.226','cddd32882828a504801b50e8d14972371f56560d'),
+	(1296654326,'88.97.41.226','6385e3ba46299a702ab035933c603980d0841b10'),
+	(1296654405,'88.97.41.226','7120e7486c803c77b4b80200716077a702f80411'),
+	(1296654554,'88.97.41.226','8e6c1912158b5f96ce13dae85a38582c288393b5'),
+	(1296654559,'88.97.41.226','b5d7c4d59e38f0ae1b71153ac27baa485a3673aa'),
+	(1296654569,'88.97.41.226','742a9191021c816851e1191b3cfd2a516656af10'),
+	(1296655001,'88.97.41.224','59a0ae28a2402fe86751b6440987183b017e9c00'),
+	(1296655005,'88.97.41.224','c35c39ca0912ba14715e3831408e4f5a60cb6100'),
+	(1296655007,'88.97.41.224','62bf19a0bdd9a0d7c7b191474f03c4e85b07699a'),
+	(1296655010,'88.97.41.226','75ba2a87b4dcae8b882340437623cae3e42aa720'),
+	(1296655025,'88.97.41.226','2ab27c5ba3da1a970e2a2176fddc987899870724'),
+	(1296655026,'88.97.41.226','72a2a4cbbdc2e82658c9b35e46d6a7c4046d07e5');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2760,18 +2830,9 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('e00073e9956f8953a52f09376e638cbbe28d689a',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296642467),
-	('39ae11b162494a47c3247539811cca71ba6d0eae',1,1,1,'127.0.0.1','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296644789),
-	('1ddf45330dd8c2fdf026d9d2a95ba2abf7a031e4',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644011),
-	('81dbb0fc798258643e829a67c1b257bb15a75b4f',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644041),
-	('36e6026356b77b75bade84d1c8049ec4d7ddb0f7',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644056),
-	('d3e6428922b094b80a6aa1c81381b6ff9218f1ce',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644123),
-	('937bc5e28c176f9086c9ad3da1d9a2cc14ef1ddc',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644210),
-	('8b6bdacb8c70247c25db611f6e5ed8cc28e31edc',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644223),
-	('9dd43569490a70a54ade51e9d76e1def26891956',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644296),
-	('ee32a5e266d6a57961d94d3e5a88698027616f5d',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644302),
-	('f90c211e72c2921caa75b7d9b086fa9ab355cadd',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644587),
-	('8fc46ba12486f9d867fe61400b8d717031b30394',1,1,1,'127.0.0.1','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296644609);
+	('e00073e9956f8953a52f09376e638cbbe28d689a',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296655026),
+	('462829e7ffa14e50703a64f8a30844c3c153e629',1,7,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296655190),
+	('50ab45817ce31dfcf7115a223a440a53274b8371',1,1,1,'88.97.41.226','Apple Mac OS X v10.6.6 CoreMedia v1.0.0.10J567',1296649198);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2882,7 +2943,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,8,18,'Garrett Winder',3,0,0,0,0,1296642972,0,0,0,1265120889,4,1249281451,1266667446);
+	(0,1,8,18,'Garrett Winder',5,0,0,0,0,1296654283,0,0,0,1265120889,4,1249281451,1266667446);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3136,7 +3197,7 @@ CREATE TABLE `exp_templates` (
   PRIMARY KEY (`template_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_templates` WRITE;
 /*!40000 ALTER TABLE `exp_templates` DISABLE KEYS */;
@@ -3179,7 +3240,8 @@ VALUES
 	(106,1,31,'index','y','webpage','','',1295802500,0,'n',0,'','n','n','o',0),
 	(107,1,31,'_navigation','y','webpage','','',1295802510,0,'n',0,'','n','n','o',0),
 	(108,1,30,'pending','y','webpage','','',1295804365,0,'n',0,'','n','n','o',0),
-	(109,1,30,'activated','y','webpage','','',1295804383,0,'n',0,'','n','n','o',0);
+	(109,1,30,'activated','y','webpage','','',1295804383,0,'n',0,'','n','n','o',0),
+	(110,1,6,'master_rss','y','rss','','',1296654568,0,'n',0,'','n','n','o',0);
 
 /*!40000 ALTER TABLE `exp_templates` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3522,6 +3584,8 @@ CREATE TABLE `exp_weblog_data` (
   `field_ft_82` tinytext,
   `field_id_83` text NOT NULL,
   `field_ft_83` tinytext,
+  `field_id_84` text NOT NULL,
+  `field_ft_84` tinytext,
   KEY `entry_id` (`entry_id`),
   KEY `weblog_id` (`weblog_id`),
   KEY `site_id` (`site_id`)
@@ -3529,11 +3593,13 @@ CREATE TABLE `exp_weblog_data` (
 
 LOCK TABLES `exp_weblog_data` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_data` DISABLE KEYS */;
-INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`)
+INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`,`field_id_84`,`field_ft_84`)
 VALUES
-	(43,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'content_pri_post1.jpg','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nCras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. ','textile','',NULL),
-	(44,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'14029274','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. Cras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. Nulla ut dolor ut massa consequat bibendum sit amet ultrices sapien. Sed augue libero, fermentum vitae malesuada ac, tristique quis risus. Proin auctor volutpat metus nec sollicitudin.','textile','',NULL,'',NULL,'',NULL),
-	(45,1,20,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.mp3','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL);
+	(43,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'content_pri_post1.jpg','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nCras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. ','textile','',NULL,'','none'),
+	(44,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'14029274','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. Cras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. Nulla ut dolor ut massa consequat bibendum sit amet ultrices sapien. Sed augue libero, fermentum vitae malesuada ac, tristique quis risus. Proin auctor volutpat metus nec sollicitudin.','textile','',NULL,'',NULL,'',NULL,'','none'),
+	(45,1,20,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.mp3','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.ogg','none'),
+	(46,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none'),
+	(47,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. \"Ut eget augue est, sit\":http://google.com amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh3. Heading 3\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, *sit amet lacinia* nisl. Integer purus turpis, _tristique sed ornare_ at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh4. Heading 4\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nbq. This is a block quote.  Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\n# List item 1\n# List item 2\n# List item 3\n\n* List item 1\n* List item 2\n* List item 3','textile','',NULL);
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3574,7 +3640,7 @@ CREATE TABLE `exp_weblog_fields` (
   PRIMARY KEY (`field_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_fields` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_fields` DISABLE KEYS */;
@@ -3589,14 +3655,15 @@ VALUES
 	(72,1,16,'cf_events_city','City','','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',7,''),
 	(73,1,16,'cf_events_date','Date','','ftype_id_13','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',8,'a:2:{s:11:\"date_format\";s:4:\"unix\";s:10:\"year_range\";s:9:\"2011-2020\";}'),
 	(74,1,16,'cf_events_fburl','Facebook URL','Copy/paste the Facebook Event URL here.','text','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',9,''),
-	(75,1,17,'cf_gallery_images','Images','Add images/image data below. To add multiple images, click the <strong>+</strong> button.','ftype_id_10','','n',0,0,'blog',16,'title','desc',0,6,128,'y','ltr','n','n','none','n',10,'a:2:{s:8:\"max_rows\";s:0:\"\";s:7:\"col_ids\";a:3:{i:0;s:2:\"24\";i:1;s:2:\"25\";i:2;s:2:\"26\";}}'),
-	(76,1,18,'cf_journal_audio_file','Audio file','','text','','n',0,0,'blog',17,'title','desc',0,6,255,'y','ltr','n','n','none','n',11,''),
-	(77,1,18,'cf_journal_audio_lead','Lead text','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','y','n','textile','n',12,''),
+	(75,1,17,'cf_gallery_images','Images','Add images/image data below. To add multiple images, click the <strong>+</strong> button.','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',10,'a:2:{s:8:\"max_rows\";s:0:\"\";s:7:\"col_ids\";a:3:{i:0;s:2:\"24\";i:1;s:2:\"25\";i:2;s:2:\"26\";}}'),
+	(76,1,18,'cf_journal_audio_mp3','Audio file (mp3)','','text','','n',0,0,'blog',17,'title','desc',0,6,255,'y','ltr','n','n','none','n',1,''),
+	(77,1,18,'cf_journal_audio_lead','Lead text','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','y','n','textile','n',3,''),
 	(78,1,19,'cf_journal_videos_vimeo','Vimeo ID','This should just be the 8 digit ID from the vimeo url','text','','n',0,0,'blog',17,'title','desc',0,6,8,'y','ltr','n','n','none','n',13,''),
 	(79,1,19,'cf_journal_videos_lead','Lead text','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','y','n','textile','n',14,''),
 	(81,1,20,'cf_journal_photos_image','Uploaded image','Ideally the photo should be landscape and suitable to be displayed at 585px wide. We\'ll resize it as best we can.','ftype_id_6','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',15,'a:1:{s:7:\"options\";s:2:\"14\";}'),
 	(82,1,20,'cf_journal_photos_lead','Lead text','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','y','n','textile','n',16,''),
-	(83,1,21,'cf_journal_notes_note','Note','','textarea','','n',0,0,'blog',17,'title','desc',0,10,128,'y','ltr','y','n','textile','n',17,'');
+	(83,1,21,'cf_journal_notes_note','Note','','textarea','','n',0,0,'blog',17,'title','desc',0,10,128,'y','ltr','y','n','textile','n',17,''),
+	(84,1,18,'cf_journal_audio_ogg','Audio file (ogg)','','text','','n',0,0,'blog',17,'title','desc',0,6,255,'y','ltr','n','n','none','n',2,'');
 
 /*!40000 ALTER TABLE `exp_weblog_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3678,7 +3745,7 @@ CREATE TABLE `exp_weblog_titles` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_titles` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_titles` DISABLE KEYS */;
@@ -3686,7 +3753,9 @@ INSERT INTO `exp_weblog_titles` (`entry_id`,`site_id`,`weblog_id`,`author_id`,`p
 VALUES
 	(43,1,21,1,0,0,'127.0.0.1','This is an example photo','this-is-an-example-photo','open','y',0,0,0,0,'y','n','n',1296642773,'n','2011','02','02',0,0,20110202103354,0,0,0,'',0),
 	(44,1,19,1,0,0,'127.0.0.1','This is an example video','this-is-an-example-video','open','y',0,0,0,0,'y','n','n',1296642857,'n','2011','02','02',0,0,20110202103518,0,0,0,'',0),
-	(45,1,20,1,0,0,'127.0.0.1','This is some badass audio','this-is-some-badass-audio','open','y',0,0,0,0,'y','n','n',1296642972,'n','2011','02','02',0,0,20110202103713,0,0,0,'',0);
+	(45,1,20,1,0,0,'88.97.41.226','This is some badass audio','this-is-some-badass-audio','open','y',0,0,0,0,'y','n','n',1296642998,'n','2011','02','02',0,0,20110202123939,0,0,0,'',0),
+	(46,1,18,1,0,0,'88.97.41.226','Gallery','gallery','open','y',0,0,0,0,'y','n','n',1296646799,'n','2011','02','02',0,0,20110202131000,0,0,0,'',0),
+	(47,1,22,1,0,0,'88.97.41.226','An example note','an-example-note','open','y',0,0,0,0,'y','n','n',1296654283,'n','2011','02','02',0,0,20110202134644,0,0,0,'',0);
 
 /*!40000 ALTER TABLE `exp_weblog_titles` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3785,11 +3854,11 @@ LOCK TABLES `exp_weblogs` WRITE;
 INSERT INTO `exp_weblogs` (`weblog_id`,`site_id`,`is_user_blog`,`blog_name`,`blog_title`,`blog_url`,`blog_description`,`blog_lang`,`blog_encoding`,`total_entries`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_comment_date`,`last_trackback_date`,`cat_group`,`status_group`,`deft_status`,`field_group`,`search_excerpt`,`enable_trackbacks`,`trackback_use_url_title`,`trackback_max_hits`,`trackback_field`,`deft_category`,`deft_comments`,`deft_trackbacks`,`weblog_require_membership`,`weblog_max_chars`,`weblog_html_formatting`,`weblog_allow_img_urls`,`weblog_auto_link_urls`,`weblog_notify`,`weblog_notify_emails`,`comment_url`,`comment_system_enabled`,`comment_require_membership`,`comment_use_captcha`,`comment_moderate`,`comment_max_chars`,`comment_timelock`,`comment_require_email`,`comment_text_formatting`,`comment_html_formatting`,`comment_allow_img_urls`,`comment_auto_link_urls`,`comment_notify`,`comment_notify_authors`,`comment_notify_emails`,`comment_expiration`,`search_results_url`,`tb_return_url`,`ping_return_url`,`show_url_title`,`trackback_system_enabled`,`show_trackback_field`,`trackback_use_captcha`,`show_ping_cluster`,`show_options_cluster`,`show_button_cluster`,`show_forum_cluster`,`show_pages_cluster`,`show_show_all_cluster`,`show_author_menu`,`show_status_menu`,`show_categories_menu`,`show_date_menu`,`rss_url`,`enable_versioning`,`enable_qucksave_versioning`,`max_revisions`,`default_entry_title`,`url_title_prefix`,`live_look_template`)
 VALUES
 	(17,1,'n','events','Events','/events/','','en','utf-8',0,0,0,0,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',0,0,0,0,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',1,0,0,1296646799,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
 	(19,1,'n','journal_videos','Journal: Videos','/journal/','','en','utf-8',1,0,0,1296642857,0,0,'',1,'open',19,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',1,0,0,1296642972,0,0,'',1,'open',18,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',1,0,0,1296642998,0,0,'',1,'open',18,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
 	(21,1,'n','journal_photos','Journal: Photos','/journal/','','en','utf-8',1,0,0,1296642773,0,0,'',1,'open',20,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',0,0,0,0,0,0,'',1,'open',21,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0);
+	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',1,0,0,1296654283,0,0,'',1,'open',21,0,'n','n',5,66,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0);
 
 /*!40000 ALTER TABLE `exp_weblogs` ENABLE KEYS */;
 UNLOCK TABLES;
