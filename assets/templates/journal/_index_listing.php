@@ -18,7 +18,7 @@
         
         <div id="posts">
         {exp:weblog:entries
-            weblog="journal"
+            weblog="journal_notes|journal_videos|journal_photos|journal_audio"
             limit="5"
             disable="member_data|trackbacks|categories"
             orderby=""
@@ -32,18 +32,43 @@
                     <li id="pm_facebook"><a href="#">Share</a></li>
                 </ul>
                 
-                {cf_journal_image}
-                    {exp:ed_imageresizer 
-                        maxWidth="{ffm_image_position}"
-                        image="{ffm_image_file}" 
-                        alt=""
-                        class="img_right"
-                        }
-                {/cf_journal_image}
-
-                {cf_journal_body}
+                {if weblog_short_name == "journal_photos"}
                 
-                <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
+                    {cf_journal_photos_lead}
+                    
+                    {exp:ed_imageresizer 
+                        maxWidth="585"
+                        forceWidth="yes"
+                        image="{cf_journal_photos_image}" 
+                        alt=""
+                        }
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_videos"}
+                
+                    {cf_journal_videos_lead}
+                    
+                    <iframe 
+                        src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}" 
+                        width="580" 
+                        height="325" 
+                        frameborder="0">
+                    </iframe>
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_audio"}
+                    
+                    {cf_journal_audio_lead}
+                    
+                    <audio id="audio_player" controls>
+                        <source src="{cf_journal_audio_file}" type="audio/mpeg" />
+                    </audio> <!-- // #audio_player -->
+                    
+                {/if}
+                
+                
             </div> <!-- // .post -->
             {paginate}
 			{if "{total_pages}" > "1"}
