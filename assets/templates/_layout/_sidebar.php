@@ -32,7 +32,7 @@
             </li>
             {/exp:weblog:entries}
         </ul>
-        <p class="more"><a href="#">See all events</a></p>
+        <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events</a></p>
     </div> <!-- // #tour_dates -->
     
     {!-- hiding until the next release
