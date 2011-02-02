@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="bio"
-    body_id="editorial"
+    body_class="editorial"
+    body_id="bio"
     section="bio"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Bio"

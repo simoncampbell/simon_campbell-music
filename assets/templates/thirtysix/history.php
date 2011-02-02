@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="history"
-    body_id="editorial"
+    body_class="editorial"
+    body_id="history"
     section="thirtysix"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="History | ThirtySix"

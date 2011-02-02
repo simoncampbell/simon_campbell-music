@@ -608,7 +608,7 @@ div#footer p.credit {
         margin-bottom: 0;
     }
     body.home div#content_pri,
-    body#editorial div#content_pri {
+    body.editorial div#content_pri {
         background: none;
         border: none;
         padding: 0;
@@ -862,44 +862,44 @@ div#footer p.credit {
         }
         
         /* EDITORIAL LAYOUT */
-        body#editorial #content_pri h3 {
+        body.editorial #content_pri h3 {
             text-transform: uppercase;
         }
-        body#editorial #content_pri ul {
+        body.editorial #content_pri ul {
             list-style-position: outside;
         }
-        body#editorial #content_pri li {
+        body.editorial #content_pri li {
             list-style-position: outside;
             margin-bottom: 8px;
             margin-left: 18px;
         }
         
-        body#editorial #content_pri div.widget {
+        body.editorial #content_pri div.widget {
             border-top: none;
             margin-bottom: 0;
         }
-        body#editorial #content_pri div.widget:first-of-type {
+        body.editorial #content_pri div.widget:first-of-type {
             border-top: 1px dashed #5B5B5B;
             border-top: 1px dashed rgba(255, 255, 255, 0.3);
         }
-        body.bio #content_pri div.widget:nth-of-type(even),
-        body.gear #content_pri div.widget:nth-of-type(odd),
-        body.history #content_pri div.widget:nth-of-type(odd) {
+        body#bio #content_pri div.widget:nth-of-type(even),
+        body#gear #content_pri div.widget:nth-of-type(odd),
+        body#history #content_pri div.widget:nth-of-type(odd) {
             background: rgba(255, 255, 255, 0.05);
         }
         
             /* EDITORIAL: Bio template */
-            body.bio #beginnings {
+            body#bio #beginnings {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
             }
-            body.bio #beginnings p {
+            body#bio #beginnings p {
                 width: 365px;
             }
-            body.bio #beginnings p:first-of-type {
+            body#bio #beginnings p:first-of-type {
                 width: 410px;
             }
-            body.bio div#beginnings h3 + p:first-letter {
+            body#bio div#beginnings h3 + p:first-letter {
                 background: rgba(255, 255, 255, 0.1);
                 color: rgb(255, 255, 255);
                 float: left;
@@ -907,33 +907,57 @@ div#footer p.credit {
                 margin: 5px 8px 0 0;
                 padding: 10px 5px;
             }
-            body.bio #tribute {
+            body#bio #tribute {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_tribute.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
             }
-            body.bio #tribute p {
+            body#bio #tribute p {
                 width: 360px;
             }
             
             /* EDITORIAL: Bio/Gear template */
-            body.gear #gear_guitars {
+            body#gear #gear_guitars {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
             }
-            body.gear #gear_guitars li {
+            body#gear #gear_guitars li {
                 width: 310px;
             }
-            body.gear #gear_guitars li:first-child,
-            body.gear #gear_guitars li:nth-child(2),
-            body.gear #gear_guitars li:nth-child(3) {
+            body#gear #gear_guitars li:first-child,
+            body#gear #gear_guitars li:nth-child(2),
+            body#gear #gear_guitars li:nth-child(3) {
                 width: auto;
             }
             
             /* EDITORIAL: thirtysix/history template */
-            body.history #thejourney,
-            body.history #content_pri div.widget:nth-of-type(odd)#thejourney {
+            body#history #thejourney,
+            body#history #content_pri div.widget:nth-of-type(odd)#thejourney {
                 background: #252525 url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right;
                 background: url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right, rgba(255, 255, 255, 0.05);
+            }
+            
+            /* EDITORIAL: Album Lyrics */
+            body#lyrics div#content_pri {
+                background: rgba(255, 255, 255, 0.02);
+                border-top: 1px dashed #5B5B5B;
+                border-top: 1px dashed rgba(255, 255, 255, 0.3);
+                border-bottom: 1px dashed #5B5B5B;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            }
+            body#lyrics div#content_pri .widget {
+                background: none;
+                border: none;
+                border-bottom: 1px dashed #5B5B5B;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                float: left;
+                padding: 18px;
+                width: auto;
+            }
+            body#lyrics div#content_pri .half:last-child .widget:last-child {
+                border-bottom: none;
+            }
+            body#lyrics div#content_pri div.opacity_02 {
+                background: rgba(255, 255, 255, 0.02);
             }
         
         /* THIRTYSIX LANDING TEMPLATE */
@@ -1189,6 +1213,15 @@ div#footer p.credit {
     
     .hide {
         display: none;
+    }
+    
+    div.opacity_02 {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    div.half {
+        float: left;
+        width: 50%;
     }
     
 /* FONT SPACING */

@@ -32,7 +32,7 @@ div#album_promo_inline div h3 {
 }
 
 /* EDITORIAL */
-body#editorial div#beginnings h3 + p:first-letter {
+body.editorial div#beginnings h3 + p:first-letter {
     background: none;
     float: none;
     font-size: 13px;
