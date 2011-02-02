@@ -23,7 +23,7 @@
                 The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="#">Check out ThirtySix!</a>
             </p>
             <small><strong>&ldquo;Brother&rdquo;</strong> Single preview</small>
-            <audio id="audio_player" controls>
+            <audio class="audio_player" id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
             </audio> <!-- // #audio_player -->
@@ -100,26 +100,29 @@
 
                         {cf_journal_audio_lead}
 
-                        <audio id="audio_player" controls>
-                            <source src="{cf_journal_audio_file}" type="audio/mpeg" />
+                        {if cf_journal_audio_mp3 != "" AND cf_journal_audio_ogg != ""}
+                        <audio class="audio_player" id="audio_player_{entry_id}" controls>
+                            <source src="{cf_journal_audio_mp3}" type="audio/mpeg" />
+                            <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
                         </audio> <!-- // #audio_player -->
                         <script>
                             jwplayer("audio_player").setup({
                                 players: [
                                     { type: "html5" },
-                                    { type: "flash", src: "{cf_journal_audio_file}" }
+                                    { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
                                 ],
                                 provider: "sound",
                                 controlbar: "bottom",
                                 dock: false,
                                 playlist: "none",
-                                id: "audio_player",
+                                id: "audio_player_{entry_id}",
                                 width: 460,
                                 height: 29,
                                 icons: false,
-                                skin: "/assets/jwplayer/glow.zip"
+                                skin: "{pv_assets_url}/jwplayer/glow.zip"
                             });
                         </script>
+                        {/if}
 
                     {/if}
 
