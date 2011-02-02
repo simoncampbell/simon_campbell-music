@@ -2,13 +2,13 @@ div#navigation_network {
 /*    margin-top: -42px;*/
 }
 div#navigation_network ul li {
-/*    display: inline;*/
+    display: inline;
+    position: relative;
+    top: -15px;
 }
-div#navigation_network ul li#nn_rss,
-div#navigation_network ul li#nn_twitter,
-div#navigation_network ul li#nn_facebook {
-/*    position: relative;
-    top: -12px;*/
+div#navigation_network ul a {
+    display: inline;
+    padding: 12px 4px;
 }
 
 div#content_pri,
