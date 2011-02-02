@@ -63,7 +63,7 @@ $conf['disable_all_tracking'] = "n";  // (y/n) - Emergency preference which when
 -------------------------------------------------------------------*/
 $conf['save_tmpl_files'] = "y";
 $conf['tmpl_file_basepath'] = $conf['server_path']."/assets/templates/";
-$conf['site_404'] = "";
+$conf['site_404'] = "404/index";
 $conf['strict_urls'] = "n";
 
 
