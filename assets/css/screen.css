@@ -883,11 +883,12 @@ div#footer p.credit {
             border-top: 1px dashed rgba(255, 255, 255, 0.3);
         }
         body.bio #content_pri div.widget:nth-of-type(even),
-        body.gear #content_pri div.widget:nth-of-type(odd) {
+        body.gear #content_pri div.widget:nth-of-type(odd),
+        body.history #content_pri div.widget:nth-of-type(odd) {
             background: rgba(255, 255, 255, 0.05);
         }
         
-            /* EDITORIAL: Bio Page */
+            /* EDITORIAL: Bio template */
             body.bio #beginnings {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
@@ -914,7 +915,7 @@ div#footer p.credit {
                 width: 360px;
             }
             
-            /* EDITORIAL: Bio/Gear Page */
+            /* EDITORIAL: Bio/Gear template */
             body.gear #gear_guitars {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
@@ -927,8 +928,15 @@ div#footer p.credit {
             body.gear #gear_guitars li:nth-child(3) {
                 width: auto;
             }
+            
+            /* EDITORIAL: thirtysix/history template */
+            body.history #thejourney,
+            body.history #content_pri div.widget:nth-of-type(odd)#thejourney {
+                background: #252525 url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right;
+                background: url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right, rgba(255, 255, 255, 0.05);
+            }
         
-        /* THIRTYSIX TEMPLATE */
+        /* THIRTYSIX LANDING TEMPLATE */
         body.thirtysix div#content_pri {
             background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
             padding: 0;

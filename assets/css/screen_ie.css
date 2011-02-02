@@ -79,7 +79,7 @@ body.store_landing div#content_pri input.submit {
 /* MISCELLANEOUS RGBA BACKGROUNDS/BORDERS */
 #content_pri img,
 #content_pri iframe,
-body.editorial div#beginnings h3 + p:first-letter,
+body#editorial div#beginnings h3 + p:first-letter,
 div#posts p#pagination a {
     background: #363636;
 }

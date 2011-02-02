@@ -77,7 +77,7 @@
     <!--[if IE 6]>
         <script src="{pv_assets_url}/js/ie6/DD_belatedPNG_0.0.8a.js"></script>
         <script>
-            DD_belatedPNG.fix('.png, body.gear div#gear_guitars, body.bio #beginnings, body.bio #tribute');
+            DD_belatedPNG.fix('.png, body.gear div#gear_guitars, body.bio #beginnings, body.bio #tribute, body.history #thejourney');
         </script>
     <![endif]-->
     

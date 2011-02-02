@@ -16,7 +16,7 @@
     
     <div id="content_pri">
         <h2 class="hide">ThirtySix</h2>
-        <div class="widget">
+        <div id="thejourney" class="widget">
             <h3>The journey</h3>
             <p>
                 Well this is it, my first solo album in thirty six years of spanking the plank. It’s not blues, it’s not rock, it’s not folk; it is an eclectic mix that will take you on my very personal musical journey. Each song is written about real people, with real lives.
