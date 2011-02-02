@@ -94,6 +94,7 @@ p.more {
     font-weight: bold;
     margin-bottom: 0;
     text-align: right;
+    clear:both;
 }
 
 p,
@@ -643,7 +644,7 @@ div#footer p.credit {
         }
         div#intro small {
             color: rgb(255, 255, 255);
-            font-size: 23px;
+            font-size: 18px;
         }
         div#intro #audio_player {
             margin-top: 8px;
@@ -710,8 +711,7 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta li#pm_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
-        }
-        
+        }       
         div#posts p#pagination {
             color: rgb(255, 255, 255);
             font-size: 11px;
@@ -920,10 +920,10 @@ div#footer p.credit {
             font-style: italic;
         }
         body.thirtysix div#content_pri blockquote p:before {
-            content: '"';
+            content: '“';
         }
         body.thirtysix div#content_pri blockquote p:after {
-            content: '"';
+            content: '”';
         }
         body.thirtysix div#content_pri blockquote cite {
             display: block;

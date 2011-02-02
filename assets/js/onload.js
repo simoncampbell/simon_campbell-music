@@ -15,13 +15,15 @@
 $(document).ready(function(){
     
     // Hide value of newsletter input on focus
-    $("input[name=cm-bxdii-bxdii]").clearDefault();
+    if($("input[name=cm-bxdii-bxdii]").length) {
+        $("input[name=cm-bxdii-bxdii]").clearDefault();
+    }
     
     // Gallery
     if($("body").hasClass("gallery")) {
      
         // Add gallery nav links
-        $("div#content_pri").prepend("<p id=\"gallery_nav\">")
+        $("div#content_pri").prepend("<p id=\"gallery_nav\">");
         $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
      
         // Gallery jQuery Cycle
@@ -41,22 +43,24 @@ $(document).ready(function(){
     }
     
     // Contact Form Validation
-    $('form#freeform').validate({
-        rules: {
-            name: {
-                required: true,
-                rangelength: [4, 30]
-            },
-            email: {
-                required: true,
-                email: true
-            },
-            message: {
-                required: true,
-                rangelength: [15, 250]
+    if($("form#freeform").length) {
+        $('form#freeform').validate({
+            rules: {
+                name: {
+                    required: true,
+                    rangelength: [4, 30]
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true,
+                    rangelength: [15, 250]
+                }
             }
-        }
-    });
+        });
+    }
     
     // Campaign Monitor subscribe validation
     // $('div#newsletter_signup form').validate({

@@ -20,9 +20,9 @@
             <a href="{pv_site_url}/thirtysix/"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
             <h2><a href="{pv_site_url}/thirtysix/"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
             <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
+                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a United Kingdom and mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
             </p>
-            <small><strong>&ldquo;Brother&rdquo;</strong> Single preview</small>
+            <small><strong>&ldquo;Brother&rdquo;</strong> Lead single preview</small>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
@@ -75,7 +75,7 @@
                         {cf_journal_photos_lead}
 
                         {exp:ed_imageresizer 
-                            maxWidth="585"
+                            maxWidth="580"
                             forceWidth="yes"
                             image="{cf_journal_photos_image}" 
                             alt=""
@@ -116,7 +116,7 @@
                                 dock: false,
                                 playlist: "none",
                                 id: "audio_player_{entry_id}",
-                                width: 460,
+                                width: "100%",
                                 height: 29,
                                 icons: false,
                                 skin: "{pv_assets_url}/jwplayer/glow.zip"
