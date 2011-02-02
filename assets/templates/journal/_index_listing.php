@@ -69,8 +69,25 @@
                     {cf_journal_audio_lead}
                     
                     <audio id="audio_player" controls>
-                        <source src="{cf_journal_audio_file}" type="audio/mpeg" />
+                        <source src="" type="audio/mpeg" />
                     </audio> <!-- // #audio_player -->
+                    <script>
+                        jwplayer("audio_player").setup({
+                            players: [
+                                { type: "html5" },
+                                { type: "flash", src: "{cf_journal_audio_file}" }
+                            ],
+                            provider: "sound",
+                            controlbar: "bottom",
+                            dock: false,
+                            playlist: "none",
+                            id: "audio_player",
+                            width: 460,
+                            height: 29,
+                            icons: false,
+                            skin: "/assets/jwplayer/glow.zip"
+                        });
+                    </script>
                     
                 {/if}
                 
