@@ -48,31 +48,67 @@
         
         <div id="posts" class="widget">
             
-            <div class="post">
-                <h2><a href="#">Album launch party on March 26</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="">10 March 2011</time></li>
-                    <li id="pm_twitter"><a href="#">Share</a></li>
-                    <li id="pm_facebook"><a href="#">Share</a></li>
-                </ul>
-                <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
-                <p>
-                    <strong>The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel.</strong> Vivamus id mollis quam. Morbi ac iklisese commodo nulla.
-                </p>
-                <p>
-                    In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.
-                </p>
-            </div> <!-- // .post -->
-            
-            <div class="post">
-                <h2><a href="#">My thoughts on fame &amp; fortune</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="">10 March 2011</time></li>
-                    <li id="pm_twitter"><a href="#">Share</a></li>
-                    <li id="pm_facebook"><a href="#">Share</a></li>
-                </ul>
-                <!-- <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe> -->
-            </div> <!-- // .post -->
+            {exp:weblog:entries
+                weblog="journal_notes|journal_videos|journal_photos|journal_audio"
+                limit="{lv_journal_homepage_limit}"
+                disable="member_data|trackbacks|categories"
+                orderby=""
+                sort=""
+                dynamic="off"
+                }    
+                <div class="post">
+                    <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
+                    <ul class="post_meta">
+                        <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
+                        <li id="pm_twitter"><a href="#">Share</a></li>
+                        <li id="pm_facebook"><a href="#">Share</a></li>
+                    </ul>
+
+                    {if weblog_short_name == "journal_notes"}
+
+                        {cf_journal_notes_note}
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_photos"}
+
+                        {cf_journal_photos_lead}
+
+                        {exp:ed_imageresizer 
+                            maxWidth="585"
+                            forceWidth="yes"
+                            image="{cf_journal_photos_image}" 
+                            alt=""
+                            }
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_videos"}
+
+                        {cf_journal_videos_lead}
+
+                        <iframe 
+                            src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}" 
+                            width="580" 
+                            height="325" 
+                            frameborder="0">
+                        </iframe>
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_audio"}
+
+                        {cf_journal_audio_lead}
+
+                        <audio id="audio_player" controls>
+                            <source src="{cf_journal_audio_file}" type="audio/mpeg" />
+                        </audio> <!-- // #audio_player -->
+
+                    {/if}
+
+
+                </div> <!-- // .post -->
+            {/exp:weblog:entries}
             
         </div><!-- // #posts -->
         
