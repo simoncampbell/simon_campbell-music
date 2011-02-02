@@ -656,6 +656,9 @@ div#footer p.credit {
             float: left;
             padding-bottom: 0;
         }
+        div#posts p.more {
+            margin-bottom:20px;
+        }
         div#posts div.post {
             border-bottom: 1px dashed #5B5B5B;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
