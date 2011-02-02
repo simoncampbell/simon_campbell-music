@@ -57,7 +57,7 @@
                     {cf_journal_photos_lead}
                     
                     {exp:ed_imageresizer 
-                        maxWidth="585"
+                        maxWidth="580"
                         forceWidth="yes"
                         image="{cf_journal_photos_image}" 
                         alt=""
@@ -98,7 +98,7 @@
                             dock: false,
                             playlist: "none",
                             id: "audio_player_{entry_id}",
-                            width: 460,
+                            width: "100%",
                             height: 29,
                             icons: false,
                             skin: "{pv_assets_url}/jwplayer/glow.zip"

@@ -7,7 +7,7 @@
     </ul><!-- // .navigation_sec -->
     
     <div id="promo_block" class="widget">
-        <a href="#">
+        <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
             <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
@@ -32,7 +32,7 @@
             </li>
             {/exp:weblog:entries}
         </ul>
-        <p class="more"><a href="#">See all events</a></p>
+        <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events</a></p>
     </div> <!-- // #tour_dates -->
     
     {!-- hiding until the next release
@@ -95,7 +95,7 @@
         </p>
         <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
             <fieldset>
-                <input type="email" name="cm-bxdii-bxdii" id="bxdii-bxdii" value="please enter email address" />
+                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" value="please enter email address" />
                 <!-- NOTE: Height of submit button is messed up in firefox -->
                 <input type="submit" value="Subscribe" class="submit" />
             </fieldset>
