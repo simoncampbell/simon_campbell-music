@@ -5,6 +5,9 @@ div#content_pri,
 #content_sec .widget {
     background: url(../images/site/ie6/opacity_5.png);
 }
+ul#navigation_pri li.account ul li.last a {
+    background: none;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {
@@ -44,7 +47,11 @@ body.thirtysix div#content_pri .widget {
     background: #000;
 }
 
-/* PAGINATION */
+/* JOURNAL */
+div#posts div.post.last {
+    border: none;
+    padding-bottom: 0;
+}
 div#posts p#pagination a:hover,
 div#posts p#pagination a.cur {
     background: #5B5B5B;
