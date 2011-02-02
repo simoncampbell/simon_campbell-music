@@ -10,8 +10,33 @@
 | For more info visit:  http://www.php.net/error_reporting
 |
 */
-	error_reporting(E_ALL);
 
+/*
+//just removing this completely. This never gets run before EE sets its own
+//error handling, so its kind of pointless.
+
+//changed for bridge to respect the error reporting shown for users or superadmin
+if (isset($GLOBALS['PREFS']) AND
+		(
+			//set to show admin only
+			( $GLOBALS['PREFS']->ini('debug') == 1 	AND 
+			  ( isset($GLOBALS['SESS']) AND 
+				isset($GLOBALS['SESS']->userdata) AND
+			    $GLOBALS['SESS']->userdata('group_id') == 1) 
+			) OR
+			//set to show all
+			$GLOBALS['PREFS']->ini('debug') == 2
+		)
+	
+	)
+{
+    error_reporting(E_ALL);
+}
+else
+{
+	error_reporting(0);
+}
+*/
 /*
 |---------------------------------------------------------------
 | SYSTEM FOLDER NAME
@@ -24,7 +49,7 @@
 | NO TRAILING SLASH!
 |
 */
-	$system_folder = PATH."bridge/codeigniter/system";
+	$system_folder = PATH . "bridge/codeigniter/system";
 
 /*
 |---------------------------------------------------------------
@@ -94,19 +119,23 @@ else
 
 define('BASEPATH', $system_folder.'/');
 
+/*
+//removed this conditional because we are not going to change our structure
+//there for the first check is somwhat useless, and dangerous.
+
 if (is_dir($application_folder))
 {
 	define('APPPATH', $application_folder.'/');
 }
 else
 {
-	if ($application_folder == '')
-	{
-		$application_folder = 'application';
-	}
-
-	define('APPPATH', BASEPATH.$application_folder.'/');
+if ($application_folder == '')
+{
+	$application_folder = 'application';
 }
+*/
+define('APPPATH', BASEPATH.$application_folder.'/');
+/*}*/
 
 /*
 |---------------------------------------------------------------
@@ -127,7 +156,7 @@ else
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2009, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2010, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -177,7 +206,9 @@ require(APPPATH.'config/constants'.EXT);
  *  Define a custom error handler so we can log PHP errors
  * ------------------------------------------------------
  */
-set_error_handler('_exception_handler');
+//had to remove this for bridge.
+
+//set_error_handler('_exception_handler');
 
 if ( ! is_php('5.3'))
 {
@@ -226,9 +257,9 @@ $OUT_CI =& load_class('Output');
  * ------------------------------------------------------
  */
  
-$assign_to_config = $GLOBALS['PREFS']->core_ini;
-$assign_to_config['enable_query_strings'] = TRUE;
-$assign_to_config['base_url'] = $GLOBALS['PREFS']->core_ini['site_url'];
+$assign_to_config 							= $GLOBALS['PREFS']->core_ini;
+$assign_to_config['enable_query_strings'] 	= ( ! (REQ == 'PAGE') ); 
+$assign_to_config['base_url'] 				= $GLOBALS['PREFS']->core_ini['site_url'];
 
 if (isset($assign_to_config))
 {	

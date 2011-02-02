@@ -7,7 +7,7 @@
  * @author		Solspace DevTeam
  * @copyright	Copyright (c) 2008-2010, Solspace, Inc.
  * @link		http://solspace.com/docs/
- * @version		1.0.4
+ * @version		1.1.5
  * @filesource 	./system/bridge/
  * 
  */
@@ -17,18 +17,18 @@
  *
  * @package 	Bridge:Expansion
  * @category	Constants
- * @author		Paul Burdick <paul.burdick@solspace.com>
+ * @author		Solspace DevTeam
  * @link		http://solspace.com/docs/
  * @filesource 	./system/bridge/constants.php
  */
  
 if (APP_VER < 2.0)
 {
-	define('PATH_BRIDGE', PATH.'bridge/');
+	define('PATH_BRIDGE', PATH . 'bridge/');
 }
 else
 {
-	define('PATH_BRIDGE', BASEPATH.'expressionengine/third_party/bridge/');
+	define('PATH_BRIDGE', PATH_THIRD . 'bridge/');
 }
 
 // --------------------------------------------------------------------
