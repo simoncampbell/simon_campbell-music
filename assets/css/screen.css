@@ -312,6 +312,7 @@ small {
             background: rgb(255, 255, 255);
             background: -moz-linear-gradient(bottom, rgb(255, 255, 255) 0%, rgb(205, 205, 205) 100%);
             background: -webkit-gradient(linear, left bottom, left top, from(rgb(255, 255, 255)), to(rgb(205, 205, 205)));
+            color:#000;
         }
         
 /* TABLES ---------- */
