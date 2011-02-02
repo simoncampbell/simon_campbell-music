@@ -69,7 +69,7 @@
                     {cf_journal_audio_lead}
                     
                     {if cf_journal_audio_mp3 != "" AND cf_journal_audio_ogg != ""}
-                    <audio class="audio_player" id="audio_player_{entry_id}" controls>
+                    <audio id="audio_player_{entry_id}" controls>
                         <source src="{cf_journal_audio_mp3}" type="audio/mpeg" />
                         <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
                     </audio> <!-- // #audio_player -->

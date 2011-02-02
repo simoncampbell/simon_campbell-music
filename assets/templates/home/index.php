@@ -23,7 +23,7 @@
                 The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="#">Check out ThirtySix!</a>
             </p>
             <small><strong>&ldquo;Brother&rdquo;</strong> Single preview</small>
-            <audio class="audio_player" id="audio_player" controls>
+            <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
             </audio> <!-- // #audio_player -->
@@ -101,7 +101,7 @@
                         {cf_journal_audio_lead}
 
                         {if cf_journal_audio_mp3 != "" AND cf_journal_audio_ogg != ""}
-                        <audio class="audio_player" id="audio_player_{entry_id}" controls>
+                        <audio id="audio_player_{entry_id}" controls>
                             <source src="{cf_journal_audio_mp3}" type="audio/mpeg" />
                             <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
                         </audio> <!-- // #audio_player -->
