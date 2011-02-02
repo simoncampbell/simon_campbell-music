@@ -14,6 +14,15 @@ div#album_promo_inline div h3 {
     margin-bottom: 10px;
 }
 
+/* EDITORIAL */
+body.editorial div#beginnings h3 + p:first-letter {
+    background: none;
+    float: none;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
 /* CONTENT SEC */
 div#content_sec input {
     width: 175px;
