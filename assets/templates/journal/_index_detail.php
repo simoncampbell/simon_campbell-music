@@ -21,6 +21,17 @@
     robots_follow=""
     robots_archive=""
     canonical_url="/"
+    {!-- FACEBOOK META OPTIONS BELOW --}
+    og_title="{title} | Simon Campbell Music"
+    og_description="{exp:html_strip}{cf_journal_videos_lead}{cf_journal_photos_lead}{cf_journal_audio_lead}{cf_journal_notes_note}{/exp:html_strip}"
+    {if weblog_short_name == "journal_photos"}
+    og_image="{site_url}{cf_journal_photos_image}"
+    {/if}
+    {if weblog_short_name == "journal_audio"}
+    og_audio="{cf_journal_audio_mp3}"
+    og_audio_type="application/mp3"
+    og_audio_artist="Simon Campbell"
+    {/if}
 }
     
     <div id="content_pri">
@@ -31,8 +42,8 @@
                 <h2>{title}</h2>
                 <ul class="post_meta">
                     <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
-                    <li id="pm_twitter"><a href="#">Share</a></li>
-                    <li id="pm_facebook"><a href="#">Share</a></li>
+                    <li id="pm_twitter"><a href="http://twitter.com/share?url={site_url}{comment_url_title_auto_path}&amp;text=&quot;{title}&quot;%20on%20Simon%20Campbell%20Music&amp;via=simoncampbell&amp;related=simoncampbell">Share on Twitter</a></li>
+                    <li id="pm_facebook"><a href="http://www.facebook.com/sharer.php?u={site_url}{comment_url_title_auto_path}">Share on Facebook</a></li>
                 </ul>
                 
                 {if weblog_short_name == "journal_notes"}
