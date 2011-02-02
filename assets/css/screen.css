@@ -94,6 +94,7 @@ p.more {
     font-weight: bold;
     margin-bottom: 0;
     text-align: right;
+    clear:both;
 }
 p.more a:hover {
     text-decoration: none;
@@ -656,6 +657,9 @@ div#footer p.credit {
         div#posts {
             float: left;
             padding-bottom: 0;
+        }
+        div#posts p.more {
+            margin-bottom:20px;
         }
         div#posts div.post {
             border-bottom: 1px dashed #5B5B5B;

@@ -39,7 +39,7 @@
             {/exp:weblog:entries}
         </div><!-- // #gallery_photos -->
         
-        <p class="more"><a href="#">See all galleries on Flickr</a></p>
+        <p class="more"><a href="http://www.flickr.com/photos/erskinecorp/sets/">Check out Simon&rsquo;s other sets on Flickr</a></p>
         
     </div> <!-- // #content_pri -->
     
