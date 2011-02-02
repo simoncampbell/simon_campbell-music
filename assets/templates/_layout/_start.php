@@ -64,7 +64,7 @@
     <![endif]-->
     
     <!-- iOS -->
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
     
     {if ev_environment == "live" AND lv_services_google_analytics_toggle == "On"}
         <!-- GOOGLE ANALYTICS -->
