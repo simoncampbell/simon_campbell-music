@@ -1,14 +1,15 @@
 <div id="content_sec">
     
+    {!-- hiding this for now until 'pages' are built
     <ul id="navigation_sec" class="item_listing">
         <li><a href="#">Subpage one</a></li>
         <li><a href="#">Subpage two</a></li>
         <li><a href="#">Subpage three</a></li>
     </ul><!-- // .navigation_sec -->
-    
+    --}
     <div id="promo_block" class="widget">
         <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
-            <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
+            <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
