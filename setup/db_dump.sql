@@ -1,10 +1,10 @@
 # Sequel Pro dump
-# Version 2210
+# Version 2492
 # http://code.google.com/p/sequel-pro
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-02-02 14:40:31 +0000
+# Generation Time: 2011-02-02 13:15:20 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,7 @@ CREATE TABLE `exp_actions` (
   `class` varchar(50) NOT NULL,
   `method` varchar(50) NOT NULL,
   PRIMARY KEY (`action_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1016 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1017 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_actions` WRITE;
 /*!40000 ALTER TABLE `exp_actions` DISABLE KEYS */;
@@ -75,7 +75,8 @@ VALUES
 	(1012,'Cartthrob','_download_file_form_submit'),
 	(1013,'Freeform','insert_new_entry'),
 	(1014,'Freeform','retrieve_entries'),
-	(1015,'Freeform_CP','delete_freeform_notification');
+	(1015,'Freeform_CP','delete_freeform_notification'),
+	(1016,'Freeform','delete_freeform_notification');
 
 /*!40000 ALTER TABLE `exp_actions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -243,7 +244,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=297 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=302 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -544,7 +545,12 @@ VALUES
 	(293,1,1,'jamiepittock','88.97.41.226',1296657281,'Logged in'),
 	(294,1,1,'jamiepittock','88.97.41.226',1296657299,'Member Group Updated:&nbsp;&nbsp;Admin'),
 	(295,1,1,'jamiepittock','88.97.41.226',1296657318,'Member Group Updated:&nbsp;&nbsp;Admin'),
-	(296,1,1,'jamiepittock','88.97.41.226',1296657734,'Channel Created:&nbsp;&nbsp;Site pages (privacy policy, etc)');
+	(296,1,1,'jamiepittock','88.97.41.226',1296657734,'Channel Created:&nbsp;&nbsp;Site pages (privacy policy, etc)'),
+	(297,1,1,'jamiepittock','88.97.41.226',1296658527,'Field Group Created:&nbsp;&nbsp;Site pages'),
+	(298,1,1,'jamiepittock','88.97.41.226',1296658574,'Member Group Updated:&nbsp;&nbsp;Admin'),
+	(299,1,1,'jamiepittock','88.97.41.226',1296663385,'Logged in'),
+	(300,1,7,'gregwood','88.97.41.224',1296667491,'Logged in'),
+	(301,1,18,'garrett.winder','75.89.69.119',1296674132,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -788,13 +794,13 @@ VALUES
 	(59,'DC_Required_Category','dc_required_category_register_source','lg_addon_update_register_source','',10,'1.0.5','y'),
 	(60,'DC_Required_Category','dc_required_category_register_addon','lg_addon_update_register_addon','',10,'1.0.5','y'),
 	(70,'Ed_entry_count','entry_count','sessions_end','',1,'1.0.1','y'),
-	(71,'Lg_better_meta','publish_form_new_tabs','publish_form_new_tabs','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(72,'Lg_better_meta','publish_form_new_tabs_block','publish_form_new_tabs_block','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(73,'Lg_better_meta','publish_form_start','publish_form_start','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(74,'Lg_better_meta','submit_new_entry_end','submit_new_entry_end','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(75,'Lg_better_meta','show_full_control_panel_end','show_full_control_panel_end','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(76,'Lg_better_meta','lg_addon_update_register_source','lg_addon_update_register_source','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
-	(77,'Lg_better_meta','lg_addon_update_register_addon','lg_addon_update_register_addon','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:0:\"\";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:0:\"\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";s:7:\"weblogs\";a:0:{}}}',10,'1.9.1','y'),
+	(71,'Lg_better_meta','publish_form_new_tabs','publish_form_new_tabs','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(72,'Lg_better_meta','publish_form_new_tabs_block','publish_form_new_tabs_block','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(73,'Lg_better_meta','publish_form_start','publish_form_start','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(74,'Lg_better_meta','submit_new_entry_end','submit_new_entry_end','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(75,'Lg_better_meta','show_full_control_panel_end','show_full_control_panel_end','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(76,'Lg_better_meta','lg_addon_update_register_source','lg_addon_update_register_source','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
+	(77,'Lg_better_meta','lg_addon_update_register_addon','lg_addon_update_register_addon','a:1:{i:1;a:19:{s:7:\"enabled\";s:1:\"y\";s:21:\"allowed_member_groups\";a:2:{i:0;s:1:\"6\";i:1;s:1:\"1\";}s:7:\"weblogs\";a:7:{i:17;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:18;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"n\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:20;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:22;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:21;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:19;a:14:{s:8:\"show_tab\";s:1:\"y\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"n\";s:11:\"show_author\";s:1:\"n\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"n\";s:16:\"show_robots_meta\";s:1:\"n\";s:17:\"show_sitemap_meta\";s:1:\"n\";s:13:\"show_geo_meta\";s:1:\"n\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}i:23;a:14:{s:8:\"show_tab\";s:1:\"n\";s:10:\"show_title\";s:1:\"y\";s:16:\"show_description\";s:1:\"y\";s:13:\"show_keywords\";s:1:\"y\";s:11:\"show_author\";s:1:\"y\";s:14:\"show_publisher\";s:1:\"y\";s:11:\"show_rights\";s:1:\"y\";s:18:\"show_canonical_url\";s:1:\"y\";s:16:\"show_robots_meta\";s:1:\"y\";s:17:\"show_sitemap_meta\";s:1:\"y\";s:13:\"show_geo_meta\";s:1:\"y\";s:18:\"include_in_sitemap\";s:1:\"y\";s:16:\"change_frequency\";s:6:\"Weekly\";s:8:\"priority\";s:3:\"0.5\";}}s:5:\"title\";s:20:\"Simon Campbell Music\";s:7:\"divider\";s:1:\"1\";s:11:\"description\";s:209:\"ThirtySix is Simon\\\'s first solo album in thirty six years of spanking the plank. It\\\'s not blues, it\\\'s not rock, it\\\'s not folk; it is an eclectic mix that will take you on my very personal musical journey. \";s:8:\"keywords\";s:0:\"\";s:6:\"author\";s:14:\"Simon Campbell\";s:9:\"publisher\";s:0:\"\";s:6:\"rights\";s:0:\"\";s:6:\"region\";s:0:\"\";s:9:\"placename\";s:0:\"\";s:8:\"latitude\";s:0:\"\";s:9:\"longitude\";s:0:\"\";s:12:\"robots_index\";s:1:\"y\";s:14:\"robots_archive\";s:1:\"y\";s:13:\"robots_follow\";s:1:\"y\";s:8:\"template\";s:1266:\"<title>{title}</title>\n\n<meta charset=\\\"UTF-8\\\" />\n<meta name=\\\"description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"author\\\" content=\\\"{author}\\\" />\n<meta name=\\\"Copyright\\\" content=\\\"Simon Campbell 2011\\\" />\n<meta name=\\\"robots\\\" content=\\\"{robots}\\\" />\n\n{if canonical_url}<link rel=\\\"canonical\\\" href=\\\"{canonical_url}\\\" />{/if}\n\n<link rel=\\\"schema.DC\\\" href=\\\"http://purl.org/dc/elements/1.1/\\\" />\n<link rel=\\\"schema.DCTERMS\\\" href=\\\"http://purl.org/dc/terms/\\\" />\n<meta name=\\\"DC.title\\\" content=\\\"{title}\\\" />\n<meta name=\\\"DC.creator\\\" content=\\\"{author}\\\" />\n<meta name=\\\"DC.subject\\\" content=\\\"{keywords}\\\" />\n<meta name=\\\"DC.description\\\" content=\\\"{description}\\\" />\n<meta name=\\\"DC.publisher\\\" content=\\\"{publisher}\\\" />\n<meta name=\\\"DC.date.created\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_created}\\\" />\n<meta name=\\\"DC.date.modified\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_modified}\\\" />\n<meta name=\\\"DC.date.valid\\\" scheme=\\\"DCTERMS.W3CDTF\\\" content=\\\"{date_valid}\\\" />\n<meta name=\\\"DC.type\\\" scheme=\\\"DCTERMS.DCMIType\\\" content=\\\"Text\\\" />\n<meta name=\\\"DC.rights\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{rights}\\\" />\n<meta name=\\\"DC.format\\\" content=\\\"text/html\\\" />\n<meta name=\\\"DC.identifier\\\" scheme=\\\"DCTERMS.URI\\\" content=\\\"{identifier}\\\" />\";s:17:\"check_for_updates\";s:1:\"n\";}}',10,'1.9.1','y'),
 	(135,'Publish_tweeks','pt_init','show_full_control_panel_end','a:1:{i:1;a:2:{s:27:\"check_for_extension_updates\";s:1:\"n\";s:32:\"other_settings_remove_upload_box\";s:1:\"y\";}}',1,'0.8','y'),
 	(136,'Publish_tweeks','submit_redirect','submit_new_entry_absolute_end','a:1:{i:1;a:2:{s:27:\"check_for_extension_updates\";s:1:\"n\";s:32:\"other_settings_remove_upload_box\";s:1:\"y\";}}',50,'0.8','y'),
 	(137,'Publish_tweeks','register_my_addon_source','lg_addon_update_register_source','a:1:{i:1;a:2:{s:27:\"check_for_extension_updates\";s:1:\"n\";s:32:\"other_settings_remove_upload_box\";s:1:\"y\";}}',50,'0.8','y'),
@@ -982,7 +988,10 @@ VALUES
 	(83,'none'),
 	(84,'textile'),
 	(84,'xhtml'),
-	(84,'none');
+	(84,'none'),
+	(85,'textile'),
+	(85,'xhtml'),
+	(85,'none');
 
 /*!40000 ALTER TABLE `exp_field_formatting` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -999,7 +1008,7 @@ CREATE TABLE `exp_field_groups` (
   `group_name` varchar(50) NOT NULL,
   PRIMARY KEY (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_field_groups` WRITE;
 /*!40000 ALTER TABLE `exp_field_groups` DISABLE KEYS */;
@@ -1011,7 +1020,8 @@ VALUES
 	(18,1,'Journal - Audio'),
 	(19,1,'Journal - Videos'),
 	(20,1,'Journal - Photos'),
-	(21,1,'Journal - Notes');
+	(21,1,'Journal - Notes'),
+	(22,1,'Site pages');
 
 /*!40000 ALTER TABLE `exp_field_groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1060,8 +1070,17 @@ CREATE TABLE `exp_freeform_entries` (
   `message` text NOT NULL,
   PRIMARY KEY (`entry_id`),
   KEY `author_id` (`author_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
+LOCK TABLES `exp_freeform_entries` WRITE;
+/*!40000 ALTER TABLE `exp_freeform_entries` DISABLE KEYS */;
+INSERT INTO `exp_freeform_entries` (`entry_id`,`group_id`,`weblog_id`,`author_id`,`ip_address`,`form_name`,`template`,`entry_date`,`edit_date`,`status`,`name`,`email`,`message`)
+VALUES
+	(1,1,0,1,'88.97.41.226','freeform_form','contact_form',1296663505,1296663505,'open','Jamie Pittock','jamie@erskinedesign.com','Just testing the contact form.'),
+	(2,1,0,1,'88.97.41.226','freeform_form','contact_form',1296664721,1296664721,'open','Jamie Pittock','jamie@erskinedesign.com','Any underscores this time?');
+
+/*!40000 ALTER TABLE `exp_freeform_entries` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table exp_freeform_fields
@@ -1111,18 +1130,41 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
-	(9,1296655300,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(11,1296656796,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(10,1296656642,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
+	(16,1296663483,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(15,1296663223,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(23,1296670191,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(24,1296670325,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(21,1296664722,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(20,1296664700,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(17,1296663506,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(18,1296663641,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(19,1296663654,'a:12:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(22,1296665505,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(25,1296670332,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(26,1296670366,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table exp_freeform_preferences
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_preferences`;
+
+CREATE TABLE `exp_freeform_preferences` (
+  `preference_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `preference_name` varchar(80) NOT NULL,
+  `preference_value` text NOT NULL,
+  PRIMARY KEY (`preference_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table exp_freeform_templates
@@ -1149,12 +1191,26 @@ LOCK TABLES `exp_freeform_templates` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_templates` DISABLE KEYS */;
 INSERT INTO `exp_freeform_templates` (`template_id`,`enable_template`,`wordwrap`,`html`,`template_name`,`template_label`,`data_from_name`,`data_from_email`,`data_title`,`template_data`)
 VALUES
-	(1,'y','y','n','default_template','Default Template','','','Someone has posted to Freeform','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}'),
+	(1,'y','y','n','default_template','Default Template','','','Someone has posted to Freeform','\r\nSomeone has posted to Freeform. Here are the details:  \r\n			 		\r\nEntry Date: {entry_date}\r\n{all_custom_fields}'),
 	(2,'y','n','n','contact_form','Contact Form','{name}','{email}','Form Submission: Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}'),
-	(3,'y','n','n','contact_form_user','Contact Form - User Confirmation','Simon Campbell Music','mail@simoncampbell.com','Thank you for contacting Simon Campbell Music','Someone has posted to Freeform. Here are the details:\n\nEntry Date: {entry_date}\n{all_custom_fields}');
+	(3,'y','n','n','contact_form_user','Contact Form - User Confirmation','Simon Campbell Music','mail@simoncampbell.com','Thank you for contacting Simon Campbell Music','Hey!\n\nThank you for contacting us; we will be back to you very shortly.\n\nCheers\n\nSimon');
 
 /*!40000 ALTER TABLE `exp_freeform_templates` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table exp_freeform_user_email
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `exp_freeform_user_email`;
+
+CREATE TABLE `exp_freeform_user_email` (
+  `email_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(10) unsigned NOT NULL,
+  `email_count` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`email_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table exp_global_variables
@@ -1179,8 +1235,8 @@ INSERT INTO `exp_global_variables` (`variable_id`,`site_id`,`variable_name`,`var
 VALUES
 	(2,1,'lv_services_google_analytics','<script type=\"text/javascript\">\n\n    var _gaq = _gaq || [];\n    _gaq.push([\'_setAccount\', \'UA-3386644-6\']);\n    _gaq.push([\'_trackPageview\']);\n\n    (function() {\n        var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\n        ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\n        var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n    })();\n\n</script>',0),
 	(14,1,'lv_services_google_analytics_toggle','On',0),
-	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line <a href=\"mailto:mail@simoncampbell.com\">via email</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br>\nStarlite Events &amp; Project Management<br>\n<a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a><br>\n+44 7624 245881<br>\n</address>',0),
-	(27,1,'lv_contact_form_thanks','<p><strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong></p>\n<p>Youâ€™ll soon be receiving updates about Simon\'s musical adventures - and maybe some free goodies!</p>',0),
+	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line <a href=\"mailto:mail@simoncampbell.com\">via email</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br>\nSupertone Recoards<br>\n<a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a><br>\n+44 7624 245881<br>\n</address>',0),
+	(27,1,'lv_contact_form_thanks','<p><strong>Thanks for contacting us. If your message requires a response we will be back to you very shortly.</strong></p>',0),
 	(28,1,'lv_contact_newsletter_thanks','<p><strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong></p>\n<p>Youâ€™ll soon be receiving updates about Simon\'s musical adventures - and maybe some free goodies!</p>',0),
 	(29,1,'lv_journal_homepage_limit','2',0),
 	(30,1,'lv_services_facebook_url','http://www.facebook.com/SimonCampbellBand',0),
@@ -1478,7 +1534,7 @@ CREATE TABLE `exp_matrix_data` (
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
   KEY `row_order` (`row_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_matrix_data` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_data` DISABLE KEYS */;
@@ -1501,7 +1557,7 @@ VALUES
 	(21,1,46,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracilands.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
 	(22,1,46,75,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-peel-beach.png','At Peel Beach','2010 Phil Kneen'),
 	(23,1,46,75,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland2.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
-	(24,1,46,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland3.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen');
+	(25,1,46,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland3.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen');
 
 /*!40000 ALTER TABLE `exp_matrix_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1819,14 +1875,14 @@ LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
 INSERT INTO `exp_members` (`member_id`,`group_id`,`weblog_id`,`tmpl_group_id`,`upload_id`,`username`,`screen_name`,`password`,`unique_id`,`authcode`,`email`,`url`,`location`,`occupation`,`interests`,`bday_d`,`bday_m`,`bday_y`,`aol_im`,`yahoo_im`,`msn_im`,`icq`,`bio`,`signature`,`avatar_filename`,`avatar_width`,`avatar_height`,`photo_filename`,`photo_width`,`photo_height`,`sig_img_filename`,`sig_img_width`,`sig_img_height`,`ignore_list`,`private_messages`,`accept_messages`,`last_view_bulletins`,`last_bulletin_date`,`ip_address`,`join_date`,`last_visit`,`last_activity`,`total_entries`,`total_comments`,`total_forum_topics`,`total_forum_posts`,`last_entry_date`,`last_comment_date`,`last_forum_post_date`,`last_email_date`,`in_authorlist`,`accept_admin_email`,`accept_user_email`,`notify_by_default`,`notify_of_pm`,`display_avatars`,`display_signatures`,`smart_notifications`,`language`,`timezone`,`daylight_savings`,`localization_is_site_default`,`time_format`,`cp_theme`,`profile_theme`,`forum_theme`,`tracker`,`template_size`,`notepad`,`notepad_size`,`quick_links`,`quick_tabs`,`pmember_id`,`profile_views`)
 VALUES
-	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296553377,1296657654,6,0,0,0,1296656491,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296553377,1296670078,7,0,0,0,1296658590,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1292416546,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1292422434,1296655004,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1296655004,1296667492,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296550835,1296577437,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296577437,1296674132,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
 	(19,6,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1296657167,1296657167,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
@@ -2011,7 +2067,7 @@ VALUES
 	(19,'User','3.1.0','y'),
 	(20,'Pur_member_utilities','1.0.3','y'),
 	(22,'Cartthrob','0.9457','y'),
-	(23,'Freeform','2.7.2','y');
+	(23,'Freeform','3.0.5','y');
 
 /*!40000 ALTER TABLE `exp_modules` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2507,365 +2563,89 @@ LOCK TABLES `exp_security_hashes` WRITE;
 /*!40000 ALTER TABLE `exp_security_hashes` DISABLE KEYS */;
 INSERT INTO `exp_security_hashes` (`date`,`ip_address`,`hash`)
 VALUES
-	(1272368553,'0.0.0.0','d2904afa85c7e12ef828d915b82337da2a7b4855'),
-	(1272368561,'0.0.0.0','a30e8e8e605304d03fc20634aefb16634a89f7e9'),
-	(1272368577,'0.0.0.0','6b598a07ad2bba9e64da31cd2a9977f85b35966d'),
-	(1272368591,'0.0.0.0','9436dc0a06f2b7452c88a86e0bbdc9e4accdf913'),
-	(1272369266,'0.0.0.0','ab4a88b67a7a6ed6fba6372b885c02ff7dd8d705'),
-	(1272369330,'0.0.0.0','fe9f3fcf7f77b5d5f7773e913bca8a59a39e4e93'),
-	(1272369332,'0.0.0.0','fd51096dfadd9a324e1860ec5c08be47c8e7d78d'),
-	(1272369332,'0.0.0.0','4ad919708a1d4b04c9b272b34c8caecd9a7b2d26'),
-	(1272369341,'0.0.0.0','01067b867153ef3a1b1028216bffbda3b0bfba3d'),
-	(1272369349,'0.0.0.0','240f1b0a1ea6a5f0ce40e3b0c2509d1c670cd432'),
-	(1272369353,'0.0.0.0','95a3224756b1316ab79b0e6bf6a76501c9c7ac79'),
-	(1272369362,'0.0.0.0','e5ad9b4b0146e19fccd9e02ea61c09130dd3834c'),
-	(1272369367,'0.0.0.0','d8448942e770ef49cda99781dc375c1a6f54ae0d'),
-	(1272369367,'0.0.0.0','7b92886520d83579e4bef26701816f83b96af8ac'),
-	(1272369371,'0.0.0.0','c9264d5b88f419e37dcda243f51cb576f1194f91'),
-	(1272369374,'0.0.0.0','f271459dfe3d5bea2ae08974f588822ac1c0605f'),
-	(1272369374,'0.0.0.0','2768512f3ecddb3dca7dbc87cd081a023a3f8f6b'),
-	(1272369390,'0.0.0.0','7d61bbf02661c6cc451874f985f2616bf94ee409'),
-	(1272369408,'0.0.0.0','95fe2768c7b2405b33caa45c5ecb19518786c6b4'),
-	(1272369549,'0.0.0.0','f1f37086af94f388cef3a519286b131b188a4d38'),
-	(1272369552,'0.0.0.0','d75d2abc688640397f8c57cbbdb4dc49080cae03'),
-	(1272369554,'0.0.0.0','daa1e44b2398080bce9deddd4b3f40ad40c60114'),
-	(1272369559,'0.0.0.0','caa780adf51b62dbec363c20774ae1841baafa45'),
-	(1272369569,'0.0.0.0','bfda8e69af139ff25ef920bafde3f0e3ee5eea9c'),
-	(1272369590,'0.0.0.0','6514203a27513e9252502cc32e42759ac9356e59'),
-	(1272369608,'0.0.0.0','659d30a20ec1df435f42d1bce9354e4ea5ca557a'),
-	(1272371868,'0.0.0.0','9f0a79902308f27826159ac2e84f1b16b6cb4329'),
-	(1272371871,'0.0.0.0','fae211becea2f0c40aea2b1fe1c90923330aed98'),
-	(1272371876,'0.0.0.0','888dbdb6ba7c3df935a2c7df20c54c8eb7501edc'),
-	(1272371933,'0.0.0.0','27551ead8d3c7c7f6e9a1b1ad925623b77c33074'),
-	(1272371959,'0.0.0.0','28f2ec66a5538984de6c1ee6be86bb54adbe8960'),
-	(1272372005,'0.0.0.0','10f1f6ebcef595d5c6ee4ddf6f2d056eae96deb2'),
-	(1272372043,'0.0.0.0','5ae3808b236fbfdbcc084a55db434430bf4ccdd8'),
-	(1272372045,'0.0.0.0','47d738ea453180aaf00cf443879f0ad308f242e4'),
-	(1272372050,'0.0.0.0','dc332da75c89b970d98a9b90c2e85364dd3cbbf4'),
-	(1272372052,'0.0.0.0','0cb85d3d35fc96955693155ec22ee133c79b36f3'),
-	(1272453376,'0.0.0.0','e7b48ec69cf2c7415c055d20b02e64c1260eb64b'),
-	(1272453382,'0.0.0.0','1b1722c1a4620979ef12f9c588077bd63a434619'),
-	(1272453590,'0.0.0.0','4270ca9609ec03f2c47e641a016bf1cd6385464d'),
-	(1296656265,'88.97.41.226','733f274b83cf28aff360e320c6761f2976e055a5'),
-	(1277935292,'12.170.156.2','90e0505ec94ef6fd1844c48eb6015835be4292eb'),
-	(1296656265,'88.97.41.226','8eb4f4551a1fbd80679396bbecbf7cfd5cb77364'),
-	(1296656263,'88.97.41.226','d68266c2ebded35136bd510b207420f75fcae5a6'),
-	(1277935287,'12.170.156.2','805b8d2764bcaada092219e09d223952a4c42eef'),
-	(1296657288,'88.97.41.226','409b2053b97f256bf8dc961d01b7229ee158b2e5'),
-	(1296657284,'88.97.41.226','5dd24bd233fd9d56057ab9b91ee1ca23678c7788'),
-	(1276701603,'76.99.35.250','2aacfa576874292a4341b16319315ed7932c134b'),
-	(1276701564,'76.99.35.250','47eec74ddc28be4d5dd5d2727f2cbc540bcc5c06'),
-	(1276701529,'76.99.35.250','bfd94d298ba5775612698703c756246b991a0139'),
-	(1276701371,'76.99.35.250','31254f2f671f8c665d42aad2f05ce56a2f888e25'),
-	(1276701354,'76.99.35.250','14c45c589a96901e4614250be61e52db5213b2f7'),
-	(1276701201,'76.99.35.250','4ef41a7bd97f8c77101b5977d210fa6ba8a907b1'),
-	(1276700860,'76.99.35.250','da7176e8fdc34a1dfeeb6195a1fc513cf6c79209'),
-	(1296657275,'88.97.41.226','f1bddad2e430cd11d61a5ba8ed26232916a4c4f9'),
-	(1296657270,'88.97.41.226','9aeb0e11b7d95165bd33272fa4bb59c7fb949c48'),
-	(1276700418,'76.99.35.250','776b7a939273acb1c06911413fe19b272d193988'),
-	(1296657266,'88.97.41.226','cb2cc0dd5cee56d7bb7acbef7c88217892302f75'),
-	(1296654289,'88.97.41.226','20de60c937139e0dbd084bf03003f582c42f4d21'),
-	(1296657261,'88.97.41.226','f8082ac93f1e9df2e7790a4809e88c132af38a1c'),
-	(1276700335,'76.99.35.250','68548830ba4f2ffe291d15cf03f6a9bd98d5f115'),
-	(1296657261,'88.97.41.226','2b05dfaa151a64a5f3bfcadf0d94d67ab043e5d7'),
-	(1296579019,'89.195.128.195','87cbbdb91447f078ef67c05604c2eb5729bb46f1'),
-	(1296577467,'173.185.20.98','d2b38864d61e37abde041b970433f39cd8f4d4ed'),
-	(1276526027,'89.194.100.70','cc64f9a3855292a18e4104449dce7bf57928d16e'),
-	(1276526195,'89.194.100.70','41410e5a5cb3d4f72300d2adb16f1fe304e050ab'),
-	(1276526222,'89.194.100.70','c2ae63292ef92c4232257f6a5c9c9045d9189501'),
-	(1276526260,'89.194.100.70','3aed89d9515463149f558b62d117fe8ffff371d1'),
-	(1276526268,'89.194.100.70','e12041e897f512679c00e22e672e304268c01ad3'),
-	(1276526268,'89.194.100.70','9177a3dc74070a5fe8fa40f0646deecad0048fba'),
-	(1276526283,'89.194.100.70','404765029c0424743d079c3b2d948d35bf987359'),
-	(1276526295,'89.194.100.70','afae10c853c24acba3da731d7fc009ccdb20e1d1'),
-	(1276529441,'89.194.98.159','28678ea68f1e43cd211fbdf1b91bcd6bac7283ed'),
-	(1276529471,'89.194.98.159','6ec48c57f4db4245090468ca25640fa0d856533f'),
-	(1276531328,'89.194.98.159','04a8a6b162ba48d91331cac540af570603da09e5'),
-	(1276531369,'89.194.98.159','fe99ff6dec0efa651b9eeb0faa83f1e3ae31f0e5'),
-	(1276531374,'89.194.98.159','2b7b3247831ae305b16bb68a5bd348f4562c90d9'),
-	(1277932219,'12.170.156.2','8e542457783933c17407b4c12f4843beddee5e4f'),
-	(1277932216,'12.170.156.2','adfb5dfa43961df8fbdd583fc3300bfb82356265'),
-	(1296657258,'88.97.41.226','0cf3638f183ad72452749a3473eba93c89eee885'),
-	(1296236486,'76.238.177.203','696a2216adfebb0ab6976e286394b5597edc1090'),
-	(1296236479,'76.238.177.203','0d3776d41c8d7fd4316a1a056252e91af564a32f'),
-	(1296236454,'76.238.177.203','da012c5e8978ead86b4e45b1172dc7a2202f13f8'),
-	(1296657256,'88.97.41.226','cb6ab70a8484dce2432a3836e2b6c96166a85675'),
-	(1277734617,'71.206.168.11','c83ce67bb32b46b0b72cd85e60a35656bbe5be2e'),
-	(1277734447,'71.206.168.11','2118b38b5297e43bbe6ab1cacf282528331a109c'),
-	(1277734378,'71.206.168.11','9dfdbe7b5bad434570db4a28477f3baa858f4ba9'),
-	(1296236367,'76.238.177.203','d3112e38a5003a96187113292d10ac690f17fb6c'),
-	(1296236362,'76.238.177.203','e1e77cfa5878648aebbe5585f1c87a2388a9dbbd'),
-	(1296236352,'76.238.177.203','ed0fe66540a44c6d9b6971ce462c3037956981d2'),
-	(1296236327,'76.238.177.203','3ab6a8ec8374164522ee4760caf2f9ad2163d2f4'),
-	(1277950230,'98.117.73.11','a4733c9f7899e62e1b55f007bfd54e25b41cff44'),
-	(1277950221,'98.117.73.11','ce71efdabea96895bc572a42d8ade333cab691f7'),
-	(1296236311,'76.238.177.203','861c4e8b7f56e2da926a60d146bba84f56fc4d33'),
-	(1296236264,'76.238.177.203','6c3d9e95265c0f484ba12b465ff6ae198adac34f'),
-	(1296236224,'76.238.177.203','da78a75a621165329464786d95c43b2aecb8d789'),
-	(1296236218,'76.238.177.203','243b38e9d8e2dc1f14ef351d375b03b3be07fac0'),
-	(1296236207,'76.238.177.203','6a45259149fb33a319f173cb279e54e71f4ba154'),
-	(1296236197,'76.238.177.203','5715da6f94a001828e362c3e7001762ff969ce3d'),
-	(1296236186,'76.238.177.203','1e4b6ec0c9df8a66f8ef0992b90205d8e1067f35'),
-	(1277935583,'12.170.156.2','f464931baa694dd73f76be2329caf6569b451bdd'),
-	(1277935538,'12.170.156.2','5b330b1bd18f58dad6bc69592b5faddc03f1059c'),
-	(1277935558,'12.170.156.2','14620860d97213dbad8a3538716cde01963c9d9a'),
-	(1277934861,'12.170.156.2','d3fecbe1f8d26ac32520f167a6ff3c8b9f0b83b6'),
-	(1277934855,'12.170.156.2','aa795c40cf8915d52eb4ecefdc59490fa02cfbf7'),
-	(1277934855,'12.170.156.2','ce403ee8b8bf5bdfe46a4d0610cc670a95b6fe09'),
-	(1296235889,'76.238.177.203','02ca41ba74d6824d2e914a69f02890cf1e86b326'),
-	(1296235875,'76.238.177.203','f4d4695a3fee7902859ffa320c8a7456ecce5758'),
-	(1296235852,'76.238.177.203','54ee8afa41c6c837c9af67099874f7919ca8e28e'),
-	(1277950211,'98.117.73.11','8fbd15edd7b7b18489abcfaead32245e3fea609d'),
-	(1296235836,'76.238.177.203','8e84cde64706f6d25628bbd0c95b08827d376768'),
-	(1296235670,'76.238.177.203','46bec22de9ea2456394efedf7e284a6caff1f262'),
-	(1296235630,'76.238.177.203','e675fc39376080c6ec4b712ccc3217180c68914c'),
-	(1296235617,'76.238.177.203','87f998f461e869b4a21da13cde376291ed9d45d0'),
-	(1296235607,'76.238.177.203','431575ac8814b33a8ff9ddb80aad259a3dc9522a'),
-	(1296235605,'76.238.177.203','fea21a8613cfa4aeab1c5dcd1919a3dc1ae8e3df'),
-	(1296234948,'76.238.177.203','445bd121b65b470443b9a37ccc79a51386d47081'),
-	(1296234911,'76.238.177.203','03c0df5f4d43261f929a624f66cb6197c2755fe4'),
-	(1296234857,'76.238.177.203','b7b11d9a2586b25ac0af428f3b9ccda8be512e31'),
-	(1296234846,'76.238.177.203','06ee28b6c2c4d9031c24f5bb82065609f544162f'),
-	(1277920588,'68.34.105.173','32cab91db71ef322388a61abc5b5a727b47f5f2e'),
-	(1296234637,'76.238.177.203','9c28ad1dabf232eaf39b8cfdb906641e10b2c45f'),
-	(1277917585,'68.34.105.173','106c4f020c0b9003b9bca85b6826b5993ea6f1d2'),
-	(1277917701,'68.34.105.173','c93b09d2e50e0bc2dc0f76621a34496139ae51d5'),
-	(1296234598,'76.238.177.203','9915960a60d9991c45240edc8af9b08dfd99e11d'),
-	(1296234503,'76.238.177.203','cad0a6e854cc10e78482515b7307baf02acb15e1'),
-	(1296233933,'76.238.177.203','1bbd6760f2a8562e5a9f4b5f6f53363fbe5e4a00'),
-	(1277935287,'12.170.156.2','2f4278ebe316726bbba81a0f1b22b692527d11a7'),
-	(1296657240,'88.97.41.226','248b4794abd6fd45ab8f034a9efee51ba13d7629'),
-	(1296233816,'76.238.177.203','0d97ceac36cc0f582e6253b65e5af3b86e187600'),
-	(1296233805,'76.238.177.203','bc872275ef253b5bd128120f305384cb3e71f84e'),
-	(1296233746,'76.238.177.203','8e989dcf55f1190c05e0df9ed459b760d0c32712'),
-	(1277280574,'89.194.97.99','cb1489c351fe084a4131417c1718c4dfb0565728'),
-	(1277280603,'89.194.97.99','ccc517b04966327732397d1254506724bf4d085e'),
-	(1296233662,'76.238.177.203','3d4c2d18d5400b6c057bb85bfdd0610a44700514'),
-	(1296233656,'76.238.177.203','3e473899784b40f9cf3939c537807ea7ca649677'),
-	(1296657165,'88.97.41.226','457bc18d58a718de76fc9c1daf295e3546184525'),
-	(1296657168,'88.97.41.226','33ac0dc317a48dafab61726c03cab7b90f4b4743'),
-	(1296657173,'88.97.41.226','ea7b344d3be9b5cc957544285509b202b4ea232c'),
-	(1296657238,'88.97.41.226','9a03c3e57be05af680059a8f3ec23a7c42cf3c83'),
-	(1277935260,'12.170.156.2','ad54ee39281511d1b0ab8d49aea73b8137d189dc'),
-	(1277826232,'71.206.168.11','d5e37580febce5a508df1951a57ff8afb81dab55'),
-	(1277826229,'71.206.168.11','3a1df479f9577516cb7a616b7adabf943849e441'),
-	(1277335181,'89.194.0.180','a90c956f09cc40a74cd88b892fefaca37d32b5a0'),
-	(1277335201,'89.194.0.180','6500cd8cd8423d277078485f40b941d532b8e515'),
-	(1277335201,'89.194.0.180','dce85bd4e3d72422686136eb467e673e6c056a2b'),
-	(1277335230,'89.194.0.180','2e574833d6b076d54d5701496b75c40bfc0d6759'),
-	(1277337886,'89.194.0.180','171cae0c58760f87698ef734ea14f8d0642a52b8'),
-	(1296657158,'88.97.41.226','f14bc1cf518a899734bf7cf127bbba46f647d11c'),
-	(1277826225,'71.206.168.11','dc76bedbc6d1d3a294b2376382a3a59bd6c97214'),
-	(1277935257,'12.170.156.2','56dc43b7b7299106ea694bb9a2b805b970f7f70d'),
-	(1277935257,'12.170.156.2','8d45a5cde1c5ea3138be85cb075db05cdd1d61e2'),
-	(1277935206,'12.170.156.2','7bc421323e9808ef632679cc1032f02951a17cd3'),
-	(1277935202,'12.170.156.2','e07af853931e70a3c47311bcf67d8a6fa6d47331'),
-	(1277935202,'12.170.156.2','5958f265446632ff114df360c3f01c6c6c4118b4'),
-	(1277935020,'12.170.156.2','0213e1c5bb1a43dfc4ced5ae2dfeef30cc9a9fb6'),
-	(1277935016,'12.170.156.2','55c05edf04668fa5cbe898328c5bb81c5950f721'),
-	(1277935016,'12.170.156.2','74bf477ed04a13740c9d7c4378df87ec6e150152'),
-	(1277935001,'12.170.156.2','5a84c861d6c1bdce2bb6cc1e8d02ca5c9deec727'),
-	(1277935001,'12.170.156.2','ba64a8747438129a60aefe69750b65e8de2f9513'),
-	(1277934971,'12.170.156.2','0dc59b82277cea53eb970406c0c72c0f680a1121'),
-	(1277934924,'12.170.156.2','821d4eaf23f4a78991742068cedd1b1b81781d9c'),
-	(1277934912,'12.170.156.2','9ac11798c6b419893461705e912c153ac55d041a'),
-	(1277934912,'12.170.156.2','d86a1c44ec00f0f913e9eb2cbee05db7eab3e1a1'),
-	(1277934907,'12.170.156.2','3adfe48e5ae49cd3eae7e294fc0a3e89c55e78a9'),
-	(1277934907,'12.170.156.2','3c912e9e192ab9cbb17a97110e420fdba272ab52'),
-	(1296657237,'88.97.41.226','4bce1cd9a6a359bcdc09cfcf9cd2223d7f31d914'),
-	(1296657234,'88.97.41.226','8f8b62b48a0f43eda1be5af1d633995e47b0c5c1'),
-	(1296657234,'88.97.41.226','d34536ea29bacf9c120e0aacbac32eaa48563be2'),
-	(1296657230,'88.97.41.226','bff335b8b9e97f3a65588fbadfe6b1ca79bcf59a'),
-	(1296657215,'88.97.41.226','f8d021f33ef36f56cb35c0190418b54d2c09a19b'),
-	(1296656267,'88.97.41.226','d72f065f4059e58c06f88b2d62f7e21da4585de6'),
-	(1296656259,'88.97.41.226','2798df3442210a5a254533a5172fff68939134bd'),
-	(1277808520,'68.48.105.10','6ac6bae743e6fce98cb2a2685d9a4257c453e7ab'),
-	(1277808502,'68.48.105.10','fa61d94190b68bb59577ef7abb1ccb0c6338a86a'),
-	(1277808502,'68.48.105.10','28d1df480a978c33973701b336dae2a46da875a6'),
-	(1277808501,'68.48.105.10','91ebe505def1af23d2a8095dafa9919eac6cff46'),
-	(1277808501,'68.48.105.10','6c0794ab7117610273608107667487a230663d50'),
-	(1277808484,'68.48.105.10','42b8f8dfe0a290cb36782c27c5988c35a189103b'),
-	(1277808476,'68.48.105.10','89bbe941aff5920b73d2df5cd33d96a59c457dd5'),
-	(1296656259,'88.97.41.226','28a32cd4b4d26189462514de06c13c1083767153'),
-	(1296655718,'88.97.41.226','5327a084899c3a7913008c975dec1f976ead4359'),
-	(1296655667,'88.97.41.226','4f6e78b437f359a697a053f1833ca49db3729293'),
-	(1296655664,'88.97.41.226','eb57ac86b1974a0cddf9befd93af0ff5af3c6d8b'),
-	(1296655300,'88.97.41.226','21edbd265139eeb6d9df1cacbd0e52ec9d8386cd'),
-	(1296655284,'88.97.41.226','76f34f58a5528c4737d2a640a7e7b998171af822'),
-	(1296655273,'88.97.41.226','c680b672cd4adb50d6d0f16644699689e9155228'),
-	(1296644789,'127.0.0.1','6a4083b09106c8ca7c62bad2620ec637b4afac5f'),
-	(1296644751,'127.0.0.1','5b92d7aad7f9d91acb68a87c0f370088a22c9960'),
-	(1296643840,'127.0.0.1','f897cec91e9cfa6032a7846ff5984d402d585b32'),
-	(1296643816,'127.0.0.1','95ee8445b2bdae5188051c9cbb42c2c2e0089fd9'),
-	(1296643809,'127.0.0.1','aff15c60db151623c132ea0b858f32d787f1127d'),
-	(1296643806,'127.0.0.1','9127a1afd376d88cb28c0e58d6cc054d0155cbc8'),
-	(1296643737,'127.0.0.1','ed54d321713b359dacf0f568d479418cf44fc4f2'),
-	(1296643733,'127.0.0.1','fa5004026869aca74b3894e7ada6b6a9760c32df'),
-	(1296643728,'127.0.0.1','ba2c3e3425252c8a18f7a163a63c503819a62a26'),
-	(1296643721,'127.0.0.1','2334bdd4d3079fbfbdf7b8b80a8ab6b212d6af94'),
-	(1296643033,'127.0.0.1','3d136ff1da6415477de93b11116594df81283939'),
-	(1296643012,'127.0.0.1','58904025f01c0202793813d2a0334dbad83afec7'),
-	(1296643008,'127.0.0.1','454d39cfb44b18ad5e46171aa952fc7f035fb14e'),
-	(1296657158,'88.97.41.226','02c9cbccc50f6855a5e2b99a822b1147d758f45e'),
-	(1296657140,'88.97.41.226','c842b93ce0e94be483daf453d02f9fd0a4d2d1fc'),
-	(1296656836,'88.97.41.226','6fbd09ec0d4490fcbedc7e530cacaec43d5780f0'),
-	(1296656834,'88.97.41.226','223e37741798ef128c8e2fadb7d8a835f48ebc30'),
-	(1296656834,'88.97.41.226','04a45e48b3c3fb13d7d2afc312cf7ed69d360f60'),
-	(1296656796,'88.97.41.226','3f18d0e32fe3a6f8c53cf0a450e37cccf492831d'),
-	(1296656642,'88.97.41.226','2a056e76d3c0f35b8c1ec178aca05b9cf365d86c'),
-	(1296656595,'88.97.41.226','c687301860f74d588763a2cc0cc47b80b355bc46'),
-	(1296656595,'88.97.41.226','1207c7c52f34851bfae2764a0f46a20d97d016fd'),
-	(1296656491,'88.97.41.226','a368a8b917dcdf3c76ea5756f47299aa52c71cf0'),
-	(1296577450,'173.185.20.98','5169fa51b587532b5c89f8462018379218a7df9c'),
-	(1296577437,'173.185.20.98','cf7eda23975ec1e26e29cefddf93c7a910ec3d67'),
-	(1296577428,'173.185.20.98','b460ee50a938bfd6aa1cc6092b7ff95b877bbaef'),
-	(1296577424,'173.185.20.98','1d2b54ee3c5ff020c1f02f09ca1c46b9141ab046'),
-	(1296577363,'173.185.20.98','b098cae0fb58b28024124a84c562547ba229f94a'),
-	(1296577360,'173.185.20.98','f59f9435b02bfd6cf2d7a0e61fc2a4e7a7bfd5c3'),
-	(1296577357,'173.185.20.98','1cd1418c8f028b5bf9af95009781849528c9f004'),
-	(1296577343,'173.185.20.98','573e0013e0d0e7a9ebcee3a1c1cba560616b8c87'),
-	(1296577338,'173.185.20.98','5999fc200b5b8492295cc25566f79a2404d7bf6c'),
-	(1296577311,'173.185.20.98','6c77a6a8cc55f4fe32f79621e386d1b5e2c55a74'),
-	(1296577208,'173.185.20.98','c049e3d751d0a3089f914032739d7d7ee011860d'),
-	(1296577144,'173.185.20.98','69d9a40c464b60d3e1124e5f7d27532076a7ecbd'),
-	(1296577139,'173.185.20.98','50487c7b103b78b477e9325face3848344f7bd56'),
-	(1296577132,'173.185.20.98','ad269409625e1d8f5706a159765ddd3ee3b2262e'),
-	(1296577130,'173.185.20.98','07e7a4545c0a38f468eb5bc9e4b62bbf3716dfdc'),
-	(1296577115,'173.185.20.98','af8789dc07cd1b3f98428560370bc3a01577414d'),
-	(1296577112,'173.185.20.98','ce2f111bf2610a5d234cd71f9065bb15d0942306'),
-	(1296577105,'173.185.20.98','168b2649ad3d2613d75aa617a983ac30f37b9f42'),
-	(1296577102,'173.185.20.98','575b6e1d0f48d8f281f03f87d6832142dc199c6d'),
-	(1296577091,'173.185.20.98','17faf0048bf3e1fa32c021dfdbe74b7a20a936f5'),
-	(1296577085,'173.185.20.98','44093bfafbd638c9d94d74b2aff8b4e765426786'),
-	(1296576862,'173.185.20.98','822807065f54bbae39e5075ea06ffbc6a7eefd27'),
-	(1296576858,'173.185.20.98','40d786c9fd1ca2305b2f5d61bf2cb102ecddb901'),
-	(1296576834,'173.185.20.98','dfe7f3a7feb13c95d9413eeafeb57f789b89e77b'),
-	(1296642918,'127.0.0.1','44b70e5256e89b6b0717ccc58486544a879a3946'),
-	(1296642899,'127.0.0.1','d378933bee4d8fe79dc5d049ff1c0bd43d2c7480'),
-	(1296642834,'127.0.0.1','27a55294f33f77f603252b6d27360c7866beda80'),
-	(1296642787,'127.0.0.1','028416d9343869f2a6f7b9add8b99760c878ac89'),
-	(1296655190,'88.97.41.224','b286b7592edef5017da6bf2835b8a0945849812e'),
-	(1296655077,'88.97.41.224','2a96c3efd9474764b8404fea8aab234631a501b0'),
-	(1296576510,'173.185.20.98','30cbc4f74246bdc1d500e9bff4426eae07a57340'),
-	(1296576515,'173.185.20.98','beba5d659805e4a5003c52f0564f06058e4b66a6'),
-	(1296576531,'173.185.20.98','c4598e578d8387ed5331763e6bbc9a58f9cfa1c9'),
-	(1296576538,'173.185.20.98','d9248f29b351badf7b5047fbe1313b76e2c628c6'),
-	(1296576547,'173.185.20.98','e37747be77adb989b5f880a70d18fbfc5eedf993'),
-	(1296576552,'173.185.20.98','ba3a7cf50493eee43a3a1511ac37d6a1c0cd0fab'),
-	(1296576568,'173.185.20.98','312de6e8a12c38bb40eaab0d721cfcb0c7b513de'),
-	(1296576575,'173.185.20.98','dee724efaa9dfa77e89d7922eb275a623e9d339c'),
-	(1296576590,'173.185.20.98','6bd1411b6fdcd021a02d257bf64e890a66a025ae'),
-	(1296576594,'173.185.20.98','69dec90cc0014632a5de14656daa0d4ccd0b6947'),
-	(1296576598,'173.185.20.98','207bc96505bf688ce639e0557eab3296a7f463df'),
-	(1296576799,'173.185.20.98','bba603e10cf193ce49a9a9bbd591bc9f5a6c7a55'),
-	(1296657131,'88.97.41.226','ce7980b7223b97e077a7ca3aeacbb2749d888946'),
-	(1296657081,'88.97.41.226','550de1f2d74b1834402619e447625543a9f525cc'),
-	(1296657079,'88.97.41.226','c8c593a1d53b99d6e783ce85b3ce8add1a611fac'),
-	(1296657075,'88.97.41.226','99d7ce40a29c8d30582ac8fba458166a99db4746'),
-	(1296657072,'88.97.41.226','c2aefac4becea402155b6b945e90a30e8faa6669'),
-	(1296657072,'88.97.41.226','4182f4c525af589c26c3220e90ac82e057c6b51a'),
-	(1296657042,'88.97.41.226','c58b69e9517189a82153eee7dfe1d65e27e97e8d'),
-	(1296657034,'88.97.41.226','4df5d07903196db49c4b3902fbdf0c2a279027a2'),
-	(1296656993,'88.97.41.226','4f9ab8a3ab7cf7715cb7259750f52ab6a8a69881'),
-	(1296656993,'88.97.41.226','c5cc8d013f4c1a22de4fe688ecc326ef7ad884cd'),
-	(1296656869,'88.97.41.226','269b85f6eab401f4f5bb39f59b924efcb9bd066c'),
-	(1296642774,'127.0.0.1','500ecf0d979b9aebc95dfd9f3665a0cb2f7b2b23'),
-	(1296645226,'88.97.41.226','1402950ab033391545390c4340b91f3cca8cd8d5'),
-	(1296645230,'88.97.41.226','ad09bd1ff9548e7744b9b44685dae4edf2477265'),
-	(1296645298,'88.97.41.226','5ef05aab3f1dd3c2bfc092d4c0d4538b46fe3bfe'),
-	(1296645303,'88.97.41.226','e1d09ca59093478528ae0b6caa1ec1ca402bb172'),
-	(1296645326,'88.97.41.226','5b6206ba5f9ae22976362161011e164a9f09e204'),
-	(1296645329,'88.97.41.226','191098f36023803a373a6db4b87f5772ce2e0cc4'),
-	(1296645349,'88.97.41.226','a0f54e5c18e1c5d84e49f26fc4fda200cb5e6a47'),
-	(1296645351,'88.97.41.226','ce768e3fb74a033a7ea25e2baf3aa703e0bd5b40'),
-	(1296645376,'88.97.41.226','4288f0bca433855372ccd41286453e784b27c69f'),
-	(1296645378,'88.97.41.226','3338edbfe734df7f192c43e4d264ea3c10bf2a02'),
-	(1296645519,'88.97.41.226','e9bec79a33bfb4e9cb3ca3092b23851b77f8e41e'),
-	(1296645523,'88.97.41.226','08faea8ed7ebfdce9e69b6d1a5b98a4c8f6150a9'),
-	(1296645528,'88.97.41.226','bc12f86e2ff77cc5846bd73fe501e5302d914c9c'),
-	(1296645532,'88.97.41.226','34254c72f913052abff9e7504cc30590038b706b'),
-	(1296645535,'88.97.41.226','030f2222759a2c9070944572bb567521b6d7f137'),
-	(1296645540,'88.97.41.226','1885c0892053ef68e662fd236aaa7ef9a9c2cbbb'),
-	(1296645577,'88.97.41.226','cb3107e7384dd4729104e39315dbe6339d33f58b'),
-	(1296645604,'88.97.41.226','ece6a9c285bc4c730b2cfbc5dde8774210defef0'),
-	(1296645605,'88.97.41.226','a8b6ae1d325bad9546054ad779a6d09c3ba21e74'),
-	(1296646243,'88.97.41.226','035abff335c7425ee63d203fe97c11c8e8f951f3'),
-	(1296646519,'88.97.41.226','f9b668207c1386961ac4e6382aafec01d77aa0d6'),
-	(1296646522,'88.97.41.226','1d83752cd21c34254fa0d611e2c3995c61b2c1ca'),
-	(1296646812,'88.97.41.226','8a35b013ed72d21b1563beba0c92ca2e99c99e85'),
-	(1296646814,'88.97.41.226','8b70d306f61dff3892eb69b14d93899be54397b1'),
-	(1296646879,'88.97.41.226','234d1ea2facc19136ff1f04583b14357cc9cb0d0'),
-	(1296646977,'88.97.41.226','331614002739e70eb3c1e5519b461ce396b8b50c'),
-	(1296647016,'88.97.41.226','283781f19dd354a44fdbb98b9a589870bd130fad'),
-	(1296647135,'88.97.41.226','3274369881b18d216ba7befded34dfe0ce9317c2'),
-	(1296647222,'88.97.41.226','a919e81aea64d75bd55df09828c82ce38aeb464b'),
-	(1296648246,'88.97.41.226','ee5ccb6251b7314da6edb2fd8f30161a5f385cc5'),
-	(1296648249,'88.97.41.226','37081005038da297cbda857f001af77d25f55bb2'),
-	(1296649682,'88.97.41.226','c3a406a26f7516d2a0e3941ec4a18faed3eb158a'),
-	(1296650273,'88.97.41.226','31042be07b6bee92dea7d85b770ab42b025b8bf4'),
-	(1296650293,'88.97.41.226','7d2451d18c9af9959ad99c321b4de7089c1476ae'),
-	(1296650316,'88.97.41.226','1aa0a1875b617db88eaeb2ae798b18814a4b417a'),
-	(1296650339,'88.97.41.226','1327ace0e0c5ab532913fa2bc2d9bb440e405dc9'),
-	(1296650339,'88.97.41.226','f37ac5e906551351bccd5a2a62d72062a4d914eb'),
-	(1296650340,'88.97.41.226','7f339efce1fb77be59b3bfafc4abdd12cf77dba0'),
-	(1296650346,'88.97.41.226','4fdcd5125e0f0cd2a760d96a9e004673bfe6b817'),
-	(1296650379,'88.97.41.226','3cd0495762eff298535617a2d41f34835740f92a'),
-	(1296651344,'88.97.41.226','a3bc638e1bf97acf636e86b1c0e8d321603057b8'),
-	(1296651344,'88.97.41.226','373ee3e1bc4d6ba2a9c362f6c9e615512a1e2e67'),
-	(1296651345,'88.97.41.226','6c1a86498a88610470a4663bafc7e55e31dfa40e'),
-	(1296651371,'88.97.41.226','70df58e57c32015bb5f2046a874f21da226da649'),
-	(1296651468,'88.97.41.226','b8a6cef981dcca664665297d233b61ec4b2e55f8'),
-	(1296651486,'88.97.41.226','d4fae61e63262de7f689d87a439533f21605958c'),
-	(1296651499,'88.97.41.226','bae492e1290dafee75a809db48e65f619b8547ef'),
-	(1296651635,'88.97.41.226','c16a9cdaaf957e6817dea7add8d9e90d22e4697d'),
-	(1296651666,'88.97.41.226','3b7cd102cb945656efe2c6b2285db7f838590a7a'),
-	(1296651770,'88.97.41.226','d8862ae9464078d7f8c90f23cd2b6e971c037bc7'),
-	(1296651804,'88.97.41.226','25fd0ab6d571bd384cc3c2eb341d03dbc7c09113'),
-	(1296651907,'88.97.41.226','c88e6ac3a818cc74812b63e0c8ddaef8d4e3bf99'),
-	(1296652015,'88.97.41.226','c3f23ad60abe9aadac9d1903f2edbb08a439eeac'),
-	(1296652057,'88.97.41.226','a4e002de18fa3209dd48c7359809bb5b14905bfd'),
-	(1296652059,'88.97.41.226','62045db352d5b81a1b6255a690a0d19c3265be9e'),
-	(1296652065,'88.97.41.226','65fe920de58e1a61e00c51d15bbd1b147c934076'),
-	(1296652100,'88.97.41.226','9aea241f82e4fc8ce16a3b1fa2d84eba62bf6ab4'),
-	(1296652103,'88.97.41.226','e6730e2118841d715d32bfc9ec8215f853ca3728'),
-	(1296652103,'88.97.41.226','c25c7ce4726a4c6dce36970f0ab31204c25ca403'),
-	(1296652105,'88.97.41.226','12a6c8c55547c3cacfa579892ea6c30ee6f855ad'),
-	(1296652126,'88.97.41.226','f1086da8df88e5ba0c94a1aa570af2dd69a6bf77'),
-	(1296652200,'88.97.41.226','2f9edf3b2165ec776c1d8738ad169d05becfc4e8'),
-	(1296654252,'88.97.41.226','a22c8cd662d34dc4d4a7c4469e34fb563e25ed43'),
-	(1296654255,'88.97.41.226','e6379235789770216198d49133a42893d014e396'),
-	(1296654301,'88.97.41.226','cddd32882828a504801b50e8d14972371f56560d'),
-	(1296654326,'88.97.41.226','6385e3ba46299a702ab035933c603980d0841b10'),
-	(1296654405,'88.97.41.226','7120e7486c803c77b4b80200716077a702f80411'),
-	(1296654554,'88.97.41.226','8e6c1912158b5f96ce13dae85a38582c288393b5'),
-	(1296654559,'88.97.41.226','b5d7c4d59e38f0ae1b71153ac27baa485a3673aa'),
-	(1296654569,'88.97.41.226','742a9191021c816851e1191b3cfd2a516656af10'),
-	(1296655001,'88.97.41.224','59a0ae28a2402fe86751b6440987183b017e9c00'),
-	(1296655005,'88.97.41.224','c35c39ca0912ba14715e3831408e4f5a60cb6100'),
-	(1296655007,'88.97.41.224','62bf19a0bdd9a0d7c7b191474f03c4e85b07699a'),
-	(1296655010,'88.97.41.226','75ba2a87b4dcae8b882340437623cae3e42aa720'),
-	(1296655025,'88.97.41.226','2ab27c5ba3da1a970e2a2176fddc987899870724'),
-	(1296655026,'88.97.41.226','72a2a4cbbdc2e82658c9b35e46d6a7c4046d07e5'),
-	(1296657290,'88.97.41.226','f70a42666a54ff457c5e9d01244562ec8f51044f'),
-	(1296657299,'88.97.41.226','cc84f1a021b0f7450c5c2340b636b59e088b31bb'),
-	(1296657301,'88.97.41.226','ff751be23c166147ad2705a5ef2911e8e343627f'),
-	(1296657305,'88.97.41.226','32b2a97e094a75cd6bc1d7a749711f60946bf3cc'),
-	(1296657307,'88.97.41.226','851478e304a1235974d134c9a43a7de4254472f7'),
-	(1296657318,'88.97.41.226','f29d333f01dd41aa6e7c6f37f4200da04d727411'),
-	(1296657358,'88.97.41.226','408e7c7bd5d0d72d3d04242906701c01bb0785ab'),
-	(1296657364,'88.97.41.226','2b7040542f7e118647d9bf262a18d9ee19f0ff8e'),
-	(1296657369,'88.97.41.226','d33b23d286b883d6582ce89233d46d76d1e73bcd'),
-	(1296657372,'88.97.41.226','0508d88a53045ef08278d6eefd64ca05b5a03753'),
-	(1296657380,'88.97.41.226','331d5e5715e78f9ba940ef5f5bdda40faf21bdaf'),
-	(1296657389,'88.97.41.226','f316d54065694a20b46137dbf4eaa9cc6de1a315'),
-	(1296657397,'88.97.41.226','246fed9ad6ec81030f1dfadd50c773f79e3d4507'),
-	(1296657405,'88.97.41.226','df28a972444ff58ae2f0a1c669038c603344a667'),
+	(1296674198,'75.89.69.119','7f4f15161c0dc3f71065ad30192fad4f1d7e3a3d'),
+	(1296674192,'75.89.69.119','098ee2d0a2d030dba15a418ad529aaaeacb1cd90'),
+	(1296674183,'75.89.69.119','5f5485e060976ea4387e59550a0c352d0a40fad7'),
+	(1296674177,'75.89.69.119','7f7efab2b5621ebf5a2572f001e72717b0208dbc'),
+	(1296674177,'75.89.69.119','1238e7f7a180c7fe0182beec87013f449b4f1e7f'),
+	(1296674177,'75.89.69.119','49ab4ca53f06aa27eeb43c34e81c5f0c9ed29b60'),
+	(1296674175,'75.89.69.119','5c36262fda9b1220edfcc80abc472a7d6b93e850'),
+	(1296674175,'75.89.69.119','82e1184154586231cbd39d76e24bb0793f0710b0'),
+	(1296674175,'75.89.69.119','95309e9e8f4d6dd2b6419d060e1c16ca214d9b1a'),
+	(1296674161,'75.89.69.119','396af66a5c6d9d98ff843d5c2051f2ef484fb5c0'),
+	(1296674169,'75.89.69.119','af037b1bd92e6f1adb180eda9fddc305282b199f'),
+	(1296674173,'75.89.69.119','0a889bd05f473a8f481d5aee799078efbfdf6cca'),
+	(1296674154,'75.89.69.119','54481622a47676c4e780b037c435a30066c28891'),
+	(1296674151,'75.89.69.119','6cf3501449247884f72aea0318a9aa8241b69e86'),
+	(1296674151,'75.89.69.119','f4de10c0a247db94933aa93e7de7d4dfc11aeded'),
+	(1296674151,'75.89.69.119','dcd651130844e6409daeb4e2e538c96aeae1d815'),
+	(1296674149,'75.89.69.119','22a75f65a939973bb935a4adcd5279f77ec5dc95'),
+	(1296674144,'75.89.69.119','64b630db95dad7ce3f3c6e25bd46aca01921e7a3'),
+	(1296674139,'75.89.69.119','a82be19eb6c3e9bd32d272eb9b12162d4ba5b248'),
+	(1296674134,'75.89.69.119','af408daced43abdf0c0ae1016c89f8960fa5a483'),
+	(1296674130,'75.89.69.119','ee167d4d2d5c4e926dd5bddbbc254ba815b96e32'),
+	(1296670366,'88.97.41.226','83d4055e15df274e7fcaa4e3e581396170f5af36'),
+	(1296670191,'88.97.41.226','704424b3d501fb3c5e39d7f7f62911b4bc358f2c'),
+	(1296670326,'88.97.41.226','73c8269cb015434f8cdecca451c42349429c3e08'),
+	(1296670332,'88.97.41.226','d4c2612028cca749018bf23b92931cd730b1161b'),
+	(1296663475,'88.97.41.226','c5021b1556b05313342a40a3fa62feb70f7f4a35'),
+	(1296663433,'88.97.41.226','e08a1613c9ae252e360c35634e0f8d36df43d9f6'),
+	(1296663431,'88.97.41.226','c6efb36c5c65de3c3816886cc60586e0f5243c51'),
+	(1296663416,'88.97.41.226','ea2d84221af56807c1e720ba62766b168b77b306'),
+	(1296663403,'88.97.41.226','aa4c956037daa65303ad3ce3b56094d6056ad0f3'),
+	(1296663379,'88.97.41.226','8acfe59d8e7deccb7788502a427403bfd1be7395'),
+	(1296663223,'88.97.41.226','22d1ad0daf63826c4354a3e2681b3806b732c5fa'),
+	(1296663092,'88.97.41.226','879b53c7abf0667a4fcdddbccfafcc466b47b75f'),
+	(1296660788,'75.89.69.119','8d4bc418eaa5746d9ef2fc7ebeb2af9502b098fe'),
+	(1296660758,'75.89.69.119','601b10a508773a22359dd81d45369c7b2b532db6'),
+	(1296667510,'88.97.41.224','cf01760b9e07b5d14f0ce5845b046e70afe2eec3'),
+	(1296664693,'88.97.41.226','612dd8937ddf8f23aa9ca21e7d8007e2e6b001e2'),
+	(1296664691,'88.97.41.226','1b02679be3728b3fa904c655444568b44530a77e'),
+	(1296664686,'88.97.41.226','a163fb89d0e15b0af42bfe5251952e06922e92f8'),
+	(1296664686,'88.97.41.226','88819665a9072cf3ff5867ffed4a0f5de06e83bf'),
+	(1296664684,'88.97.41.226','65b21e73c986f8f13b991082b3a1d35c954b2aaf'),
+	(1296663654,'88.97.41.226','36087ea0764c6589e43b84b1b4541d8bdd74362d'),
+	(1296663651,'88.97.41.226','439ff25bc90ef10b35810ab53a755d0964e72414'),
+	(1296663641,'88.97.41.226','20ebb3a720c3e9088731200ec3c8d64c218db75b'),
+	(1296663639,'88.97.41.226','1beacbb197a9aa49a4546de11f1a3b6d829c250d'),
+	(1296663568,'88.97.41.226','1aff2dad85c1b28465992215dc1fc412a22ca8d7'),
+	(1296663506,'88.97.41.226','84a48efcc7a3de1c4b0f88c611f4e4c55740364f'),
+	(1296667499,'88.97.41.224','8670b19069470265fb155b2c779bc67e521832d1'),
+	(1296667496,'88.97.41.224','c3f817c7d179a22a0464b5c7075646b2b79d534f'),
+	(1296667489,'88.97.41.224','2addac205300aaf431e57fdc34f8cffd3016d279'),
+	(1296665990,'88.97.41.226','4ea3679218d22572497f40fa1c08837ba8fdfd76'),
+	(1296665748,'88.97.41.226','7a20768dd047af72e1397533fed7d7a0353f5a34'),
+	(1296665733,'88.97.41.226','17dbbfde02137e39e3ca1f593eee7a601191dc7e'),
+	(1296665731,'88.97.41.226','597e37dcfcdd386b238a3841aa0da290e1f4fed7'),
+	(1296665731,'88.97.41.226','8c9cab9935e36423493564e04ffe5d0c4246e0bb'),
+	(1296665505,'88.97.41.226','95ce3105a943219669c34bc0f051ad117b8e4d18'),
+	(1296665245,'88.97.41.226','3114560ae250df8ba54ee091246f71517c2d0187'),
+	(1296665135,'88.97.41.226','9fbc77d23fb66ba644f372451c2908d171e9438d'),
+	(1296665134,'88.97.41.226','aabf6b477082029b49ad24a7840e003168724131'),
+	(1296665134,'88.97.41.226','622fcdca34da393af967e961b9b13204e8542e50'),
+	(1296664722,'88.97.41.226','93c9ba09bff23c80359e1f4492253c29a84cbc05'),
 	(1296657654,'88.97.41.226','a729dcc015bda0dcf8bf35d99762ce92d4d9a5b2'),
 	(1296657654,'88.97.41.226','e53d3b332044ab692ddd82dc1ddfcae82ad90a06'),
 	(1296657681,'88.97.41.226','f0332c87af4c5870d434f04a5afe5f33afedce8b'),
 	(1296657694,'88.97.41.226','32260bdf3e1f8b7ecc49aea26f589ad78522b19d'),
 	(1296657699,'88.97.41.226','1f417d1e5056ea5774617c7c80db3c94afa7ca9f'),
-	(1296657737,'88.97.41.226','4bc899bd68a43d1348acf68fe29a50a2f7880a7a');
+	(1296657737,'88.97.41.226','4bc899bd68a43d1348acf68fe29a50a2f7880a7a'),
+	(1296658505,'88.97.41.226','322d31035d162ae60436513e2a9110fdeaccea01'),
+	(1296658518,'88.97.41.226','6c1b0774c8adabfdc54a87ffd893bbcdcf50773e'),
+	(1296658523,'88.97.41.226','bfb2aa79e5a9467e77e5abd0209b30da502185f7'),
+	(1296658531,'88.97.41.226','86234dfb5d70827d7434bfee549f17c3d10b8518'),
+	(1296658553,'88.97.41.226','08ebdf4964812b301aec3cc9b0db129082de87bd'),
+	(1296658557,'88.97.41.226','111389558e871c9b24c9172b5624ea2d9e6f84ca'),
+	(1296658564,'88.97.41.226','336ce69e0439544a1c026d993954298b5e3305b6'),
+	(1296658567,'88.97.41.226','a08e1a0eb3456023dccfa796d12dc65c81ef9314'),
+	(1296658569,'88.97.41.226','f9d37a7dc102de53c79fe2b75ce6b2d883802d3c'),
+	(1296658574,'88.97.41.226','0ab7042690b90d58e138ddde6a097fc1e91350ce'),
+	(1296658576,'88.97.41.226','eebc9ffc70c9116f0aa3fd0548b7a05de70d8787'),
+	(1296658590,'88.97.41.226','9b9dc5a11500091ddcd6738889ec5b5ef62e85b1'),
+	(1296658895,'88.97.41.226','67e180c01e190b119ac301d0e21e0cdf0d1da699'),
+	(1296659492,'88.97.41.226','535a7a9e6bd84be818c9ea07efd483c43935d01f'),
+	(1296659515,'88.97.41.226','4cebec695439f570de8f891a0d05cd06af7f02d5'),
+	(1296659520,'88.97.41.226','cac12ac86c81cb6c8b32cd886c37f4b32a215b0d');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2893,10 +2673,11 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('e00073e9956f8953a52f09376e638cbbe28d689a',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296657167),
-	('3303feb8fcef7d23bccb27958fe1372749e7168d',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296657269),
-	('462829e7ffa14e50703a64f8a30844c3c153e629',1,7,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296655190),
-	('3b61b3598db23328d756f89fdbe02c764bc9b204',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296657762);
+	('bae9248825afd657ec931a6955ade0d462cbe7d4',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296670366),
+	('8bdfc5034d0d19818ed4d2a9fb6a1caa7b920597',1,18,1,'75.89.69.119','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296674199),
+	('5362e07e3af2092d2ee41342b9098d45a4cf0962',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296669738),
+	('7bf9ff6bd499cdc3ecafc3776c285a7c55f12470',1,7,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296667510),
+	('3b61b3598db23328d756f89fdbe02c764bc9b204',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296663256);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3007,7 +2788,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,9,19,'Simon Campbell',6,0,0,0,0,1296656268,0,0,0,1265120889,4,1249281451,1266667446);
+	(0,1,9,19,'Simon Campbell',7,0,0,0,0,1296658583,0,0,0,1265120889,4,1249281451,1297265301);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3261,7 +3042,7 @@ CREATE TABLE `exp_templates` (
   PRIMARY KEY (`template_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_templates` WRITE;
 /*!40000 ALTER TABLE `exp_templates` DISABLE KEYS */;
@@ -3306,7 +3087,10 @@ VALUES
 	(108,1,30,'pending','y','webpage','','',1295804365,0,'n',0,'','n','n','o',0),
 	(109,1,30,'activated','y','webpage','','',1295804383,0,'n',0,'','n','n','o',0),
 	(110,1,6,'master_rss','y','rss','','',1296654568,0,'n',0,'','n','n','o',0),
-	(111,1,26,'preview','y','webpage','','',1296657369,0,'n',0,'','n','n','o',0);
+	(111,1,26,'preview','y','webpage','','',1296657369,0,'n',0,'','n','n','o',0),
+	(112,1,27,'gear','y','webpage','','',1296674154,18,'n',0,'','n','n','o',0),
+	(113,1,24,'lyrics','y','webpage','','',1296674177,18,'n',0,'','n','n','o',0),
+	(114,1,24,'history','y','webpage','','',1296674197,0,'n',0,'','n','n','o',0);
 
 /*!40000 ALTER TABLE `exp_templates` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3651,6 +3435,8 @@ CREATE TABLE `exp_weblog_data` (
   `field_ft_83` tinytext,
   `field_id_84` text NOT NULL,
   `field_ft_84` tinytext,
+  `field_id_85` text NOT NULL,
+  `field_ft_85` tinytext,
   KEY `entry_id` (`entry_id`),
   KEY `weblog_id` (`weblog_id`),
   KEY `site_id` (`site_id`)
@@ -3658,14 +3444,15 @@ CREATE TABLE `exp_weblog_data` (
 
 LOCK TABLES `exp_weblog_data` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_data` DISABLE KEYS */;
-INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`,`field_id_84`,`field_ft_84`)
+INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_66`,`field_ft_66`,`field_id_67`,`field_ft_67`,`field_id_68`,`field_ft_68`,`field_id_69`,`field_ft_69`,`field_id_70`,`field_ft_70`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`,`field_id_84`,`field_ft_84`,`field_id_85`,`field_ft_85`)
 VALUES
-	(43,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'content_pri_post1.jpg','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nCras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. ','textile','',NULL,'','none'),
-	(45,1,20,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.mp3','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.ogg','none'),
-	(46,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none'),
-	(49,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'19387854','none','This is number one in a series of five videos about the making of the album \"Thirty Six\". To read about the making of the album, see the article \"The Album ThirtySix: Part One\":http://blog.simoncampbell.com/blog/perma/making_the_album_thirtysix_part_one/ on my personal blog.','textile','',NULL,'',NULL,'',NULL,'',NULL),
-	(47,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. \"Ut eget augue est, sit\":http://google.com amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh3. Heading 3\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, *sit amet lacinia* nisl. Integer purus turpis, _tristique sed ornare_ at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh4. Heading 4\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nbq. This is a block quote.  Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\n# List item 1\n# List item 2\n# List item 3\n\n* List item 1\n* List item 2\n* List item 3','textile','',NULL),
-	(48,1,17,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Centenary Centre','none','Peel','none','1301097601','none','http://www.facebook.com/event.php?eid=127886567271836&index=1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL);
+	(43,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'content_pri_post1.jpg','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nCras non nisl ut diam ornare pulvinar et nec nisi. In tincidunt nunc lacinia neque imperdiet iaculis et quis dolor. ','textile','',NULL,'','none','','textile'),
+	(45,1,20,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.mp3','none','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'/assets/audio/brother.ogg','none','','textile'),
+	(46,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile'),
+	(49,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'19387854','none','This is number one in a series of five videos about the making of the album \"Thirty Six\". To read about the making of the album, see the article \"The Album ThirtySix: Part One\":http://blog.simoncampbell.com/blog/perma/making_the_album_thirtysix_part_one/ on my personal blog.','textile','',NULL,'',NULL,'',NULL,'',NULL,'','textile'),
+	(47,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. \"Ut eget augue est, sit\":http://google.com amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh3. Heading 3\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, *sit amet lacinia* nisl. Integer purus turpis, _tristique sed ornare_ at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nh4. Heading 4\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\nbq. This is a block quote.  Ut eget augue est, sit amet lacinia nisl. Integer purus turpis, tristique sed ornare at, bibendum at augue. Vivamus commodo lobortis urna, ac posuere mauris malesuada ut. \n\n# List item 1\n# List item 2\n# List item 3\n\n* List item 1\n* List item 2\n* List item 3','textile','',NULL,'','textile'),
+	(48,1,17,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Centenary Centre','none','Peel','none','1301097601','none','http://www.facebook.com/event.php?eid=127886567271836&index=1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','textile'),
+	(50,1,23,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'h3. Information collection and use\n\nThis site is owned and run by Supertone Records (hereinafter referred as Supertone) is a trading style of Erskine Corporation; full details can be found on the \"Company details page\":http://erskinedesign.com/docs/company-details/.\n\nSupertone is the sole owner of the information collected on this site. We will not sell, share, or rent this information to others in ways different from what is disclosed in this policy. Supertone collects information from our users at several different points on our website.\n\nh3. Cookies, IP addresses and statistics\n\nA cookie is a piece of data stored on the userâ€™s hard drive containing information about the user. We do not require any form of login or user account for this website. If a user rejects the cookie, they may still use our site.\n\nAn Internet Protocol (IP) address is a numerical identification that your computer or other browsing device sends out. We use cookies and IP addresses to analyse trends, administer the site, track userâ€™s movement, and gather broad demographic information for aggregate use. Cookies and IP addresses are not linked to personally identifiable information.\n\nh3. Your email and contact details\n\nIf you plan to use our Contact form to get in touch with us, be aware that your personal email address will be revealed in our email applications. Your email address will only be used for communication between ourselves and you. Email addresses will not be passed to any third parties. Your email address and any associated contact details delivered by email may be stored on our secure Customer Relations Management system for our internal use. We manage our own web servers too, so your information never passes through a third-party system.\n\nThis website takes every precaution to protect our usersâ€™ information. When users submit sensitive information via the website, your information is protected both online and off-line.\n\nAll of our usersâ€™ information, not just the sensitive information mentioned above, is restricted in our offices. Only employees who need the information to perform a specific job are granted access to personally identifiable information.\n\nAll of our employees are kept up-to-date on our security and privacy practices. Every quarter, as well as any time new policies are added, our employees are notified and/or reminded about the importance we place on privacy, and what they can do to ensure our customersâ€™ information is protected.\n\nFinally, the servers that we store personally identifiable information on are kept in a secure environment, behind a locked cage.\n\nAny personal information entrusted to us will never be entrusted to carriers or the Royal Mail unless agreed, and a signature would always be required from the recipient. Under no circumstances will your private data ever be found on a train and handed to the BBC.\n\nIf you have any questions about the security at our website, you can send an email to [email=artists@supertonerecords.com]artists@supertonerecords.com[/email].\n\nh3. Sharing\n\nSupertone will, under no circumstances, share with any third party individual IP addresses, email addresses, personal contact details or other information collected through this website or related statistic tracking systems. If information sharing is required, such as to bring in a third party in a project for example, you will be given immediate notice.\nExternal links\n\nThis web site contains links to other sites. Please be aware that we at Supertone are not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of each and every web site that collects personally identifiable information. This privacy policy applies solely to information collected by this web site.\n\nh3. Notification of changes\n\nIf we decide to change our privacy policy, we will post those changes on this page immediately so our users are always aware of what information we collect, how we use it, and what circumstances, if any, we disclose it.\n\nh3. Data Protection\n\nSupertone are registered with the Data Protection Supervisor.','textile');
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3706,7 +3493,7 @@ CREATE TABLE `exp_weblog_fields` (
   PRIMARY KEY (`field_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_fields` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_fields` DISABLE KEYS */;
@@ -3729,7 +3516,8 @@ VALUES
 	(81,1,20,'cf_journal_photos_image','Uploaded image','Ideally the photo should be landscape and suitable to be displayed at 585px wide. We\'ll resize it as best we can.','ftype_id_6','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',15,'a:1:{s:7:\"options\";s:2:\"14\";}'),
 	(82,1,20,'cf_journal_photos_lead','Lead text','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','y','n','textile','n',16,''),
 	(83,1,21,'cf_journal_notes_note','Note','','textarea','','n',0,0,'blog',17,'title','desc',0,10,128,'y','ltr','y','n','textile','n',17,''),
-	(84,1,18,'cf_journal_audio_ogg','Audio file (ogg)','','text','','n',0,0,'blog',17,'title','desc',0,6,255,'y','ltr','n','n','none','n',2,'');
+	(84,1,18,'cf_journal_audio_ogg','Audio file (ogg)','','text','','n',0,0,'blog',17,'title','desc',0,6,255,'y','ltr','n','n','none','n',2,''),
+	(85,1,22,'cf_pages_body','Page content','','textarea','','n',0,0,'blog',17,'title','desc',0,40,128,'y','ltr','y','n','textile','n',19,'');
 
 /*!40000 ALTER TABLE `exp_weblog_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3750,6 +3538,7 @@ LOCK TABLES `exp_weblog_member_groups` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_member_groups` DISABLE KEYS */;
 INSERT INTO `exp_weblog_member_groups` (`group_id`,`weblog_id`)
 VALUES
+	(6,23),
 	(6,19),
 	(6,21),
 	(6,22),
@@ -3806,7 +3595,7 @@ CREATE TABLE `exp_weblog_titles` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_titles` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_titles` DISABLE KEYS */;
@@ -3815,9 +3604,10 @@ VALUES
 	(43,1,21,1,0,0,'127.0.0.1','This is an example photo','this-is-an-example-photo','open','y',0,0,0,0,'y','n','n',1296642773,'n','2011','02','02',0,0,20110202103354,0,0,0,'',0),
 	(49,1,19,1,0,0,'88.97.41.226','Making the album ThirtySix: edition #1','making-the-album-thirtysix-edition-1','open','y',0,0,0,0,'y','n','n',1296656268,'n','2011','02','02',0,0,20110202142749,0,0,0,'',0),
 	(45,1,20,1,0,0,'88.97.41.226','This is some badass audio','this-is-some-badass-audio','open','y',0,0,0,0,'y','n','n',1296642998,'n','2011','02','02',0,0,20110202123939,0,0,0,'',0),
-	(46,1,18,1,0,0,'88.97.41.226','Gallery','gallery','open','y',0,0,0,0,'y','n','n',1296646799,'n','2011','02','02',0,0,20110202131000,0,0,0,'',0),
+	(46,1,18,1,0,0,'88.97.41.226','Gallery','gallery','open','y',0,0,0,0,'y','n','n',1296646788,'n','2011','02','02',0,0,20110202165949,0,0,0,'',0),
 	(47,1,22,1,0,0,'88.97.41.226','An example note','an-example-note','open','y',0,0,0,0,'y','n','n',1296654283,'n','2011','02','02',0,0,20110202134644,0,0,0,'',0),
-	(48,1,17,1,0,0,'88.97.41.226','ThirtySix Album Launch','thirtysix-album-launch','open','y',0,0,0,0,'y','n','n',1296655657,'n','2011','02','02',0,0,20110202140838,0,0,0,'',0);
+	(48,1,17,1,0,0,'88.97.41.226','ThirtySix Album Launch','thirtysix-album-launch','open','y',0,0,0,0,'y','n','n',1296655657,'n','2011','02','02',0,0,20110202140838,0,0,0,'',0),
+	(50,1,23,1,0,0,'88.97.41.226','Privacy policy','privacy-policy','open','y',0,0,0,0,'y','n','n',1296658583,'n','2011','02','02',0,0,20110202164724,0,0,0,'',0);
 
 /*!40000 ALTER TABLE `exp_weblog_titles` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3916,12 +3706,12 @@ LOCK TABLES `exp_weblogs` WRITE;
 INSERT INTO `exp_weblogs` (`weblog_id`,`site_id`,`is_user_blog`,`blog_name`,`blog_title`,`blog_url`,`blog_description`,`blog_lang`,`blog_encoding`,`total_entries`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_comment_date`,`last_trackback_date`,`cat_group`,`status_group`,`deft_status`,`field_group`,`search_excerpt`,`enable_trackbacks`,`trackback_use_url_title`,`trackback_max_hits`,`trackback_field`,`deft_category`,`deft_comments`,`deft_trackbacks`,`weblog_require_membership`,`weblog_max_chars`,`weblog_html_formatting`,`weblog_allow_img_urls`,`weblog_auto_link_urls`,`weblog_notify`,`weblog_notify_emails`,`comment_url`,`comment_system_enabled`,`comment_require_membership`,`comment_use_captcha`,`comment_moderate`,`comment_max_chars`,`comment_timelock`,`comment_require_email`,`comment_text_formatting`,`comment_html_formatting`,`comment_allow_img_urls`,`comment_auto_link_urls`,`comment_notify`,`comment_notify_authors`,`comment_notify_emails`,`comment_expiration`,`search_results_url`,`tb_return_url`,`ping_return_url`,`show_url_title`,`trackback_system_enabled`,`show_trackback_field`,`trackback_use_captcha`,`show_ping_cluster`,`show_options_cluster`,`show_button_cluster`,`show_forum_cluster`,`show_pages_cluster`,`show_show_all_cluster`,`show_author_menu`,`show_status_menu`,`show_categories_menu`,`show_date_menu`,`rss_url`,`enable_versioning`,`enable_qucksave_versioning`,`max_revisions`,`default_entry_title`,`url_title_prefix`,`live_look_template`)
 VALUES
 	(17,1,'n','events','Events','/events/','','en','utf-8',1,0,0,1296655657,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',1,0,0,1296646799,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',1,0,0,1296646788,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
 	(19,1,'n','journal_videos','Journal: Videos','/journal/','','en','utf-8',1,0,0,1296656268,0,0,'',1,'open',19,79,'n','n',5,78,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',1,0,0,1296642998,0,0,'',1,'open',18,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(21,1,'n','journal_photos','Journal: Photos','/journal/','','en','utf-8',1,0,0,1296642773,0,0,'',1,'open',20,82,'n','n',5,81,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',1,0,0,1296654283,0,0,'',1,'open',21,83,'n','n',5,83,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(23,1,'n','pages','Site pages (privacy policy, etc)','/pages/','','en','utf-8',0,0,0,0,0,0,'',1,'open',18,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/pages/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','n','','n','n',10,'','',111);
+	(23,1,'n','pages','Site pages (privacy policy, etc)','/pages/','','en','utf-8',1,0,0,1296658583,0,0,'',1,'open',22,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/pages/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','n','','n','n',10,'','',111);
 
 /*!40000 ALTER TABLE `exp_weblogs` ENABLE KEYS */;
 UNLOCK TABLES;
