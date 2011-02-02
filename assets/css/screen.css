@@ -951,12 +951,16 @@ div#footer p.credit {
                 border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
                 float: left;
                 padding: 18px;
-                width: auto;
+                width: 274px;
+            }
+            body#lyrics div#content_pri .widget p {
+                font-size: 12px;
             }
             body#lyrics div#content_pri .half:last-child .widget:last-child {
                 border-bottom: none;
             }
             body#lyrics div#content_pri div.opacity_02 {
+                background: #1E1E1E;
                 background: rgba(255, 255, 255, 0.02);
             }
         
