@@ -106,7 +106,7 @@
                             <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
                         </audio> <!-- // #audio_player -->
                         <script>
-                            jwplayer("audio_player").setup({
+                            jwplayer("audio_player_{entry_id}").setup({
                                 players: [
                                     { type: "html5" },
                                     { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
