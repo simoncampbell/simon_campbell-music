@@ -747,6 +747,14 @@ div#footer p.credit {
             text-decoration: none;
             width: 20px;
         }
+        div#posts p#pagination strong {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: normal;
+            height: 20px;
+            padding:0 2px;
+            
+        }
         div#posts p#pagination a:hover,
         div#posts p#pagination a.cur {
             background: rgba(255, 255, 255, 0.25);
