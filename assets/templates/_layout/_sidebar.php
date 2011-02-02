@@ -7,7 +7,7 @@
     </ul><!-- // .navigation_sec -->
     
     <div id="promo_block" class="widget">
-        <a href="#">
+        <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
             <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
