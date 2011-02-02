@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class=""
+    body_class="gallery"
     body_id=""
     section="gallery"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -15,11 +15,6 @@
 }
     
     <div id="content_pri">
-        
-        <p id="gallery_nav">
-            <a href="#" class="gallery_skip prev">Previous image</a>
-            <a href="#" class="gallery_skip next">Next image</a>
-        </p>
         
         <div id="gallery_photos">
             {exp:weblog:entries
@@ -44,7 +39,7 @@
             {/exp:weblog:entries}
         </div><!-- // #gallery_photos -->
         
-        <p class="more"><a href="#">See all galleries on Flickr</a></p>
+        <p class="more"><a href="http://www.flickr.com/photos/erskinecorp/sets/">Check out Simon&rsquo;s other sets on Flickr</a></p>
         
     </div> <!-- // #content_pri -->
     
