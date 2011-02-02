@@ -1040,6 +1040,9 @@ div#footer p.credit {
     }
     
     /* WIDGET: Newsletter Signup */
+    #newsletter_signup {
+        position: relative;
+    }
     #newsletter_signup input[type="text"] {
         float: left;
         height: 10px;
@@ -1047,11 +1050,21 @@ div#footer p.credit {
         width: 165px;
     }
     #newsletter_signup input[type="text"]:focus,
-    #newsletter_signup input[type="text"]:hover {
-        padding:7px;
+    #newsletter_signup input[type="text"]:hover,
+    #newsletter_signup input[type="text"].error {
+        padding: 7px;
+    }
+    #newsletter_signup input[type="text"].error {
+        margin-bottom: 25px;
     }
     #newsletter_signup input.submit {
         float: right;
+    }
+    #newsletter_signup label.error {
+        margin-left: 0;
+        position: absolute;
+        bottom: 15px;
+        width: auto;
     }
     
     /* MISCELLANEOUS */
