@@ -23,7 +23,7 @@ $(document).ready(function(){
     if($("body").hasClass("gallery")) {
      
         // Add gallery nav links
-        $("div#content_pri").prepend("<p id=\"gallery_nav\">")
+        $("div#content_pri").prepend("<p id=\"gallery_nav\">");
         $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
      
         // Gallery jQuery Cycle
