@@ -32,6 +32,12 @@
                     <li id="pm_facebook"><a href="#">Share</a></li>
                 </ul>
                 
+                {if weblog_short_name == "journal_notes"}
+                
+                    {cf_journal_notes_note}
+                
+                {/if}
+                
                 {if weblog_short_name == "journal_photos"}
                 
                     {cf_journal_photos_lead}
