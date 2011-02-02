@@ -95,9 +95,6 @@ p.more {
     margin-bottom: 0;
     text-align: right;
 }
-p.more a:hover {
-    text-decoration: none;
-}
 
 p,
 ul,
