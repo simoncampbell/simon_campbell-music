@@ -24,7 +24,7 @@
                 orderby=""
                 sort="asc"
             }
-            {cf_gallery_images}
+            {cf_gallery_images limit="6" sort="random"}
             <div class="gallery_photo">
                 {exp:ed_imageresizer
                     image="{ffm_images_image}"
