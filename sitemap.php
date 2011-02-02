@@ -7,5 +7,5 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // Content is alw
 header('Content-type: text/xml; charset=UTF-8'); 
 
 // Read content from template and show it 
-@readfile ('');  // i.e. http://nationalemployerservice.org.uk/feeds/google_sitemap_xml/
+@readfile ('http://'.$_SERVER['HTTP_HOST'].'/feeds/google_sitemap_xml/'); 
 ?>
