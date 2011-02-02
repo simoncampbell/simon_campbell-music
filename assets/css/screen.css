@@ -1046,6 +1046,7 @@ div#footer p.credit {
         padding: 8px;
         width: 165px;
     }
+    #newsletter_signup input[type="text"]:focus,
     #newsletter_signup input[type="text"]:hover {
         padding:7px;
     }
