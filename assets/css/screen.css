@@ -998,6 +998,7 @@ div#footer p.credit {
         ul.item_listing {
             background: rgba(255, 255, 255, 0.03);
             border-top: 1px solid rgb(75, 75, 75);
+            list-style: none;
             margin-bottom: 8px;
             margin-top: 18px;
         }
