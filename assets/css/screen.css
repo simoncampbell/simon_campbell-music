@@ -738,11 +738,14 @@ div#footer p.credit {
         div#posts p#pagination a {
             background: rgba(255, 255, 255, 0.1);
             color: rgb(212, 212, 212);
+            display: inline-block;
             font-size: 12px;
             font-weight: normal;
-            padding: 4px 8px;
-            height: 30px;
+            height: 20px;
+            margin-left: 2px;
+            text-align: center;
             text-decoration: none;
+            width: 20px;
         }
         div#posts p#pagination a:hover,
         div#posts p#pagination a.cur {
