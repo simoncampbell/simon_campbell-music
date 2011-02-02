@@ -3,7 +3,7 @@
     body_id="gear"
     section="bio"
     {!-- LG BETTER META OPTIONS BELOW --}
-    title="Gear"
+    title="Gear | Bio"
     title_suffix=""   
     title_prefix=""   
     description=""
