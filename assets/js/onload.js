@@ -17,18 +17,27 @@ $(document).ready(function(){
     $("input[name=cm-bxdii-bxdii]").clearDefault(); // Hide value of newsletter input on focus
     
     // Gallery
-    $('#gallery_photos').after('<ul id="gallery_grid">').cycle({
-        fx: 'fade',
-        speed: 'fast',
-        timeout: 0,
-        prev: '.prev',
-        next: '.next',
-        pager: '#gallery_grid',
-        pagerAnchorBuilder: function(idx, slide) {
-            var img = $(slide).children().eq(0).attr("src");
-            return '<li><a href="#"><img src="' + img + '" width="180" height="180"></a></li>';
-        }
-    });
+    if($("body").hasClass("gallery")) {
+     
+        // Add gallery nav links
+        $("div#content_pri").prepend("<p id=\"gallery_nav\">")
+        $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
+     
+        // Gallery jQuery Cycle
+        $('#gallery_photos').after('<ul id="gallery_grid">').cycle({
+            fx: 'fade',
+            speed: 'fast',
+            timeout: 0,
+            prev: '.prev',
+            next: '.next',
+            pager: '#gallery_grid',
+            pagerAnchorBuilder: function(idx, slide) {
+                var img = $(slide).children().eq(0).attr("src");
+                return '<li><a href="#"><img src="' + img + '" width="180" height="180"></a></li>';
+            }
+        });
+         
+    }
     
     // Contact Form Validation
     $('form#freeform').validate({
