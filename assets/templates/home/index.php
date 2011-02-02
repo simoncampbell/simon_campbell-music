@@ -17,10 +17,10 @@
     <div id="content_pri">
         
         <div id="intro" class="widget">
-            <a href="#"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="#"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
+            <a href="{pv_site_url}/thirtysix/"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
+            <h2><a href="{pv_site_url}/thirtysix/"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
             <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="#">Check out ThirtySix!</a>
+                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
             </p>
             <small><strong>&ldquo;Brother&rdquo;</strong> Single preview</small>
             <audio id="audio_player" controls>
@@ -129,6 +129,8 @@
 
                 </div> <!-- // .post -->
             {/exp:weblog:entries}
+            
+            <p class="more"><a href="{pv_site_url}/journal/">Read more of Simon&rsquo;s ramblings in the journal</a></p>
             
         </div><!-- // #posts -->
         
