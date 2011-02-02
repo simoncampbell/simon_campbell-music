@@ -1,39 +1,44 @@
 <div id="content_sec">
     
+    {!-- hiding this for now until 'pages' are built
     <ul id="navigation_sec" class="item_listing">
         <li><a href="#">Subpage one</a></li>
         <li><a href="#">Subpage two</a></li>
         <li><a href="#">Subpage three</a></li>
     </ul><!-- // .navigation_sec -->
-    
+    --}
     <div id="promo_block" class="widget">
         <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
-            <img src="/assets/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
+            <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
     
-    <div id="tour_dates" class="widget">
-        <h2>ThirtySix on tour</h2>
-        <ul class="item_listing">
-        {exp:weblog:entries
-            weblog="events"
-            limit="5"
-            disable="{pv_disable_defaults}"
-            dynamic="off"
-            orderby="cf_events_date"
-            sort="asc"
-            }
-            <li>
-                <a href="{cf_events_fburl}">
-                    <h3><strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
-                    <p><time datetime="{cf_events_date format='{DATE_ATOM}'}">{cf_events_date format="{pv_date_event}"}</time></p>
-                </a>
-            </li>
-            {/exp:weblog:entries}
-        </ul>
-        <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events</a></p>
-    </div> <!-- // #tour_dates -->
+    {exp:weblog:entries
+        weblog="events"
+        limit="5"
+        disable="{pv_disable_defaults}"
+        dynamic="off"
+        orderby="cf_events_date"
+        sort="asc"
+        }
+        {if count == 1}
+        <div id="tour_dates" class="widget">
+            <h2>ThirtySix on tour</h2>
+            <ul class="item_listing">
+        {/if}
+                <li>
+                    <a href="{cf_events_fburl}">
+                        <h3><strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
+                        <p><time datetime="{cf_events_date format='{DATE_ATOM}'}">{cf_events_date format="{pv_date_event}"}</time></p>
+                    </a>
+                </li>
+        {if count == total_results}        
+            </ul>
+            <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events</a></p>
+        </div> <!-- // #tour_dates -->
+        {/if}
+    {/exp:weblog:entries}
     
     {!-- hiding until the next release
     

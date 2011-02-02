@@ -89,6 +89,9 @@
         {lv_services_google_analytics}
     {/if}
     
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{lv_services_master_rss}" />
+    
 </head>
 
 <body{if embed:body_class != ""} class="{embed:body_class}"{/if}{if embed:body_id != ""} id="{embed:body_id}"{/if}>
