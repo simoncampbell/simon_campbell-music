@@ -36,7 +36,7 @@ $(document).ready(function(){
             pager: '#gallery_grid',
             pagerAnchorBuilder: function(idx, slide) {
                 var img = $(slide).children().eq(0).attr("src");
-                return '<li><a href="#"><img src="' + img + '" width="180" height="180"></a></li>';
+                return '<li><a href="#"><img src="' + img + '" width="180" height="118"></a></li>';
             }
         });
          
