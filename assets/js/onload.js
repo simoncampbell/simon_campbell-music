@@ -63,13 +63,6 @@ $(document).ready(function(){
     }
     
     // Campaign Monitor subscribe validation
-    // $('div#newsletter_signup form').validate({
-    //     rules: {
-    //         cm_bxdii_bxdii: {
-    //             required: true,
-    //             email: true
-    //         }
-    //     }
-    // });
+    $('div#newsletter_signup form').validate();
     
 });
