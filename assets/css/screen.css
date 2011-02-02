@@ -94,7 +94,6 @@ p.more {
     font-weight: bold;
     margin-bottom: 0;
     text-align: right;
-    clear:both;
 }
 p.more a:hover {
     text-decoration: none;
@@ -649,7 +648,7 @@ div#footer p.credit {
             color: rgb(255, 255, 255);
             font-size: 23px;
         }
-        div#intro .audio_player {
+        div#intro #audio_player {
             margin-top: 8px;
         }
         
@@ -1052,7 +1051,7 @@ div#footer p.credit {
     }
     
     /* MISCELLANEOUS */
-    .audio_player {
+    #audio_player {
         width:380px;
     }
     
@@ -1069,7 +1068,7 @@ div#footer p.credit {
     div#album_promo_inline div h3 {
         margin-bottom: 16px;
     }
-    div#album_promo_inline .audio_player {
+    div#album_promo_inline #audio_player {
         width: 365px;
     }
     div#album_promo_inline a.button {
