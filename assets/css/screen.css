@@ -391,10 +391,11 @@ h6 {
 a {
     color:rgb(255, 255, 255);
     text-decoration:underline;
+    font-weight:bold;
 }
 a:hover,
 a:focus {
-    color:rgb(232, 232, 232);
+    color:rgb(200, 200, 200);
 }
 
 h1 a,
@@ -693,9 +694,6 @@ div#footer p.credit {
         div#posts div.post ul.post_meta a {
             display: block;
             font-weight: bold;
-        }
-        div#posts div.post ul.post_meta a:hover {
-            text-decoration: none;
         }
         div#posts div.post ul.post_meta li#pm_twitter a,
         div#posts div.post ul.post_meta li#pm_facebook a {
