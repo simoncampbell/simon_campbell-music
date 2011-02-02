@@ -36,8 +36,9 @@
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
     
     <!--[if lte IE 8]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
-    <!--[if IE 7]><link href="{pv_assets_url}/css/screen_ie7.css" rel="stylesheet" media="screen" /><![endif]-->
     <!--[if IE 8]><link href="{pv_assets_url}/css/screen_ie8.css" rel="stylesheet" media="screen" /><![endif]-->
+    <!--[if IE 7]><link href="{pv_assets_url}/css/screen_ie7.css" rel="stylesheet" media="screen" /><![endif]-->
+    <!--[if IE 6]><link href="{pv_assets_url}/css/screen_ie6.css" rel="stylesheet" media="screen" /><![endif]-->
         
     <!-- ICONS -->
     <link rel="shortcut icon" href="{pv_assets_url}/images/site/icons/favicon.ico" />
@@ -58,7 +59,7 @@
     <!--[if IE 6]>
         <script src="{pv_assets_url}/js/ie6/DD_belatedPNG_0.0.8a.js"></script>
         <script>
-            DD_belatedPNG.fix('.title, div#navigation_network ul li a');
+            DD_belatedPNG.fix('#branding img');
         </script>
     <![endif]-->
     

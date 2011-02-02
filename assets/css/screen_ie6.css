@@ -1,0 +1,25 @@
+div#navigation_network {
+/*    margin-top: -42px;*/
+}
+div#navigation_network ul li {
+/*    display: inline;*/
+}
+div#navigation_network ul li#nn_rss,
+div#navigation_network ul li#nn_twitter,
+div#navigation_network ul li#nn_facebook {
+/*    position: relative;
+    top: -12px;*/
+}
+
+div#content_pri,
+#content_sec .widget {
+    background: none;
+}
+
+ul.item_listing {
+    background: none;
+}
+ul.item_listing li a:hover {
+    background: none;
+    text-decoration: underline;
+}
