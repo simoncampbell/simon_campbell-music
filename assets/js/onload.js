@@ -14,7 +14,10 @@
 
 $(document).ready(function(){
 
-    $("input[name=cm-bxdii-bxdii]").clearDefault(); // Hide value of newsletter input on focus
+    // Hide value of newsletter input on focus
+    if($("input[name=cm-bxdii-bxdii]").length) {
+        $("input[name=cm-bxdii-bxdii]").clearDefault();
+    }
     
     // Gallery
     if($("body").hasClass("gallery")) {
@@ -40,21 +43,23 @@ $(document).ready(function(){
     }
     
     // Contact Form Validation
-    $('form#freeform').validate({
-        rules: {
-            name: {
-                required: true,
-                rangelength: [4, 30]
-            },
-            email: {
-                required: true,
-                email: true
-            },
-            message: {
-                required: true,
-                rangelength: [15, 250]
+    if($("form#freeform").length) {
+        $('form#freeform').validate({
+            rules: {
+                name: {
+                    required: true,
+                    rangelength: [4, 30]
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true,
+                    rangelength: [15, 250]
+                }
             }
-        }
-    });
+        });
+    }
     
 });
