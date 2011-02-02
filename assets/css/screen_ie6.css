@@ -23,3 +23,7 @@ ul.item_listing li a:hover {
     background: none;
     text-decoration: underline;
 }
+
+div#posts div.post ul.post_meta li.first {
+    padding-left: 0;
+}
