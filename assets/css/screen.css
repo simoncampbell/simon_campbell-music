@@ -433,7 +433,6 @@ h2 a:hover {
 
 div#page {
     margin: 0 auto;
-    overflow: auto;
     width: 960px;
 }
 div#header,
@@ -604,6 +603,9 @@ div#footer p.credit {
         margin-bottom: 40px;
         padding: 15px;
         width: 590px;
+    }
+    body.home div#content_pri {
+        margin-bottom: 0;
     }
     body.home div#content_pri,
     body.editorial div#content_pri {

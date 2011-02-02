@@ -112,7 +112,7 @@
     </ul>
 </div><!-- // #navigation_network -->
 
-<div id="page">
+<div id="page" class="clearfix">
     
     <div id="header">
         
