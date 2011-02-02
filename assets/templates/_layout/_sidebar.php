@@ -35,6 +35,8 @@
         <p class="more"><a href="#">See all events</a></p>
     </div> <!-- // #tour_dates -->
     
+    {!-- hiding until the next release
+    
     <div id="store_block" class="widget">
         <!-- LOGGED OUT -->
         <h2>From the store</h2>
@@ -83,6 +85,8 @@
             <li><img src="/assets/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
         </ul>
     </div> <!-- // #payments_block -->
+    
+    --}
     
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>

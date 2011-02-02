@@ -130,15 +130,14 @@
         <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/bio/">Bio</a></li>
         <li{if embed:section == "gallery"} class="cur"{/if}><a href="{pv_site_url}/gallery/">Gallery</a></li>
         <li{if embed:section == "contact"} class="cur"{/if}><a href="{pv_site_url}/contact/">Contact</a></li>
+        {!-- Hiding until the next release
         <li class="account"><span class="hide">Account</span>
             <ul>
-                {!-- LOGGED OUT --}
                 {if logged_out}
                 <li><a href="{pv_site_url}/account/">Store login</a></li>
                 <li><a href="{pv_site_url}/account/">Register</a></li>
                 {/if}
                 
-                {!-- LOGGED IN --}
                 {if logged_in}
                 <li><a href="{pv_site_url}/store/basket/">My basket (3)</a></li>
                 <li><a href="{pv_site_url}/account/">Account</a></li>
@@ -146,5 +145,5 @@
                 {/if}
             </ul>
         </li>
-        
+        --}
     </ul> <!-- // #navigation_pri -->
