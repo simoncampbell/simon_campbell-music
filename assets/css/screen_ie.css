@@ -1,6 +1,11 @@
 /*../images/site/ie6/opacity_10.png
 ../images/site/ie6/opacity_5.png*/
 
+div#content_pri,
+#content_sec .widget {
+    background: url(../images/site/ie6/opacity_5.png);
+}
+
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {
     background: #000;
