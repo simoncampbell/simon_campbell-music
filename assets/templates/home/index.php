@@ -130,7 +130,7 @@
                 </div> <!-- // .post -->
             {/exp:weblog:entries}
             
-            <p class="more"><a href="/journal/">Read more of Simon&rsquo;s ramblings in the journal</a></p>
+            <p class="more"><a href="{pv_site_url}/journal/">Read more of Simon&rsquo;s ramblings in the journal</a></p>
             
         </div><!-- // #posts -->
         
