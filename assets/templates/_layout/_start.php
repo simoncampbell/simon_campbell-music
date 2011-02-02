@@ -64,7 +64,7 @@
     <![endif]-->
     
     <!-- iOS -->
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
     
     {if ev_environment == "live"}
         <!-- GOOGLE ANALYTICS -->
@@ -99,8 +99,8 @@
         <li id="nn_music" class="cur"><a href="http://music.simoncampbell.com">Music</a></li>
         <li id="nn_blog"><a href="http://blog.simoncampbell.com">Blog</a></li>
         <li id="nn_rss"><a href="#">RSS</a></li>
-        <li id="nn_twitter"><a href="#">Twitter</a></li>
-        <li id="nn_facebook"><a href="#">Facebook</a></li>
+        <li id="nn_twitter"><a href="http://twitter.com/#!/simoncampbell">Twitter</a></li>
+        <li id="nn_facebook"><a href="http://www.facebook.com/SimonCampbellBand">Facebook</a></li>
     </ul>
 </div><!-- // #navigation_network -->
 
