@@ -920,10 +920,10 @@ div#footer p.credit {
             font-style: italic;
         }
         body.thirtysix div#content_pri blockquote p:before {
-            content: '"';
+            content: '“';
         }
         body.thirtysix div#content_pri blockquote p:after {
-            content: '"';
+            content: '”';
         }
         body.thirtysix div#content_pri blockquote cite {
             display: block;
