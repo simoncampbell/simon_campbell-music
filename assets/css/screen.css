@@ -711,8 +711,7 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta li#pm_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
-        }
-        
+        }       
         div#posts p#pagination {
             color: rgb(255, 255, 255);
             font-size: 11px;
