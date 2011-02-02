@@ -433,6 +433,7 @@ h2 a:hover {
 
 div#page {
     margin: 0 auto;
+    overflow: auto;
     width: 960px;
 }
 div#header,
@@ -562,8 +563,7 @@ div#footer {
     border-top: 1px dashed rgba(255, 255, 255, 0.3);
     border-bottom: 1px dashed #5B5B5B;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-    /* this isn't showing up, look into it. */
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 div#footer p {
@@ -577,7 +577,6 @@ div#footer p:hover,
 div#footer p:focus {
     opacity:1;
 }
-
 
 div#footer p.copyright {
     float:left;
