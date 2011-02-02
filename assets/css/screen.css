@@ -687,8 +687,7 @@ div#footer p.credit {
         div#posts div.post ul.post_meta li:first-child {
             padding-left: 0;
         }
-        div#posts div.post ul.post_meta li:last-child {
-            background: none;
+        div#posts div.post ul.post_meta li {
             padding-right: 0;
         }
         div#posts div.post ul.post_meta a {

@@ -47,7 +47,11 @@ body.thirtysix div#content_pri .widget {
     background: #000;
 }
 
-/* PAGINATION */
+/* JOURNAL */
+div#posts div.post.last {
+    border: none;
+    padding-bottom: 0;
+}
 div#posts p#pagination a:hover,
 div#posts p#pagination a.cur {
     background: #5B5B5B;
