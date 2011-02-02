@@ -29,7 +29,7 @@
         </blockquote>
         
         <div class="widget" id="album_promo_inline">
-            <h3>Preview the lead single, <strong>"Brother"</strong></h3>
+            <h3>Preview the lead single, <strong>&ldquo;Brother&rdquo;</strong></h3>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
