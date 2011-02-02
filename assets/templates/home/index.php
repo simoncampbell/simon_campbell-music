@@ -18,11 +18,11 @@
         
         <div id="intro" class="widget">
             <a href="#"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="#"><strong>"ThirtySix"</strong> The new album</a></h2>
+            <h2><a href="#"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
             <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on <strong>March 26, 2011</strong>. ThirtySix years in the making, the release will be followed by a UK and mainland European tour.
+                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a UK &amp; mainland European tour. <a href="#">Check out ThirtySix!</a>
             </p>
-            <small><strong>"Brother"</strong> Lead single preview</small>
+            <small><strong>&ldquo;Brother&rdquo;</strong> Single preview</small>
             <audio id="audio_player" controls>
                 <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
                 <source src="/assets/audio/brother.ogg" type="audio/ogg" />
