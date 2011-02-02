@@ -932,6 +932,37 @@ div#footer p.credit {
             text-align: right;
         }
         
+        /* STORE LANDING */
+        body.store_landing div#content_pri {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        body.store_landing div#content_pri div.widget {
+            background: none;
+            border: none;
+            border-right: 1px dashed #585858;
+            border-right: 1px dashed rgba(255, 255, 255, 0.3);
+            margin: 0 0 0 5px;
+            padding: 0 20px 0 0;
+            width: 280px;
+        }
+        body.store_landing div#content_pri img {
+            float: right;
+            margin-right: 5px;
+        }
+        body.store_landing div#content_pri form {
+            margin-left: 20px;
+        }
+        body.store_landing div#content_pri label {
+            font-size: 12px;
+        }
+        body.store_landing div#content_pri input[type="text"] {
+            width: 148px;
+        }
+        body.store_landing div#content_pri input.submit {
+            float: right;
+        }
+        
     /* CONTENT SEC */
     div#content_sec h2 {
         color: rgb(255, 255, 255);
