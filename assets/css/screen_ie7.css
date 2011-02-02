@@ -11,6 +11,9 @@ div#navigation_network ul li#nn_facebook {
     position: relative;
     top: -12px;
 }
+div#navigation_network ul li#nn_rss {
+    margin-left: 408px;
+}
 
 /* HOMEPAGE INTRO IMAGE */
 div#intro img {

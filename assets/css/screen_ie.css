@@ -8,6 +8,9 @@ div#content_pri,
 ul#navigation_pri li.account ul li.last a {
     background: none;
 }
+div#navigation_network ul li#nn_rss {
+    margin-left: 385px;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {
@@ -66,6 +69,11 @@ ul.item_listing li.odd {
 }
 #newsletter_signup input.submit {
     padding: 0px 4px;
+}
+
+/* TEMPORARY STORE LANDING PAGE */
+body.store_landing div#content_pri input.submit {
+    margin-right: 6px;
 }
 
 /* MISCELLANEOUS RGBA BACKGROUNDS/BORDERS */
