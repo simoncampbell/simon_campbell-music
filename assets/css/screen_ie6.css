@@ -16,12 +16,24 @@ div#content_pri,
     background: none;
 }
 
+ul#navigation_pri li.first {
+    margin-left: 15px;
+}
+
 ul.item_listing {
     background: none;
 }
 ul.item_listing li a:hover {
     background: none;
     text-decoration: underline;
+}
+
+div#intro img {
+    margin: -8px 20px -8px 3px;
+}
+div#intro #audio_player {
+    margin-top: 10px;
+    width: 340px;
 }
 
 div#posts div.post ul.post_meta li.first {
