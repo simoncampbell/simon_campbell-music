@@ -40,7 +40,7 @@ body.contact #content_pri input.submit {
 }
 
 /* EDITORIAL TEMPLATE P:FIRST-LETTER */
-body.editorial div#beginnings h3 + p:first-letter {
+body#editorial div#beginnings h3 + p:first-letter {
     padding-bottom: 3px;
     padding-top: 10px;
 }
