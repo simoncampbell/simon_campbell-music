@@ -211,13 +211,15 @@ small {
 
     }
     label.error {
-        background: url(../images/site/icons/form_error.png) no-repeat center left;
+        background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
         color: rgb(255, 186, 0);
+/*        display: inline;*/
         float: none;
+        margin-left: 95px;
         margin-right: 0;
         padding-left: 15px;
         text-align: left;
-        width: 300px;
+        width: 200px;
     }
     input,
     textarea {
