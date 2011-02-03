@@ -577,17 +577,18 @@ div#footer {
 }
 
 div#footer p {
-    color: rgb(255, 255, 255);
+    color: rgb(140, 140, 140);
     font-size: 12px;
     line-height: 1;
     margin: 18px 0;
-    opacity:0.5;
-}
-div#footer p:hover,
-div#footer p:focus {
-    opacity:1;
-}
 
+}
+div#footer a {
+    color: rgb(140, 140, 140);
+}
+div#footer a:hover {
+    color: rgb(255, 255, 255);
+}
 div#footer p.copyright {
     float:left;
     margin-left: 15px;
