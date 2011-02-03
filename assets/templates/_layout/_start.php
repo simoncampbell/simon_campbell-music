@@ -71,12 +71,15 @@
     
     <!-- JAVASCRIPT -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
     <script src="{pv_assets_url}/js/onload.js"></script>
     
+    <!-- WEBFONTS -->
     <script type="text/javascript" src="http://fast.fonts.com/jsapi/d8bd6128-b18f-4a44-a9cc-7175e6b50fa2.js"></script>
+    
+    <!-- JW PLAYER -->
     <script src="{pv_assets_url}/jwplayer/jwplayer.js"></script>
-    <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     
     <!--[if lt IE 9]><script src="{pv_assets_url}/js/ie.js"></script><![endif]-->
     
@@ -100,7 +103,7 @@
     
 </head>
 
-<body{if embed:body_class != ""} class="{embed:body_class}"{/if}{if embed:body_id != ""} id="{embed:body_id}"{/if}>
+<body class="no-js {if embed:body_class != ""}{embed:body_class}{/if}"{if embed:body_id != ""} id="{embed:body_id}"{/if}>
 
 <ul id="nav_access">
     <li><a href="#navigation_pri">Skip to navigation</a></li>

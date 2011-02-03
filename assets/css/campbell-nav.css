@@ -19,6 +19,10 @@
         text-transform: uppercase;
         letter-spacing:0.1em;
     }
+    .no-js div#navigation_network ul li {
+        letter-spacing:0;
+        font-size:13px;
+    }
     div#navigation_network ul a {
         color: rgb(107, 107, 107);
         display: block;

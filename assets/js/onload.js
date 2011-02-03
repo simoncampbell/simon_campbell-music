@@ -14,6 +14,10 @@
 
 $(document).ready(function(){
     
+    if($("body").hasClass("no-js")) {
+        $("body").removeClass("no-js");
+    }
+    
     // Hide value of newsletter input on focus
     if($("input[name=cm-bxdii-bxdii]").length) {
         $("input[name=cm-bxdii-bxdii]").clearDefault();

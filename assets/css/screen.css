@@ -370,6 +370,7 @@ h1,h2,h3,h4,h5,h6 {
     margin:0;
     padding:0;
     color:rgb(255, 255, 255);
+    line-height:1.2em;
 }
 h1 {
 
@@ -646,7 +647,9 @@ div#footer p.credit {
         }
         div#intro h2 {
             font-size: 30px;
-            margin-top: 6px;
+        }
+        .no-js div#intro h2 {
+            font-size:25px;
         }
         div#intro h2 strong,
         div#intro small strong {
@@ -695,12 +698,12 @@ div#footer p.credit {
         }
         div#posts div.post h2 {
             font-size:26px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         div#posts div.post ul.post_meta {
             list-style: none;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             width: 100%;
         }
         div#posts div.post ul.post_meta,
@@ -999,6 +1002,10 @@ div#footer p.credit {
         body.thirtysix div#content_pri .widget:first-child h2 {
             margin-bottom: 0;
         }
+        body.thirtysix.no-js div#content_pri .widget:first-child h2 {
+            font-size:14px;
+            letter-spacing:0.1em;
+        }
         body.thirtysix div#content_pri h1,
         body.thirtysix div#content_pri h2,
         body.thirtysix div#content_pri h3 {
@@ -1007,7 +1014,7 @@ div#footer p.credit {
         body.thirtysix div#content_pri h1 {
             color: rgb(255, 255, 255);
             font-size: 35px;
-            margin-bottom: 12px;
+            margin-bottom: 0;
         }
         body.thirtysix div#content_pri h2 {
             font-size: 18px;
@@ -1297,6 +1304,22 @@ div#footer p.credit {
     div#intro h2 strong {
         letter-spacing:0.05em;
     }
+    
+    .no-js #content_pri h3,
+    .no-js #content_pri h3 strong,
+    .no-js small,
+    .no-js small strong,
+    .no-js body.thirtysix div#content_pri h2,
+    .no-js body.thirtysix div#content_pri h1,
+    .no-js ul#navigation_pri li.account li {
+        letter-spacing:0;
+    }
+    
+    .no-js div#intro h2,
+    .no-js div#intro h2 strong {
+        letter-spacing:0;
+    }
+    
 
 
 /* iPhone media query */
