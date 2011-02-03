@@ -70,7 +70,7 @@
                     {cf_journal_videos_lead}
                     
                     <iframe 
-                        src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}" 
+                        src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}?portrait=0&amp;color=f69b55" 
                         width="580" 
                         height="325" 
                         frameborder="0">

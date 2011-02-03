@@ -17,7 +17,7 @@
     <div id="content_pri">
         <h2 class="hide">ThirtySix</h2>
         <div id="thejourney" class="widget">
-            <h3>The journey</h3>
+            <h3>ThirtySix: the journey</h3>
             <p>
                 Well this is it, my first solo album in thirty six years of spanking the plank. It’s not blues, it’s not rock, it’s not folk; it is an eclectic mix that will take you on my very personal musical journey. Each song is written about real people, with real lives.
             </p>
@@ -39,7 +39,7 @@
             </ul>
         </div><!-- // .widget -->
         <div class="widget">
-            <h3>The journey</h3>
+            <h3>The people</h3>
             <p>
                 Steve (Dr Beat) Boyce-Buckley has been a delight to work with as he understands how to record properly, not samples, but real instruments, using the magnificent console and real outboard. He has an empathy with the artist, which is very rare indeed.
             </p>
@@ -61,7 +61,7 @@
             <p>A sincere thanks to Ian Devaney and Lisa Stansfield for building and maintaining this unique, world class facility.</p>
         </div><!-- // .widget -->
         <div class="widget">
-            <h3>Musicians</h3>
+            <h3>The musicians</h3>
             <p>
                 With respect to musicians, superlatives are inappropriate as the performances speak for themselves. Their individual pedigrees would occupy many pages, but in summary they have worked with artists such as: Lisa Stansfield, Proud Mary, Barclay James Harvest, Dare, The Christians, Amy Winehouse, Ella Fitzgerald, Quincy Jones, Stevie Wonder, Paul McCartney, Dave Gilmore, Tom Jones, Robbie Williams, Oleta Adams, Paul Heaton, The Beautiful South, Simply Red, Take That, Gorilas, Heather Small, the Earlies, Hot Chip, Plan B and King Creosote. Shit&hellip;
             </p>

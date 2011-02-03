@@ -44,7 +44,7 @@
             </p>
         </div><!-- // .widget -->
         <div id="tribute" class="widget">
-            <h3>A tribute (to the best song in the world)</h3>
+            <h3>A tribute</h3>
             <p>
                 Just for a laugh and before &ldquo;tribute bands&rdquo; had become big, I put together an Eric Clapton tribute tour which was particularly successful.
             </p>
