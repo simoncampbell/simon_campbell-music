@@ -36,6 +36,19 @@
           
           {cf_journal_videos_lead}{cf_journal_photos_lead}{cf_journal_audio_lead}{cf_journal_notes_note}
           
+          {if weblog_short_name == "journal_videos"}
+              <p><a href="http://player.vimeo.com/video/{cf_journal_videos_vimeo}">http://player.vimeo.com/video/{cf_journal_videos_vimeo}</a></p>
+          {/if}
+          
+          {if weblog_short_name == "journal_photos"}          
+              {exp:ed_imageresizer 
+                  maxWidth="580"
+                  forceWidth="yes"
+                  image="{cf_journal_photos_image}" 
+                  alt=""
+                  }
+          {/if}
+          
           <p><a href="{site_url}{comment_url_title_auto_path}">Read more in the journal...</a></p>
         
         ]]></description>
