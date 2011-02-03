@@ -106,7 +106,7 @@
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>
         <p>
-            Sign up to receive regular updates on the album and Simon's upcoming events.
+            Sign up to receive regular updates on the album and Simon&rsquo;s upcoming events.
         </p>
         <form class="validate_inline" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
             <fieldset>
