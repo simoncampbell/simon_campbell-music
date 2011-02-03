@@ -30,7 +30,9 @@
     {if weblog_short_name == "journal_audio"}
     og_audio="{cf_journal_audio_mp3}"
     og_audio_type="application/mp3"
+    og_audio_title="Testing"
     og_audio_artist="Simon Campbell"
+    og_audio_album="ThirtySix"
     {/if}
 }
     
