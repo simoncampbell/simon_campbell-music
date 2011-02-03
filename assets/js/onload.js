@@ -69,4 +69,18 @@ $(document).ready(function(){
     // Campaign Monitor subscribe validation
     $('form.validate_inline').validate();
     
+    // This only works for 1 email per page right now, 
+    // so I've set it to the contact page.
+    if($("body").hasClass("contact")){
+        $(function(){
+            var spt = $('span.email');
+            var at = / at /;
+            var dot = / dot /g;
+            var addr = $(spt).text().replace(at,"@").replace(dot,".");
+            $(spt).after('<a href="mailto:'+addr+'" title="Send email">'+ addr +'</a>')
+            .hover(function(){window.status="Send emai";}, function(){window.status="";});
+            $(spt).remove();
+        });
+    }
+    
 });
