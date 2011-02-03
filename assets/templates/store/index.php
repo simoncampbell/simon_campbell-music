@@ -27,7 +27,7 @@
             <p>
                 If you'd like to be notified the moment the store opens, please subscribe to the Simon Campbell Music newsletter.
             </p>
-            <form id="newsletter_form" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+            <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
                 <fieldset>
                     <div>
                         <label for="email">Email Address</label>
