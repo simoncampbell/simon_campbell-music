@@ -727,17 +727,17 @@ div#footer p.credit {
             display: block;
             font-weight: bold;
         }
-        div#posts div.post ul.post_meta li#pm_twitter a,
-        div#posts div.post ul.post_meta li#pm_facebook a {
+        div#posts div.post ul.post_meta li.pm_twitter a,
+        div#posts div.post ul.post_meta li.pm_facebook a {
             background-position: 0 2px;
             background-repeat: no-repeat;
             margin-right: 2px;
             padding: 0 0 0 20px;
         }
-        div#posts div.post ul.post_meta li#pm_twitter a {
+        div#posts div.post ul.post_meta li.pm_twitter a {
             background-image: url(../images/site/nav/network/nn_twitter.png);
         }
-        div#posts div.post ul.post_meta li#pm_facebook a {
+        div#posts div.post ul.post_meta li.pm_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
         }       
         div#posts p#pagination {
