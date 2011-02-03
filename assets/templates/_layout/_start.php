@@ -127,12 +127,12 @@
         
         {if segment_1 == ""}
             <h1 id="branding">
-                <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907px" height="61px" class="title" />
+                <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907" height="61" class="title" />
             </h1>
         {if:else}
             <p id="branding">
                 <a href="{pv_site_url}/">
-                    <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907px" height="61px" class="title" />
+                    <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907" height="61" class="title" />
                 </a>
             </p>
         {/if}
