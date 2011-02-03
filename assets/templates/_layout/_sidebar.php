@@ -1,12 +1,20 @@
 <div id="content_sec">
     
-    {!-- hiding this for now until 'pages' are built
+    {if segment_1 == "bio"}
     <ul id="navigation_sec" class="item_listing">
-        <li><a href="#">Subpage one</a></li>
-        <li><a href="#">Subpage two</a></li>
-        <li><a href="#">Subpage three</a></li>
+        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/bio/">Biography</a></li>
+        <li{if segment_2 == ""} class="gear"{/if}><a href="{pv_site_url}/bio/gear/">Gear list</a></li>
     </ul><!-- // .navigation_sec -->
-    --}
+    {/if}
+    
+    {if segment_1 == "thirtysix"}
+    <ul id="navigation_sec" class="item_listing">
+        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix</a></li>
+        <li{if segment_2 == "history"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/history/">History</a></li>
+        <li{if segment_2 == "lyrics"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics/">Lyrics</a></li>
+    </ul><!-- // .navigation_sec -->
+    {/if}
+
     <div id="promo_block" class="widget">
         <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
             <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
