@@ -96,7 +96,7 @@
             </ul>
         </div><!-- // .widget -->        
         <div class="widget">
-            <h3>Acoustic amplification &amp; monitoring</h3>
+            <h3>On the album ThirtySix</h3>
             <p>A 1989 Marshall slant front 4×12 was used on the album&hellip;</p>
             <ul>
                 <li>Effects: Vintage Lexicon &lsquo;Prime Time&rsquo; model 97 delay was used on most of the solos in the mix</li>

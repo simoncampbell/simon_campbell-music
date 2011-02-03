@@ -895,6 +895,11 @@ div#footer p.credit {
         }
         
             /* EDITORIAL: Bio template */
+            body#bio h3 {
+                font-size:20px;
+                letter-spacing:0.075em;
+                margin-bottom:0.75em;
+            }
             body#bio #beginnings {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_beginnings.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
