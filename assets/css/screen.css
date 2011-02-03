@@ -116,14 +116,12 @@ ul li {
     color: rgb(255, 255, 255);
 }
 
-dl {
-     
+dt {
+    font-weight:bold;
+    margin-bottom:0.2em;
 }
-dl dt {
-
-}
-dl dd {
-
+dd {
+    padding-left:1em;
 }
 
 ol {
@@ -327,35 +325,29 @@ small {
         }
         
 /* TABLES ---------- */
-    table {
-
+    table { 
+    	width:100%;
+        margin:0 0 1em 0;
     }
-    caption {
-
+    caption { 
+    	font-weight:bold;
+    	background:rgba(255, 255, 255, 0.2);
+    	padding:6px 8px; 
     }
-    tr {
-    
-    }
-    th,td {
-
-    }
-    th {
-
-    }
+    th,
     td {
-    
+    	padding:12px 8px;
     }
-    thead th {
-    
+    thead th { 
+    	font-weight:bold;
+    	background:rgba(255, 255, 255, 0.1);
     }
-    thead td {
-    
+    tbody tr:nth-child(even) th,
+    tbody tr:nth-child(even) td { 
+    	background:rgba(255, 255, 255, 0.1);
     }
-    tbody th {
-    
-    }
-    tbody td {
-    
+    tbody th { 
+    	font-weight:bold; 
     }
     
 
