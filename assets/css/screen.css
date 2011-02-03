@@ -1207,10 +1207,10 @@ div#footer p.credit {
     }
     div#album_promo_inline div {
         float: right;
-        width: 115px;
+        width: 125px;
         position: absolute;
         top: 15px;
-        right: 60px;
+        right: 50px;
     }
     div#album_promo_inline div h3 {
         margin-bottom: 16px;
