@@ -553,6 +553,12 @@ ul#navigation_sec li:nth-of-type(odd) {
 ul#navigation_sec a {
     font-weight: normal;
 }
+ul#navigation_sec li.cur {
+    background: rgba(255, 255, 255, 0.075);
+}
+ul#navigation_sec li.cur a {
+    font-weight: bold;
+}
 
 /* @end */
 
@@ -680,9 +686,9 @@ div#footer p.credit {
         div#posts div.post {
             border-bottom: 1px dashed #5B5B5B;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-            float: left;
             margin-bottom: 20px;
             padding-bottom: 20px;
+            width: 100%;
         }
         div#posts div.post:last-child {
             border: none;
