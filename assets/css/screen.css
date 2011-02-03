@@ -962,7 +962,7 @@ div#footer p.credit {
             body#lyrics div#content_pri .widget p {
                 font-size: 12px;
             }
-            body#lyrics div#content_pri .half:last-child .widget:last-child {
+            body#lyrics div#content_pri .half .widget:last-child {
                 border-bottom: none;
             }
             body#lyrics div#content_pri div.opacity_02 {
