@@ -553,12 +553,6 @@ ul#navigation_sec li:nth-of-type(odd) {
 ul#navigation_sec a {
     font-weight: normal;
 }
-ul#navigation_sec li.cur {
-    background: rgba(255, 255, 255, 0.075);
-}
-ul#navigation_sec li.cur a {
-    font-weight: bold;
-}
 
 /* @end */
 

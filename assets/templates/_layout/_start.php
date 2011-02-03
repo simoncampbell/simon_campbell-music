@@ -45,8 +45,14 @@
     {if embed:og_audio_type != ""}
     <meta property="og:audio:type" content="{embed:og_audio_type}" />
     {/if}
+    {if embed:og_audio_title != ""}
+    <meta property="og:audio:title" content="{embed:og_audio_title}" /> 
+    {/if}
     {if embed:og_audio_artist != ""}
     <meta property="og:audio:artist" content="{embed:og_audio_artist}" /> 
+    {/if}
+    {if embed:og_audio_album != ""}
+    <meta property="og:audio:album" content="{embed:og_audio_album}" /> 
     {/if}
     
     <!-- CSS -->
