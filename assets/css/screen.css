@@ -1057,6 +1057,23 @@ div#footer p.credit {
             float: right;
         }
         
+        /* NEWSLETTER LANDING */
+        body.newsletter div#content_pri {
+            border-color: #5B5B5B;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-style: dashed;
+            border-width: 1px;
+            margin: 0 0 100px 170px;
+            padding: 25px 18px 20px;
+            width: 582px;            
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+        }
+        body.newsletter div#content_pri div.half:first-child {
+            border-right: 1px dashed #5B5B5B;
+        }
+        
     /* CONTENT SEC */
     div#content_sec h2 {
         color: rgb(255, 255, 255);
