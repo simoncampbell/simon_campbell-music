@@ -677,9 +677,7 @@ div#footer p.credit {
         
         /* POSTS */
         div#posts {
-            float: left;
             padding-bottom: 0;
-            width: 100%;
         }
         div#posts p.more {
             margin-bottom:20px;
