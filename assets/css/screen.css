@@ -1089,6 +1089,9 @@ div#footer p.credit {
         body.newsletter div#content_pri form {
             margin-top: 0;
         }
+        body.newsletter div#content_pri form label.error {
+            width: auto;
+        }
         body.newsletter div#content_pri form input[type="text"] {
             width: 160px;
         }
