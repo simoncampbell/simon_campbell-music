@@ -5,7 +5,7 @@ div#content_pri,
 #content_sec .widget {
     background: url(../images/site/ie6/opacity_5.png);
 }
-ul#navigation_pri li.account ul li.last a {
+ul#navigation_pri li.last a {
     background: none;
 }
 div#navigation_network ul li#nn_rss {
