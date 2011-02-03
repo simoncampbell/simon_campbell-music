@@ -105,12 +105,6 @@
                 <li>Acoustic guitar microphones: Shure SM81 &amp; Neumann U87</li>
             </ul>
         </div><!-- // .widget -->
-        
-
-        
-        
-        
-        
     </div> <!-- // #content_pri -->
     
     {embed="_layout/_sidebar"}
