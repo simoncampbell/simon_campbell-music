@@ -2,8 +2,8 @@
     
     {if segment_1 == "bio"}
     <ul id="navigation_sec" class="item_listing">
-        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/bio/">Biography</a></li>
-        <li{if segment_2 == ""} class="gear"{/if}><a href="{pv_site_url}/bio/gear/">Gear list</a></li>
+        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/bio/">Biography &ndash; the man behind the music</a></li>
+        <li{if segment_2 == "gear"} class="cur"{/if}><a href="{pv_site_url}/bio/gear/">Gear list &ndash; the collection</a></li>
     </ul><!-- // .navigation_sec -->
     {/if}
     
