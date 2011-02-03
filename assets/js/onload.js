@@ -68,6 +68,7 @@ $(document).ready(function(){
     
     // Campaign Monitor subscribe validation
     $('form.validate_inline').validate();
+    $('div#newsletter_signup form').validate();
     
     // This only works for 1 email per page right now, 
     // so I've set it to the contact page.
