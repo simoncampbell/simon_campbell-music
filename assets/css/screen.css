@@ -43,6 +43,7 @@ body {
 
 /* NAVIGATION ACCESS ---------- */
     ul#nav_access {
+        list-style-type: none;
         position:relative;
         margin:0;
     }
@@ -408,11 +409,13 @@ h6 {
 a {
     color:rgb(255, 255, 255);
     text-decoration:underline;
-    font-weight:bold;
 }
 a:hover,
 a:focus {
     color:rgb(200, 200, 200);
+}
+div#content_pri a {
+    font-weight: bold;
 }
 
 h1 a,
@@ -1065,7 +1068,6 @@ div#footer p.credit {
     div#content_sec h2 {
         color: rgb(255, 255, 255);
         font-size: 20px;
-        font-weight: bold;
     }
     div#content_sec p {
         color: rgb(255, 255, 255);
