@@ -26,6 +26,12 @@
         <priority>0.7</priority> 
     </url>
     <url> 
+        <loc>{site_url}/thirtysix/lyrics-ep/</loc> 
+        <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
+        <changefreq>weekly</changefreq> 
+        <priority>0.7</priority> 
+    </url>
+    <url> 
         <loc>{site_url}/bio/</loc> 
         <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
         <changefreq>weekly</changefreq> 
