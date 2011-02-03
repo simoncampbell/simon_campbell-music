@@ -34,7 +34,7 @@
                 <li>Assistants: <strong>Viktor Sigurjónsson</strong> and <strong>Chris Taylor</strong></li>
                 <li>Recorded with love at <strong>Gracieland Studio</strong></li>
                 <li>Mastered with love by <strong>Jon Davis at Metropolis</strong></li>
-                <li>Cover graphics by <strong>Martyn Cain</strong></li>
+                <li>Cover graphics by <strong>Funnel Creative</strong></li>
                 <li>Photography by <strong>Phil Kneen</strong></li>
             </ul>
         </div><!-- // .widget -->
