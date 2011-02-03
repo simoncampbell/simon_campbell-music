@@ -19,7 +19,7 @@
 
     <div id="promo_block" class="widget">
         <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
-            <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300px" height="205px" alt="ThirtySix album launch">
+            <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300" height="205" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
@@ -56,7 +56,7 @@
         <!-- LOGGED OUT -->
         <h2>From the store</h2>
         <a href="#">
-            <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268px" height="230px" alt="ThirtySix album t-shirt">
+            <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268" height="230" alt="ThirtySix album t-shirt">
         </a>
         <!-- LOGGED IN -->
         <ul class="item_listing">
@@ -96,8 +96,8 @@
             The Simon Campbell Music store currently accepts the following payment options:
         </p>
         <ul>
-            <li><img src="{pv_assets_url}/images/site/icons/visa.jpg" width="28px" height="18px" alt="Visa"></li>
-            <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
+            <li><img src="{pv_assets_url}/images/site/icons/visa.jpg" width="28" height="18" alt="Visa"></li>
+            <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28" height="18" alt="Paypal"></li>
         </ul>
     </div> <!-- // #payments_block -->
     
