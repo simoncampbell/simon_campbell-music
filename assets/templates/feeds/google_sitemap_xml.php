@@ -14,7 +14,25 @@
         <priority>0.7</priority> 
     </url>
     <url> 
+        <loc>{site_url}/thirtysix/history/</loc> 
+        <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
+        <changefreq>weekly</changefreq> 
+        <priority>0.7</priority> 
+    </url>
+    <url> 
+        <loc>{site_url}/thirtysix/lyrics/</loc> 
+        <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
+        <changefreq>weekly</changefreq> 
+        <priority>0.7</priority> 
+    </url>
+    <url> 
         <loc>{site_url}/bio/</loc> 
+        <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
+        <changefreq>weekly</changefreq> 
+        <priority>0.6</priority> 
+    </url>
+    <url> 
+        <loc>{site_url}/bio/gear</loc> 
         <lastmod>{exp:stats}{last_entry_date format="{DATE_W3C}"}{/exp:stats}</lastmod> 
         <changefreq>weekly</changefreq> 
         <priority>0.6</priority> 
