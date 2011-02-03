@@ -897,7 +897,7 @@ div#footer p.credit {
         }
         
             /* EDITORIAL: Bio template */
-            body#bio h3 {
+            body#bio #content_pri h3 {
                 font-size:20px;
                 letter-spacing:0.075em;
                 margin-bottom:0.75em;
