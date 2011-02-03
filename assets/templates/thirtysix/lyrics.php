@@ -3,7 +3,7 @@
     body_id="lyrics"
     section="thirtysix"
     {!-- LG BETTER META OPTIONS BELOW --}
-    title="Lyrics | ThirtySix"
+    title="Album lyrics | ThirtySix"
     title_suffix=""   
     title_prefix=""   
     description=""

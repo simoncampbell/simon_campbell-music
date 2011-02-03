@@ -12,7 +12,7 @@
         <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix &ndash; peruse, preview, purchase</a></li>
         <li{if segment_2 == "history"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/history/">History &ndash; how ThirtySix came to be</a></li>
         <li{if segment_2 == "lyrics"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics/">Album lyrics &ndash; the words behind the music</a></li>
-        <li{if segment_2 == "lyrics_ep"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics_ep/">EP lyrics &ndash; further words of wisdom</a></li>
+        <li{if segment_2 == "lyrics-ep"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics-ep/">EP lyrics &ndash; further words of wisdom</a></li>
         
     </ul><!-- // .navigation_sec -->
     {/if}
