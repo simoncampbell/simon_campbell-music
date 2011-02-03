@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-02-03 09:20:19 -0600
+# Generation Time: 2011-02-03 14:24:49 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -244,7 +244,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=306 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=307 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -554,7 +554,8 @@ VALUES
 	(302,1,1,'jamiepittock','88.97.41.226',1296727040,'Field group Deleted:&nbsp;&nbsp;Journal'),
 	(303,1,7,'gregwood','88.97.41.224',1296731203,'Logged in'),
 	(304,1,1,'jamiepittock','88.97.41.226',1296731703,'Logged in'),
-	(305,1,18,'garrett.winder','173.185.20.98',1296746371,'Logged in');
+	(305,1,18,'garrett.winder','173.185.20.98',1296746371,'Logged in'),
+	(306,1,18,'garrett.winder','173.185.20.98',1296764425,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1058,14 +1059,15 @@ CREATE TABLE `exp_freeform_entries` (
   `message` text NOT NULL,
   PRIMARY KEY (`entry_id`),
   KEY `author_id` (`author_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_entries` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_entries` DISABLE KEYS */;
 INSERT INTO `exp_freeform_entries` (`entry_id`,`group_id`,`weblog_id`,`author_id`,`ip_address`,`form_name`,`template`,`entry_date`,`edit_date`,`status`,`name`,`email`,`message`)
 VALUES
 	(1,1,0,1,'88.97.41.226','freeform_form','contact_form',1296663505,1296663505,'open','Jamie Pittock','jamie@erskinedesign.com','Just testing the contact form.'),
-	(2,1,0,1,'88.97.41.226','freeform_form','contact_form',1296664721,1296664721,'open','Jamie Pittock','jamie@erskinedesign.com','Any underscores this time?');
+	(2,1,0,1,'88.97.41.226','freeform_form','contact_form',1296664721,1296664721,'open','Jamie Pittock','jamie@erskinedesign.com','Any underscores this time?'),
+	(3,3,0,0,'88.97.41.224','freeform_form','contact_form',1296750579,1296750579,'open','Wil Linssen','wil@erskinedesign.com','Loving the site.');
 
 /*!40000 ALTER TABLE `exp_freeform_entries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1118,25 +1120,16 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
-	(38,1296732178,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(37,1296731822,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(35,1296731546,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(36,1296731780,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(34,1296729666,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(33,1296728447,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(31,1296727704,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(32,1296728404,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(30,1296727623,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(29,1296727617,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(28,1296727608,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(39,1296733286,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
-	(40,1296734705,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
+	(43,1296750644,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(44,1296750653,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(42,1296750579,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(41,1296750557,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1224,7 +1217,7 @@ INSERT INTO `exp_global_variables` (`variable_id`,`site_id`,`variable_name`,`var
 VALUES
 	(2,1,'lv_services_google_analytics','<script type=\"text/javascript\">\n\n    var _gaq = _gaq || [];\n    _gaq.push([\'_setAccount\', \'UA-3386644-6\']);\n    _gaq.push([\'_trackPageview\']);\n\n    (function() {\n        var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;\n        ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';\n        var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);\n    })();\n\n</script>',0),
 	(14,1,'lv_services_google_analytics_toggle','On',0),
-	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line <a href=\"mailto:mail@simoncampbell.com\">via email</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br>\nSupertone Records<br>\n<a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a><br>\n+44 7624 245881<br>\n</address>',0),
+	(26,1,'lv_contact_aside','<p><strong>Simon would love to hear from you.</strong> If youâ€™d like to drop him a line, either use the form on this page or drop him a line <a href=\"mailto:mail@simoncampbell.com\">via email</a>.</p>\n<p>If you want to get in touch with Simonâ€™s agent for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br>\nSupertone Records<br>\n<span class=\"email\"><a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a></span><br>\n+44 7624 245881<br>\n</address>',0),
 	(27,1,'lv_contact_form_thanks','<p><strong>Thanks for contacting us. If your message requires a response we will be back to you very shortly.</strong></p>',0),
 	(28,1,'lv_contact_newsletter_thanks','<p><strong>Thanks for subscribing to the Simon Campbell Music newsletter!</strong></p>\n<p>Youâ€™ll soon be receiving updates about Simon\'s musical adventures - and maybe some free goodies!</p>',0),
 	(29,1,'lv_journal_homepage_limit','2',0),
@@ -1871,7 +1864,7 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296674132,1296746371,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296746371,1296764425,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
 	(19,6,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1296657167,1296657167,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
@@ -2552,136 +2545,13 @@ LOCK TABLES `exp_security_hashes` WRITE;
 /*!40000 ALTER TABLE `exp_security_hashes` DISABLE KEYS */;
 INSERT INTO `exp_security_hashes` (`date`,`ip_address`,`hash`)
 VALUES
-	(1296746404,'173.185.20.98','af3c0966e3754c493675dd614605482791d6c4dc'),
-	(1296746404,'173.185.20.98','7c671e1b7618e1480ec2baf2cfa21387b859847e'),
-	(1296746407,'173.185.20.98','0f16e5f9bbd70b22e035770e770e240398bb6854'),
-	(1296746399,'173.185.20.98','af5d8ac7f404089e3afa51f4d35c80b87ccc2b51'),
-	(1296746404,'173.185.20.98','f6421edf579218924aa7d41f69cee81adc7bcf4b'),
-	(1296746392,'173.185.20.98','da762c40ec5b21e338ca8e2b0a7fbd32fbcd0423'),
-	(1296746372,'173.185.20.98','17d5443c80fe08c5bab794fad15953b42da4ef64'),
-	(1296746378,'173.185.20.98','3952f90c483e3346965b1e3263a8762adcb97243'),
-	(1296733380,'88.97.41.226','18434412f8c074d7f81e2a57892edfb30df3d517'),
-	(1296734706,'88.97.41.226','f7a413efa073080687f4d3b23a6e5e225b1cf72f'),
-	(1296746365,'173.185.20.98','a76535bc25d23802910dcbf453c996938d184295'),
-	(1296733287,'88.97.41.226','025f2f1d5d3b8aa038587304075245d6404348ff'),
-	(1296733378,'88.97.41.226','15a120ecaefe1f88821fbdc46f2d195addcec2a4'),
-	(1296733378,'88.97.41.226','600cd985872fafb61fd65d9dec76826beb09e622'),
-	(1296732220,'88.97.41.224','d532b85e52717c491e700fb569d767a7b627300d'),
-	(1296732220,'88.97.41.224','bd5fc55e493b0302d89f50c1b1b9912b301688fb'),
-	(1296733040,'88.97.41.226','11aaa4a4c1bc470d43123ba6ea947d2c619b4eac'),
-	(1296732218,'88.97.41.224','40e829843357e6dbab20813f172adff9c83171b6'),
-	(1296732218,'88.97.41.224','ef4b0fa28d11f14e578c200f90dffec68315ec30'),
-	(1296732220,'88.97.41.224','84c97aba21aedbcfe9fa99e45d19869db40ae339'),
-	(1296732218,'88.97.41.224','91ae640b30b83fd8b5413a3bab8ced2a1f84e642'),
-	(1296732217,'88.97.41.224','a56076b7e73ecc266f384bc8dd0fd550b112dfa2'),
-	(1296732217,'88.97.41.224','d0b794407f4b8dae7fd0fdf11efce4b878b1d41f'),
-	(1296732212,'88.97.41.224','0f1fc14be8d28f73dfceecc794c2eb0e69e8c533'),
-	(1296732212,'88.97.41.224','d3edf216875432743c16f9c7874dde69e7b6257d'),
-	(1296732217,'88.97.41.224','c2026850e57f2f9989229a9915ad1c3980a95813'),
-	(1296732208,'88.97.41.224','243736d4607a7e63ea9969347d13c603b6dba376'),
-	(1296732209,'88.97.41.224','dbbf97973aec0e32b853fb2c4253f94c652a1594'),
-	(1296732212,'88.97.41.224','f8b3a63f8e6cdc8f679c891acb0e007c94f73fe0'),
-	(1296732178,'88.97.41.226','81ec23f7735047f27d3131b6b4a2ea886bcc4e36'),
-	(1296732049,'88.97.41.224','f8695575a30e8862f7a947ab587be0f0c65cefe2'),
-	(1296732042,'88.97.41.224','936ca3c620b1130b64d34be10f183d5f5484b3b7'),
-	(1296732042,'88.97.41.224','1400a177f11af14de4d37b3e90c01762e0938793'),
-	(1296732034,'88.97.41.224','75317e76d920944a37287c50aa57e3214a255348'),
-	(1296732033,'88.97.41.224','49c6b349bf5e37bfc5904d5dabfe173763b51981'),
-	(1296732031,'88.97.41.224','db03e4a9df0b4e2cd8468dcbee7957d15ce816dc'),
-	(1296732022,'88.97.41.224','e2a8460ad48efb544b71fe8b4c275190706c6cb3'),
-	(1296732022,'88.97.41.224','8357a65f10fedaa188cf0738c31e057a873302cc'),
-	(1296732022,'88.97.41.224','2ef71f2f81555f4734988cff8c10cdccf27d5b55'),
-	(1296725747,'88.97.41.226','5f5582c9a32441319108224af93a008e0fe3ffb0'),
-	(1296732041,'88.97.41.224','7ec0dec16dd3df2c8e15d8d054734c6dc5cbe426'),
-	(1296732042,'88.97.41.224','75a5e20e76d2b4bf26bc86e8cdfcb3b0fa14b3b8'),
-	(1296674198,'75.89.69.119','7f4f15161c0dc3f71065ad30192fad4f1d7e3a3d'),
-	(1296674192,'75.89.69.119','098ee2d0a2d030dba15a418ad529aaaeacb1cd90'),
-	(1296674183,'75.89.69.119','5f5485e060976ea4387e59550a0c352d0a40fad7'),
-	(1296674177,'75.89.69.119','7f7efab2b5621ebf5a2572f001e72717b0208dbc'),
-	(1296674177,'75.89.69.119','1238e7f7a180c7fe0182beec87013f449b4f1e7f'),
-	(1296674177,'75.89.69.119','49ab4ca53f06aa27eeb43c34e81c5f0c9ed29b60'),
-	(1296674175,'75.89.69.119','5c36262fda9b1220edfcc80abc472a7d6b93e850'),
-	(1296674175,'75.89.69.119','82e1184154586231cbd39d76e24bb0793f0710b0'),
-	(1296674175,'75.89.69.119','95309e9e8f4d6dd2b6419d060e1c16ca214d9b1a'),
-	(1296674161,'75.89.69.119','396af66a5c6d9d98ff843d5c2051f2ef484fb5c0'),
-	(1296674169,'75.89.69.119','af037b1bd92e6f1adb180eda9fddc305282b199f'),
-	(1296674173,'75.89.69.119','0a889bd05f473a8f481d5aee799078efbfdf6cca'),
-	(1296674154,'75.89.69.119','54481622a47676c4e780b037c435a30066c28891'),
-	(1296674151,'75.89.69.119','6cf3501449247884f72aea0318a9aa8241b69e86'),
-	(1296674151,'75.89.69.119','f4de10c0a247db94933aa93e7de7d4dfc11aeded'),
-	(1296674151,'75.89.69.119','dcd651130844e6409daeb4e2e538c96aeae1d815'),
-	(1296674149,'75.89.69.119','22a75f65a939973bb935a4adcd5279f77ec5dc95'),
-	(1296674144,'75.89.69.119','64b630db95dad7ce3f3c6e25bd46aca01921e7a3'),
-	(1296674139,'75.89.69.119','a82be19eb6c3e9bd32d272eb9b12162d4ba5b248'),
-	(1296674134,'75.89.69.119','af408daced43abdf0c0ae1016c89f8960fa5a483'),
-	(1296674130,'75.89.69.119','ee167d4d2d5c4e926dd5bddbbc254ba815b96e32'),
-	(1296732003,'88.97.41.224','430750e79fc4019ef2ca2f3c8e9b045ffd885cba'),
-	(1296732000,'88.97.41.224','651c4ebaeea73813a4d61cc95740ac04487a2bc7'),
-	(1296731822,'88.97.41.226','f1d152427d0b640002532eac0d956999bd75eb0a'),
-	(1296731269,'88.97.41.224','96222bd3979a1b777ee122fc221acf4358ad3e92'),
-	(1296731269,'88.97.41.224','dfe01bf13a883d041305a6401cffa2ab2ff1eb2f'),
-	(1296731547,'88.97.41.226','8762ab2e7c4afc7407f30df6eaa3b2b4cb6310fd'),
-	(1296731696,'88.97.41.226','a104864ff7b971ef871960a80414525ff80315f7'),
-	(1296731706,'88.97.41.226','2019ae36fd27798bff8da16e200cf51596668938'),
-	(1296731780,'88.97.41.226','8e0d69c1b1c8ae0f9c4761aaeac28e56da7fda5e'),
-	(1296731269,'88.97.41.224','a46915f566b20229d5721197a12e9f8ab621acd5'),
-	(1296731267,'88.97.41.224','8bf9d1e3e31762220fb9ee8dac3d5be1f2c8fcd3'),
-	(1296731244,'88.97.41.224','5fd8701c645bca9bff2b2711d79dd13c5827b7f5'),
-	(1296731234,'88.97.41.224','66e609b65b04757b9e71331f90b473600297dc91'),
-	(1296731224,'88.97.41.224','fedd96326ffccb4472d6f83bff0d6dcec7265e73'),
-	(1296731206,'88.97.41.224','92243c626d5cfea50255c713f4c29386187db653'),
-	(1296731204,'88.97.41.224','752c745895bcc5c58572580fb6a0e7ad761c338f'),
-	(1296731200,'88.97.41.224','ebedaff7bf4974b0ea30824e0dd8f2021a3edc2a'),
-	(1296660788,'75.89.69.119','8d4bc418eaa5746d9ef2fc7ebeb2af9502b098fe'),
-	(1296660758,'75.89.69.119','601b10a508773a22359dd81d45369c7b2b532db6'),
-	(1296731224,'88.97.41.224','724a94b28ddd07784c397aee66d80c795ce0a05c'),
-	(1296729666,'88.97.41.226','c344881ac6cbbef53ee78cf1ae59362e1b8b5207'),
-	(1296728447,'88.97.41.226','b4d241327add5e6c117ace85a5bd3e6b084bf9d0'),
-	(1296728405,'88.97.41.226','2f093d9aa3fcfed20620c6d6a6eb1647a104ff3c'),
-	(1296727705,'88.97.41.226','7290fb4499a1a4c1931629ea34f94071d2fc8037'),
-	(1296727623,'88.97.41.226','a48a8da1e638386d6673e3e3d0e254cf6d427f58'),
-	(1296727617,'88.97.41.226','f807c753d7f6d5aafb1ba3a6bd68f31ed632c260'),
-	(1296727608,'88.97.41.226','16b714c6c41b1aab4720273a3d37e88ff20eed0f'),
-	(1296727168,'88.97.41.226','3f782ec39cdd5fa7353710b743674f9231747be2'),
-	(1296727155,'88.97.41.226','5c6943b1f53d68de65f7497372edbc7bcdb37647'),
-	(1296727145,'88.97.41.226','f6f0b18c1daf7e8bfe9230580d9c44bb59f42790'),
-	(1296727145,'88.97.41.226','929a01bbec087d03698ada23befac989369b59dc'),
-	(1296731224,'88.97.41.224','06f1e6efa716e105feb30e748896a83b304de6b7'),
-	(1296731214,'88.97.41.224','74e1023dc4e1f25aa0883bfe30b718942848e20a'),
-	(1296731212,'88.97.41.224','9d74ae6e54523fb77d53725f8fea3e0692571df6'),
-	(1296727143,'88.97.41.226','f6e55204fc1443d3a3185a09ff3261892dceb055'),
-	(1296727137,'88.97.41.226','d7cc47ed2e3244922a61c510f1e54b2327ddd083'),
-	(1296727137,'88.97.41.226','6557de0de92c87709387f906783d765142170535'),
-	(1296727135,'88.97.41.226','ad9f456b74c576ad90e97b1943e4fd84f2534690'),
-	(1296727135,'88.97.41.226','eea59827678544e2828ac5d3f997f750f0ac4391'),
-	(1296727133,'88.97.41.226','2016bfff4f2fb67d0a2b65152ccc971272a91bab'),
-	(1296727130,'88.97.41.226','a319e3bc303955515811223637205022277d2933'),
-	(1296727130,'88.97.41.226','75f3981fbebaa3305e41a43078a27fa81ed30583'),
-	(1296727128,'88.97.41.226','d4fd8e141761e2341e73fa9a025eb2b504c7b3e4'),
-	(1296727128,'88.97.41.226','d4aec8fdafc6adc43b57165d24586315956db357'),
-	(1296727126,'88.97.41.226','2bdd6f54ea2c7548e1fdcd32326867a3e348bdc7'),
-	(1296727122,'88.97.41.226','3576da29568364014f46842d2ec12e470c1ba75d'),
-	(1296727122,'88.97.41.226','ebee51219202196843ebd7b190da9c8bc8213b9a'),
-	(1296727109,'88.97.41.226','1bc8144084054ac9b09e279ac3e47e96a70d4ef0'),
-	(1296727083,'88.97.41.226','79cd3bdb045deee87aa4e803a39f7c31d2f59911'),
-	(1296727077,'88.97.41.226','5d2c4a13713f4bd4fb53aead166fde67de26a7e6'),
-	(1296727066,'88.97.41.226','a8b880fd021bf79df6ce474b3ca6b8146e8119f9'),
-	(1296727057,'88.97.41.226','1dda97f7b65e47e8d17cd0d9f511dfb56e664a22'),
-	(1296727044,'88.97.41.226','132045fd0fe23c5d9b38dac96d119a30482a80fb'),
-	(1296727039,'88.97.41.226','a1fc902c631c321706d4ac1a016fc66d4bdfc2da'),
-	(1296727031,'88.97.41.226','b58fc1b8861789c0d4bb5a3c8f8799ab494caff3'),
-	(1296727027,'88.97.41.226','68e1e4274a1473a370ded865ed267f489fbf5e17'),
-	(1296727017,'88.97.41.226','c2eae6909bcb8c5e0312356b30655d365accaacc'),
-	(1296726976,'88.97.41.226','1816cc061aa5b38382cf1c148abfea91b06a83ce'),
-	(1296726965,'88.97.41.226','05f88cb2793c9bc60d5f0bd1876f643fdd94e4d6'),
-	(1296726957,'88.97.41.226','87f5027efe60f21fdb6d67d12d3a5ee9bd9d88f0'),
-	(1296726957,'88.97.41.226','5ab271399ff789294735846d46b1b4a0cff0f8ea'),
-	(1296726938,'88.97.41.226','f0c2b2906f7c0255499182679835aa8706cc6d61'),
-	(1296726928,'88.97.41.226','813ce8d55aa83237ecbb784d906785d7b49fe4f2'),
-	(1296726917,'88.97.41.226','4493d6e521b090faaa212004f58d24e491fa4c7a'),
-	(1296726911,'88.97.41.226','d83cffb2d5fcced58994ff4f7b97b9a74749e339'),
-	(1296726904,'88.97.41.226','b45f820c1059d8b2b61d065f5506c227c583e39d'),
-	(1296726874,'88.97.41.226','25563b64fedcce80b2c438cb35edffd08daa23e5');
+	(1296764527,'173.185.20.98','091fb5aa5fb3bb9d6564c5ea2f3641bfdb5b6884'),
+	(1296764474,'173.185.20.98','36312f54e0464bf66bcbe887aacec6291799e276'),
+	(1296764426,'173.185.20.98','1b1dbc6928d3a147039fa5388f64f4172661af11'),
+	(1296764423,'173.185.20.98','be1ff884134afd848d746ecdf3c838a64c81384e'),
+	(1296750653,'88.97.41.224','a002e1d4a2c2b01155cda9ad452ecc74dfe810da'),
+	(1296750644,'88.97.41.224','ae8954cd52cbeb6e033c4d4c653815c8cdb34e62'),
+	(1296750579,'88.97.41.224','1d008d3c2fa22f622fafd0178757966152975cf0');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2709,11 +2579,9 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('f3c4afba9c6044309fae127ff110c27580c40c41',1,7,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296732220),
-	('0adae5b422c8deaf162f713076411f5c45aa9f2a',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296734713),
 	('e5e6685c103458efd1051ac658d1dccff8b97a47',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296746408),
 	('68cf7e89d6e8deee43b1ad9e028c0b821daabdf0',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296746433),
-	('9e62016d4c0e9681900e677c9537a6497b1d08eb',1,1,1,'88.97.41.226','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296728586);
+	('d4d1900bdaae470f30780ea06d81280fb2b36c36',1,18,1,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296764528);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
