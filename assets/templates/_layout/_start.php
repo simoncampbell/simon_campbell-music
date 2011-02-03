@@ -107,7 +107,7 @@
 
 <ul id="nav_access">
     <li><a href="#navigation_pri">Skip to navigation</a></li>
-    <li><a href="#content_wrapper">Skip to content</a></li>
+    <li><a href="#content_pri">Skip to content</a></li>
 </ul>
 
 <div id="navigation_network" class="music">
