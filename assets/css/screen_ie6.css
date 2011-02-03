@@ -1,18 +1,21 @@
 div#navigation_network {
-/*    margin-top: -42px;*/
+    margin-top: -30px;
+}
+div#navigation_network ul {
+    margin-top: 10px;
 }
 div#navigation_network ul li {
     display: inline;
-    position: relative;
-    top: -15px;
+}
+div#navigation_network ul li#nn_social {
+    margin-bottom: 10px;
+    margin-top: -28px;
 }
 div#navigation_network ul a {
     display: inline;
     padding: 12px 4px;
 }
-div#navigation_network ul li#nn_rss {
-    margin-left: 402px;
-}
+
 ul#gallery_grid {
     margin-left: -5px;
 }

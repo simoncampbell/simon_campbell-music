@@ -5,14 +5,12 @@ div#navigation_network {
 div#navigation_network ul li {
     display: inline;
 }
-div#navigation_network ul li#nn_rss,
-div#navigation_network ul li#nn_twitter,
-div#navigation_network ul li#nn_facebook {
+div#navigation_network ul {
     position: relative;
-    top: -12px;
 }
-div#navigation_network ul li#nn_rss {
-    margin-left: 408px;
+div#navigation_network li#nn_social {
+    position: absolute;
+    right: 15px;
 }
 
 /* HOMEPAGE INTRO IMAGE */
