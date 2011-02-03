@@ -677,7 +677,6 @@ div#footer p.credit {
         
         /* POSTS */
         div#posts {
-            float: left;
             padding-bottom: 0;
         }
         div#posts p.more {
@@ -995,7 +994,7 @@ div#footer p.credit {
         }
         body.thirtysix div#content_pri .widget:first-child {
             padding: 20px 15px;
-            width:300px;
+            width:320px;
         }
         body.thirtysix div#content_pri .widget:first-child h2 {
             margin-bottom: 0;
@@ -1062,6 +1061,23 @@ div#footer p.credit {
         }
         body.store_landing div#content_pri input.submit {
             float: right;
+        }
+        
+        /* NEWSLETTER LANDING */
+        body.newsletter div#content_pri {
+            border-color: #5B5B5B;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-style: dashed;
+            border-width: 1px;
+            margin: 0 0 100px 170px;
+            padding: 25px 18px 20px;
+            width: 582px;            
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+        }
+        body.newsletter div#content_pri div.half:first-child {
+            border-right: 1px dashed #5B5B5B;
         }
         
     /* CONTENT SEC */
@@ -1209,10 +1225,10 @@ div#footer p.credit {
     }
     div#album_promo_inline div {
         float: right;
-        width: 125px;
+        width: 135px;
         position: absolute;
         top: 15px;
-        right: 50px;
+        right: 40px;
     }
     div#album_promo_inline div h3 {
         margin-bottom: 16px;
