@@ -2,16 +2,16 @@
     
     {if segment_1 == "bio"}
     <ul id="navigation_sec" class="item_listing">
-        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/bio/">Biography</a></li>
-        <li{if segment_2 == ""} class="gear"{/if}><a href="{pv_site_url}/bio/gear/">Gear list</a></li>
+        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/bio/">Biography &ndash; the man behind the music</a></li>
+        <li{if segment_2 == "gear"} class="cur"{/if}><a href="{pv_site_url}/bio/gear/">Gear list &ndash; the collection</a></li>
     </ul><!-- // .navigation_sec -->
     {/if}
     
     {if segment_1 == "thirtysix"}
     <ul id="navigation_sec" class="item_listing">
-        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix</a></li>
-        <li{if segment_2 == "history"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/history/">History</a></li>
-        <li{if segment_2 == "lyrics"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics/">Lyrics</a></li>
+        <li{if segment_2 == ""} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix &ndash; peruse, preview, purchase</a></li>
+        <li{if segment_2 == "history"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/history/">History &ndash; how ThirtySix came to be</a></li>
+        <li{if segment_2 == "lyrics"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/lyrics/">Lyrics &ndash; the words behind the music</a></li>
     </ul><!-- // .navigation_sec -->
     {/if}
 
