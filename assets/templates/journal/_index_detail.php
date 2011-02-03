@@ -74,8 +74,7 @@
                     <iframe 
                         src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}?portrait=0&amp;color=f69b55" 
                         width="580" 
-                        height="325" 
-                        frameborder="0">
+                        height="325">
                     </iframe>
                 
                 {/if}
