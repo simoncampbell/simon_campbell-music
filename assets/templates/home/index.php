@@ -17,21 +17,21 @@
     <div id="content_pri">
         
         <div id="intro" class="widget">
-            <a href="{pv_site_url}/thirtysix/"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
+            <a href="{pv_site_url}/thirtysix/"><img src="{pv_assets_url}/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
             <h2><a href="{pv_site_url}/thirtysix/"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
             <p>
                 The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a United Kingdom and mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
             </p>
             <small><strong>&ldquo;Brother&rdquo;</strong> Lead single preview</small>
             <audio id="audio_player" controls>
-                <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
-                <source src="/assets/audio/brother.ogg" type="audio/ogg" />
+                <source src="{pv_assets_url}/audio/brother.mp3" type="audio/mpeg" />
+                <source src="{pv_assets_url}/audio/brother.ogg" type="audio/ogg" />
             </audio> <!-- // #audio_player -->
             <script>
                 jwplayer("audio_player").setup({
                     players: [
                         { type: "html5" },
-                        { type: "flash", src: "/assets/jwplayer/player.swf" }
+                        { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
                     ],
                     provider: "sound",
                     controlbar: "bottom",
@@ -41,7 +41,7 @@
                     width: 460,
                     height: 29,
                     icons: false,
-                    skin: "/assets/jwplayer/glow.zip"
+                    skin: "{pv_assets_url}/jwplayer/glow.zip"
                 });
             </script>
         </div> <!-- // #intro -->

@@ -31,14 +31,14 @@
         <div class="widget" id="album_promo_inline">
             <h3>Preview the lead single, <strong>&ldquo;Brother&rdquo;</strong></h3>
             <audio id="audio_player" controls>
-                <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
-                <source src="/assets/audio/brother.ogg" type="audio/ogg" />
+                <source src="{pv_assets_url}/audio/brother.mp3" type="audio/mpeg" />
+                <source src="{pv_assets_url}/audio/brother.ogg" type="audio/ogg" />
             </audio> <!-- // #audio_player -->
             <script>
                 jwplayer("audio_player").setup({
                     players: [
                         { type: "html5" },
-                        { type: "flash", src: "/assets/jwplayer/player.swf" }
+                        { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
                     ],
                     provider: "sound",
                     controlbar: "bottom",
@@ -48,7 +48,7 @@
                     width: 460,
                     height: 29,
                     icons: false,
-                    skin: "/assets/jwplayer/glow.zip"
+                    skin: "{pv_assets_url}/jwplayer/glow.zip"
                 });
             </script>
             <div>

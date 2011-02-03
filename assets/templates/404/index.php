@@ -16,8 +16,8 @@
     
     <div id="content_pri">
         
-        <h2>Woops! We couldn't find this page.</h2>
-        <p>Sorry, this page is either missing or doesn&rsquo;t exist. If you feel this is in error, please <a href="/contact/">get in touch</a>.</p>
+        <h2>Whoops! We couldn't find this page.</h2>
+        <p>Sorry, this page is either missing or doesn&rsquo;t exist. If you feel this is in error, please <a href="{pv_site_url}/contact/">get in touch</a>.</p>
 
     </div> <!-- // #content_pri -->
     

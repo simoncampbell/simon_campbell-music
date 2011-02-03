@@ -54,7 +54,7 @@
         <!-- LOGGED OUT -->
         <h2>From the store</h2>
         <a href="#">
-            <img src="/assets/images/content/widget_store.jpg" width="268px" height="230px" alt="ThirtySix album t-shirt">
+            <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268px" height="230px" alt="ThirtySix album t-shirt">
         </a>
         <!-- LOGGED IN -->
         <ul class="item_listing">
@@ -94,8 +94,8 @@
             The Simon Campbell Music store currently accepts the following payment options:
         </p>
         <ul>
-            <li><img src="/assets/images/site/icons/visa.jpg" width="28px" height="18px" alt="Visa"></li>
-            <li><img src="/assets/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
+            <li><img src="{pv_assets_url}/images/site/icons/visa.jpg" width="28px" height="18px" alt="Visa"></li>
+            <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28px" height="18px" alt="Paypal"></li>
         </ul>
     </div> <!-- // #payments_block -->
     

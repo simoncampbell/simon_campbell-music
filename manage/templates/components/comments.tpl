@@ -36,7 +36,7 @@
     	<div>
 			<input type="hidden" name="save_info" value="yes" {save_info} />
 			<input type="hidden" name="notify_me" value="yes" {notify_me} />
-        	<input type="image" src="{pv_site_url}/assets/images/site/comment_form_submit.gif" />
+        	<input type="image" src="{pv_assets_url}/images/site/comment_form_submit.gif" />
     	</div>
 
 	</fieldset>
