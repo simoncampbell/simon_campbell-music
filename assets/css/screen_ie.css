@@ -16,10 +16,6 @@ div#navigation_network ul li#nn_rss {
 div.gallery_photo p.photo_meta {
     background: #000;
 }
-ul#gallery_grid li.odd {
-    margin-left: 10px;
-    margin-right: 10px;
-}
 #content_pri div.gallery_photo img,
 #content_pri ul#gallery_grid a img {
     background: #292929;

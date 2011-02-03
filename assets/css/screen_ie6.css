@@ -13,7 +13,9 @@ div#navigation_network ul a {
 div#navigation_network ul li#nn_rss {
     margin-left: 402px;
 }
-
+ul#gallery_grid {
+    margin-left: -5px;
+}
 div#content_pri,
 #content_sec .widget {
     background: none;
