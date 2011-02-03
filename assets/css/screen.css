@@ -553,6 +553,12 @@ ul#navigation_sec li:nth-of-type(odd) {
 ul#navigation_sec a {
     font-weight: normal;
 }
+ul#navigation_sec li.cur {
+    background: rgba(255, 255, 255, 0.075);
+}
+ul#navigation_sec li.cur a {
+    font-weight: bold;
+}
 
 /* @end */
 
@@ -683,6 +689,7 @@ div#footer p.credit {
             border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
             margin-bottom: 20px;
             padding-bottom: 20px;
+            width: 100%;
         }
         div#posts div.post:last-child {
             border: none;
@@ -989,7 +996,7 @@ div#footer p.credit {
         }
         body.thirtysix div#content_pri .widget:first-child {
             padding: 20px 15px;
-            width:300px;
+            width:320px;
         }
         body.thirtysix div#content_pri .widget:first-child h2 {
             margin-bottom: 0;
@@ -1039,7 +1046,7 @@ div#footer p.credit {
             border-right: 1px dashed rgba(255, 255, 255, 0.3);
             margin: 0 0 0 5px;
             padding: 0 20px 0 0;
-            width: 280px;
+            width: 200px;
         }
         body.store_landing div#content_pri img {
             float: right;
@@ -1220,10 +1227,10 @@ div#footer p.credit {
     }
     div#album_promo_inline div {
         float: right;
-        width: 125px;
+        width: 135px;
         position: absolute;
         top: 15px;
-        right: 50px;
+        right: 40px;
     }
     div#album_promo_inline div h3 {
         margin-bottom: 16px;
