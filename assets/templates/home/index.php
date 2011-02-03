@@ -60,7 +60,7 @@
                     <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
                     <ul class="post_meta">
                         <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
-                        <li id="pm_twitter"><a href="http://twitter.com/share?url={site_url}{comment_url_title_auto_path}&amp;text=&quot;{title}&quot;%20on%20Simon%20Campbell%20Music&amp;via=simoncampbell&amp;related=simoncampbell">Share on Twitter</a></li>
+                        <li id="pm_twitter"><a href="http://twitter.com/share?url={site_url}{comment_url_title_auto_path}&amp;text=&quot;{title}&quot;&amp;via=simoncampbell&amp;related=simoncampbell">Share on Twitter</a></li>
                         <li id="pm_facebook"><a href="http://www.facebook.com/sharer.php?u={site_url}{comment_url_title_auto_path}">Share on Facebook</a></li>
                     </ul>
 
