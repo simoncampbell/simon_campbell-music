@@ -27,14 +27,14 @@
             <p>
                 If you'd like to be notified the moment the store opens, please subscribe to the Simon Campbell Music newsletter.
             </p>
-            <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+            <form id="newsletter_form" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
                 <fieldset>
                     <div>
                         <label for="email">Email Address</label>
                         <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email">
                     </div>
                 </fieldset>
-                <input type="submit" value="Register" class="submit" />
+                <input type="submit" value="Subscribe" class="submit" />
             </form>
         </div><!-- // .widget -->
         
