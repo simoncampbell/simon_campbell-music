@@ -62,3 +62,7 @@ body.newsletter div#content_pri div.first {
     padding-right: 20px;
     width: 250px;
 }
+div#content_sec input.submit {
+    height: 21px;
+    margin-top: -22px;
+}
