@@ -76,6 +76,11 @@ body.store_landing div#content_pri input.submit {
     margin-right: 6px;
 }
 
+/* NEWSLETTER LANDING */
+body.newsletter div#content_pri form input.submit {
+    margin-right: 24px;
+}
+
 /* MISCELLANEOUS RGBA BACKGROUNDS/BORDERS */
 #content_pri img,
 #content_pri iframe,

@@ -54,3 +54,9 @@ div#posts p#pagination a.cur {
     font-weight: bold;
     text-decoration: underline;
 }
+body.newsletter div#content_pri div.first {
+    border-right: 1px dashed #5B5B5B;
+    margin-right: 20px;
+    padding-right: 20px;
+    width: 250px;
+}

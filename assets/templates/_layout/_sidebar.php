@@ -106,9 +106,9 @@
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>
         <p>
-            Sign up to receive regular updates on the album and Simon's upcoming events.
+            Sign up to receive regular updates on the album and Simon&rsquo;s upcoming events.
         </p>
-        <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+        <form class="validate_inline" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
             <fieldset>
                 <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email" value="please enter email address" />
                 <!-- NOTE: Height of submit button is messed up in firefox -->
