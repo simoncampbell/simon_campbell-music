@@ -992,7 +992,7 @@ div#footer p.credit {
         }
         body.thirtysix div#content_pri .widget:first-child {
             padding: 20px 15px;
-            width: 285px;
+            width:300px;
         }
         body.thirtysix div#content_pri .widget:first-child h2 {
             margin-bottom: 0;
