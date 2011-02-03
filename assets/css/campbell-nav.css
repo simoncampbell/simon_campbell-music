@@ -46,9 +46,13 @@
         div#navigation_network ul li#nn_simon a {
             padding-left: 0;
         }
-        
-        div#navigation_network ul li#nn_rss {
-            margin-left: 440px;
+        div#navigation_network ul li ul {
+            margin-top: 14px;
+            width: auto;
+        }
+        div#navigation_network ul li#nn_social {
+            float: right;
+            margin-right: 15px;
         }
         div#navigation_network ul li#nn_rss a,
         div#navigation_network ul li#nn_twitter a,

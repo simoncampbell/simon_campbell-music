@@ -115,9 +115,13 @@
         <li id="nn_simon"><a href="http://simoncampbell.com">Simon Campbell</a></li>
         <li id="nn_music" class="cur"><a href="http://music.simoncampbell.com">Music</a></li>
         <li id="nn_blog"><a href="http://blog.simoncampbell.com">Blog</a></li>
-        <li id="nn_rss"><a href="{lv_services_master_rss}">RSS</a></li>
-        <li id="nn_twitter"><a href="{lv_services_twitter_url}">Twitter</a></li>
-        <li id="nn_facebook"><a href="{lv_services_facebook_url}">Facebook</a></li>
+        <li id="nn_social"><span class="hide">Follow me</span>
+            <ul>
+                <li id="nn_rss"><a href="{lv_services_master_rss}">RSS</a></li>
+                <li id="nn_twitter"><a href="{lv_services_twitter_url}">Twitter</a></li>
+                <li id="nn_facebook"><a href="{lv_services_facebook_url}">Facebook</a></li>
+            </ul>
+        </li>
     </ul>
 </div><!-- // #navigation_network -->
 
