@@ -16,11 +16,19 @@
     
     <div id="content_pri">
         <div class="half">
+            {if segment_2 == 'thanks'}
             <h3>Thanks!</h3>
             <p>Thanks for subscribing to the Simon Campbell Music newsletter! You'll receive all the latest news and goodies very soon!</p>
+            {/if}
+            {if segment_2 == ''}
+            <p>
+                If you want to keep up with the latest news from Simon, including some free goodies, please sign up to his newsletter.
+            </p>
+            {/if}
         </div>
         <div class="half">
-            <h3>Newsletter signup</h3>
+            {if segment_2 == ''}
+            <h3>Newsletter sign up</h3>
             <form class="validate_inline" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
                 <fieldset>
                     <div>
@@ -30,6 +38,7 @@
                 </fieldset>
                 <input type="submit" value="Subscribe" class="submit" />
             </form>
+            {/if}
         </div>
     </div> <!-- // #content_pri -->
 

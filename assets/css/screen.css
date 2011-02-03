@@ -1083,6 +1083,7 @@ div#footer p.credit {
         body.newsletter div#content_pri div.half:first-child {
             border-right: 1px dashed #5B5B5B;
             margin-right: 20px;
+            min-height: 125px;
             padding-right: 20px;
             width: 250px;
         }
