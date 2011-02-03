@@ -21,7 +21,7 @@
         </div>
         <div class="half">
             <h3>Newsletter signup</h3>
-            <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+            <form class="validate_inline" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
                 <fieldset>
                     <div>
                         <label for="email">Email Address</label>

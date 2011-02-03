@@ -1051,16 +1051,20 @@ div#footer p.credit {
             margin-right: 5px;
         }
         body.store_landing div#content_pri form {
-            margin-left: 20px;
+            margin-left: 15px;
         }
         body.store_landing div#content_pri label {
             font-size: 12px;
+        }
+        body.store_landing div#content_pri label.error {
+            width: auto;
         }
         body.store_landing div#content_pri input[type="text"] {
             width: 148px;
         }
         body.store_landing div#content_pri input.submit {
             float: right;
+            margin-right: 4px;
         }
         
         /* NEWSLETTER LANDING */
