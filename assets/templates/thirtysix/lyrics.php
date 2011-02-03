@@ -145,7 +145,7 @@
                 </p>
                 <p>
                     Stumble through life, with nowhere to go,<br />
-                    How can I help, when you always say no?,<br />
+                    How can I help, when you always say no?<br />
                     Looking towards, the future you must,<br />
                     Find yourself friends, in who you can trust
                 </p>
