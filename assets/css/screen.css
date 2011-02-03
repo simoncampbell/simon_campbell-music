@@ -1071,13 +1071,26 @@ div#footer p.credit {
             border-width: 1px;
             margin: 0 0 100px 170px;
             padding: 25px 18px 20px;
-            width: 582px;            
+            width: 582px;
             -moz-border-radius: 4px;
             -webkit-border-radius: 4px;
             border-radius: 4px;
         }
         body.newsletter div#content_pri div.half:first-child {
             border-right: 1px dashed #5B5B5B;
+            margin-right: 20px;
+            padding-right: 20px;
+            width: 250px;
+        }
+        body.newsletter div#content_pri form {
+            margin-top: 0;
+        }
+        body.newsletter div#content_pri form input[type="text"] {
+            width: 160px;
+        }
+        body.newsletter div#content_pri form input.submit {
+            float: right;
+            margin-right: 20px;
         }
         
     /* CONTENT SEC */
