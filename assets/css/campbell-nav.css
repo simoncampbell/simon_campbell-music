@@ -13,7 +13,8 @@
         width: 940px;
     }
     div#navigation_network ul li {
-        display: inline-block;
+        display: inline;
+        float: left;
         font-size: 15px;
         line-height: 1;
         text-transform: uppercase;

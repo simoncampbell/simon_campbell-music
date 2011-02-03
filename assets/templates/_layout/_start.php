@@ -110,7 +110,7 @@
     <li><a href="#content_pri">Skip to content</a></li>
 </ul>
 
-<div id="navigation_network" class="music">
+<div id="navigation_network" class="clearfix music">
     <ul>
         <li id="nn_simon"><a href="http://simoncampbell.com">Simon Campbell</a></li>
         <li id="nn_music" class="cur"><a href="http://music.simoncampbell.com">Music</a></li>
