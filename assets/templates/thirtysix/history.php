@@ -62,10 +62,10 @@
                 <li>Produced and arranged by <strong>Simon Campbell</strong></li>
                 <li>Engineered and co-produced by <strong>Stephen Boyce-Buckley</strong></li>
                 <li>Assistants were <strong>Viktor Sigurj&oacute;nsson</strong> and <strong>Chris Taylor</strong></li>
-                <li>Recorded with love at <strong>Gracieland Studio</strong></li>
-                <li>Mastered with love by <strong>John Davis</strong> at Metropolis Mastering</li>
-                <li>Cover graphics by <strong>Funnel Creative</strong></li>
-                <li>Photography by <strong>Phil Kneen</strong></li>
+                <li>Recorded with love at <strong><a href="http://www.gracieland.co.uk/">Gracieland Studio</a></strong></li>
+                <li>Mastered with love by <strong>John Davis</strong> at <a href="http://www.metropolis-group.co.uk/services.php?m=1&amp;p=8">Metropolis Mastering</a></li>
+                <li>Cover graphics by <strong><a href="http://www.funnelcreative.co.uk/">Funnel Creative</a></strong></li>
+                <li>Photography by <strong><a href="http://www.philkneen.com/">Phil Kneen</a></strong></li>
         </div><!-- // .widget -->
         
     </div> <!-- // #content_pri -->
