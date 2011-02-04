@@ -102,7 +102,7 @@
     </div> <!-- // #payments_block -->
     
     --}
-    
+    {if segment_1 != "thirtysix"}
     <div id="newsletter_signup" class="widget">
         <h2>Newsletter</h2>
         <p>
@@ -117,5 +117,6 @@
             </fieldset>
         </form>
     </div> <!-- // #newsletter_signup -->
+    {/if}
     
 </div> <!-- // #content_sec -->

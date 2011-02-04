@@ -1013,6 +1013,70 @@ div#footer p.credit {
             padding: 15px 60px;
             width: auto;
         }
+        body.thirtysix div#content_pri .widget:last-child {
+            margin-bottom:0;
+        }
+        body.thirtysix div#free_download,
+        body.thirtysix div#journey {
+            overflow:hidden;
+            position:relative;
+        }
+        
+        body.thirtysix div#free_download div {
+            float:left;
+            width:360px;
+        }
+        body.thirtysix div#free_download form {
+            float:right;
+            margin:0;
+            position:absolute;
+            right:40px;
+            top:15px;
+            width:135px;
+            margin-bottom:10px;
+        }
+        body.thirtysix div#free_download form label {
+            float:none;
+            font-weight:bold;
+            width:auto;
+            display:block;
+            margin:0 0 5px 0;
+            padding:0;
+            text-align:left;
+        }
+        
+        body.thirtysix div#journey div {
+            float:left;
+            width:360px;
+        }
+        body.thirtysix div#journey ul.social {
+            float:right;
+            width:145px;
+            position:absolute;
+            right:30px;
+        }
+        body.thirtysix div#journey ul.social {
+            list-style:none;
+        }
+        body.thirtysix div#journey ul.social li.twitter a,
+        body.thirtysix div#journey ul.social li.facebook a {
+            background-position: 0 2px;
+            background-repeat: no-repeat;
+            margin: 0 0 10px 0;
+            padding: 0 0 0 20px;
+            display:block;
+        }
+        body.thirtysix div#journey ul.social li.twitter a {
+            background-image: url(../images/site/nav/network/nn_twitter.png);
+        }
+        body.thirtysix div#journey ul.social li.facebook a {
+            background-image: url(../images/site/nav/network/nn_facebook.png);
+        }
+        
+        body.thirtysix div#free_download form input[type="text"] {
+            width:100px;
+            margin-bottom:10px;
+        }      
         body.thirtysix div#content_pri .widget:first-child {
             padding: 15px 15px;
             width:320px;
