@@ -111,7 +111,7 @@
                 
             </div> <!-- // .post -->
             
-            <p class="more"><a href="{pv_site_url}/journal/">Back to all</a></p>
+            <p class="more"><a href="{pv_site_url}/journal/">&lsaquo;&lsaquo; Back to the journal</a></p>
             
         </div><!-- // #posts -->
         
