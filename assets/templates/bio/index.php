@@ -64,11 +64,11 @@
             <h3>Quotes</h3>
             <blockquote>
                 <p>Simon Campbell, uncompromisingly true to the spirit and a lifetime of achievements, toil, woes, lows, love and highs in a single album. Does more than it says on the tin. Open and play with care. No bollocks to that, with unbridled abandon! But best off, go and see him live. Truly awesome.</p>
-                <cite>&mdash; Lenny Conroy, Triskell Promotions</cite>
+                <cite>&mdash; Lenny Conroy, <a href="http://www.triskelpromo.com/">Triskell Promotions</a></cite>
             </blockquote>
             <blockquote>
-                <p>Kinda steely Dani-sih. Me likes.</p>
-                <cite>&mdash; Adam Curry &ndash; The Podfather!</cite>
+                <p>Kinda Steely Dan-ish. Me likes.</p>
+                <cite>&mdash; Adam Curry, <a href="http://curry.com/">The Podfather</a></cite>
             </blockquote>
             <blockquote>
                 <p>There are very few records in the last 32 years that I have worked on that I am proud of both musically and technically. Simon Campbell&rsquo;s forthcoming release is one of them and joins an elite team which can now be counted on one hand!</p>
@@ -80,19 +80,19 @@
             </blockquote>
             <blockquote>
                 <p>Just been to Simon&rsquo;s first gig with the new band; thought it was brilliant and was going to be typical Rock Blues format. It actually felt more Rock and Jazz with some Blues in which I thought was original and fresh sounding! Band was a tight as could be! Cant wait for more gigs!</p>
-                <cite>&mdash; Matt Collister, Blues musician</cite>
+                <cite>&mdash; Matt Collister, blues musician</cite>
             </blockquote>
             <blockquote>
                 <p>Simon Campbell: an awesome guitar player who sings like Robert Plant… is an understatement. So exciting to watch that everyone was bouncing off their chairs with him!</p>
-                <cite>&mdash; Carl Joughin &ndash; TalisMann Promotions</cite>
+                <cite>&mdash; Carl Joughin, TalisMann Promotions</cite>
             </blockquote>
             <blockquote>
                 <p>I was very impressed at the gig which was not what I expected at all. The world is so full of wannabe bluesers who have pretty much put me off going out to gigs, and I&rsquo;m sorry to admit that I thought you were going to be regurgitating the same old tripe… but not at all. Proper, intelligent guitar playing that inspired me to go back home to start practicing with good, well crafted original material.</p>
-                <cite>&mdash; Mark Cleator &ndash; Manx Sound</cite>
+                <cite>&mdash; Mark Cleator, <a href="http://simoncampbellmusic.erskinestage.com/thirtysix/history/">Manx Sound</a></cite>
             </blockquote>
             <blockquote>
                 <p>I love the blues/rock songs like Island of Rust and there&rsquo;s some nice Steeley Dan influences in some of the other tracks; top quality recording and musicianship. Rock On!</p>
-                <cite>&mdash; Lucas Campbell &ndash; DJ at <a href="http://the-rock-of-ages-radio-show.com">The Rock of Ages Radio Show</a></cite>
+                <cite>&mdash; Lucas Campbell, DJ at <a href="http://the-rock-of-ages-radio-show.com">The Rock of Ages Radio Show</a></cite>
             </blockquote>
             
         </div><!-- // .widget -->

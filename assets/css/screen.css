@@ -153,6 +153,9 @@ blockquote p:last-child {
 blockquote cite {
     font-style:italic;
 }
+blockquote cite a {
+    font-style:normal;
+}
 
 code {
 
