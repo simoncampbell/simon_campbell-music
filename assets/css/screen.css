@@ -1261,6 +1261,8 @@ div#footer p.credit {
             margin-top: 18px;
         }
         ul.item_listing li {
+            display:block;
+            overflow:hidden;
             border-bottom: 1px solid rgb(75, 75, 75);
         }
         ul.item_listing li,
@@ -1268,13 +1270,14 @@ div#footer p.credit {
         ul.item_listing li p {
             font-size: 12px;
             font-weight: normal;
-            line-height: 1;
+            line-height: 1.5em;
             margin: 0;
         }
         ul.item_listing li:nth-of-type(odd) {
             background: rgba(255, 255, 255, 0.025);
         }
         ul.item_listing li a {
+            overflow:hidden;
             color: rgb(255, 255, 255);
             display: block;
             padding: 10px;
