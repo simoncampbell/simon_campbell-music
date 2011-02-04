@@ -144,6 +144,9 @@ blockquote {
     margin-bottom:10px;
     background:rgba(255, 255, 255, 0.1);
 }
+blockquote:nth-child(odd) {
+    background:rgba(255, 255, 255, 0.05);
+}
 blockquote p:last-child {
     margin-bottom:0;
 }
@@ -934,12 +937,7 @@ div#footer p.credit {
             body#gear #gear_guitars li {
                 width: 310px;
             }
-            body#gear #gear_guitars li:first-child,
-            body#gear #gear_guitars li:nth-child(2),
-            body#gear #gear_guitars li:nth-child(3) {
-                width: auto;
-            }
-            
+
             /* EDITORIAL: thirtysix/history template */
             body#history #thejourney,
             body#history #content_pri div.widget:nth-of-type(odd)#thejourney {
