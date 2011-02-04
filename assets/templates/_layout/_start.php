@@ -161,7 +161,7 @@
         <li{if embed:section == "thirtysix"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix</a></li>
         <li{if embed:section == "store"} class="cur"{/if}><a href="{pv_site_url}/store/">Store</a></li>
         <li{if embed:section == "journal"} class="cur"{/if}><a href="{pv_site_url}/journal/">Journal</a></li>
-        <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/bio/">Bio</a></li>
+        <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/biography/">Bio</a></li>
         <li{if embed:section == "gallery"} class="cur"{/if}><a href="{pv_site_url}/gallery/">Gallery</a></li>
         <li{if embed:section == "contact"} class="cur"{/if}><a href="{pv_site_url}/contact/">Contact</a></li>
         {!-- Hiding until the next release
