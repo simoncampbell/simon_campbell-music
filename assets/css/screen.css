@@ -996,16 +996,6 @@ div#footer p.credit {
             width: 620px;
             position:relative;
         }
-        body.thirtysix div#content_pri #facebook_like {
-            position:absolute;
-            top:20px;
-            right:15px;
-            border:none;
-            background:transparent;
-            overflow:hidden;
-            width:90px;
-            height:21px;
-        }
         body.thirtysix div#content_pri .widget {
             background: rgb(0, 0, 0);
             background: rgba(0, 0, 0, 0.85);
@@ -1087,12 +1077,12 @@ div#footer p.credit {
         body.thirtysix div#content_pri div#journey div.first {
             float: left;
             margin-right: 15px;
-            width: 370px;
+            width: 360px;
         }
         body.thirtysix div#content_pri div#free_download div.last,
         body.thirtysix div#content_pri div#journey div.last {
             float: left;
-            width: 125px;
+            width: 135px;
         }
         
         body.thirtysix div#content_pri div#free_download form {
@@ -1383,7 +1373,7 @@ div#footer p.credit {
     
     /* MISCELLANEOUS */
     #audio_player {
-        width:380px;
+        width:370px;
     }
     
     div#album_promo_inline {
@@ -1391,7 +1381,7 @@ div#footer p.credit {
     }
     div#album_promo_inline div {
         float: right;
-        width: 135px;
+        width: 150px;
         position: absolute;
         top: 15px;
         right: 40px;
@@ -1400,7 +1390,7 @@ div#footer p.credit {
         margin-bottom: 16px;
     }
     div#album_promo_inline #audio_player {
-        width: 365px;
+        width: 360px;
     }
     div#album_promo_inline a.button {
         padding: 6px 10px;

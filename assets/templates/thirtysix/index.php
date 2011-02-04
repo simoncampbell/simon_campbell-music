@@ -45,7 +45,7 @@
                     dock: false,
                     playlist: "none",
                     id: "audio_player",
-                    width: 460,
+                    width: 430,
                     height: 29,
                     icons: false,
                     skin: "{pv_assets_url}/jwplayer/glow.zip"
