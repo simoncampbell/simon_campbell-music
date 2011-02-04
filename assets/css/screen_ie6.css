@@ -66,3 +66,9 @@ div#content_sec input.submit {
     height: 21px;
     margin-top: -22px;
 }
+#newsletter_signup label.error {
+    float: left;
+    position: relative;
+    bottom: 0;
+    width: 160px;
+}
