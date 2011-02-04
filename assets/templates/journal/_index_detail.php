@@ -111,6 +111,8 @@
                 
             </div> <!-- // .post -->
             
+            <p class="more"><a href="{pv_site_url}/journal/">Back to all</a></p>
+            
         </div><!-- // #posts -->
         
     </div> <!-- // #content_pri -->

@@ -685,6 +685,9 @@ div#footer p.credit {
             padding-bottom: 0;
         }
         div#posts p.more {
+            margin-bottom: 4px;
+        }
+        body.home div#posts p.more {
             margin-bottom:20px;
         }
         div#posts div.post {
