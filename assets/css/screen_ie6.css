@@ -72,3 +72,8 @@ div#content_sec input.submit {
     bottom: 0;
     width: 160px;
 }
+
+body.thirtysix div#journey ul.social li.twitter a,
+body.thirtysix div#journey ul.social li.facebook a {
+    padding: 0 0 0 5px;
+}

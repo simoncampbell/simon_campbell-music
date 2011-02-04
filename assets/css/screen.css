@@ -876,7 +876,6 @@ div#footer p.credit {
         }
         div#form_aside address {
             margin-left: 25px;
-            margin-bottom:10px;
         }
         
         /* EDITORIAL LAYOUT */
@@ -1011,23 +1010,23 @@ div#footer p.credit {
             background: rgba(0, 0, 0, 0.85);
             border: none;
             margin-bottom: 30px;
-            padding: 15px 60px;
+            padding: 15px 55px;
             width: auto;
         }
         body.thirtysix div#content_pri .widget:last-child {
             margin-bottom:0;
         }
-        body.thirtysix div#free_download,
+/*        body.thirtysix div#free_download,
         body.thirtysix div#journey {
             overflow:hidden;
             position:relative;
-        }
+        }*/
         
-        body.thirtysix div#free_download div {
+/*        body.thirtysix div#free_download div {
             float:left;
             width:360px;
-        }
-        body.thirtysix div#free_download form {
+        }*/
+/*        body.thirtysix div#free_download form {
             float:right;
             margin:0;
             position:absolute;
@@ -1035,8 +1034,8 @@ div#footer p.credit {
             top:15px;
             width:135px;
             margin-bottom:10px;
-        }
-        body.thirtysix div#free_download form label {
+        }*/
+/*        body.thirtysix div#free_download form label {
             float:none;
             font-weight:bold;
             width:auto;
@@ -1044,7 +1043,8 @@ div#footer p.credit {
             margin:0 0 5px 0;
             padding:0;
             text-align:left;
-        }
+        }*/
+/*        
         body.thirtysix div#journey div {
             float:left;
             width:360px;
@@ -1071,22 +1071,73 @@ div#footer p.credit {
         }
         body.thirtysix div#journey ul.social li.facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
-        }
+        }*/
         
-        body.thirtysix div#free_download form input[type="text"] {
+/*        body.thirtysix div#free_download form input[type="text"] {
             width:100px;
             margin-bottom:10px;
-        }      
+        } */     
+        
+        body.thirtysix div#content_pri div#free_download,
+        body.thirtysix div#content_pri div#journey {
+            float: left;
+        }
+        body.thirtysix div#content_pri div#free_download div.first,
+        body.thirtysix div#content_pri div#journey div.first {
+            float: left;
+            margin-right: 15px;
+            width: 370px;
+        }
+        body.thirtysix div#content_pri div#free_download div.last,
+        body.thirtysix div#content_pri div#journey div.last {
+            float: left;
+            width: 125px;
+        }
+        
+        body.thirtysix div#content_pri div#free_download form {
+            margin-top: 0;
+        }
+        body.thirtysix div#content_pri div#free_download label {
+            width: auto;
+        }
+        body.thirtysix div#content_pri div#free_download label.error {
+            display: block;
+            margin-left: 0;
+            width: auto;
+        }
+        body.thirtysix div#content_pri div#free_download input.submit {
+            margin-top: 5px;
+        }
+        body.thirtysix div#journey ul.social {
+            font-size: 12px;
+            list-style:none;
+            margin-top: 35px;
+        }
+        body.thirtysix div#journey ul.social li.twitter a,
+        body.thirtysix div#journey ul.social li.facebook a {
+            background-position: 0 2px;
+            background-repeat: no-repeat;
+            margin: 0 0 10px 0;
+            padding: 0 0 0 20px;
+            display: block;
+        }
+        body.thirtysix div#journey ul.social li.twitter a {
+            background-image: url(../images/site/nav/network/nn_twitter.png);
+        }
+        body.thirtysix div#journey ul.social li.facebook a {
+            background-image: url(../images/site/nav/network/nn_facebook.png);
+        }
+        
         body.thirtysix div#content_pri .widget:first-child {
             padding: 15px 15px;
-            width:320px;
+            width: 325px;
         }
         body.thirtysix div#content_pri .widget:first-child h2 {
             margin-bottom: 0;
         }
         body.thirtysix.no-js div#content_pri .widget:first-child h2 {
-            font-size:14px;
-            letter-spacing:0.1em;
+            font-size: 14px;
+            letter-spacing: 0.1em;
         }
         body.thirtysix div#content_pri h1,
         body.thirtysix div#content_pri h2,
