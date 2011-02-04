@@ -3,8 +3,8 @@
     body_id=""
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
-    title="Our products"
-    title_suffix="Store"   
+    title="Store"
+    title_suffix=""   
     title_prefix=""   
     description=""
     keywords=""
