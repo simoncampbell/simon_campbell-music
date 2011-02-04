@@ -55,6 +55,19 @@
     <meta property="og:audio:album" content="{embed:og_audio_album}" /> 
     {/if}
     
+    {!-- Facebook metadata for ThirtySix page --}
+    {if segment_1 == "thirtysix"}
+    <!-- FB METADATA -->
+    <meta property="og:title" content="ThirtySix at Simon Campbell Music" /> 
+    <meta property="og:description" content="Simon Campbell's debut solo album, ThirtySix, launches 26 March 2011." />
+    <meta property="og:image" content="http://music.simoncampbell.com/assets/images/content/thirtysix_album_art_small.jpg" />
+    <meta property="og:audio" content="http://music.simoncampbell.com/assets/audio/brother.mp3" /> 
+    <meta property="og:audio:type" content="application/mp3" />
+    <meta property="og:audio:title" content="Brother" /> 
+    <meta property="og:audio:artist" content="Simon Campbell" /> 
+    <meta property="og:audio:album" content="ThirtySix" />
+    {/if}
+    
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />

@@ -16,6 +16,8 @@
     
     <div id="content_pri">
         
+        <iframe src="http://www.facebook.com/plugins/like.php?href={site_url}{pv_all_segments}&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" allowTransparency="true" id="facebook_like"></iframe>
+        
         <div class="widget">
             <h1>Thirtysix</h1>
             <h2>The solo album by Simon Campbell</h2>

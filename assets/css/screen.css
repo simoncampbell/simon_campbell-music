@@ -993,6 +993,17 @@ div#footer p.credit {
             background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
             padding: 0;
             width: 620px;
+            position:relative;
+        }
+        body.thirtysix div#content_pri #facebook_like {
+            position:absolute;
+            top:20px;
+            right:15px;
+            border:none;
+            background:transparent;
+            overflow:hidden;
+            width:90px;
+            height:21px;
         }
         body.thirtysix div#content_pri .widget {
             background: rgb(0, 0, 0);
