@@ -25,7 +25,7 @@
             <p>
                 There are very few records in the last 32 years that I have worked on that I am proud of both musically and technically. Simon Campbell’s forthcoming release is one of them and joins an elite team which can now be counted on one hand!
             </p>
-            <cite>&ndash; Steve (Dr Beat) Boyce-Buckley</cite>
+            <cite>&ndash; Steve Boyce-Buckley</cite>
         </blockquote>
         
         <div class="widget" id="album_promo_inline">
@@ -53,7 +53,7 @@
             </script>
             <div>
                 <h3>Buy the album</h3>
-                <a class="button" href="{pv_site_url}/store/">Go to the store &rsaquo;</a>
+                <a class="button" href="{pv_site_url}/store/">Go to the store &rsaquo;&rsaquo;</a>
             </div>
         </div><!-- // #album_promo_inline -->
         
