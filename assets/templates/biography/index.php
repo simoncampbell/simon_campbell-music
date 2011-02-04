@@ -88,7 +88,7 @@
             </blockquote>
             <blockquote>
                 <p>I was very impressed at the gig which was not what I expected at all. The world is so full of wannabe bluesers who have pretty much put me off going out to gigs, and I&rsquo;m sorry to admit that I thought you were going to be regurgitating the same old tripe… but not at all. Proper, intelligent guitar playing that inspired me to go back home to start practicing with good, well crafted original material.</p>
-                <cite>&mdash; Mark Cleator, <a href="http://simoncampbellmusic.erskinestage.com/thirtysix/history/">Manx Sound</a></cite>
+                <cite>&mdash; Mark Cleator, <a href="http://www.manxsound.com/">Manx Sound</a></cite>
             </blockquote>
             <blockquote>
                 <p>I love the blues/rock songs like Island of Rust and there&rsquo;s some nice Steeley Dan influences in some of the other tracks; top quality recording and musicianship. Rock On!</p>
