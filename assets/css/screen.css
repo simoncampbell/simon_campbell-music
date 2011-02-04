@@ -1097,6 +1097,10 @@ div#footer p.credit {
         body.thirtysix div#content_pri div#free_download form {
             margin-top: 0;
         }
+        body.thirtysix div#content_pri div#free_download input[type="text"] {
+            width: 100px;
+            margin-bottom: 5px;
+        }
         body.thirtysix div#content_pri div#free_download label {
             width: auto;
         }
