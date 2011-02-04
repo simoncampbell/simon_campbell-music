@@ -995,6 +995,7 @@ div#footer p.credit {
             padding: 0;
             width: 620px;
             position:relative;
+            border-bottom:0;
         }
         body.thirtysix div#content_pri .widget {
             background: rgb(0, 0, 0);

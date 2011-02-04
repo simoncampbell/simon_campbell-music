@@ -84,7 +84,7 @@
             </div>
             <div class="last">
                 <ul class="social">
-                    <li class="twitter"><a href="http://twitter.com/share?url={site_url}{pv_all_segments}&amp;text=Simon%20Campbell's%20%22ThirtySix">Share on Twitter</a></li>
+                    <li class="twitter"><a href="http://twitter.com/share?url={site_url}{pv_all_segments}&amp;text=Simon%20Campbell's%20%22ThirtySix%22">Share on Twitter</a></li>
                     <li class="facebook">
                         <a href="http://www.facebook.com/sharer.php?u={site_url}{pv_all_segments}">Share on Facebook</a>
                     </li>
