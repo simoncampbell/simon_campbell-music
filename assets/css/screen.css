@@ -943,8 +943,15 @@ div#footer p.credit {
             /* EDITORIAL: thirtysix/history template */
             body#history #thejourney,
             body#history #content_pri div.widget:nth-of-type(odd)#thejourney {
-                background: #252525 url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right;
-                background: url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right, rgba(255, 255, 255, 0.05);
+                background:url(../images/site/bgs/thirtysix/thirtysix-history-journey.png) no-repeat bottom right;
+                width:395px;
+                padding-right:210px;
+            }
+            
+            body#history #credits,
+            body#history #content_pri div.widget:nth-of-type(odd)#credits {
+                background:url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right;
+    
             }
             
             /* EDITORIAL: Album Lyrics */
