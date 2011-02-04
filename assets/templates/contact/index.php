@@ -48,6 +48,7 @@
             {lv_contact_newsletter_thanks}
         {if:else}
             {lv_contact_aside}
+            <p>{lv_contact_presskit_text}</p>
         {/if}
         </div><!-- // #form_aside -->
         
