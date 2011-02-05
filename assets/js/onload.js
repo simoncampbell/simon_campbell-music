@@ -70,18 +70,19 @@ $(document).ready(function(){
     $('form.validate_inline').validate();
     $('div#newsletter_signup form').validate();
     
-    // This only works for 1 email per page right now, 
-    // so I've set it to the contact page.
-    if($("body").hasClass("contact")){
-        $(function(){
-            var spt = $('span.email');
-            var at = / at /;
-            var dot = / dot /g;
-            var addr = $(spt).text().replace(at,"@").replace(dot,".");
-            $(spt).after('<a href="mailto:'+addr+'" title="Send email">'+ addr +'</a>')
+    // Email Encoder: Example: <span class="email">name at domainname dot com</span>
+    $(function(){
+        
+        $('span.email').each(function(){
+          var at = / at /;
+          var dot = / dot /g;
+          var addr = $(this).text().replace(at,"@").replace(dot,".");
+          $(this)
+            .after('<a href="mailto:'+addr+'" title="Send email">'+ addr +'</a>')
             .hover(function(){window.status="Send emai";}, function(){window.status="";});
-            $(spt).remove();
+          $(this).remove();
         });
-    }
+        
+    });
     
 });
