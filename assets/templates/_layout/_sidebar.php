@@ -39,7 +39,7 @@
         {/if}
                 <li>
                     <a href="{cf_events_fburl}">
-                        <h3><strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
+                        <h3><strong>{title}</strong> at <strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
                         <p><time datetime="{cf_events_date format='{DATE_ATOM}'}">{cf_events_date format="{pv_date_event}"}</time></p>
                     </a>
                 </li>
