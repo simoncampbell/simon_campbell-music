@@ -13,12 +13,7 @@ div#intro img {
 div#posts div.post ul.post_meta {
     float: none;
 }
-
 /* THIRTYSIX */
-div#album_promo_inline div h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
 body.thirtysix div#journey ul.social li.twitter a,
 body.thirtysix div#journey ul.social li.facebook a {
     padding: 0 0 0 5px;

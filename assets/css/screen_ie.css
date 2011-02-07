@@ -39,8 +39,9 @@ body.editorial div#beginnings h3 + p:first-letter {
 }
 
 /* THIRTYSIX TEMPLATE */
-body.thirtysix div#content_pri .widget {
-    background: #000;
+body.thirtysix div#album_promo_inline div.last h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
 }
 
 /* JOURNAL */
