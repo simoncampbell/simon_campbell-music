@@ -73,7 +73,17 @@ div#content_sec input.submit {
     width: 160px;
 }
 
+body.thirtysix div#content_pri {
+    margin-right: 0;
+}
+body.thirtysix div#content_pri div.widget {
+    padding: 15px 45px;
+}
 body.thirtysix div#journey ul.social li.twitter a,
 body.thirtysix div#journey ul.social li.facebook a {
     padding: 0 0 0 5px;
+}
+body.thirtysix div#content_sec {
+    float: right;
+    margin-left: 0;
 }
