@@ -4,6 +4,7 @@
         width:100%;
         background:rgb(0, 0, 0);
         border-bottom:1px solid rgb(59, 59, 59);
+        overflow:hidden;
     }
 
     div#navigation_network ul {
@@ -20,6 +21,9 @@
         text-transform: uppercase;
         letter-spacing:0.1em;
     }
+    span.hide {
+        display:none;
+    }
     .no-js div#navigation_network ul li {
         letter-spacing:0;
         font-size:13px;
@@ -29,10 +33,12 @@
         display: block;
         padding: 14px 0;
         text-decoration: none;
+        border:0;
     }
     div#navigation_network ul a:hover,
     div#navigation_network ul li.cur a {
         color: rgb(255, 255, 255);
+        border:0;
     }
     
         /* Sites */
@@ -76,5 +82,4 @@
         div#navigation_network ul li#nn_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
             margin-right: 0;
-        }
-        
+        }     
