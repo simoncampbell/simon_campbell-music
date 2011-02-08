@@ -369,6 +369,7 @@ h1,h2,h3,h4,h5,h6 {
     margin:0;
     padding:0;
     color:rgb(255, 255, 255);
+    font-weight: normal;
     line-height:1.2em;
 }
 h1 {
@@ -414,12 +415,13 @@ a:hover,
 a:focus {
     color:rgb(200, 200, 200);
 }
-div#content_pri a {
+div#content_pri p a {
     font-weight: bold;
 }
 
 h1 a,
 h2 a {
+    font-weight: normal;
     text-decoration: none;
 }
 h1 a:hover,
