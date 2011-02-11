@@ -1,10 +1,10 @@
 # Sequel Pro dump
-# Version 2492
+# Version 2210
 # http://code.google.com/p/sequel-pro
 #
-# Host: lloyd.erskinedev.com (MySQL 5.1.41-3ubuntu12.8)
+# Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-02-04 14:49:37 +0000
+# Generation Time: 2011-02-11 15:16:09 +0000
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,7 @@ CREATE TABLE `exp_actions` (
   `class` varchar(50) NOT NULL,
   `method` varchar(50) NOT NULL,
   PRIMARY KEY (`action_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1017 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1041 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_actions` WRITE;
 /*!40000 ALTER TABLE `exp_actions` DISABLE KEYS */;
@@ -61,22 +61,22 @@ VALUES
 	(33,'User','retrieve_username'),
 	(34,'User','create_key'),
 	(35,'Pur_member_utilities_CP','get_member_data'),
-	(1001,'Cartthrob','_checkout'),
-	(1002,'Cartthrob','_add_to_cart_form_submit'),
-	(1003,'Cartthrob','_coupon_code_form_submit'),
-	(1004,'Cartthrob','_update_item_submit'),
-	(1005,'Cartthrob','_delete_from_cart_submit'),
-	(1006,'Cartthrob','_save_customer_info_submit'),
-	(1007,'Cartthrob','_update_cart_submit'),
-	(1008,'Cartthrob','_ajax_action'),
-	(1009,'Cartthrob','_jquery_plugin_action'),
-	(1010,'Cartthrob','_multi_add_to_cart_form_submit'),
-	(1011,'Cartthrob','payment_return'),
-	(1012,'Cartthrob','_download_file_form_submit'),
+	(1039,'Cartthrob','payment_return'),
+	(1038,'Cartthrob','_multi_add_to_cart_form_submit'),
+	(1036,'Cartthrob','_ajax_action'),
+	(1037,'Cartthrob','_jquery_plugin_action'),
+	(1035,'Cartthrob','_update_cart_submit'),
+	(1034,'Cartthrob','_save_customer_info_submit'),
+	(1032,'Cartthrob','_update_item_submit'),
+	(1033,'Cartthrob','_delete_from_cart_submit'),
+	(1031,'Cartthrob','_coupon_code_form_submit'),
 	(1013,'Freeform','insert_new_entry'),
 	(1014,'Freeform','retrieve_entries'),
 	(1015,'Freeform_CP','delete_freeform_notification'),
-	(1016,'Freeform','delete_freeform_notification');
+	(1016,'Freeform','delete_freeform_notification'),
+	(1030,'Cartthrob','_add_to_cart_form_submit'),
+	(1029,'Cartthrob','_checkout'),
+	(1040,'Cartthrob','_download_file_form_submit');
 
 /*!40000 ALTER TABLE `exp_actions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -244,7 +244,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=323 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=342 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -571,7 +571,26 @@ VALUES
 	(319,1,18,'garrett.winder','173.185.20.98',1296830794,'Logged in'),
 	(320,1,18,'garrett.winder','173.185.20.98',1296831045,'Logged out'),
 	(321,1,18,'garrett.winder','173.185.20.98',1296831074,'Logged in'),
-	(322,1,18,'garrett.winder','173.185.20.98',1296831184,'Logged out');
+	(322,1,18,'garrett.winder','173.185.20.98',1296831184,'Logged out'),
+	(323,1,19,'simoncampbell','92.39.196.149',1296846088,'Logged in'),
+	(324,1,18,'garrett.winder','173.185.20.98',1297099703,'Logged in'),
+	(325,1,19,'simoncampbell','92.39.196.149',1297155895,'Logged in'),
+	(326,1,19,'simoncampbell','92.39.196.149',1297266718,'Logged in'),
+	(327,1,18,'garrett.winder','71.30.180.219',1297352021,'Logged in'),
+	(328,1,18,'garrett.winder','71.30.180.219',1297352368,'Field Group Created:&nbsp;&nbsp;Products - T-Shirts'),
+	(329,1,18,'garrett.winder','71.30.180.219',1297354024,'Channel Created:&nbsp;&nbsp;Products: T-shirts'),
+	(330,1,1,'Member Utilities','127.0.0.1',1297354489,'User garrett.winder has updated their profile'),
+	(331,1,1,'Member Utilities','127.0.0.1',1297354521,'User garrett.winder has updated their profile'),
+	(332,1,1,'Member Utilities','127.0.0.1',1297354546,'User garrett.winder has updated their profile'),
+	(333,1,1,'Member Utilities','127.0.0.1',1297355086,'User garrett.winder has updated their profile'),
+	(334,1,18,'garrett.winder','71.30.180.219',1297355152,'Field Group Created:&nbsp;&nbsp;Products - Music'),
+	(335,1,1,'Member Utilities','127.0.0.1',1297356421,'User garrett.winder has updated their profile'),
+	(336,1,18,'garrett.winder','71.30.180.219',1297356486,'Channel Created:&nbsp;&nbsp;Products: Music'),
+	(337,1,18,'garrett.winder','71.30.180.219',1297356559,'Field Group Created:&nbsp;&nbsp;Products - Posters'),
+	(338,1,18,'garrett.winder','71.30.180.219',1297357178,'Channel Created:&nbsp;&nbsp;Products: Posters'),
+	(339,1,18,'garrett.winder','71.30.180.219',1297358298,'Logged in'),
+	(340,1,18,'garrett.winder','71.30.180.219',1297390693,'Logged in'),
+	(341,1,18,'garrett.winder','88.97.41.224',1297424903,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -590,7 +609,7 @@ CREATE TABLE `exp_dc_required_cat` (
   `exact_cat` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `WEBLOG_ID` (`weblog_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_dc_required_cat` WRITE;
 /*!40000 ALTER TABLE `exp_dc_required_cat` DISABLE KEYS */;
@@ -615,7 +634,8 @@ VALUES
 	(17,22,0,0,0),
 	(18,21,0,0,0),
 	(19,19,0,0,0),
-	(20,23,0,0,0);
+	(20,23,0,0,0),
+	(21,24,0,0,0);
 
 /*!40000 ALTER TABLE `exp_dc_required_cat` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1006,7 +1026,52 @@ VALUES
 	(87,'none'),
 	(88,'textile'),
 	(88,'xhtml'),
-	(88,'none');
+	(88,'none'),
+	(89,'textile'),
+	(89,'xhtml'),
+	(89,'none'),
+	(90,'textile'),
+	(90,'xhtml'),
+	(90,'none'),
+	(91,'textile'),
+	(91,'xhtml'),
+	(91,'none'),
+	(92,'textile'),
+	(92,'xhtml'),
+	(92,'none'),
+	(93,'textile'),
+	(93,'xhtml'),
+	(93,'none'),
+	(94,'textile'),
+	(94,'xhtml'),
+	(94,'none'),
+	(95,'textile'),
+	(95,'xhtml'),
+	(95,'none'),
+	(96,'textile'),
+	(96,'xhtml'),
+	(96,'none'),
+	(97,'textile'),
+	(97,'xhtml'),
+	(97,'none'),
+	(98,'textile'),
+	(98,'xhtml'),
+	(98,'none'),
+	(99,'textile'),
+	(99,'xhtml'),
+	(99,'none'),
+	(100,'textile'),
+	(100,'xhtml'),
+	(100,'none'),
+	(101,'textile'),
+	(101,'xhtml'),
+	(101,'none'),
+	(102,'textile'),
+	(102,'xhtml'),
+	(102,'none'),
+	(103,'textile'),
+	(103,'xhtml'),
+	(103,'none');
 
 /*!40000 ALTER TABLE `exp_field_formatting` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1023,7 +1088,7 @@ CREATE TABLE `exp_field_groups` (
   `group_name` varchar(50) NOT NULL,
   PRIMARY KEY (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_field_groups` WRITE;
 /*!40000 ALTER TABLE `exp_field_groups` DISABLE KEYS */;
@@ -1035,7 +1100,10 @@ VALUES
 	(19,1,'Journal - Videos'),
 	(20,1,'Journal - Photos'),
 	(21,1,'Journal - Notes'),
-	(22,1,'Site pages');
+	(22,1,'Site pages'),
+	(23,1,'Products - T-Shirts'),
+	(24,1,'Products - Music'),
+	(25,1,'Products - Posters');
 
 /*!40000 ALTER TABLE `exp_field_groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1145,13 +1213,13 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=116 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=221 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
-	(115,1296830099,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
+	(220,1297424991,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1231,7 +1299,7 @@ CREATE TABLE `exp_global_variables` (
   PRIMARY KEY (`variable_id`),
   KEY `variable_name` (`variable_name`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_global_variables` WRITE;
 /*!40000 ALTER TABLE `exp_global_variables` DISABLE KEYS */;
@@ -1245,7 +1313,9 @@ VALUES
 	(29,1,'lv_journal_homepage_limit','2',0),
 	(30,1,'lv_services_facebook_url','http://www.facebook.com/SimonCampbellBand',0),
 	(31,1,'lv_services_twitter_url','http://twitter.com/simoncampbell',0),
-	(32,1,'lv_services_master_rss','/feeds/master_rss/',0);
+	(32,1,'lv_services_master_rss','http://feeds.feedburner.com/SimonCampbellMusic',0),
+	(33,1,'lv_contact_presskit_pdf','/uploads/files/documents/Simon-Campbell-Press-Kit.pdf',0),
+	(34,1,'lv_contact_presskit_text','Or download the <a href=\"/uploads/files/documents/Simon-Campbell-Press-Kit.pdf\">press pack</a> (5MB PDF)',0);
 
 /*!40000 ALTER TABLE `exp_global_variables` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1338,7 +1408,7 @@ CREATE TABLE `exp_lg_better_meta` (
   `append_default_keywords` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `entry_id` (`entry_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_lg_better_meta` WRITE;
 /*!40000 ALTER TABLE `exp_lg_better_meta` DISABLE KEYS */;
@@ -1375,7 +1445,23 @@ VALUES
 	(29,1,38,8,'its-up-to-yo','','','',NULL,NULL,'','','','','','','','','','','','',0),
 	(30,1,41,8,'shale-gas-will-rock-the-world','','','',NULL,NULL,'','','','','','','','','','','','',0),
 	(31,1,51,20,'bruce-is-the-bomb','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
-	(32,1,52,21,'sdfgsdfg','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0);
+	(32,1,52,21,'sdfgsdfg','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(33,1,53,22,'ok-simon-what-do-you-think','Simon Campbell British Blues Awards Nottingham Blues Society',NULL,'','Simon Campbell','Nottingham Blues Society',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(34,1,54,22,'rock-n-roll-is-back','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(35,1,55,21,'search-for-the-ultimate-tone-part-one','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(36,1,56,22,'search-for-the-ultimate-tone-part-one','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(37,1,57,22,'search-for-the-ultimate-tone-part-two','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(38,1,58,22,'search-for-the-ultimate-tone-part-three','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(39,1,59,22,'making-thirtysix-part-one','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(40,1,60,22,'making-thirtysix-part-two','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(41,1,61,22,'we-love-the-manx-independent','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(42,1,62,22,'tickets-on-sale-now','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(43,1,63,22,'new-session-for-truman-falls','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(44,1,64,22,'the-delta-sisters-confirm-gig','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(45,1,49,19,'making-the-album-thirtysix-edition-1','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(46,1,68,21,'more-musicians-confirmed-for-thirtysix-launch','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(47,1,69,22,'anna-goldsmith-band-plays-for-craigs-heartstrong-foundation','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(48,1,70,19,'making-the-album-thirtysix-edition-2','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0);
 
 /*!40000 ALTER TABLE `exp_lg_better_meta` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1437,7 +1523,9 @@ VALUES
 	(29,3,'Homepage limit','Select how many items to show on the stream on the homepage. this can be useful if the number sidebar blocks increases/decreases','low_select','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:4:{s:7:\"options\";s:7:\"2\n3\n4\n5\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";s:8:\"multiple\";s:0:\"\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(30,1,'Facebook URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(31,1,'Twitter URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
-	(32,1,'Master RSS feed','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n');
+	(32,1,'Master RSS feed','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(33,2,'Press kit PDF','','low_select_files','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:5:{s:7:\"folders\";a:1:{i:0;s:1:\"4\";}s:6:\"upload\";s:1:\"4\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";s:8:\"multiple\";s:0:\"\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(34,2,'Press kit text','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n');
 
 /*!40000 ALTER TABLE `exp_low_variables` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1464,7 +1552,7 @@ CREATE TABLE `exp_matrix_cols` (
   PRIMARY KEY (`col_id`),
   KEY `site_id` (`site_id`),
   KEY `field_id` (`field_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_matrix_cols` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_cols` DISABLE KEYS */;
@@ -1494,7 +1582,21 @@ VALUES
 	(23,1,NULL,'ffm_video_code','Video code','','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MDoiIjtzOjk6Im11bHRpbGluZSI7czoxOiJ5Ijt9'),
 	(24,1,NULL,'ffm_images_image','Image','Will be cropped to 580x380 pixels.','ngen_file_field','n','n',0,'33%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMTciO30='),
 	(25,1,NULL,'ffm_images_title','Image title','Short title/description of the image.','text','n','n',1,'33%','YToyOntzOjQ6Im1heGwiO3M6MjoiNTYiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
-	(26,1,NULL,'ffm_images_credit','Image credit','Example: 2010 Phil Keen','text','n','n',2,'33%','YToxOntzOjQ6Im1heGwiO3M6MjoiNDAiO30=');
+	(26,1,NULL,'ffm_images_credit','Image credit','Example: 2010 Phil Keen','text','n','n',2,'33%','YToxOntzOjQ6Im1heGwiO3M6MjoiNDAiO30='),
+	(27,1,NULL,'ffm_sizes_short','Short Name','','ff_select','n','n',0,'50%','YToxOntzOjc6Im9wdGlvbnMiO2E6Njp7czoyNToiLS0tIENob29zZSBzaG9ydCBuYW1lIC0tLSI7czoyNToiLS0tIENob29zZSBzaG9ydCBuYW1lIC0tLSI7czozOiJYWEwiO3M6MzoiWFhMIjtzOjI6IlhMIjtzOjI6IlhMIjtzOjE6IkwiO3M6MToiTCI7czoxOiJNIjtzOjE6Ik0iO3M6MToiUyI7czoxOiJTIjt9fQ=='),
+	(28,1,NULL,'ffm_sizes_full','Full Name','Make sure it matches the short name: M = Medium, etc.','ff_select','n','n',1,'50%','YToxOntzOjc6Im9wdGlvbnMiO2E6Njp7czoyNDoiLS0tIENob29zZSBmdWxsIG5hbWUgLS0tIjtzOjI0OiItLS0gQ2hvb3NlIGZ1bGwgbmFtZSAtLS0iO3M6ODoiWFgtTGFyZ2UiO3M6ODoiWFgtTGFyZ2UiO3M6NzoiWC1MYXJnZSI7czo3OiJYLUxhcmdlIjtzOjU6IkxhcmdlIjtzOjU6IkxhcmdlIjtzOjY6Ik1lZGl1bSI7czo2OiJNZWRpdW0iO3M6NToiU21hbGwiO3M6NToiU21hbGwiO319'),
+	(29,1,NULL,'ffm_images_image','Image','','ngen_file_field','n','n',0,'50%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMTgiO30='),
+	(30,1,NULL,'ffm_images_description','Image description','Short description used for the images alt text.','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MjoiNDAiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
+	(31,1,NULL,'option','Option','Single word, no spaces. Example: mp3_format','text','n','n',0,'','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
+	(32,1,NULL,'option_name','Option Name','Human readable. Example: MP3 Format','text','n','n',1,'','YToyOntzOjQ6Im1heGwiO3M6MjoiMjUiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
+	(33,1,NULL,'price','Price','Without the currency symbol.','text','n','n',2,'','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
+	(34,1,NULL,'ffm_formats_shipping','Shipping','Without the currency symbol.','text','n','n',3,'','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
+	(35,1,NULL,'ffm_formats_file','File','Optional file upload.','ngen_file_field','n','n',4,'','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMjEiO30='),
+	(36,1,NULL,'ffm_formats_itunes','iTunes URL','Optional iTunes URL.','text','n','n',5,'','YToxOntzOjQ6Im1heGwiO3M6MDoiIjt9'),
+	(37,1,NULL,'ffm_images_image','Image','','ngen_file_field','n','n',0,'50%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMTkiO30='),
+	(38,1,NULL,'ffm_images_description','Image Description','Short description used for the images alt text.','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MjoiNDAiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30='),
+	(39,1,NULL,'ffm_images_image','Image','','ngen_file_field','n','n',0,'50%','YToxOntzOjc6Im9wdGlvbnMiO3M6MjoiMjAiO30='),
+	(40,1,NULL,'ffm_images_description','Image Description','Short description used for the images alt text.','text','n','n',1,'50%','YToyOntzOjQ6Im1heGwiO3M6MjoiNDAiO3M6OToibXVsdGlsaW5lIjtzOjE6InkiO30=');
 
 /*!40000 ALTER TABLE `exp_matrix_cols` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1536,6 +1638,20 @@ CREATE TABLE `exp_matrix_data` (
   `col_id_24` text,
   `col_id_25` text,
   `col_id_26` text,
+  `col_id_27` text,
+  `col_id_28` text,
+  `col_id_29` text,
+  `col_id_30` text,
+  `col_id_31` text,
+  `col_id_32` text,
+  `col_id_33` text,
+  `col_id_34` text,
+  `col_id_35` text,
+  `col_id_36` text,
+  `col_id_37` text,
+  `col_id_38` text,
+  `col_id_39` text,
+  `col_id_40` text,
   PRIMARY KEY (`row_id`),
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
@@ -1544,26 +1660,26 @@ CREATE TABLE `exp_matrix_data` (
 
 LOCK TABLES `exp_matrix_data` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_data` DISABLE KEYS */;
-INSERT INTO `exp_matrix_data` (`row_id`,`site_id`,`entry_id`,`field_id`,`row_order`,`col_id_1`,`col_id_2`,`col_id_3`,`col_id_4`,`col_id_5`,`col_id_6`,`col_id_8`,`col_id_9`,`col_id_10`,`col_id_11`,`col_id_12`,`col_id_13`,`col_id_14`,`col_id_15`,`col_id_16`,`col_id_17`,`col_id_18`,`col_id_19`,`col_id_20`,`col_id_21`,`col_id_22`,`col_id_23`,`col_id_24`,`col_id_25`,`col_id_26`)
+INSERT INTO `exp_matrix_data` (`row_id`,`site_id`,`entry_id`,`field_id`,`row_order`,`col_id_1`,`col_id_2`,`col_id_3`,`col_id_4`,`col_id_5`,`col_id_6`,`col_id_8`,`col_id_9`,`col_id_10`,`col_id_11`,`col_id_12`,`col_id_13`,`col_id_14`,`col_id_15`,`col_id_16`,`col_id_17`,`col_id_18`,`col_id_19`,`col_id_20`,`col_id_21`,`col_id_22`,`col_id_23`,`col_id_24`,`col_id_25`,`col_id_26`,`col_id_27`,`col_id_28`,`col_id_29`,`col_id_30`,`col_id_31`,`col_id_32`,`col_id_33`,`col_id_34`,`col_id_35`,`col_id_36`,`col_id_37`,`col_id_38`,`col_id_39`,`col_id_40`)
 VALUES
-	(3,1,27,16,0,'55,000 Pennsylvanians have jobs related to energy production','','http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(4,1,27,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Is hydraulic fracturing growing local economies while supplying clean-burning natural gas?','<p>\n	Across the country, we are unlocking vast amounts of clean-burning natural gas through hydraulic fracturing. This proven, safe technology has allowed us to expand America&rsquo;s energy reserves by more than 7 billion barrels of oil and 600 trillion cubic feet of natural gas. Hydraulic fracturing not only helps us bring clean, affordable natural gas to people who need it, it also creates thousands of jobs throughout Appalachia, Texas and the West, as well as revenue for local, state and federal governments.</p>\n<p>\n	It seems some outside our industry, including politicians in Washington, do not understand what we do and are seeking ways to limit hydraulic fracturing. Washington must not be permitted to enact measures that would add needless regulation to an industry-standard practice we know very well.</p>\n<p>\n	We know hydraulic fracturing is safe and effective&mdash;that&rsquo;s why we&rsquo;ve used it for more than 60 years. And we&rsquo;re ready to use it for many more to deliver reliable supplies of clean natural gas.</p>\n','55,000 Pennsylvanians have jobs related to energy production','Pittsburgh Post-Gazette','http://http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(5,1,27,55,0,NULL,NULL,NULL,'This is the video heading','','<p>\n	This is a transcript</p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>\n	<object height=\"385\" width=\"480\"><param name=\"movie\" value=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" /><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><embed allowfullscreen=\"true\" allowscriptaccess=\"always\" height=\"385\" src=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" type=\"application/x-shockwave-flash\" width=\"480\"></embed></object></p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(7,1,29,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What do the oil sands mean to you and your job?','<p>\n	Beneath the sands of Alberta lie 173 billion barrels of oil, reserves second only to those in Saudi Arabia. We are ready to deliver this important source of energy to the American people.</p>\n<p>\n	By responsibly developing these resources in Canada, we can create jobs here in America through refinery expansion and pipeline construction. By some accounts, this activity could support 600,000 new jobs by 2025, as well as add nearly $130 billion to the economy. Access to oil sands in Canada could provide a reliable supply of energy to more consumers in more parts of the country.</p>\n<p>\n	The refinery projects we are undertaking and the development of new technologies to better process oil from Canada will allow us to provide an important, affordable and reliable source of energy America needs.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(8,1,0,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'How does offshore drilling provide America the energy it needs?','<p>\n	We know perhaps better than anyone else the immense opportunity in exploring the waters along the Outer Continental Shelf for oil and natural gas. We also know it can be done in a responsible way that takes the environment into consideration.</p>\n<p>\n	By some estimates, the Outer Continental Shelf contains more than 14 billion barrels of oil and 55 trillion cubic feet of natural gas. Tapping these resources could generate $1.7 trillion in revenue for governments and 160,000 new jobs.</p>\n<p>\n	Above anyone, we remain committed to the responsible development of offshore resources of oil and natural gas. It&rsquo;s an opportunity to produce domestic oil and natural gas while providing well-paying jobs and strengthening America&rsquo;s economy.</p>\n','â€œ30% of the oil and 25% of the natural gas we produce in the United States comes from thousands of wells in the Gulf of Mexico.â€','The Hill','http://thehill.com/blogs/congress-blog/energy-a-environment/103299-clean-energy-and-oil-spill-response-sen-lamar-alexander  ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(9,1,31,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will a ban on deepwater drilling affect future energy supply?','<p>\n	Following the tragic Deepwater Horizon accident, we are mobilizing a tremendous amount of resources to aid in responding to the spill. Our industry understands the need to respond in a coordinated manner and we are&mdash;swiftly creating a task force to examine the spill&rsquo;s cause and working hard to assess and address its impact.</p>\n<p>\n	Unfortunately, Members of Congress, as well as the President and his Administration, have halted new deepwater drilling for at least six months. This move places our jobs and communities in economic peril.</p>\n<p>\n	According to one study, a ban on new deepwater drilling, when combined with tighter regulations and longer permitting timeframes, could result in the equivalent of 340,000 barrels of oil per day in lost production by 2015. This means nearly 50,000 jobs idled in the short term and potentially more than 120,000 if restrictions are extended. In this economy, we can&rsquo;t afford to lose more jobs and deprive Americans of the reliable and affordable energy they need.</p>\n','â€œA moratorium on deepwater drilling could jeopardize 100,000 jobs.â€ ','Rep. Pete Olson, quoted in The Hill','http://thehill.com/blogs/e2-wire/677-e2-wire/102885-texas-lawmaker-to-introduce-bill-lifting-drilling-pause',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(10,1,32,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What does climate change legislation mean for you and your family?','<p>\n	As an industry, we&rsquo;re committed to reducing greenhouse gas emissions and lower our environmental footprint. We&rsquo;re constantly enhancing efficiency and investing in new technologies that are changing the environmental effects of our work as we bring energy to consumers.</p>\n<p>\n	Congress continues to propose and debate well-intentioned measures that require companies to reduce their impact on the environment. We support this goal and are committed to finding solutions that promote environmental responsibility. However, many of the proposed measures would have unintended negative consequences, potentially putting millions of jobs at risk and raising costs for companies in our industry and others. Our elected officials must understand the need to balance the positive intent of legislation against the negative implications for consumers, jobs and the economy.</p>\n<p>\n	We are committed to protecting the environment. In fact, we&rsquo;re already working to reduce our carbon footprint. But we must be careful of proposals that could take away jobs from the hardworking people in our industry, make our industry less competitive or raise costs for the people that rely on us for affordable energy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(11,1,33,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Could additional regulations stifle economic growth?','<p>\n	We recognize that we must be careful about our impact on the environment. Our companies are taking steps every day to reduce that impact, knowing that we must be able to provide affordable, responsibly produced energy to Americans for decades to come.</p>\n<p>\n	We are concerned, however, that heavy regulations, while well-intentioned, could have unintended but severe negative effects on the economy, the job market and on American businesses&mdash;without significantly improving our nation&rsquo;s carbon footprint. While we support the goal of taking measures to reduce emissions, we want to ensure that doing so will not be at the expense of jobs and the economy.</p>\n<p>\n	We&rsquo;re constantly taking steps to produce energy responsibly. One such example is our commitment to expand production and use of ultra-low sulfur diesel and other technologies, which would lead to a reduction of six common emissions by 60 percent. We remain committed to working with Congress and the administration to make positive changes that lower our environmental impact.&nbsp;&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(12,1,34,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will new taxes threaten jobs and weaken energy independence?','<p>\n	Producing America&rsquo;s resources of oil and natural gas isn&rsquo;t cheap. Our industry spends hundreds of billions of dollars every year on wages, technology and investment in research and development of energy resources.</p>\n<p>\n	What&rsquo;s more, the energy industry is one of the most heavily taxed industries in America. Industry taxes provide billions of dollars that support schools, first responders and our transportation system, among other vital public services. Yet Congress and the administration continue to propose new taxes on the industry. The latest proposal would mean at least $80 billion in new taxes.</p>\n<p>\n	We oppose new taxes not just because of their impact directly on our businesses, but of the far-reaching negative effects that they could bring to industry workers, consumers and the businesses and organizations that depend on our industry for reliable, affordable energy.</p>\n<p>\n	Instead of passing new taxes, we can show Congress and the administration that we are ready to lead an economic recovery by producing more oil and natural gas right here at home.&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(13,1,35,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Just exactly how important is our industry to the American economy?','<p>\n	We know how important our work is. More than 9.2 million people are directly or indirectly employed by America&rsquo;s oil and natural gas industry. That&rsquo;s 9.2 million people working hard to deliver the energy our country needs.</p>\n<p>\n	Whether it&rsquo;s passing new laws, regulations or taxes, Washington has a profound impact on our industry and jobs. New laws and regulations that raise the cost of energy or restrict access to resources of oil and natural gas could put thousands of jobs at risk and increase the costs of everything from food and transportation to heating a home.</p>\n<p>\n	We are part of the solution. Our 9.2 million jobs and more than a trillion dollars in value added to the economy play a major role in providing this country the energy it needs and driving the economy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(17,1,46,75,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon.png','Simon Campbell','2010 Phil Kneen'),
-	(18,1,46,75,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-scream.png','Mannifest, 2010. Perhaps getting a little carried away','2010 Phil Kneen'),
-	(20,1,46,75,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-beach_1.png','At Gansey Beach, Isle of Man','2010 Phil Kneen'),
-	(21,1,46,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracilands.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
-	(22,1,46,75,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-peel-beach.png','At Peel Beach','2010 Phil Kneen'),
-	(23,1,46,75,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland2.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen'),
-	(25,1,46,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland3.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen');
+	(3,1,27,16,0,'55,000 Pennsylvanians have jobs related to energy production','','http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(4,1,27,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Is hydraulic fracturing growing local economies while supplying clean-burning natural gas?','<p>\n	Across the country, we are unlocking vast amounts of clean-burning natural gas through hydraulic fracturing. This proven, safe technology has allowed us to expand America&rsquo;s energy reserves by more than 7 billion barrels of oil and 600 trillion cubic feet of natural gas. Hydraulic fracturing not only helps us bring clean, affordable natural gas to people who need it, it also creates thousands of jobs throughout Appalachia, Texas and the West, as well as revenue for local, state and federal governments.</p>\n<p>\n	It seems some outside our industry, including politicians in Washington, do not understand what we do and are seeking ways to limit hydraulic fracturing. Washington must not be permitted to enact measures that would add needless regulation to an industry-standard practice we know very well.</p>\n<p>\n	We know hydraulic fracturing is safe and effective&mdash;that&rsquo;s why we&rsquo;ve used it for more than 60 years. And we&rsquo;re ready to use it for many more to deliver reliable supplies of clean natural gas.</p>\n','55,000 Pennsylvanians have jobs related to energy production','Pittsburgh Post-Gazette','http://http://www.post-gazette.com/pg/10077/1043672-28.stm#ixzz0iWy53TEs',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,1,27,55,0,NULL,NULL,NULL,'This is the video heading','','<p>\n	This is a transcript</p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'<p>\n	<object height=\"385\" width=\"480\"><param name=\"movie\" value=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" /><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowscriptaccess\" value=\"always\" /><embed allowfullscreen=\"true\" allowscriptaccess=\"always\" height=\"385\" src=\"http://www.youtube.com/v/Eu8VqiiJq1M&amp;hl=en_US&amp;fs=1&amp;rel=0\" type=\"application/x-shockwave-flash\" width=\"480\"></embed></object></p>\n',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(7,1,29,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What do the oil sands mean to you and your job?','<p>\n	Beneath the sands of Alberta lie 173 billion barrels of oil, reserves second only to those in Saudi Arabia. We are ready to deliver this important source of energy to the American people.</p>\n<p>\n	By responsibly developing these resources in Canada, we can create jobs here in America through refinery expansion and pipeline construction. By some accounts, this activity could support 600,000 new jobs by 2025, as well as add nearly $130 billion to the economy. Access to oil sands in Canada could provide a reliable supply of energy to more consumers in more parts of the country.</p>\n<p>\n	The refinery projects we are undertaking and the development of new technologies to better process oil from Canada will allow us to provide an important, affordable and reliable source of energy America needs.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(8,1,0,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'How does offshore drilling provide America the energy it needs?','<p>\n	We know perhaps better than anyone else the immense opportunity in exploring the waters along the Outer Continental Shelf for oil and natural gas. We also know it can be done in a responsible way that takes the environment into consideration.</p>\n<p>\n	By some estimates, the Outer Continental Shelf contains more than 14 billion barrels of oil and 55 trillion cubic feet of natural gas. Tapping these resources could generate $1.7 trillion in revenue for governments and 160,000 new jobs.</p>\n<p>\n	Above anyone, we remain committed to the responsible development of offshore resources of oil and natural gas. It&rsquo;s an opportunity to produce domestic oil and natural gas while providing well-paying jobs and strengthening America&rsquo;s economy.</p>\n','â€œ30% of the oil and 25% of the natural gas we produce in the United States comes from thousands of wells in the Gulf of Mexico.â€','The Hill','http://thehill.com/blogs/congress-blog/energy-a-environment/103299-clean-energy-and-oil-spill-response-sen-lamar-alexander  ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(9,1,31,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will a ban on deepwater drilling affect future energy supply?','<p>\n	Following the tragic Deepwater Horizon accident, we are mobilizing a tremendous amount of resources to aid in responding to the spill. Our industry understands the need to respond in a coordinated manner and we are&mdash;swiftly creating a task force to examine the spill&rsquo;s cause and working hard to assess and address its impact.</p>\n<p>\n	Unfortunately, Members of Congress, as well as the President and his Administration, have halted new deepwater drilling for at least six months. This move places our jobs and communities in economic peril.</p>\n<p>\n	According to one study, a ban on new deepwater drilling, when combined with tighter regulations and longer permitting timeframes, could result in the equivalent of 340,000 barrels of oil per day in lost production by 2015. This means nearly 50,000 jobs idled in the short term and potentially more than 120,000 if restrictions are extended. In this economy, we can&rsquo;t afford to lose more jobs and deprive Americans of the reliable and affordable energy they need.</p>\n','â€œA moratorium on deepwater drilling could jeopardize 100,000 jobs.â€ ','Rep. Pete Olson, quoted in The Hill','http://thehill.com/blogs/e2-wire/677-e2-wire/102885-texas-lawmaker-to-introduce-bill-lifting-drilling-pause',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(10,1,32,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'What does climate change legislation mean for you and your family?','<p>\n	As an industry, we&rsquo;re committed to reducing greenhouse gas emissions and lower our environmental footprint. We&rsquo;re constantly enhancing efficiency and investing in new technologies that are changing the environmental effects of our work as we bring energy to consumers.</p>\n<p>\n	Congress continues to propose and debate well-intentioned measures that require companies to reduce their impact on the environment. We support this goal and are committed to finding solutions that promote environmental responsibility. However, many of the proposed measures would have unintended negative consequences, potentially putting millions of jobs at risk and raising costs for companies in our industry and others. Our elected officials must understand the need to balance the positive intent of legislation against the negative implications for consumers, jobs and the economy.</p>\n<p>\n	We are committed to protecting the environment. In fact, we&rsquo;re already working to reduce our carbon footprint. But we must be careful of proposals that could take away jobs from the hardworking people in our industry, make our industry less competitive or raise costs for the people that rely on us for affordable energy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(11,1,33,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Could additional regulations stifle economic growth?','<p>\n	We recognize that we must be careful about our impact on the environment. Our companies are taking steps every day to reduce that impact, knowing that we must be able to provide affordable, responsibly produced energy to Americans for decades to come.</p>\n<p>\n	We are concerned, however, that heavy regulations, while well-intentioned, could have unintended but severe negative effects on the economy, the job market and on American businesses&mdash;without significantly improving our nation&rsquo;s carbon footprint. While we support the goal of taking measures to reduce emissions, we want to ensure that doing so will not be at the expense of jobs and the economy.</p>\n<p>\n	We&rsquo;re constantly taking steps to produce energy responsibly. One such example is our commitment to expand production and use of ultra-low sulfur diesel and other technologies, which would lead to a reduction of six common emissions by 60 percent. We remain committed to working with Congress and the administration to make positive changes that lower our environmental impact.&nbsp;&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(12,1,34,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Will new taxes threaten jobs and weaken energy independence?','<p>\n	Producing America&rsquo;s resources of oil and natural gas isn&rsquo;t cheap. Our industry spends hundreds of billions of dollars every year on wages, technology and investment in research and development of energy resources.</p>\n<p>\n	What&rsquo;s more, the energy industry is one of the most heavily taxed industries in America. Industry taxes provide billions of dollars that support schools, first responders and our transportation system, among other vital public services. Yet Congress and the administration continue to propose new taxes on the industry. The latest proposal would mean at least $80 billion in new taxes.</p>\n<p>\n	We oppose new taxes not just because of their impact directly on our businesses, but of the far-reaching negative effects that they could bring to industry workers, consumers and the businesses and organizations that depend on our industry for reliable, affordable energy.</p>\n<p>\n	Instead of passing new taxes, we can show Congress and the administration that we are ready to lead an economic recovery by producing more oil and natural gas right here at home.&nbsp;</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(13,1,35,57,0,NULL,NULL,NULL,NULL,NULL,NULL,'Just exactly how important is our industry to the American economy?','<p>\n	We know how important our work is. More than 9.2 million people are directly or indirectly employed by America&rsquo;s oil and natural gas industry. That&rsquo;s 9.2 million people working hard to deliver the energy our country needs.</p>\n<p>\n	Whether it&rsquo;s passing new laws, regulations or taxes, Washington has a profound impact on our industry and jobs. New laws and regulations that raise the cost of energy or restrict access to resources of oil and natural gas could put thousands of jobs at risk and increase the costs of everything from food and transportation to heating a home.</p>\n<p>\n	We are part of the solution. Our 9.2 million jobs and more than a trillion dollars in value added to the economy play a major role in providing this country the energy it needs and driving the economy.</p>\n','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(16,1,42,67,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','content_pri_post1.jpg','Full',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(17,1,46,75,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon.png','Simon Campbell','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(18,1,46,75,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-scream.png','Mannifest, 2010. Perhaps getting a little carried away','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(20,1,46,75,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-beach_1.png','At Gansey Beach, Isle of Man','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(21,1,46,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracilands.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(22,1,46,75,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-peel-beach.png','At Peel Beach','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(23,1,46,75,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland2.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(25,1,46,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'simon-gracieland3.png','Recording at \'GracieLand Studio\', Rochdale','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `exp_matrix_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1881,15 +1997,15 @@ LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
 INSERT INTO `exp_members` (`member_id`,`group_id`,`weblog_id`,`tmpl_group_id`,`upload_id`,`username`,`screen_name`,`password`,`unique_id`,`authcode`,`email`,`url`,`location`,`occupation`,`interests`,`bday_d`,`bday_m`,`bday_y`,`aol_im`,`yahoo_im`,`msn_im`,`icq`,`bio`,`signature`,`avatar_filename`,`avatar_width`,`avatar_height`,`photo_filename`,`photo_width`,`photo_height`,`sig_img_filename`,`sig_img_width`,`sig_img_height`,`ignore_list`,`private_messages`,`accept_messages`,`last_view_bulletins`,`last_bulletin_date`,`ip_address`,`join_date`,`last_visit`,`last_activity`,`total_entries`,`total_comments`,`total_forum_topics`,`total_forum_posts`,`last_entry_date`,`last_comment_date`,`last_forum_post_date`,`last_email_date`,`in_authorlist`,`accept_admin_email`,`accept_user_email`,`notify_by_default`,`notify_of_pm`,`display_avatars`,`display_signatures`,`smart_notifications`,`language`,`timezone`,`daylight_savings`,`localization_is_site_default`,`time_format`,`cp_theme`,`profile_theme`,`forum_theme`,`tracker`,`template_size`,`notepad`,`notepad_size`,`quick_links`,`quick_tabs`,`pmember_id`,`profile_views`)
 VALUES
-	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296804623,1296823370,5,0,0,0,1296746427,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1296823370,1296856437,4,0,0,0,1296746427,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1292416546,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
-	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1296821995,1296830603,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1296821995,1296837813,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1296766023,1296830921,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(19,6,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1296750409,1296813824,0,0,0,0,1296750435,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1297391297,1297424903,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(19,6,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1297427532,1297437152,17,0,0,0,1297329321,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2035,8 +2151,7 @@ INSERT INTO `exp_module_member_groups` (`group_id`,`module_id`)
 VALUES
 	(6,19),
 	(6,24),
-	(6,23),
-	(6,22);
+	(6,23);
 
 /*!40000 ALTER TABLE `exp_module_member_groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2053,7 +2168,7 @@ CREATE TABLE `exp_modules` (
   `module_version` varchar(12) NOT NULL,
   `has_cp_backend` char(1) NOT NULL DEFAULT 'n',
   PRIMARY KEY (`module_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_modules` WRITE;
 /*!40000 ALTER TABLE `exp_modules` DISABLE KEYS */;
@@ -2072,7 +2187,7 @@ VALUES
 	(18,'Super_search','1.1.0.b2','y'),
 	(19,'User','3.1.0','y'),
 	(20,'Pur_member_utilities','1.0.3','y'),
-	(22,'Cartthrob','0.9457','y'),
+	(26,'Cartthrob','0.9457','y'),
 	(23,'Freeform','3.0.5','y');
 
 /*!40000 ALTER TABLE `exp_modules` ENABLE KEYS */;
@@ -2347,7 +2462,7 @@ LOCK TABLES `exp_password_lockout` WRITE;
 /*!40000 ALTER TABLE `exp_password_lockout` DISABLE KEYS */;
 INSERT INTO `exp_password_lockout` (`login_date`,`ip_address`,`user_agent`,`username`)
 VALUES
-	(1296751116,'82.10.223.13','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ','simoncampbell');
+	(1297352006,'71.30.180.219','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ','garrett.winder');
 
 /*!40000 ALTER TABLE `exp_password_lockout` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2566,16 +2681,31 @@ LOCK TABLES `exp_security_hashes` WRITE;
 /*!40000 ALTER TABLE `exp_security_hashes` DISABLE KEYS */;
 INSERT INTO `exp_security_hashes` (`date`,`ip_address`,`hash`)
 VALUES
+	(1297329233,'92.39.196.149','9ab917ef08199391fae736d0e6ea442eff5dea63'),
+	(1297328420,'204.236.235.245','75410b8eff17d3041eee491bb8e51f389fae6bf3'),
+	(1297278933,'84.246.205.199','ffcf30bda9c87ca0fd3a9d5eab3a589ea30de741'),
+	(1296838556,'88.97.41.226','1289b71f554d84c4d9a36e920e0477f559c776d7'),
+	(1296838635,'88.97.41.226','4318eca181c489142cdba32458a088ef5836baca'),
+	(1297265942,'84.246.205.199','c2825d4ae5c7517c1031c4423e23cf11eaa56b6d'),
+	(1297265920,'84.246.205.199','8f088c1426fdb4e8c47339793ee14e6322f697c5'),
+	(1297263906,'88.97.41.226','e2a18408612b32a1080498774b87fc616526d096'),
 	(1296830716,'173.185.20.98','42b5ea47418a5d5c224bcc9e149ea8d346e89bbf'),
 	(1296830716,'173.185.20.98','7f188020d51011a0be07259970e7e113c6df7aa8'),
 	(1296830706,'173.185.20.98','c3597e1c278ce4c272eb7d335da42a3a51c17da6'),
 	(1296757369,'128.30.52.65','5415ea773243cabab81f348b1c71ed116806afbd'),
-	(1296755242,'92.39.196.149','dae66bae25dc4e609fc52e2e2d7825c1a45c8043'),
+	(1296838553,'88.97.41.226','8dbac74f96678e0c4ef9806655cc66f6638e48cd'),
+	(1297254438,'88.97.41.226','dfb439826b7573a1035f18d8289acbc598d680f3'),
+	(1297253448,'84.246.205.199','dc09c35bc7ab2a3c182253da36b43db551744776'),
+	(1297253395,'84.246.205.199','7484feab6959b1e78759639ce8171190b39260d4'),
+	(1297252718,'84.246.205.199','b0caf24d1d88673ba8dbbb43e84bd93861f00111'),
+	(1297252629,'84.246.205.199','23a5271227cfd9fa67f6704b08525b1e175d88c5'),
+	(1296837914,'88.97.41.224','e7e009fbb1642cacfc11b101dea7117ac97dbeab'),
 	(1296754757,'82.10.223.13','86e98332f2022b92b255de7e618565f5900f209c'),
 	(1296754749,'82.10.223.13','63cabe0abf8a9356909c6e0c91affab6b38f8575'),
 	(1296754746,'82.10.223.13','d5e0c7e6377f5e75d7b0aa6a03c71955a082073a'),
 	(1296754617,'82.10.223.13','289316e17242fe35b53dae3dcf13e8c32c3ac675'),
 	(1296754612,'82.10.223.13','32e0d673f0241f7e1b234fb564cc11253a59e404'),
+	(1297221052,'207.46.195.242','dc7726dde6955d72f4510d3163ad36cf15541fae'),
 	(1296754594,'82.10.223.13','a7c0df674f9929325d7fb750436df94d3608a623'),
 	(1296754583,'82.10.223.13','1759dde5ac6f54c7a242ea456567281de42ce620'),
 	(1296754581,'82.10.223.13','71b714454ce2409fd0a46a218556de13b28fcd78'),
@@ -2588,7 +2718,14 @@ VALUES
 	(1296754401,'82.10.223.13','93eb9fb683e1979eda80b92f1b2b58709b7c57ee'),
 	(1296754312,'82.10.223.13','559658907dabf3fb3142cbc25562fff7fdd549de'),
 	(1296754033,'82.10.223.13','441704afd00e10a2517b4cbec9d8646102907cc9'),
+	(1296831497,'88.97.41.224','765e121e30ed13e1b4ee332512454ad2ee47601e'),
 	(1296753673,'82.10.223.13','83a98f1c438c1738de35278d90ea647baf259fea'),
+	(1296831459,'88.97.41.224','2df77ca82ff1d875d8039d03955dab02c341e379'),
+	(1296831459,'88.97.41.224','08741f705e0c8a82e972b15c43e1397b1f99cb8f'),
+	(1296831457,'88.97.41.224','e8db6ad2ff8e921f4f298a8b9474fd53043c2fe6'),
+	(1296831453,'88.97.41.224','f31c7ab4bd7f3fea730c9e44a0f6c69c89dd9fc5'),
+	(1296831453,'88.97.41.224','af18b96a8035c266d170bf34739dda5ad7c68ba6'),
+	(1296831449,'88.97.41.224','07bc72eb1531578da41116b7baae8c87b3b132eb'),
 	(1296753425,'82.10.223.13','741bd50f8c535f78a8f02cf4023402ade1098888'),
 	(1296831187,'173.185.20.98','d0ee3468d067f225ce610478f291931cb77639f4'),
 	(1296753343,'82.10.223.13','db7de23b71b8ca93dd8339d4226b898682d352bc'),
@@ -2598,6 +2735,7 @@ VALUES
 	(1296831075,'173.185.20.98','e9da44a3e250a07bbd40115968ba99afc363959f'),
 	(1296831078,'173.185.20.98','acb047d1ee98a68a366a86d6b073357686683c4c'),
 	(1296831082,'173.185.20.98','4879d0ac616b1bae0201cc2d8cac66b5f60eaca2'),
+	(1296837652,'88.97.41.226','0ba1bc269d618d671528867fa5118897d8791155'),
 	(1296831068,'173.185.20.98','39ef9df19cd1eb630a395fae88ed8943a041263f'),
 	(1296831050,'173.185.20.98','e72d0f73f715b52a5e1b4968dc3f05d4bd625042'),
 	(1296831050,'173.185.20.98','7f15b401b6f57841eb81089f446d37f0b775ab0a'),
@@ -2609,46 +2747,62 @@ VALUES
 	(1296830926,'173.185.20.98','86819deefd2f0457bbcaf0727f86ab6026bb1f60'),
 	(1296830835,'88.97.41.224','6f706b591f3a582e8207e2f7d0816d27b28811b4'),
 	(1296752782,'82.10.223.13','3ce23478d98517656fffb670146243dacae35b52'),
+	(1296837564,'88.97.41.226','ff06daa907ca6ed5e76fd93bc27eb8a30d99972d'),
+	(1296837252,'88.97.41.226','fd1368ddc9c7c456098090ea3a73f203b308dd19'),
+	(1296837247,'88.97.41.226','17a264337a52ee8aa417b1bcf4682ba0f7428a9b'),
+	(1296837162,'88.97.41.226','9c15636dd4be562bce0ebfa12c3fe6bf4d700cf3'),
+	(1297214123,'217.137.170.76','ebd62444ba89b4c640133bbc6e36309c8623ff91'),
+	(1296836410,'88.97.41.226','7e1121d1b95636c928ef226b2e52d46888c01b2a'),
+	(1296836405,'88.97.41.226','978b663bd7bc48955ef0cd79f89ea506ac6f6220'),
+	(1296836143,'88.97.41.226','69629dacc18e4a697a1d9d704c0b043f7f5614a7'),
 	(1296830832,'88.97.41.224','cf8ccccb006555c628ade481c0dad5450e0148bd'),
 	(1296830821,'88.97.41.224','af8ebb13bf192a6960b84e3304893a2564de4ba5'),
 	(1296830800,'88.97.41.224','f12c5f66ac3f0d8f7b59fcc0ad2d989f9f70d287'),
 	(1296830804,'88.97.41.224','7a775c89ba439554168165a1242ad39e0470693a'),
 	(1296830805,'173.185.20.98','d31de8111dc6115a1fa83117d12fee350d86d648'),
+	(1296835718,'88.97.41.226','bbf6a81d22d63b3a8f26841aaaf976ff4b2df19c'),
+	(1296835713,'88.97.41.226','19a7583f67f3a3dede8d3d8fb28736726599f936'),
 	(1296830798,'173.185.20.98','ff4eb72afec252acb974af4c88f17dec0e1dc4a4'),
 	(1296830795,'173.185.20.98','6168ecbba1116fdff7a855e0de5f01611fac1c35'),
 	(1296830796,'88.97.41.224','08e3cb64319813d19e6fd074808e906d01c14c5d'),
 	(1296749931,'82.10.223.13','2c1c146252ce420e428723257156f9f0ec427fd8'),
+	(1296835706,'88.97.41.226','4ea71a84bb7381dc2d5aaf9575d83eb888b5afce'),
+	(1297352423,'92.39.196.149','fdb8afb4312c7b98f848bf097b60ad45d969a4f8'),
+	(1296834669,'88.97.41.226','29bdb1c7db4aefb1c1173a51f6bc43f8bfe2d42b'),
+	(1296834436,'88.97.41.226','a5e4d0e89f8eac5d3d0e0ffb01f87e8e6bde784b'),
+	(1296834326,'88.97.41.226','9650b5e7a6562036c04a9fd6c3f9413e47888ec6'),
+	(1296834318,'88.97.41.226','0bc7503d865e5b47452b726553a90392b1c5d98f'),
 	(1296820039,'88.97.41.224','03fec7802d4e65a2083dd61212f07122c49353df'),
 	(1296820038,'88.97.41.224','56d9da5da4e5d56257f337ace88d733c8e0b7a02'),
 	(1296820032,'88.97.41.224','51b6dd4be7e0322383bf84adb9ea609796548ef1'),
 	(1296820018,'88.97.41.224','e657def5a2785004e29f181620edb4905279c78c'),
-	(1296802586,'88.97.41.226','721b3882f9eb116fa41d26167368f1f3e65248e7'),
+	(1296835941,'88.97.41.226','a685a850d3bbe0416ab56320280102bbbcf58280'),
 	(1296830667,'173.185.20.98','1fe4f26a18a719a0641cc748bc97eedfa9e2b99c'),
-	(1296768418,'92.39.196.149','88dae5fae5e54a889cc2f45db4890e69f6d37ed3'),
+	(1296837827,'88.97.41.224','94699d2e5f3916d0b0927c60b25f7102928e023e'),
 	(1296830645,'173.185.20.98','efde513626eb201f531a0d600fbb2ce6db5abe02'),
 	(1296830639,'173.185.20.98','71004d6c322b98ad588b0c965b1e02e2eccebc79'),
 	(1296830558,'173.185.20.98','caf68a2d60c63c133204d240bed08984accc0835'),
 	(1296830555,'173.185.20.98','9cbdf93041092ad1a97f681f3434e58191b4cfc4'),
 	(1296830549,'173.185.20.98','2c5c09de7a72215948c8502671cfb120f6f2f053'),
-	(1296813868,'92.39.196.149','a4866e884e3ed5d4eefb54914d1c1f9f4f2ab0e8'),
-	(1296813868,'92.39.196.149','277ba479ea936ea4d908deefd6ca9f6d53f0b5ea'),
-	(1296813844,'92.39.196.149','a452cb2b04e0eb26f6eb11011c5f38e1cd6313d0'),
-	(1296813825,'92.39.196.149','52f0bc163568ad22912d747d8b7905d8cc293277'),
+	(1296837813,'88.97.41.224','f8ba0cc0e38db970960042b1417a211a4e5a488d'),
+	(1296837793,'88.97.41.226','69f99aaf366a6251e989981ae908df97a4853481'),
+	(1296837790,'88.97.41.226','babbe8fd687d56b0d0a26e2e93d9081c1ab0ff8e'),
+	(1296837778,'88.97.41.226','f198a7fd5838b6f01b058c7507a717629f568350'),
 	(1296830761,'88.97.41.224','bb9194c84f60de63ceaa0864b4815074a340850d'),
 	(1296830757,'88.97.41.224','7317924e34c822027d435e831553c47056020f1c'),
 	(1296830756,'173.185.20.98','b705fbae262e3bd2289f8ba6ac196fb25e274b97'),
 	(1296830099,'88.97.41.224','e279338c093fe11dd23e799d6724870e7b93550a'),
-	(1296813800,'92.39.196.149','21e22398ba8043cf4c637f2d18baebc1c18e9f67'),
-	(1296803148,'88.97.41.226','909cf1e11e89024e9238ca3b5634c173c41f050e'),
+	(1296991924,'178.16.4.96','e2dc87732e90cd560288931d9074ba07bab5940c'),
+	(1296835796,'88.97.41.226','0213618bc4f2a7a10e7eff48ca551a3428a83558'),
 	(1296830044,'173.185.20.98','d622f75eb768f6bc9933066e1c1966fbab6bc02b'),
 	(1296750746,'82.10.223.13','ea54c175823bdc18700ce73d37ea5f81c7907978'),
 	(1296830038,'173.185.20.98','2926dfb0c720e60b0d4a16c0e05b9fd1a18b736a'),
 	(1296830010,'173.185.20.98','36d8ccdee38e4bb97b2596467bfd5ffa3a76020a'),
 	(1296750826,'128.30.52.90','459a4c1925d8447be0e3e0b444ead1f69f60fed3'),
-	(1296803117,'88.97.41.226','4947b90ad6033af198c4927bf17a34558b8aa413'),
-	(1296803107,'88.97.41.226','99bc592b9420c98a20d45b3e02e98cc8b0b75d9d'),
+	(1296835774,'88.97.41.226','b5a1adae6275c290cc79079cf76940b63fa1567c'),
+	(1296835771,'88.97.41.226','6bd4aed29305a62d96d37d3d2032ed8aad1e15e0'),
 	(1296830007,'173.185.20.98','e783a297ba9b64d8584ed47332388e8a3490731e'),
-	(1296803098,'88.97.41.226','5d101d728b43fb85f6ab08121e61b9faefbf3c35'),
+	(1296835764,'88.97.41.226','bb3d96e5c7cd96da32b85e93425a0f0430a8dae1'),
 	(1296751109,'82.10.223.13','07237e386c00540e323d58ce3505a0508edb7025'),
 	(1296751116,'82.10.223.13','56459b08fa1edfae91557e5643dcc271'),
 	(1296751121,'82.10.223.13','fb8df2e4597e7a8ce29f06da40aec4ab46c763df'),
@@ -2673,12 +2827,114 @@ VALUES
 	(1296751191,'82.10.223.13','478eb9b2e3e2cc9a7387052bedfceb53bc63eb21'),
 	(1296751207,'82.10.223.13','e74931ad54670cbf2fe774e4d8449bde586b9495'),
 	(1296751207,'82.10.223.13','6e49ec6847427f45fe98c3d59f45047b8b5c6207'),
-	(1296802941,'88.97.41.226','15efb260f34eb7af454a7a9a21b9c3f0dd95ef4d'),
-	(1296821385,'88.97.41.226','3798f1a4204a64e15878ec7929e24fd5270464b4'),
+	(1296835750,'88.97.41.226','4157ba2482a552782cfdfe9e17c8e0d1f1430041'),
+	(1296835793,'88.97.41.226','76a047d9cffc4b13cedc697f6502b0c79ca39c5e'),
 	(1296821183,'88.97.41.224','fc5597a511544c2e5451533ba7cc0533c3aa3340'),
 	(1296820117,'88.97.41.224','20ae57e9a1b2de268eaad7aa407d7fbb826f0d6f'),
 	(1296752126,'82.10.223.13','c55f38cf0ddbbe4ff6aae8cdf0851330c5c5552f'),
-	(1296820107,'88.97.41.224','217f38c9ca0ff06eb4b443a6b66e254b6f3771ea');
+	(1296820107,'88.97.41.224','217f38c9ca0ff06eb4b443a6b66e254b6f3771ea'),
+	(1296991896,'178.16.4.96','db5bb89f913e63512073e8af8667b727835c01fd'),
+	(1297139484,'66.249.72.198','27f6550f6b247678b4a87eb6d127421e3e31bc21'),
+	(1296990014,'83.218.5.51','29fe46880afceac8c442e4c0a09de9e7557f970c'),
+	(1296988568,'82.95.252.179','d8adffbbd626a660a75f6946d228d362f5f6adf3'),
+	(1296987078,'88.97.41.226','9b00629724c294bb8ecaa8fcccadfa646a7e6a94'),
+	(1296839603,'88.97.41.226','c14683b18146cc24714ca8ee0bc52c6234fc9e24'),
+	(1296839603,'88.97.41.226','71011e8f15195f6a5cf3720180e258b7e85e4863'),
+	(1297024611,'173.185.20.98','f5438d42ef9807635a76992f29f50a4561a362a3'),
+	(1296944419,'66.249.72.198','513c34f2a9808b7179691dd79e148c94452c942b'),
+	(1296937935,'173.185.20.98','00b346b805f3ff3a138793f6333bf8e69c919f26'),
+	(1296937366,'173.185.20.98','b40e09e3c906af58d0f28ea384aec405bda1988d'),
+	(1296936446,'173.185.20.98','09b6e3bc704034e373ba393d07fc03ed36521922'),
+	(1296936433,'173.185.20.98','4a0579c697ff99a6478f4eb935145dcae8288ffe'),
+	(1296936353,'74.197.19.206','88f9ec347c869d8a4356c3cf42462cedead13ec8'),
+	(1296934452,'74.197.19.206','7d15e6d54e06f42acdf12885424417fb542adc3f'),
+	(1296934393,'173.185.20.98','8b1164d280143b52d0a07c906b74f83b019f69a3'),
+	(1297207171,'87.250.252.241','3473d3833de4a815821fae11e93c64de42cda343'),
+	(1296928819,'82.20.38.138','2a93dace2a874aada1e93cea81faa5de7b92342e'),
+	(1296919996,'88.97.41.226','5efaeca9bf9c812d4b608a0e9728b5c92deb918b'),
+	(1297198606,'67.195.115.251','9cc31fda6326c4fb6a554828968579e05ca6fb32'),
+	(1296841602,'88.97.41.224','e9241618dd1fa992d7d0dd339e149147247ee4ad'),
+	(1297191887,'82.10.218.59','5919ed09c20304363b0310038bee8ec62cfcafc4'),
+	(1297191885,'82.10.218.59','35023a73b315003d9c87667be64961eff6efdbdc'),
+	(1296843088,'88.97.41.226','ae370cfa9ea1c5e2815814c4437f2a8757638dc9'),
+	(1296843091,'88.97.41.226','2e5518c67336a8d32e558050e0caa165c78aad89'),
+	(1296843139,'88.97.41.226','687fc94ad3dd6a8f8e4b872f0bc136f7ab604147'),
+	(1296914520,'88.97.41.226','9e0eb8224e4fff6fe6c47f951bc5772a78df550e'),
+	(1296914442,'88.97.41.226','240716cedec0688a775e8116e94f69f4724effe0'),
+	(1296910325,'88.97.41.226','b2ea0abba8e931c5fe1f087fd42bc029adb858b0'),
+	(1296843605,'88.97.41.226','c13e8ce6dddc31f813cd8e2b183d41a2a6fb848b'),
+	(1296907447,'82.10.218.59','392f9861036fb011f2bd0332402957de6ddb71a6'),
+	(1296844916,'88.97.41.226','2ffa0e7f155c5c75c94dedf34afa37b05159cbbd'),
+	(1296844916,'88.97.41.226','9e56d793b4bccdd2989ac3c4283ca95eee8f4454'),
+	(1296844923,'88.97.41.226','e2ec116f04880a0b37982bfa227d3349c10b8130'),
+	(1296844928,'88.97.41.226','7924294ac9b57591fca8e2a3575db892966edca8'),
+	(1296844928,'88.97.41.226','4c3c901c0028e3706ec71504dd1730bd398d8c56'),
+	(1296844941,'88.97.41.226','3e3429ad4d8a2f4a9390c26cdbe30cd40b5350db'),
+	(1296844946,'88.97.41.226','3afe54907db87ebaf1d8f6d3d53628e82d11dd4f'),
+	(1296844946,'88.97.41.226','5ccd57cad3179efeebbac991cdaf687f5aec2850'),
+	(1296845059,'88.97.41.226','eb48863f08cd094596461237d310b62425ab9241'),
+	(1296845063,'88.97.41.226','4747609c23eb5ccf9931ff67261a75a676e06380'),
+	(1296845063,'88.97.41.226','f5ce30923e560a47dd5b9d83062d4125135441c8'),
+	(1296845067,'88.97.41.226','374e32d58be5788146705d67105bb82c60da531a'),
+	(1296845072,'88.97.41.226','ec8af82d870a3bc9de11de99aedfc8c40ae65052'),
+	(1296845770,'88.97.41.226','b41962492b9a74fcb23d2d278072f2580d56cf59'),
+	(1296845798,'88.97.41.226','3aca82b4908848386e7d9e61a494f2c9374ab388'),
+	(1297099724,'173.185.20.98','aa96aa4c9f68d9131bf17ad9719f49ed5803f42d'),
+	(1297099724,'173.185.20.98','b46eb002d353e2d9979dd84602f882ccc2b8ff35'),
+	(1296847668,'88.97.41.226','01ed1c952c3dad8512995f56662825304cc35d81'),
+	(1296847682,'88.97.41.226','c0262fc6207f3b77e41f3507d71227b1014fcbb0'),
+	(1296852454,'12.234.22.2','75ec80d039790c5ab524583d42051f164facc593'),
+	(1296852548,'12.234.22.2','9704a4fc93f9543ca99eaeaa0987e402cd8c80eb'),
+	(1296852548,'12.234.22.2','424c4d8419b8147d557ea828620f15a059b7d3f3'),
+	(1296852548,'12.234.22.2','a30abc666a0abf3c64d382ca668fc54f5020a58a'),
+	(1296852548,'12.234.22.2','969ba149925996bc4d5c91b915f865dc1cda61ac'),
+	(1296919956,'88.97.41.226','5d2f4f0fb951e50dc4220959e3b49be9d19a32ea'),
+	(1297006705,'109.70.40.203','885281a9394ca1814e797e94f381b4f5b934fcf3'),
+	(1296895886,'88.97.41.226','f1174ec338752bc5e204a53aef2dab30713138be'),
+	(1296896066,'88.97.41.226','711426756c64aca35313c894cb344c71be382117'),
+	(1296896095,'88.97.41.226','f8f39362a9c83676e2f4b591c72627190aeaacee'),
+	(1296896243,'88.97.41.226','53314450c1e937c1704eb6221f04cffc3f657af0'),
+	(1297099714,'173.185.20.98','e2bc7119f9ef7b5a2536403e9b760aa2f71b37a5'),
+	(1297099695,'173.185.20.98','44f52fa3c60925c7b82038695f76532ae87b5d81'),
+	(1297083599,'88.97.41.224','5802279c7dd1750af66cdac298a12301ef33208e'),
+	(1297160644,'220.181.108.115','a45fed58041e48282e3ad894841a749ab64b4bed'),
+	(1296994798,'88.97.41.226','555a228e1cf81318debe8da071b681d71d6dc58b'),
+	(1296994793,'88.97.41.226','ee24c17a3b02dfc3f7979a76e43f55de38dcb0f3'),
+	(1296994644,'82.10.218.59','f493138c1335d937449d592875058a8f7bcb3029'),
+	(1297339844,'207.46.199.42','1723f483f453efab27a99d66682f6ec61edfdc41'),
+	(1297329321,'92.39.196.149','e513029d90a3a6998540c10dc8477181b381390d'),
+	(1297329237,'92.39.196.149','ec7ea2d246c8878c4605b8fe2cff326d00beaf25'),
+	(1297329237,'92.39.196.149','b3c06e787e6cbd513bee5f82c0c0d188f24a0fe7'),
+	(1297354125,'92.39.196.149','25201d38ffbd094fb20f03f30e59b4c12ffd78ed'),
+	(1297424991,'88.97.41.224','c9e7e8de8d2655634d1bc9f40f898085ae277844'),
+	(1297424958,'88.97.41.224','a46611cab50b2d3d29cb78229f693812bbb835f2'),
+	(1297424958,'88.97.41.224','d7185d6276d83628caf3daad74b326e06e69b689'),
+	(1297424949,'88.97.41.224','d3cf2f6a33b6cba35b75e0225da6e966319679b7'),
+	(1297424949,'88.97.41.224','d195859658a84eddf828422fb8a378d6bd60a85b'),
+	(1297424903,'88.97.41.224','2c60050348bcd8283298a04b247e48b8c05026b9'),
+	(1297424896,'88.97.41.224','19caa0fd6f686b86c21bbfb50682bc9c0d524554'),
+	(1297416278,'92.39.196.149','6000bb251ce56f5daa0975cdd21c36456c7fdbcb'),
+	(1297416107,'92.39.196.149','ff11220f0013315b9a7c05ec684e247c450fecf5'),
+	(1297416106,'92.39.196.149','d5dbfc60058508a7b7f6a0aa310af725956d1b13'),
+	(1297416081,'92.39.196.149','76827cf0253514a89d2498b6865cb5cc7b83ae10'),
+	(1297406247,'66.249.66.56','5abc9a1139ae281fa157a66f000bb17f3da13264'),
+	(1297404557,'92.39.196.149','86f5120f4c9f4319b557d0b77010eb8a554a44c8'),
+	(1297404549,'92.39.196.149','67430feb9f63e569dc6fe5e8191605aa96378346'),
+	(1297404534,'92.39.196.149','f82a73abb7500e13392c891a5416745e4e6227cc'),
+	(1297392331,'71.30.180.219','08c2fb6ad8718aff72ae58e401d19ed8e224b89e'),
+	(1297391543,'71.30.180.219','5036029b76d43bdf14b0d296ae1902784055964b'),
+	(1297391536,'71.30.180.219','307b9d05e76a16139c7cf6209bfa4db185368a34'),
+	(1297391528,'71.30.180.219','6427dce8e6279dd646f3b1a34f51628d109e7ed1'),
+	(1297391509,'71.30.180.219','fa951ff9ac73dd01d84e6df58350b0efc76c8130'),
+	(1297391358,'71.30.180.219','09de316235123e1b5d323e05ef014d2edc21d35c'),
+	(1297390741,'71.30.180.219','39abefd9ac483e7a8f928d0eb34ffc8698ea7f4a'),
+	(1297390738,'71.30.180.219','6fffe1a83ad2208eebe9ee0208fb7cbe7d44dbea'),
+	(1297363174,'82.2.139.6','64feb8da004cc3b268ebc49d6d87a1908a79e513'),
+	(1297390686,'71.30.180.219','a0599256539dcff1f272277acc4ba8588f45b05d'),
+	(1297390694,'71.30.180.219','9d14e36d266c4f106778c0029081a90a0b52db3d'),
+	(1297390728,'71.30.180.219','367e3451ee65a5103466292185964680d1fd96b2'),
+	(1297390730,'71.30.180.219','bed2d8b6c7258d72ad5adc80b545e7cfdb9db1fb'),
+	(1297390736,'71.30.180.219','a4e81a97a6ed39d52a3c2cf2d8cb9c67251ab2a5');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2706,10 +2962,9 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('9543cac0d12d8852af6c1ad0a4200d429ab3ee49',1,18,0,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296831197),
-	('0daa9fc8d2500757d0c1d767bff43a578815d924',1,18,0,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296830794),
-	('1ab18da03701ddc24bc7c17276542fa9ec56a990',1,7,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296830873),
-	('3e0ab351e5c5b61421cbd033ae24da60c78196bd',1,18,0,'173.185.20.98','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1296831074);
+	('774039bf1c3d1d94f2161d617d616abae32a65fc',1,19,1,'92.39.196.149','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en',1297427709),
+	('89ea39ec40e4a81aca680b42159e59c742f7d8ce',1,19,1,'92.39.196.149','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en',1297437269),
+	('c772e39e139fd23d17539e9d6e8bd80ec7908cf9',1,18,1,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; ',1297424957);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2820,7 +3075,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,9,19,'Simon Campbell',5,0,0,0,0,1296746336,0,0,0,1265120889,4,1249281451,1297265301);
+	(0,1,9,19,'Simon Campbell',20,0,0,0,0,1297329200,0,0,0,1265120889,4,1249281451,1297265301);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2998,7 +3253,7 @@ VALUES
 	(24,1,'thirtysix',7,'n','n'),
 	(25,1,'store',8,'n','n'),
 	(26,1,'journal',9,'n','n'),
-	(27,1,'bio',10,'n','n'),
+	(27,1,'biography',10,'n','n'),
 	(28,1,'gallery',11,'n','n'),
 	(29,1,'contact',12,'n','n'),
 	(30,1,'account',13,'n','n'),
@@ -3193,7 +3448,11 @@ VALUES
 	(16,'cp',7),
 	(16,'cp',5),
 	(17,'cp',7),
-	(17,'cp',5);
+	(17,'cp',5),
+	(18,'cp',5),
+	(19,'cp',5),
+	(20,'cp',5),
+	(21,'cp',5);
 
 /*!40000 ALTER TABLE `exp_upload_no_access` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3223,7 +3482,7 @@ CREATE TABLE `exp_upload_prefs` (
   `file_post_format` varchar(120) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_upload_prefs` WRITE;
 /*!40000 ALTER TABLE `exp_upload_prefs` DISABLE KEYS */;
@@ -3234,7 +3493,11 @@ VALUES
 	(14,1,'n','Images: Journal','../uploads/images/journal/','/uploads/images/journal/','img','','','','alt=\"\"','','','','',''),
 	(15,1,'n','Videos','../uploads/videos/','/uploads/videos/','all','','','','','','','','',''),
 	(16,1,'n','Audio','../uploads/audio/','/uploads/audio/','all','','','','','','','','',''),
-	(17,1,'n','Images: Galleries','../uploads/images/galleries/','/uploads/images/galleries/','img','','','','alt=\"\"','','','','','');
+	(17,1,'n','Images: Galleries','../uploads/images/galleries/','/uploads/images/galleries/','img','','','','alt=\"\"','','','','',''),
+	(18,1,'n','Images: Products: T-Shirts','../uploads/images/products/tshirts/','/uploads/images/products/tshirts/','img','','','','','','','','',''),
+	(19,1,'n','Images: Products: Music','../uploads/images/products/music/','/uploads/images/products/music/','img','','','','','','','','',''),
+	(20,1,'n','Images: Products: Posters','../uploads/images/products/posters/','/uploads/images/products/posters/','img','','','','','','','','',''),
+	(21,1,'n','Files: Products: Music','../uploads/files/products/music/','../uploads/files/products/music/','all','','','','','','','','','');
 
 /*!40000 ALTER TABLE `exp_upload_prefs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3469,6 +3732,36 @@ CREATE TABLE `exp_weblog_data` (
   `field_ft_87` tinytext,
   `field_id_88` text NOT NULL,
   `field_ft_88` tinytext,
+  `field_id_89` text NOT NULL,
+  `field_ft_89` tinytext,
+  `field_id_90` text NOT NULL,
+  `field_ft_90` tinytext,
+  `field_id_91` text NOT NULL,
+  `field_ft_91` tinytext,
+  `field_id_92` text NOT NULL,
+  `field_ft_92` tinytext,
+  `field_id_93` text NOT NULL,
+  `field_ft_93` tinytext,
+  `field_id_94` text NOT NULL,
+  `field_ft_94` tinytext,
+  `field_id_95` text NOT NULL,
+  `field_ft_95` tinytext,
+  `field_id_96` text NOT NULL,
+  `field_ft_96` tinytext,
+  `field_id_97` text NOT NULL,
+  `field_ft_97` tinytext,
+  `field_id_98` text NOT NULL,
+  `field_ft_98` tinytext,
+  `field_id_99` text NOT NULL,
+  `field_ft_99` tinytext,
+  `field_id_100` text NOT NULL,
+  `field_ft_100` tinytext,
+  `field_id_101` text NOT NULL,
+  `field_ft_101` tinytext,
+  `field_id_102` text NOT NULL,
+  `field_ft_102` tinytext,
+  `field_id_103` text NOT NULL,
+  `field_ft_103` tinytext,
   KEY `entry_id` (`entry_id`),
   KEY `weblog_id` (`weblog_id`),
   KEY `site_id` (`site_id`)
@@ -3476,13 +3769,29 @@ CREATE TABLE `exp_weblog_data` (
 
 LOCK TABLES `exp_weblog_data` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_data` DISABLE KEYS */;
-INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`,`field_id_84`,`field_ft_84`,`field_id_85`,`field_ft_85`,`field_id_86`,`field_ft_86`,`field_id_87`,`field_ft_87`,`field_id_88`,`field_ft_88`)
+INSERT INTO `exp_weblog_data` (`entry_id`,`site_id`,`weblog_id`,`field_id_71`,`field_ft_71`,`field_id_72`,`field_ft_72`,`field_id_73`,`field_ft_73`,`field_id_74`,`field_ft_74`,`field_id_75`,`field_ft_75`,`field_id_76`,`field_ft_76`,`field_id_77`,`field_ft_77`,`field_id_78`,`field_ft_78`,`field_id_79`,`field_ft_79`,`field_id_81`,`field_ft_81`,`field_id_82`,`field_ft_82`,`field_id_83`,`field_ft_83`,`field_id_84`,`field_ft_84`,`field_id_85`,`field_ft_85`,`field_id_86`,`field_ft_86`,`field_id_87`,`field_ft_87`,`field_id_88`,`field_ft_88`,`field_id_89`,`field_ft_89`,`field_id_90`,`field_ft_90`,`field_id_91`,`field_ft_91`,`field_id_92`,`field_ft_92`,`field_id_93`,`field_ft_93`,`field_id_94`,`field_ft_94`,`field_id_95`,`field_ft_95`,`field_id_96`,`field_ft_96`,`field_id_97`,`field_ft_97`,`field_id_98`,`field_ft_98`,`field_id_99`,`field_ft_99`,`field_id_100`,`field_ft_100`,`field_id_101`,`field_ft_101`,`field_id_102`,`field_ft_102`,`field_id_103`,`field_ft_103`)
 VALUES
-	(46,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none'),
-	(49,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'19387854','none','This is number one in a series of five videos about the making of the album \"Thirty Six\". To read about the making of the album, see the article \"The Album ThirtySix: Part One\":http://blog.simoncampbell.com/blog/perma/making_the_album_thirtysix_part_one/ on my personal blog.','textile','',NULL,'',NULL,'',NULL,'',NULL,'','textile','','none','','none','','none'),
-	(48,1,17,'Centenary Centre','none','Peel','none','1301097601','none','http://www.facebook.com/event.php?eid=127886567271836&index=1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','textile','','none','','none','','none'),
-	(50,1,23,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'h3. Information collection and use\n\nThis site is owned and run by Supertone Records (hereinafter referred as Supertone) is a trading style of Erskine Corporation; full details can be found on the \"Company details page\":http://erskinedesign.com/docs/company-details/.\n\nSupertone is the sole owner of the information collected on this site. We will not sell, share, or rent this information to others in ways different from what is disclosed in this policy. Supertone collects information from our users at several different points on our website.\n\nh3. Cookies, IP addresses and statistics\n\nA cookie is a piece of data stored on the userâ€™s hard drive containing information about the user. We do not require any form of login or user account for this website. If a user rejects the cookie, they may still use our site.\n\nAn Internet Protocol (IP) address is a numerical identification that your computer or other browsing device sends out. We use cookies and IP addresses to analyse trends, administer the site, track userâ€™s movement, and gather broad demographic information for aggregate use. Cookies and IP addresses are not linked to personally identifiable information.\n\nh3. Your email and contact details\n\nIf you plan to use our Contact form to get in touch with us, be aware that your personal email address will be revealed in our email applications. Your email address will only be used for communication between ourselves and you. Email addresses will not be passed to any third parties. Your email address and any associated contact details delivered by email may be stored on our secure Customer Relations Management system for our internal use. We manage our own web servers too, so your information never passes through a third-party system.\n\nThis website takes every precaution to protect our usersâ€™ information. When users submit sensitive information via the website, your information is protected both online and off-line.\n\nAll of our usersâ€™ information, not just the sensitive information mentioned above, is restricted in our offices. Only employees who need the information to perform a specific job are granted access to personally identifiable information.\n\nAll of our employees are kept up-to-date on our security and privacy practices. Every quarter, as well as any time new policies are added, our employees are notified and/or reminded about the importance we place on privacy, and what they can do to ensure our customersâ€™ information is protected.\n\nFinally, the servers that we store personally identifiable information on are kept in a secure environment, behind a locked cage.\n\nAny personal information entrusted to us will never be entrusted to carriers or the Royal Mail unless agreed, and a signature would always be required from the recipient. Under no circumstances will your private data ever be found on a train and handed to the BBC.\n\nIf you have any questions about the security at our website, you can send an email to [email=artists@supertonerecords.com]artists@supertonerecords.com[/email].\n\nh3. Sharing\n\nSupertone will, under no circumstances, share with any third party individual IP addresses, email addresses, personal contact details or other information collected through this website or related statistic tracking systems. If information sharing is required, such as to bring in a third party in a project for example, you will be given immediate notice.\nExternal links\n\nThis web site contains links to other sites. Please be aware that we at Supertone are not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of each and every web site that collects personally identifiable information. This privacy policy applies solely to information collected by this web site.\n\nh3. Notification of changes\n\nIf we decide to change our privacy policy, we will post those changes on this page immediately so our users are always aware of what information we collect, how we use it, and what circumstances, if any, we disclose it.\n\nh3. Data Protection\n\nSupertone are registered with the Data Protection Supervisor.','textile','','none','','none','','none'),
-	(51,1,20,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'http://simoncampbellmusic.erskinestage.com/assets/audio/brother.mp3','none','This is the lead.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'http://simoncampbellmusic.erskinestage.com/assets/audio/brother.mp3','none','',NULL,'Jamie\'s number 1 single','none','Jamie Pittock','none','The Album','none');
+	(46,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(49,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'19387854','none','This is number one in a series of five videos about the making of the album \"Thirty Six\". Why not take five minutes out of your day and read the article \"The Album ThirtySix: Part One\":http://blog.simoncampbell.com/blog/perma/making_the_album_thirtysix_part_one/ on Simon\'s personal blog.','textile','',NULL,'',NULL,'',NULL,'',NULL,'','textile','','none','','none','','none','','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(48,1,17,'Centenary Centre','none','Peel','none','1301097601','none','http://www.facebook.com/event.php?eid=127886567271836&index=1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','textile','','none','','none','','none','','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(50,1,23,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'h3. Information collection and use\n\nThis site is owned and run by Supertone Records (hereinafter referred as Supertone) is a trading style of Erskine Corporation; full details can be found on the \"Company details page\":http://erskinedesign.com/docs/company-details/.\n\nSupertone is the sole owner of the information collected on this site. We will not sell, share, or rent this information to others in ways different from what is disclosed in this policy. Supertone collects information from our users at several different points on our website.\n\nh3. Cookies, IP addresses and statistics\n\nA cookie is a piece of data stored on the userâ€™s hard drive containing information about the user. We do not require any form of login or user account for this website. If a user rejects the cookie, they may still use our site.\n\nAn Internet Protocol (IP) address is a numerical identification that your computer or other browsing device sends out. We use cookies and IP addresses to analyse trends, administer the site, track userâ€™s movement, and gather broad demographic information for aggregate use. Cookies and IP addresses are not linked to personally identifiable information.\n\nh3. Your email and contact details\n\nIf you plan to use our Contact form to get in touch with us, be aware that your personal email address will be revealed in our email applications. Your email address will only be used for communication between ourselves and you. Email addresses will not be passed to any third parties. Your email address and any associated contact details delivered by email may be stored on our secure Customer Relations Management system for our internal use. We manage our own web servers too, so your information never passes through a third-party system.\n\nThis website takes every precaution to protect our usersâ€™ information. When users submit sensitive information via the website, your information is protected both online and off-line.\n\nAll of our usersâ€™ information, not just the sensitive information mentioned above, is restricted in our offices. Only employees who need the information to perform a specific job are granted access to personally identifiable information.\n\nAll of our employees are kept up-to-date on our security and privacy practices. Every quarter, as well as any time new policies are added, our employees are notified and/or reminded about the importance we place on privacy, and what they can do to ensure our customersâ€™ information is protected.\n\nFinally, the servers that we store personally identifiable information on are kept in a secure environment, behind a locked cage.\n\nAny personal information entrusted to us will never be entrusted to carriers or the Royal Mail unless agreed, and a signature would always be required from the recipient. Under no circumstances will your private data ever be found on a train and handed to the BBC.\n\nIf you have any questions about the security at our website, you can send an email to [email=artists@supertonerecords.com]artists@supertonerecords.com[/email].\n\nh3. Sharing\n\nSupertone will, under no circumstances, share with any third party individual IP addresses, email addresses, personal contact details or other information collected through this website or related statistic tracking systems. If information sharing is required, such as to bring in a third party in a project for example, you will be given immediate notice.\nExternal links\n\nThis web site contains links to other sites. Please be aware that we at Supertone are not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the privacy statements of each and every web site that collects personally identifiable information. This privacy policy applies solely to information collected by this web site.\n\nh3. Notification of changes\n\nIf we decide to change our privacy policy, we will post those changes on this page immediately so our users are always aware of what information we collect, how we use it, and what circumstances, if any, we disclose it.\n\nh3. Data Protection\n\nSupertone are registered with the Data Protection Supervisor.','textile','','none','','none','','none','','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(53,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Following a performance at the \"Big Wheel Blues Festival\":http://www.bigwheelblues.com/, Sue Hickling of the \"Nottingham Blues Society\":http://www.nottinghambluessociety.com/, home to the \"British Blues Awards\":http://britishbluesawards.com/, kindly asked my for an interview. Why not \"take a look\":http://www.nottinghambluessociety.com/#/simon-campbell-interview/4541351821/!','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(54,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Over the last few years my whole attention has been focussed upon developing my diving skills. I realised about a month ago that I hadnâ€™t played guitar seriously for a few years, missed it and decided to get back to Rock â€˜n Roll! Why not get a cup of tea and \"read of the article\":http://blog.simoncampbell.com/blog/perma/rock_n_roll_is_back/!','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(57,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'I have spent 35 years in search of the perfect guitar tone. This is the second in a series of three articles describing the journey to date and how I reached the conclusions about the gear and techniques I now employ. Grab a stiff whisky and \"letâ€™s examine the signal chain from the amplifier to recording console and/or PA\":http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_two/â€¦','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(56,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'I have spent 35 years in search of the perfect guitar tone. This is part one of a series of three articles describing the journey to date and how I reached the conclusions about the gear and techniques I now employ. Grab a beer and \"letâ€™s examine the humble guitar string to just before the amplifier\":http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_one/â€¦','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(58,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'I have spent 35 years in search of the perfect guitar tone. This is the third, and final, in a series of articles describing the journey to date, and how I reached the conclusions about the gear and techniques I now employ. Grab a large brandy and letâ€™s \"reel through the years\":http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_three/â€¦','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(68,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Kevin-Whitehead.png','none','Delighted to announce \"Kevin Whitehead\":http://www.barclayjamesharvest.com/biog.htm#kev (Drums with Barclay James Harvest and Lisa Stansfield), the Islands very own \"Steve Rowe\":http://www.flickr.com/photos/erskinecorp/4875369605/in/set-72157624149401627/ (Bass) and \"Christian Madden\":http://www.flickr.com/photos/erskinecorp/4588740608/in/set-72157623649584217/#/photos/erskinecorp/4588740608/in/set-72157623649584217/lightbox/ (Keyboards with Paul Heaton, The Earlies) of Simon\'s regular touring band will be playing at the \"ThirtySix launch event\":http://www.facebook.com/SimonCampbellBand?v=app_2344061033#!/event.php?eid=127886567271836&index=1. They are joined by Nicky Madden (The Earlies and I Am Kloot) on Saxophone, \"Yvonne Shelton\":http://music.simoncampbell.com/journal/the-delta-sisters-confirm-gig/ and \"Jackie Gilbert\":http://music.simoncampbell.com/journal/the-delta-sisters-confirm-gig/. More details to follow. ','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(60,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'This is the second part documenting the recording of my new album â€˜ThirtySixâ€™. I suggest you grab a take out curry, open an large premium Czech beer and \"read the article\":http://blog.simoncampbell.com/blog/perma/the-album-thirtysix-part-two/. And try not to drop vindaloo in your keyboard.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(61,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Loving the work of Lottie Ray for a really nice piece in the \"Manx Independent\":http://www.iomtoday.co.im/lifestyle/manx-entertainment-news/very_very_bad_man_1_3041618. Thanks to my ace photographer and social documentarian \"Phil Kneen\":http://www.philkneen.com for the pictures.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(62,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Physical tickets are now on sale for the \"ThirtySix launch event\":http://www.facebook.com/SimonCampbellBand#!/event.php?eid=127886567271836&index=1 from Celtic Gold: Peel, Peter Norris Music: Douglas, Shakti Man: Ramsey, Thompson Travel: Port Erin. They are also available \"on-line\":http://simoncampbell.eventwax.com/thirtysix-launch-event/register.\n\nRemember, tickets can be used to obtain Â£1 discount off the purchase of the album ThirtySix and all related merchandise at the launch event. Please note: cash sales only available / Â£1 discount per item.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(63,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Just been asked to do a session with Simon Rae from the lovely \"Truman Falls\":http://www.trumanfalls.co.uk/ the brief being: \"rich tremolo - think Glen Campbell Witchita Lineman solo.\" Fuck yeah...','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(64,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Confirmed: The very wonderful Jacqueline Reid Gilbert and Yvonne Shelton who between them have worked with Oleta Adams, The Beautiful South, Simply Red, George Michael, Heather Small and Gorillaz, will be providing backing vocals for the \"ThirtySix launch\":http://www.facebook.com/SimonCampbellBand#!/event.php?eid=127886567271836 show.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(65,1,17,'The Top Lock','none','Heapy','none','1299715201','none','http://www.facebook.com/event.php?eid=139908746072881','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(66,1,17,'The Bridge Bier Huis','none','Burnley','none','1299801601','none','http://www.facebook.com/event.php?eid=180239972013360','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(67,1,17,'Whittles','none','Oldham','none','1299888001','none','http://www.facebook.com/event.php?eid=154035207983587','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(69,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Simon will be playing guitar in the \"Anna Goldsmith\":http://www.annagoldsmith.com/ Band on Friday February 11th at Paramount City, Douglas. The Charity Band Night is raising funds for the very excellent \"Craig\'s Heartstrong Foundation\":http://www.craigsheartstrongfoundation.co.uk/.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(70,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'19600437','none','This is number two in a series of five videos about the making of the album \"Thirty Six\". Why not take five minutes out of your day and read the article \"The Album ThirtySix: Part Two\":http://blog.simoncampbell.com/blog/perma/the-album-thirtysix-part-two/ on Simon\'s personal blog. Enjoy!','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none'),
+	(71,1,17,'Paramount City','none','Douglas','none','1297382401','none','http://www.facebook.com/event.php?eid=154202141299823','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','textile','','none','','none','','none','','none','','none','','textile','','none','','none','','none','','textile','','none','','none','','none');
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3523,7 +3832,7 @@ CREATE TABLE `exp_weblog_fields` (
   PRIMARY KEY (`field_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_fields` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_fields` DISABLE KEYS */;
@@ -3545,7 +3854,22 @@ VALUES
 	(85,1,22,'cf_pages_body','Page content','','textarea','','n',0,0,'blog',17,'title','desc',0,40,128,'y','ltr','y','n','textile','n',19,''),
 	(86,1,18,'cf_journal_audio_fbtitle','Audio title (for Facebook)','This field is required for Facebook sharing.','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',15,''),
 	(87,1,18,'cf_journal_audio_fbartist','Audio artist (for Facebook)','This field is required for Facebook sharing.','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',16,''),
-	(88,1,18,'cf_journal_audio_fbalbum','Audio album (for Facebook)','This field is required for Facebook sharing.','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',17,'');
+	(88,1,18,'cf_journal_audio_fbalbum','Audio album (for Facebook)','This field is required for Facebook sharing.','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',17,''),
+	(89,1,23,'cf_products_tshirts_subtitle','Subtitle','','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',18,''),
+	(90,1,23,'cf_products_tshirts_description','Description','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','textile','n',19,''),
+	(91,1,23,'cf_products_tshirts_price','Price','The price without the currency symbol. <em>Example - 9.00</em>','text','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',20,''),
+	(92,1,23,'cf_products_tshirts_shipping','Shipping','The price without the currency symbol. <em>Example - 1.95</em>','text','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',21,''),
+	(93,1,23,'cf_products_tshirts_sizes','Sizes','','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',22,'a:2:{s:8:\"max_rows\";s:1:\"5\";s:7:\"col_ids\";a:2:{i:0;s:2:\"27\";i:1;s:2:\"28\";}}'),
+	(94,1,23,'cf_products_tshirts_images','Images','','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',23,'a:2:{s:8:\"max_rows\";s:1:\"5\";s:7:\"col_ids\";a:2:{i:0;s:2:\"29\";i:1;s:2:\"30\";}}'),
+	(95,1,24,'cf_products_music_subtitle','Subtitle','','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',24,''),
+	(96,1,24,'cf_products_music_description','Description','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','textile','n',25,''),
+	(97,1,24,'cf_products_music_formats','Format details','Fill in the applicable fields below for each format.','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',26,'a:2:{s:8:\"max_rows\";s:0:\"\";s:7:\"col_ids\";a:6:{i:0;s:2:\"31\";i:1;s:2:\"32\";i:2;s:2:\"33\";i:3;s:2:\"34\";i:4;s:2:\"35\";i:5;s:2:\"36\";}}'),
+	(98,1,24,'cf_products_music_images','Images','','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',27,'a:2:{s:8:\"max_rows\";s:1:\"5\";s:7:\"col_ids\";a:2:{i:0;s:2:\"37\";i:1;s:2:\"38\";}}'),
+	(99,1,25,'cf_products_posters_subtitle','Subtitle','','text','','n',0,0,'blog',17,'title','desc',0,6,128,'n','ltr','n','n','none','n',28,''),
+	(100,1,25,'cf_products_posters_description','Description','','textarea','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','textile','n',29,''),
+	(101,1,25,'cf_products_posters_price','Price','The price without the currency symbol. <em>Example - 9.00</em>','text','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',30,''),
+	(102,1,25,'cf_products_posters_shipping','Shipping','The price without the currency symbol. <em>Example - 1.95</em>','text','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',31,''),
+	(103,1,25,'cf_products_posters_images','Images','','ftype_id_10','','n',0,0,'blog',17,'title','desc',0,6,128,'y','ltr','n','n','none','n',32,'a:2:{s:8:\"max_rows\";s:1:\"5\";s:7:\"col_ids\";a:2:{i:0;s:2:\"39\";i:1;s:2:\"40\";}}');
 
 /*!40000 ALTER TABLE `exp_weblog_fields` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3623,17 +3947,33 @@ CREATE TABLE `exp_weblog_titles` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_titles` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_titles` DISABLE KEYS */;
 INSERT INTO `exp_weblog_titles` (`entry_id`,`site_id`,`weblog_id`,`author_id`,`pentry_id`,`forum_topic_id`,`ip_address`,`title`,`url_title`,`status`,`versioning_enabled`,`view_count_one`,`view_count_two`,`view_count_three`,`view_count_four`,`allow_comments`,`allow_trackbacks`,`sticky`,`entry_date`,`dst_enabled`,`year`,`month`,`day`,`expiration_date`,`comment_expiration_date`,`edit_date`,`recent_comment_date`,`comment_total`,`trackback_total`,`sent_trackbacks`,`recent_trackback_date`)
 VALUES
-	(49,1,19,1,0,0,'88.97.41.226','Making the album ThirtySix: edition #1','making-the-album-thirtysix-edition-1','open','y',0,0,0,0,'y','n','n',1296656268,'n','2011','02','02',0,0,20110202142749,0,0,0,'',0),
+	(49,1,19,1,0,0,'92.39.196.149','Making the album ThirtySix: edition #1','making-the-album-thirtysix-edition-1','open','y',0,0,0,0,'y','n','n',1296656232,'n','2011','02','02',0,0,20110205115213,0,0,0,'',0),
 	(46,1,18,1,0,0,'88.97.41.226','General set','gallery','open','y',0,0,0,0,'y','n','n',1296646767,'n','2011','02','02',0,0,20110203095928,0,0,0,'',0),
 	(48,1,17,1,0,0,'88.97.41.226','ThirtySix Album Launch','thirtysix-album-launch','open','y',0,0,0,0,'y','n','n',1296655657,'n','2011','02','02',0,0,20110202140838,0,0,0,'',0),
 	(50,1,23,1,0,0,'88.97.41.226','Privacy policy','privacy-policy','open','y',0,0,0,0,'y','n','n',1296658583,'n','2011','02','02',0,0,20110202164724,0,0,0,'',0),
-	(51,1,20,1,0,0,'88.97.41.226','Bruce Springsteen is the bomb','bruce-is-the-bomb','open','y',0,0,0,0,'y','n','n',1296746336,'n','2011','02','03',0,0,20110203155257,0,0,0,'',0);
+	(53,1,22,19,0,0,'92.39.196.149','OK Simon, what do you think?','ok-simon-what-do-you-think','open','y',0,0,0,0,'y','n','n',1274977497,'n','2010','05','27',0,0,20110204164558,0,0,0,'',0),
+	(54,1,22,19,0,0,'92.39.196.149','Rock â€˜n roll is back','rock-n-roll-is-back','open','y',0,0,0,0,'y','n','n',1246466778,'n','2009','07','01',0,0,20110204165119,0,0,0,'',0),
+	(57,1,22,19,0,0,'92.39.196.149','Search for the ultimate tone: part two','search-for-the-ultimate-tone-part-two','open','y',0,0,0,0,'y','n','n',1259600514,'n','2009','11','30',0,0,20110204170256,0,0,0,'',0),
+	(56,1,22,19,0,0,'92.39.196.149','Search for the ultimate tone: part one','search-for-the-ultimate-tone-part-one','open','y',0,0,0,0,'y','n','n',1257008353,'n','2009','10','31',0,0,20110204170015,0,0,0,'',0),
+	(58,1,22,19,0,0,'92.39.196.149','Search for the ultimate tone: part three','search-for-the-ultimate-tone-part-three','open','y',0,0,0,0,'y','n','n',1264957465,'n','2010','01','31',0,0,20110204170526,0,0,0,'',0),
+	(68,1,21,19,0,0,'92.39.196.149','More musicians confirmed for ThirtySix launch','more-musicians-confirmed-for-thirtysix-launch','open','y',0,0,0,0,'y','n','n',1296994044,'n','2011','02','06',0,0,20110206183225,0,0,0,'',0),
+	(60,1,22,19,0,0,'92.39.196.149','Making ThirtySix: part two','making-thirtysix-part-two','open','y',0,0,0,0,'y','n','n',1277917787,'n','2010','06','30',0,0,20110204171348,0,0,0,'',0),
+	(61,1,22,19,0,0,'92.39.196.149','We love the Manx Independent','we-love-the-manx-independent','open','y',0,0,0,0,'y','n','n',1296839660,'n','2011','02','04',0,0,20110204172321,0,0,0,'',0),
+	(62,1,22,19,0,0,'92.39.196.149','Tickets on sale now!','tickets-on-sale-now','open','y',0,0,0,0,'y','n','n',1296840433,'n','2011','02','04',0,0,20110205140914,0,0,0,'',0),
+	(63,1,22,19,0,0,'92.39.196.149','New session for Truman Falls','new-session-for-truman-falls','open','y',0,0,0,0,'y','n','n',1295199010,'n','2011','01','16',0,0,20110204173411,0,0,0,'',0),
+	(64,1,22,19,0,0,'92.39.196.149','The Delta Sisters confirm gig','the-delta-sisters-confirm-gig','open','y',0,0,0,0,'y','n','n',1294940152,'n','2011','01','13',0,0,20110204174253,0,0,0,'',0),
+	(65,1,17,19,0,0,'92.39.196.149','Pre launch warm up','pre-launch-warm-up','open','y',0,0,0,0,'y','n','n',1296842904,'n','2011','02','04',0,0,20110204181539,0,0,0,'',0),
+	(66,1,17,19,0,0,'88.97.41.226','Pre launch warm up','p','open','y',0,0,0,0,'y','n','n',1296844591,'n','2011','02','04',0,0,20110204184432,0,0,0,'',0),
+	(67,1,17,19,0,0,'92.39.196.149','Pre launch warm up','p1','open','y',0,0,0,0,'y','n','n',1296846074,'n','2011','02','04',0,0,20110204190215,0,0,0,'',0),
+	(69,1,22,19,0,0,'92.39.196.149','Anna Goldsmith Band plays for Craig\'s Heartstrong Foundation','anna-goldsmith-band-plays-for-craigs-heartstrong-foundation','open','y',0,0,0,0,'y','n','n',1297034505,'n','2011','02','06',0,0,20110206233546,0,0,0,'',0),
+	(70,1,19,19,0,0,'92.39.196.149','Making the album ThirtySix: edition #2','making-the-album-thirtysix-edition-2','open','y',0,0,0,0,'y','n','n',1297416646,'n','2011','02','11',0,0,20110208094547,0,0,0,'',0),
+	(71,1,17,19,0,0,'92.39.196.149','Acoustic set for Craigs Heartstrong Foundation','acoustic-set-for-craigs-heartstrong-foundation','open','y',0,0,0,0,'y','n','n',1297329200,'n','2011','02','10',0,0,20110210091521,0,0,0,'',0);
 
 /*!40000 ALTER TABLE `exp_weblog_titles` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3725,19 +4065,22 @@ CREATE TABLE `exp_weblogs` (
   KEY `field_group` (`field_group`),
   KEY `is_user_blog` (`is_user_blog`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblogs` WRITE;
 /*!40000 ALTER TABLE `exp_weblogs` DISABLE KEYS */;
 INSERT INTO `exp_weblogs` (`weblog_id`,`site_id`,`is_user_blog`,`blog_name`,`blog_title`,`blog_url`,`blog_description`,`blog_lang`,`blog_encoding`,`total_entries`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_comment_date`,`last_trackback_date`,`cat_group`,`status_group`,`deft_status`,`field_group`,`search_excerpt`,`enable_trackbacks`,`trackback_use_url_title`,`trackback_max_hits`,`trackback_field`,`deft_category`,`deft_comments`,`deft_trackbacks`,`weblog_require_membership`,`weblog_max_chars`,`weblog_html_formatting`,`weblog_allow_img_urls`,`weblog_auto_link_urls`,`weblog_notify`,`weblog_notify_emails`,`comment_url`,`comment_system_enabled`,`comment_require_membership`,`comment_use_captcha`,`comment_moderate`,`comment_max_chars`,`comment_timelock`,`comment_require_email`,`comment_text_formatting`,`comment_html_formatting`,`comment_allow_img_urls`,`comment_auto_link_urls`,`comment_notify`,`comment_notify_authors`,`comment_notify_emails`,`comment_expiration`,`search_results_url`,`tb_return_url`,`ping_return_url`,`show_url_title`,`trackback_system_enabled`,`show_trackback_field`,`trackback_use_captcha`,`show_ping_cluster`,`show_options_cluster`,`show_button_cluster`,`show_forum_cluster`,`show_pages_cluster`,`show_show_all_cluster`,`show_author_menu`,`show_status_menu`,`show_categories_menu`,`show_date_menu`,`rss_url`,`enable_versioning`,`enable_qucksave_versioning`,`max_revisions`,`default_entry_title`,`url_title_prefix`,`live_look_template`)
 VALUES
-	(17,1,'n','events','Events','/events/','','en','utf-8',1,0,0,1296655657,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','n','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
+	(17,1,'n','events','Events','/events/','','en','utf-8',5,0,0,1297329200,0,0,'',1,'open',16,0,'n','n',5,71,'','y','n','y',0,'all','y','n','n','','/events/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','n','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
 	(18,1,'n','gallery','Gallery','/gallery/','','en','utf-8',1,0,0,1296646767,0,0,'',1,'open',17,0,'n','n',5,75,'','y','n','y',0,'all','y','n','n','','/gallery/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','n','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',0),
-	(19,1,'n','journal_videos','Journal: Videos','/journal/','','en','utf-8',1,0,0,1296656268,0,0,'',1,'open',19,79,'n','n',5,78,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',1,0,0,1296746336,0,0,'',1,'open',18,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(21,1,'n','journal_photos','Journal: Photos','/journal/','','en','utf-8',0,0,0,0,0,0,'',1,'open',20,82,'n','n',5,81,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',0,0,0,0,0,0,'',1,'open',21,83,'n','n',5,83,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(23,1,'n','pages','Site pages (privacy policy, etc)','/pages/','','en','utf-8',1,0,0,1296658583,0,0,'',1,'open',22,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/pages/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','n','','n','n',10,'','',111);
+	(19,1,'n','journal_videos','Journal: Videos','/journal/','','en','utf-8',1,0,0,1296656232,0,0,'',1,'open',19,79,'n','n',5,78,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
+	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',0,0,0,0,0,0,'',1,'open',18,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
+	(21,1,'n','journal_photos','Journal: Photos','/journal/','','en','utf-8',1,0,0,1296994044,0,0,'',1,'open',20,82,'n','n',5,81,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
+	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',11,0,0,1297034505,0,0,'',1,'open',21,83,'n','n',5,83,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
+	(23,1,'n','pages','Site pages (privacy policy, etc)','/pages/','','en','utf-8',1,0,0,1296658583,0,0,'',1,'open',22,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/pages/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','n','','n','n',10,'','',111),
+	(24,1,'n','products_tshirts','Products: T-shirts','/store/','','en','utf-8',0,0,0,0,0,0,'',1,'open',23,0,'n','n',5,89,'','y','y','y',0,'all','y','y','n','','','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','y','y','n','y','','n','n',10,'','',0),
+	(25,1,'n','products_music','Products: Music','/store/','','en','utf-8',0,0,0,0,0,0,'',1,'open',24,0,'n','n',5,89,'','y','y','y',0,'all','y','y','n','','','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','y','y','n','y','','n','n',10,'','',0),
+	(26,1,'n','products_posters','Products: Posters','/store/','','en','utf-8',0,0,0,0,0,0,'',1,'open',25,0,'n','n',5,89,'','y','y','y',0,'all','y','y','n','','','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','y','y','n','y','','n','n',10,'','',0);
 
 /*!40000 ALTER TABLE `exp_weblogs` ENABLE KEYS */;
 UNLOCK TABLES;
