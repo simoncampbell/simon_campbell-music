@@ -27,7 +27,7 @@
                 ThirtySix is an honest album and has many imperfections, but it is Simon Campbell, right now. We hope you enjoy it.
             </p>
             <p>
-                To do our bit for the environment, Supertone Records haven&rsquo;t produced an insert but full detail about the songs, lyrics, musicians, the recording plus information about live shows can be found on this site. Further details and links to musicians and studio team can be found at <a href="http://www.discogs.com/Simon-Campbell-ThirtySix/release/2600904">Discogs</a>.
+                To do our bit for the environment, Supertone Records haven&rsquo;t produced an insert but full detail about the songs, lyrics, musicians, the recording plus information about live shows can be found on this site. Further details and links to musicians and studio team can be found at <a href="http://www.discogs.com/Simon-Campbell-ThirtySix/release/2600904">Discogs</a> and pictures taken during the recording can be found on <a href="http://www.flickr.com/photos/erskinecorp/sets/72157623649584217/">Flickr</a>.
             </p>
         </div><!-- // .widget -->
         <div class="widget">
@@ -38,7 +38,8 @@
             <ul>
                 <li><strong>Simon Campbell</strong> on vocals and guitars</li>
                 <li><strong>Kev (Charlie) Whitehead</strong> on drums</li>
-                <li><strong>Steve Rowe and Craig Fletcher</strong> on bass, and Bewegen and flourishes elsewhere</li>
+                <li><strong>Steve Rowe</strong> on bass</li>
+                <li><strong>Craig Fletcher</strong> on bass (Bewegen and flourishes elsewhere)</li>
                 <li><strong>Christian Madden</strong> on Hammond, Wurlitzer, Mellotron, Rhodes, Clavinet, Moog Voyager and a bewildering array of Moogerfoogers</li>
                 <li><strong>Lea Mullen</strong> on percussion</li>
                 <li>The Brigadiers of Brass, <strong>Pat Hartley</strong> (Trombone), <strong>Malcolm Melling</strong> (Trumpet and Flugel Horn) and <strong>Dave Bishop</strong> on an astounding array of Saxophones</li> 
