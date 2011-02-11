@@ -1261,16 +1261,10 @@ div#footer p.credit {
     
     /* WIDGET: Payments */
     #payments_block ul {
-        list-style: none;
         margin: 8px 0 6px 0;
         width: 100%;
     }
-    #payments_block ul,
     #payments_block ul li {
-        float: left;
-    }
-    #payments_block ul li {
-        display: inline;
         margin-right: 10px;
     }
     

@@ -95,7 +95,7 @@
         <p>
             The Simon Campbell Music store currently accepts the following payment options:
         </p>
-        <ul>
+        <ul class="horizontal">
             <li><img src="{pv_assets_url}/images/site/icons/visa.jpg" width="28" height="18" alt="Visa"></li>
             <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28" height="18" alt="Paypal"></li>
         </ul>
