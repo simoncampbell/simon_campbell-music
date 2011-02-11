@@ -486,18 +486,16 @@ p#branding {
 
 /* @group 7.NAVIGATION
 ---------------------------------------------------------------------- */
-    
+
 ul#navigation_pri {
     border-top: 1px dashed #5B5B5B;
     border-top: 1px dashed rgba(255, 255, 255, 0.3);
     border-bottom: 1px dashed #5B5B5B;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-    list-style: none;
+    float: none;
     margin-bottom: 40px;
 }
 ul#navigation_pri li {
-    display: inline;
-    float: left;
     font-size: 18px;
     letter-spacing: 0.1em;
     line-height: 1;
@@ -509,7 +507,6 @@ ul#navigation_pri li:first-child {
 ul#navigation_pri a {
     background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
-    display: block;
     padding: 12px 11px 12px 8px;
     text-decoration: none;
 }
@@ -1343,6 +1340,30 @@ div#footer p.credit {
     div.half {
         float: left;
         width: 50%;
+    }
+    
+    /*
+        HORIZONTAL LISTS (ul.horizontal)
+        ----------------------------------------------------------
+        
+        Description: - Default styling for horizontal lists
+        
+        Example:     <li><a href="#">Home</a></li>
+        
+        ----------------------------------------------------------
+    */
+    ul.horizontal {
+        list-style: none;
+    }
+    ul.horizontal,
+    ul.horizontal li {
+        float: left;
+    }
+    ul.horizontal li {
+        display: inline;
+    }
+    ul.horizontal a {
+        display: block;
     }
     
 /* FONT SPACING */
