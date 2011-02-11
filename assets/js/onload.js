@@ -31,7 +31,7 @@ $(document).ready(function(){
         $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
      
         // Gallery jQuery Cycle
-        $('#gallery_photos').after('<ul id="gallery_grid">').cycle({
+        $('#gallery_photos').after('<ul id="gallery_grid" class="horizontal">').cycle({
             fx: 'fade',
             speed: 'fast',
             timeout: 0,

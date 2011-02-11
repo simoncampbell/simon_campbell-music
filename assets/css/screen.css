@@ -836,22 +836,13 @@ div#footer p.credit {
         }
         
         ul#gallery_grid {
-            list-style: none;
             margin-left: -10px;
             margin-top: 10px;
             width: 600px;
         }
-        ul#gallery_grid,
         ul#gallery_grid li {
-            float: left;
-        }
-        ul#gallery_grid li {
-            display: inline;
             margin-bottom: 10px;
             margin-left: 10px;
-        }
-        ul#gallery_grid a {
-            display: block;
         }
         
         /* FORM ASIDE - (Make more generic later) */
