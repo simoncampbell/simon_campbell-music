@@ -34,7 +34,7 @@
         }
         {if count == 1}
         <div id="tour_dates" class="widget">
-            <h2>ThirtySix on tour</h2>
+            <h2>Live shows</h2>
             <ul class="item_listing">
         {/if}
                 <li>
