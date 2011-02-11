@@ -156,7 +156,7 @@
         
     </div> <!-- // #header -->
     
-    <ul id="navigation_pri">
+    <ul id="navigation_pri" class="horizontal">
         <li{if embed:section == "home"} class="cur"{/if}><a href="{pv_site_url}/">Home</a></li>
         <li{if embed:section == "thirtysix"} class="cur"{/if}><a href="{pv_site_url}/thirtysix/">ThirtySix</a></li>
         <li{if embed:section == "store"} class="cur"{/if}><a href="{pv_site_url}/store/">Store</a></li>
