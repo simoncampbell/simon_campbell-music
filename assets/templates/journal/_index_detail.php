@@ -115,6 +115,8 @@
             
         </div><!-- // #posts -->
         
+        {embed="_components/_comments" entry_id="{entry_id}"}
+        
     </div> <!-- // #content_pri -->
     
     {embed="_layout/_sidebar"}
