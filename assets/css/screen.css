@@ -1286,7 +1286,7 @@ div.half {
 }
 
 /*
-    HORIZONTAL LISTS (ul.horizontal)
+    HORIZONTAL LISTS (.horizontal)
     ----------------------------------------------------------
     
     Description: - Default styling for horizontal lists
@@ -1295,18 +1295,28 @@ div.half {
     
     ----------------------------------------------------------
 */
-ul.horizontal {
+ul.horizontal,
+dl.horizontal {
     list-style: none;
 }
 ul.horizontal,
-ul.horizontal li {
+dl.horizontal,
+ul.horizontal li,
+dl.horizontal dt,
+dl.horizontal dd {
     float: left;
 }
-ul.horizontal li {
+ul.horizontal li,
+dl.horizontal dt,
+dl.horizontal dd {
     display: inline;
 }
-ul.horizontal a {
+ul.horizontal a,
+dl.horizontal a {
     display: block;
+}
+dl.horizontal dt:after {
+    content: ":";
 }
 
 /*
