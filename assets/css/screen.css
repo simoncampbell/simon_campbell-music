@@ -1138,6 +1138,7 @@ div#footer p.credit {
         /* maybe generalize later */
         body#basket div#content_pri p.more {
             font-weight: normal;
+            margin-bottom: 5px;
         }
         body#basket div#content_pri p.more a.button {
             font-size: 10px;
