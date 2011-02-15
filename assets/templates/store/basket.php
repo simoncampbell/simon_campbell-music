@@ -31,25 +31,28 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Division 1</td>
-                        <td>Division 2</td>
-                        <td>Division 3</td>
-                        <td>Division 4</td>
+                        <td><a href="#">Album art t-shirt</a></td>
+                        <td>Apparel</td>
+                        <td>1x</td>
+                        <td>£12.99</td>
                     </tr>
                     <tr>
-                        <td>Division 1</td>
-                        <td>Division 2</td>
-                        <td>Division 3</td>
-                        <td>Division 4</td>
+                        <td><a href="#">ThirtySix LP</a></td>
+                        <td>Digital download</td>
+                        <td>2x</td>
+                        <td>£8.00</td>
                     </tr>
                     <tr>
-                        <td>Division 1</td>
-                        <td>Division 2</td>
-                        <td>Division 3</td>
-                        <td>Division 4</td>
+                        <td><a href="#">Simon Campbell poster</a></td>
+                        <td>Accessories</td>
+                        <td>1x</td>
+                        <td>£1.99</td>
                     </tr>
                 </tbody>
             </table>
+            <p class="more">
+                Subtotal: <strong>£134.98</strong> + shipping <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
+            </p>
         </div><!-- // .first -->
         
         <div id="payments_block" class="last">
