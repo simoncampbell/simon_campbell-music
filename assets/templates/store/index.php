@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="store"
-    body_id="store_landing"
+    body_class=""
+    body_id=""
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Store"
