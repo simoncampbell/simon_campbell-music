@@ -26,7 +26,7 @@
             <dd><a href="#">Accessories</a></dd>
         </dl><!-- // #categories_list -->
         
-        <ul id="gallery_grid" class="horizontal">
+        <ul class="horizontal gallery_grid">
             <li>
                 <a href="#">
                     <h3>Album art t-shirt</h3>

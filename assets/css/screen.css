@@ -741,7 +741,7 @@ div#footer p.credit {
             background-image: url(../images/site/nav/network/nn_facebook.png);
         }
         
-        /* CONTENT PRI: Gallery
+        /* CONTENT PRI: Gallery & Gallery Grid
         --------------------------------------------- */
         p#gallery_nav {
             height: 0;
@@ -767,21 +767,6 @@ div#footer p.credit {
             background-position: -25px 0;
             right: 13px;
         }
-        
-        body.gallery #content_pri img {
-            background: none;
-            padding: 0;
-        }
-        #content_pri div.gallery_photo img,
-        #content_pri ul#gallery_grid a img {
-            background: rgba(255, 255, 255,0.07);
-            padding: 5px;
-        }
-        #content_pri ul#gallery_grid a:hover img,
-        #content_pri ul#gallery_grid li.activeSlide a img {
-            background: rgba(255, 255, 255,0.12);
-            padding: 5px;
-        }
         div#gallery_photos {
             z-index: 1;
         }
@@ -801,16 +786,6 @@ div#footer p.credit {
         div.gallery_photo p.photo_meta em {
             font-style: normal;
             font-weight: bold;
-        }
-        
-        ul#gallery_grid {
-            margin-left: -10px;
-            margin-top: 10px;
-            width: 600px;
-        }
-        ul#gallery_grid li {
-            margin-bottom: 10px;
-            margin-left: 10px;
         }
         
         /* CONTENT PRI: Form Aside
@@ -1332,6 +1307,36 @@ ul.horizontal li {
 }
 ul.horizontal a {
     display: block;
+}
+
+/*
+    GALLERY GRID (ul.gallery_grid)
+    ----------------------------------------------------------
+    
+    Description: - For photo, video, etc, galleries
+    Required:    - ul.horizontal
+    
+    Example:     <li><a href="#"><img src=""></a></li>
+    
+    ----------------------------------------------------------
+*/
+#content_pri ul.gallery_grid {
+    margin-left: -10px;
+    margin-top: 10px;
+    width: 600px;
+}
+#content_pri ul.gallery_grid li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+#content_pri ul.gallery_grid a img {
+    background: rgba(255, 255, 255,0.07);
+    padding: 5px;
+}
+#content_pri ul.gallery_grid a:hover img,
+#content_pri ul.gallery_grid li.activeSlide a img {
+    background: rgba(255, 255, 255,0.12);
+    padding: 5px;
 }
 
 /*
