@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="store_landing"
-    body_id=""
+    body_class="store"
+    body_id="store_landing"
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Store"
@@ -17,6 +17,62 @@
     <div id="content_pri">
         
         <h1 class="hide">Store</h1>
+        
+        <dl id="categories_list" class="horizontal">
+            <dt>Categories</dt>
+            <dd><a href="#">All</a></dd>
+            <dd><a href="#">Music</a></dd>
+            <dd><a href="#">Apparel</a></dd>
+            <dd><a href="#">Accessories</a></dd>
+        </dl><!-- // #categories_list -->
+        
+        <ul id="gallery_grid" class="horizontal">
+            <li>
+                <a href="#">
+                    <h3>Album art t-shirt</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>ThirtySix LP</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>Simon Campbell poster</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>Album art t-shirt</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>ThirtySix LP</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <h3>Simon Campbell poster</h3>
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                </a>
+            </li>
+        </ul><!-- // #gallery_grid -->
+        
+        <p id="pagination">
+            Go to page: 
+            <a href="#">1</a> 
+            <a class="cur" href="#">2</a> 
+            <a href="#">3</a> 
+            <a href="#">4</a> 
+            <a href="#">5</a>
+        </p><!-- // #pagination -->
         
         {!--
         <img src="{pv_assets_url}/images/content/store_landing.jpg" width="250" height="251" alt="ThirtySix out 26 March.">
