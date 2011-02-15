@@ -548,6 +548,7 @@ ul#navigation_sec li.cur a {
 /* Definition Links */
 dl#definition_links {
     font-size: 18px;
+    margin-bottom: 5px;
 }
 dl#definition_links dt {
     font-weight: normal;
@@ -564,6 +565,7 @@ dl#definition_links dd {
 dl#definition_links dd a {
     background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
     padding: 0 10px 0 7px;
+    text-decoration: none;
 }
 dl#definition_links dd:last-child a {
     background-image: none;
@@ -1065,6 +1067,7 @@ div#footer p.credit {
         /* CONTENT PRI: Store Landing
         --------------------------------------------- */
         /*
+        VERSION 1: STORE LANDING
         body.store_landing div#content_pri {
             padding-bottom: 20px;
             padding-top: 20px;

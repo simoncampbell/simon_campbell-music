@@ -20,7 +20,7 @@
         
         <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
-            <dd><a href="#">All</a></dd>
+            <dd><a class="cur" href="#">All</a></dd>
             <dd><a href="#">Music</a></dd>
             <dd><a href="#">Apparel</a></dd>
             <dd><a href="#">Accessories</a></dd>
@@ -41,7 +41,7 @@
             </li>
             <li>
                 <a href="#">
-                    <p>Simon Campbell poster with a long, long title</p>
+                    <p>Simon Campbell poster with a long, long title.</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
@@ -63,7 +63,7 @@
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
-        </ul><!-- // #gallery_grid -->
+        </ul><!-- // .gallery_grid -->
         
         <p class="pagination">
             Go to page: 
@@ -72,9 +72,10 @@
             <a href="#">3</a> 
             <a href="#">4</a> 
             <a href="#">5</a>
-        </p><!-- // #pagination -->
+        </p><!-- // .pagination -->
         
         {!--
+        VERSION 1: STORE LANDING
         <img src="{pv_assets_url}/images/content/store_landing.jpg" width="250" height="251" alt="ThirtySix out 26 March.">
         <div class="widget">
             <h2>Sorry, we're not open yet!</h2>

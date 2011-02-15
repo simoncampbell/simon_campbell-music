@@ -101,7 +101,7 @@
             <p class="pagination">
                 Go to page: 
                 {pagination_links}
-            </p><!-- // #pagination -->
+            </p><!-- // .pagination -->
             {/if}
             {/paginate}
         {/exp:weblog:entries}
