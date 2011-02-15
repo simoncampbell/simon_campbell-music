@@ -667,7 +667,7 @@ div#footer p.credit {
             - History
             - Lyrics
         - ThirtySix Landing
-        - Newsletter Landing
+        - Centered Notice Body
         - Full Width Body
         - Store & Accounts
         
@@ -1075,9 +1075,9 @@ div#footer p.credit {
             background-image: url(../images/site/nav/network/nn_facebook.png);
         }
         
-        /* CONTENT PRI: Newsletter Landing
+        /* CONTENT PRI: Centered Width Body
         --------------------------------------------- */
-        body.newsletter div#content_pri {
+        body.centeredwidth div#content_pri {
             border-color: #5B5B5B;
             border-color: rgba(255, 255, 255, 0.3);
             border-style: dashed;
@@ -1089,23 +1089,23 @@ div#footer p.credit {
             -webkit-border-radius: 4px;
             border-radius: 4px;
         }
-        body.newsletter div#content_pri div.half:first-child {
+        body.centeredwidth div#content_pri div.half:first-child {
             border-right: 1px dashed #5B5B5B;
             margin-right: 20px;
             min-height: 125px;
             padding-right: 20px;
             width: 250px;
         }
-        body.newsletter div#content_pri form {
+        body.centeredwidth div#content_pri form {
             margin-top: 0;
         }
-        body.newsletter div#content_pri form label.error {
+        body.centeredwidth div#content_pri form label.error {
             width: auto;
         }
-        body.newsletter div#content_pri form input[type="text"] {
+        body.centeredwidth div#content_pri form input[type="text"] {
             width: 160px;
         }
-        body.newsletter div#content_pri form input.submit {
+        body.centeredwidth div#content_pri form input.submit {
             float: right;
             margin-right: 20px;
         }
