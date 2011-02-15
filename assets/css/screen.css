@@ -1459,7 +1459,8 @@ p.pagination a.cur {
     small strong,
     body.thirtysix div#content_pri h2,
     body.thirtysix div#content_pri h1,
-    ul#navigation_pri li.account li {
+    ul#navigation_pri li.account li,
+    dl#definition_links {
         letter-spacing:0.1em;
     }
 
@@ -1468,21 +1469,18 @@ p.pagination a.cur {
         letter-spacing:0.05em;
     }
     
+    .no-js div#intro h2,
+    .no-js div#intro h2 strong,
     .no-js #content_pri h3,
     .no-js #content_pri h3 strong,
     .no-js small,
     .no-js small strong,
     .no-js body.thirtysix div#content_pri h2,
     .no-js body.thirtysix div#content_pri h1,
-    .no-js ul#navigation_pri li.account li {
+    .no-js ul#navigation_pri li.account li,
+    .no-js dl#definition_links {
         letter-spacing:0;
     }
-    
-    .no-js div#intro h2,
-    .no-js div#intro h2 strong {
-        letter-spacing:0;
-    }
-    
 
 
 /* iPhone media query */
