@@ -18,7 +18,7 @@
         
         <h1 class="hide">Store</h1>
         
-        <dl id="categories_list" class="horizontal">
+        <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
             <dd><a href="#">All</a></dd>
             <dd><a href="#">Music</a></dd>
@@ -29,37 +29,37 @@
         <ul class="horizontal gallery_grid">
             <li>
                 <a href="#">
-                    <h3>Album art t-shirt</h3>
+                    <p>Album art t-shirt</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <h3>ThirtySix LP</h3>
+                    <p>ThirtySix LP</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <h3>Simon Campbell poster</h3>
+                    <p>Simon Campbell poster</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <h3>Album art t-shirt</h3>
+                    <p>Album art t-shirt</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <h3>ThirtySix LP</h3>
+                    <p>ThirtySix LP</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <h3>Simon Campbell poster</h3>
+                    <p>Simon Campbell poster</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>

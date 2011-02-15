@@ -8,6 +8,10 @@ div#content_pri,
 ul#navigation_pri li.last a {
     background: none;
 }
+dl#definition_links dd.last a {
+    background-image: none;
+    padding-right: 0;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {

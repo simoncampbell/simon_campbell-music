@@ -545,6 +545,34 @@ ul#navigation_sec li.cur a {
     padding-left:20px;
 }
 
+/* Definition Links */
+dl#definition_links {
+    font-size: 18px;
+}
+dl#definition_links dt {
+    font-weight: normal;
+}
+dl#definition_links dt,
+dl#definition_links dd,
+dl#definition_links dd a {
+    color: #9D9D9D;
+}
+dl#definition_links dd {
+    padding-left: 0;
+}
+dl#definition_links dd a {
+    background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
+    padding: 0 10px 0 7px;
+}
+dl#definition_links dd:last-child a {
+    background-image: none;
+    padding-right: 0;
+}
+dl#definition_links dd a:hover,
+dl#definition_links dd a.cur {
+    color: #FFF;
+}
+
 /* @end */
 
 
