@@ -17,6 +17,8 @@
     <div id="content_pri">
         
         <h1 class="hide">Store</h1>
+        
+        {!--
         <img src="{pv_assets_url}/images/content/store_landing.jpg" width="250" height="251" alt="ThirtySix out 26 March.">
         <div class="widget">
             <h2>Sorry, we're not open yet!</h2>
@@ -36,7 +38,8 @@
                 </fieldset>
                 <input type="submit" value="Subscribe" class="submit" />
             </form>
-        </div><!-- // .widget -->
+        </div>
+        --}
         
     </div> <!-- // #content_pri -->
     

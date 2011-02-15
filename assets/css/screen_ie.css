@@ -66,9 +66,11 @@ ul.item_listing li.odd {
 }
 
 /* TEMPORARY STORE LANDING PAGE */
+/*
 body.store_landing div#content_pri input.submit {
     margin-right: 6px;
 }
+*/
 
 /* NEWSLETTER LANDING */
 body.newsletter div#content_pri form input.submit {

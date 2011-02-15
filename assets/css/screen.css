@@ -1094,6 +1094,8 @@ div#footer p.credit {
         
         /* CONTENT PRI: Store Landing
         --------------------------------------------- */
+        
+        /*
         body.store_landing div#content_pri {
             padding-bottom: 20px;
             padding-top: 20px;
@@ -1127,6 +1129,7 @@ div#footer p.credit {
             float: right;
             margin-right: 4px;
         }
+        */
         
         /* CONTENT PRI: Newsletter Landing
         --------------------------------------------- */
