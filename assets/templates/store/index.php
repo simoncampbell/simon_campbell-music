@@ -41,7 +41,7 @@
             </li>
             <li>
                 <a href="#">
-                    <p>Simon Campbell poster</p>
+                    <p>Simon Campbell poster with a long, long title</p>
                     <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
                 </a>
             </li>

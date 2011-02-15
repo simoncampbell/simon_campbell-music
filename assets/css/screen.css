@@ -556,6 +556,7 @@ dl#definition_links dt,
 dl#definition_links dd,
 dl#definition_links dd a {
     color: #9D9D9D;
+    text-transform: uppercase;
 }
 dl#definition_links dd {
     padding-left: 0;
@@ -1356,6 +1357,15 @@ dl.horizontal dt:after {
     
     Example:     <li><a href="#"><img src=""></a></li>
     
+                            -or-
+                            
+                 <li>
+                    <a href="#">
+                        <p>Photo Description</p>
+                        <img src="">
+                    </a>
+                </li>
+    
     ----------------------------------------------------------
 */
 #content_pri ul.gallery_grid {
@@ -1366,6 +1376,22 @@ dl.horizontal dt:after {
 #content_pri ul.gallery_grid li {
     margin-bottom: 10px;
     margin-left: 10px;
+}
+#content_pri ul.gallery_grid p {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.9);
+    bottom: 5px;
+    left: 5px;
+    margin-bottom: 0;
+    padding: 4px;
+    position: absolute;
+    text-align: center;
+    width: 172px;
+}
+#content_pri ul.gallery_grid a {
+    display: block;
+    position: relative;
+    text-decoration: none;
 }
 #content_pri ul.gallery_grid a img {
     background: rgba(255, 255, 255,0.07);
