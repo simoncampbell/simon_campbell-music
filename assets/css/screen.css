@@ -317,28 +317,35 @@ small {
         
 /* TABLES ---------- */
     table { 
-    	width:100%;
+        background:rgba(255, 255, 255, 0.025);
+        border-top: 1px dashed #5B5B5B;
+        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        border-bottom: 1px dashed #5B5B5B;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        width:100%;
         margin:0 0 1em 0;
     }
     caption { 
-    	font-weight:bold;
-    	background:rgba(255, 255, 255, 0.2);
-    	padding:6px 8px; 
+        font-weight:bold;
+        padding:6px 8px;
     }
     th,
     td {
-    	padding:12px 8px;
+        padding:6px 8px;
     }
-    thead th { 
-    	font-weight:bold;
-    	background:rgba(255, 255, 255, 0.1);
+    thead th {
+        font-weight:bold;
+        background:rgba(255, 255, 255, 0.06);
     }
     tbody tr:nth-child(even) th,
     tbody tr:nth-child(even) td { 
-    	background:rgba(255, 255, 255, 0.1);
+        background:rgba(255, 255, 255, 0.06);
     }
     tbody th { 
-    	font-weight:bold;
+        font-weight:bold;
+    }
+    tbody td {
+        font-size: 12px;
     }
     
 
