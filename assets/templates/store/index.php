@@ -65,7 +65,7 @@
             </li>
         </ul><!-- // #gallery_grid -->
         
-        <p id="pagination">
+        <p class="pagination">
             Go to page: 
             <a href="#">1</a> 
             <a class="cur" href="#">2</a> 

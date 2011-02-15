@@ -739,40 +739,6 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta li.pm_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
-        }       
-        div#posts p#pagination {
-            font-size: 11px;
-            float: left;
-            margin-bottom: 0;
-            margin-top: -4px;
-        }
-        div#posts p#pagination a:first-child {
-            margin-left: 8px;
-        }
-        div#posts p#pagination a {
-            background: rgba(255, 255, 255, 0.1);
-            color: rgb(212, 212, 212);
-            display: inline-block;
-            font-size: 12px;
-            font-weight: normal;
-            height: 20px;
-            margin-left: 2px;
-            text-align: center;
-            text-decoration: none;
-            width: 20px;
-        }
-        div#posts p#pagination strong {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: normal;
-            height: 20px;
-            padding:0 2px;
-            
-        }
-        div#posts p#pagination a:hover,
-        div#posts p#pagination a.cur {
-            background: rgba(255, 255, 255, 0.25);
-            font-weight: bold;
         }
         
         /* CONTENT PRI: Gallery
@@ -1313,6 +1279,12 @@ div#footer p.credit {
 /*
     MISCELLANEOUS
     ----------------------------------------------------------
+    
+    - Misc
+    - Horizontal Lists
+    - Pagination
+    
+    ----------------------------------------------------------
 */
 #audio_player {
     width:370px;
@@ -1361,7 +1333,54 @@ ul.horizontal li {
 ul.horizontal a {
     display: block;
 }
+
+/*
+    PAGINATION (p.pagination)
+    ----------------------------------------------------------
     
+    Description: - Default styling for EE pagination links
+    
+    Example:     <p class="pagination">
+                    <a href="#">1</a> 
+                    <a href="#">2</a>
+                 </p>
+    
+    ----------------------------------------------------------
+*/
+p.pagination {
+    font-size: 11px;
+    float: left;
+    margin-bottom: 0;
+    margin-top: -4px;
+}
+p.pagination a:first-child {
+    margin-left: 8px;
+}
+p.pagination a {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(212, 212, 212);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none;
+    width: 20px;
+}
+p.pagination strong {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    padding:0 2px;
+}
+p.pagination a:hover,
+p.pagination a.cur {
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: bold;
+}
+
 /* FONT SPACING */
 
     /* Add some spacing to anywhere we're using Trade Gothic */
