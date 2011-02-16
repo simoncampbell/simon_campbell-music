@@ -48,8 +48,6 @@
                   alt=""
                   }
           {/if}
-          
-          <p><a href="{site_url}{comment_url_title_auto_path}">Read more in the journal...</a></p>
         
         ]]></description>
       <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
