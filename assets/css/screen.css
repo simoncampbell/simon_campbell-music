@@ -1076,14 +1076,14 @@ div#footer p.credit {
             -webkit-border-radius: 4px;
             border-radius: 4px;
         }
-        body.centeredwidth div#content_pri div.half:first-child {
+        body.centeredwidth div#content_pri div.half:first-of-type {
             border-right: 1px dashed #5B5B5B;
             margin-right: 18px;
             min-height: 125px;
             padding-right: 18px;
             width: 272px;
         }
-        body.centeredwidth div#content_pri div.half:last-child {
+        body.centeredwidth div#content_pri div.half:last-of-type {
             width: 273px;
         }
         body.centeredwidth div#content_pri form {
@@ -1144,6 +1144,13 @@ div#footer p.credit {
         
         /* CONTENT PRI: Store & Accounts
         --------------------------------------------- */
+        body#account_landing div#content_pri > p {
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+        body#account_landing div#content_pri div.half:first-of-type {
+            min-height: 245px;
+        }
         body#basket div.last {
             margin-top: 42px;
         }

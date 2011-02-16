@@ -1,6 +1,6 @@
 {embed="_layout/_start"
     body_class="centeredwidth"
-    body_id=""
+    body_id="account_landing"
     section="account"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="{if logged_in}Your account{if:else}Sign-in or register{/if}"
@@ -23,6 +23,8 @@
         {/if}
         
         {if logged_out}
+        
+        <p>To purchase items, please log in or create an account.</p>
         
         <div class="half">
             <h3>Returning customer</h3>
