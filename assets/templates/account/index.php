@@ -42,7 +42,7 @@
                     <div class="submit">
                         <input class="submit" type="submit" value="Sign In" />
                         {if auto_login}
-                        <div>
+                        <div class="remember">
                             <input type="checkbox" id="signin_remember" name="auto_login" value="1" />
                             <label for="signin_remember">Remember me</label>
                         </div>
@@ -70,6 +70,10 @@
             }
             <fieldset>
                 <div>
+                    <label for="signin_username">Username</label>
+                    <input type="text" id="signin_username" size="30" name="username" />
+                </div>
+                <div>
                     <label for="register_form_email">Email address</label>
                     <input type="text" id="register_form_email" size="30" name="email" value="" />
                 </div>
@@ -81,12 +85,10 @@
                     <label for="register_form_confpassword">Confirm Password</label>
                     <input type="password" id="register_form_confpassword" size="30" name="password_confirm" />
                 </div>
-                
                 <div class="agree">
                     <input type="checkbox" name="accept_terms" value="y" id="accept_terms" /> 
-                    <label for="accept_terms">I agree to the terms of use</label> 
+                    <label for="accept_terms">I agree to the terms of use</label>
                 </div>
-                
                 <div class="submit">
                     <input class="submit" type="submit" value="Join us." />
                 </div>

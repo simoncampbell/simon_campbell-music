@@ -232,22 +232,15 @@ small {
     input[type="email"],
     textarea {
         width:213px;
-        height:10px;
+        height: auto;
         border:0;
-        padding:8px;
+        padding:5px 8px;
         -moz-border-radius:3px;
         -webkit-border-radius:3px;
         border-radius:3px;
         background:rgb(255, 255, 255);
         color:rgb(123, 123, 123);
-        float:left;
         outline:none;
-    }
-    input[type="text"],
-    textarea {
-        float: none;
-        height: auto;
-        padding: 5px 8px;
         width: 195px;
     }
     input[type="input"]:focus,
@@ -260,14 +253,8 @@ small {
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
-        padding:7px;
-        border:1px dashed rgb(0, 0, 0);
-    }
-    input[type="text"]:focus,
-    input[type="text"]:hover,
-    textarea:focus,
-    textarea:hover {
         padding: 4px 7px;
+        border:1px dashed rgb(0, 0, 0);
     }
     input.error,
     input.error:focus,
@@ -1091,23 +1078,48 @@ div#footer p.credit {
         }
         body.centeredwidth div#content_pri div.half:first-child {
             border-right: 1px dashed #5B5B5B;
-            margin-right: 20px;
+            margin-right: 18px;
             min-height: 125px;
-            padding-right: 20px;
-            width: 250px;
+            padding-right: 18px;
+            width: 272px;
+        }
+        body.centeredwidth div#content_pri div.half:last-child {
+            width: 273px;
         }
         body.centeredwidth div#content_pri form {
             margin-top: 0;
         }
+        body.centeredwidth div#content_pri form label {
+            width: 100px;
+        }
         body.centeredwidth div#content_pri form label.error {
+            margin-left: 115px;
             width: auto;
         }
-        body.centeredwidth div#content_pri form input[type="text"] {
-            width: 160px;
+        body.centeredwidth div#content_pri form input[type="text"],
+        body.centeredwidth div#content_pri form input[type="password"] {
+            width: 140px;
         }
         body.centeredwidth div#content_pri form input.submit {
             float: right;
-            margin-right: 20px;
+        }
+        body.centeredwidth div#content_pri form div.remember {
+            margin-top: 10px;
+        }
+        body.centeredwidth div#content_pri form div.agree,
+        body.centeredwidth div#content_pri form div.remember {
+            float: right;
+        }
+        body.centeredwidth div#content_pri form div.agree label,
+        body.centeredwidth div#content_pri form div.remember label {
+            float: none;
+            display: inline;
+            margin-right: 0;
+        }
+        body.centeredwidth ul.forgot_details {
+            font-size: 12px;
+            list-style: none;
+            text-align: right;
         }
         
         /* CONTENT PRI: Full Width Body
