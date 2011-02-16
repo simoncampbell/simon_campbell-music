@@ -1,6 +1,6 @@
 {embed="_layout/_start"
     body_class=""
-    body_id=""
+    body_id="product_detail"
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Product detail"

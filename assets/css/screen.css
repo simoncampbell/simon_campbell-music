@@ -1204,6 +1204,38 @@ div#footer p.credit {
         
             /* CONTENT PRI: Product Detail
             --------------------------------------------- */
+            body#product_detail div#content_pri {}
+            
+            body#product_detail div#content_pri p.more {
+                float: right;
+                margin-top: 4px;
+            }
+            body#product_detail div#content_pri p.more a {
+                background-color: #000;
+                background-color: rgba(255, 255, 255, 0.06);
+                display: block;
+                padding: 4px 8px;
+                text-decoration: none;
+                
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+            }
+            body#product_detail div#content_pri p.more a:hover {
+                background-color: 333px;
+                background-color: rgba(255, 255, 255, 0.1);
+                color: rgb(255, 255, 255);
+            }
+            body#product_detail div#content_pri h1 {
+                font-size: 22px;
+                margin-bottom: 2px;
+                text-transform: uppercase;
+            }
+            body#product_detail div#content_pri h2 {
+                color: rgb(157, 157, 157);
+                font-size: 18px;
+                margin-bottom: 16px;
+            }
             
     /*
         CONTENT SEC
@@ -1523,6 +1555,7 @@ p.pagination a.cur {
 /* FONT SPACING */
 
     /* Add some spacing to anywhere we're using Trade Gothic */
+    #content_pri h1
     #content_pri h3,
     #content_pri h3 strong,
     small,
@@ -1541,6 +1574,7 @@ p.pagination a.cur {
     
     .no-js div#intro h2,
     .no-js div#intro h2 strong,
+    .no-js div#content_pri h1,
     .no-js #content_pri h3,
     .no-js #content_pri h3 strong,
     .no-js small,
