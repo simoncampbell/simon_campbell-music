@@ -1204,7 +1204,6 @@ div#footer p.credit {
         
             /* CONTENT PRI: Product Detail
             --------------------------------------------- */
-            body#product_detail div#content_pri {}
             
             body#product_detail div#content_pri p.more {
                 float: right;
@@ -1235,6 +1234,19 @@ div#footer p.credit {
                 color: rgb(157, 157, 157);
                 font-size: 18px;
                 margin-bottom: 16px;
+            }
+            body#product_detail div#gallery_photos,
+            body#product_detail ul.gallery_grid {
+                float: left;
+            }
+            body#product_detail div#gallery_photos {
+                margin-right: 10px;
+                width: 290px;
+            }
+            body#product_detail ul.gallery_grid {
+                margin-top: 0;
+                margin-bottom: 0;
+                width: 300px;
             }
             
     /*
