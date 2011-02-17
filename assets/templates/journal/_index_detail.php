@@ -1,5 +1,6 @@
+{assign_variable:dav_all_journal_channels="journal_notes|journal_videos|journal_photos|journal_audio"}
 {exp:weblog:entries
-    weblog="journal_notes|journal_videos|journal_photos|journal_audio"
+    weblog="{dav_all_journal_channels}"
     limit="1"
     url_title="{segment_2}"
     disable="{pv_disable_default}"
@@ -111,7 +112,20 @@
                 
             </div> <!-- // .post -->
             
-            <p class="more"><a href="{pv_site_url}/journal/">&lsaquo;&lsaquo; Back to the journal</a></p>
+            <div id="post_links">
+            
+                <p class="more"><a href="{pv_site_url}/journal/">&lsaquo;&lsaquo; Back to the journal</a></p>
+                
+                <ul id="navigation_prevnext">
+                    {exp:weblog:next_entry weblog="{dav_all_journal_channels}"}
+                    <li class="next"><a href="{path='journal/index'}">Next post &rsaquo;&rsaquo;</a></li>
+                    {/exp:weblog:next_entry}
+                    {exp:weblog:prev_entry weblog="{dav_all_journal_channels}"}
+                    <li class="prev"><a href="{path='journal/index'}">&lsaquo;&lsaquo; Previous post</a></li>
+                    {/exp:weblog:prev_entry}
+                </ul>
+                
+            </div><!-- // #post_links -->
             
         </div><!-- // #posts -->
         

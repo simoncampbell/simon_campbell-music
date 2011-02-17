@@ -27,62 +27,52 @@
 */
 
 
-
 @import url(reset.css);
-
 
 
 /* @group 1.BODY
 ---------------------------------------------------------------------- */
 
 body {
-    font:normal normal normal 0.81em/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: rgb(212, 212, 212);
     background:url(../images/site/bgs/bg.jpg) top left repeat rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font:normal normal normal 0.81em/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* NAVIGATION ACCESS ---------- */
     ul#nav_access {
-        list-style-type: none;
-        position:relative;
+        list-style-type:none;
         margin:0;
+        position:relative;
     }
     ul#nav_access li {
         height:0;
     }
     ul#nav_access li a {
-        position:absolute;
-        left:-9999px;
-        top:0;
-        font-size:11px;
-        font-weight:bold;
         background:#FFFFCC;
         border:2px solid #ddd;
-        padding:10px;
         display:block;
+        font-size:11px;
+        font-weight:bold;
+        left:-9999px;
+        padding:10px;
+        position:absolute;
+        top:0;
     }
     ul#nav_access li a:focus,
     ul#nav_access li a.focus {
-        left:0; 
-        color:#333; 
+        color:#333;
+        left:0;
     }
 
 /* @end */
 
 
-
 /* @group 2.DEFAULT STYLING
 ---------------------------------------------------------------------- */
 
-img.album {
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    margin:0 0 1.8em 0;
-}
-
 p {
-    color: rgb(255, 255, 255);
-    font-size: 13px;
+    font-size:13px;
     margin-bottom:0.8em;
 }
 
@@ -91,10 +81,10 @@ p.meta {
 }
 
 p.more {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 0;
-    text-align: right;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:0;
+    text-align:right;
     clear:both;
 }
 
@@ -112,9 +102,7 @@ ul {
 div#content_pri ul {
     margin-bottom:10px;
 }
-ul li {
-    color: rgb(255, 255, 255);
-}
+ul li { }
 
 dt {
     font-weight:bold;
@@ -131,9 +119,7 @@ ol {
 div#content_pri ol {
     margin-bottom:10px;
 }
-ol li {
-    color: rgb(255, 255, 255);
-}
+ol li { }
 
 hr {
 
@@ -212,7 +198,6 @@ small {
         margin-bottom: 10px;
     }
     label {
-        color: rgb(255, 255, 255);
         display: block;
         float: left;
         font-size: 12px;
@@ -227,7 +212,6 @@ small {
     label.error {
         background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
         color: rgb(255, 186, 0);
-/*        display: inline;*/
         float: none;
         margin-left: 95px;
         margin-right: 0;
@@ -354,7 +338,7 @@ small {
     	background:rgba(255, 255, 255, 0.1);
     }
     tbody th { 
-    	font-weight:bold; 
+    	font-weight:bold;
     }
     
 
@@ -368,7 +352,6 @@ small {
 h1,h2,h3,h4,h5,h6 {
     margin:0;
     padding:0;
-    color:rgb(255, 255, 255);
     font-weight: normal;
     line-height:1.2em;
 }
@@ -379,6 +362,9 @@ h2 {
     font-size: 24px;
     margin-bottom: 10px;
     text-transform: uppercase;
+}
+div#content_sec h2 {
+    font-size: 20px;
 }
 
 h3 {
@@ -553,7 +539,6 @@ ul#navigation_sec a {
 }
 ul#navigation_sec li.cur {
     background: url(../images/site/icons/nav_sec_selected.png) 10px 13px no-repeat rgba(255, 255, 255, 0.1);
-    
 }
 ul#navigation_sec li.cur a {
     font-weight: bold;
@@ -627,7 +612,25 @@ div#footer p.credit {
         width: 620px;
     }
     
-    /* CONTENT PRI */
+    /*
+        CONTENT PRI
+        ----------------------------------------------------------
+        
+        - Intro
+        - Posts
+        - Gallery
+        - Form Aside
+        - Editorial Layout
+            - Bio
+            - Gear
+            - History
+            - Lyrics
+        - ThirtySix Landing
+        - Store Landing
+        - Newsletter Landing
+        
+        ----------------------------------------------------------
+    */
     #content_pri h3 {
         letter-spacing: 1px;
     }
@@ -641,7 +644,8 @@ div#footer p.credit {
         margin: 5px 0 0 20px;
     }
     
-        /* CONTENT PRI: INTRO */
+        /* CONTENT PRI: Intro
+        --------------------------------------------- */
         div#intro {
             /* NOTE: Not sure how important it is that this is the same height as the aside promo box */
             min-height: 175px;
@@ -672,14 +676,14 @@ div#footer p.credit {
             background: rgb(60, 60, 60);
         }
         div#intro small {
-            color: rgb(255, 255, 255);
             font-size: 18px;
         }
         div#intro #audio_player {
             margin-top: 8px;
         }
         
-        /* POSTS */
+        /* CONTENT PRI: Posts
+        --------------------------------------------- */
         div#posts {
             padding-bottom: 0;
         }
@@ -710,7 +714,6 @@ div#footer p.credit {
             width: 100%;
         }
         div#posts div.post ul.post_meta li {
-            color: rgb(255, 255, 255);
             font-size: 12px;
             letter-spacing: 1px;
             padding: 0 5px;
@@ -741,7 +744,6 @@ div#footer p.credit {
             margin-left: 8px;
         }
         div#posts p#pagination {
-            color: rgb(255, 255, 255);
             font-size: 11px;
             float: left;
             margin-bottom: 0;
@@ -773,7 +775,38 @@ div#footer p.credit {
             font-weight: bold;
         }
         
-        /* GALLERY */
+        div#posts div#post_links {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        div#posts div#post_links a {
+            text-decoration: none;
+        }
+        
+        div#posts div#post_links p.more {
+            float: left;
+            width: 200px;
+            text-align: left;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext {
+            float: right;
+            width: 300px;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext li {
+            display: inline;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext li a {
+            float: right;
+            margin-left: 20px;
+        }
+        
+        
+        /* CONTENT PRI: Gallery
+        --------------------------------------------- */
         p#gallery_nav {
             height: 0;
             margin: 0;
@@ -844,7 +877,8 @@ div#footer p.credit {
             margin-left: 10px;
         }
         
-        /* FORM ASIDE - (Make more generic later) */
+        /* CONTENT PRI: Form Aside
+        --------------------------------------------- */
         div#form_aside {
             float: left;
             margin: 12px 0 0 15px;
@@ -853,16 +887,13 @@ div#footer p.credit {
         div#form_aside p {
             font-size: 12px;
         }
-        div#form_aside p,
-        div#form_aside address {
-            color: rgb(255, 255, 255);
-        }
         div#form_aside address {
             margin-left: 25px;
             margin-bottom: 10px;
         }
         
-        /* EDITORIAL LAYOUT */
+        /* CONTENT PRI: Editorial Layout
+        --------------------------------------------- */
         body.editorial #content_pri h3 {
             text-transform: uppercase;
         }
@@ -889,7 +920,8 @@ div#footer p.credit {
             background: rgba(255, 255, 255, 0.05);
         }
         
-            /* EDITORIAL: Bio template */
+            /* CONTENT PRI: Editorial Layout - Bio
+            --------------------------------------------- */
             body#bio #content_pri h3 {
                 font-size:20px;
                 letter-spacing:0.075em;
@@ -907,7 +939,6 @@ div#footer p.credit {
             }
             body#bio div#beginnings h3 + p:first-letter {
                 background: rgba(255, 255, 255, 0.1);
-                color: rgb(255, 255, 255);
                 float: left;
                 font-size: 33px;
                 margin: 5px 8px 0 0;
@@ -921,7 +952,8 @@ div#footer p.credit {
                 width: 360px;
             }
             
-            /* EDITORIAL: Bio/Gear template */
+            /* CONTENT PRI: Editorial Layout - Gear
+            --------------------------------------------- */
             body#gear #gear_guitars {
                 background: #1E1E1E url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right;
                 background: url(../images/site/bgs/bio/bio_gear_guitars.png) no-repeat bottom right, rgba(255, 255, 255, 0.02);
@@ -929,8 +961,9 @@ div#footer p.credit {
             body#gear #gear_guitars li {
                 width: 310px;
             }
-
-            /* EDITORIAL: thirtysix/history template */
+            
+            /* CONTENT PRI: Editorial Layout - History
+            --------------------------------------------- */
             body#history #thejourney,
             body#history #content_pri div.widget:nth-of-type(odd)#thejourney {
                 background:url(../images/site/bgs/thirtysix/thirtysix-history-journey.png) no-repeat bottom right;
@@ -941,10 +974,10 @@ div#footer p.credit {
             body#history #credits,
             body#history #content_pri div.widget:nth-of-type(odd)#credits {
                 background:url(../images/site/bgs/thirtysix/history_journey.png) no-repeat bottom right;
-    
             }
             
-            /* EDITORIAL: Album Lyrics */
+            /* CONTENT PRI: Editorial Layout - Lyrics
+            --------------------------------------------- */
             body#lyrics div#content_pri {
                 background: rgba(255, 255, 255, 0.02);
                 border-top: 1px dashed #5B5B5B;
@@ -972,12 +1005,12 @@ div#footer p.credit {
                 background: rgba(255, 255, 255, 0.02);
             }
         
-        /* THIRTYSIX LANDING TEMPLATE */
+        /* CONTENT PRI: Thirtysix Landing
+        --------------------------------------------- */
         body.thirtysix div#content_pri {
             background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
             border-top: 1px dashed #5B5B5B;
             border-top: 1px dashed rgba(255, 255, 255, 0.3);
-            /*position: relative;*/
         }
         body.thirtysix div#content_pri h1,
         body.thirtysix div#content_pri h2,
@@ -985,18 +1018,13 @@ div#footer p.credit {
             text-transform: uppercase;
         }
         body.thirtysix div#content_pri h1 {
-            color: rgb(255, 255, 255);
             font-size: 35px;
             margin-bottom: 0;
         }
         body.thirtysix div#content_pri h2 {
             font-size: 18px;
         }
-        body.thirtysix div#content_pri h3 {
-            color: rgb(255, 255, 255);
-        }
         body.thirtysix div#content_pri blockquote {
-            color: rgb(255, 255, 255);
             font-style: italic;
         }
         body.thirtysix div#content_pri blockquote p:before {
@@ -1094,7 +1122,8 @@ div#footer p.credit {
             background-image: url(../images/site/nav/network/nn_facebook.png);
         }
         
-        /* STORE LANDING */
+        /* CONTENT PRI: Store Landing
+        --------------------------------------------- */
         body.store_landing div#content_pri {
             padding-bottom: 20px;
             padding-top: 20px;
@@ -1129,7 +1158,8 @@ div#footer p.credit {
             margin-right: 4px;
         }
         
-        /* NEWSLETTER LANDING */
+        /* CONTENT PRI: Newsletter Landing
+        --------------------------------------------- */
         body.newsletter div#content_pri {
             border-color: #5B5B5B;
             border-color: rgba(255, 255, 255, 0.3);
@@ -1163,22 +1193,30 @@ div#footer p.credit {
             margin-right: 20px;
         }
         
-    /* CONTENT SEC */
-    div#content_sec h2 {
-        color: rgb(255, 255, 255);
-        font-size: 20px;
-    }
-    div#content_sec p {
-        color: rgb(255, 255, 255);
-    }
+    /*
+        CONTENT SEC
+        ----------------------------------------------------------
+        
+        - Widget
+            - Item Listings
+        - Promo Block
+        - Tour Dates
+        - Store Block
+        - Payments
+        - Newsletter Signup
+        
+        ----------------------------------------------------------
+    */
     
-    /* SIDEBAR WIDGETS */
+    /* CONTENT SEC: Widget
+    --------------------------------------------- */
     #content_sec .widget {
         float: left;
         width: 270px;
     }
     
-        /* SIDEBAR WIDGETS: Item Listings */
+        /* CONTENT SEC: Widget - Item Listings
+        --------------------------------------------- */
         ul.item_listing {
             background: rgba(255, 255, 255, 0.03);
             border-top: 1px solid rgb(75, 75, 75);
@@ -1187,9 +1225,9 @@ div#footer p.credit {
             margin-top: 18px;
         }
         ul.item_listing li {
+            border-bottom: 1px solid rgb(75, 75, 75);
             display:block;
             overflow:hidden;
-            border-bottom: 1px solid rgb(75, 75, 75);
         }
         ul.item_listing li,
         ul.item_listing li h3,
@@ -1203,9 +1241,9 @@ div#footer p.credit {
             background: rgba(255, 255, 255, 0.025);
         }
         ul.item_listing li a {
-            overflow:hidden;
             color: rgb(255, 255, 255);
             display: block;
+            overflow:hidden;
             padding: 10px;
             text-decoration: none;
         }
@@ -1214,7 +1252,8 @@ div#footer p.credit {
             background: rgba(255, 255, 255, 0.035);
         }
     
-    /* WIDGET: Promo Block */
+    /* CONTENT SEC: Widget - Promo Block
+    --------------------------------------------- */
     #promo_block.widget {
         padding: 0;
         position: relative;
@@ -1230,7 +1269,8 @@ div#footer p.credit {
         text-decoration: none;
     }
     
-    /* WIDGET: Tour Dates */
+    /* CONTENT SEC: Widget - Tour Dates
+    --------------------------------------------- */
     #tour_dates {
         padding-bottom: 10px;
     }
@@ -1240,7 +1280,8 @@ div#footer p.credit {
         width: 60%;
     }
     
-    /* WIDGET: Store Block */
+    /* CONTENT SEC: Widget - Store Block
+    --------------------------------------------- */
     #store_block ul.item_listing {
         margin-bottom: 15px;
     }
@@ -1258,7 +1299,8 @@ div#footer p.credit {
         border: 1px solid rgb(95, 95, 95);
     }
     
-    /* WIDGET: Payments */
+    /* CONTENT SEC: Widget - Payments
+    --------------------------------------------- */
     #payments_block ul {
         margin: 8px 0 6px 0;
         width: 100%;
@@ -1267,7 +1309,8 @@ div#footer p.credit {
         margin-right: 10px;
     }
     
-    /* WIDGET: Newsletter Signup */
+    /* CONTENT SEC: Widget - Newsletter Signup
+    --------------------------------------------- */
     #newsletter_signup {
         position: relative;
     }
@@ -1295,53 +1338,57 @@ div#footer p.credit {
         width: auto;
     }
     
-    /* MISCELLANEOUS */
-    #audio_player {
-        width:370px;
-    }
-    a.button {
-        color: rgb(60, 60, 60);
-        display: inline;
-        padding: 4px 8px;
-        text-decoration: none;
-    }
+/*
+    MISCELLANEOUS
+    ----------------------------------------------------------
+*/
+#audio_player {
+    width:370px;
+}
+
+a.button {
+    color: rgb(60, 60, 60);
+    display: inline;
+    padding: 4px 8px;
+    text-decoration: none;
+}
+
+.hide {
+    display: none;
+}
+
+div.opacity_02 {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+div.half {
+    float: left;
+    width: 50%;
+}
+
+/*
+    HORIZONTAL LISTS (ul.horizontal)
+    ----------------------------------------------------------
     
-    .hide {
-        display: none;
-    }
+    Description: - Default styling for horizontal lists
     
-    div.opacity_02 {
-        background: rgba(255, 255, 255, 0.02);
-    }
+    Example:     <li><a href="#">Home</a></li>
     
-    div.half {
-        float: left;
-        width: 50%;
-    }
-    
-    /*
-        HORIZONTAL LISTS (ul.horizontal)
-        ----------------------------------------------------------
-        
-        Description: - Default styling for horizontal lists
-        
-        Example:     <li><a href="#">Home</a></li>
-        
-        ----------------------------------------------------------
-    */
-    ul.horizontal {
-        list-style: none;
-    }
-    ul.horizontal,
-    ul.horizontal li {
-        float: left;
-    }
-    ul.horizontal li {
-        display: inline;
-    }
-    ul.horizontal a {
-        display: block;
-    }
+    ----------------------------------------------------------
+*/
+ul.horizontal {
+    list-style: none;
+}
+ul.horizontal,
+ul.horizontal li {
+    float: left;
+}
+ul.horizontal li {
+    display: inline;
+}
+ul.horizontal a {
+    display: block;
+}
     
     /*
         DISQUS COMMENTING SYSTEM OVERRIDES
