@@ -775,6 +775,36 @@ div#footer p.credit {
             font-weight: bold;
         }
         
+        div#posts div#post_links {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        div#posts div#post_links a {
+            text-decoration: none;
+        }
+        
+        div#posts div#post_links p.more {
+            float: left;
+            width: 200px;
+            text-align: left;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext {
+            float: right;
+            width: 300px;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext li {
+            display: inline;
+        }
+        
+        div#posts div#post_links ul#navigation_prevnext li a {
+            float: right;
+            margin-left: 20px;
+        }
+        
+        
         /* CONTENT PRI: Gallery
         --------------------------------------------- */
         p#gallery_nav {
