@@ -112,7 +112,7 @@
                 
             </div> <!-- // .post -->
             
-            <div id="post_links">
+            <div id="post_links"{if lv_comments_toggle == "On"} class="alt1"{/if}>
             
                 <p class="more"><a href="{pv_site_url}/journal/">&lsaquo;&lsaquo; Back to the journal</a></p>
                 
@@ -129,7 +129,9 @@
             
         </div><!-- // #posts -->
         
+        {if lv_comments_toggle == "On"}
         {embed="_components/_comments" entry_id="{entry_id}"}
+        {/if}
         
     </div> <!-- // #content_pri -->
     
