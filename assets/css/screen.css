@@ -657,6 +657,7 @@ div#footer p.credit {
             font-size:25px;
         }
         div#intro h2 strong,
+        div.widget h3 strong,
         div#intro small strong {
             font-weight: normal;
         
