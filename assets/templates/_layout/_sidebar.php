@@ -18,7 +18,7 @@
     {/if}
 
     <div id="promo_block" class="widget">
-        <a href="http://www.facebook.com/event.php?eid=127886567271836&amp;index=1">
+        <a href="https://simoncampbell.eventwax.com/thirtysix-launch-event/register/">
             <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300" height="205" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
