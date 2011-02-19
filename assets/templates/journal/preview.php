@@ -1,5 +1,6 @@
+{assign_variable:dav_all_journal_channels="journal_notes|journal_videos|journal_photos|journal_audio"}
 {exp:weblog:entries
-    weblog="journal_notes|journal_videos|journal_photos|journal_audio"
+    weblog="{dav_all_journal_channels}"
     limit="1"
     entry_id="{segment_3}"
     disable="{pv_disable_default}"
@@ -48,6 +49,20 @@
                 </ul>
                 
                 {if weblog_short_name == "journal_notes"}
+                
+                    {if cf_journal_notes_image != ""}
+                        <div class="post_image note_image size{cf_journal_notes_image_size}">
+                            {exp:ed_imageresizer 
+                                maxWidth="{cf_journal_notes_image_size}"
+                                forceWidth="yes"
+                                image="{cf_journal_notes_image}" 
+                                alt=""
+                                }
+                            {if cf_journal_notes_image_caption != ""}
+                                <span>{cf_journal_notes_image_caption}</span>
+                            {/if}
+                        </div>
+                    {/if}
                 
                     {cf_journal_notes_note}
                 
@@ -110,6 +125,21 @@
                 {/if}
                 
             </div> <!-- // .post -->
+            
+            <div id="post_links"{if lv_comments_toggle == "On"} class="alt1"{/if}>
+            
+                <p class="more"><a href="{pv_site_url}/journal/">&lsaquo;&lsaquo; Back to the journal</a></p>
+                
+                <ul id="navigation_prevnext">
+                    {exp:weblog:next_entry weblog="{dav_all_journal_channels}"}
+                    <li class="next"><a href="{path='journal/index'}">Next post &rsaquo;&rsaquo;</a></li>
+                    {/exp:weblog:next_entry}
+                    {exp:weblog:prev_entry weblog="{dav_all_journal_channels}"}
+                    <li class="prev"><a href="{path='journal/index'}">&lsaquo;&lsaquo; Previous post</a></li>
+                    {/exp:weblog:prev_entry}
+                </ul>
+                
+            </div><!-- // #post_links -->
             
         </div><!-- // #posts -->
         
