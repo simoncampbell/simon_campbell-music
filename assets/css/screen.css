@@ -761,14 +761,14 @@ div#footer p.credit {
             margin-left: 2px;
             text-align: center;
             text-decoration: none;
-            width: 20px;
+            padding: 2px 5px;
         }
         div#posts p#pagination strong {
             display: inline-block;
             font-size: 12px;
             font-weight: normal;
             height: 20px;
-            padding:0 2px;
+            padding: 2px 5px;
             
         }
         div#posts p#pagination a:hover,
