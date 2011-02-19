@@ -51,6 +51,20 @@
                 
                 {if weblog_short_name == "journal_notes"}
                 
+                    {if cf_journal_notes_image != ""}
+                        <div class="post_image note_image size{cf_journal_notes_image_size}">
+                            {exp:ed_imageresizer 
+                                maxWidth="{cf_journal_notes_image_size}"
+                                forceWidth="yes"
+                                image="{cf_journal_notes_image}" 
+                                alt=""
+                                }
+                            {if cf_journal_notes_image_caption != ""}
+                                <span>{cf_journal_notes_image_caption}</span>
+                            {/if}
+                        </div>
+                    {/if}
+                
                     {cf_journal_notes_note}
                 
                 {/if}

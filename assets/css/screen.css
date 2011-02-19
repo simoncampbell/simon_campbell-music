@@ -777,6 +777,8 @@ div#footer p.credit {
             font-weight: bold;
         }
         
+        /* Post links AKA previous/next and back links on detail pages */
+        
         div#posts div#post_links {
             width: 100%;
             overflow: hidden;
@@ -813,6 +815,8 @@ div#footer p.credit {
             float: right;
             margin-left: 20px;
         }
+        
+        /* Images in posts */
         
         div#posts div.note_image {
             float: right;
