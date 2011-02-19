@@ -699,6 +699,7 @@ div#footer p.credit {
             margin-bottom: 20px;
             padding-bottom: 20px;
             width: 100%;
+            overflow: hidden;
         }
         div#posts div.post:last-child {
             border: none;
@@ -810,6 +811,27 @@ div#footer p.credit {
         div#posts div#post_links ul#navigation_prevnext li a {
             float: right;
             margin-left: 20px;
+        }
+        
+        div#posts div.note_image {
+            float: right;
+            margin-left: 15px;
+        }
+        
+        div#posts div.note_image.size140 {
+            width: 150px;
+        }
+        
+        div#posts div.note_image.size260 {
+            width: 270px;
+        }
+        
+        div#posts div.post_image span {
+            display: block;
+            margin-top: 3px;
+            font-style: italic;
+            font-size: 11px;
+            line-height: 16px;
         }
         
         
