@@ -8,17 +8,21 @@ div#content_pri,
 ul#navigation_pri li.last a {
     background: none;
 }
+dl#definition_links dd.last a {
+    background-image: none;
+    padding-right: 0;
+}
 
 /* IMAGE GALLERY */
 div.gallery_photo p.photo_meta {
     background: #000;
 }
 #content_pri div.gallery_photo img,
-#content_pri ul#gallery_grid a img {
+#content_pri ul.gallery_grid a img {
     background: #292929;
 }
-#content_pri ul#gallery_grid a:hover img,
-#content_pri ul#gallery_grid li.activeSlide a img {
+#content_pri ul.gallery_grid a:hover img,
+#content_pri ul.gallery_grid li.activeSlide a img {
     background: #3A3A3A;
 }
 
@@ -49,8 +53,10 @@ div#posts div.post.last {
     border: none;
     padding-bottom: 0;
 }
-div#posts p#pagination a:hover,
-div#posts p#pagination a.cur {
+
+/* PAGINATION */
+p.pagination a:hover,
+p.pagination a.cur {
     background: #5B5B5B;
 }
 
@@ -66,9 +72,11 @@ ul.item_listing li.odd {
 }
 
 /* TEMPORARY STORE LANDING PAGE */
+/*
 body.store_landing div#content_pri input.submit {
     margin-right: 6px;
 }
+*/
 
 /* NEWSLETTER LANDING */
 body.newsletter div#content_pri form input.submit {
@@ -79,6 +87,6 @@ body.newsletter div#content_pri form input.submit {
 #content_pri img,
 #content_pri iframe,
 body.editorial div#beginnings h3 + p:first-letter,
-div#posts p#pagination a {
+p.pagination a {
     background: #363636;
 }

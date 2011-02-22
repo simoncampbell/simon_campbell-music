@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class=""
+    body_class="fullwidth"
     body_id=""
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
