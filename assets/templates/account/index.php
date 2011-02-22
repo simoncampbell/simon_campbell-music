@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="centeredwidth"
+    body_class="{if logged_in}fullwidth{if:else}centeredwidth{/if}"
     body_id="account_landing"
     section="account"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -18,7 +18,41 @@
         
         {if logged_in}
         
-            LOGGED IN - ACCOUNT OVERVIEW
+            <h1>My account</h1>
+            
+            <div class="half">
+                <h2>Your account details</h2>
+                
+                <h2>Account settings</h2>
+                
+            </div><!-- // .half -->
+            
+            <div class="half">
+                <h2>Your order history</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order no.</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Downloads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">#145</a></td>
+                            <td><time datetime="">23-02-2011</time></td>
+                            <td>
+                                <span class="item"><a href="#">This is the product title.</a></span>
+                            </td>
+                            <td>
+                                <span class="item"><a href="#">mp3</a> ~50mb .zip</span>
+                                <span class="item"><a href="#">wav</a> ~275mb .zip</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- // .half -->
         
         {/if}
         
