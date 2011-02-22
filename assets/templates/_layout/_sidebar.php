@@ -16,13 +16,32 @@
         
     </ul><!-- // .navigation_sec -->
     {/if}
+    
+    {if segment_1 != "thirtysix"}
+    <div id="newsletter_signup" class="widget">
+        <h2>Newsletter</h2>
+        <p>
+            Sign up to receive regular updates on the new album and Simon&rsquo;s shows &amp; events.
+        </p>
+        <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+            <fieldset>
+                <label class="hide" for="cm-bxdii-bxdii">Email Address</label>
+                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email" value="please enter email address" />
+                <!-- NOTE: Height of submit button is messed up in firefox -->
+                <input type="submit" value="Subscribe" class="submit" />
+            </fieldset>
+        </form>
+    </div> <!-- // #newsletter_signup -->
+    {/if}
 
+    {if segment_1 != "home"}
     <div id="promo_block" class="widget">
         <a href="https://simoncampbell.eventwax.com/thirtysix-launch-event/register/">
             <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300" height="205" alt="ThirtySix album launch">
             <small>Album launch 26 March</small>
         </a>
     </div> <!-- // #promo_block -->
+    {/if}
     
     {exp:weblog:entries
         weblog="events"
@@ -102,21 +121,6 @@
     </div> <!-- // #payments_block -->
     
     --}
-    {if segment_1 != "thirtysix"}
-    <div id="newsletter_signup" class="widget">
-        <h2>Newsletter</h2>
-        <p>
-            Sign up to receive regular updates on the new album and Simon&rsquo;s shows &amp; events.
-        </p>
-        <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
-            <fieldset>
-                <label class="hide" for="cm-bxdii-bxdii">Email Address</label>
-                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email" value="please enter email address" />
-                <!-- NOTE: Height of submit button is messed up in firefox -->
-                <input type="submit" value="Subscribe" class="submit" />
-            </fieldset>
-        </form>
-    </div> <!-- // #newsletter_signup -->
-    {/if}
+
     
 </div> <!-- // #content_sec -->
