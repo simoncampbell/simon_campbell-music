@@ -53,9 +53,27 @@
                 <strong>Simon Campbell presents his debut album.</strong> In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim.
             </p>
         </div><!-- // .first -->
-        <form class="last">
-            
-        </form><!-- // .last -->
+        <div class="last">
+            <form>
+                <fieldset>
+                    <div>
+                        <label for="type">Product Type</label>
+                        <select>
+                            <option>Digital Download</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" name="quantity" type="number" min="1" max="100">
+                    </div>
+                    <div id="price">
+                        <h3>Price</h3>
+                        <p><strong>£39.99</strong> + shipping</p>
+                    </div>
+                </fieldset>
+                <input class="submit" type="submit" value="Add to basket">
+            </form>
+        </div><!-- // .last -->
         
     </div> <!-- // #content_pri -->
     
