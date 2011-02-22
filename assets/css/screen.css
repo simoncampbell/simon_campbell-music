@@ -1381,6 +1381,7 @@ div#footer p.credit {
     /* Promo section */
     div#promo {
         margin:0 10px 40px 10px;
+        padding:0;
         clear:both;
         overflow:hidden;
         height:235px;
@@ -1394,6 +1395,12 @@ div#footer p.credit {
         list-style:none;
         overflow:visible;
     }
+    
+    div#promo ul li {
+        display:block;
+        clear:both;
+    }
+    
     
     div#promo ul li a {
         display:block;
@@ -1420,8 +1427,6 @@ div#footer p.credit {
     
     div#promo ul li.ui-tabs-selected a {
         color:#fff;
-        position:relative;
-        left:0;
         padding-left:27px;
         background:url(../images/site/nav/promo/promo-tab-hover.png) 0 -1px no-repeat rgba(255, 255, 255, 0.01);
         border-bottom:0;
@@ -1430,7 +1435,6 @@ div#footer p.credit {
     
     div#promo ul li:last-child.ui-tabs-selected a {
         padding-bottom:9px;
-    
     }
     
     div#promo ul li:last-child a {
@@ -1464,7 +1468,7 @@ div#footer p.credit {
         position:absolute;
         bottom:10px;
         left:10px;
-        display:inline-block;
+        display:block;
         background:rgba(0, 0, 0, 0.8);
         padding:10px;
     }
