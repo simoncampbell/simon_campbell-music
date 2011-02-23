@@ -22,27 +22,53 @@
             
             <div class="half">
                 <h2>Your account details</h2>
-                <form>
+                <div class="account_details">
+                    <p class="more"><a href="#">Edit details</a></p>
+                    <div>
+                        <strong>Full Name</strong> 
+                        James Willock
+                    </div>
+                    <div>
+                        <strong>Email address</strong> 
+                        james.willock@gmail.com
+                    </div>
+                    <div>
+                        <strong>Password</strong> 
+                        *********
+                    </div>
+                    <div>
+                        <strong>Delivery Address</strong> 
+                        2 North Street<br>
+                        Barrow Upon Humber<br>
+                        North Lincolnshire<br>
+                        DN19 7AP
+                    </div>
+                </div>
+                <form class="account_details">
                     <fieldset>
                         <div>
                             <label for="">Full Name</label>
-                            <input type="text" id="" size="30" name="" />
+                            <input type="text" id="" size="30" name="" value="" />
                         </div>
                         <div>
                             <label for="register_form_email">Email address</label>
                             <input type="text" id="register_form_email" size="30" name="email" value="" />
                         </div>
                         <div>
-                            <label for="register_form_password">Password</label>
-                            <input type="password" id="register_form_password" size="30" name="password" />
-                        </div>
-                        <div>
-                            <label for="register_form_confpassword">Confirm Password</label>
-                            <input type="password" id="register_form_confpassword" size="30" name="password_confirm" />
-                        </div>
-                        <div>
                             <label for="">Delivery Address</label>
                             <textarea id="" cols="30" rows="7"></textarea>
+                        </div>
+                        <div>
+                            <label for="register_form_password">New Password</label>
+                            <input type="password" id="register_form_password" size="30" name="password" value="" />
+                        </div>
+                        <div>
+                            <label for="register_form_confpassword">Confirm New Password</label>
+                            <input type="password" id="register_form_confpassword" size="30" name="" />
+                        </div>
+                        <div>
+                            <label for="register_form_confpassword">Current Password <em>Required to make changes</em></label>
+                            <input type="password" id="register_form_confpassword" size="30" name="" />
                         </div>
                     </fieldset>
                 </form>

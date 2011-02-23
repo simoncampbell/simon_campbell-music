@@ -1257,6 +1257,9 @@ div#footer p.credit {
         
         /* CONTENT PRI: Store & Accounts
         --------------------------------------------- */
+        body#account_landing.fullwidth h1 {
+            margin-bottom: 10px;
+        }
         body#account_landing div#content_pri > p {
             line-height: 1;
             margin-bottom: 25px;
