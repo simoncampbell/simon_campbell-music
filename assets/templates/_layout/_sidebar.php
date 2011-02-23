@@ -16,6 +16,23 @@
         
     </ul><!-- // .navigation_sec -->
     {/if}
+    
+    {if segment_1 != "thirtysix"}
+    <div id="newsletter_signup" class="widget">
+        <h2>Newsletter</h2>
+        <p>
+            Sign up to receive regular updates on the new album and Simon&rsquo;s shows &amp; events.
+        </p>
+        <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
+            <fieldset>
+                <label class="hide" for="cm-bxdii-bxdii">Email Address</label>
+                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email" value="please enter email address" />
+                <!-- NOTE: Height of submit button is messed up in firefox -->
+                <input type="submit" value="Subscribe" class="submit" />
+            </fieldset>
+        </form>
+    </div> <!-- // #newsletter_signup -->
+    {/if}
 
     <div id="promo_block" class="widget">
         <a href="https://simoncampbell.eventwax.com/thirtysix-launch-event/register/">
@@ -39,7 +56,7 @@
         {/if}
                 <li>
                     <a href="{cf_events_fburl}">
-                        <h3><strong>{title}</strong> at <strong>{cf_events_venue}</strong>, {cf_events_city}</h3>
+                        <h3><em>{title}</em> at <strong>{cf_events_venue}, {cf_events_city}</strong></h3>
                         <p><time datetime="{cf_events_date format='{DATE_ATOM}'}">{cf_events_date format="{pv_date_event}"}</time></p>
                     </a>
                 </li>
@@ -102,21 +119,6 @@
     </div> <!-- // #payments_block -->
     
     --}
-    {if segment_1 != "thirtysix"}
-    <div id="newsletter_signup" class="widget">
-        <h2>Newsletter</h2>
-        <p>
-            Sign up to receive regular updates on the new album and Simon&rsquo;s shows &amp; events.
-        </p>
-        <form action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">
-            <fieldset>
-                <label class="hide" for="cm-bxdii-bxdii">Email Address</label>
-                <input type="text" name="cm-bxdii-bxdii" id="bxdii-bxdii" class="required email" value="please enter email address" />
-                <!-- NOTE: Height of submit button is messed up in firefox -->
-                <input type="submit" value="Subscribe" class="submit" />
-            </fieldset>
-        </form>
-    </div> <!-- // #newsletter_signup -->
-    {/if}
+
     
 </div> <!-- // #content_sec -->
