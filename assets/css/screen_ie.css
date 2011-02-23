@@ -2,7 +2,12 @@
 ../images/site/ie6/opacity_5.png*/
 
 div#content_pri,
-#content_sec .widget {
+#content_sec .widget,
+body#account_landing #content_pri div.account_details,
+body#account_landing.fullwidth #content_pri form#account_settings {
+    background: url(../images/site/ie6/opacity_5.png);
+}
+table {
     background: url(../images/site/ie6/opacity_5.png);
 }
 ul#navigation_pri li.last a {
@@ -60,13 +65,15 @@ p.pagination a.cur {
     background: #5B5B5B;
 }
 
-/* CONTENT SEC */
+/* RGBA FIXES */
 ul.item_listing {
     background: #232323;
 }
 ul.item_listing li.odd {
     background: #1C1C1C;
 }
+
+/* CONTENT SEC */
 #newsletter_signup input.submit {
     padding: 0px 5px;
 }
@@ -77,6 +84,8 @@ body.store_landing div#content_pri input.submit {
     margin-right: 6px;
 }
 */
+/* STORE INDEX */
+
 
 /* NEWSLETTER LANDING */
 body.newsletter div#content_pri form input.submit {

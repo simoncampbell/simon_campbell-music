@@ -1330,6 +1330,7 @@ div#footer p.credit {
         body#account_landing.fullwidth #content_pri table {
             border: none;
             font-size: 12px;
+            margin-top: 0;
         }
         body#account_landing.fullwidth #content_pri span.item {
             font-size: 10px;
@@ -1346,12 +1347,6 @@ div#footer p.credit {
             font-size: 12px;
             padding-left: 10px;
         }
-        
-/*
-<span class="item music_file"><a href="">mp3</a> ~50mb .zip</span>
-<span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
-*/
-        
         
         body#account_landing div#content_pri > p {
             line-height: 1;
