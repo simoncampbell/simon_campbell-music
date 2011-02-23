@@ -1259,8 +1259,8 @@ div#footer p.credit {
         }
         
         body.contact div#content_pri div.contact_block ul.media li.pdf {
-            padding-left:16px;
-            background:url(../images/site/icons/pdf.png) left no-repeat;
+            padding-left:18px;
+            background:url(../images/site/icons/pdf.png) 0 5px no-repeat;
         }
         
         body.contact div#content_pri div.contact_block ul.media li span {
