@@ -586,7 +586,7 @@ dl#definition_links dd:last-child a {
     padding-right: 0;
 }
 dl#definition_links dd a:hover,
-dl#definition_links dd a.cur {
+dl#definition_links dd.cur a {
     color: #FFF;
 }
 

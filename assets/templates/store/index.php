@@ -20,49 +20,54 @@
         
         <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
-            <dd><a class="cur" href="#">All</a></dd>
-            <dd><a href="#">Music</a></dd>
-            <dd><a href="#">Apparel</a></dd>
-            <dd><a href="#">Accessories</a></dd>
+            {exp:weblog:categories style="linear"}
+            <dd{if segment_3 =="{category_url_title}"} class="cur"{/if}><a href="{path='store/index'}">{category_name}</dd>
+            {/exp:weblog:categories}
         </dl><!-- // #categories_list -->
         
         <ul class="horizontal gallery_grid">
+            {exp:weblog:entries
+                disable="member_data|trackbacks|categories"
+                limit="9"
+                pagination="bottom"
+                weblog="products_music|products_posters|products_tshirts"
+            }
             <li>
-                <a href="#">
-                    <p>Album art t-shirt</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
+                <a href="{url_title_path='product'}">
+                    <p>{title}</p>
+                    {if weblog_short_name == "products_music"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_music_images}{ffm_images_image}{/cf_products_music_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
+                    {if weblog_short_name == "products_posters"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_posters_images}{ffm_images_image}{/cf_products_posters_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
+                    {if weblog_short_name == "products_tshirts"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_tshirts_images}{ffm_images_image}{/cf_products_tshirts_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <p>ThirtySix LP</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p>Simon Campbell poster with a long, long title.</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p>Album art t-shirt</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p>ThirtySix LP</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <p>Simon Campbell poster</p>
-                    <img src="/assets/images/site/dev/temp_gallery.gif" width="180" height="180" alt="">
-                </a>
-            </li>
+            {/exp:weblog:entries}
         </ul><!-- // .gallery_grid -->
         
         <p class="pagination">
