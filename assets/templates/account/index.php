@@ -22,9 +22,46 @@
             
             <div class="half">
                 <h2>Your account details</h2>
+                <form>
+                    <fieldset>
+                        <div>
+                            <label for="">Full Name</label>
+                            <input type="text" id="" size="30" name="" />
+                        </div>
+                        <div>
+                            <label for="register_form_email">Email address</label>
+                            <input type="text" id="register_form_email" size="30" name="email" value="" />
+                        </div>
+                        <div>
+                            <label for="register_form_password">Password</label>
+                            <input type="password" id="register_form_password" size="30" name="password" />
+                        </div>
+                        <div>
+                            <label for="register_form_confpassword">Confirm Password</label>
+                            <input type="password" id="register_form_confpassword" size="30" name="password_confirm" />
+                        </div>
+                        <div>
+                            <label for="">Delivery Address</label>
+                            <textarea id="" cols="30" rows="7"></textarea>
+                        </div>
+                    </fieldset>
+                </form>
                 
                 <h2>Account settings</h2>
-                
+                <form>
+                    <fieldset>
+                        <div>
+                            <strong>Newsletter</strong>
+                            <input type="checkbox" id="" name="" />
+                            <label for="">Subscribe to the Newsletter</label>
+                        </div>
+                        <div>
+                            <strong>Special Offers</strong>
+                            <input type="checkbox" id="" name="" />
+                            <label for="">Remember me</label>
+                        </div>
+                    </fieldset>
+                </form>
             </div><!-- // .half -->
             
             <div class="half">
