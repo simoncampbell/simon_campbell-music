@@ -1265,19 +1265,25 @@ div#footer p.credit {
             width: 440px;
         }
         body#account_landing #content_pri div.account_details {
+            padding-bottom: 10px;
+        }
+        body#account_landing #content_pri div.account_details,
+        body#account_landing.fullwidth #content_pri form#account_settings {
             background:rgba(255, 255, 255, 0.03);
             margin-bottom: 20px;
-            padding-bottom: 10px;
             position: relative;
         }
-        body#account_landing #content_pri div.account_details p {
+        body#account_landing #content_pri div.account_details p,
+        body#account_landing.fullwidth #content_pri form#account_settings div {
             margin-bottom: 0;
             padding: 8px 6px;
         }
-        body#account_landing #content_pri div.account_details p:nth-of-type(even) {
+        body#account_landing #content_pri div.account_details p:nth-of-type(even),
+        body#account_landing.fullwidth #content_pri form#account_settings div:nth-of-type(odd) {
             background:rgba(255, 255, 255, 0.06);
         }
-        body#account_landing #content_pri div.account_details p strong {
+        body#account_landing #content_pri div.account_details p strong,
+        body#account_landing.fullwidth #content_pri form#account_settings strong {
             display: block;
             float: left;
             margin-right: 20px;
@@ -1295,6 +1301,28 @@ div#footer p.credit {
         }
         body#account_landing #content_pri div.account_details p.more a.button {
             font-size: 10px;
+        }
+        
+        body#account_landing.fullwidth #content_pri form#account_settings div,
+        body#account_landing.fullwidth #content_pri form#account_settings label,
+        body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
+            float: left;
+        c}
+        body#account_landing.fullwidth #content_pri form#account_settings div {
+            padding: 6px;
+            width: 428px;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings label {
+            margin-left: 5px;
+            margin-top: 2px;
+            width: auto;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
+            margin-top: 6px;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings input.submit {
+            float: right;
+            font-size: 11px;
         }
         
         body#account_landing.fullwidth #content_pri table {

@@ -76,7 +76,7 @@
                 </form>
                 
                 <h2>Account settings</h2>
-                <form>
+                <form id="account_settings">
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
@@ -88,9 +88,12 @@
                             <input type="checkbox" id="" name="" />
                             <label for="">Remember me</label>
                         </div>
+                        <div class="submit">
+                            <input class="submit" type="submit" value="Submit new settings" />
+                        </div>
                     </fieldset>
                 </form>
-            </div><!-- // .half -->
+            </div><!-- // .first -->
             
             <div class="last">
                 <h2>Your order history</h2>
@@ -148,7 +151,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div><!-- // .half -->
+            </div><!-- // .last -->
         
         {/if}
         
