@@ -1714,12 +1714,16 @@ p.pagination a.cur {
     small,
     small strong,
     body.thirtysix div#content_pri h2,
+    body#product_detail div#content_pri h1,
+    body#account_landing.fullwidth h1,
+    body#product_detail div#content_pri h2,
+    body#account_landing.fullwidth h2,
     body.thirtysix div#content_pri h1,
     ul#navigation_pri li.account li,
     dl#definition_links {
         letter-spacing:0.1em;
     }
-
+    
     div#intro h2,
     div#intro h2 strong {
         letter-spacing:0.05em;
@@ -1732,6 +1736,10 @@ p.pagination a.cur {
     .no-js #content_pri h3 strong,
     .no-js small,
     .no-js small strong,
+    body#product_detail div#content_pri h1,
+    body#account_landing.fullwidth h1,
+    body#product_detail div#content_pri h2,
+    body#account_landing.fullwidth h2,
     .no-js body.thirtysix div#content_pri h2,
     .no-js body.thirtysix div#content_pri h1,
     .no-js ul#navigation_pri li.account li,
