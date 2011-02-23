@@ -1297,6 +1297,31 @@ div#footer p.credit {
             font-size: 10px;
         }
         
+        body#account_landing.fullwidth #content_pri table {
+            border: none;
+            font-size: 12px;
+        }
+        body#account_landing.fullwidth #content_pri span.item {
+            font-size: 10px;
+        }
+        body#account_landing.fullwidth #content_pri span.item a {
+            font-size: 12px;
+        }
+        body#account_landing.fullwidth #content_pri span.music_file {
+            color: rgb(203, 203, 203);
+            font-size: 11px;
+        }
+        body#account_landing.fullwidth #content_pri span.music_file a {
+            background: url(../images/site/icons/music_note.png) no-repeat 0 0;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+        
+/*
+<span class="item music_file"><a href="">mp3</a> ~50mb .zip</span>
+<span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
+*/
+        
         
         body#account_landing div#content_pri > p {
             line-height: 1;

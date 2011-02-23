@@ -95,12 +95,18 @@
             <div class="last">
                 <h2>Your order history</h2>
                 <table>
+                    <colgroup>
+                        <col style="width:20%;"/>
+                        <col style="width:20%;"/>
+                        <col style="width:30%;"/>
+                        <col style="width:30%"/>
+                    </colgroup>
                     <thead>
                         <tr>
-                            <th>Order no.</th>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Downloads</th>
+                            <th scope="col">Order no.</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Downloads</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,12 +114,37 @@
                             <td><a href="#">#145</a></td>
                             <td><time datetime="">23-02-2011</time></td>
                             <td>
-                                <span class="item"><a href="#">This is the product title.</a></span>
+                                <span class="item"><a href="#">ThirtySix LP</a></span>, 
+                                <span class="item"><a href="#">T-shirt</a></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">#121</a></td>
+                            <td><time datetime="">19-02-2011</time></td>
+                            <td>
+                                <span class="item"><a href="#">ThirtySix digital download</a> WAV &amp; MP3</span>
                             </td>
                             <td>
-                                <span class="item"><a href="#">mp3</a> ~50mb .zip</span>
-                                <span class="item"><a href="#">wav</a> ~275mb .zip</span>
+                                <span class="item music_file"><a href="">mp3</a> ~50mb .zip</span>
+                                <span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">#109</a></td>
+                            <td><time datetime="">11-02-2011</time></td>
+                            <td>
+                                <span class="item"><a href="#">Simon Campbell mug</a></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">#102</a></td>
+                            <td><time datetime="">01-02-2011</time></td>
+                            <td>
+                                <span class="item"><a href="#">ThirtySix EP</a></span>
+                            </td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
