@@ -61,30 +61,17 @@
             
             <h2>Bookings</h2>
             
-            <p>If you want to get in touch with Simon&rsquo;s record company for booking details, contact Suzy:</p>
-            <address>
-                <strong>Suzy Starlite</strong><br />
-                Supertone Records<br />
-                <a href="mailto:suzy@supertonerecords.com">suzy@supertonerecords.com</a><br />
-                +44 7624 245881<br />
-            </address>
+            {lv_contact_booking}
         </div> <!-- // #media -->
         
         <div class="contact_block">
             
             <h2>Media</h2>
-            <p>You press and media types may be interested in the following:</p>
-            <ul>
-                <li>
-                    <a href="#">Media kit</a> <span class="pdf">5mb PDF</span>
-                </li>
-            </ul>
+            <p>Check these Simon Campbell Music goodies!</p>
+            <ul class="media">
+                <li class="pdf">{lv_contact_presskit_text}</li
+            </li>
             
-            {!--
-            {if lv_contact_presskit_text != ""}
-                <p>{lv_contact_presskit_text}</p>
-            {/if}
-            --}
         </div> <!-- // #media -->
         
     </div> <!-- // #content_pri -->

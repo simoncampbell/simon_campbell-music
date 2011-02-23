@@ -1247,17 +1247,29 @@ div#footer p.credit {
         body.contact div#content_pri div.contact_block {
             margin-left:15px;
         }
+        body.contact div#content_pri div.contact_block ul.media {
+            list-style:none;
+            margin-bottom:0;
+        }
+        body.contact div#content_pri div.contact_block ul.media li {
+            margin-bottom:7px;
+        }
+        body.contact div#content_pri div.contact_block ul.media li:last-child {
+            margin-bottom:0px;
+        }
         
-        body.contact div#content_pri div.contact_block span.pdf {
-            font-size:11px;
-            padding-left:13px;
+        body.contact div#content_pri div.contact_block ul.media li.pdf {
+            padding-left:16px;
             background:url(../images/site/icons/pdf.png) left no-repeat;
+        }
+        
+        body.contact div#content_pri div.contact_block ul.media li span {
+            font-size:11px;
         }
         
         body.contact div#content_pri div.contact_block address {
             background:rgba(255, 255, 255, 0.05);
             padding:10px;
-            margin-left:5px;
         }
         
         body.contact #content_pri form fieldset div {
@@ -1268,6 +1280,7 @@ div#footer p.credit {
         body.contact #content_pri form textarea {
             display:block;
             width:259px;
+            margin-bottom:10px;
         }
         body.contact #content_pri form label {
             float:none;
