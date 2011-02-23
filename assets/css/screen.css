@@ -1414,8 +1414,10 @@ div#footer p.credit {
         color:#9d9d9d;
     }
     
-    div#promo ul li a:hover {
+    div#promo ul li a:hover,
+    div#promo ul li a:focus {
         color:#fff;
+        outline:none;
     }
     
     div#promo ul li.ui-tabs-selected {
