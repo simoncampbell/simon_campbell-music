@@ -184,12 +184,7 @@ small {
         overflow:hidden;
         margin:15px 0 0 0;
     }
-    body.contact #content_pri form {
-        border-right: 1px dashed #585858;
-        border-right: 1px dashed rgba(255, 255, 255, 0.3);
-        float: left;
-        width: 320px;
-    }
+
     
     form fieldset {
     }
@@ -244,7 +239,7 @@ small {
     textarea {
         float: none;
         height: auto;
-        padding: 5px 8px;
+        padding: 7px 8px;
         width: 195px;
     }
     input[type="input"]:focus,
@@ -257,14 +252,14 @@ small {
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
-        padding:7px;
-        border:1px dashed rgb(0, 0, 0);
+        padding:5px 6px;
+        border:2px solid rgb(253, 154, 75);
     }
     input[type="text"]:focus,
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
-        padding: 4px 7px;
+        padding: 5px 6px;
     }
     input.error,
     input.error:focus,
@@ -295,7 +290,7 @@ small {
             font: normal normal bold 12px/1em "Helvetica Neue", Helvetica, Arial, sans-serif;
             letter-spacing: 0;
             margin: 0;
-            min-height:26px;
+            min-height:27px;
             padding: 4px 10px;
             text-transform: none;
             
@@ -303,10 +298,7 @@ small {
             -webkit-border-radius:5px;
             border-radius:5px;
         }
-        body.contact #content_pri input.submit {
-            float: right;
-            margin-right: 15px;
-        }
+
         input.submit:hover,
         a.button:hover {
             background: rgb(255, 255, 255);
@@ -917,7 +909,7 @@ div#footer p.credit {
         div#form_aside {
             float: left;
             margin: 12px 0 0 15px;
-            width: 254px;
+            width:210px;
         }
         div#form_aside p {
             font-size: 12px;
@@ -1228,6 +1220,67 @@ div#footer p.credit {
             margin-right: 20px;
         }
         
+        /* CONTENT PRI: Contact Landing
+        --------------------------------------------- */
+        body.contact div#content_pri {
+            width:630px;
+            padding:0;
+            border:0;
+            margin-right:0;
+            background:transparent;
+        }
+        
+        body.contact div#content_pri div#contact,
+        body.contact div#content_pri div.contact_block {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px dashed #5B5B5B;
+            border-top: 1px dashed rgba(255, 255, 255, 0.3);
+            border-bottom: 1px dashed #5B5B5B;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+            overflow:hidden;
+            margin-bottom:15px;
+            padding:15px;
+            width:275px;
+            float:left;
+        }
+        
+        body.contact div#content_pri div.contact_block {
+            margin-left:15px;
+        }
+        
+        body.contact div#content_pri div.contact_block span.pdf {
+            font-size:11px;
+            padding-left:13px;
+            background:url(../images/site/icons/pdf.png) left no-repeat;
+        }
+        
+        body.contact div#content_pri div.contact_block address {
+            background:rgba(255, 255, 255, 0.05);
+            padding:10px;
+            margin-left:5px;
+        }
+        
+        body.contact #content_pri form fieldset div {
+            margin-bottom:10px;
+        }
+        
+        body.contact #content_pri form input[type="text"],
+        body.contact #content_pri form textarea {
+            display:block;
+            width:259px;
+        }
+        body.contact #content_pri form label {
+            float:none;
+            padding:0;
+            text-align:left;
+            margin-bottom:10px;
+            font-weight:bold;
+        }
+        body.contact #content_pri input.submit {
+            float: right;
+        }
+
+        
     /*
         CONTENT SEC
         ----------------------------------------------------------
@@ -1271,6 +1324,12 @@ div#footer p.credit {
             font-weight: normal;
             line-height: 1.5em;
             margin: 0;
+        }
+        ul.item_listing li h3 strong {
+            font-weight:bold;
+        }
+        ul.item_listing li h3 em {
+            font-style:italic;
         }
         ul.item_listing li:nth-of-type(odd) {
             background: rgba(255, 255, 255, 0.025);
@@ -1352,19 +1411,15 @@ div#footer p.credit {
     #newsletter_signup input[type="text"] {
         float: left;
         min-height: 10px;
-        padding: 6px 8px;
         width: 165px;
     }
-    #newsletter_signup input[type="text"]:focus,
-    #newsletter_signup input[type="text"]:hover,
-    #newsletter_signup input[type="text"].error {
-        padding: 5px 7px;
-    }
+
     #newsletter_signup input[type="text"].error {
         margin-bottom: 25px;
     }
     #newsletter_signup input.submit {
         float: right;
+        margin-top:2px;
     }
     #newsletter_signup label.error {
         margin-left: 0;
