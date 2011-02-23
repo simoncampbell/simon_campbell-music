@@ -16,123 +16,78 @@
 
     <div id="promo">
         <ul>
+            {exp:weblog:entries
+                weblog="homepage_features"
+                limit="4"
+                disable="{pv_disable_default}"
+                dynamic="off"
+                fixed_order="{lv_featured_homepage}"
+            }
             <li>
-                <a href="#tab1">
-                    <img src="/assets/images/content/promo/thumbs/thirtysix_release.jpg" />
-                    ThirtySix release
+                <a href="#tab{count}">
+                    {exp:ed_imageresizer 
+                        maxWidth="60"
+                        forceWidth="yes"
+                        cropratio="60:38" 
+                        image="{cf_features_image}" 
+                        alt=""
+                    }
+                    {title}
                 </a>
             </li>
-            <li>
-                <a href="#tab2">
-                    <img src="/assets/images/content/promo/thumbs/thirtysix_making_of.jpg" />
-                    The making of ThirtySix
-                </a>
-            </li>
-            <li>
-                <a href="#tab3">
-                    <img src="/assets/images/content/promo/thumbs/thirtysix_brother.jpg" />
-                    Preview &ldquo;Brother&rdquo;
-                </a>
-            </li>
-            <li>
-                <a href="#tab4">
-                    <img src="/assets/images/content/promo/thumbs/thirtysix_launch.jpg" />
-                    Album launch event
-                </a>
-            </li>
+            {/exp:weblog:entries}
         </ul>
         
-        <div id="tab1">
-            <img src="/assets/images/content/promo/thirtysix_release.jpg" alt="ThirtySix album art" />
+        {exp:weblog:entries
+            weblog="homepage_features"
+            limit="4"
+            disable="{pv_disable_default}"
+            dynamic="off"
+            fixed_order="{lv_featured_homepage}"
+        }
+        <div id="tab{count}">
+            {exp:ed_imageresizer 
+                maxWidth="640"
+                forceWidth="yes"
+                cropratio="640:236" 
+                image="{cf_features_image}" 
+                alt=""
+            }
             <div class="slide_content">
-                <h2>&ldquo;ThirtySix&rdquo;</h2>
-                <h3>Lands 26 March 2011</h3>
-                <p>Simon&rsquo;s first solo album, ThirtySix, will be released on March 26, 2011.</p>
-                <p><a href="/thirtysix/">Check out &ldquo;ThirtySix&rdquo; &raquo;</a></p>
+                <h2>{cf_features_title}</h2>
+                <h3>{cf_features_subtitle}</h3>
+                {if cf_features_audio_mp3 != "" AND cf_features_audio_ogg != ""}
+                    <audio id="audio_player_{entry_id}_{count}" controls>
+                        <source src="{cf_features_audio_mp3}" type="audio/mpeg" />
+                        <source src="{cf_features_audio_ogg}" type="audio/ogg" />
+                    </audio> <!-- // #audio_player -->
+                    <script>
+                        jwplayer("audio_player_{entry_id}_{count}").setup({
+                            players: [
+                                { type: "html5" },
+                                { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
+                            ],
+                            provider: "sound",
+                            controlbar: "bottom",
+                            dock: false,
+                            playlist: "none",
+                            id: "audio_player_{entry_id}_{count}",
+                            width: 195,
+                            height: 29,
+                            icons: false,
+                            skin: "{pv_assets_url}/jwplayer/glow.zip"
+                        });
+                    </script>
+                {if:else}
+                    <p>{cf_features_lead}</p>
+                {/if}
+                <p><a href="{cf_features_link_url}">{cf_features_link_label} &raquo;</a></p>
             </div>
         </div> <!-- // #tab1 -->
-        <div id="tab2">
-            <img src="/assets/images/content/promo/thirtysix_making_of.jpg" alt="Simon Campbell interview" />
-            <div class="slide_content">
-                <h2>The making of</h2>
-                <h3>How ThirtySix came to be</h3>
-                <p>Simon&rsquo;s video interviews about how the album came to be.</p>
-                <p><a href="http://vimeo.com/19387854">The Making of ThirtySix &raquo;</a></p>
-            </div>
-        </div> <!-- // #tab2 -->
-        <div id="tab3">
-            <img src="/assets/images/content/promo/thirtysix_brother.jpg" alt="Simon Campbell gig" />
-            <div class="slide_content">
-                <h2>&ldquo;Brother&rdquo;</h2>
-                <h3>Preview the lead single</h3>
-                <audio id="audio_player" controls>
-                    <source src="{pv_assets_url}/audio/brother.mp3" type="audio/mpeg" />
-                    <source src="{pv_assets_url}/audio/brother.ogg" type="audio/ogg" />
-                </audio> <!-- // #audio_player -->
-                <script>
-                    jwplayer("audio_player").setup({
-                        players: [
-                            { type: "html5" },
-                            { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
-                        ],
-                        provider: "sound",
-                        controlbar: "bottom",
-                        dock: false,
-                        playlist: "none",
-                        id: "audio_player",
-                        width: 195,
-                        height: 29,
-                        icons: false,
-                        skin: "{pv_assets_url}/jwplayer/glow.zip"
-                    });
-                </script>
-                <p><a href="/thirtysix/">Read more about ThirtySix &raquo;</a></p>
-            </div>
-        </div> <!-- // #tab3 -->
-        <div id="tab4">
-            <img src="/assets/images/content/promo/thirtysix_launch.jpg" alt="Album launch event poster" />
-            <div class="slide_content">
-                <h2>Let&rsquo;s party!</h2>
-                <h3>Album launch event</h3>
-                <p>March 26 will see Simon launch ThirtySix at the Centenary Centre, Peel.</p>
-                <p><a href="http://www.facebook.com/event.php?eid=127886567271836">Join the event on Facebook &raquo;</a></p>
-            </div>
-        </div> <!-- // #tab4 -->
+        {/exp:weblog:entries}
     </div> <!-- // #promo -->
 
     <div id="content_pri">
-        
-        {!-- Comment out old promo section
-        <div id="intro" class="widget">
-            <a href="{pv_site_url}/thirtysix/"><img src="{pv_assets_url}/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="{pv_site_url}/thirtysix/"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
-            <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a United Kingdom and mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
-            </p>
-            <small><strong>&ldquo;Brother&rdquo;</strong> Lead single preview</small>
-            <audio id="audio_player" controls>
-                <source src="{pv_assets_url}/audio/brother.mp3" type="audio/mpeg" />
-                <source src="{pv_assets_url}/audio/brother.ogg" type="audio/ogg" />
-            </audio> <!-- // #audio_player -->
-            <script>
-                jwplayer("audio_player").setup({
-                    players: [
-                        { type: "html5" },
-                        { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
-                    ],
-                    provider: "sound",
-                    controlbar: "bottom",
-                    dock: false,
-                    playlist: "none",
-                    id: "audio_player",
-                    width: 460,
-                    height: 29,
-                    icons: false,
-                    skin: "{pv_assets_url}/jwplayer/glow.zip"
-                });
-            </script>
-        </div> <!-- // #intro -->
-        --}
         
         <div id="posts" class="widget">
             
