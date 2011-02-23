@@ -1240,12 +1240,13 @@ div#footer p.credit {
             overflow:hidden;
             margin-bottom:15px;
             padding:15px;
-            width:275px;
+            width:272px;
             float:left;
         }
         
         body.contact div#content_pri div.contact_block {
             margin-left:15px;
+            width:273px;
         }
         body.contact div#content_pri div.contact_block ul.media {
             list-style:none;
