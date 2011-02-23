@@ -1280,7 +1280,7 @@ div#footer p.credit {
         body.contact #content_pri form input[type="text"],
         body.contact #content_pri form textarea {
             display:block;
-            width:259px;
+            width:256px;
             margin-bottom:10px;
         }
         body.contact #content_pri form label {
