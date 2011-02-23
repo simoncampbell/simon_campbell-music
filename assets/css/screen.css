@@ -1320,9 +1320,11 @@ div#footer p.credit {
         body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
             margin-top: 6px;
         }
-        body#account_landing.fullwidth #content_pri form#account_settings input.submit {
+        body#account_landing.fullwidth div#content_pri form#account_settings input.submit {
             float: right;
-            font-size: 11px;
+            font-size: 10px;
+            min-height: 22px;
+            padding: 4px 8px;
         }
         
         body#account_landing.fullwidth #content_pri table {
