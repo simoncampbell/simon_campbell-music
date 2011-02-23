@@ -20,31 +20,33 @@
         
             <h1>My account</h1>
             
-            <div class="half">
+            <div class="first">
                 <h2>Your account details</h2>
-                <div class="account_details">
-                    <p class="more"><a href="#">Edit details</a></p>
-                    <div>
+                <div class="account_details clearfix">
+                    <p class="more"><a class="button" href="#">Edit details</a></p>
+                    <p>
                         <strong>Full Name</strong> 
                         James Willock
-                    </div>
-                    <div>
+                    </p>
+                    <p>
                         <strong>Email address</strong> 
                         james.willock@gmail.com
-                    </div>
-                    <div>
+                    </p>
+                    <p>
                         <strong>Password</strong> 
                         *********
-                    </div>
-                    <div>
+                    </p>
+                    <p>
                         <strong>Delivery Address</strong> 
-                        2 North Street<br>
-                        Barrow Upon Humber<br>
-                        North Lincolnshire<br>
-                        DN19 7AP
-                    </div>
+                        <span>
+                            2 North Street<br>
+                            Barrow Upon Humber<br>
+                            North Lincolnshire<br>
+                            DN19 7AP
+                        </span>
+                    </p>
                 </div>
-                <form class="account_details">
+                <form class="account_details" style="display: none;">
                     <fieldset>
                         <div>
                             <label for="">Full Name</label>
@@ -90,7 +92,7 @@
                 </form>
             </div><!-- // .half -->
             
-            <div class="half">
+            <div class="last">
                 <h2>Your order history</h2>
                 <table>
                     <thead>

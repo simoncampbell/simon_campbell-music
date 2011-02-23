@@ -1260,6 +1260,44 @@ div#footer p.credit {
         body#account_landing.fullwidth h1 {
             margin-bottom: 10px;
         }
+        body#account_landing.fullwidth #content_pri div.first,
+        body#account_landing.fullwidth #content_pri div.last {
+            width: 440px;
+        }
+        body#account_landing #content_pri div.account_details {
+            background:rgba(255, 255, 255, 0.03);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        body#account_landing #content_pri div.account_details p {
+            margin-bottom: 0;
+            padding: 8px 6px;
+        }
+        body#account_landing #content_pri div.account_details p:nth-of-type(even) {
+            background:rgba(255, 255, 255, 0.06);
+        }
+        body#account_landing #content_pri div.account_details p strong {
+            display: block;
+            float: left;
+            margin-right: 20px;
+            text-align: right;
+            width: 112px;
+        }
+        body#account_landing #content_pri div.account_details p span {
+            float: left;
+        }
+        body#account_landing #content_pri div.account_details p.more {
+            padding: 0;
+            position: absolute;
+            right: 6px;
+            top: 8px;
+        }
+        body#account_landing #content_pri div.account_details p.more a.button {
+            font-size: 10px;
+        }
+        
+        
         body#account_landing div#content_pri > p {
             line-height: 1;
             margin-bottom: 25px;
