@@ -54,7 +54,7 @@
                 alt=""
             }
             <div class="slide_content">
-                <h2>{cf_features_title}</h2>
+                <h2>{exp:ee_typography formatting="lite"}{cf_features_title}{/exp:ee_typography}</h2>
                 <h3>{cf_features_subtitle}</h3>
                 {if cf_features_audio_mp3 != "" AND cf_features_audio_ogg != ""}
                     <audio id="audio_player_{entry_id}_{count}" controls>
