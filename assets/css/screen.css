@@ -87,6 +87,9 @@ p.more {
     text-align:right;
     clear:both;
 }
+p.more a.button {
+    margin-left: 15px;
+}
 
 p,
 ul,
@@ -184,8 +187,6 @@ small {
         overflow:hidden;
         margin:15px 0 0 0;
     }
-
-    
     form fieldset {
     }
     form fieldset div {
@@ -208,7 +209,7 @@ small {
         background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
         color: rgb(255, 186, 0);
         float: none;
-        margin-left: 95px;
+        margin-left: 0;
         margin-right: 0;
         padding-left: 15px;
         text-align: left;
@@ -224,7 +225,7 @@ small {
     input[type="email"],
     textarea {
         width:213px;
-        height:10px;
+        height: 10px;
         border:0;
         padding:8px;
         -moz-border-radius:3px;
@@ -232,15 +233,7 @@ small {
         border-radius:3px;
         background:rgb(255, 255, 255);
         color:rgb(123, 123, 123);
-        float:left;
         outline:none;
-    }
-    input[type="text"],
-    textarea {
-        float: none;
-        height: auto;
-        padding: 7px 8px;
-        width: 195px;
     }
     input[type="input"]:focus,
     input[type="input"]:hover,
@@ -252,21 +245,16 @@ small {
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
-        padding:5px 6px;
+        padding:6px;
         border:2px solid rgb(253, 154, 75);
     }
-    input[type="text"]:focus,
-    input[type="text"]:hover,
-    textarea:focus,
-    textarea:hover {
-        padding: 5px 6px;
-    }
+    
     input.error,
     input.error:focus,
     input.error:hover,
     textarea.error {
         border: 2px solid rgb(255, 186, 0);
-        padding: 4px 7px;
+        padding: 6px;
     }
     
     
@@ -298,7 +286,6 @@ small {
             -webkit-border-radius:5px;
             border-radius:5px;
         }
-
         input.submit:hover,
         a.button:hover {
             background: rgb(255, 255, 255);
@@ -309,28 +296,35 @@ small {
         
 /* TABLES ---------- */
     table { 
-    	width:100%;
-        margin:0 0 1em 0;
+        background:rgba(255, 255, 255, 0.025);
+        border-top: 1px dashed #5B5B5B;
+        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        border-bottom: 1px dashed #5B5B5B;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        width:100%;
+        margin:1.35em 0 1em 0;
     }
     caption { 
-    	font-weight:bold;
-    	background:rgba(255, 255, 255, 0.2);
-    	padding:6px 8px; 
+        font-weight:bold;
+        padding:7px 8px;
     }
     th,
     td {
-    	padding:12px 8px;
+        padding:7px 8px;
     }
-    thead th { 
-    	font-weight:bold;
-    	background:rgba(255, 255, 255, 0.1);
+    thead th {
+        font-weight:bold;
+        background:rgba(255, 255, 255, 0.06);
     }
     tbody tr:nth-child(even) th,
     tbody tr:nth-child(even) td { 
-    	background:rgba(255, 255, 255, 0.1);
+        background:rgba(255, 255, 255, 0.06);
     }
     tbody th { 
-    	font-weight:bold;
+        font-weight:bold;
+    }
+    tbody td {
+        font-size: 12px;
     }
     
 
@@ -347,9 +341,18 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
     line-height:1.2em;
 }
+
 h1 {
 
 }
+/* CLEAN THIS UP */
+body#product_detail div#content_pri h1,
+body#account_landing.fullwidth h1 {
+    font-size: 22px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
 h2 { 
     font-size: 24px;
     margin-bottom: 10px;
@@ -357,6 +360,13 @@ h2 {
 }
 div#content_sec h2 {
     font-size: 20px;
+}
+/* CLEAN THIS UP */
+body#product_detail div#content_pri h2,
+body#account_landing.fullwidth h2 {
+    color: rgb(157, 157, 157);
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
 h3 {
@@ -367,6 +377,7 @@ div#content_pri h3 {
     margin-bottom: 10px;
     text-transform: uppercase;
 }
+
 h4 { 
     font-size:16px;
     margin-bottom:12px;
@@ -537,6 +548,37 @@ ul#navigation_sec li.cur a {
     padding-left:20px;
 }
 
+/* Definition Links */
+dl#definition_links {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+dl#definition_links dt {
+    font-weight: normal;
+}
+dl#definition_links dt,
+dl#definition_links dd,
+dl#definition_links dd a {
+    color: #9D9D9D;
+    text-transform: uppercase;
+}
+dl#definition_links dd {
+    padding-left: 0;
+}
+dl#definition_links dd a {
+    background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
+    padding: 0 10px 0 7px;
+    text-decoration: none;
+}
+dl#definition_links dd:last-child a {
+    background-image: none;
+    padding-right: 0;
+}
+dl#definition_links dd a:hover,
+dl#definition_links dd.cur a {
+    color: #FFF;
+}
+
 /* @end */
 
 
@@ -618,8 +660,11 @@ div#footer p.credit {
             - History
             - Lyrics
         - ThirtySix Landing
-        - Store Landing
-        - Newsletter Landing
+        - Contact Landing
+        - Centered Notice Body
+        - Full Width Body
+        - Store & Accounts
+            - Product Detail
         
         ----------------------------------------------------------
     */
@@ -733,7 +778,7 @@ div#footer p.credit {
         }
         div#posts div.post ul.post_meta li.pm_facebook a {
             background-image: url(../images/site/nav/network/nn_facebook.png);
-        }       
+        }
         div#posts p#pagination {
             font-size: 11px;
             float: left;
@@ -831,8 +876,7 @@ div#footer p.credit {
             line-height: 16px;
         }
         
-        
-        /* CONTENT PRI: Gallery
+        /* CONTENT PRI: Gallery & Gallery Grid
         --------------------------------------------- */
         p#gallery_nav {
             height: 0;
@@ -858,21 +902,6 @@ div#footer p.credit {
             background-position: -25px 0;
             right: 13px;
         }
-        
-        body.gallery #content_pri img {
-            background: none;
-            padding: 0;
-        }
-        #content_pri div.gallery_photo img,
-        #content_pri ul#gallery_grid a img {
-            background: rgba(255, 255, 255,0.07);
-            padding: 5px;
-        }
-        #content_pri ul#gallery_grid a:hover img,
-        #content_pri ul#gallery_grid li.activeSlide a img {
-            background: rgba(255, 255, 255,0.12);
-            padding: 5px;
-        }
         div#gallery_photos {
             z-index: 1;
         }
@@ -892,16 +921,6 @@ div#footer p.credit {
         div.gallery_photo p.photo_meta em {
             font-style: normal;
             font-weight: bold;
-        }
-        
-        ul#gallery_grid {
-            margin-left: -10px;
-            margin-top: 10px;
-            width: 600px;
-        }
-        ul#gallery_grid li {
-            margin-bottom: 10px;
-            margin-left: 10px;
         }
         
         /* CONTENT PRI: Form Aside
@@ -1149,77 +1168,6 @@ div#footer p.credit {
             background-image: url(../images/site/nav/network/nn_facebook.png);
         }
         
-        /* CONTENT PRI: Store Landing
-        --------------------------------------------- */
-        body.store_landing div#content_pri {
-            padding-bottom: 20px;
-            padding-top: 20px;
-        }
-        body.store_landing div#content_pri div.widget {
-            background: none;
-            border: none;
-            border-right: 1px dashed #585858;
-            border-right: 1px dashed rgba(255, 255, 255, 0.3);
-            margin: 0 0 0 5px;
-            padding: 0 20px 0 0;
-            width: 280px;
-        }
-        body.store_landing div#content_pri img {
-            float: right;
-            margin-right: 5px;
-        }
-        body.store_landing div#content_pri form {
-            margin-left: 15px;
-        }
-        body.store_landing div#content_pri label {
-            font-size: 12px;
-        }
-        body.store_landing div#content_pri label.error {
-            width: auto;
-        }
-        body.store_landing div#content_pri input[type="text"] {
-            width: 148px;
-        }
-        body.store_landing div#content_pri input.submit {
-            float: right;
-            margin-right: 4px;
-        }
-        
-        /* CONTENT PRI: Newsletter Landing
-        --------------------------------------------- */
-        body.newsletter div#content_pri {
-            border-color: #5B5B5B;
-            border-color: rgba(255, 255, 255, 0.3);
-            border-style: dashed;
-            border-width: 1px;
-            margin: 0 0 100px 170px;
-            padding: 25px 18px 20px;
-            width: 582px;
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
-        }
-        body.newsletter div#content_pri div.half:first-child {
-            border-right: 1px dashed #5B5B5B;
-            margin-right: 20px;
-            min-height: 125px;
-            padding-right: 20px;
-            width: 250px;
-        }
-        body.newsletter div#content_pri form {
-            margin-top: 0;
-        }
-        body.newsletter div#content_pri form label.error {
-            width: auto;
-        }
-        body.newsletter div#content_pri form input[type="text"] {
-            width: 160px;
-        }
-        body.newsletter div#content_pri form input.submit {
-            float: right;
-            margin-right: 20px;
-        }
-        
         /* CONTENT PRI: Contact Landing
         --------------------------------------------- */
         body.contact div#content_pri {
@@ -1290,11 +1238,315 @@ div#footer p.credit {
             margin-bottom:10px;
             font-weight:bold;
         }
+        body.contact #content_pri form label.error {
+            padding-left: 15px;
+        }
         body.contact #content_pri input.submit {
             float: right;
         }
-
         
+        /* CONTENT PRI: Centered Width Body
+        --------------------------------------------- */
+        body.centeredwidth div#content_pri {
+            border-color: #5B5B5B;
+            border-color: rgba(255, 255, 255, 0.3);
+            border-style: dashed;
+            border-width: 1px;
+            margin: 0 0 100px 170px;
+            padding: 25px 18px 20px;
+            width: 582px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+        }
+        body.centeredwidth div#content_pri div.half:first-of-type {
+            border-right: 1px dashed #5B5B5B;
+            margin-right: 18px;
+            min-height: 125px;
+            padding-right: 18px;
+            width: 272px;
+        }
+        body.centeredwidth div#content_pri div.half:last-of-type {
+            width: 273px;
+        }
+        body.centeredwidth div#content_pri form {
+            margin-top: 0;
+        }
+        body.centeredwidth div#content_pri form label {
+            width: 100px;
+        }
+        body.centeredwidth div#content_pri form label.error {
+            margin-left: 115px;
+            width: auto;
+        }
+        body.centeredwidth div#content_pri form input[type="text"],
+        body.centeredwidth div#content_pri form input[type="password"] {
+            width: 140px;
+        }
+        body.centeredwidth div#content_pri form input.submit {
+            float: right;
+        }
+        body.centeredwidth div#content_pri form div.remember {
+            margin-top: 10px;
+        }
+        body.centeredwidth div#content_pri form div.agree,
+        body.centeredwidth div#content_pri form div.remember {
+            float: right;
+        }
+        body.centeredwidth div#content_pri form div.agree label,
+        body.centeredwidth div#content_pri form div.remember label {
+            float: none;
+            display: inline;
+            margin-right: 0;
+        }
+        body.centeredwidth ul.forgot_details {
+            font-size: 12px;
+            list-style: none;
+            text-align: right;
+        }
+        
+        /* CONTENT PRI: Full Width Body
+        --------------------------------------------- */
+        body.fullwidth #content_pri {
+            width: 910px;
+        }
+        body.fullwidth #content_pri div.first,
+        body.fullwidth #content_pri div.last {
+            float: left;
+        }
+        body.fullwidth #content_pri div.first {
+            margin-right: 20px;
+            width: 585px;
+        }
+        body.fullwidth #content_pri div.last {
+            width: 305px;
+        }
+        
+        /* CONTENT PRI: Store & Accounts
+        --------------------------------------------- */
+        body#account_landing.fullwidth h1 {
+            margin-bottom: 10px;
+        }
+        body#account_landing.fullwidth #content_pri div.first,
+        body#account_landing.fullwidth #content_pri div.last {
+            width: 440px;
+        }
+        body#account_landing #content_pri div.account_details {
+            padding-bottom: 10px;
+        }
+        body#account_landing #content_pri div.account_details,
+        body#account_landing.fullwidth #content_pri form#account_settings {
+            background:rgba(255, 255, 255, 0.03);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        body#account_landing #content_pri div.account_details p,
+        body#account_landing.fullwidth #content_pri form#account_settings div {
+            margin-bottom: 0;
+            padding: 8px 6px;
+        }
+        body#account_landing #content_pri div.account_details p:nth-of-type(even),
+        body#account_landing.fullwidth #content_pri form#account_settings div:nth-of-type(odd) {
+            background:rgba(255, 255, 255, 0.06);
+        }
+        body#account_landing #content_pri div.account_details p strong,
+        body#account_landing.fullwidth #content_pri form#account_settings strong {
+            display: block;
+            float: left;
+            margin-right: 20px;
+            text-align: right;
+            width: 112px;
+        }
+        body#account_landing #content_pri div.account_details p span {
+            float: left;
+        }
+        body#account_landing #content_pri div.account_details p.more {
+            padding: 0;
+            position: absolute;
+            right: 6px;
+            top: 8px;
+        }
+        body#account_landing #content_pri div.account_details p.more a.button {
+            font-size: 10px;
+        }
+        
+        body#account_landing.fullwidth #content_pri form#account_settings div,
+        body#account_landing.fullwidth #content_pri form#account_settings label,
+        body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
+            float: left;
+        c}
+        body#account_landing.fullwidth #content_pri form#account_settings div {
+            padding: 6px;
+            width: 428px;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings label {
+            margin-left: 5px;
+            margin-top: 2px;
+            width: auto;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
+            margin-top: 6px;
+        }
+        body#account_landing.fullwidth div#content_pri form#account_settings input.submit {
+            float: right;
+            font-size: 10px;
+            min-height: 22px;
+            padding: 4px 8px;
+        }
+        
+        body#account_landing.fullwidth #content_pri table {
+            border: none;
+            font-size: 12px;
+            margin-top: 0;
+        }
+        body#account_landing.fullwidth #content_pri span.item {
+            font-size: 10px;
+        }
+        body#account_landing.fullwidth #content_pri span.item a {
+            font-size: 12px;
+        }
+        body#account_landing.fullwidth #content_pri span.music_file {
+            color: rgb(203, 203, 203);
+            font-size: 11px;
+        }
+        body#account_landing.fullwidth #content_pri span.music_file a {
+            background: url(../images/site/icons/music_note.png) no-repeat 0 0;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+        
+        body#account_landing div#content_pri > p {
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+        body#account_landing div#content_pri div.half:first-of-type {
+            min-height: 245px;
+        }
+        body#basket div.last {
+            margin-top: 42px;
+        }
+        /* maybe generalize later */
+        body#basket div#content_pri p.more {
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+        body#basket div#content_pri p.more a.button {
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        /*
+        VERSION 1: STORE LANDING
+        body.store_landing div#content_pri {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+        body.store_landing div#content_pri div.widget {
+            background: none;
+            border: none;
+            border-right: 1px dashed #585858;
+            border-right: 1px dashed rgba(255, 255, 255, 0.3);
+            margin: 0 0 0 5px;
+            padding: 0 20px 0 0;
+            width: 280px;
+        }
+        body.store_landing div#content_pri img {
+            float: right;
+            margin-right: 5px;
+        }
+        body.store_landing div#content_pri form {
+            margin-left: 15px;
+        }
+        body.store_landing div#content_pri label {
+            font-size: 12px;
+        }
+        body.store_landing div#content_pri label.error {
+            width: auto;
+        }
+        body.store_landing div#content_pri input[type="text"] {
+            width: 148px;
+        }
+        body.store_landing div#content_pri input.submit {
+            float: right;
+            margin-right: 4px;
+        }
+        */
+            /* CONTENT PRI: Product Detail
+            --------------------------------------------- */
+            
+            body#product_detail div#content_pri p.more {
+                float: right;
+                margin-top: 4px;
+            }
+            body#product_detail div#content_pri p.more a {
+                background-color: #000;
+                background-color: rgba(255, 255, 255, 0.06);
+                display: block;
+                padding: 4px 8px;
+                text-decoration: none;
+                
+                -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                border-radius: 4px;
+            }
+            body#product_detail div#content_pri p.more a:hover {
+                background-color: 333px;
+                background-color: rgba(255, 255, 255, 0.1);
+                color: rgb(255, 255, 255);
+            }
+            body#product_detail div#gallery_photos,
+            body#product_detail ul.gallery_grid,
+            body#product_detail div#content_pri div.first,
+            body#product_detail div#content_pri div.last {
+                float: left;
+            }
+            body#product_detail div#gallery_photos,
+            body#product_detail div#content_pri div.first {
+                margin-right: 20px;
+                width: 280px;
+            }
+            body#product_detail ul.gallery_grid {
+                margin-top: 0;
+                margin-bottom: 0;
+                width: 300px;
+            }
+            body#product_detail div#content_pri div.first,
+            body#product_detail div#content_pri div.last {
+                margin-top: 5px;
+            }
+            body#product_detail div#content_pri div.last {
+                background: rgba(255, 255, 255, 0.02);
+                border-top: 1px dashed #5B5B5B;
+                border-top: 1px dashed rgba(255, 255, 255, 0.3);
+                border-bottom: 1px dashed #5B5B5B;
+                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                width: 290px;
+            }
+            body#product_detail div#content_pri form {
+                margin: 0;
+                padding: 15px;
+            }
+            body#product_detail div#content_pri form label,
+            body#product_detail div#content_pri form div#price,
+            body#product_detail div#content_pri form h3 {
+                font-size: 12px;
+            }
+            body#product_detail div#content_pri form select {
+                width: 165px;
+            }
+            body#product_detail div#content_pri form h3 {
+                float: left;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                margin-top: 3px;
+                margin-right: 15px;
+                text-align: right;
+                text-transform: none;
+                width: 80px;
+            }
+            body#product_detail div#content_pri form input.submit {
+                float: right;
+            }
+            
     /*
         CONTENT SEC
         ----------------------------------------------------------
@@ -1407,9 +1659,6 @@ div#footer p.credit {
         float: right;
         margin-top: -12px;
     }
-    #store_block a.button {
-        margin-left: 15px;
-    }
     #store_block a img {
         border: 1px solid rgb(75, 75, 75);
     }
@@ -1425,6 +1674,9 @@ div#footer p.credit {
     }
     #payments_block ul li {
         margin-right: 10px;
+    }
+    #payments_block img {
+        padding: 0;
     }
     
     /* CONTENT SEC: Widget - Newsletter Signup
@@ -1443,7 +1695,6 @@ div#footer p.credit {
     }
     #newsletter_signup input.submit {
         float: right;
-        margin-top:2px;
     }
     #newsletter_signup label.error {
         margin-left: 0;
@@ -1454,6 +1705,12 @@ div#footer p.credit {
     
 /*
     MISCELLANEOUS
+    ----------------------------------------------------------
+    
+    - Misc
+    - Horizontal Lists
+    - Pagination
+    
     ----------------------------------------------------------
 */
 
@@ -1623,7 +1880,7 @@ div.half {
     }
 
 /*
-    HORIZONTAL LISTS (ul.horizontal)
+    HORIZONTAL LISTS (.horizontal)
     ----------------------------------------------------------
     
     Description: - Default styling for horizontal lists
@@ -1632,53 +1889,173 @@ div.half {
     
     ----------------------------------------------------------
 */
-ul.horizontal {
+ul.horizontal,
+dl.horizontal {
     list-style: none;
 }
 ul.horizontal,
-ul.horizontal li {
+dl.horizontal,
+ul.horizontal li,
+dl.horizontal dt,
+dl.horizontal dd {
     float: left;
 }
-ul.horizontal li {
+ul.horizontal li,
+dl.horizontal dt,
+dl.horizontal dd {
     display: inline;
 }
-ul.horizontal a {
+ul.horizontal a,
+dl.horizontal a {
     display: block;
 }
+dl.horizontal dt:after {
+    content: ":";
+}
+
+/*
+    GALLERY GRID (ul.gallery_grid)
+    ----------------------------------------------------------
     
+    Description: - For photo, video, etc, galleries
+    Required:    - ul.horizontal
+    
+    Example:     <li><a href="#"><img src=""></a></li>
+    
+                            -or-
+                            
+                 <li>
+                    <a href="#">
+                        <p>Photo Description</p>
+                        <img src="">
+                    </a>
+                </li>
+    
+    ----------------------------------------------------------
+*/
+#content_pri ul.gallery_grid {
+    margin-left: -10px;
+    margin-top: 10px;
+    width: 600px;
+}
+#content_pri ul.gallery_grid li {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+#content_pri ul.gallery_grid p {
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.9);
+    bottom: 5px;
+    left: 5px;
+    margin-bottom: 0;
+    padding: 4px;
+    position: absolute;
+    text-align: center;
+    width: 172px;
+}
+#content_pri ul.gallery_grid a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+#content_pri ul.gallery_grid a img {
+    background: rgba(255, 255, 255,0.07);
+    padding: 5px;
+}
+#content_pri ul.gallery_grid a:hover img,
+#content_pri ul.gallery_grid li.activeSlide a img {
+    background: rgba(255, 255, 255,0.12);
+    padding: 5px;
+}
+
+/*
+    PAGINATION (p.pagination)
+    ----------------------------------------------------------
+    
+    Description: - Default styling for EE pagination links
+    
+    Example:     <p class="pagination">
+                    <a href="#">1</a> 
+                    <a href="#">2</a>
+                 </p>
+    
+    ----------------------------------------------------------
+*/
+p.pagination {
+    font-size: 11px;
+    float: left;
+    margin-bottom: 0;
+    margin-top: -4px;
+}
+p.pagination a:first-child {
+    margin-left: 8px;
+}
+p.pagination a {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgb(212, 212, 212);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none;
+    padding: 2px 5px;
+}
+p.pagination strong {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 20px;
+    padding: 2px 5px;
+}
+p.pagination a:hover,
+p.pagination a.cur {
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: bold;
+}
+
 /* FONT SPACING */
 
     /* Add some spacing to anywhere we're using Trade Gothic */
+    #content_pri h1
     #content_pri h3,
     #content_pri h3 strong,
     small,
     small strong,
     body.thirtysix div#content_pri h2,
+    body#product_detail div#content_pri h1,
+    body#account_landing.fullwidth h1,
+    body#product_detail div#content_pri h2,
+    body#account_landing.fullwidth h2,
     body.thirtysix div#content_pri h1,
-    ul#navigation_pri li.account li {
+    ul#navigation_pri li.account li,
+    dl#definition_links {
         letter-spacing:0.1em;
     }
-
+    
     div#intro h2,
     div#intro h2 strong {
         letter-spacing:0.05em;
     }
     
+    .no-js div#intro h2,
+    .no-js div#intro h2 strong,
+    .no-js div#content_pri h1,
     .no-js #content_pri h3,
     .no-js #content_pri h3 strong,
     .no-js small,
     .no-js small strong,
+    body#product_detail div#content_pri h1,
+    body#account_landing.fullwidth h1,
+    body#product_detail div#content_pri h2,
+    body#account_landing.fullwidth h2,
     .no-js body.thirtysix div#content_pri h2,
     .no-js body.thirtysix div#content_pri h1,
-    .no-js ul#navigation_pri li.account li {
+    .no-js ul#navigation_pri li.account li,
+    .no-js dl#definition_links {
         letter-spacing:0;
     }
-    
-    .no-js div#intro h2,
-    .no-js div#intro h2 strong {
-        letter-spacing:0;
-    }
-    
 
 
 /* iPhone media query */

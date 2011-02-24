@@ -37,13 +37,13 @@ $(document).ready(function(){
         $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
      
         // Gallery jQuery Cycle
-        $('#gallery_photos').after('<ul id="gallery_grid" class="horizontal">').cycle({
+        $('#gallery_photos').after('<ul class="horizontal gallery_grid">').cycle({
             fx: 'fade',
             speed: 'fast',
             timeout: 0,
             prev: '.prev',
             next: '.next',
-            pager: '#gallery_grid',
+            pager: '.gallery_grid',
             pagerAnchorBuilder: function(idx, slide) {
                 var img = $(slide).children().eq(0).attr("src");
                 return '<li><a href="#"><img src="' + img + '" width="180" height="118"></a></li>';

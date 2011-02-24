@@ -1,6 +1,6 @@
 {embed="_layout/_start"
     body_class=""
-    body_id=""
+    body_id="product_detail"
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Product detail"
@@ -16,8 +16,65 @@
     
     <div id="content_pri">
         
-        Product details
-
+        <p class="more"><a href="#">Back to store</a></p>
+        
+        <h1>ThirtySix LP</h1>
+        <h2>The debut solo album</h2>
+        
+        <div id="gallery_photos">
+            <div class="gallery_photo">
+                <img alt=""  width="280" height="280" src="/assets/images/site/dev/temp_gallery.gif" />
+            </div><!-- // .gallery_photo -->
+        </div><!-- // #gallery_photos -->
+        <ul class="horizontal gallery_grid">
+            <li class="activeSlide">
+                <a href="#">
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="130" height="130" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="130" height="130" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="130" height="130" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/images/site/dev/temp_gallery.gif" width="130" height="130" alt="">
+                </a>
+            </li>
+        </ul>
+        <div class="first">
+            <p>
+                <strong>Simon Campbell presents his debut album.</strong> In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim.
+            </p>
+        </div><!-- // .first -->
+        <div class="last">
+            <form>
+                <fieldset>
+                    <div>
+                        <label for="type">Product Type</label>
+                        <select>
+                            <option>Digital Download</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" name="quantity" type="number" min="1" max="100">
+                    </div>
+                    <div id="price">
+                        <h3>Price</h3>
+                        <p><strong>£39.99</strong> + shipping</p>
+                    </div>
+                </fieldset>
+                <input class="submit" type="submit" value="Add to basket">
+            </form>
+        </div><!-- // .last -->
+        
     </div> <!-- // #content_pri -->
     
     {embed="_layout/_sidebar"}

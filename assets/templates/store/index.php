@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="store_landing"
+    body_class=""
     body_id=""
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -17,6 +17,77 @@
     <div id="content_pri">
         
         <h1 class="hide">Store</h1>
+        
+        <dl id="definition_links" class="horizontal">
+            <dt>Categories</dt>
+            {exp:weblog:categories style="linear"}
+            <dd{if segment_3 =="{category_url_title}"} class="cur"{/if}><a href="{path='store/index'}">{category_name}</dd>
+            {/exp:weblog:categories}
+        </dl><!-- // #categories_list -->
+        
+        <ul class="horizontal gallery_grid">
+            {exp:weblog:entries
+                disable="member_data|trackbacks|categories"
+                limit="9"
+                pagination="bottom"
+                weblog="products_music|products_posters|products_tshirts"
+            }
+            <li>
+                <a href="{url_title_path='product'}">
+                    <p>{title}</p>
+                    {if weblog_short_name == "products_music"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_music_images}{ffm_images_image}{/cf_products_music_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
+                    {if weblog_short_name == "products_posters"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_posters_images}{ffm_images_image}{/cf_products_posters_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
+                    {if weblog_short_name == "products_tshirts"}
+                        {exp:ed_imageresizer
+                            alt=""
+                            cropratio="1:1"
+                            forceWidth="yes"
+                            image="{cf_products_tshirts_images}{ffm_images_image}{/cf_products_tshirts_images}"
+                            maxHeight="180"
+                            maxWidth="180"
+                        }
+                    {/if}
+                </a>
+            </li>
+            {/exp:weblog:entries}
+        </ul><!-- // .gallery_grid -->
+        
+        {exp:weblog:entries
+            disable="member_data|trackbacks|categories"
+            limit="9"
+            pagination="bottom"
+            weblog="products_music|products_posters|products_tshirts"
+        }
+        {paginate}
+        {if "{total_pages}" > "1"}
+        <p class="pagination">
+            Go to page: 
+            {pagination_links}
+        </p><!-- // .pagination -->
+        {/if}
+        {/paginate}
+        {/exp:weblog:entries}
+        
+        {!--
+        VERSION 1: STORE LANDING
         <img src="{pv_assets_url}/images/content/store_landing.jpg" width="250" height="251" alt="ThirtySix out 26 March.">
         <div class="widget">
             <h2>Sorry, we're not open yet!</h2>
@@ -36,7 +107,8 @@
                 </fieldset>
                 <input type="submit" value="Subscribe" class="submit" />
             </form>
-        </div><!-- // .widget -->
+        </div>
+        --}
         
     </div> <!-- // #content_pri -->
     
