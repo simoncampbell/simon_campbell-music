@@ -85,7 +85,7 @@
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input id="quantity" name="quantity" type="number" min="1" max="100" size="5" value="1">
+                        <input id="quantity" name="quantity" min="1" max="100" size="5" type="number" value="1">
                     </div>
                     <div id="price">
                         <h3>Price</h3>
