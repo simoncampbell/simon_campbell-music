@@ -16,15 +16,33 @@
     
     <div id="content_pri">
         
-        <p class="more"><a href="#">Back to store</a></p>
+        <p class="more"><a href="{path='store'}">Back to store</a></p>
         
-        <h1>ThirtySix LP</h1>
-        <h2>The debut solo album</h2>
+        {exp:weblog:entries
+            disable="member_data|trackbacks|categories"
+            limit="1"
+            weblog="products_music|products_posters|products_tshirts"
+        }
+        
+        <h1>{title}</h1>
+        
+        {if weblog_short_name == "products_tshirts"}
+        
+        <h2>{cf_products_tshirts_subtitle}</h2>
         
         <div id="gallery_photos">
+            {cf_products_tshirts_images limit="1"}
             <div class="gallery_photo">
-                <img alt=""  width="280" height="280" src="/assets/images/site/dev/temp_gallery.gif" />
+                {exp:ed_imageresizer
+                    image="{ffm_images_image}"
+                    forceWidth="yes"
+                    maxWidth="280"
+                    maxHeight="280"
+                    cropratio="1:1"
+                    alt=""
+                }
             </div><!-- // .gallery_photo -->
+            {/cf_products_tshirts_images}
         </div><!-- // #gallery_photos -->
         <ul class="horizontal gallery_grid">
             <li class="activeSlide">
@@ -49,32 +67,38 @@
             </li>
         </ul>
         <div class="first">
-            <p>
-                <strong>Simon Campbell presents his debut album.</strong> In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor lobortis. Pellentesque eu est a nulla placerat dignissim.
-            </p>
+            {cf_products_tshirts_description}
         </div><!-- // .first -->
         <div class="last">
-            <form>
+            {exp:cartthrob:add_to_cart_form
+                entry_id="{entry_id}"
+                return=""
+                }
                 <fieldset>
                     <div>
-                        <label for="type">Product Type</label>
-                        <select>
-                            <option>Digital Download</option>
+                        <label for="type">T-Shirt Size</label>
+                        <select name="item_options[cf_products_tshirts_sizes]">
+                            {cf_products_tshirts_sizes}
+                                <option value="{ffm_sizes_short}">{ffm_sizes_full}</option>
+                            {/cf_products_tshirts_sizes}
                         </select>
                     </div>
                     <div>
                         <label for="quantity">Quantity</label>
-                        <input id="quantity" name="quantity" type="number" min="1" max="100">
+                        <input id="quantity" name="quantity" min="1" max="100" size="5" type="number" value="1">
                     </div>
                     <div id="price">
                         <h3>Price</h3>
-                        <p><strong>£39.99</strong> + shipping</p>
+                        <p><strong>£{cf_products_tshirts_price}</strong> + shipping</p>
                     </div>
                 </fieldset>
                 <input class="submit" type="submit" value="Add to basket">
-            </form>
+            {/exp:cartthrob:add_to_cart_form}
         </div><!-- // .last -->
         
+        {/if}{!-- // products_tshirts --}
+        
+        {/exp:weblog:entries}
     </div> <!-- // #content_pri -->
     
     {embed="_layout/_sidebar"}
