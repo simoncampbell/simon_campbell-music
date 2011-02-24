@@ -64,7 +64,7 @@
         <div class="widget" id="free_download">
             <div class="first">
                 <h3>Get <strong>&ldquo;Brother&rdquo;</strong> as a free download</h3>
-                <p>Enter your email below and we&rsquo;ll send you a link to download the MP3. You&rsquo;ll also receive regular updates on the album and Simon&rsquo;s upcoming events.</p>
+                <p>Enter your email below and we&rsquo;ll send you a link to download a high-quality 320kbps MP3. You&rsquo;ll also receive regular updates on the album and Simon&rsquo;s upcoming events.</p>
             </div><!-- // .first -->
             <div class="last">
                 <form class="validate_inline" action="http://erskine.createsend.com/t/r/s/bxdii/" method="post">

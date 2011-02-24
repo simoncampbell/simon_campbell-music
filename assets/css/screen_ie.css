@@ -82,3 +82,35 @@ body.editorial div#beginnings h3 + p:first-letter,
 div#posts p#pagination a {
     background: #363636;
 }
+
+
+/* promo */
+
+div#promo ul {
+    width:300px;
+    float:right;
+    list-style:none;
+    overflow:hidden;
+}
+    
+div#promo div.slide_content {
+    background:#000;
+}    
+    
+div#promo ul li,
+div#promo ul li.ui-tabs-selected {
+    width:300px;
+    position:static;
+}
+
+div#promo ul li.ui-tabs-selected a {
+    color:#fff;
+    padding-left:10px;
+    background:transparent;
+    border-bottom:1px solid #383838;
+    padding-bottom:10px;
+}
+
+div#promo ul li:last-child.ui-tabs-selected a {
+    padding-bottom:10px;
+}
