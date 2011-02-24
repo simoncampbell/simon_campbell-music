@@ -65,6 +65,7 @@
         dynamic="off"
         orderby="cf_events_date"
         sort="asc"
+        show_expired="false"
         }
         {if count == 1}
         <div id="tour_dates" class="widget">
