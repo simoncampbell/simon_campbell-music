@@ -33,9 +33,9 @@
                 weblog="products_music|products_posters|products_tshirts"
             }
             <li>
-                <a href="{url_title_path='product'}">
+                <a href="{url_title_path='store/product'}">
                     <p>{title}</p>
-                    {if weblog_short_name == "products_music"}
+                    {!-- {if weblog_short_name == "products_music"}
                         {exp:ed_imageresizer
                             alt=""
                             cropratio="1:1"
@@ -54,17 +54,19 @@
                             maxHeight="180"
                             maxWidth="180"
                         }
-                    {/if}
+                    {/if} --}
+                    {cf_products_tshirts_images limit="1"}
                     {if weblog_short_name == "products_tshirts"}
                         {exp:ed_imageresizer
                             alt=""
                             cropratio="1:1"
                             forceWidth="yes"
-                            image="{cf_products_tshirts_images}{ffm_images_image}{/cf_products_tshirts_images}"
+                            image="{ffm_images_image}"
                             maxHeight="180"
                             maxWidth="180"
                         }
                     {/if}
+                    {/cf_products_tshirts_images}
                 </a>
             </li>
             {/exp:weblog:entries}
