@@ -34,12 +34,29 @@
     </div> <!-- // #newsletter_signup -->
     {/if}
 
-    <div id="promo_block" class="widget">
-        <a href="https://simoncampbell.eventwax.com/thirtysix-launch-event/register/">
-            <img src="{pv_assets_url}/images/content/promo_block.jpg" width="300" height="205" alt="ThirtySix album launch">
-            <small>Album launch 26 March</small>
+    {if segment_1 != "home" && lv_featured_sidebar != ""}
+    <div class="promo_block widget">
+        {exp:weblog:entries
+            weblog="homepage_features"
+            limit="1"
+            entry_id="{lv_featured_sidebar}"
+            disable="member_data|trackbacks|categories"
+            orderby=""
+            sort=""
+            dynamic="off"
+        }
+        <a href="{cf_features_link_url}">
+            {exp:ed_imageresizer 
+                maxWidth="300"
+                forceWidth="yes"
+                image="{cf_features_sidebar_image}" 
+                alt="{cf_features_title}"
+            }
+            <small>{title}</small>
         </a>
+        {/exp:weblog:entries}
     </div> <!-- // #promo_block -->
+    {/if}
     
     {exp:weblog:entries
         weblog="events"
