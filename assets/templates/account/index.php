@@ -159,7 +159,7 @@
         
         <p>To purchase items, please log in or create an account.</p>
         
-        <div class="half">
+        <div class="first">
             <h3>Returning customer</h3>
             
             {exp:member:login_form 
@@ -191,8 +191,8 @@
                 </fieldset>
             {/exp:member:login_form}
             
-        </div><!-- // .half -->
-        <div class="half">
+        </div><!-- // .first -->
+        <div class="last">
             <h3>New customer</h3>
             
             {exp:user:register
@@ -230,7 +230,7 @@
             </fieldset>
             {/exp:user:register}
             
-        </div><!-- // .half -->
+        </div><!-- // .last -->
         
         {/if}
         

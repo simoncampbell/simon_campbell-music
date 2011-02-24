@@ -87,3 +87,6 @@ body.thirtysix div#content_sec {
     float: right;
     margin-left: 0;
 }
+body#account_landing #content_pri div.account_details, body#account_landing.fullwidth #content_pri form#account_settings, table {
+    background: none;
+}
