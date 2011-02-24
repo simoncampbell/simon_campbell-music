@@ -1362,18 +1362,28 @@ div#footer p.credit {
     
     /* CONTENT SEC: Widget - Promo Block
     --------------------------------------------- */
-    #promo_block.widget {
-        padding: 0;
+    div#content_sec .promo_block {
+        display:block;
+        padding:0;
         position: relative;
         width: 300px;
+        margin-bottom:40px;
+        border-top: 1px dashed #5B5B5B;
+        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        border-bottom: 1px dashed #5B5B5B;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
     }
-    #promo_block small {
-        bottom: 0;
+    div#content_sec .promo_block small {
+        display:block;
         position: absolute;
+        bottom:0;
+        right:0;
+        left:0;
         text-align: center;
-        width: 100%;
+        padding:5px 0;
+        background:rgba(0, 0, 0, 0.8);
     }
-    #promo_block a {
+    div#content_sec .promo_block a {
         text-decoration: none;
     }
     
@@ -1446,9 +1456,126 @@ div#footer p.credit {
     MISCELLANEOUS
     ----------------------------------------------------------
 */
-#audio_player {
-    width:370px;
-}
+
+    /* Promo section */
+    div#promo {
+        margin:0 10px 40px 10px;
+        padding:0;
+        clear:both;
+        overflow:hidden;
+        height:235px;
+        border-top: 1px dashed #585858;
+        border-bottom: 1px dashed #585858;
+    }
+    
+    div#promo ul {
+        width:300px;
+        float:right;
+        list-style:none;
+        overflow:visible;
+    }
+    
+    div#promo ul li {
+        display:block;
+        clear:both;
+    }
+    
+    
+    div#promo ul li a {
+        display:block;
+        overflow:hidden;
+        padding:17px 10px 10px 10px;
+        background:rgba(0, 0, 0, 0.2);
+        border-bottom:1px solid #383838;
+        text-decoration:none;
+        font-size:18px;
+        text-transform:uppercase;
+        color:#9d9d9d;
+    }
+    
+    div#promo ul li a:hover,
+    div#promo ul li a:focus {
+        color:#fff;
+        outline:none;
+    }
+    
+    div#promo ul li.ui-tabs-selected {
+        width:317px;
+        position:relative;
+        left:-17px;
+        z-index:2;
+    }
+    
+    div#promo ul li.ui-tabs-selected a {
+        color:#fff;
+        padding-left:27px;
+        background:url(../images/site/nav/promo/promo-tab-hover.png) 0 -1px no-repeat rgba(255, 255, 255, 0.01);
+        border-bottom:0;
+        padding-bottom:11px;
+    }
+    
+    div#promo ul li:last-child.ui-tabs-selected a {
+        padding-bottom:9px;
+    }
+    
+    div#promo ul li:last-child a {
+        border-bottom:0;
+    }
+    
+    div#promo ul li a img {
+        width:60px;
+        height:38px;
+        display:block;
+        float:left;
+        margin-top:-7px;
+        margin-right:10px;
+    }
+    
+    div#promo div {
+        z-index:1;
+        width:640px;
+        float:left;
+        position:relative;
+    }
+    
+    div#promo div.ui-tabs-hide {
+        display:none;
+    }
+    
+    div#promo div div.slide_content {
+        width:auto;
+        max-width:35%;
+        float:none;
+        position:absolute;
+        bottom:10px;
+        left:10px;
+        display:block;
+        background:rgba(0, 0, 0, 0.8);
+        padding:10px;
+    }
+    
+    div#promo div div.slide_content h2,
+    div#promo div div.slide_content h3 {
+        text-transform:uppercase;
+    }
+    div#promo div div.slide_content h2 {
+        margin-bottom:0px;
+        font-size:30px;
+    }
+    
+    div#promo div div.slide_content h3 {
+        font-size:16px;
+        color:#f89d44;
+        margin-bottom:10px;
+    }
+    
+    div#promo div div.slide_content p a {
+        text-decoration:none;
+        font-weight:bold;
+    }
+    div#promo div div.slide_content p:last-child {
+        margin-bottom:0;
+    }
 
 a.button {
     color: rgb(60, 60, 60);

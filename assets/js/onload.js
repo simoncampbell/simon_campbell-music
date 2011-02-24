@@ -14,10 +14,16 @@
 
 $(document).ready(function(){
     
+    // Remove no-js class
     if($("body").hasClass("no-js")) {
         $("body").removeClass("no-js");
     }
     
+    // Promo tabs
+    if($("div#promo").length) {
+        $("div#promo").tabs();
+    }
+     
     // Hide value of newsletter input on focus
     if($("input[name=cm-bxdii-bxdii]").length) {
         $("input[name=cm-bxdii-bxdii]").clearDefault();

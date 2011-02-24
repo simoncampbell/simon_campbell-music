@@ -14,37 +14,93 @@
     canonical_url="/"
 }
 
-    <div id="content_pri">
+    <div id="promo">
+        <ul>
+            {exp:weblog:entries
+                weblog="homepage_features"
+                limit="4"
+                entry_id="{lv_featured_homepage}"
+                disable="member_data|trackbacks|categories"
+                orderby=""
+                sort=""
+                dynamic="off"
+            }
+            <li>
+                <a href="#tab_{entry_id}">
+                    {exp:ed_imageresizer 
+                        maxWidth="60"
+                        maxHeight="38"
+                        forceWidth="yes"
+                        cropratio="60:38"
+                        image="{cf_features_image}" 
+                        alt="{cf_features_title}"
+                    }
+                    {title}
+                </a>
+            </li>
+            {/exp:weblog:entries}
+        </ul>
         
-        <div id="intro" class="widget">
-            <a href="{pv_site_url}/thirtysix/"><img src="{pv_assets_url}/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="{pv_site_url}/thirtysix/"><strong>&ldquo;ThirtySix&rdquo;</strong> The new album</a></h2>
-            <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on March 26. The release will be followed by a United Kingdom and mainland European tour. <a href="{pv_site_url}/thirtysix/">Check out ThirtySix!</a>
-            </p>
-            <small><strong>&ldquo;Brother&rdquo;</strong> Lead single preview</small>
-            <audio id="audio_player" controls>
-                <source src="{pv_assets_url}/audio/brother.mp3" type="audio/mpeg" />
-                <source src="{pv_assets_url}/audio/brother.ogg" type="audio/ogg" />
-            </audio> <!-- // #audio_player -->
-            <script>
-                jwplayer("audio_player").setup({
-                    players: [
-                        { type: "html5" },
-                        { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
-                    ],
-                    provider: "sound",
-                    controlbar: "bottom",
-                    dock: false,
-                    playlist: "none",
-                    id: "audio_player",
-                    width: 460,
-                    height: 29,
-                    icons: false,
-                    skin: "{pv_assets_url}/jwplayer/glow.zip"
-                });
-            </script>
-        </div> <!-- // #intro -->
+        {exp:weblog:entries
+            weblog="homepage_features"
+            limit="4"
+            entry_id="{lv_featured_homepage}"
+            disable="member_data|trackbacks|categories"
+            orderby=""
+            sort=""
+            dynamic="off"
+        }
+        
+        <div id="tab_{entry_id}">
+            
+            {exp:ed_imageresizer 
+                maxWidth="640"
+                maxHeight="236"
+                forceWidth="yes"
+                image="{cf_features_image}" 
+                alt="{cf_features_title}"
+            }
+            <div class="slide_content">
+                <h2>{cf_features_title}</h2>
+                <h3>{cf_features_subtitle}</h3>
+        
+                {if cf_features_audio_mp3 != "" && cf_features_audio_ogg != ""}
+                    <audio id="audio_player" controls>
+                        <source src="{cf_features_audio_mp3}" type="audio/mpeg" />
+                        <source src="{cf_features_audio_ogg}" type="audio/ogg" />
+                    </audio> <!-- // #audio_player -->
+                    <script>
+                        jwplayer("audio_player").setup({
+                            players: [
+                                { type: "html5" },
+                                { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
+                            ],
+                            provider: "sound",
+                            controlbar: "bottom",
+                            dock: false,
+                            playlist: "none",
+                            id: "audio_player",
+                            width: 195,
+                            height: 29,
+                            icons: false,
+                            skin: "{pv_assets_url}/jwplayer/glow.zip"
+                        });
+                    </script>
+                {if:else}
+                    <p>{cf_features_lead}</p>
+                {/if}
+            
+                <p><a href="{cf_features_link_url}">{cf_features_link_label} &raquo;</a></p>
+            </div> <!-- // .slide_content -->
+            
+        </div> <!-- // #tab_{entry_id} -->
+        
+        {/exp:weblog:entries}
+        
+       
+    </div> <!-- // #promo -->
+
+    <div id="content_pri">
         
         <div id="posts" class="widget">
             
