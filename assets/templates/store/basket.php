@@ -30,28 +30,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {exp:cartthrob:cart_items_info}
                     <tr>
-                        <td><a href="#">Album art t-shirt</a></td>
+                        <td><a href="#">{title}</a></td>
                         <td>Apparel</td>
-                        <td>1x</td>
-                        <td>£12.99</td>
+                        <td>{quantity}x</td>
+                        <td>£{item_subtotal}</td>
                     </tr>
-                    <tr>
-                        <td><a href="#">ThirtySix LP</a></td>
-                        <td>Digital download</td>
-                        <td>2x</td>
-                        <td>£8.00</td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Simon Campbell poster</a></td>
-                        <td>Accessories</td>
-                        <td>1x</td>
-                        <td>£1.99</td>
-                    </tr>
+                    {/exp:cartthrob:cart_items_info}
                 </tbody>
             </table>
             <p class="more">
-                Subtotal: <strong>£134.98</strong> + shipping <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
+                Subtotal: <strong>{exp:cartthrob:cart_items_info}£{cart_subtotal}{/exp:cartthrob:cart_items_info}</strong> + shipping <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
             </p>
         </div><!-- // .first -->
         
