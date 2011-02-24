@@ -31,11 +31,10 @@ $(document).ready(function(){
     
     // Gallery
     if($("body").hasClass("gallery")) {
-     
         // Add gallery nav links
         $("div#content_pri").prepend("<p id=\"gallery_nav\">");
         $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
-     
+        
         // Gallery jQuery Cycle
         $('#gallery_photos').after('<ul class="horizontal gallery_grid">').cycle({
             fx: 'fade',
@@ -49,7 +48,6 @@ $(document).ready(function(){
                 return '<li><a href="#"><img src="' + img + '" width="180" height="118"></a></li>';
             }
         });
-         
     }
     
     // Contact Form Validation
