@@ -4,9 +4,7 @@
 div#content_pri,
 #content_sec .widget,
 body#account_landing #content_pri div.account_details,
-body#account_landing.fullwidth #content_pri form#account_settings {
-    background: url(../images/site/ie6/opacity_5.png);
-}
+body#account_landing.fullwidth #content_pri form#account_settings,
 table {
     background: url(../images/site/ie6/opacity_5.png);
 }
@@ -37,9 +35,6 @@ label {
     text-align: left;
     width: 90px;
 }
-body.contact #content_pri input.submit {
-    margin-right: 20px;
-}
 
 /* EDITORIAL TEMPLATES */
 body.editorial div#beginnings h3 + p:first-letter {
@@ -66,12 +61,12 @@ p.pagination a.cur {
 }
 
 /* RGBA FIXES */
-ul.item_listing {
+/*ul.item_listing {
     background: #232323;
 }
 ul.item_listing li.odd {
     background: #1C1C1C;
-}
+}*/
 
 /* CONTENT SEC */
 #newsletter_signup input.submit {
@@ -88,9 +83,9 @@ body.store_landing div#content_pri input.submit {
 
 
 /* NEWSLETTER LANDING */
-body.newsletter div#content_pri form input.submit {
+/*body.newsletter div#content_pri form input.submit {
     margin-right: 24px;
-}
+}*/
 
 /* MISCELLANEOUS RGBA BACKGROUNDS/BORDERS */
 #content_pri img,
