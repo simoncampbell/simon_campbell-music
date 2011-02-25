@@ -1,0 +1,89 @@
+div#navigation_network {
+    margin-top: -30px;
+}
+div#navigation_network ul {
+    margin-top: 10px;
+}
+div#navigation_network ul li#nn_social {
+    margin-bottom: 10px;
+    margin-top: -13px;
+}
+div#navigation_network ul a {
+    display: inline;
+    padding: 12px 4px;
+}
+
+ul#gallery_grid {
+    margin-left: -5px;
+}
+div#content_pri,
+#content_sec .widget {
+    background: none;
+}
+
+ul#navigation_pri li.first {
+    margin-left: 15px;
+}
+
+ul.item_listing {
+    background: none;
+}
+ul.item_listing li a:hover {
+    background: none;
+    text-decoration: underline;
+}
+
+div#intro img {
+    margin: -8px 20px -8px 3px;
+}
+div#intro #audio_player {
+    margin-top: 10px;
+    width: 340px;
+}
+
+div#posts div.post ul.post_meta li.first {
+    padding-left: 0;
+}
+
+div#posts p#pagination a {
+    background: none;
+    display: inline;
+    text-decoration: none;
+}
+div#posts p#pagination a:hover,
+div#posts p#pagination a.cur {
+    background: none;
+    font-weight: bold;
+    text-decoration: underline;
+}
+body.newsletter div#content_pri div.first {
+    border-right: 1px dashed #5B5B5B;
+    margin-right: 20px;
+    padding-right: 20px;
+    width: 250px;
+}
+div#content_sec input.submit {
+    height: 21px;
+    margin-top: -22px;
+}
+#newsletter_signup label.error {
+    float: left;
+    position: relative;
+    bottom: 0;
+    width: 160px;
+}
+
+body.thirtysix div#content_pri {
+    margin-right: 0;
+}
+body.thirtysix div#content_pri div.widget {
+    padding: 15px 45px;
+}
+body.thirtysix div#journey ul.social li.twitter a,
+body.thirtysix div#journey ul.social li.facebook a {
+    padding: 0 0 0 5px;
+}
+body.thirtysix div#content_sec {
+    float: right;
+    margin-left: 0;
+}

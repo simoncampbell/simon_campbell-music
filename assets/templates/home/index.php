@@ -14,67 +14,193 @@
     canonical_url="/"
 }
 
-    <div id="content_pri">
+    <div id="promo">
+        <ul>
+            {exp:weblog:entries
+                weblog="homepage_features"
+                limit="4"
+                entry_id="{lv_featured_homepage}"
+                disable="member_data|trackbacks|categories"
+                orderby=""
+                sort=""
+                dynamic="off"
+            }
+            <li>
+                <a href="#tab_{entry_id}">
+                    {exp:ed_imageresizer 
+                        maxWidth="60"
+                        maxHeight="38"
+                        forceWidth="yes"
+                        cropratio="60:38"
+                        image="{cf_features_image}" 
+                        alt="{cf_features_title}"
+                    }
+                    {title}
+                </a>
+            </li>
+            {/exp:weblog:entries}
+        </ul>
         
-        <div id="intro" class="widget">
-            <a href="#"><img src="/assets/images/content/home_intro.jpg" width="205" height="206" alt="ThirtySix album cover"></a>
-            <h2><a href="#">New album: "ThirtySix"</a></h2>
-            <p>
-                The debut solo album, ThirtySix, by Simon Campbell will be released on <strong>March 26, 2011</strong>. ThirtySix years in the making, the release will be followed by a UK and mainland European tour.
-            </p>
-            <small>Preview the lead single from ThirtySix, "Brother"</small>
-            <audio id="audio_player" controls>
-                <source src="/assets/audio/brother.mp3" type="audio/mpeg" />
-                <source src="/assets/audio/brother.ogg" type="audio/ogg" />
-            </audio> <!-- // #audio_player -->
-            <script>
-                jwplayer("audio_player").setup({
-                    players: [
-                        { type: "html5" },
-                        { type: "flash", src: "/assets/jwplayer/player.swf" }
-                    ],
-                    provider: "sound",
-                    controlbar: "bottom",
-                    dock: false,
-                    playlist: "none",
-                    id: "audio_player",
-                    width: 460,
-                    height: 29,
-                    icons: false,
-                    skin: "/assets/jwplayer/glow.zip"
-                });
-            </script>
-        </div> <!-- // #intro -->
+        {exp:weblog:entries
+            weblog="homepage_features"
+            limit="4"
+            entry_id="{lv_featured_homepage}"
+            disable="member_data|trackbacks|categories"
+            orderby=""
+            sort=""
+            dynamic="off"
+        }
+        
+        <div id="tab_{entry_id}">
+            
+            {exp:ed_imageresizer 
+                maxWidth="640"
+                maxHeight="236"
+                forceWidth="yes"
+                image="{cf_features_image}" 
+                alt="{cf_features_title}"
+            }
+            <div class="slide_content">
+                <h2>{cf_features_title}</h2>
+                <h3>{cf_features_subtitle}</h3>
+        
+                {if cf_features_audio_mp3 != "" && cf_features_audio_ogg != ""}
+                    <audio id="audio_player" controls>
+                        <source src="{cf_features_audio_mp3}" type="audio/mpeg" />
+                        <source src="{cf_features_audio_ogg}" type="audio/ogg" />
+                    </audio> <!-- // #audio_player -->
+                    <script>
+                        jwplayer("audio_player").setup({
+                            players: [
+                                { type: "html5" },
+                                { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
+                            ],
+                            provider: "sound",
+                            controlbar: "bottom",
+                            dock: false,
+                            playlist: "none",
+                            id: "audio_player",
+                            width: 195,
+                            height: 29,
+                            icons: false,
+                            skin: "{pv_assets_url}/jwplayer/glow.zip"
+                        });
+                    </script>
+                {if:else}
+                    <p>{cf_features_lead}</p>
+                {/if}
+            
+                <p><a href="{cf_features_link_url}">{cf_features_link_label} &raquo;</a></p>
+            </div> <!-- // .slide_content -->
+            
+        </div> <!-- // #tab_{entry_id} -->
+        
+        {/exp:weblog:entries}
+        
+       
+    </div> <!-- // #promo -->
+
+    <div id="content_pri">
         
         <div id="posts" class="widget">
             
-            <div class="post">
-                <h2><a href="#">Album launch party on March 26</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="" pubdate>10-01-12</time></li>
-                    <li><a href="#">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
-                </ul>
-                <img class="img_right" src="/assets/images/content/content_pri_post1.jpg" width="253" height="164" alt="">
-                <p>
-                    <strong>The ThirtySix album launch event will take place on the 26th March 2011, at the Centenary Centre, Peel.</strong> Vivamus id mollis quam. Morbi ac iklisese commodo nulla.
-                </p>
-                <p>
-                    In condimentum orci id nisl volutpat bibendum. Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu.
-                </p>
-            </div> <!-- // .post -->
+            {exp:weblog:entries
+                weblog="journal_notes|journal_videos|journal_photos|journal_audio"
+                limit="{lv_journal_homepage_limit}"
+                disable="member_data|trackbacks|categories"
+                orderby=""
+                sort=""
+                dynamic="off"
+                }    
+                <div class="post">
+                    <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
+                    <ul class="post_meta horizontal">
+                        <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
+                        <li class="pm_twitter"><a href="http://twitter.com/share?url={site_url}{comment_url_title_auto_path}&amp;text={exp:tools:url_encode}"{title}"{/exp:tools:url_encode}&amp;via=simoncampbell&amp;related=simoncampbell">Share on Twitter</a></li>
+                        <li class="pm_facebook"><a href="http://www.facebook.com/sharer.php?u={site_url}{comment_url_title_auto_path}">Share on Facebook</a></li>
+                    </ul>
+
+                    {if weblog_short_name == "journal_notes"}
+                    
+                        {if cf_journal_notes_image != ""}
+                            <div class="post_image note_image size{cf_journal_notes_image_size}">
+                                {exp:ed_imageresizer 
+                                    maxWidth="{cf_journal_notes_image_size}"
+                                    forceWidth="yes"
+                                    image="{cf_journal_notes_image}" 
+                                    alt=""
+                                    }
+                                {if cf_journal_notes_image_caption != ""}
+                                    <span>{cf_journal_notes_image_caption}</span>
+                                {/if}
+                            </div>
+                        {/if}
+
+                        {cf_journal_notes_note}
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_photos"}
+
+                        {cf_journal_photos_lead}
+
+                        {exp:ed_imageresizer 
+                            maxWidth="580"
+                            forceWidth="yes"
+                            image="{cf_journal_photos_image}" 
+                            alt=""
+                            }
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_videos"}
+
+                        {cf_journal_videos_lead}
+
+                        <iframe 
+                            src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}?portrait=0&amp;color=f69b55" 
+                            width="580" 
+                            height="325">
+                        </iframe>
+
+                    {/if}
+
+                    {if weblog_short_name == "journal_audio"}
+
+                        {cf_journal_audio_lead}
+
+                        {if cf_journal_audio_mp3 != "" AND cf_journal_audio_ogg != ""}
+                        <audio id="audio_player_{entry_id}" controls>
+                            <source src="{cf_journal_audio_mp3}" type="audio/mpeg" />
+                            <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
+                        </audio> <!-- // #audio_player -->
+                        <script>
+                            jwplayer("audio_player_{entry_id}").setup({
+                                players: [
+                                    { type: "html5" },
+                                    { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
+                                ],
+                                provider: "sound",
+                                controlbar: "bottom",
+                                dock: false,
+                                playlist: "none",
+                                id: "audio_player_{entry_id}",
+                                width: "100%",
+                                height: 29,
+                                icons: false,
+                                skin: "{pv_assets_url}/jwplayer/glow.zip"
+                            });
+                        </script>
+                        {/if}
+
+                    {/if}
+                    
+                    <p class="comment"><a href="{pv_site_url}{comment_url_title_auto_path}#comments">Add your comments &raquo;</a></p>
+
+                </div> <!-- // .post -->
+            {/exp:weblog:entries}
             
-            <div class="post">
-                <h2><a href="#">My thoughts on fame &amp; fortune</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="" pubdate>10-01-12</time></li>
-                    <li><a href="#">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
-                </ul>
-                <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
-            </div> <!-- // .post -->
+            <p class="more"><a href="{pv_site_url}/journal/">Read more in the journal &raquo;</a></p>
             
         </div><!-- // #posts -->
         

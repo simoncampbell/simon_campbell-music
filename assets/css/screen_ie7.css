@@ -1,0 +1,41 @@
+/* NETWORK NAVIGATION */
+div#navigation_network {
+    margin-top: -42px;
+}
+
+
+/* HOMEPAGE INTRO IMAGE */
+div#intro img {
+    margin: -5px 20px -4px -30px;
+}
+
+/* JOURNAL */
+div#posts div.post ul.post_meta {
+    float: none;
+}
+/* THIRTYSIX */
+body.thirtysix div#journey ul.social li.twitter a,
+body.thirtysix div#journey ul.social li.facebook a {
+    padding: 0 0 0 5px;
+}
+
+/* EDITORIAL */
+body.editorial div#beginnings h3 + p:first-letter {
+    background: none;
+    float: none;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+/* CONTENT SEC */
+div#content_sec input {
+    width: 175px;
+}
+div#content_sec {
+    padding-bottom: 50px;
+}
+div#content_sec input.submit {
+    line-height: 20px;
+    width: 70px;
+}

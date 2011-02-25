@@ -7,7 +7,7 @@
  * @author		Solspace DevTeam
  * @copyright	Copyright (c) 2008-2010, Solspace, Inc.
  * @link		http://solspace.com/docs/
- * @version		1.0.4
+ * @version		1.1.5
  * @filesource 	./system/bridge/
  * 
  */
@@ -21,48 +21,63 @@
  * @package 	Bridge:Expansion
  * @subpackage	Solspace:Add-On Builder
  * @category	None
- * @author		Paul Burdick <paul.burdick@solspace.com>
+ * @author		Solspace DevTeam
  * @link		http://solspace.com/docs/
  * @filesource 	./system/bridge/lib/addon_builder/addon_builder.php
  */
  
 if (APP_VER < 2.0)
 {
-	require_once PATH.'bridge/lib/addon_builder/codeigniter.php'; 
-	require_once PATH.'bridge/constants.php';
+	require_once PATH . 'bridge/lib/addon_builder/codeigniter.php'; 
+	require_once PATH . 'bridge/constants.php';
 }
 else
 {
-	require_once BASEPATH.'expressionengine/third_party/bridge/constants.php';
+	require_once PATH_THIRD . 'bridge/constants.php';
 }
 
 class Addon_builder_bridge {
 	
-	var $cache				= array(); // Internal cache
+	public $bridge_version 		= '1.1.5';
+	                        	
+	public $cache				= array(); // Internal cache
+	                        	
+	public $ob_level			= 0;
+	public $cached_vars			= array();
+	public $switches			= array();
 	
-	var $ob_level			= 0;
-	var $cached_vars		= array();
-	var $switches			= array();
+	// The general class name (ucfirst with underscores), used in database and class instantiation
+	public $class_name			= '';
 	
-	var $class_name			= '';		// The general class name (ucfirst with underscores), used in database and class instantiation
-	var $lower_name			= '';		// The lowercased class name, used for referencing module files and in URLs
-	var $extension_name		= '';		// The name that we put into the Extensions DB table, different for 2.x and 1.x
-	var $disabled			= FALSE;	// Module disabled? Typically used when an update is in progress. 
+	// The lowercased class name, used for referencing module files and in URLs			
+	public $lower_name			= '';
 	
-	var $addon_path			= '';
-	var $theme				= 'default';
-	var $version			= '';
+	// The name that we put into the Extensions DB table, different for 2.x and 1.x
+	public $extension_name		= '';
 	
-	var $crumbs				= array();
+	// Module disabled? Typically used when an update is in progress.
+	public $disabled			= FALSE; 
+	                        	
+	public $addon_path			= '';
+	public $theme				= 'default';
+	public $version				= '';
+	                        	
+	public $crumbs				= array();
+	                        	
+	public $document			= FALSE;
+	public $data				= FALSE;
+	public $actions				= FALSE;
 	
-	var $document			= FALSE;
-	var $data				= FALSE;
-	var $actions			= FALSE;
+	public $module_preferences	= array();
+	public $remote_data			= '';	// For remote file retrieving and storage
 	
-	var $module_preferences	= array();
-	var $remote_data		= '';	// For remote file retrieving and storage
+	public $sc;
 	
-	var $sc;
+	//this will house items that might not always be set when called.
+	public $constants;
+	
+	//holder for the json object if ever
+	public $json;
     
     // --------------------------------------------------------------------
 
@@ -85,17 +100,17 @@ class Addon_builder_bridge {
         
         if ( APP_VER < 2.0)
         {
-        	$this->EE->localize = $GLOBALS['LOC'];
-        	$this->EE->stats	= ( ! isset($GLOBALS['STAT'])) ? FALSE : $GLOBALS['STAT'];
+        	ee()->localize = $GLOBALS['LOC'];
+        	ee()->stats	= ( ! isset($GLOBALS['STAT'])) ? FALSE : $GLOBALS['STAT'];
 			
 			//need a symbolic link to extension->last_call and end_script
 			if ( isset($GLOBALS['EXT']) && is_object($GLOBALS['EXT']))
 	        {
-	        	$this->EE->extensions->last_call 	=& $GLOBALS['EXT']->last_call;
-				$this->EE->extensions->end_script 	=& $GLOBALS['EXT']->end_script;
+	        	ee()->extensions->last_call 	=& $GLOBALS['EXT']->last_call;
+				ee()->extensions->end_script 	=& $GLOBALS['EXT']->end_script;
 			}			
         }
-        
+
 		// Super short cuts!!!
 		$this->sc = $this->generate_shortcuts();
 
@@ -105,15 +120,27 @@ class Addon_builder_bridge {
         /**		- so we need to check for that object first.
         /** --------------------------------------------*/
         
-        if ( ! isset($this->EE->session) OR !is_object($this->EE->session))
+        if ( ! isset(ee()->session) OR ! is_object(ee()->session))
         {
         	if ( APP_VER < 2.0)
         	{
-        		$this->EE->session = ( ! isset($GLOBALS['SESS'])) ? FALSE : $GLOBALS['SESS'];
+				//Have to check for ->userdata too because a REAL session instance has it always
+				//Some other addon devs are creating $SESS->cache even when $SESS is null
+				//That autocreates the session object before the real one clobbers it,
+				//that in turn fools addons into thinking that $SESSION has already fired :/
+				
+				//assume its still not there
+				ee()->session = FALSE;
+				
+				//if it is, lets grab it changed to pass by reference
+        		if ( isset($GLOBALS['SESS']) AND isset($GLOBALS['SESS']->userdata)) 
+				{
+					ee()->session =& $GLOBALS['SESS'];
+				}
         	}
         	elseif (file_exists(APPPATH.'libraries/Session.php'))
         	{
-        		$this->EE->load->library('session');
+        		ee()->load->library('session');
         	}
         }
         
@@ -123,16 +150,16 @@ class Addon_builder_bridge {
         
         if (isset($GLOBALS['TMPL']) && is_object($GLOBALS['TMPL']))
         {
-        	$this->EE->TMPL = $GLOBALS['TMPL'];
+        	ee()->TMPL =& $GLOBALS['TMPL'];
         }
         
         /** --------------------------------------------
         /**  CP Request?  Check for $DSP global
         /** --------------------------------------------*/
         
-        if (REQ == 'CP' && isset($GLOBALS['DSP']) && is_object($GLOBALS['DSP']))
+        if (APP_VER < 2.0 AND REQ == 'CP' && isset($GLOBALS['DSP']) && is_object($GLOBALS['DSP']))
         {
-        	$this->EE->cp = $GLOBALS['DSP'];
+        	ee()->cp =& $GLOBALS['DSP'];
         }
 		
 		/** --------------------------------------------
@@ -141,7 +168,7 @@ class Addon_builder_bridge {
 		
 		if ( ! defined('QUERY_MARKER'))
 		{
-			define('QUERY_MARKER', ($this->EE->config->item('force_query_string') == 'y') ? '' : '?');
+			define('QUERY_MARKER', (ee()->config->item('force_query_string') == 'y') ? '' : '?');
 		}
 		
 		if ( ! defined('SLASH'))
@@ -185,17 +212,16 @@ class Addon_builder_bridge {
 			define('NBS', "&nbsp;");
 		}
 		
-		// EE 1.x does not have this constant
-		// EE 2.x does not set it, if Secure Form Hash is disabled
-		// I actually want it to be a constant CONSTANT, so I make sure it is always set.
+		// EE 1.x does not have this constant, 
+		// but it adds it to every form automatically.
+		// EE 2.x sets it all the time now.
 		
-		if ( ! defined('XID_SECURE_HASH'))
-		{
-			if (APP_VER < 2.0 OR $this->EE->config->item('secure_forms') != 'y')
-			{
-				define('XID_SECURE_HASH', '');
-			}
-		}
+		$constants = array(
+			'XID_SECURE_HASH' 	=> (APP_VER < 2.0 OR ! defined('XID_SECURE_HASH')) ? 
+											'' : XID_SECURE_HASH,											
+		);
+		
+		$this->constants = (object) $constants;
 		
 		/** --------------------------------------------
         /**  Auto-Detect Name
@@ -205,7 +231,18 @@ class Addon_builder_bridge {
         {
         	$name = get_class($this);
         	
-        	$ends = array('_cp_base', '_mcp', '_CP', '_ext', '_extension', '_extension_base', '_updater_base', '_updater', '_upd', '_actions');
+        	$ends = array(
+				'_cp_base', 
+				'_mcp', 
+				'_CP', 
+				'_ext', 
+				'_extension', 
+				'_extension_base', 
+				'_updater_base', 
+				'_updater', 
+				'_upd', 
+				'_actions'
+			);
         	
         	foreach($ends as $remove)
         	{
@@ -221,9 +258,9 @@ class Addon_builder_bridge {
         /**  Important Class Vars
         /** --------------------------------------------*/
         
-        $this->EE->load->library('security');
+        ee()->load->library('security');
         
-		$this->lower_name		= strtolower($this->EE->security->sanitize_filename($name));
+		$this->lower_name		= strtolower(ee()->security->sanitize_filename($name));
     	$this->class_name		= ucfirst($this->lower_name);
     	
     	$this->extension_name	= $this->class_name.((APP_VER < 2.0) ? '_extension' : '_ext'); 
@@ -232,7 +269,7 @@ class Addon_builder_bridge {
         /**  Prepare Caching
         /** --------------------------------------------*/
     	
-    	if ( ! isset($this->EE->session) OR ! is_object($this->EE->session))
+    	if ( ! isset(ee()->session) OR ! is_object(ee()->session))
     	{
     		if ( ! isset($GLOBALS['bridge']['cache']['addon_builder']['addon'][$this->lower_name]))
     		{
@@ -243,19 +280,19 @@ class Addon_builder_bridge {
     	}
     	else
     	{
-    		if ( ! isset($this->EE->session->cache['bridge']['addon_builder']['addon'][$this->lower_name]))
+    		if ( ! isset(ee()->session->cache['bridge']['addon_builder']['addon'][$this->lower_name]))
  			{
  				if( isset($GLOBALS['bridge']['cache']['addon_builder']['addon'][$this->lower_name]))
 				{
-					$this->EE->session->cache['bridge']['addon_builder']['addon'][$this->lower_name] = $GLOBALS['bridge']['cache']['addon_builder']['addon'][$this->lower_name];
+					ee()->session->cache['bridge']['addon_builder']['addon'][$this->lower_name] = $GLOBALS['bridge']['cache']['addon_builder']['addon'][$this->lower_name];
 				}
  				else
  				{
- 					$this->EE->session->cache['bridge']['addon_builder']['addon'][$this->lower_name] = array();
+ 					ee()->session->cache['bridge']['addon_builder']['addon'][$this->lower_name] = array();
  				}
  			}
  		
- 			$this->cache =& $this->EE->session->cache['bridge']['addon_builder']['addon'][$this->lower_name];
+ 			$this->cache =& ee()->session->cache['bridge']['addon_builder']['addon'][$this->lower_name];
  		}
 		
 		/** --------------------------------------------
@@ -275,21 +312,21 @@ class Addon_builder_bridge {
 			}
 			else
 			{
-				$this->addon_path = PATH_MOD.$this->lower_name.'/';
+				$this->addon_path = PATH_MOD . $this->lower_name . '/';
 			}
 		}
 		else
 		{
-			$this->addon_path = BASEPATH.'expressionengine/third_party/'.$this->lower_name.'/';
+			$this->addon_path = PATH_THIRD . $this->lower_name . '/';
 		}
 		
 		/** --------------------------------------------
 		/**  Language Override
 		/** --------------------------------------------*/
 		
-		if ( is_object($this->EE->lang))
+		if ( is_object(ee()->lang))
 		{
-			$this->EE->lang->loadfile($this->lower_name);
+			ee()->lang->loadfile($this->lower_name);
 		}
 		
 		/** --------------------------------------------
@@ -310,19 +347,20 @@ class Addon_builder_bridge {
         /**  Data Object - Used Cached Version, if Available
         /** --------------------------------------------*/
         
-        if ( isset($this->cache['objects']['data']) && is_object($this->cache['objects']['data']))
+        if ( isset($this->cache['objects']['data']) AND 
+			 is_object($this->cache['objects']['data']))
         {
         	$this->data =& $this->cache['objects']['data'];
         }
         else
         {			
-			if ( file_exists($this->addon_path.'data.'.$this->lower_name.'.php'))
-			{
-				require_once $this->addon_path.'data.'.$this->lower_name.'.php';
+			if ( file_exists($this->addon_path . 'data.' . $this->lower_name.'.php'))
+			{                                              
+				require_once $this->addon_path . 'data.' . $this->lower_name.'.php';
 				
-				$name = $this->class_name.'_data';
+				$name = $this->class_name . '_data';
 				
-				$this->data = new $name();
+				$this->data = new $name($this);
 				
 				$this->data->sc	= $this->sc;
 			}
@@ -330,9 +368,11 @@ class Addon_builder_bridge {
 			{
 				require_once PATH_BRIDGE.'lib/addon_builder/data.addon_builder.php';
 				
-				$this->data = new Addon_builder_data_bridge();
+				$this->data = new Addon_builder_data_bridge($this);
 			}
 		}
+		
+		$this->data->parent_aob_instance =& $this;
         
         /** --------------------------------------------
 		/**  documentDOM_bridge instantiated, might move this.
@@ -349,13 +389,14 @@ class Addon_builder_bridge {
         /**  Important Cached Vars - Used in Both Extensions and Modules
         /** --------------------------------------------*/
 		
-		$this->cached_vars['page_crumb']	 = '';
-		$this->cached_vars['page_title']	 = '';
-		$this->cached_vars['text_direction'] = 'ltr';
-		$this->cached_vars['onload_events']  = '';
-		$this->cached_vars['message']		 = '';
+		$this->cached_vars['XID_SECURE_HASH'] 	= $this->constants->XID_SECURE_HASH;
+		$this->cached_vars['page_crumb']	 	= '';
+		$this->cached_vars['page_title']	 	= '';
+		$this->cached_vars['text_direction'] 	= 'ltr';
+		$this->cached_vars['onload_events']  	= '';
+		$this->cached_vars['message']		 	= '';
 		
-		$this->cached_vars['caller'] 		 =& $this;
+		$this->cached_vars['caller'] 		 	=& $this;
 		
 		/** --------------------------------------------
 		/**  Determine View Path for Add-On
@@ -369,7 +410,7 @@ class Addon_builder_bridge {
 		{
 			$possible_paths = array();
 			
-			$this->theme = $this->EE->security->sanitize_filename($this->theme);
+			$this->theme = ee()->security->sanitize_filename($this->theme);
 			
 			if (APP_VER < 2.0)
 			{
@@ -418,9 +459,9 @@ class Addon_builder_bridge {
 		{
 			$this->disabled = TRUE;
 			
-			if (empty($this->cache['disabled_message']) && !empty($this->EE->lang->language[$this->lower_name.'_module_disabled']))
+			if (empty($this->cache['disabled_message']) && !empty(ee()->lang->language[$this->lower_name.'_module_disabled']))
 			{
-				trigger_error($this->EE->lang->line($this->lower_name.'_module_disabled'), E_USER_NOTICE);
+				trigger_error(ee()->lang->line($this->lower_name.'_module_disabled'), E_USER_NOTICE);
 				
 				$this->cache['disabled_message'] = TRUE;
 			}
@@ -439,7 +480,7 @@ class Addon_builder_bridge {
 	 */
 	function generate_shortcuts()
 	{
-		$is2 = !(APP_VER < 2.0);
+		$is2 = ! (APP_VER < 2.0);
 		
 		return (object) array(
 			'db'	=> (object) array(
@@ -506,7 +547,6 @@ class Addon_builder_bridge {
 			}
 			else
 			{
-				// Perhaps return an error? Nah...
 				return NULL;
 			}
 			
@@ -530,9 +570,7 @@ class Addon_builder_bridge {
 	/**
 	 * Module's Action Object
 	 *
-	 * We do not cache this object because there is a fair chance that we will want a fresh object
-	 * whenever it is called.  Could add an init() method of some sort, but I doubt anyone will 
-	 * intelligently use it so why add confusion and pain? Eeesh, where is your optimism, Burdick?!
+	 * intantiates the actions object and sticks it to $this->actions
 	 *
 	 * @access	public
 	 * @return	object
@@ -567,16 +605,16 @@ class Addon_builder_bridge {
 	 */
     
 	function database_version( )
-    {
-    	global $DB;
-    	
+    {    	
     	if (isset($this->cache['database_version'])) return $this->cache['database_version'];
     	
-    	/**	----------------------------------------
-		/**	 Use Template object variable, if available
-		/** ----------------------------------------*/
+    	//	----------------------------------------
+		//	 Use Template object variable, if available
+		// ----------------------------------------
     	
-    	if ( isset($GLOBALS['TMPL']) && is_object($GLOBALS['TMPL']) && sizeof($GLOBALS['TMPL']->module_data) > 0)
+    	if ( isset($GLOBALS['TMPL']) AND 
+ 			 is_object($GLOBALS['TMPL']) AND 
+  			 count($GLOBALS['TMPL']->module_data) > 0)
     	{
     		if ( ! isset($GLOBALS['TMPL']->module_data[$this->class_name]))
     		{
@@ -590,19 +628,25 @@ class Addon_builder_bridge {
 			return $this->cache['database_version'];
     	}
     	
-    	/**	----------------------------------------
-		/**	 Retrieve all Module Versions from the Database
-		/**	  - By retrieving all of them at once, we can limit it to a max of one query per page load for all Bridge Add-Ons
-		/** ----------------------------------------*/
+    	//	----------------------------------------
+		//	 Retrieve all Module Versions from the Database
+		//	  - By retrieving all of them at once, 
+		//   we can limit it to a max of one query per 
+		//   page load for all Bridge Add-Ons
+		// ----------------------------------------
     	
-    	$query = $this->EE->db->query( "SELECT module_version, module_name FROM exp_modules
-    									WHERE module_name = '".$this->EE->db->escape_str($this->class_name)."'");
+    	$query = $this->cacheless_query( 
+			"SELECT module_version, module_name 
+			 FROM 	exp_modules
+    		 WHERE 	module_name = '" . ee()->db->escape_str($this->class_name) . "'"
+		);
     	
     	foreach($query->result_array() as $row)
     	{
-    		if ( isset($this->EE->session) && is_object($this->EE->session))
+    		if ( isset(ee()->session) && is_object(ee()->session))
 			{
-				$this->EE->session->cache['bridge']['addon_builder']['addon'][strtolower($row['module_name'])]['database_version'] = $row['module_version'];
+				ee()->session->cache['bridge']['addon_builder']['addon'][
+					strtolower($row['module_name'])]['database_version'] = $row['module_version'];
 			}
 			elseif ($this->class_name == $row['module_name'])
 			{
@@ -661,7 +705,8 @@ class Addon_builder_bridge {
         /**  Find Our Value, If It Exists
         /** --------------------------------------------*/
         
-        $value = (isset($this->module_preferences[func_get_arg(0)])) ? $this->module_preferences[func_get_arg(0)] : NULL;
+        $value = (isset($this->module_preferences[func_get_arg(0)])) ? 
+					$this->module_preferences[func_get_arg(0)] : NULL;
 		
 		for($i = 1; $i < $s; ++$i)
 		{
@@ -676,6 +721,56 @@ class Addon_builder_bridge {
 		return $value;
 	}
 	/* END preference() */
+
+	// --------------------------------------------------------------------
+		
+	/**
+	 * Checks to see if extensions are enabled for this module
+	 *
+	 * 
+	 * @access	public
+	 * @param	bool	match exact number of hooks
+	 * @return	bool	Whether the extensions are enabled if need be
+	 */
+	 
+	function extensions_enabled( $check_all_enabled = FALSE )
+	{
+		$class 			= $this->class_name . '_updater_base';
+		
+		$update_file 	= $this->addon_path . '/upd.' . $this->lower_name . '.base.php';
+		
+		if ( ! class_exists($class))
+		{
+			if (is_file($update_file))
+			{
+				require_once $update_file;
+			}
+			else
+			{
+				//techincally, this is false, but we dont want to halt something else because the
+				//file cannot be found that we need here. Needs to be a better solution
+				return TRUE;
+			}			 
+		}
+		
+		$upd	= new $class();
+		
+		//is it there? is it array? is it empty? Such are life's unanswerable questions, until now.
+		if ( ! isset($upd->hooks) OR ! is_array($upd->hooks) OR empty($upd->hooks) )
+		{
+			return TRUE; 
+		}
+		
+		$query = ee()->db->query(
+			"SELECT enabled 
+			 FROM 	exp_extensions 
+			 WHERE 	class = '" . ee()->db->escape_str($this->extension_name) . "'
+			 AND	enabled = 'y'"
+		);
+		
+		//we arent going to look for all of the hooks because some could be turned off manually for testing
+		return (($check_all_enabled) ? ($query->num_rows() == count($upd->hooks) ) : ($query->num_rows() > 0) );		
+	}
 	
 	// --------------------------------------------------------------------
 		
@@ -744,6 +839,8 @@ class Addon_builder_bridge {
 		
 		// echo $v1.' - '.$v2;
 		
+		//this is a php built in function, 
+		//self::version_compare is just prep work
 		return version_compare($v1, $v2, $operator);
 	}
 	/* END version_compare() */
@@ -780,8 +877,8 @@ class Addon_builder_bridge {
 			//  - Modify any $DSP class variable (JS, headers, etc.)
 			//  - Override any $DSP method and use their own
 			//
-				$edata = $this->EE->extensions->call('show_full_control_panel_start');
-				if ($this->EE->extensions->end_script === TRUE) return;
+				$edata = ee()->extensions->call('show_full_control_panel_start');
+				if (ee()->extensions->end_script === TRUE) return;
 			//
 			// -------------------------------------------
 		}
@@ -800,12 +897,12 @@ class Addon_builder_bridge {
         }
         else
         {
-			$orig_view_path = $this->EE->load->_ci_view_path;
-			$this->EE->load->_ci_view_path = $this->view_path;
+			$orig_view_path = ee()->load->_ci_view_path;
+			ee()->load->_ci_view_path = $this->view_path;
 			
-			$output = $this->EE->load->view($view, $this->cached_vars, TRUE);
+			$output = ee()->load->view($view, $this->cached_vars, TRUE);
 		
-			$this->EE->load->_ci_view_path = $orig_view_path;
+			ee()->load->_ci_view_path = $orig_view_path;
 		}
 		
 		/** --------------------------------------------
@@ -819,10 +916,10 @@ class Addon_builder_bridge {
 			//  - Rewrite CP's HTML
 			//	- Find/Replace Stuff, etc.
 			//
-				if ($this->EE->extensions->active_hook('show_full_control_panel_end') === TRUE)
+				if (ee()->extensions->active_hook('show_full_control_panel_end') === TRUE)
 				{
-					$output = $this->EE->extensions->call('show_full_control_panel_end', $output);
-					if ($this->EE->extensions->end_script === TRUE) return;
+					$output = ee()->extensions->call('show_full_control_panel_end', $output);
+					if (ee()->extensions->end_script === TRUE) return;
 				}
 			//
 			// -------------------------------------------
@@ -836,10 +933,10 @@ class Addon_builder_bridge {
 		{
 			if (stristr($output, '{XID_HASH}'))
 			{
-				$output = $this->EE->functions->add_form_security_hash($output);
+				$output = ee()->functions->add_form_security_hash($output);
 			}
 
-			$this->EE->output->_display($this->EE->cp->secure_hash($output));
+			ee()->output->_display(ee()->cp->secure_hash($output));
 			exit;
 		}
 		
@@ -900,12 +997,12 @@ class Addon_builder_bridge {
         }
         else
         {
-			$orig_view_path = $this->EE->load->_ci_view_path;
-			$this->EE->load->_ci_view_path = $this->view_path;
+			$orig_view_path = ee()->load->_ci_view_path;
+			ee()->load->_ci_view_path = $this->view_path;
 			
-			$output = $this->EE->load->view($view, $this->cached_vars, TRUE);
+			$output = ee()->load->view($view, $this->cached_vars, TRUE);
 		
-			$this->EE->load->_ci_view_path = $orig_view_path;
+			ee()->load->_ci_view_path = $orig_view_path;
 		}
 		
 		/** --------------------------------------------
@@ -919,7 +1016,7 @@ class Addon_builder_bridge {
         
         if ($type == 'javascript')
 		{
-			$output = $this->EE->functions->add_form_security_hash($output);
+			$output = ee()->functions->add_form_security_hash($output);
 		}
 		
 		/**	----------------------------------------
@@ -933,7 +1030,7 @@ class Addon_builder_bridge {
 			$path = $this->view_path.$file;        
         
             $max_age			= 5184000;
-			$modification_time	= filemtime($path);
+			$modification_time	= ($modification_time != '') ? $modification_time : filemtime($path);
 			$modified_since		= ee()->input->server('HTTP_IF_MODIFIED_SINCE');
 			
 			if ( ! ctype_digit($modification_time))
@@ -1033,7 +1130,7 @@ class Addon_builder_bridge {
 		{
 			$this->cached_vars = array_merge($this->cached_vars, $vars);
 		}
-		extract($this->cached_vars);
+		extract($this->cached_vars, EXTR_PREFIX_SAME, 'var_');
 		
 		//print_r($this->cached_vars);
 		 
@@ -1106,14 +1203,17 @@ class Addon_builder_bridge {
 	 	
 	 	// Change CSS on the click so it works like the hover until they unclick?  
         
+		$ptb = ee()->config->item('publish_tab_behavior');
+		$stb = ee()->config->item('sites_tab_behavior');
+
 		$tab_behaviors = array(
-								'publish_tab_selector'		=> ($this->EE->config->item('publish_tab_behavior') == 'hover') ? 'hover' : 'active',
-								'publish_tab_display'		=> ($this->EE->config->item('publish_tab_behavior') == 'none') ? '' : 'display:block; visibility: visible;',
-								'publish_tab_ul_display'	=> ($this->EE->config->item('publish_tab_behavior') == 'none') ? '' : 'display:none;',
-								'sites_tab_selector'		=> ($this->EE->config->item('sites_tab_behavior') == 'hover') ? 'hover' : 'active',
-								'sites_tab_display'			=> ($this->EE->config->item('sites_tab_behavior') == 'none') ? '' : 'display:block; visibility: visible;',
-								'sites_tab_ul_display'		=> ($this->EE->config->item('sites_tab_behavior') == 'none') ? '' : 'display:none;'
-							);
+			'publish_tab_selector'		=> ($ptb == 'hover') 	? 'hover' : 'active',
+			'publish_tab_display'		=> ($ptb == 'none') 	? '' : 'display:block; visibility: visible;',
+			'publish_tab_ul_display'	=> ($ptb == 'none') 	? '' : 'display:none;',
+			'sites_tab_selector'		=> ($stb == 'hover') 	? 'hover' : 'active',
+			'sites_tab_display'			=> ($stb == 'none') 	? '' : 'display:block; visibility: visible;',
+			'sites_tab_ul_display'		=> ($stb == 'none') 	? '' : 'display:none;'
+		);
 		
 		$stylesheet = $DSP->fetch_stylesheet();
 	
@@ -1201,7 +1301,7 @@ class Addon_builder_bridge {
 		
 		$item = (count($this->crumbs) == 1) ? TRUE : FALSE;
 		
-		$this->EE->load->helper('url');
+		ee()->load->helper('url');
 		
 		foreach($this->crumbs as $key => $value)
 		{
@@ -1211,8 +1311,7 @@ class Addon_builder_bridge {
 				
 				if (isset($value[1]))
 				{
-					$name = (APP_VER < 2.0) ? $DSP->anchor($value[1], $value[0]) : $this->EE->dsp->anchor($value[1], $value[0]);
-					
+					$name = "<a href='{$value[1]}'>{$value[0]}</a>";	
 				}
 				
 				$this->cached_vars['page_title'] = $value[0];
@@ -1239,7 +1338,7 @@ class Addon_builder_bridge {
 			{
 				if (is_array($value) && isset($value[1]))
 				{
-					$this->EE->cp->set_breadcrumb($value[1], $value[0]);
+					ee()->cp->set_breadcrumb($value[1], $value[0]);
 				}
 			}
 		}
@@ -1252,7 +1351,7 @@ class Addon_builder_bridge {
 		
 		if (APP_VER >= 2.0)
 		{
-			$this->EE->cp->set_variable('cp_page_title', $this->cached_vars['cp_page_title'] );
+			ee()->cp->set_variable('cp_page_title', $this->cached_vars['cp_page_title'] );
 		}
 		
 		/** --------------------------------------------
@@ -1366,9 +1465,7 @@ class Addon_builder_bridge {
 	 */
     
 	function column_exists( $column, $table )
-	{
-		global $DB;
-		
+	{		
 		if ( isset($this->cache['column_exists'][$table][$column]))
 		{
 			return $this->cache['column_exists'][$table][$column];
@@ -1378,7 +1475,7 @@ class Addon_builder_bridge {
 		/**	Check for columns in tags table
 		/** ----------------------------------------*/
 		
-		$query	= $this->EE->db->query( "DESCRIBE `".$this->EE->db->escape_str( $table )."` `".$this->EE->db->escape_str( $column )."`" );
+		$query	= ee()->db->query( "DESCRIBE `".ee()->db->escape_str( $table )."` `".ee()->db->escape_str( $column )."`" );
 		
 		if ( $query->num_rows > 0 )
 		{
@@ -1432,7 +1529,7 @@ class Addon_builder_bridge {
 	
 		if ( ! is_dir($path))
 		{
-			$dirs = explode('/', trim($this->EE->functions->remove_double_slashes($path), '/'));
+			$dirs = explode('/', trim(ee()->functions->remove_double_slashes($path), '/'));
 			
 			$path = '/';
 			
@@ -1493,10 +1590,11 @@ class Addon_builder_bridge {
 	 
 	 * @access	public
 	 * @param	string		$url - The URI that we are fetching
+	 * @param	array		$post - The POST array we are sending
 	 * @return	string
 	 */
     
-	function fetch_url($url)
+	function fetch_url($url, $post = array())
     {
     	$data = '';
     	
@@ -1504,7 +1602,7 @@ class Addon_builder_bridge {
         /**  file_get_contents()
         /** --------------------------------------------*/
     	
-    	if ((bool) @ini_get('allow_url_fopen') !== FALSE)
+    	if ((bool) @ini_get('allow_url_fopen') !== FALSE AND empty($post))
 		{
 			if ($data = @file_get_contents($url))
 			{
@@ -1527,6 +1625,22 @@ class Addon_builder_bridge {
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
 			}
 			
+			//	Are we posting?
+			if ( ! empty( $post ) )
+			{
+				$str	= '';
+				
+				foreach ( $post as $key => $val )
+				{
+					$str	.= urlencode( $key ) . "=" . urlencode( $val ) . "&";
+				}
+				
+				$str	= substr( $str, 0, -1 );
+			
+				curl_setopt( $ch, CURLOPT_POST, TRUE );
+				curl_setopt( $ch, CURLOPT_POSTFIELDS, $str );
+			}
+			
 			curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 			curl_setopt($ch, CURLOPT_TIMEOUT, 15);
@@ -1541,9 +1655,9 @@ class Addon_builder_bridge {
 			}
 		}
 		
-		/** --------------------------------------------
-        /**  fsockopen() - Last but only slightly least...
-        /** --------------------------------------------*/
+		// --------------------------------------------
+        //  fsockopen() - Last but only slightly least...
+        // --------------------------------------------
 		
 		$parts	= parse_url($url);
 		$host	= $parts['host'];
@@ -1562,10 +1676,33 @@ class Addon_builder_bridge {
 
 		if (is_resource($fp))
 		{
-			fputs ($fp, "GET ".$path." HTTP/1.0\r\n" ); 
-			fputs ($fp, "Host: ".$host . "\r\n" ); 
-			fputs ($fp, "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1)\r\n");
-			fputs ($fp, "Connection: close\r\n\r\n");
+			$getpost	= ( ! empty( $post ) ) ? 'POST ': 'GET ';
+		
+			fputs($fp, $getpost.$path." HTTP/1.0\r\n" ); 
+			fputs($fp, "Host: ".$host . "\r\n" );
+			
+			if ( ! empty( $post ) )
+			{
+				$str	= '';
+				
+				foreach ( $post as $key => $val )
+				{
+					$str	.= urlencode( $key ) . "=" . urlencode( $val ) . "&";
+				}
+				
+				$str	= substr( $str, 0, -1 );
+
+				fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n");
+				fputs($fp, "Content-length: " . strlen( $str ) . "\r\n");
+			}
+			
+			fputs($fp, "User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1)\r\n");
+			fputs($fp, "Connection: close\r\n\r\n");
+			
+			if ( ! empty( $post ) )
+			{
+				fputs($fp, $str . "\r\n\r\n");
+			}
 			
 			/* ------------------------------
 			/*  This error suppression has to do with a PHP bug involving
@@ -1674,7 +1811,7 @@ class Addon_builder_bridge {
 		
 		if (substr($file, -1) == '/' OR is_dir($file))
 		{
-			return $this->is_really_writable(rtrim($file, '/').'/'.uniqid(mt_rand()), TRUE);
+			return self::is_really_writable(rtrim($file, '/').'/'.uniqid(mt_rand()), TRUE);
 		}
 		
 		if (($fp = @fopen($file, 'ab')) === FALSE)
@@ -1707,14 +1844,12 @@ class Addon_builder_bridge {
 	 */
 	
 	function check_secure_forms()
-    {
-        global $DB, $IN, $PREFS;
-        
-		/**	----------------------------------------
-		/**	 Secure forms?
-		/**	----------------------------------------*/
+    {        
+		//	----------------------------------------
+		//	 Secure forms?
+		//	----------------------------------------
       
-        if ( $this->EE->config->item('secure_forms') == 'y' )
+        if ( ee()->config->item('secure_forms') == 'y' )
         {
         	if ( ! isset($_POST['XID']) && ! isset($_GET['XID']))
         	{
@@ -1723,22 +1858,31 @@ class Addon_builder_bridge {
         	
         	$hash = (isset($_POST['XID'])) ? $_POST['XID'] : $_GET['XID'];
         	
-            $query	= $this->EE->db->query("SELECT COUNT(*) AS count FROM exp_security_hashes 
-            					  WHERE hash = '".$this->EE->db->escape_str($hash)."' 
-            					  AND ip_address = '".$this->EE->db->escape_str($this->EE->input->IP)."'
-            					  AND date > UNIX_TIMESTAMP()-7200");
+            $query	= ee()->db->query(
+				"SELECT COUNT(*) AS count 
+				 FROM 	exp_security_hashes 
+            	 WHERE 	hash = '" . ee()->db->escape_str($hash) . "' 
+            	 AND 	ip_address = '" . ee()->db->escape_str(ee()->input->ip_address()) . "'
+				 AND	date > UNIX_TIMESTAMP()-7200"
+			);
         
             if ($query->row('count') == 0)
             {
 				return FALSE;
 			}
                                 
-			$this->EE->db->query("DELETE FROM exp_security_hashes WHERE (hash='".$this->EE->db->escape_str($hash)."' AND ip_address = '".$this->EE->db->escape_str($this->EE->input->IP)."') OR date < UNIX_TIMESTAMP()-7200");
+			ee()->db->query(
+				"DELETE FROM exp_security_hashes 
+				 WHERE 		 (	  hash = '".ee()->db->escape_str($hash)."' 
+				 			  AND ip_address = '" . ee()->db->escape_str(ee()->input->ip_address()) . "'
+				 ) 
+				 OR 		 date < UNIX_TIMESTAMP()-7200"
+			);
         }
         
-		/**	----------------------------------------
-		/**	 Return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	 Return
+		//	----------------------------------------
 		
 		return TRUE;
     }
@@ -1757,7 +1901,7 @@ class Addon_builder_bridge {
 	 * No longer do you have to give your <form> tag an id="target" attrbiute, you can specify your own ID:
 	 *		- <script type="text/javascript">create_magic_checkboxes('delete_cached_uris_form');</script>
 	 *		- Or, if you specify no ID, it will find every <table> in the document with a class of 
-	 		'magic_checkbox_table' and create the magic checkboxes automatically
+	 *		'magic_checkbox_table' and create the magic checkboxes automatically
 	 * Also, it fixes that annoying problem where it was very difficult to easily select text in a row.
 	 *
 	 *
@@ -1843,13 +1987,13 @@ class Addon_builder_bridge {
 	 */	
 	function allowed_group($which = '')
 	{
-		if ( is_object($this->EE->cp))
+		if ( is_object(ee()->cp))
 		{
-			return $this->EE->cp->allowed_group($which);
+			return ee()->cp->allowed_group($which);
 		}
 		else
 		{
-			return $this->EE->display->allowed_group($which);
+			return ee()->display->allowed_group($which);
 		}
 	}
 	/* END allowed_group() */
@@ -1872,7 +2016,7 @@ class Addon_builder_bridge {
 		}
 		else
 		{
-			$this->EE->display->error_message($which);
+			ee()->display->error_message($which);
 		}
 	}
 	/* END error_message() */
@@ -1934,8 +2078,482 @@ class Addon_builder_bridge {
 		}
     }
     /* END check_yes() */
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 *	json_encode
+	 *
+	 *	@access		public
+	 *	@param		object
+	 *	@return		string
+	 */
+
+    public function json_encode($data)
+    {
+		if (function_exists('json_encode'))
+		{
+			return json_encode($data);
+		}
+		
+		if ( ! class_exists('Services_JSON'))
+		{
+			require_once(PATH_BRIDGE . 'third_party/JSON.php');
+		}
+		
+		if ( ! is_object($this->json))
+		{
+			$this->json = new Services_JSON();
+		}
+		
+		return $this->json->encode($data);
+    }
+    /* END json_encode() */
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 *	json_decode
+	 *
+	 *	@access		public
+	 *	@param		string
+	 *	@return		object
+	 */
+
+    public function json_decode($data)
+    {
+		if (function_exists('json_decode'))
+		{
+			return json_decode($data);
+		}
+		
+		if ( ! class_exists('Services_JSON'))
+		{
+			require_once(PATH_BRIDGE . 'third_party/JSON.php');
+		}
+		
+		if ( ! is_object($this->json))
+		{
+			$this->json = new Services_JSON();
+		}
+		
+		return $this->json->decode($data);
+    }
+    // END json_decode()
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 *	Pagination for all versions front-end and back
+	 *
+	 *	* = optional
+	 *	$input_data = array(
+	 *		'sql'					=> '', 
+	 *		'total_results'			=> '', 
+	 *		*'url_suffix' 			=> '',
+	 *		'tagdata'				=> ee()->TMPL->tagdata,
+	 *		'limit'					=> '',
+	 *		*'offset'				=> ee()->TMPL->fetch_param('offset'),
+	 *		*'query_string_segment'	=> 'P',
+	 *		'uri_string'			=> ee()->uri->uri_string,
+	 *		*'current_page'			=> 0
+	 *		*'pagination_config'	=> array()
+	 *	);
+	 *
+	 *	@access		public
+	 *	@param		array
+	 *	@return		array
+	 */
+
+	function universal_pagination( $input_data )
+	{	
+	    // -------------------------------------
+	    //	prep input data
+		// -------------------------------------
+
+		//set defaults for optional items
+		$input_defaults	= array(
+			'url_suffix' 			=> '',
+			'query_string_segment' 	=> 'P',
+			'offset'				=> 0,
+			'pagination_page'		=> 0,
+			'pagination_config'		=> array(),
+			'sql'					=> '',
+			'tagdata'				=> '',
+			'uri_string'			=> '',
+			'paginate_prefix'		=> ''
+		);
+
+		//using query strings?
+		$use_query_strings 				= (REQ == 'CP' OR ee()->config->item('enable_query_strings'));
+
+		//array2 overwrites any duplicate key from array1
+		$input_data 					= array_merge($input_defaults, $input_data);
+
+		//make sure there is are surrounding slashes.
+		$input_data['uri_string']		= '/' . trim($input_data['uri_string'], '/') . '/';
+
+		//shortcuts
+		$config							= $input_data['pagination_config'];		 
+		$p								= $input_data['query_string_segment'];
+		$config['query_string_segment'] = $input_data['query_string_segment'];
+		$config['page_query_string']	= $use_query_strings;
+				
+		//current page
+		if ( ! $use_query_strings AND preg_match("/$p(\d+)/s", $input_data['uri_string'], $match) )
+		{		
+			if ( $input_data['pagination_page'] == 0 AND is_numeric($match[1]) )
+			{
+				$input_data['pagination_page'] 	= $match[1];
+				
+				//remove page from uri string, query_string, and uri_segments
+				$input_data['uri_string'] 		= ee()->functions->remove_double_slashes(
+					str_replace($p . $match[1] , '', $input_data['uri_string'] )
+				);
+			}
+		}
+		else if ( $use_query_strings === FALSE)
+		{
+			if ( ! is_numeric($input_data['pagination_page']) )
+			{
+				$input_data['pagination_page'] = 0;
+			}
+		}
+		else if ( ! in_array(ee()->input->get_post($input_data['query_string_segment']), array(FALSE, '')))
+		{
+			$input_data['pagination_page'] = ee()->input->get_post($input_data['query_string_segment']);
+		}
+
+		//this prevents the CI pagination class from 
+		//trying to find the number itself... 
+		//why isn't that an option?
+		$config['uri_segment'] = 1000;
+
+	    // -------------------------------------
+	    //	prep return data
+		// -------------------------------------
+
+		$return_data 	= array(		
+			'paginate'				=> FALSE,	 
+			'paginate_tagpair_data'	=> '',
+			'current_page'			=> 0,		
+			'total_pages'			=> 0,
+			'page_count'			=> '',
+			'pagination_links'		=> '',
+			'base_url'				=> '',
+			'page_next'				=> '',
+			'page_previous'			=> '',
+			'pagination_page'		=> $input_data['pagination_page'],
+			'tagdata'				=> $input_data['tagdata'],
+			'sql'					=> $input_data['sql'],
+		);
+
+	    // -------------------------------------
+	    //	Begin pagination check
+		// -------------------------------------
+
+		if (REQ == 'CP' OR 
+				(strpos( $return_data['tagdata'], LD . $input_data['paginate_prefix'] . 'paginate' ) !== FALSE OR 
+				 strpos( $return_data['tagdata'], LD . 'paginate' ) !== FALSE) 
+			)
+		{
+			$return_data['paginate'] = TRUE;
+
+			//has tags?
+			if ($input_data['paginate_prefix'] != '' AND preg_match( 
+					"/" . LD . $input_data['paginate_prefix'] . "paginate" . RD . "(.+?)" . 
+						  LD . preg_quote(T_SLASH, '/') . $input_data['paginate_prefix'] . "paginate" . RD . "/s", 
+					$return_data['tagdata'], 
+					$match
+				))
+			{			
+				$return_data['paginate_tagpair_data']	= $match[1];
+				$return_data['tagdata'] 				= str_replace( $match[0], '', $return_data['tagdata'] );
+			}
+		
+			//prefix comes first
+			else if (preg_match( 
+					"/" . LD . "paginate" . RD . "(.+?)" . LD . preg_quote(T_SLASH, '/') . "paginate" . RD . "/s", 
+					$return_data['tagdata'], 
+					$match
+				))
+			{			
+				$return_data['paginate_tagpair_data']	= $match[1];
+				$return_data['tagdata'] 				= str_replace( $match[0], '', $return_data['tagdata'] );
+			}
+
+			// ----------------------------------------
+			//  Calculate total number of pages
+			// ----------------------------------------
+
+			$return_data['current_page'] 	= floor($input_data['pagination_page'] / $input_data['limit']) + 1;	
+			$return_data['total_pages']		= ceil($input_data['total_results'] / $input_data['limit']);
+			$return_data['page_count'] 		= ee()->lang->line('page') 		. ' ' . 
+										 	  $return_data['current_page'] 	. ' ' . 
+										 	  ee()->lang->line('of') 		. ' ' . 
+										 	  $return_data['total_pages'];
+
+			// ----------------------------------------
+			//  Do we need pagination?
+			// ----------------------------------------
+
+			if ( $input_data['total_results'] > $input_data['limit'] )
+			{
+				if ( ! isset( $config['base_url'] )  )
+				{
+					$config['base_url']			= ee()->functions->create_url(
+						$input_data['uri_string'] . $input_data['url_suffix'], 
+						FALSE, 
+						0
+					);
+				}
+	
+				$config['total_rows'] 	= $input_data['total_results'];
+				$config['per_page']		= $input_data['limit'];
+				$config['cur_page']		= $input_data['pagination_page'];
+
+				ee()->load->library('pagination');
+
+				ee()->pagination->initialize($config);
+
+				$return_data['pagination_links']		= ee()->pagination->create_links();
+
+				$return_data['base_url']				= ee()->pagination->base_url;
+
+				//fix links if not query strings
+				if ( ! $use_query_strings )
+				{					
+					$return_data['pagination_links']		= preg_replace( 
+						"/" . preg_quote($return_data['base_url'], '/') . 
+										"([0-9]+)(?:" . preg_quote(T_SLASH, '/') . ")?/s",
+						rtrim( $return_data['base_url'] . $p . "$1", '/') . '/',
+						$return_data['pagination_links']
+					);
+				}
+
+				// ----------------------------------------
+				//  Prepare next_page and previous_page variables
+				// ----------------------------------------
+
+				//next page?
+				if ( (($return_data['total_pages'] * $input_data['limit']) - $input_data['limit']) >
+				 	 $return_data['pagination_page'])
+				{						
+					$return_data['page_next'] = $return_data['base_url'] . 
+						($use_query_strings ? '' : $p) . 
+						($input_data['pagination_page'] + $input_data['limit']) . '/';
+				}
+
+				//previous page?
+				if (($return_data['pagination_page'] - $input_data['limit'] ) >= 0) 
+				{						
+					$return_data['page_previous'] = $return_data['base_url'] . 
+						($use_query_strings ? '' : $p) . 
+						($input_data['pagination_page'] - $input_data['limit']) . '/';
+				}
+			}
+		}
+
+		//??
+		$return_data['current_page'] 	+= $input_data['offset'];
+
+		$return_data['sql'] 			.= 	' LIMIT ' . $return_data['pagination_page'] . 
+											', ' . $input_data['limit'];
+
+		return $return_data;
+	}
+	//	End universal_pagination	
+
+
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Create XID
+	 *
+	 * This creates a new XID hash in the DB for usage.
+	 *
+	 * @access	public
+	 * @return	string
+	 */
+	 
+	public function create_xid()
+	{
+		$sql 		= "INSERT INTO exp_security_hashes (date, ip_address, hash) VALUES";
+
+		$hash 		= ee()->functions->random('encrypt');
+		$sql 		.= "(UNIX_TIMESTAMP(), '". ee()->input->ip_address() . "', '" . $hash . "')";
+
+		self::cacheless_query($sql);
+			
+		return $hash;
+	}
+	// END Create XID
+
+
+	// --------------------------------------------------------------------
+	
+	/**
+	 * cacheless_query
+	 *
+	 * this sends a query to the db non-cached
+	 *
+	 * @access	public
+	 * @param	string	sql to query
+	 * @return	object	query object
+	 */
+	public function cacheless_query($sql)
+	{
+		$reset = FALSE;
+		
+		// Disable DB caching if it's currently set
+		
+		if (ee()->db->cache_on == TRUE)
+		{
+			ee()->db->cache_off();
+			$reset = TRUE;
+		}
+		
+		$query = ee()->db->query($sql);
+
+		// Re-enable DB caching
+		if ($reset == TRUE)
+		{
+			ee()->db->cache_on();			
+		}
+		
+		return $query;
+	}
+	// END cacheless_query
+
+
+    // --------------------------------------------------------------------
+
+	/**
+	 * Implodes an Array and Hashes It
+	 *
+	 * @access	public
+	 * @return	string
+	 */
     
+	public function _imploder($arguments)
+    {
+    	return md5(serialize($arguments));
+    }
+    // END
+	
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * Prepare keyed result
+	 *
+	 * Take a query object and return an associative array. If $val is empty, 
+	 * the entire row per record will become the value attached to the indicated key.
+	 *
+	 * For example, if you do a query on exp_channel_titles and exp_channel_data 
+	 * you can use this to quickly create an associative array of channel entry 
+	 * data keyed to entry id. 
+	 *
+	 * @access	public
+	 * @return	mixed
+	 */
+    
+	public function prepare_keyed_result( $query, $key = '', $val = '' )
+    {
+    	if ( ! is_object( $query )  OR $key == '' ) return FALSE;
+    
+ 		// --------------------------------------------
+        //  Loop through query
+        // --------------------------------------------
+        
+        $data	= array();
+        
+        foreach ( $query->result_array() as $row )
+        {
+        	if ( isset( $row[$key] ) === FALSE ) continue;
+        	
+        	$data[ $row[$key] ]	= ( $val != '' AND isset( $row[$val] ) ) ? $row[$val]: $row;
+        }
+        
+        return ( empty( $data ) ) ? FALSE : $data;
+	}
+	// END prepare_keyed_result
+	
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * returns the truthy or last arg i
+	 *
+	 * @access	public
+	 * @param	array 	args to be checked against
+	 * @param	mixed	bool or array of items to check against
+	 * @return	mixed
+	 */
+	public function either_or_base($args = array(), $test = FALSE)
+	{
+		foreach ($args as $arg)
+		{
+			//do we have an array of nots?
+			//if so, we need to be test for type
+			if ( is_array($test))
+			{
+				if ( ! in_array($arg, $test, TRUE) ) return $arg;
+			}
+			//is it implicit false?
+			elseif ($test)
+			{
+				if ($arg !== FALSE) return $arg;
+			}
+			//else just test for falsy
+			else
+			{
+				if ($arg) return $arg;
+			}
+		}
+
+		return end($args);
+	}
+	//END either_or_base
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * returns the truthy or last arg
+	 *
+	 * @access	public
+	 * @param	mixed	any number of arguments consisting of variables to be returned false
+	 * @return	mixed
+	 */
+	public function either_or()
+	{
+		$args = func_get_args();
+
+		return $this->either_or_base($args);
+	}
+	//END either_or
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * returns the non exact bool FALSE or last arg
+	 *
+	 * @access	public
+	 * @param	mixed	any number of arguments consisting of variables to be returned false
+	 * @return	mixed
+	 */
+	public function either_or_strict()
+	{
+		$args = func_get_args();
+
+		return $this->either_or_base($args, TRUE);
+	}
+	// END either_or_strict
+
 }
 /* END Addon_builder Class */
-
-?>

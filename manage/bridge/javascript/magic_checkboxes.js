@@ -10,7 +10,8 @@ function create_magic_checkboxes(table_id)
 		
 		for (var j = 0; j < pageTables.length; j++)
 		{
-			if (pageTables[j].className.indexOf('magic_checkbox_table') > -1)
+			if (pageTables[j].className.indexOf('magic_checkbox_table') > -1 ||
+				pageTables[j].className.indexOf('magicCheckboxTable') > -1)
 			{
 				create_magic_checkboxes(pageTables[j]);
 			}

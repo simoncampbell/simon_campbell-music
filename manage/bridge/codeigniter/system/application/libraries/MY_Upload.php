@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2009, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2010, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -64,6 +64,8 @@ class MY_Upload extends CI_Upload {
 		}
 	}
 	// END is_allowed_filetype()
+
+
 	
 	// --------------------------------------------------------------------
 	
@@ -86,6 +88,55 @@ class MY_Upload extends CI_Upload {
 		}
 	}
 	// END 	set_allowed_types()
+	
+	
+	// --------------------------------------------------------------------
+	
+	/**
+	 * do xss clean
+	 * this plugin makes sure that images do not get xss unless under very certain criteria
+	 * borrowed from CI 2.x mecurial repo
+	 *
+	 * @access	public
+	 * @return	bool
+	 */	
+	public function do_xss_clean()
+	{
+		$file = $this->upload_path.$this->file_name;
+		
+		if (filesize($file) == 0)
+		{
+			return FALSE;
+		}
+		
+		if (function_exists('memory_get_usage') && memory_get_usage() && ini_get('memory_limit') != '')
+		{
+			$current = ini_get('memory_limit') * 1024 * 1024;
+						
+			$new_memory = number_format(ceil(filesize($file) + $current), 0, '.', '');
+			
+			ini_set('memory_limit', $new_memory); // When an integer is used, the value is measured in bytes. - PHP.net
+		}
+
+		if (function_exists('getimagesize') && @getimagesize($file) !== FALSE)
+		{
+	        if (($file = @fopen($file, 'rb')) === FALSE) // "b" to force binary
+	        {
+				return FALSE; // Couldn't open the file, return FALSE
+	        }
+
+	        $opening_bytes = fread($file, 256);
+	        fclose($file);
+	
+			if ( ! preg_match('/<(a|body|head|html|img|plaintext|pre|script|table|title)[\s>]/i', $opening_bytes))
+			{
+				return TRUE; // its an image, no "triggers" detected in the first 256 bytes, we're good
+			}
+		}
+	
+		//do default
+		parent::do_xss_clean($types);
+	}
 	
 }
 

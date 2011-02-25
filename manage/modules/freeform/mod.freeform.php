@@ -1,218 +1,350 @@
-<?php
+<?php if ( ! defined('EXT')) exit('No direct script access allowed');
+ 
+ /**
+ * Solspace - Freeform
+ *
+ * @package		Solspace:Freeform
+ * @author		Solspace DevTeam
+ * @copyright	Copyright (c) 2008-2010, Solspace, Inc.
+ * @link		http://solspace.com/docs/addon/c/Freeform/
+ * @version		3.0.5
+ * @filesource 	./system/modules/freeform/
+ * 
+ */
+ 
+ /**
+ * Freeform - User Side
+ *
+ * @package 	Solspace:Freeform
+ * @author		Solspace DevTeam
+ * @filesource 	./system/modules/freeform/mod.freeform.php
+ */
 
-/*
-================================================================
-	Freeform
-	for EllisLab ExpressionEngine - by Solspace
-----------------------------------------------------------------
-	Credits: Mitchell Kimbrough, Chris Ruzin, Paul Burdick
-----------------------------------------------------------------
-	Copyright (c) 2008 - 2009 Solspace, Inc.
-	http://www.solspace.com/
-================================================================
-	THIS IS COPYRIGHTED SOFTWARE. PLEASE READ THE
-	LICENSE AGREEMENT.
-	http://www.solspace.com/license/
-----------------------------------------------------------------
-	This software is based upon and derived from
-	Ellislab ExpressionEngine software protected under
-	copyright dated 2005 - 2009. Please see
-	http://www.expressionengine.com/docs/license.html
-----------------------------------------------------------------
-	USE THIS SOFTWARE AT YOUR OWN RISK. SOLSPACE ASSUMES
-	NO WARRANTY OR LIABILITY FOR THIS SOFTWARE AS DETAILED
-	IN THE SOLSPACE LICENSE AGREEMENT.
-================================================================
-	File:			mod.freeform.php
-----------------------------------------------------------------
-	Version:		2.7.2
-----------------------------------------------------------------
-	Purpose:		Flexible entry form module
-----------------------------------------------------------------
-	Compatibility:	EE 1.6.7
-----------------------------------------------------------------
-	Updated:		2009-05-08
-================================================================
-*/
-
-
-if ( ! defined('EXT'))
+if (APP_VER < 2.0)
 {
-    exit('Invalid file request');
+	require_once PATH.'bridge/lib/addon_builder/module_builder.php';
 }
-    
-/**	----------------------------------------
-/**	Begin class
-/**	----------------------------------------*/
-
-class Freeform
+else
 {
-	var $UP;
+	require_once PATH_THIRD . 'bridge/lib/addon_builder/module_builder.php';
+}
+
+class Freeform extends Module_builder_bridge 
+{
+
+	var $return_data			= '';
+	                    		
+	var $disabled				= FALSE;
+                        		
+	var $UP;            		
+	                    		
+	var $dynamic				= TRUE;
+	var $multipart				= FALSE;
+	                    		
+	var $params_id				= 0;
+	var $entry_id				= 0;
+	var $upload_limit			= 3;
+	                    		
+	var $params_tbl				= 'exp_freeform_params';
+	                    		
+	var $params					= array();
+	var $data					= array();
+	var $upload					= array();
+	var $attachments			= array();
 	
-	var $dynamic		= TRUE;
-	var $multipart		= FALSE;
+	var $prefs					= array(); 
 	
-	var $params_id		= 0;
-	var $entry_id		= 0;
-	var $upload_limit	= 3;
-	
-	var $params_tbl		= 'exp_freeform_params';
-	
-	var $params			= array();
-	var $data			= array();
-	var $upload			= array();
-	var $attachments	= array();
-    
-    /**	----------------------------------------
-    /**	Constructor
-    /**	----------------------------------------*/
-	
+	var $upload_config			= array();
+
+    // --------------------------------------------------------------------
+
+	/**
+	 * Constructor
+	 *
+	 * @access	public
+	 * @return	null
+	 */
+	 
 	function Freeform()
-	{
+	{	
+		parent::Module_builder_bridge('freeform');
+		
+		//load helpers for everything
+		ee()->load->helper(array('text', 'form', 'url', 'security', 'string'));
+        ee()->load->library('email');
+
+        // -------------------------------------
+		//  Module Installed and Up to Date?
+		// -------------------------------------
+				
+		if ($this->database_version() == FALSE OR 
+			$this->version_compare($this->database_version(), '<', FREEFORM_VERSION))
+		{
+			$this->disabled = TRUE;
+			
+			trigger_error(ee()->lang->line('freeform_module_disabled'), E_USER_NOTICE);
+		}
+		
+		//get module preferences
+		$this->prefs = $this->data->get_prefs();
 	}
-	
-	/**	End constructor */
+	// END Freeform() 
 
 	
-    /**	----------------------------------------
-    /**	Submission Form
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * form submission
+	 *
+	 * @access	public
+	 * @return	output
+	 */
     
     function form()
     {
-        global $DB, $EXT, $FNS, $IN, $PREFS, $REGX, $SESS, $TMPL;
-        
-        $this->params['require_captcha']	= 'no';
+        $this->params['require_captcha']		= 'no';
     
-		/**	----------------------------------------
-        /**	Grab our tag data
-		/**	----------------------------------------*/
+		//	----------------------------------------
+        //	Grab our tag data
+		//	----------------------------------------
         
-        $tagdata						= $TMPL->tagdata;
+        $tagdata								= ee()->TMPL->tagdata;
         		
-		/**	----------------------------------------
-		/**	Set form name
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Set form name
+		//	----------------------------------------
 		
-		$this->params['form_name']		= ( $TMPL->fetch_param('form_name') !== FALSE && $TMPL->fetch_param('form_name') != '' ) ? $TMPL->fetch_param('form_name') : 'freeform_form';
+		$this->params['form_name']				= ( ee()->TMPL->fetch_param('form_name') !== FALSE 	AND 
+													ee()->TMPL->fetch_param('form_name') !=  '' 	  	) ?
+														ee()->TMPL->fetch_param('form_name') : 'freeform_form';
         		
-		/**	----------------------------------------
-		/**	Do we require IP address?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Allow form name to be overridden by 'collection'
+		//	----------------------------------------
 		
-		$this->params['require_ip']		= ($TMPL->fetch_param('require_ip')) ? $TMPL->fetch_param('require_ip') : '';
+		$this->params['form_name']				= ( ee()->TMPL->fetch_param('collection') !== FALSE 	AND 
+													ee()->TMPL->fetch_param('collection') !=  '' 	  	) ?
+														ee()->TMPL->fetch_param('collection') : $this->params['form_name'];
         		
-		/**	----------------------------------------
-		/**	Are we establishing any required fields?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Do we require IP address?
+		//	----------------------------------------
 		
-		$this->params['ee_required']	= ($TMPL->fetch_param('required')) ? $TMPL->fetch_param('required') : '' ;
+		$this->params['require_ip']				= (ee()->TMPL->fetch_param('require_ip')) ? 
+										   				ee()->TMPL->fetch_param('require_ip') : '';
         		
-		/**	----------------------------------------
-		/**	Are we notifying anyone?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Are we establishing any required fields?
+		//	----------------------------------------
 		
-		$this->params['ee_notify']		= ($TMPL->fetch_param('notify')) ? $TMPL->fetch_param('notify') : '' ;
+		$this->params['ee_required']			= (ee()->TMPL->fetch_param('required')) ? 
+														ee()->TMPL->fetch_param('required') : '' ;
         		
-		/**	----------------------------------------
-		/**	Send attachments?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Are we notifying anyone?
+		//	----------------------------------------
 		
-		$this->params['send_attachment']	= ($TMPL->fetch_param('send_attachment')) ? $TMPL->fetch_param('send_attachment') : '' ;
-        		
-		/**	----------------------------------------
-		/**	Send user email?
-		/**	----------------------------------------*/
+		$this->params['ee_notify']				= (ee()->TMPL->fetch_param('notify')) ? 
+														ee()->TMPL->fetch_param('notify') : '' ;
+														
+														
+        // ----------------------------------------------------------------------------------------
+		//  Start recipients
+		// ----------------------------------------------------------------------------------------
 		
-		$this->params['send_user_email']	= ($TMPL->fetch_param('send_user_email')) ? $TMPL->fetch_param('send_user_email') : '' ;
-        		
-		/**	----------------------------------------
-		/**	Send user attachments?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Do we allow dynamic tos?	
+		//	----------------------------------------
 		
-		$this->params['send_user_attachment']	= ($TMPL->fetch_param('send_user_attachment')) ? $TMPL->fetch_param('send_user_attachment') : '' ;
-        		
-		/**	----------------------------------------
-		/**	User email template
-		/**	----------------------------------------*/
+		$this->params['recipients']				= ( $this->check_yes(ee()->TMPL->fetch_param('recipients')) ) ? 'y': 'n';
+				
+		$this->params['recipient_limit']		= ( ee()->TMPL->fetch_param('recipient_limit') !== FALSE AND 
+													is_numeric( ee()->TMPL->fetch_param('recipient_limit') ) === TRUE) ?
+													 	ee()->TMPL->fetch_param('recipient_limit') : 
+																		$this->prefs['max_user_recipients'];
+
+		//	----------------------------------------
+		//	static recipients?
+		//	----------------------------------------
+																		
+		$this->params['static_recipients']		= ( 
+			! in_array(ee()->TMPL->fetch_param('recipient1'), array(FALSE, '')) 
+		);
+				
+		//preload list with usable info if so
+		$this->params['static_recipients_list'] 	= array();
 		
-		$this->params['user_email_template']	= ($TMPL->fetch_param('user_email_template')) ? $TMPL->fetch_param('user_email_template') : 'default' ;
-        		
-		/**	----------------------------------------
-		/**	Are we using a notification template?
-		/**	----------------------------------------*/
+		if ( $this->params['static_recipients'] )
+		{
+			$i = 1;
+			
+			while ( ! in_array(ee()->TMPL->fetch_param('recipient' . $i), array(FALSE, '')) )
+			{
+				$recipient = explode('|', ee()->TMPL->fetch_param('recipient' . $i));
+
+				//has a name?
+				if ( count($recipient) > 1)
+				{		
+					$recipient_name 	= trim($recipient[0]);
+					$recipient_email 	= trim($recipient[1]);
+				}
+				//no name, we assume its just an email 
+				//(though, this makes little sense, it needs a name to be useful)
+				else
+				{
+					$recipient_name 	= '';
+					$recipient_email 	= trim($recipient[0]);
+				}
+				
+				//add to list
+				$this->params['static_recipients_list'][$i] = array(
+					'name' 	=> $recipient_name, 
+					'email' => $recipient_email,
+					'key'	=> uniqid()
+				);
+				
+				$i++;
+			}
+		}
+
+		//	----------------------------------------
+		//	User recipient email template
+		//	----------------------------------------
+
+		$this->params['recipient_template']	= (ee()->TMPL->fetch_param('recipient_template')) ? 
+														ee()->TMPL->fetch_param('recipient_template') : 'default_template';
+														        		        		
+		//	----------------------------------------
+		//	Discard field contents?
+		//	----------------------------------------
 		
-		$this->params['template']		= ($TMPL->fetch_param('template')) ? str_replace(SLASH, '/', $TMPL->fetch_param('template')) : 'default_template' ;
-        		
-		/**	----------------------------------------
-		/**	Mailing lists?
-		/**	----------------------------------------*/
-		$mailinglist					= ( $TMPL->fetch_param('mailinglist') AND $TMPL->fetch_param('mailinglist') != '' ) ? $TMPL->fetch_param('mailinglist'): FALSE;
-        		
-		/**	----------------------------------------
-		/**	Mailing list opt in?
-		/**	----------------------------------------*/
+		$this->params['discard_field']			= (ee()->TMPL->fetch_param('discard_field')) ?
+		 											ee()->TMPL->fetch_param('discard_field'): '';
+
+        // ----------------------------------------------------------------------------------------
+		//  End recipients
+		// ----------------------------------------------------------------------------------------
+
+		//	----------------------------------------
+		//	Send attachments?
+		//	----------------------------------------
 		
-		$mailinglist_opt_in				= ( $TMPL->fetch_param('mailinglist_opt_in') AND $TMPL->fetch_param('mailinglist_opt_in') == 'no' ) ? TRUE: FALSE;
+		$this->params['send_attachment']		= (ee()->TMPL->fetch_param('send_attachment')) ? 
+														ee()->TMPL->fetch_param('send_attachment') : '' ;
         		
-		/**	----------------------------------------
-		/**	Are we redirecting on duplicate?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Send user email?
+		//	----------------------------------------
 		
-		$redirect_on_duplicate			= ($TMPL->fetch_param('redirect_on_duplicate')) ? str_replace(SLASH, '/', $TMPL->fetch_param('redirect_on_duplicate')) : FALSE;
+		$this->params['send_user_email']		= (ee()->TMPL->fetch_param('send_user_email')) ? 
+														ee()->TMPL->fetch_param('send_user_email') : '' ;
         		
-		/**	----------------------------------------
-		/**	Prevent duplicates on something specific
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Send user attachments?
+		//	----------------------------------------
 		
-		$this->params['prevent_duplicate_on']	= ($TMPL->fetch_param('prevent_duplicate_on')) ? $TMPL->fetch_param('prevent_duplicate_on') : '';
+		$this->params['send_user_attachment']	= (ee()->TMPL->fetch_param('send_user_attachment')) ? 
+														ee()->TMPL->fetch_param('send_user_attachment') : '' ;
         		
-		/**	----------------------------------------
-		/**	File upload directory
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	User email template
+		//	----------------------------------------
 		
-		$this->params['file_upload']	= ($TMPL->fetch_param('file_upload')) ? $TMPL->fetch_param('file_upload') : '';
+		$this->params['user_email_template']	= (ee()->TMPL->fetch_param('user_email_template')) ? 
+														ee()->TMPL->fetch_param('user_email_template') : 'default_template' ;
+														
+		//	----------------------------------------
+		//	Are we using a notification template?
+		//	----------------------------------------
+		
+		$this->params['template']				= (ee()->TMPL->fetch_param('template')) ? 
+														str_replace(SLASH, '/', ee()->TMPL->fetch_param('template')) : 
+														'default_template' ;
+        		
+		//	----------------------------------------
+		//	Mailing lists?
+		//	----------------------------------------
+		$mailinglist							= ( ee()->TMPL->fetch_param('mailinglist') AND 
+													ee()->TMPL->fetch_param('mailinglist') != '' ) ?
+														ee()->TMPL->fetch_param('mailinglist'): FALSE;
+        		
+		//	----------------------------------------
+		//	Mailing list opt in?
+		//	----------------------------------------
+		
+		$mailinglist_opt_in						= ( ee()->TMPL->fetch_param('mailinglist_opt_in') AND
+		 											$this->check_no(ee()->TMPL->fetch_param('mailinglist_opt_in')) ) ? TRUE : FALSE;
+        		
+		//	----------------------------------------
+		//	Are we redirecting on duplicate?
+		//	----------------------------------------
+		
+		$redirect_on_duplicate					= (ee()->TMPL->fetch_param('redirect_on_duplicate')) ? 
+														str_replace(SLASH, '/', 
+															ee()->TMPL->fetch_param('redirect_on_duplicate')) : FALSE;
+        		
+		//	----------------------------------------
+		//	Prevent duplicates on something specific
+		//	----------------------------------------
+		
+		$this->params['prevent_duplicate_on']	= (ee()->TMPL->fetch_param('prevent_duplicate_on')) ?
+		 												ee()->TMPL->fetch_param('prevent_duplicate_on') : '';
+        		
+		//	----------------------------------------
+		//	File upload directory
+		//	----------------------------------------
+		
+		$this->params['file_upload']			= (ee()->TMPL->fetch_param('file_upload')) ? 
+														ee()->TMPL->fetch_param('file_upload') : '';
     	
-		/**	----------------------------------------
-		/**	Sniff for fields of type 'file'
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Sniff for fields of type 'file'
+		//	----------------------------------------
 		
 		if ( preg_match_all( "/type=['|\"]?file['|\"]?/", $tagdata, $match ) )
 		{
-			$this->multipart	= TRUE;
+			$this->multipart				= TRUE;
 			$this->params['upload_limit']	= count( $match['0'] );
 		}
     
-        /**	----------------------------------------
-        /**	Grab custom member profile fields
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Grab custom member profile fields
+        //	----------------------------------------
         
-        $query		= $DB->query("SELECT m_field_id, m_field_name FROM exp_member_fields");
+        $query		= ee()->db->query(
+			"SELECT m_field_id, m_field_name 
+			 FROM 	exp_member_fields"
+		);
 
-		if ( $query->num_rows > 0 )
+		if ( $query->num_rows() > 0 )
 		{
-			foreach ($query->result as $row)
+			foreach ($query->result_array() as $row)
 			{ 
 				$mfields[$row['m_field_name']] = $row['m_field_id'];
 			}
 		}
 		
-        /**	End custom member fields */
+        //	End custom member fields 
         
     
-        /**	----------------------------------------
-        /**	Grab standard member profile fields
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Grab standard member profile fields
+        //	----------------------------------------
         
         $mdata		= array();
         
-        if ( $SESS->userdata['member_id'] != '0' )
+        if ( ee()->session->userdata['member_id'] != '0' )
         {        
-			$query		= $DB->query("SELECT * FROM exp_members WHERE member_id = '".$DB->escape_str($SESS->userdata['member_id'])."' LIMIT 1");
+			$query		= ee()->db->query(
+				"SELECT 	* 
+				 FROM 	exp_members 
+				 WHERE 	member_id = '" . ee()->db->escape_str(ee()->session->userdata['member_id']) . 
+			  "' LIMIT 1"
+			);
 	
-			if ( $query->num_rows > 0 )
+			if ( $query->num_rows() > 0 )
 			{
-				foreach ($query->result as $row)
+				foreach ($query->result_array() as $row)
 				{
 					foreach ( $row as $key => $val )
 					{
@@ -222,108 +354,123 @@ class Freeform
 			}
 		}
 		
-        /**	End standard member fields */
+        //	End standard member fields 
         
     
-        /**	----------------------------------------
-        /**	Grab custom member data
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Grab custom member data
+        //	----------------------------------------
         
-        if ( $SESS->userdata['member_id'] != '0' )
+        if ( ee()->session->userdata['member_id'] != '0' )
         {
-			$query		= $DB->query("SELECT * FROM exp_member_data WHERE member_id = '".$DB->escape_str($SESS->userdata['member_id'])."' LIMIT 1");
+			$query		= ee()->db->query(
+				"SELECT * 
+				 FROM 	exp_member_data 
+				 WHERE 	member_id = '" . 
+					ee()->db->escape_str(ee()->session->userdata['member_id']) . 
+			  "' LIMIT 1"
+			);
 
-			if ($query->num_rows > 0)
+			if ($query->num_rows() > 0)
 			{					
-				foreach ($query->result[0] as $key => $val)
+				foreach ($query->row() as $key => $val)
 				{ 
 					$mdata[$key] = $val;
 				}
 			}
 		}
 		
-        /**	End custom member data */
+        //	End custom member data 
         
         
-		/**	----------------------------------------
-		/**	Check for duplicate
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Check for duplicate
+		//	----------------------------------------
 		
-		if ( $SESS->userdata['member_id'] == '0' AND $IN->IP == '0.0.0.0' )
+		if ( ee()->session->userdata['group_id'] == 1 AND ee()->input->ip_address() == '0.0.0.0')
 		{
 			$duplicate	= FALSE;
 		}
 		else
 		{
 			//	Begin the query
-			$sql	= "SELECT count(*) AS count FROM exp_freeform_entries WHERE status != 'closed'";
+			$sql	= "	SELECT 	count(*) AS	count 
+					   	FROM 	exp_freeform_entries 
+						WHERE 	status != 'closed'";
 			
 			//	Handle form_name
 			if ( $this->params['form_name'] != '' )
 			{
-				$sql	.= " AND form_name = '".$DB->escape_str($this->params['form_name'])."'";
+				$sql	.= " AND form_name = '" . ee()->db->escape_str($this->params['form_name']) . "'";
 			}
 			
 			//	Identify them
-			if ( $SESS->userdata['member_id'] != '0' )
+			if ( ee()->session->userdata['member_id'] != '0' )
 			{
-				$sql	.= " AND author_id = '".$DB->escape_str($SESS->userdata['member_id'])."'";
+				$sql	.= " AND author_id = '" . 
+						   ee()->db->escape_str(ee()->session->userdata['member_id']) . "'";
 			}
-			elseif ( $IN->IP )
+			elseif ( ee()->input->ip_address() )
 			{
-				$sql	.= " AND ip_address = '".$DB->escape_str($IN->IP)."'";
+				$sql	.= " AND ip_address = '" . 
+				           ee()->db->escape_str(ee()->input->ip_address()) . "'";
 			}
 			
 			//	Query
-			$query	= $DB->query( $sql );
+			$query	= ee()->db->query( $sql );
 			
-			$duplicate	= ( $query->row['count'] > 0 ) ? TRUE: FALSE;
+			$duplicate	= ( $query->row('count') > 0 ) ? TRUE: FALSE;
 		}
 		
 		
-		/**	----------------------------------------
-		/**	Redirect on duplicate
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Redirect on duplicate
+		//	----------------------------------------
 		
 		if ( $redirect_on_duplicate AND $duplicate )
 		{
-			$FNS->redirect( $FNS->create_url( $redirect_on_duplicate ) );
+			ee()->functions->redirect( ee()->functions->create_url( $redirect_on_duplicate ) );
 			exit;
 		}
 		
     
-        /**	----------------------------------------
-        /**	Parse conditional pairs
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Parse conditional pairs
+        //	----------------------------------------
         
         $cond['duplicate']		= ( $duplicate ) ? TRUE: FALSE;
         $cond['not_duplicate']	= ( ! $duplicate ) ? TRUE: FALSE;
-        $cond['captcha']		= ( $PREFS->ini('captcha_require_members') == 'y'  ||  ($PREFS->ini('captcha_require_members') == 'n' AND $SESS->userdata('member_id') == 0) ) ? TRUE: FALSE;
+        $cond['captcha']		= ( $this->check_yes(ee()->config->item('captcha_require_members'))  OR  
+									($this->check_no( ee()->config->item('captcha_require_members'))  AND 
+									 	  ee()->session->userdata('member_id') == 0 ) 
+								  ) ? TRUE: FALSE;
         
-		$tagdata	= $FNS->prep_conditionals( $tagdata, $cond );
+		$tagdata	= ee()->functions->prep_conditionals( $tagdata, $cond );
         
     
-        /**	----------------------------------------
-        /**	Parse variable pairs
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Parse variable pairs
+        //	----------------------------------------
         
 		$output	= '';
         
-		if ( preg_match( "/".LD."mailinglists.*?(backspace=[\"|'](\d+?)[\"|'])?".RD."(.*?)".LD.SLASH."mailinglists".RD."/s", $tagdata, $match ) )
+		if ( preg_match( "/" . LD . "mailinglists.*?(backspace=[\"|'](\d+?)[\"|'])?" . RD . "(.*?)" . 
+						 LD . preg_quote(T_SLASH, '/') . "mailinglists" . RD . "/s", $tagdata, $match ) )
 		{			
-			if ( $DB->table_exists('exp_mailing_lists') )
+			if ( ee()->db->table_exists('exp_mailing_lists') )
 			{
-				$query	= $DB->query( "SELECT * FROM exp_mailing_lists" );
+				$query	= ee()->db->query( "SELECT 	* 
+										    FROM 	exp_mailing_lists" );
 				
-				if ( $query->num_rows > 0 )
+				if ( $query->num_rows() > 0 )
 				{				
-					foreach ( $query->result as $row )
+					foreach ( $query->result_array() as $row )
 					{
 						$chunk	= $match['3'];
 						
 						foreach ( $row as $key => $val )
 						{
-							$chunk	= str_replace( LD.$key.RD, $val, $chunk );
+							$chunk	= str_replace( LD . $key . RD, $val, $chunk );
 						}
 						
 						$output	.= trim( $chunk )."\n";
@@ -343,17 +490,24 @@ class Freeform
         }
         elseif ( $mailinglist )
         {
-        	unset( $TMPL->tagparams['mailinglist'] );
+        	unset( ee()->TMPL->tagparams['mailinglist'] );
 			
-			if ( $DB->table_exists('exp_mailing_lists') )
+			if ( ee()->db->table_exists('exp_mailing_lists') )
 			{        	
-				$lists	= $DB->escape_str(implode( "','", preg_split( "/,|\|/" , $mailinglist ) ));
+				$lists	= ee()->db->escape_str(implode( "','", preg_split( "/,|\|/" , $mailinglist ) ));
 				
-				$query	= $DB->query( "SELECT list_id FROM exp_mailing_lists WHERE list_id IN ('".$lists."') OR list_name IN ('".$lists."')" );
+				$query	= ee()->db->query( 
+					"SELECT list_id 
+					 FROM 	exp_mailing_lists 
+					 WHERE 	list_id 
+					 IN 	('$lists') 
+					 OR 	list_name 
+					 IN 	('$lists')" 
+				);
 				
-				if ( $query->num_rows > 0 )
+				if ( $query->num_rows() > 0 )
 				{
-					foreach ( $query->result as $row )
+					foreach ( $query->result_array() as $row )
 					{
 						$output	.= '<input type="hidden" name="mailinglist[]" value="'.$row['list_id'].'" />'."\n";
 					}
@@ -362,191 +516,277 @@ class Freeform
 				$tagdata	.= '<div>'.$output.'</div>';
 			}
         }
+
+        //	----------------------------------------
+        //	Parse recipient lists
+        //	----------------------------------------
+
+		if ( $this->params['static_recipients'] AND preg_match( "/" . LD . "recipients" . RD . "(.*?)" . 
+						 LD . preg_quote(T_SLASH, '/') . "recipients" . RD . "/s", $tagdata, $match ) )
+		{
+			$repeater 		= $match[1];
+			
+			$output			= '';
+			
+			$recipient_list = $this->params['static_recipients_list'];
+			
+			for ( $i = 1, $l = count($recipient_list); $i <= $l; $i++ )
+			{					
+				$output	.= trim( 
+					str_replace( 
+						array( 
+							LD . "recipient_name" . RD, 	
+							LD . "recipient_value" . RD, 
+							LD . "count" . RD 
+						), 
+						array( 
+							$recipient_list[$i]['name'], 
+							$recipient_list[$i]['key'], 
+							$i 
+						),
+						$repeater
+					) 
+				)."\n";
+
+				//conditionals
+				$output	= ee()->functions->prep_conditionals( 
+					$output, 
+					array(
+						'recipient_email'  	=> TRUE,
+						'count'				=> $i,
+						'recipient_name'	=> ($recipient_list[$i]['name'] != '')
+					) 
+				);
+				
+			}
+				
+			$tagdata	= str_replace( $match['0'], $output, $tagdata );
+		}
     
-        /**	----------------------------------------
-        /**	Parse single variables
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Parse single variables
+        //	----------------------------------------
                 
-        foreach ($TMPL->var_single as $key => $val)
+        foreach (ee()->TMPL->var_single as $key => $val)
         {
-            /**	----------------------------------------
-            /**	parse {name}
-            /**	----------------------------------------*/
+
+            //	----------------------------------------
+            //	parse {recipient_name1}, {recipient_value1}
+            //	----------------------------------------
+
+			if  ( preg_match("/^recipient_([name|value]+)([0-9]+)$/", $key, $matches) )
+			{
+				if ( array_key_exists($matches[2], $this->params['static_recipients_list']) )
+				{
+					$tagdata	= ee()->TMPL->swap_var_single(
+						$key, 
+						($matches[1] == 'value') ? 
+							$this->params['static_recipients_list'][$matches[2]]['key'] : 
+							$this->params['static_recipients_list'][$matches[2]]['name'], 
+						$tagdata
+					);
+					
+					//parse conditionals using the data
+					$tagdata	= ee()->functions->prep_conditionals( 
+						$tagdata, 
+						array(
+							$key  => 	($matches[1] == 'value') ? 
+									$this->params['static_recipients_list'][$matches[2]]['key'] : 
+									$this->params['static_recipients_list'][$matches[2]]['name'],
+							'recipient' . $matches[2] => TRUE
+						) 
+					);
+				}
+			}
+	
+            //	----------------------------------------
+            //	parse {name}
+            //	----------------------------------------
             
             if ($key == 'name')
             {
-                $name		= ($SESS->userdata['screen_name'] != '') ? $SESS->userdata['screen_name'] : $SESS->userdata['username'];
+                $name		= (ee()->session->userdata['screen_name'] != '') 	? 
+								ee()->session->userdata['screen_name'] 		: 
+								ee()->session->userdata['username'];
             
-                $tagdata	= $TMPL->swap_var_single($key, $REGX->form_prep($name), $tagdata);
+                $tagdata	= ee()->TMPL->swap_var_single($key, form_prep($name), $tagdata);
             }
                     
-            /**	----------------------------------------
-            /**	parse {email}
-            /**	----------------------------------------*/
+            //	----------------------------------------
+            //	parse {email}
+            //	----------------------------------------
             
             if ($key == 'email')
             {
-                $email		= ( ! isset($_POST['email'])) ? $SESS->userdata['email'] : $_POST['email'];
+                $email		= ( ! ee()->input->post('email')) ? 
+									ee()->session->userdata['email'] : 
+									ee()->input->post('email');
               
-                $tagdata	= $TMPL->swap_var_single($key, $REGX->form_prep($email), $tagdata);
+                $tagdata	= ee()->TMPL->swap_var_single($key, form_prep($email), $tagdata);
             }
 
-            /**	----------------------------------------
-            /**	parse {url}
-            /**	----------------------------------------*/
+            //	----------------------------------------
+            //	parse {url}
+            //	----------------------------------------
             
             if ($key == 'url')
             {
-                $url	= ( ! isset($_POST['url'])) ? $SESS->userdata['url'] : $_POST['url'];
+                $url	= ( ! ee()->input->post('url')) ? 
+								ee()->session->userdata['url'] : 
+								ee()->input->post('url');
                 
                 if ($url == '')
                 {
                     $url = 'http://';
 				}
 
-                $tagdata = $TMPL->swap_var_single($key, $REGX->form_prep($url), $tagdata);
+                $tagdata = ee()->TMPL->swap_var_single($key, form_prep($url), $tagdata);
             }
 
-            /**	----------------------------------------
-            /**	parse {location}
-            /**	----------------------------------------*/
+            //	----------------------------------------
+            //	parse {location}
+            //	----------------------------------------
             
             if ($key == 'location')
             {
-                $location	= ( ! isset($_POST['location'])) ? $SESS->userdata['location'] : $_POST['location'];
+                $location	= ( ! ee()->input->post('location')) ? 
+									ee()->session->userdata['location'] : ee()->input->post('location');
 
-                $tagdata	= $TMPL->swap_var_single($key, $REGX->form_prep($location), $tagdata);
+                $tagdata	= ee()->TMPL->swap_var_single($key, form_prep($location), $tagdata);
             }
             
-            /**	----------------------------------------
-            /**	parse {captcha}
-            /**	----------------------------------------*/
+            //	----------------------------------------
+            //	parse {captcha}
+            //	----------------------------------------
 
 			if ( preg_match("/({captcha})/", $tagdata) )
 			{
-				$tagdata	= preg_replace("/{captcha}/", $FNS->create_captcha(), $tagdata);
+				$tagdata	= preg_replace("/{captcha}/", ee()->functions->create_captcha(), $tagdata);
 				$this->params['require_captcha']	= 'yes';
 			}
                 
-			/**	----------------------------------------
-			/**	parse custom member fields
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	parse custom member fields
+			//	----------------------------------------
 			
 			if ( isset( $mfields[$key] ) )
 			{
 				if ( isset( $mdata[$key] ) )
 				{
-					$tagdata = $TMPL->swap_var_single($key, $mdata[$key], $tagdata);
+					$tagdata = ee()->TMPL->swap_var_single($key, $mdata[$key], $tagdata);
 				}
 				//	If a custom member field is set
 				elseif ( isset( $mdata['m_field_id_'.$mfields[$key]] ) )
 				{
-					$tagdata = $TMPL->swap_var_single( $key,  $mdata['m_field_id_'.$mfields[$key]], $tagdata );
+					$tagdata = ee()->TMPL->swap_var_single( $key,  $mdata['m_field_id_'.$mfields[$key]], $tagdata );
 				}
 				else
 				{
-					$tagdata = $TMPL->swap_var_single($key, '', $tagdata);
+					$tagdata = ee()->TMPL->swap_var_single($key, '', $tagdata);
 				}
 			}
         }
         		
-		/**	----------------------------------------
-		/**	Do we have a return parameter?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Do we have a return parameter?
+		//	----------------------------------------
 		
-		$return	= ( $TMPL->fetch_param('return') ) ? $TMPL->fetch_param('return'): '';
+		$return	= ( ee()->TMPL->fetch_param('return') ) ? ee()->TMPL->fetch_param('return'): '';
         
-        /**	----------------------------------------
-        /**	Create form
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Create form
+        //	----------------------------------------
                
         $hidden = array(
-						'ACT'					=> $FNS->fetch_action_id('Freeform', 'insert_new_entry'),
-						'URI'					=> ($IN->URI == '') ? 'index' : $IN->URI,
-						'XID'					=> ( ! isset($_POST['XID'])) ? '' : $_POST['XID'],
-						'status'				=> ( $TMPL->fetch_param('status') !== FALSE AND $TMPL->fetch_param('status') == 'closed' ) ? 'closed' : 'open',
-						'return'				=> $this->_chars_decode(str_replace(SLASH, '/', $return)),
-						'redirect_on_duplicate'	=> $redirect_on_duplicate
-					  );
+			'ACT'					=> ee()->functions->fetch_action_id('Freeform', 'insert_new_entry'),
+			'URI'					=> (ee()->uri->uri_string == '') ? 'index' : ee()->uri->uri_string,
+			'XID'					=> ( ! ee()->input->post('XID')) ? '' : ee()->input->post('XID'),
+			'status'				=> ( ee()->TMPL->fetch_param('status') !== FALSE 	AND 
+										 ee()->TMPL->fetch_param('status') == 'closed' ) ? 
+											'closed' : 'open',
+			'return'				=> $this->_chars_decode(str_replace(SLASH, '/', $return)),
+			'redirect_on_duplicate'	=> $redirect_on_duplicate
+		);
                            
-        // unset( $TMPL->tagparams['notify'] );
+        // unset( ee()->TMPL->tagparams['notify'] );
                               
-		// $hidden	= array_merge( $hidden, $TMPL->tagparams );
+		// $hidden	= array_merge( $hidden, ee()->TMPL->tagparams );
 		
 		if ( $mailinglist_opt_in )
 		{
 			$hidden['mailinglist_opt_in'] = 'no';
 		}
     	
-		/**	----------------------------------------
-		/**	Create form
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Create form
+		//	----------------------------------------
 		
 		$this->data					= $hidden;
 		
-		$this->data['RET']			= (isset($_POST['RET'])) ? $_POST['RET'] : $FNS->fetch_current_uri();;
-		
+		$this->data['RET']			= ee()->input->post('RET') ? 
+											ee()->input->post('RET') : ee()->functions->fetch_current_uri();
+
 		$this->data['form_name']	= $this->params['form_name'];
-		
-		$this->data['id']			= ( $TMPL->fetch_param('form_id') ) ? $TMPL->fetch_param('form_id'): 'freeform';
-		
+				
 		$this->data['tagdata']		= $tagdata;
     	
-		/**	----------------------------------------
-		/**	Return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Return
+		//	----------------------------------------
 		
 		$r	= $this->_form();
 		
-		/**	----------------------------------------
-		/**	Add class
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Add class
+		//	----------------------------------------
 		
-		if ( $class = $TMPL->fetch_param('form_class') )
+		if ( $class = ee()->TMPL->fetch_param('form_class') )
 		{
-			$r	= str_replace( "<form", "<form class=\"".$class."\"", $r );
+			$r	= str_replace( "<form", "<form class=\"$class\"", $r );
 		}
 		
-		/**	----------------------------------------
-		/**	Add title
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Add title
+		//	----------------------------------------
 		
-		if ( $form_title = $TMPL->fetch_param('form_title') )
+		if ( $form_title = ee()->TMPL->fetch_param('form_title') )
 		{
 			$r	= str_replace( "<form", "<form title=\"".htmlspecialchars($form_title)."\"", $r );
 		}
 		
-		/**	----------------------------------------
-		/**	'freeform_module_form_end' hook.
-		/**	----------------------------------------
-		/*	This allows developers to change the
-		/*	form before output.
-        /**	----------------------------------------*/
+		//	----------------------------------------
+		//	'freeform_module_form_end' hook.
+		//	 - This allows developers to change the form before output.
+        //	----------------------------------------
         
-		//if (isset($EXT->extensions['freeform_module_form_end']))
-		if ($EXT->active_hook('freeform_module_form_end') === TRUE)
+		if (ee()->extensions->active_hook('freeform_module_form_end') === TRUE)
 		{
-			$r = $EXT->call_extension('freeform_module_form_end', $r);
-			if ($EXT->end_script === TRUE) return;
+			$r = ee()->extensions->universal_call('freeform_module_form_end', $r);
+			if (ee()->extensions->end_script === TRUE) return;
 		}
-		
-        /**	----------------------------------------*/
-        
+        //	----------------------------------------
+                		
 		//return str_replace('&#47;', '/', $r);
 		//return $this->_chars_decode($r);
+		
+		//uh, so it seems that EE needs these to be {&#47;exp: to work
 		return $r;
     }
     
-    /**	End form */
+    //	End form 
     
-    
-    /**	----------------------------------------
-    /**	Insert new entry
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * insert new entry to db
+	 *
+	 * @access	public
+	 * @return	null
+	 */
 
     function insert_new_entry()
     {
-        global $DB, $EXT, $FNS, $IN, $LANG, $LOC, $OUT, $PREFS, $REGX, $SESS;
+
     
         $default	= array('name', 'email');
         
@@ -555,6 +795,8 @@ class Freeform
         $fields		= array();
         
         $entry_id	= '';
+
+		$msg		= array();
         
         foreach ($default as $val)
         {
@@ -564,85 +806,94 @@ class Freeform
 			}
         }        
                
-        /**	----------------------------------------
-        /**	Fetch the freeform language pack
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Fetch the freeform language pack
+        //	----------------------------------------
         
-        $LANG->fetch_language_file('freeform');        
+        ee()->lang->loadfile('freeform');        
                 
-        /**	----------------------------------------
-        /**	Is the user banned?
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Is the user banned?
+        //	----------------------------------------
         
-        if ($SESS->userdata['is_banned'] == TRUE)
+        if (ee()->session->userdata['is_banned'] == TRUE)
         {
-        	return $OUT->show_user_error('general', array($LANG->line('not_authorized')));
+        	return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
         }
                 
-        /**	----------------------------------------
-        /**	Is the IP address and User Agent required?
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Is the IP address and User Agent required?
+        //	----------------------------------------
                 
-        if ($this->_param('require_ip') == 'yes')
+        if ( $this->check_yes($this->_param('require_ip')) )
         {
-        	if ($IN->IP == '0.0.0.0')
+        	if (ee()->session->userdata['group_id'] != 1 AND ee()->input->ip_address() == '0.0.0.0')
         	{            
-            	return $OUT->show_user_error('general', array($LANG->line('not_authorized')));
+            	return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
         	}        	
         }
         
-        /**	----------------------------------------
-		/**	Is the nation of the user banned?
-        /**	----------------------------------------*/
+        //	----------------------------------------
+		//	Is the nation of the user banned?
+        //	----------------------------------------
         
-		$SESS->nation_ban_check();
+		ee()->session->nation_ban_check();
         
-        /**	----------------------------------------
-        /**	Blacklist/Whitelist Check
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Blacklist/Whitelist Check
+        //	----------------------------------------
         
-        if ($IN->blacklisted == 'y' && $IN->whitelisted == 'n')
+        if ($this->check_yes(ee()->blacklist->blacklisted) && $this->check_no(ee()->blacklist->whitelisted))
         {
-        	return $OUT->show_user_error('general', array($LANG->line('not_authorized')));
+        	return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
         }
         
-        /**	----------------------------------------
-        /**	Check duplicates
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Check duplicates
+        //	----------------------------------------
         
-        if ( $this->_param('prevent_duplicate_on') AND $this->_param('prevent_duplicate_on') != '' AND ( $SESS->userdata['member_id'] != '0' OR $IN->IP != '0.0.0.0' OR $IN->GBL('email') != '' ) )
+        if ( $this->_param('prevent_duplicate_on') 			AND 
+			 $this->_param('prevent_duplicate_on') != '' 	AND 
+				( 	ee()->session->userdata['group_id'] != 1 	OR 	
+					ee()->input->get_post('email') != '' ) 
+		   )
         {
-        	$sql	= "SELECT COUNT(*) AS count FROM exp_freeform_entries WHERE status != 'closed'";
+        	$sql	= "	SELECT 	COUNT(*) 
+						AS 		count 
+						FROM 	exp_freeform_entries 
+						WHERE 	status != 'closed'";
 
 			if ( $this->_param('form_name') )
 			{
-				$sql	.= " AND form_name = '".$DB->escape_str($this->_param('form_name'))."'";
+				$sql	.= " AND form_name = '".ee()->db->escape_str($this->_param('form_name'))."'";
 			}
 
-			if ( $this->_param('prevent_duplicate_on') == 'member_id' AND $SESS->userdata['member_id'] != '0' )
+			if ( $this->_param('prevent_duplicate_on') == 'member_id' AND ee()->session->userdata['member_id'] != '0' )
 			{
-				$sql	.= " AND author_id = '".$DB->escape_str($SESS->userdata['member_id'])."'";
+				$sql	.= " AND author_id = '".ee()->db->escape_str(ee()->session->userdata['member_id'])."'";
 			}
-			elseif ( $this->_param('prevent_duplicate_on') == 'ip_address' AND $IN->IP != '0.0.0.0' )
+			elseif ( $this->_param('prevent_duplicate_on') == 'ip_address' 	AND 
+					  ee()->input->ip_address() != '0.0.0.0' 				AND 
+					  ee()->session->userdata['group_id'] != 1)
 			{
-				$sql	.= " AND ip_address = '".$DB->escape_str($IN->IP)."'";
+				$sql	.= " AND ip_address = '".ee()->db->escape_str(ee()->input->ip_address())."'";
 			}
 			else
 			{
-				$sql	.= " AND email = '".$DB->escape_str($IN->GBL('email'))."'";
+				$sql	.= " AND email = '".ee()->db->escape_str(ee()->input->get_post('email'))."'";
 			}
         	
-        	$dup	= $DB->query( $sql );
+        	$dup	= ee()->db->query( $sql );
         	
-        	if ( $dup->row['count'] > 0 )
+        	if ( $dup->row('count') > 0 )
         	{
-				return $OUT->show_user_error('general', array($LANG->line('no_duplicates')));
+				return ee()->output->show_user_error('general', array(ee()->lang->line('no_duplicates')));
         	}
         }        
         
-        /**	----------------------------------------
-        /**	Start error trapping on required fields
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Start error trapping on required fields
+        //	----------------------------------------
         
         $errors	= array();
         
@@ -652,17 +903,20 @@ class Freeform
         {
         	$required_fields	= preg_split("/,|\|/" ,$this->_param('ee_required'));
         	
-			/**	----------------------------------------
-			/**	Let's get labels from the DB
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Let's get labels from the DB
+			//	----------------------------------------
 			
-        	$query	= $DB->query("SELECT * FROM exp_freeform_fields");
+        	$query	= ee()->db->query(
+				"SELECT * 
+				 FROM 	exp_freeform_fields"
+			);
         	
         	$labels	= array();
         	
-        	if ( $query->num_rows > 0 )
+        	if ( $query->num_rows() > 0 )
         	{        	
-				foreach ($query->result as $row)
+				foreach ($query->result_array() as $row)
 				{
 					$labels[$row['name']]	= $row['label'];
 				}        	
@@ -671,138 +925,186 @@ class Freeform
 				
 				foreach ( $required_fields as $val )
 				{
-					if ( ! isset($_POST[$val]) OR $_POST[$val] == '' )
+					if ( ! ee()->input->post($val) OR ee()->input->post($val) == '' )
 					{
-						$errors[] = $LANG->line('field_required').'&nbsp;'.$labels[$val];  
+						if (array_key_exists($val, $labels))
+						{
+							$errors[] = ee()->lang->line('field_required') . '&nbsp;' . $labels[$val];
+						}
+						else
+						{
+							$errors[] = ee()->lang->line('not_in_field_list') . '&nbsp;' . $val;
+						}  
 					}
 				}
 				
-				/**	End empty check */
+				//	End empty check 
 			}
 			
-        	/**	End labels from DB */
+        	//	End labels from DB 
         
-			/**	----------------------------------------
-			/**	Do we require an email address?
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Do we require an email address?
+			//	----------------------------------------
 			
-			if ( isset( $labels['email'] ) AND $IN->GBL('email') )
+			if ( isset( $labels['email'] ) AND ee()->input->get_post('email') )
 			{
-				/**	----------------------------------------
-				/**	Valid email address?
-				/**	----------------------------------------*/
-		
-				if ( ! class_exists('Validate'))
-				{
-					require PATH_CORE.'core.validate'.EXT;
-				}
+				//	----------------------------------------
+				//	Valid email address?
+				//	----------------------------------------
 				
-				$VAL = new Validate( array( 'email' => $IN->GBL('email') ) );
-									
+				//1.x
+				if (APP_VER < 2.0)
+				{
+					if ( ! class_exists('Validate'))
+					{
+						require PATH_CORE.'core.validate'.EXT;
+					}
+					
+					$VAL = new Validate( array( 'email' => ee()->input->get_post('email') ) );
+				}
+				//2.x
+				else
+				{
+					if ( ! class_exists('EE_Validate'))
+					{
+						require APPPATH . 'libraries/Validate'.EXT;
+					}
+					
+					$VAL = new EE_Validate( array( 'email' => ee()->input->get_post('email') ) );
+				}
+					
 				$VAL->validate_email();
 		
-				/**	----------------------------------------
-				/**	Display errors if there are any
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Display errors if there are any
+				//	----------------------------------------
 		
 				if (count($VAL->errors) > 0)
 				{
-					return $OUT->show_user_error('general', $VAL->errors );
+					return ee()->output->show_user_error('general', $VAL->errors );
 				}
 			}
         }
         
-		/**	----------------------------------------
+		//	----------------------------------------
 		//	Are we trying to accept file uploads?
-		/**	----------------------------------------*/
+		//	----------------------------------------
         
         if ( $this->_param('file_upload') != '' AND $this->upload_limit = $this->_param('upload_limit') )
         {
         	$this->_upload_files( TRUE );
         }
 		
-		/**	----------------------------------------
-		/**	'freeform_module_validate_end' hook.
-		/**	----------------------------------------
-		/*	This allows developers to do more
-		/*	form validation.
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	'freeform_module_validate_end' hook.
+		//	 - This allows developers to do more form validation.
+		//	----------------------------------------
 		
-		//if (isset($EXT->extensions['freeform_module_validate_end']))
-		if ($EXT->active_hook('freeform_module_validate_end') === TRUE)
+		if (ee()->extensions->active_hook('freeform_module_validate_end') === TRUE)
 		{
-			$errors = $EXT->call_extension('freeform_module_validate_end', $errors);
-			if ($EXT->end_script === TRUE) return;
+			$errors = ee()->extensions->universal_call('freeform_module_validate_end', $errors);
+			if (ee()->extensions->end_script === TRUE) return;
 		}
-		
-        /**	----------------------------------------*/
+        //	----------------------------------------
         
-        /**	----------------------------------------
-        /**	Do we have errors to display?
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Do we have errors to display?
+        //	----------------------------------------
         
         if (count($errors) > 0)
         {
-           return $OUT->show_user_error('submission', $errors);
+           return ee()->output->show_user_error('submission', $errors);
         }
         
-        /**	----------------------------------------
-        /**	Do we require captcha?
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Do we require captcha?
+        //	----------------------------------------
 		
-		if ( $this->_param('require_captcha') AND $this->_param('require_captcha') == 'yes')
+		if ( $this->_param('require_captcha') AND $this->check_yes($this->_param('require_captcha')) )
 		{
-			if ($PREFS->ini('captcha_require_members') == 'y'  ||  ($PREFS->ini('captcha_require_members') == 'n' AND $SESS->userdata('member_id') == 0))
+			if ( $this->check_yes(ee()->config->item('captcha_require_members'))  OR  
+					( $this->check_no(ee()->config->item('captcha_require_members')) AND 
+					  ee()->session->userdata('member_id') == 0)
+			   )
 			{
-				if ( ! isset($_POST['captcha']) || $_POST['captcha'] == '')
+				if ( ! ee()->input->post('captcha') OR ee()->input->post('captcha') == '')
 				{
-					return $OUT->show_user_error('submission', $LANG->line('captcha_required'));
+					return ee()->output->show_user_error('submission', ee()->lang->line('captcha_required'));
 				}
 				else
 				{
-					$res = $DB->query("SELECT COUNT(*) AS count FROM exp_captcha WHERE word='".$DB->escape_str($_POST['captcha'])."' AND ip_address = '".$DB->escape_str($IN->IP)."' AND date > UNIX_TIMESTAMP()-7200");
+					$res = ee()->db->query(
+						"SELECT COUNT(*) 
+						 AS 	count 
+						 FROM 	exp_captcha 
+						 WHERE 	word='" . ee()->db->escape_str(ee()->input->post('captcha')) . "' 
+						 AND 	ip_address = '" . ee()->db->escape_str(ee()->input->ip_address()) . "' 
+						 AND 	date > UNIX_TIMESTAMP()-7200"
+					);
 				
-					if ($res->row['count'] == 0)
+					if ($res->row('count') == 0)
 					{
-						return $OUT->show_user_error('submission', $LANG->line('captcha_incorrect'));
+						return ee()->output->show_user_error('submission', ee()->lang->line('captcha_incorrect'));
 					}
 				
 					// Moved because of file uploading errors
-					//$DB->query("DELETE FROM exp_captcha WHERE (word='".$DB->escape_str($_POST['captcha'])."' AND ip_address = '".$DB->escape_str($IN->IP)."') OR date < UNIX_TIMESTAMP()-7200");
+					/*
+					  ee()->db->query("DELETE FROM exp_captcha 
+											WHERE (word='".ee()->db->escape_str($_POST['captcha'])."' 
+											AND ip_address = '".ee()->db->escape_str(ee()->input->ip_address())."') 
+											OR date < UNIX_TIMESTAMP()-7200");
+					*/
 				}
 			}
 		}        
         
-        /**	----------------------------------------
-        /**	Check Form Hash
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Check Form Hash
+        //	----------------------------------------
         
-        if ( $PREFS->ini('secure_forms') == 'y' )
+        if ( $this->check_yes(ee()->config->item('secure_forms')) )
         {        	
-            $query = $DB->query("SELECT COUNT(*) AS count FROM exp_security_hashes WHERE hash='".$DB->escape_str($_POST['XID'])."' AND ip_address = '".$DB->escape_str($IN->IP)."' AND date > UNIX_TIMESTAMP()-7200");
+            $query = ee()->db->query(
+				"SELECT 	COUNT(*) 
+				 AS 		count 
+				 FROM 		exp_security_hashes 
+				 WHERE 		hash='" . ee()->db->escape_str(ee()->input->post('XID')) . "' 
+				 AND 		ip_address = '" . ee()->db->escape_str(ee()->input->ip_address())."' 
+				 AND	 	date > UNIX_TIMESTAMP()-7200"
+			);
         
-            if ($query->row['count'] == 0)
+			//email_change
+            if ($query->row('count') == 0)
             {
-				return $OUT->show_user_error('general', array($LANG->line('not_authorized')));
+				return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
             }
             
             // Moved because of file uploading errors                    
-			// $DB->query("DELETE FROM exp_security_hashes WHERE (hash='".$DB->escape_str($_POST['XID'])."' AND ip_address = '".$DB->escape_str($IN->IP)."') OR date < UNIX_TIMESTAMP()-7200");
+			/* ee()->db->query("DELETE FROM exp_security_hashes 
+									 WHERE (hash='".ee()->db->escape_str($_POST['XID'])."' 
+									 AND ip_address = '".ee()->db->escape_str(ee()->input->ip_address())."') 
+									 OR date < UNIX_TIMESTAMP()-7200");
+			*/
         }
                         
-        /**	----------------------------------------
-        /**	Let's get all of the fields from the
-        /**	database for testing purposes
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Let's get all of the fields from the
+        //	database for testing purposes
+        //	----------------------------------------
         
-        $fields['form_name']	= "Form Name";
-        $fields['subject']		= "Subject";
+        $fields['form_name']	= "Collection Name";
         
-        $query		= $DB->query("SELECT name, label FROM exp_freeform_fields ORDER BY field_order ASC");
+        $query		= ee()->db->query(
+			"SELECT 	name, label 
+			 FROM 		exp_freeform_fields 
+			 ORDER BY 	field_order 
+			 ASC"
+		);
         
-        if ($query->num_rows > 0)
+        if ($query->num_rows() > 0)
         {
-        	foreach($query->result as $row)
+        	foreach($query->result_array() as $row)
         	{
         		$fields[$row['name']]	= $row['label'];
         	}
@@ -812,48 +1114,44 @@ class Freeform
         	return false;
         }        
         
-        /**	----------------------------------------
-        /**	Build the data array
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Build the data array
+        //	----------------------------------------
         
-        $exclude	= array(
-							'ACT', 'RET', 'URI', 'PRV', 'XID', 'return', 'ee_notify', 'ee_required', 'submit'
-							);
+        $exclude	= array('ACT', 'RET', 'URI', 'PRV', 'XID', 'return', 'ee_notify', 'ee_required', 'submit');
 							
 		$include	= array('status');
         
         $data		= array(
-                        'author_id'				=> $SESS->userdata['member_id'],
-                        'group_id'				=> $SESS->userdata['group_id'],
-                        'ip_address'			=> $IN->IP,
-                        'entry_date'			=> $LOC->now,
-                        'edit_date'				=> $LOC->now
-        			);
+            'author_id'		=> ee()->session->userdata['member_id'],
+            'group_id'		=> ee()->session->userdata['group_id'],
+            'ip_address'	=> ee()->input->ip_address(),
+            'entry_date'	=> ee()->localize->now,
+            'edit_date'		=> ee()->localize->now
+		);
         			
         foreach ( $_POST as $key => $val )
         {
-			/**	----------------------------------------
-        	/**	If the given field is not a FreeForm
-        	/**	field or not in our include list, then
-        	/**	skip it.
-			/**	----------------------------------------*/
+			//	----------------------------------------
+        	//	If the given field is not a FreeForm
+        	//	field or not in our include list, then
+        	//	skip it.
+			//	----------------------------------------
         	
-        	if ( ! array_key_exists( $key, $fields ) AND ! in_array( $key, $include ) )
-        		continue;
+        	if ( ! array_key_exists( $key, $fields ) AND ! in_array( $key, $include ) ) continue;
         	
-			/**	----------------------------------------
-        	/**	If the given field is in our exclude
-        	/**	list, then skip it.
-			/**	----------------------------------------*/
+			//	----------------------------------------
+        	//	If the given field is in our exclude
+        	//	list, then skip it.
+			//	----------------------------------------
 			
-        	if ( in_array( $key, $exclude ) )
-        		continue;
+        	if ( in_array( $key, $exclude ) ) continue;
         	
         	if ( $key == 'website' )
         	{
-        		$REGX->xss_clean( $REGX->prep_url( $_POST['website'] ) );
+        		ee()->security->xss_clean( prep_url( ee()->input->post('website') ) );
         		
-        		$data[$key]	= $_POST[$key];
+        		$data[$key]	= ee()->input->post($key);
         	}
         	
 			// If the field is a multi-select field, then handle it as such.
@@ -861,114 +1159,174 @@ class Freeform
 			{
 				$val = implode( "\n", $val );
 				
-				$data[$key] = $REGX->xss_clean($val);
+				$data[$key] = ee()->security->xss_clean($val);
 			}
 			else
 			{
-				$data[$key] = $REGX->xss_clean($val);
+				$data[$key] = ee()->security->xss_clean($val);
 			}
         }
 		
-		/**	----------------------------------------
-		/**	'freeform_module_insert_begin' hook.
-		/**	----------------------------------------
-		/*	This allows developers to do one last
-		/*	thing before Freeform submit is ended.
-		/**	----------------------------------------*/
-		
-		// if (isset($EXT->extensions['freeform_module_insert_begin']))
-		if ($EXT->active_hook('freeform_module_insert_begin') === TRUE)
+		//backup for form name in case it isnt in the post data
+		if ( ! isset($data['form_name']) AND $this->_param('form_name') !== FALSE)
 		{
-			$data = $EXT->call_extension('freeform_module_insert_begin', $data);
-			if ($EXT->end_script === TRUE) return;
+			$data['form_name'] = $this->_param('form_name');
 		}
 		
-        /**	----------------------------------------*/
-      
-        /**	----------------------------------------
-        /**	Submit data into DB
-        /**	----------------------------------------*/
-
-		$sql			= $DB->insert_string( 'exp_freeform_entries', $data );
+		//check to see if there is any missing data that we have in the params:
+		/*foreach($fields as $f_key => $f_value)
+		{
+			if ( ! isset($data[$f_key]) AND $this->_param($f_key) !== FALSE)
+			{
+				$data[$f_key] = $this->_param($f_key);
+			}
+		}*/
 		
-		$query			= $DB->query( $sql );
+		//i dont want to remove this because we might need it for some god awful reason, but it screws with stuff.
+		$fields['subject']		= "Subject";
 		
-		$this->entry_id	= $DB->insert_id;
+		//	----------------------------------------
+		//	'freeform_module_insert_begin' hook.
+		//	 - This allows developers to do one last thing before Freeform submit is ended.
+		//	----------------------------------------
+		
+		if (ee()->extensions->active_hook('freeform_module_insert_begin') === TRUE)
+		{
+			$data = ee()->extensions->universal_call('freeform_module_insert_begin', $data);
+			if (ee()->extensions->end_script === TRUE) return;
+		}
         
-        /**	----------------------------------------
-        /**	Process file uploads
-        /**	----------------------------------------*/
+		//	------------------------------------------------------------------------------------
+      	//  Discarded data email_change
+		//  ------------------------------------------------------------------------------------
+              
+        //	----------------------------------------
+        //	Are we discarding some field values and preventing data save on them?
+        //	----------------------------------------
+        
+        if ( $this->_param('discard_field') != '' )
+        {        
+        	foreach ( explode( "|", $this->_param('discard_field') ) as $val )
+        	{
+        		if ( ! empty( $data[ $val ] ) )
+        		{
+        			$data[ $val ]	= ee()->lang->line('discarded_field_data');
+        		}
+        	}       
+        }
+
+		//	------------------------------------------------------------------------------------
+      	//  end Discarded data email_change
+		//  ------------------------------------------------------------------------------------
+
+
+        //	----------------------------------------
+        //	Submit data into DB
+        //	----------------------------------------
+
+		$sql			= ee()->db->insert_string( 'exp_freeform_entries', $data ); //email_change
+		
+		$query			= ee()->db->query( $sql );
+		
+		$this->entry_id	= ee()->db->insert_id();
+        
+        //	----------------------------------------
+        //	Process file uploads
+        //	----------------------------------------
         
         if ( count( $this->upload ) > 0 )
         {
         	$this->_upload_files();
         }	
         
-		/**----------------------------------------
-		/**	 Delete CAPTCHA and Form Hash - Moved here because of File Upload Error possibilities
-		/**	----------------------------------------*/
+		//----------------------------------------
+		//	 Delete CAPTCHA and Form Hash - Moved here because of File Upload Error possibilities
+		//	----------------------------------------
 		
-		if ( $this->_param('require_captcha') == 'yes' && isset($_POST['captcha']))
+		if ( $this->check_yes($this->_param('require_captcha')) && isset($_POST['captcha']))
 		{
-			$DB->query("DELETE FROM exp_captcha WHERE (word='".$DB->escape_str($_POST['captcha'])."' AND ip_address = '".$DB->escape_str($IN->IP)."') OR date < UNIX_TIMESTAMP()-7200");
+			ee()->db->query(
+				"DELETE FROM 	exp_captcha 
+				 WHERE	 		(word='" . ee()->db->escape_str(ee()->input->post('captcha')) . "' 
+				 AND 			ip_address = '" . ee()->db->escape_str(ee()->input->ip_address()) . "') 
+				 OR 			date < UNIX_TIMESTAMP()-7200"
+			);
 		}
         
-        if ( $PREFS->ini('secure_forms') == 'y' && isset($_POST['XID']))
+        if ( $this->check_yes(ee()->config->item('secure_forms')) && ee()->input->post('XID') )
         {        	
-            $DB->query("DELETE FROM exp_security_hashes WHERE (hash='".$DB->escape_str($_POST['XID'])."' AND ip_address = '".$DB->escape_str($IN->IP)."') OR date < UNIX_TIMESTAMP()-7200");
+            ee()->db->query(
+				"DELETE FROM 	exp_security_hashes 
+				 WHERE 			(hash='" . ee()->db->escape_str(ee()->input->post('XID')) . "' 
+				 AND 			ip_address = '" . ee()->db->escape_str(ee()->input->ip_address()) . "') 
+				 OR 			date < UNIX_TIMESTAMP()-7200"
+			);
         }
 		
-        /**	----------------------------------------
-        /**	Send notifications
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Send notifications
+        //	----------------------------------------
         
         if ( $this->_param('ee_notify') != '' )
         {
         	$recipients	= preg_split("/,|\|/" , $this->_param('ee_notify') );
         	
-        	$template	= ( $this->_param('template') AND $this->_param('template') != '' ) ? $this->_param('template'): 'default';
+        	$template	= ( $this->_param('template') AND $this->_param('template') != '' ) ? 
+							$this->_param('template'): 'default_template';
 		
-			/**	----------------------------------------
-			/**	Generate message
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Generate message
+			//	----------------------------------------
 			
 			$msg		= array();
 			
-			$query		= $DB->query("SELECT * FROM exp_freeform_templates 
-									  WHERE template_name = '".$DB->escape_str($template)."' 
-									  AND enable_template = 'y' LIMIT 1");
+			$query		= ee()->db->query(
+				"SELECT * 
+				 FROM 	exp_freeform_templates 
+				 WHERE 	template_name = '" . ee()->db->escape_str($template) . "' 
+				 AND 	enable_template = 'y' 
+				 LIMIT 	1"
+			);
 
-			if ( $query->num_rows == 0 )
+			if ( $query->num_rows() == 0 )
 			{
-				return $OUT->show_user_error('general', array($LANG->line('template_not_available')));
+				return ee()->output->show_user_error('general', array(ee()->lang->line('template_not_available')));
 			}
 			
-			$msg['from_name']	= ( isset( $query->row['data_from_name'] ) AND $query->row['data_from_name'] != '' ) ? $query->row['data_from_name']: $PREFS->ini('webmaster_name');
+			$msg['from_name']	= ( $query->row('data_from_name') != '' ) ?
+			 							$query->row('data_from_name'): ee()->config->item('webmaster_name');
 
-			$msg['from_email']	= ( isset( $query->row['data_from_email'] ) AND $query->row['data_from_email'] != '' ) ? $query->row['data_from_email']: $PREFS->ini('webmaster_email');
+			$msg['from_email']	= ( $query->row('data_from_email') != '' ) ?
+			 							$query->row('data_from_email'): ee()->config->item('webmaster_email');
 
-			$msg['subject']		= $query->row['data_title'];
+			$msg['subject']		= $query->row('data_title');
 
-			$msg['msg']			= $query->row['template_data'];
+			$msg['msg']			= $query->row('template_data');
 
-			$wordwrap			= ( isset( $query->row['wordwrap'] ) AND $query->row['wordwrap'] == 'y') ? TRUE: FALSE;
+			$wordwrap			= $this->check_yes($query->row('wordwrap'));
 			
-			$msg['subject']		= str_replace( LD.'entry_date'.RD, $LOC->set_human_time($LOC->now), $msg['subject'] );
+			$msg['subject']		= str_replace( 	LD.'entry_date'.RD, 
+											   	ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['subject'] );
 			
-			$msg['msg']			= str_replace( LD.'entry_date'.RD, $LOC->set_human_time($LOC->now), $msg['msg'] );
+			$msg['msg']			= str_replace( 	LD.'entry_date'.RD, 
+												ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['msg'] );
 			
-			$msg['subject']		= str_replace( LD.'freeform_entry_id'.RD, $this->entry_id, $msg['subject'] );
-			$msg['msg']			= str_replace( LD.'freeform_entry_id'.RD, $this->entry_id, $msg['msg'] );
+			$msg['subject']		= str_replace( 	LD.'freeform_entry_id'.RD, $this->entry_id, $msg['subject'] );
+			$msg['msg']			= str_replace( 	LD.'freeform_entry_id'.RD, $this->entry_id, $msg['msg'] );
 			
-			if (preg_match_all("/".LD."(entry_date)\s+format=([\"'])(.*?)\\2".RD."/is", $msg['subject'].$msg['msg'], $matches))
+			if (preg_match_all("/".LD."(entry_date)\s+format=([\"'])(.*?)\\2".RD."/is", 
+							   $msg['subject'].$msg['msg'], $matches)
+			   )
 			{
 				for ($j = 0; $j < count($matches[0]); $j++)
 				{	
 					$val = $matches[3][$j];
 					
-					foreach ($LOC->fetch_date_params($matches[3][$j]) AS $dvar)
+					foreach (ee()->localize->fetch_date_params($matches[3][$j]) AS $dvar)
 					{
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $LOC->now, TRUE), $val);					
+						$val = str_replace($dvar, ee()->localize->convert_timestamp($dvar, ee()->localize->now, TRUE), $val);					
 					}
 					
 					$msg['subject']		= str_replace( $matches[0][$j], $val, $msg['subject'] );
@@ -977,39 +1335,53 @@ class Freeform
 				}
 			}
 			
-			/**	----------------------------------------
-			/**	Parse conditionals
-			/**	----------------------------------------*/
-		
-			if ( ! class_exists('Template'))
-			{
-				require PATH_CORE.'core.template'.EXT;
-			}
+			//	----------------------------------------
+			//	Parse conditionals
+			//	----------------------------------------
 			
-			$TMPL		= new Template();
+			//template isn't defined yet, so we have to fetch it
+			//1.x
+			if(APP_VER < 2.0)
+			{
+				if ( ! class_exists('Template'))
+				{
+					require PATH_CORE.'core.template'.EXT;
+				}
+			
+				$local_TMPL	= new Template();
+			}
+			//2.x
+			else
+			{
+				ee()->load->library('template');
+				$local_TMPL =& ee()->template;
+			}
 			
 			$data['attachment_count']		= count( $this->attachments );
 			
+			//i have no idea why this is being done instead of just using $data...			
 			$cond		= $data;
 			
 			foreach( $msg as $key => $val )
 			{
-				$msg[$key]	= $TMPL->advanced_conditionals( $FNS->prep_conditionals( $msg[$key], $cond ) );
+				$msg[$key]	= $local_TMPL->advanced_conditionals( 
+					ee()->functions->prep_conditionals( $msg[$key], $cond ) 
+				);
 			}
 
 			unset( $cond );
 
-			/**	----------------------------------------
-			/**	Parse individual fields
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Parse individual fields
+			//	----------------------------------------
 			
 			$exclude	= array('submit');
 			
 			foreach ( $msg as $key => $val )
 			{
-				/**	----------------------------------------
-				/**	Handle attachments
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Handle attachments
+				//	----------------------------------------
 				
 				$msg[$key]	= str_replace( LD."attachment_count".RD, $data['attachment_count'], $msg[$key] );
 						
@@ -1048,9 +1420,9 @@ class Freeform
 					}
 				}
 				
-				/**	----------------------------------------
-				/**	Loop
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Loop
+				//	----------------------------------------
 				
 				foreach ( $fields as $name => $label )
 				{
@@ -1058,10 +1430,10 @@ class Freeform
 					{
 						$msg[$key]	= str_replace( LD.$name.RD, $data[$name], $msg[$key] );
 						
-						/**	----------------------------------------
-						/**	We don't want to concatenate for every
-						/**	time through the main loop.
-						/**	----------------------------------------*/
+						//	----------------------------------------
+						//	We don't want to concatenate for every
+						//	time through the main loop.
+						//	----------------------------------------
 						
 						if ( $key == 'msg' )
 						{
@@ -1076,9 +1448,9 @@ class Freeform
 			}
 			
 			
-			/**	----------------------------------------
-			/**	Parse all fields variable
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Parse all fields variable
+			//	----------------------------------------
 			
 			if ( stristr( $msg['msg'], LD.'all_custom_fields'.RD ) )
 			{
@@ -1086,143 +1458,562 @@ class Freeform
 			}
 			
 			
-			/**	----------------------------------------
-			/**	'freeform_module_admin_notification' hook.
-			/**	----------------------------------------
-			/*	This allows developers to alter the $msg
-			/*	array before admin notification is sent.
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	'freeform_module_admin_notification' hook.
+			//	 - This allows developers to alter the 
+			//	   $msg array before admin notification is sent.
+			//	----------------------------------------
 			
-			if ($EXT->active_hook('freeform_module_admin_notification') === TRUE)
+			if (ee()->extensions->active_hook('freeform_module_admin_notification') === TRUE)
 			{
-				$msg = $EXT->call_extension('freeform_module_admin_notification', $fields, $this->entry_id, $msg);
-				if ($EXT->end_script === TRUE) return;
+				$msg = ee()->extensions->universal_call('freeform_module_admin_notification', $fields, $this->entry_id, $msg);
+				if (ee()->extensions->end_script === TRUE) return;
 			}
+			//	----------------------------------------
 			
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Send email
+			//	----------------------------------------
 			
-			/**	----------------------------------------
-			/**	Send email
-			/**	----------------------------------------*/
+			ee()->email->wordwrap	= $wordwrap;
+			ee()->email->mailtype	= ( $this->check_yes($query->row('html')) ) ? 'html': 'text';
 			
-			if ( ! class_exists('EEmail'))
-			{
-				require PATH_CORE.'core.email'.EXT;
-			}
-			
-			$email				= new EEmail;
-			$email->wordwrap	= $wordwrap;
-			$email->mailtype	= ( $query->row['html'] == 'y' ) ? 'html': 'text';
-			
-			if ( count( $this->attachments ) > 0 AND $this->_param('send_attachment') != 'no' )
+			if ( count( $this->attachments ) > 0 AND $this->check_yes($this->_param('send_attachment')) )
 			{
 				foreach ( $this->attachments as $file_name )
 				{
-					$email->attach( $file_name['filepath'] );
+					ee()->email->attach( $file_name['filepath'] );
 				}
 				
-				$DB->query( $DB->update_string( 'exp_freeform_attachments', array( 'emailed' => 'y' ), array( 'entry_id' => $this->entry_id ) ) );
+				ee()->db->query( 
+					ee()->db->update_string( 
+						'exp_freeform_attachments', 
+						array( 'emailed' 	=> 'y' ), 
+						array( 'entry_id' 	=> $this->entry_id ) 
+					) 
+				);
 			}
 			
 			foreach ($recipients as $val)
 			{								
-				$email->initialize();
-				$email->from($msg['from_email'], $msg['from_name']);	
-				$email->to($val); 
-				$email->subject($msg['subject']);	
-				$email->message($REGX->entities_to_ascii($msg['msg']));		
-				$email->Send();
+				ee()->email->initialize();
+				ee()->email->from($msg['from_email'], $msg['from_name']);	
+				ee()->email->to($val); 
+				ee()->email->subject($msg['subject']);	
+				ee()->email->message(entities_to_ascii($msg['msg']));						
+				ee()->email->send();
+				
 			}
-			
-			unset($msg);
+			ee()->email->clear(TRUE);
+
+			$msg = array();
 		
-			/**	----------------------------------------
-			/**	Register the template used
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Register the template used
+			//	----------------------------------------
 			
-			$DB->query( $DB->update_string( 'exp_freeform_entries', array('template' => $template), array( 'entry_id' => $this->entry_id ) ) );
+			ee()->db->query( 
+				ee()->db->update_string( 
+					'exp_freeform_entries', 
+					array( 'template' 	=> $template), 
+					array( 'entry_id' 	=> $this->entry_id ) 
+				) 
+			);
 		}
 		
-		/**	End send notifications */
-		
-		
-        /**	----------------------------------------
-        /**	Send user email
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Send user email email_change
+        //	----------------------------------------
         
-        if ( $this->_param('send_user_email') == 'yes' AND $IN->GBL('email') )
+        if ($this->check_yes($this->_param('recipients')) AND 
+			( ee()->session->userdata['group_id'] == 1 OR ee()->input->ip_address() != '0.0.0.0' ) AND 
+			ee()->input->post('recipient_email') !== FALSE)
+        {	
+			$all_fields	= '';
+			
+			
+			
+			//don't we already do this...?
+        	$template	= ( $this->_param('recipient_template') AND $this->_param('recipient_template') != '' ) ? 
+							$this->_param('recipient_template') : 'default_template';
+	
+			//	----------------------------------------
+			//	Array of recipients?
+			//	----------------------------------------
+
+			if ( is_array( ee()->input->post('recipient_email') ) === TRUE AND 
+				count( ee()->input->post('recipient_email') ) > 0 )
+			{
+				$recipient_email	= ee()->input->post('recipient_email');
+			}
+			else
+			{
+				$recipient_email	= array( ee()->input->post('recipient_email') );
+			}
+
+			
+
+			// if we are using 'static recipients'. e.g., recipient1='bob|bob@email.com'
+			// parse out the uniqids and replace them with the real stored emails
+			if ( $this->_param('static_recipients') == TRUE )
+			{
+				//prevents injection and only uses hashed emails from the form
+				$temp_email			= $recipient_email;
+				$recipient_email 	= array();	
+				
+				//parse email
+				$stored_recipients = $this->_param('static_recipients_list');
+								
+				//have to check each email against the entire list.
+				foreach ( $temp_email as $key => $value )
+				{
+					foreach ( $stored_recipients as $recipient_data )
+					{
+						if ( $value == $recipient_data['key'] )
+						{
+							$recipient_email[] = $recipient_data['email'];
+						}
+					}
+				}
+			}
+
+			//	----------------------------------------
+			//	Validate recipients?
+			//	----------------------------------------
+
+			$array			= $this->_validate_recipients( implode( ",", $recipient_email ) );
+
+			$error			= $array['error'];
+
+			$approved_tos	= $array['approved'];
+			
+			//	----------------------------------------
+			//	Over our spam limit?
+			//	----------------------------------------
+
+			if ( $this->_param('static_recipients') != TRUE AND 
+				 count( $approved_tos ) > $this->_param( 'recipient_limit' ) )
+			{
+				$error[]	= ee()->lang->line( 'recipient_limit_exceeded' );
+			}
+
+			//	----------------------------------------
+			//	Errors?
+			//	----------------------------------------
+
+			if ( count( $error ) > 0 )
+			{
+				return ee()->output->show_user_error( 'general', $error );
+			}
+
+			//	----------------------------------------
+			//	Check for spamming or hacking
+			//	----------------------------------------
+
+			$query	= ee()->db->query( 
+				"SELECT 	SUM(exp_freeform_user_email.email_count) AS count 
+				 FROM 		exp_freeform_entries, exp_freeform_user_email 
+				 WHERE		exp_freeform_entries.entry_id   = exp_freeform_user_email.entry_id
+				 AND 		exp_freeform_entries.ip_address = '" . ee()->db->escape_str( ee()->input->ip_address() )."' 
+				 AND 		exp_freeform_entries.entry_date > '" . ee()->db->escape_str( 
+					ee()->localize->now - ( 60 * ( (int) $this->prefs['spam_interval'] ) ) 
+				) . "'" 
+			);
+
+			if ( $query->row('count') > $this->prefs['spam_count'] )
+			{
+				return ee()->email->output->show_user_error(
+					'general', array(ee()->lang->line('em_limit_exceeded')));
+			}
+
+			//	----------------------------------------
+			//	Log the number of emails sent
+			//	----------------------------------------
+
+			ee()->db->query( 
+				ee()->db->insert_string( 
+					"exp_freeform_user_email", 
+					array( 
+						'email_count' 	=> count( $approved_tos ) ,
+						'entry_id' 		=> $this->entry_id 
+					) 
+				)
+			);
+
+			//	----------------------------------------
+			//	Generate message
+			//	----------------------------------------
+			
+			$msg		= array();
+			
+			$query		= ee()->db->query(
+				"SELECT * 
+				 FROM 	exp_freeform_templates 
+				 WHERE 	template_name = '" . ee()->db->escape_str($template) . "' 
+				 AND 	enable_template = 'y' 
+				 LIMIT 	1"
+			);
+
+			if ( $query->num_rows() == 0 )
+			{
+				return ee()->output->show_user_error('general', array(ee()->lang->line('template_not_available')));
+			}
+			
+			$msg['from_name']	= ( $query->row('data_from_name') != '' ) ?
+			 							$query->row('data_from_name'): ee()->config->item('webmaster_name');
+
+			$msg['from_email']	= ( $query->row('data_from_email') != '' ) ?
+			 							$query->row('data_from_email'): ee()->config->item('webmaster_email');
+
+			$msg['subject']		= $query->row('data_title');
+
+			$msg['msg']			= $query->row('template_data');
+
+			$wordwrap			= $this->check_yes($query->row('wordwrap'));
+			
+			$msg['subject']		= str_replace( 	LD.'entry_date'.RD, 
+											   	ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['subject'] );
+			
+			$msg['msg']			= str_replace( 	LD.'entry_date'.RD, 
+												ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['msg'] );
+			
+			$msg['subject']		= str_replace( 	LD.'freeform_entry_id'.RD, $this->entry_id, $msg['subject'] );
+			$msg['msg']			= str_replace( 	LD.'freeform_entry_id'.RD, $this->entry_id, $msg['msg'] );
+			
+			if (preg_match_all("/".LD."(entry_date)\s+format=([\"'])(.*?)\\2".RD."/is", 
+							   $msg['subject'].$msg['msg'], $matches)
+			   )
+			{
+				for ($j = 0; $j < count($matches[0]); $j++)
+				{	
+					$val = $matches[3][$j];
+					
+					foreach (ee()->localize->fetch_date_params($matches[3][$j]) AS $dvar)
+					{
+						$val = str_replace($dvar, ee()->localize->convert_timestamp($dvar, ee()->localize->now, TRUE), $val);					
+					}
+					
+					$msg['subject']		= str_replace( $matches[0][$j], $val, $msg['subject'] );
+			
+					$msg['msg']			= str_replace( $matches[0][$j], $val, $msg['msg'] );
+				}
+			}
+			
+			//	----------------------------------------
+			//	Parse conditionals
+			//	----------------------------------------
+			
+			//template isn't defined yet, so we have to fetch it
+			//1.x
+			if(APP_VER < 2.0)
+			{
+				if ( ! class_exists('Template'))
+				{
+					require PATH_CORE.'core.template'.EXT;
+				}
+			
+				$local_TMPL	= new Template();
+			}
+			//2.x
+			else
+			{
+				ee()->load->library('template');
+				$local_TMPL =& ee()->template;
+			}
+			
+			$data['attachment_count']		= count( $this->attachments );
+						
+			$cond		= $data;
+			
+			foreach( $msg as $key => $val )
+			{
+				$msg[$key]	= $local_TMPL->advanced_conditionals( 
+					ee()->functions->prep_conditionals( $msg[$key], $cond ) 
+				);
+			}
+
+			unset( $cond );
+
+			//	----------------------------------------
+			//	Parse individual fields
+			//	----------------------------------------
+			
+			$exclude	= array('submit');
+			
+			foreach ( $msg as $key => $val )
+			{
+				//	----------------------------------------
+				//	Handle attachments
+				//	----------------------------------------
+				
+				$msg[$key]	= str_replace( LD."attachment_count".RD, $data['attachment_count'], $msg[$key] );
+						
+				if ( $key == 'msg' )
+				{
+					$all_fields	.= "Attachments: ".$data['attachment_count']."\n";
+					
+					$n		= 0;
+					
+					foreach ( $this->attachments as $file )
+					{
+						$n++;						
+						$all_fields	.= "Attachment $n: ".$file['filename']." ".$this->upload['url'].$file['filename']."\n";
+					}
+				}
+				
+				if ( preg_match( "/".LD."attachments".RD."(.*?)".LD."\/attachments".RD."/s", $msg[$key], $match ) )
+				{
+					if ( count( $this->attachments ) > 0 )
+					{
+						$str	= '';
+						
+						foreach ( $this->attachments as $file )
+						{
+							$tagdata	= $match['1'];
+							$tagdata	= str_replace( LD."fileurl".RD, $this->upload['url'].$file['filename'], $tagdata );
+							$tagdata	= str_replace( LD."filename".RD, $file['filename'], $tagdata );
+							$str		.= $tagdata;
+						}
+						
+						$msg[$key]	= str_replace( $match['0'], $str, $msg[$key] );
+					}
+					else
+					{
+						$msg[$key]	= str_replace( $match['0'], "", $msg[$key] );
+					}
+				}
+				
+				//	----------------------------------------
+				//	Loop
+				//	----------------------------------------
+				
+				foreach ( $fields as $name => $label )
+				{
+					if ( isset( $data[$name] ) AND ! in_array( $name, $exclude ) )
+					{
+						$msg[$key]	= str_replace( LD.$name.RD, $data[$name], $msg[$key] );
+						
+						//	----------------------------------------
+						//	We don't want to concatenate for every
+						//	time through the main loop.
+						//	----------------------------------------
+						
+						if ( $key == 'msg' )
+						{
+							$all_fields	.= $label.": ".$data[$name]."\n";
+						}
+					}
+					else
+					{
+						$msg[$key]	= str_replace( LD.$name.RD, '', $msg[$key] );
+					}
+				}
+			}
+			
+			
+			//	----------------------------------------
+			//	Parse all fields variable
+			//	----------------------------------------
+			
+			if ( stristr( $msg['msg'], LD.'all_custom_fields'.RD ) )
+			{
+				$msg['msg']	= str_replace( LD.'all_custom_fields'.RD, $all_fields, $msg['msg'] );
+			}
+			
+			
+			//	----------------------------------------
+			//	'freeform_recipient_email' hook.
+			//	 - This allows developers to alter the 
+			//	   $msg array before admin notification is sent.
+			//	----------------------------------------
+			
+			if (ee()->extensions->active_hook('freeform_recipient_email') === TRUE)
+			{
+				$msg = ee()->extensions->universal_call('freeform_recipient_email', $fields, $this->entry_id, $msg);
+				if (ee()->extensions->end_script === TRUE) return;
+			}
+			//	----------------------------------------
+			
+			//	----------------------------------------
+			//	Send email
+			//	----------------------------------------
+			
+			ee()->email->wordwrap	= $wordwrap;
+			ee()->email->mailtype	= ( $this->check_yes($query->row('html')) ) ? 'html': 'text';
+			
+			if ( count( $this->attachments ) > 0 AND $this->check_yes($this->_param('send_attachment')) )
+			{
+				foreach ( $this->attachments as $file_name )
+				{
+					ee()->email->attach( $file_name['filepath'] );
+				}
+				
+				ee()->db->query( 
+					ee()->db->update_string( 
+						'exp_freeform_attachments', 
+						array( 'emailed' 	=> 'y' ), 
+						array( 'entry_id' 	=> $this->entry_id ) 
+					) 
+				);
+			}
+			
+			foreach ($approved_tos as $val)
+			{								
+				ee()->email->initialize();
+				ee()->email->from($msg['from_email'], $msg['from_name']);	
+				ee()->email->to($val); 
+				ee()->email->subject($msg['subject']);	
+				ee()->email->message(entities_to_ascii($msg['msg']));						
+				ee()->email->send();
+				
+			}
+			ee()->email->clear(TRUE);
+
+			$msg = array();
+		
+			//	----------------------------------------
+			//	Register the template used
+			//	----------------------------------------
+			
+			ee()->db->query( 
+				ee()->db->update_string( 
+					'exp_freeform_entries', 
+					array( 'template' 	=> $template), 
+					array( 'entry_id' 	=> $this->entry_id ) 
+				) 
+			);
+		}
+		
+		//	End send user recipients
+				
+		
+        //	----------------------------------------
+        //	Send user email
+        //	----------------------------------------
+        
+        //$msg = array(); email_change
+        
+        if ( $this->check_yes($this->_param('send_user_email')) AND ee()->input->get_post('email') )
         {
         	$all_fields		= '';
         	
         	$recipients		= array();
         	
-        	$recipients[]	= $IN->GBL('email');
+        	$recipients[]	= ee()->input->get_post('email');
         	
-        	$template	= ( $this->_param('user_email_template') AND $this->_param('user_email_template') != '' ) ? $this->_param('user_email_template'): 'default';
+        	$template	= ( $this->_param('user_email_template') AND $this->_param('user_email_template') != '' ) ?
+ 								$this->_param('user_email_template'): 'default_template';
 		
-			/**	----------------------------------------
-			/**	Generate message
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Generate message
+			//	----------------------------------------
 			
-			$msg		= array();
+			$msg = array();
 			
-			$query		= $DB->query("SELECT * FROM exp_freeform_templates WHERE template_name = '".$DB->escape_str($template)."' AND enable_template = 'y' LIMIT 1");
+			$query		= ee()->db->query(
+				"SELECT * 
+				 FROM 	exp_freeform_templates 
+				 WHERE 	template_name = '" . ee()->db->escape_str($template) . "' 
+				 AND 	enable_template = 'y' 
+				 LIMIT 	1"
+			);
 
-			if ( $query->num_rows == 0 )
+			if ( $query->num_rows() == 0 )
 			{
-				return $OUT->show_user_error('general', array($LANG->line('template_not_available')));
+				return ee()->output->show_user_error('general', array(ee()->lang->line('template_not_available')));
 			}
 			
-			$msg['from_name']	= ( isset( $query->row['data_from_name'] ) AND $query->row['data_from_name'] != '' ) ? $query->row['data_from_name']: $PREFS->ini('webmaster_name');
+			$msg['from_name']	= ( $query->row('data_from_name') != '' ) ?
+			 							$query->row('data_from_name') : ee()->config->item('webmaster_name');
 
-			$msg['from_email']	= ( isset( $query->row['data_from_email'] ) AND $query->row['data_from_email'] != '' ) ? $query->row['data_from_email']: $PREFS->ini('webmaster_email');
+			$msg['from_email']	= ( $query->row('data_from_email') != '' ) ?
+			 							$query->row('data_from_email') : ee()->config->item('webmaster_email');
 
-			$msg['subject']		= $query->row['data_title'];
+			$msg['subject']		= $query->row('data_title');
 
-			$msg['msg']			= $query->row['template_data'];
+			$msg['msg']			= $query->row('template_data');
 
-			$wordwrap			= ( isset( $query->row['wordwrap'] ) AND $query->row['wordwrap'] == 'y') ? TRUE: FALSE;
+			$wordwrap			= ( $this->check_yes($query->row('wordwrap')) ) ? TRUE: FALSE;
 			
-			$msg['subject']		= str_replace( LD.'entry_date'.RD, $LOC->set_human_time($LOC->now), $msg['subject'] );
+			$msg['subject']		= str_replace( 	LD.'entry_date'.RD, 	
+											   	ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['subject'] );
 			
-			$msg['msg']			= str_replace( LD.'entry_date'.RD, $LOC->set_human_time($LOC->now), $msg['msg'] );
+			$msg['msg']			= str_replace( 	LD.'entry_date'.RD, 
+												ee()->localize->set_human_time(ee()->localize->now), 
+												$msg['msg'] );
 			
 			$msg['subject']		= str_replace( LD.'freeform_entry_id'.RD, $this->entry_id, $msg['subject'] );
 			$msg['msg']			= str_replace( LD.'freeform_entry_id'.RD, $this->entry_id, $msg['msg'] );
-			
-			/**	----------------------------------------
-			/**	Parse conditionals
-			/**	----------------------------------------*/
 		
-			if ( ! class_exists('Template'))
+			/* email_change*/
+			if (preg_match_all("/".LD."(entry_date)\s+format=([\"'])(.*?)\\2".RD."/is", $msg['subject'].$msg['msg'], $matches))
 			{
-				require PATH_CORE.'core.template'.EXT;
+				for ($j = 0; $j < count($matches[0]); $j++)
+				{	
+					$val = $matches[3][$j];
+					
+					foreach (ee()->localize->fetch_date_params($matches[3][$j]) AS $dvar)
+					{
+						$val = str_replace(	$dvar, 
+											ee()->localize->convert_timestamp($dvar, ee()->localize->now, TRUE), 
+											$val);					
+					}
+					
+					$msg['subject']		= str_replace( $matches[0][$j], $val, $msg['subject'] );
+			
+					$msg['msg']			= str_replace( $matches[0][$j], $val, $msg['msg'] );
+				}
 			}
 			
-			$TMPL		= new Template();
+			//	----------------------------------------
+			//	Parse conditionals
+			//	----------------------------------------
+		
+			//template isn't defined yet, so we have to fetch it
+			//1.x
+			if(APP_VER < 2.0)
+			{
+				if ( ! class_exists('Template'))
+				{
+					require PATH_CORE.'core.template'.EXT;
+				}
+			
+				$local_TMPL	= new Template();
+			}
+			//2.x
+			else
+			{
+				ee()->load->library('template');
+				$local_TMPL =& ee()->template;
+			}
 			
 			$data['attachment_count']		= count( $this->attachments );
 			
-			$cond		= $data;
+			$cond							= $data;
 			
 			foreach( $msg as $key => $val )
 			{
-				$msg[$key]	= $TMPL->advanced_conditionals( $FNS->prep_conditionals( $msg[$key], $cond ) );
+				$msg[$key]	= $local_TMPL->advanced_conditionals( 
+					ee()->functions->prep_conditionals( $msg[$key], $cond ) 
+				);
 			}
 
 			unset( $cond );
 
-			/**	----------------------------------------
-			/**	Parse individual fields
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Parse individual fields
+			//	----------------------------------------
 			
 			$exclude	= array('submit');
 			
 			foreach ( $msg as $key => $val )
 			{
-				/**	----------------------------------------
-				/**	Handle attachments
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Handle attachments
+				//	----------------------------------------
 				
 				$msg[$key]	= str_replace( LD."attachment_count".RD, $data['attachment_count'], $msg[$key] );
 						
@@ -1261,9 +2052,9 @@ class Freeform
 					}
 				}
 				
-				/**	----------------------------------------
-				/**	Loop
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Loop
+				//	----------------------------------------
 				
 				foreach ( $fields as $name => $label )
 				{
@@ -1271,10 +2062,10 @@ class Freeform
 					{
 						$msg[$key]	= str_replace( LD.$name.RD, $data[$name], $msg[$key] );
 						
-						/**	----------------------------------------
-						/**	We don't want to concatenate for every
-						/**	time through the main loop.
-						/**	----------------------------------------*/
+						//	----------------------------------------
+						//	We don't want to concatenate for every
+						//	time through the main loop.
+						//	----------------------------------------
 						
 						if ( $key == 'msg' )
 						{
@@ -1289,107 +2080,111 @@ class Freeform
 			}
 			
 			
-			/**	----------------------------------------
-			/**	Parse all fields variable
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Parse all fields variable
+			//	----------------------------------------
 			
 			if ( stristr( $msg['msg'], LD.'all_custom_fields'.RD ) )
 			{
 				$msg['msg']	= str_replace( LD.'all_custom_fields'.RD, $all_fields, $msg['msg'] );
 			}
 			
-			/**	----------------------------------------
-			/**	'freeform_module_user_notification' hook.
-			/**	----------------------------------------
-			/*	This allows developers to alter the $msg
-			/*	array before user notification is sent.
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	'freeform_module_user_notification' hook.
+			//	 - This allows developers to alter the $msg array before user notification is sent.
+			//	----------------------------------------
 			
-			if ($EXT->active_hook('freeform_module_user_notification') === TRUE)
+			if (ee()->extensions->active_hook('freeform_module_user_notification') === TRUE)
 			{
-				$msg = $EXT->call_extension('freeform_module_user_notification', $fields, $this->entry_id, $msg);
-				if ($EXT->end_script === TRUE) return;
+				$msg = ee()->extensions->universal_call('freeform_module_user_notification', $fields, $this->entry_id, $msg);
+				if (ee()->extensions->end_script === TRUE) return;
 			}
-			
-			/**	----------------------------------------*/
+			//	----------------------------------------
 		
-			/**	----------------------------------------
-			/**	Send email
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Send email
+			//	----------------------------------------
 			
-			if ( ! class_exists('EEmail'))
-			{
-				require PATH_CORE.'core.email'.EXT;
-			}
+			//ee()->load->library('email');
+			ee()->email->wordwrap	= $wordwrap;
+			ee()->email->mailtype	= ( $this->check_yes($query->row('html')) ) ? 'html': 'text';
 			
-			$email				= new EEmail;
-			$email->wordwrap	= $wordwrap;
-			$email->mailtype	= ( $query->row['html'] == 'y' ) ? 'html': 'text';
-			
-			if ( count( $this->attachments ) > 0 AND $this->_param('send_user_attachment') != 'no' )
+			if ( count( $this->attachments ) > 0 AND $this->check_yes($this->_param('send_user_attachment')) )
 			{
 				foreach ( $this->attachments as $file_name )
 				{
-					$email->attach( $file_name['filepath'] );
+					ee()->email->attach( $file_name['filepath'] );
 				}
 				
-				$DB->query( $DB->update_string( 'exp_freeform_attachments', array( 'emailed' => 'y' ), array( 'entry_id' => $this->entry_id ) ) );
+				ee()->db->query( 
+					ee()->db->update_string( 
+						'exp_freeform_attachments', 
+						array( 'emailed' => 'y' ), 
+						array( 'entry_id' => $this->entry_id ) 
+					) 
+				);
 			}
 			
 			foreach ($recipients as $val)
 			{								
-				$email->initialize();
-				$email->from($msg['from_email'], $msg['from_name']);	
-				$email->to($val); 
-				$email->subject($msg['subject']);	
-				$email->message($REGX->entities_to_ascii($msg['msg']));		
-				$email->Send();
+				ee()->email->initialize();
+				ee()->email->from($msg['from_email'], $msg['from_name']);	
+				ee()->email->to($val); 
+				ee()->email->subject($msg['subject']);	
+				ee()->email->message(entities_to_ascii($msg['msg']));		
+				ee()->email->send();
 			}
 			
-			// unset($msg);
+			$msg = array();
+			ee()->email->clear(TRUE);
 		}
 		
-		/**	End send user email */
+		//	End send user email 
 		
 		
-		/**	----------------------------------------
-		/**	Subscribe to mailing lists
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Subscribe to mailing lists
+		//	----------------------------------------
 		
-		if ( $IN->GBL('mailinglist') )
+		if ( ee()->input->get_post('mailinglist') )
 		{			
-			if ( $DB->table_exists('exp_mailing_lists') )
+			if ( ee()->db->table_exists('exp_mailing_lists') )
 			{
-				/**	----------------------------------------
-				/**	Do we have an email?
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Do we have an email?
+				//	----------------------------------------
 				
-				if ( $email = $IN->GBL('email') )
+				if ( $email = ee()->input->get_post('email') )
 				{
-					/**	----------------------------------------
-					/**	Explode mailinglist parameter
-					/**	----------------------------------------*/
+					//	----------------------------------------
+					//	Explode mailinglist parameter
+					//	----------------------------------------
 					
-					if ( is_array( $_POST['mailinglist'] ) )
+					if ( is_array( ee()->input->post('mailinglist') ) )
 					{
-						$lists	= implode( "','", $DB->escape_str($_POST['mailinglist']));
+						$lists	= implode( "','", ee()->db->escape_str(ee()->input->post('mailinglist')));
 					}
 					else
 					{
-						$lists	= $DB->escape_str($_POST['mailinglist']);
+						$lists	= ee()->db->escape_str(ee()->input->post('mailinglist'));
 					}
 					
-					/**	----------------------------------------
-					/**	Get lists
-					/**	----------------------------------------*/
+					//	----------------------------------------
+					//	Get lists
+					//	----------------------------------------
 					
 					$subscribed	= '';
 					
-					$sub	= $DB->query( "SELECT list_id FROM exp_mailing_list WHERE email = '".$DB->escape_str($email)."' GROUP BY list_id" );
+					$sub	= ee()->db->query( 
+						"SELECT list_id 
+						 FROM exp_mailing_list 
+						 WHERE email = '" . ee()->db->escape_str($email) . "' 
+						 GROUP BY list_id"
+					);
 
-					if ( $sub->num_rows > 0 )
+					if ( $sub->num_rows() > 0 )
 					{
-						foreach( $sub->result as $row )
+						foreach( $sub->result_array() as $row )
 						{
 							$subscribed[] = $row['list_id'];
 						}
@@ -1397,90 +2192,110 @@ class Freeform
 						$subscribed	= " AND list_id NOT IN (".implode(',', $subscribed).") ";
 					}
 					
-					$query	= $DB->query( "SELECT DISTINCT list_id, list_title FROM exp_mailing_lists 
-										   WHERE ( list_id IN ('".$lists."') OR list_name IN ('".$lists."') ) ".
-										   $subscribed);
+					$query	= ee()->db->query( 
+						"SELECT DISTINCT 	list_id, list_title 
+						 FROM 				exp_mailing_lists 
+						 WHERE 				( list_id IN ('" . $lists . "') OR 
+						 					  list_name IN ('" . $lists . "') ) " . $subscribed
+					);
 					
-					if ( $query->num_rows > 0 AND $query->num_rows < 50 )
+					if ( $query->num_rows() > 0 AND $query->num_rows() < 50 )
 					{				
 						// Kill duplicate emails from authorization queue.  This prevents an error if a user
 						// signs up but never activates their email, then signs up again.
 						
-						$DB->query("DELETE FROM exp_mailing_list_queue WHERE email = '".$DB->escape_str($email)."'");
+						ee()->db->query(
+							"DELETE FROM 	exp_mailing_list_queue 
+							 WHERE 			email = '" . ee()->db->escape_str($email) . "'"
+						);
 					
-						foreach ( $query->result as $row )
+						foreach ( $query->result_array() as $row )
 						{
-							/**	----------------------------------------
-							/**	Insert email
-							/**	----------------------------------------*/
+							//	----------------------------------------
+							//	Insert email
+							//	----------------------------------------
 									
-							$code	= $FNS->random('alpha', 10);
+							$code	= ee()->functions->random('alpha', 10);
 							
-							if (  $IN->GBL('mailinglist_opt_in') == 'no' )
+							if (  $this->check_no(ee()->input->get_post('mailinglist_opt_in')) )
 							{
-								$DB->query($DB->insert_string(	'exp_mailing_list',
-																array(	'user_id'		=> '',
-																		'list_id'		=> $row['list_id'],
-																		'authcode'		=> $code,
-																		'email'			=> $email,
-																		'ip_address'	=> $IN->IP)
-															));
+								ee()->db->query(
+									ee()->db->insert_string(	
+										'exp_mailing_list',
+										array(	
+											'user_id'		=> '',
+											'list_id'		=> $row['list_id'],
+											'authcode'		=> $code,
+											'email'			=> $email,
+											'ip_address'	=> ee()->input->ip_address()
+										)
+									)
+								);
 														
-								/** ----------------------------------------
-								/**  Is there an admin notification to send?
-								/** ----------------------------------------*/
+								// ----------------------------------------
+								//  Is there an admin notification to send?
+								// ----------------------------------------
 						
-								if ($PREFS->ini('mailinglist_notify') == 'y' AND $PREFS->ini('mailinglist_notify_emails') != '')
+								if ($this->check_yes(ee()->config->item('mailinglist_notify'))  AND
+								    ee()->config->item('mailinglist_notify_emails') != '')
 								{
-									$query = $DB->query("SELECT list_title FROM exp_mailing_lists WHERE list_id = '".$DB->escape_str($row['list_id'])."'");
+									$query = ee()->db->query(
+										"SELECT list_title 
+										 FROM 	exp_mailing_lists 
+										 WHERE 	list_id = '" . ee()->db->escape_str($row['list_id']) . "'"
+									);
 								
 									$swap = array(
-													'email'			=> $email,
-													'mailing_list'	=> $query->row['list_title']
-												 );
+										'email'			=> $email,
+										'mailing_list'	=> $query->row('list_title')
+									 );
 									
-									$template = $FNS->fetch_email_template('admin_notify_mailinglist');
-									$email_tit = $FNS->var_swap($template['title'], $swap);
-									$email_msg = $FNS->var_swap($template['data'], $swap);
+									$template = ee()->functions->fetch_email_template('admin_notify_mailinglist');
+									$email_tit = ee()->functions->var_swap($template['title'], $swap);
+									$email_msg = ee()->functions->var_swap($template['data'], $swap);
 																		
-									/** ----------------------------
-									/**  Send email
-									/** ----------------------------*/
+									// ----------------------------
+									//  Send email
+									// ----------------------------
 						
-									$notify_address = $REGX->remove_extra_commas($PREFS->ini('mailinglist_notify_emails'));
+									$notify_address = $this->remove_extra_commas(
+										ee()->config->item('mailinglist_notify_emails')
+									);
 									
 									if ($notify_address != '')
 									{				
-										/** ----------------------------
-										/**  Send email
-										/** ----------------------------*/
+										// ----------------------------
+										//  Send email
+										// ----------------------------
 										
-										if ( ! class_exists('EEmail'))
-										{
-											require PATH_CORE.'core.email'.EXT;
-										}
-										
-										$email = new EEmail;
-										//$email->debug = TRUE;
+										//ee()->load->library('email');
 										
 										foreach (explode(',', $notify_address) as $addy)
 										{
-											$email->initialize();
-											$email->wordwrap = true;
-											$email->from($PREFS->ini('webmaster_email'), $PREFS->ini('webmaster_name'));	
-											$email->to($addy); 
-											$email->reply_to($PREFS->ini('webmaster_email'));
-											$email->subject($email_tit);	
-											$email->message($REGX->entities_to_ascii($email_msg));		
-											$email->Send();
+											ee()->email->initialize();
+											ee()->email->wordwrap = true;
+											ee()->email->from(
+												ee()->config->item('webmaster_email'), 
+												ee()->config->item('webmaster_name')
+											);	
+											ee()->email->to($addy); 
+											ee()->email->reply_to(ee()->config->item('webmaster_email'));
+											ee()->email->subject($email_tit);	
+											ee()->email->message(entities_to_ascii($email_msg));		
+											ee()->email->Send();
 										}
+										ee()->email->clear(TRUE);
 									}
 								}
 							}        
 							else
 							{        	
-								$DB->query("INSERT INTO exp_mailing_list_queue (email, list_id, authcode, date) 
-											VALUES ('".$DB->escape_str($email)."', '".$DB->escape_str($row['list_id'])."', '".$DB->escape_str($code)."', '".time()."')");
+								ee()->db->query(
+									"INSERT INTO exp_mailing_list_queue (email, list_id, authcode, date) 
+									 VALUES ('" . ee()->db->escape_str($email) . "', '" . 
+									 			  ee()->db->escape_str($row['list_id']) ."', '" . 
+												  ee()->db->escape_str($code) . "', '" . time() . "')"
+									);
 								
 								$this->send_email_confirmation($email, $row, $code);
 							}
@@ -1490,165 +2305,182 @@ class Freeform
 			}
 		}
 		
-		/**	End subscribe to mailinglists */
+		//	End subscribe to mailinglists 
 		
-		/**	----------------------------------------
-		/**	'freeform_module_insert_end' hook.
-		/**	----------------------------------------
-		/*	This allows developers to do one last
-		/*	thing before Freeform submit is ended.
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	'freeform_module_insert_end' hook.
+		//	 - This allows developers to do one last thing before Freeform submit is ended.
+		//	----------------------------------------
 		
-		// if (isset($EXT->extensions['freeform_module_insert_end']))
-		if ($EXT->active_hook('freeform_module_insert_end') === TRUE)
+		if (ee()->extensions->active_hook('freeform_module_insert_end') === TRUE)
 		{
-			$edata = $EXT->call_extension('freeform_module_insert_end', $fields, $this->entry_id, $msg);
-			if ($EXT->end_script === TRUE) return;
+			$edata = ee()->extensions->universal_call('freeform_module_insert_end', $fields, $this->entry_id, $msg);
+			if (ee()->extensions->end_script === TRUE) return;
 		}
-			
-        /**	----------------------------------------*/
+        //	----------------------------------------
 		
-		/**	----------------------------------------
-		/**	Set return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Set return
+		//	----------------------------------------
         
-        if ( ! $return = $IN->GBL('return') )
+        if ( ! $return = ee()->input->get_post('return') )
         {
-        	$return	= $IN->GBL('RET');
+        	$return	= ee()->input->get_post('RET');
         }
 		
 		if ( preg_match( "/".LD."\s*path=(.*?)".RD."/", $return, $match ) > 0 )
 		{
-			$return	= $FNS->create_url( $match['1'] );
+			$return	= ee()->functions->create_url( $match['1'] );
 		}
 		elseif ( stristr( $return, "http://" ) === FALSE && stristr( $return, "https://" ) === FALSE )
 		{
-			$return	= $FNS->create_url( $return );
+			$return	= ee()->functions->create_url( $return );
 		}
 		
 		$return	= str_replace( "%%entry_id%%", $this->entry_id, $return );
 		
 		$return	= $this->_chars_decode( $return );
 				
-        /**	----------------------------------------
-        /**	Return the user
-        /**	----------------------------------------*/
-        
+        //	----------------------------------------
+        //	Return the user
+        //	----------------------------------------
+
         if ( $return != '' )
         {
-			$FNS->redirect( $return );
+			ee()->functions->redirect( $return );
         }
         else
         {
-        	$FNS->redirect( $FNS->fetch_site_index() );
+        	ee()->functions->redirect( ee()->functions->fetch_site_index() );
         }
 		
 		exit;
     }
     
-    /**	End insert */
+    //	End insert 
     
 	
-	/**	----------------------------------------
-	/**	Send confirmation email
-	/**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * Constructor
+	 *
+	 * @access	public
+	 * @param	(string) email 	- valid email address to send confirmation to
+	 * @param 	(array)  row	- row from db query from mailing list
+	 * @param	(string) code	- confirmation code for email 
+	 * @return	null
+	 */
 
 	function send_email_confirmation($email, $row, $code)
 	{
-		global $LANG, $PREFS, $FNS;
-		
 		if ( ! is_array($row) OR ! isset($row['list_title']))
 		{
 			return FALSE;
 		}
         
-        $qs			= ($PREFS->ini('force_query_string') == 'y') ? '' : '?';        
-		$action_id  = $FNS->fetch_action_id('Mailinglist', 'authorize_email');
+        $qs			= ( $this->check_yes(ee()->config->item('force_query_string')) ) ? '' : '?';        
+		$action_id  = ee()->functions->insert_action_ids(ee()->functions->fetch_action_id('Mailinglist', 'authorize_email'));
 
 		$swap		= array(
-						'activation_url'	=> $FNS->fetch_site_index(0, 0).$qs.'ACT='.$action_id.'&id='.$code,
-						'site_name'			=> stripslashes($PREFS->ini('site_name')),
-						'site_url'			=> $PREFS->ini('site_url'),
-						'mailing_list'		=> $row['list_title']
-					 );
+			'activation_url'	=> ee()->functions->fetch_site_index(0, 0).$qs.'ACT='.$action_id.'&id='.$code,
+			'site_name'			=> stripslashes(ee()->config->item('site_name')),
+			'site_url'			=> ee()->config->item('site_url'),
+			'mailing_list'		=> $row['list_title']
+		);
 		
 		foreach ( $row as $key => $val )
 		{
 			$swap[$key]	= $val;
 		}
 		
-		$template	= $FNS->fetch_email_template('mailinglist_activation_instructions');
-		$email_tit	= $FNS->var_swap($template['title'], $swap);
-		$email_msg	= $FNS->var_swap($template['data'], $swap);
+		$template	= ee()->functions->fetch_email_template('mailinglist_activation_instructions');
+		$email_tit	= ee()->functions->var_swap($template['title'], $swap);
+		$email_msg	= ee()->functions->var_swap($template['data'], $swap);
 		
-		/**	----------------------------------------
-		/**	Send email
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Send email
+		//	----------------------------------------
 		
-		if ( ! class_exists('EEmail'))
-		{			
-			require PATH_CORE.'core.email'.EXT;
-		}
-					
-		$E = new EEmail;        
-		$E->wordwrap = true;
-		$E->mailtype = 'plain';
-		$E->priority = '3';
+		//ee()->load->library('email');
 		
-		$E->from($PREFS->ini('webmaster_email'), $PREFS->ini('webmaster_name'));	
-		$E->to($email); 
-		$E->subject($email_tit);	
-		$E->message($email_msg);	
-		$E->Send();
+		ee()->email->initialize();        
+		ee()->email->wordwrap = true;
+		ee()->email->mailtype = 'plain';
+		ee()->email->priority = '3';		
+		ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));	
+		ee()->email->to($email); 
+		ee()->email->subject($email_tit);	
+		ee()->email->message($email_msg);	
+		ee()->email->Send();
+		
+		//cleanup, ilse 4
+		ee()->email->clear(TRUE);
 	}
 	
-	/**	End confirmation email */
+	//	End confirmation email 
     
     
-    /**	----------------------------------------
-    /**	Entries
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * freeform entries tag for template display
+	 *
+	 * @access	public
+	 * @return	rendered template data
+	 */
 
     function entries()
     {
-    	global $DB, $FNS, $IN, $LOC, $TMPL;
+		//	----------------------------------------
+		//	Trigger benchmarking for performance
+		//	tracking
+		//	----------------------------------------
+		
+		ee()->TMPL->log_item('Freeform Module: Prep Query');
+		
+		//	----------------------------------------
+		//	Dynamic
+		//	----------------------------------------
+		
+		$this->dynamic	= ! $this->check_no(ee()->TMPL->fetch_param('dynamic'));
     	
-		/**	----------------------------------------
-		/**	Trigger benchmarking for performance
-		/**	tracking
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Get entries
+		//	----------------------------------------
 		
-		$TMPL->log_item('Freeform Module: Prep Query');
+		$sql	= "SELECT 	* 
+				   FROM 	exp_freeform_entries 
+				   WHERE 	entry_date != ''";
+						
+		//	----------------------------------------
+		//	Entry id
+		//	----------------------------------------
 		
-		/**	----------------------------------------
-		/**	Dynamic
-		/**	----------------------------------------*/
-		
-		$this->dynamic	= ( $TMPL->fetch_param('dynamic') != 'off' ) ? TRUE: FALSE;
-    	
-		/**	----------------------------------------
-		/**	Get entries
-		/**	----------------------------------------*/
-		
-		$sql	= "SELECT * FROM exp_freeform_entries WHERE entry_date != ''";
-		
-		/**	----------------------------------------
-		/**	Entry id
-		/**	----------------------------------------*/
-		
-		if ( $this->_entry_id() === TRUE )
+		//if the passed entry ID isn't something we can use,
+		//send no results
+		if ( ee()->TMPL->fetch_param('entry_id') !== FALSE AND 
+			 ! is_numeric( trim(ee()->TMPL->fetch_param('entry_id')) ) )
 		{
-			$sql	.= " AND entry_id = '".$DB->escape_str($this->entry_id)."'";
+			return ee()->TMPL->no_results();
+		}
+		elseif ( $this->_entry_id() === TRUE )
+		{
+			$sql	.= " AND entry_id = '".ee()->db->escape_str($this->entry_id)."'";
 		}
 		
-		if ( $TMPL->fetch_param('form_name') !== FALSE )
+		if ( ee()->TMPL->fetch_param('collection') !== FALSE )
 		{
-			$sql	.= " AND form_name = '".$DB->escape_str($TMPL->fetch_param('form_name'))."'";
+			$sql	.= " AND form_name = '".ee()->db->escape_str(ee()->TMPL->fetch_param('collection'))."'";
+		}		
+		elseif ( ee()->TMPL->fetch_param('form_name') !== FALSE )
+		{
+			$sql	.= " AND form_name = '".ee()->db->escape_str(ee()->TMPL->fetch_param('form_name'))."'";
 		}
 		
-		if ( $TMPL->fetch_param('status') !== FALSE )
+		if ( ee()->TMPL->fetch_param('status') !== FALSE )
 		{
-			$stats	= preg_split( "/,|\|/", $TMPL->fetch_param('status') );
+			$stats	= preg_split( "/,|\|/", ee()->TMPL->fetch_param('status') );
 			
 			$arr	= array_intersect( array('open','closed'), $stats );
 			
@@ -1666,71 +2498,75 @@ class Freeform
 			$sql	.= " AND status = 'open'";
 		}
 		
-		if ( $TMPL->fetch_param('orderby') !== FALSE )
+		if ( ee()->TMPL->fetch_param('orderby') !== FALSE AND 
+			 $this->_column_exists( ee()->TMPL->fetch_param('orderby'), 'exp_freeform_entries' )
+		   )
 		{
-			$sql	.= " ORDER BY ".$TMPL->fetch_param('orderby');
+			$sql	.= " ORDER BY " . ee()->TMPL->fetch_param('orderby');
 		}
 		else
 		{
 			$sql	.= " ORDER BY entry_date";
 		}		
 		
-		if ( $TMPL->fetch_param('sort') !== FALSE )
-		{
-			$sql	.= ( $TMPL->fetch_param('sort') == 'asc' ) ? ' ASC': ' DESC';
-		}
+		$sql	.= ( strtolower(ee()->TMPL->fetch_param('sort')) == 'asc' ) ? ' ASC': ' DESC';
 		
-		if ( $TMPL->fetch_param('limit') !== FALSE )
+		if ( ee()->TMPL->fetch_param('limit') !== FALSE )
 		{
-			$sql	.= " LIMIT ".$TMPL->fetch_param('limit');
+			$sql	.= " LIMIT " . ee()->TMPL->fetch_param('limit');
 		}
 		else
 		{
 			$sql	.= " LIMIT 100";
 		}
 		
-		/**	----------------------------------------
-		/**	Run query
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Run query
+		//	----------------------------------------
 		
-		$TMPL->log_item('Freeform Module: Run Query');
+		ee()->TMPL->log_item('Freeform Module: Run Query');
 		
-		$query	= $DB->query($sql);
+		$query	= ee()->db->query($sql);
     	
-		/**	----------------------------------------
-		/**	Results?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Results?
+		//	----------------------------------------
 		
-		if ( $query->num_rows == 0 )
+		if ( $query->num_rows() == 0 )
 		{
-			return $TMPL->no_results();
+			return ee()->TMPL->no_results();
 		}
     	
-		/**	----------------------------------------
-		/**	Grab attachments
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Grab attachments
+		//	----------------------------------------
 		
-		$TMPL->log_item('Freeform Module: Loop Query');
+		ee()->TMPL->log_item('Freeform Module: Loop Query');
 		
 		$entry_ids	= array();
 		
-		foreach ( $query->result as $row )
+		foreach ( $query->result_array() as $row )
 		{
 			$entry_ids[]	= $row['entry_id'];
 		}
 		
-		$attachmentsq	= $DB->query( "SELECT a.*, CONCAT( p.url, a.filename, a.extension ) AS fileurl FROM exp_freeform_attachments a LEFT JOIN exp_upload_prefs p ON p.id = a.pref_id WHERE a.entry_id IN ('".implode( "','", $entry_ids )."')" );
+		$attachmentsq	= ee()->db->query( 
+			"SELECT 	a.*, CONCAT( p.url, a.filename, a.extension ) AS fileurl 
+			 FROM 		exp_freeform_attachments a 
+			 LEFT JOIN 	exp_upload_prefs p 	ON p.id = a.pref_id 
+			 WHERE 		a.entry_id 			IN ('".implode( "','", $entry_ids )."')" 
+		);
 		
 		$attachments	= array();
 		
-		foreach( $attachmentsq->result as $row )
+		foreach( $attachmentsq->result_array() as $row )
 		{
 			$attachments[ $row['entry_id'] ][]	= $row;
 		}
 		
-        /**	----------------------------------------
-        /**	Fetch all the date-related variables
-        /**	----------------------------------------*/
+        //	----------------------------------------
+        //	Fetch all the date-related variables
+        //	----------------------------------------
         
         $entry_date 		= array();
         $gmt_entry_date		= array();
@@ -1743,7 +2579,7 @@ class Freeform
                 
 		foreach ($date_vars as $val)
 		{
-			if (preg_match_all("/".LD.$val."\s+format=[\"'](.*?)[\"']".RD."/s", $TMPL->tagdata, $matches))
+			if (preg_match_all("/".LD.$val."\s+format=[\"'](.*?)[\"']".RD."/s", ee()->TMPL->tagdata, $matches))
 			{
 				for ($j = 0; $j < count($matches['0']); $j++)
 				{
@@ -1751,52 +2587,54 @@ class Freeform
 					
 					switch ($val)
 					{
-						case 'entry_date' 			: $entry_date[$matches['0'][$j]] = $LOC->fetch_date_params($matches['1'][$j]);
+						case 'entry_date' 		: $entry_date[$matches['0'][$j]] = ee()->localize->fetch_date_params($matches['1'][$j]);
 							break;
-						case 'gmt_entry_date'		: $gmt_entry_date[$matches['0'][$j]] = $LOC->fetch_date_params($matches['1'][$j]);
+						case 'gmt_entry_date'	: $gmt_entry_date[$matches['0'][$j]] = ee()->localize->fetch_date_params($matches['1'][$j]);
 							break;
-						case 'edit_date' 			: $edit_date[$matches['0'][$j]] = $LOC->fetch_date_params($matches['1'][$j]);
+						case 'edit_date' 		: $edit_date[$matches['0'][$j]] = ee()->localize->fetch_date_params($matches['1'][$j]);
 							break;
-						case 'gmt_edit_date'		: $gmt_edit_date[$matches['0'][$j]] = $LOC->fetch_date_params($matches['1'][$j]);
+						case 'gmt_edit_date'	: $gmt_edit_date[$matches['0'][$j]] = ee()->localize->fetch_date_params($matches['1'][$j]);
 							break;
 					}
 				}
 			}
 		}
     	
-		/**	----------------------------------------
-		/**	Parse
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Parse
+		//	----------------------------------------
 		
 		$return			= '';
 		
 		$count			= 1;
 		
-		$reverse_count	= $query->num_rows;
+		$reverse_count	= $query->num_rows();
 		
-		foreach ( $query->result as $row )
+		foreach ( $query->result_array() as $row )
 		{
 			$row['count']			= $count++;
 			
 			$row['reverse_count']	= $reverse_count--;
 			
-			$row['total_entries']	= $query->num_rows;
+			$row['total_entries']	= $query->num_rows();
 
-			$tagdata				= $TMPL->tagdata;
+			$row['collection_name'] = $row['form_name'];
+
+			$tagdata				= ee()->TMPL->tagdata;
 			
-			/**	----------------------------------------
-			/**	Conditionals
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Conditionals
+			//	----------------------------------------
 			
 			$cond			= $row;
 			
-			$tagdata		= $FNS->prep_conditionals( $tagdata, $cond );
+			$tagdata		= ee()->functions->prep_conditionals( $tagdata, $cond );
 			
-			/**	----------------------------------------
-			/**	Var pairs
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Var pairs
+			//	----------------------------------------
 			
-			foreach ( $TMPL->var_pair as $key => $val )
+			foreach ( ee()->TMPL->var_pair as $key => $val )
 			{				
 				$out		= '';
 				
@@ -1804,7 +2642,7 @@ class Freeform
 				{
 					if ( isset( $attachments[ $row['entry_id'] ] ) )
 					{
-						preg_match( "/".LD.$key.RD."(.*?)".LD.SLASH.$key.RD."/s", $tagdata, $match );
+						preg_match( '/' . LD . $key . RD . "(.*?)" . LD . preg_quote(T_SLASH, '/') . $key . RD . '/s', $tagdata, $match );
 						
 						$r	=	'';
 						
@@ -1824,40 +2662,40 @@ class Freeform
 					}
 					else
 					{
-						$tagdata	= $TMPL->delete_var_pairs( $key, $key, $tagdata );
+						$tagdata	= ee()->TMPL->delete_var_pairs( $key, $key, $tagdata );
 					}
 				}
 			}
 			
-			/**	----------------------------------------
-			/**	Single Vars
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Single Vars
+			//	----------------------------------------
 			
-			foreach ( $TMPL->var_single as $key => $val )
+			foreach ( ee()->TMPL->var_single as $key => $val )
 			{
-				/**	----------------------------------------
-				/**	parse {attachment_count} variable
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	parse {attachment_count} variable
+				//	----------------------------------------
 				
 				if ( $key == 'attachment_count' )
 				{
 					if ( isset( $attachments[ $row['entry_id'] ] ) )
 					{
-						$tagdata = $TMPL->swap_var_single($key, count( $attachments[ $row['entry_id'] ] ), $tagdata);
+						$tagdata = ee()->TMPL->swap_var_single($key, count( $attachments[ $row['entry_id'] ] ), $tagdata);
 					}
 					else
 					{
-						$tagdata = $TMPL->swap_var_single($key, '0', $tagdata);
+						$tagdata = ee()->TMPL->swap_var_single($key, '0', $tagdata);
 					}
 				}
 				
-				/**	----------------------------------------
-				/**	parse {switch} variable
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	parse {switch} variable
+				//	----------------------------------------
 				
 				if (preg_match("/^switch\s*=.+/i", $key))
 				{
-					$sparam = $FNS->assign_parameters($key);
+					$sparam = ee()->functions->assign_parameters($key);
 					
 					$sw = '';
 	
@@ -1882,221 +2720,283 @@ class Freeform
 						}
 					}
 					
-					$tagdata = $TMPL->swap_var_single($key, $sw, $tagdata);
+					$tagdata = ee()->TMPL->swap_var_single($key, $sw, $tagdata);
 				}
                                 
-                /**	----------------------------------------
-                /**	parse entry date
-                /**	----------------------------------------*/
+                //	----------------------------------------
+                //	parse entry date
+                //	----------------------------------------
                 
                 if (isset($entry_date[$key]))
                 {
 					foreach ($entry_date[$key] as $dvar)
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $row['entry_date'], TRUE), $val);					
+					{
+						$val = str_replace(
+							$dvar, 
+							ee()->localize->convert_timestamp($dvar, $row['entry_date'], TRUE), 
+							$val
+						);
+					}					
 
-					$tagdata = $TMPL->swap_var_single($key, $val, $tagdata);					
+					$tagdata = ee()->TMPL->swap_var_single($key, $val, $tagdata);					
                 }
             
-                /**	----------------------------------------
-                /**	GMT date - entry date in GMT
-                /**	----------------------------------------*/
+                //	----------------------------------------
+                //	GMT date - entry date in GMT
+                //	----------------------------------------
                 
                 if (isset($gmt_entry_date[$key]))
                 {
 					foreach ($gmt_entry_date[$key] as $dvar)
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $row['entry_date'], FALSE), $val);					
+					{
+						$val = str_replace(
+							$dvar, 
+							ee()->localize->convert_timestamp($dvar, $row['entry_date'], FALSE), 
+							$val
+						);
+					}					
 
-					$tagdata = $TMPL->swap_var_single($key, $val, $tagdata);					
+					$tagdata = ee()->TMPL->swap_var_single($key, $val, $tagdata);					
                 }
                 
                 if (isset($gmt_date[$key]))
                 {
 					foreach ($gmt_date[$key] as $dvar)
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $row['entry_date'], FALSE), $val);					
+					{	
+						$val = str_replace(
+							$dvar, 
+							ee()->localize->convert_timestamp($dvar, $row['entry_date'], FALSE), 
+							$val
+						);
+					}					
 
-					$tagdata = $TMPL->swap_var_single($key, $val, $tagdata);					
+					$tagdata = ee()->TMPL->swap_var_single($key, $val, $tagdata);					
                 }
                                 
-                /**	----------------------------------------
-                /**	parse edit date
-                /**	----------------------------------------*/
+                //	----------------------------------------
+                //	parse edit date
+                //	----------------------------------------
                 
                 if (isset($edit_date[$key]))
                 {
 					foreach ($edit_date[$key] as $dvar)
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $LOC->timestamp_to_gmt($row['edit_date']), TRUE), $val);					
+					{	
+						$val = str_replace(
+							$dvar, 
+							ee()->localize->convert_timestamp(
+								$dvar, 
+								ee()->localize->timestamp_to_gmt($row['edit_date']), 
+								TRUE
+							), 
+							$val
+						);
+					}					
 
-					$tagdata = $TMPL->swap_var_single($key, $val, $tagdata);					
+					$tagdata = ee()->TMPL->swap_var_single($key, $val, $tagdata);					
                 }
                 
-                /**	----------------------------------------
-                /**	Edit date as GMT
-                /**	----------------------------------------*/
+                //	----------------------------------------
+                //	Edit date as GMT
+                //	----------------------------------------
                 
                 if (isset($gmt_edit_date[$key]))
                 {
 					foreach ($gmt_edit_date[$key] as $dvar)
-						$val = str_replace($dvar, $LOC->convert_timestamp($dvar, $LOC->timestamp_to_gmt($row['edit_date']), FALSE), $val);					
+					{	
+						$val = str_replace(
+							$dvar, 
+							ee()->localize->convert_timestamp(
+								$dvar, 
+								ee()->localize->timestamp_to_gmt($row['edit_date']), 
+								FALSE
+							), 
+							$val
+						);
+					}					
 
-					$tagdata = $TMPL->swap_var_single($key, $val, $tagdata);					
+					$tagdata = ee()->TMPL->swap_var_single($key, $val, $tagdata);					
                 }
                 
-                /**	----------------------------------------
-                /**	Remaining variables
-                /**	----------------------------------------*/
+                //	----------------------------------------
+                //	Remaining variables
+                //	----------------------------------------
 			
 				if ( isset( $row[$key] ) )
 				{
-					$tagdata	= $TMPL->swap_var_single( $key, $row[$key], $tagdata );
+					$tagdata	= ee()->TMPL->swap_var_single( $key, $row[$key], $tagdata );
 				}
 			}
 			
-			/**	----------------------------------------
-			/**	Concat
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Concat
+			//	----------------------------------------
 			
 			$return	.=	$tagdata;			
 		}
 			
-		/**	----------------------------------------
-		/**	Return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Return
+		//	----------------------------------------
 		
-		$TMPL->log_item('Freeform Module: Return Data');
+		ee()->TMPL->log_item('Freeform Module: Return Data');
 		
 		return $return;
     }
+    //	End entries 
     
-    /**	End entries */
     
-    
-    /**	----------------------------------------
-    /**	Count
-    /**	----------------------------------------
-    /*	Get counts of total submissions to
-    /*	Freeform.
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * count tag - gets different count data for freeform entries
+	 *
+	 * @access	public
+	 * @return	parsed template data
+	 */
 
     function count()
     {
-    	global $DB, $LOC, $TMPL;
-    	
-		/**	----------------------------------------
-		/**	Date fields
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Date fields
+		//	----------------------------------------
 		
 		$date		= array('entry_date', 'edit_date');
     	
-		/**	----------------------------------------
-		/**	Primary fields
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Primary fields
+		//	----------------------------------------
 		
-		$primary	= array('entry_id', 'group_id', 'weblog_id', 'author_id', 'ip_address', 'form_name', 'template', 'status' );
+		$primary	= array(
+			'entry_id', 
+			'group_id', 
+			$this->sc->db->id, 
+			'author_id', 
+			'ip_address', 
+			'form_name', 
+			'template', 
+			'status' 
+		);
     	
-		/**	----------------------------------------
-		/**	Custom fields
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Custom fields
+		//	----------------------------------------
 		
 		$custom		= array();
+				
+		$query		= ee()->db->query("SELECT name FROM exp_freeform_fields");
 		
-		$query		= $DB->query("SELECT name FROM exp_freeform_fields");
-		
-		if ( $query->num_rows > 0 )
+		if ( $query->num_rows() > 0 )
 		{
-			foreach( $query->result as $row )
+			foreach( $query->result_array() as $row )
 			{
 				$custom[]	= $row['name'];
 			}
 		}
 		
-		/**	----------------------------------------
-		/**	Merge
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Merge
+		//	----------------------------------------
 		
 		$fields	= array_merge( $primary, $custom );
     	
-		/**	----------------------------------------
-		/**	Assemble
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Assemble
+		//	----------------------------------------
     	
-    	$sql	= "SELECT COUNT(*) AS count FROM exp_freeform_entries WHERE entry_id != ''";
+    	$sql	= "SELECT 	COUNT(*) AS count 
+				   FROM 	exp_freeform_entries 
+				   WHERE 	entry_id != ''";
     	
-		/**	----------------------------------------
-		/**	Date fields
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Date fields
+		//	----------------------------------------
 		
 		foreach ( $date as $key )
 		{
-			if ( $val = $TMPL->fetch_param($key) )
+			if ( $val = ee()->TMPL->fetch_param($key) )
 			{
 				if ( is_numeric( $val ) )
 				{
-					$sql	.= " AND ".$key." >= ".($LOC->now - ($val * 60 * 60));
+					$sql .= " AND " . $key . " >= " . (ee()->localize->now - ($val * 60 * 60));
 				}
 			}
 		}
     	
-		/**	----------------------------------------
-		/**	Fields
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Fields
+		//	----------------------------------------
 		
 		foreach ( $fields as $key )
 		{
-			if ( $val = $TMPL->fetch_param($key) )
+			//is this the 'collection' param instead of 'form_name'?
+			if ($key == 'form_name' and in_array(ee()->TMPL->fetch_param('form_name'), array(FALSE, '')))
 			{
-				$sql	.= " AND ".$key." = '".$DB->escape_str($val)."'";
+				if ( ! in_array(ee()->TMPL->fetch_param('collection'), array(FALSE, '')) )
+				{
+					$sql	.= " AND form_name = '".ee()->db->escape_str(ee()->TMPL->fetch_param('collection'))."'";
+					continue;
+				}
+			}
+			
+			if ( $val = ee()->TMPL->fetch_param($key) )
+			{
+				$sql	.= " AND " . $key . " = '" . ee()->db->escape_str($val) . "'";
 			}
 		}
     	
-		/**	----------------------------------------
-		/**	Query
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Query
+		//	----------------------------------------
 		
-		$query	= $DB->query( $sql );
+		$query	= ee()->db->query( $sql );
 		
-		/**	----------------------------------------
-		/**	Output
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Output
+		//	----------------------------------------
 		
-		return str_replace( LD.'count'.RD, $query->row['count'], $TMPL->tagdata );
+		return str_replace( LD.'count'.RD, $query->row('count'), ee()->TMPL->tagdata );
     }
     
-    /**	End count */
+    //	End count 
 	
 	
-	/**	----------------------------------------
-    /**	Entry id
-	/**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * _entry_id, sets entry_id class var
+	 *
+	 * @access	public
+	 * @param	(string) id - entry id
+	 * @return	boolean
+	 */
     
     function _entry_id( $id = 'entry_id' )
-    {
-    	global $DB, $IN, $PREFS, $REGX, $TMPL;
-    	
-		$cat_segment	= $PREFS->ini("reserved_category_word");
+    {	
+		$cat_segment	= ee()->config->item("reserved_category_word");
 		
 		if ( $this->entry_id != '' )
 		{
 			return TRUE;
 		}    	
-		elseif ( $TMPL AND is_numeric( trim( $TMPL->fetch_param($id) ) ) )
+		elseif ( isset($GLOBALS['TMPL']) AND is_numeric( trim( ee()->TMPL->fetch_param($id) ) ) )
 		{
-			$this->entry_id	= trim( $TMPL->fetch_param($id) );
+			$this->entry_id	= trim( ee()->TMPL->fetch_param($id) );
 			
 			return TRUE;
 		}
-		elseif ( $IN->GBL($id) )
+		elseif ( is_numeric( ee()->input->get_post($id) ) )
 		{
-			$this->entry_id	= $IN->GBL($id);
+			$this->entry_id	= ee()->input->get_post($id);
 			
 			return TRUE;
 		}
-		elseif ( $IN->QSTR != '' AND $this->dynamic )
+		elseif ( ee()->uri->query_string != '' AND $this->dynamic )
 		{
-			$qstring	= $IN->QSTR;
+			$qstring	= ee()->uri->query_string;
 			
-			/**	----------------------------------------
-			/**	Do we have a pure ID number?
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Do we have a pure ID number?
+			//	----------------------------------------
 		
 			if ( is_numeric( $qstring) )
 			{
@@ -2106,98 +3006,108 @@ class Freeform
 			}
 			else
 			{
-				/**	----------------------------------------
-				/**	Parse day
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Parse day
+				//	----------------------------------------
 				
 				if (preg_match("#\d{4}/\d{2}/(\d{2})#", $qstring, $match))
 				{											
 					$partial	= substr($match['0'], 0, -3);
 										
-					$qstring	= $REGX->trim_slashes(str_replace($match['0'], $partial, $qstring));
+					$qstring	= trim_slashes(str_replace($match['0'], $partial, $qstring));
 				}
 				
-				/**	----------------------------------------
-				/**	Parse /year/month/
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Parse /year/month/
+				//	----------------------------------------
 										
 				if (preg_match("#(\d{4}/\d{2})#", $qstring, $match))
 				{					
-					$qstring	= $REGX->trim_slashes(str_replace($match['1'], '', $qstring));
+					$qstring	= trim_slashes(str_replace($match['1'], '', $qstring));
 				}				
 
-				/**	----------------------------------------
-				/**	Parse page number
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Parse page number
+				//	----------------------------------------
 				
 				if (preg_match("#^P(\d+)|/P(\d+)#", $qstring, $match))
 				{					
-					$qstring	= $REGX->trim_slashes(str_replace($match['0'], '', $qstring));
+					$qstring	= trim_slashes(str_replace($match['0'], '', $qstring));
 				}
 
-				/**	----------------------------------------
-				/**	Parse category indicator
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Parse category indicator
+				//	----------------------------------------
 				
 				// Text version of the category
 				
-				if (preg_match("#^".$cat_segment."/#", $qstring, $match) AND $TMPL->fetch_param('weblog'))
+				if (preg_match("#^".$cat_segment."/#", $qstring, $match) AND ee()->TMPL->fetch_param($this->sc->channel))
 				{		
 					$qstring	= str_replace($cat_segment.'/', '', $qstring);
 						
-					$sql		= "SELECT DISTINCT cat_group FROM exp_weblogs WHERE ";
+					$sql		= "SELECT DISTINCT 	cat_group 
+								   FROM 			{$this->sc->db->channels} 
+								   WHERE ";
 					
-					if (USER_BLOG !== FALSE)
+					if ( defined('USER_BLOG') AND defined('UB_BLOG_ID') AND USER_BLOG !== FALSE)
 					{
-						$sql	.= " weblog_id='".UB_BLOG_ID."'";
+						$sql	.= " {$this->sc->db->id} ='" . UB_BLOG_ID . "'";
 					}
 					else
 					{
-						$xsql	= $FNS->sql_andor_string($TMPL->fetch_param('weblog'), 'blog_name');
+						$xsql	= ee()->functions->sql_andor_string(
+							ee()->TMPL->fetch_param($this->sc->channel), 
+							$this->sc->db->channel_name
+						);
 						
 						if (substr($xsql, 0, 3) == 'AND') $xsql = substr($xsql, 3);
 						
 						$sql	.= ' '.$xsql;
 					}
 						
-					$query	= $DB->query($sql);
+					$query	= ee()->db->query($sql);
 					
-					if ($query->num_rows == 1)
+					if ($query->num_rows() == 1)
 					{
-						$result	= $DB->query("SELECT cat_id FROM exp_categories WHERE cat_name='".$DB->escape_str($qstring)."' AND group_id='{$query->row['cat_group']}'");
+						$result	= ee()->db->query(
+							"SELECT cat_id 
+							 FROM 	exp_categories 
+							 WHERE 	cat_name='" . ee()->db->escape_str($qstring) . "' 
+							 AND 	group_id='" . $query->row('cat_group') . "'"
+						);
 					
-						if ($result->num_rows == 1)
+						if ($result->num_rows() == 1)
 						{
-							$qstring	= 'C'.$result->row['cat_id'];
+							$qstring	= 'C' . $result->row('cat_id');
 						}
 					}
 				}
 
-				/**	----------------------------------------
-				/**	Numeric version of the category
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Numeric version of the category
+				//	----------------------------------------
 
 				if (preg_match("#^C(\d+)#", $qstring, $match))
 				{														
-					$qstring	= $REGX->trim_slashes(str_replace($match['0'], '', $qstring));
+					$qstring	= trim_slashes(str_replace($match['0'], '', $qstring));
 				}
 				
-				/**	----------------------------------------
-				/**	Remove "N"
-				/**	----------------------------------------
-				/*	The recent comments feature uses "N" as
-				/*	the URL indicator
-				/*	It needs to be removed if present
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Remove "N"
+				//	----------------------------------------
+				//	The recent comments feature uses "N" as
+				//	the URL indicator
+				//	It needs to be removed if present
+				//	----------------------------------------
 
 				if (preg_match("#^N(\d+)|/N(\d+)#", $qstring, $match))
 				{					
-					$qstring	= $REGX->trim_slashes(str_replace($match['0'], '', $qstring));
+					$qstring	= trim_slashes(str_replace($match['0'], '', $qstring));
 				}
 				
-				/**	----------------------------------------
-				/**	Try numeric id again
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Try numeric id again
+				//	----------------------------------------
 				
 				if ( preg_match( "/(\d+)/", $qstring, $match ) )
 				{
@@ -2206,9 +3116,9 @@ class Freeform
 					return TRUE;
 				}
 
-				/**	----------------------------------------
-				/**	Parse URL title
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Parse URL title
+				//	----------------------------------------
 				
 				if (strstr($qstring, '/'))
 				{
@@ -2216,22 +3126,27 @@ class Freeform
 					$qstring	= current($xe);
 				}
 				
-				$sql	= "SELECT exp_weblog_titles.entry_id FROM  exp_weblog_titles, exp_weblogs WHERE exp_weblog_titles.weblog_id = exp_weblogs.weblog_id AND   exp_weblog_titles.url_title = '".$DB->escape_str($qstring)."'";
+				$sql	= "SELECT {$this->sc->db->titles}.entry_id 
+						   FROM   {$this->sc->db->titles}, {$this->sc->db->channels} 
+						   WHERE  {$this->sc->db->titles}.{$this->sc->db->id} = {$this->sc->db->channels}.{$this->sc->db->id}
+						   AND    {$this->sc->db->titles}.url_title = '" . ee()->db->escape_str($qstring) . "'";
 				
-				if (USER_BLOG !== FALSE)
+				//user blog is 1.6.x legacy and not defined in 2.x
+				if (APP_VER < 2.0 AND defined('USER_BLOG') AND defined('UB_BLOG_ID') AND USER_BLOG !== FALSE)
 				{
-					$sql	.= " AND exp_weblogs.weblog_id = '".UB_BLOG_ID."'";
+					$sql	.= " AND {$this->sc->db->titles}.{$this->sc->db->id} = '" . UB_BLOG_ID . "'";
 				}
-				else
+				//.is_user_blog
+				elseif (APP_VER < 2.0 AND $this->_column_exists('is_user_blog', $this->sc->db->titles))
 				{
-					$sql	.= " AND exp_weblogs.is_user_blog = 'n'";
+					$sql	.= " AND {$this->sc->db->titles}.is_user_blog = 'n'";
 				}
 								
-				$query	= $DB->query($sql);
+				$query	= ee()->db->query($sql);
 				
-				if ( $query->num_rows > 0 )
+				if ( $query->num_rows() > 0 )
 				{
-					$this->entry_id = $query->row['entry_id'];
+					$this->entry_id = $query->row('entry_id');
 					
 					return TRUE;
 				}
@@ -2241,22 +3156,58 @@ class Freeform
 		return FALSE;
 	}
 	
-	/**	End entry id */
+	//	End entry id 
+
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * _column_exists
+	 *
+	 * @access	public
+	 * @param	string column name
+	 * @param	string table name
+	 * @return	null
+	 */
+
+	function _column_exists( $column, $table )
+	{
+		// ----------------------------------------
+		// Check for columns in tags table
+		// ----------------------------------------
+
+		$query	= ee()->db->query( 
+			"DESCRIBE `" . ee()->db->escape_str( $table )  . "` `" . 
+						   ee()->db->escape_str( $column ) . "`" 
+		);
+
+		if ( $query->num_rows() > 0 )
+		{
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+	// End _column_exists()
 	
 	
-    /**	----------------------------------------
-    /**	Form
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * _form - builds form for template
+	 *
+	 * @access	public
+	 * @param	(array) data - tagdata
+	 * @return	tagdata
+	 */
     
     function _form( $data = array() )
     {
-    	global $FNS, $TMPL;
-    	
-    	if ( count( $data ) == 0 AND ! isset( $this->data ) ) return '';
+    	if ( count( $data ) == 0 AND ! isset( $this->data ) ) {return '';}
     	
     	if ( ! isset( $this->data['tagdata'] ) OR $this->data['tagdata'] == '' )
     	{
-			$tagdata	=	$TMPL->tagdata;
+			$tagdata	=	ee()->TMPL->tagdata;
     	}
     	else
     	{
@@ -2264,9 +3215,9 @@ class Freeform
     		unset( $this->data['tagdata'] );
     	}
 
-		/**	----------------------------------------
-		/**	Insert params
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Insert params
+		//	----------------------------------------
 		
 		if ( ! $this->params_id = $this->_insert_params() )
 		{
@@ -2275,28 +3226,30 @@ class Freeform
 		
 		$this->data['params_id']	= $this->params_id;
 
-		/**	----------------------------------------
-		/**	Generate form
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Generate form
+		//	----------------------------------------
 		
 		$arr	= array(
-						'hidden_fields'	=> $this->data,
-						'action'		=> $FNS->fetch_site_index(),
-						'id'			=> $this->data['id'],
-						'enctype'		=> ( $this->multipart ) ? 'multi': '',
-						'onsubmit'		=> ( $TMPL->fetch_param('onsubmit') ) ? $TMPL->fetch_param('onsubmit'): ''
-						);
+			'hidden_fields'	=> $this->data,
+			'action'		=> ee()->functions->fetch_site_index(),
+			'id'			=> ( ee()->TMPL->fetch_param('form_id') ) ? 
+											ee()->TMPL->fetch_param('form_id') : 'freeform',
+			'name'			=> $this->params['form_name'],
+			'enctype'		=> ( $this->multipart ) ? 'multi': '',
+			'onsubmit'		=> ( ee()->TMPL->fetch_param('onsubmit') ) ? ee()->TMPL->fetch_param('onsubmit'): ''
+		);
 						
-		if ( $TMPL->fetch_param('name') !== FALSE )
+		if ( ee()->TMPL->fetch_param('name') !== FALSE )
 		{
-			$arr['name']	= $TMPL->fetch_param('name');
+			$arr['name']	= ee()->TMPL->fetch_param('name');
 		}
 		
-		/** --------------------------------------------
-        /**  HTTPS URLs?
-        /** --------------------------------------------*/
+		// --------------------------------------------
+        //  HTTPS URLs?
+        // --------------------------------------------
 		
-		if ($TMPL->fetch_param('secure_action') == 'yes')
+		if ( $this->check_yes(ee()->TMPL->fetch_param('secure_action')) )
 		{
 			if (isset($arr['action']))
 			{
@@ -2304,7 +3257,7 @@ class Freeform
 			}
 		}
 		
-		if ($TMPL->fetch_param('secure_return') == 'yes')
+		if ( $this->check_yes(ee()->TMPL->fetch_param('secure_return')))
 		{
 			foreach(array('return', 'RET') as $return_field)
 			{
@@ -2312,11 +3265,11 @@ class Freeform
 				{
 					if ( preg_match( "/".LD."\s*path=(.*?)".RD."/", $arr['hidden_fields'][$return_field], $match ) > 0 )
 					{
-						$arr['hidden_fields'][$return_field] = $FNS->create_url( $match['1'] );
+						$arr['hidden_fields'][$return_field] = ee()->functions->create_url( $match['1'] );
 					}
 					elseif ( stristr( $arr['hidden_fields'][$return_field], "http://" ) === FALSE )
 					{
-						$arr['hidden_fields'][$return_field] = $FNS->create_url( $arr['hidden_fields'][$return_field] );
+						$arr['hidden_fields'][$return_field] = ee()->functions->create_url( $arr['hidden_fields'][$return_field] );
 					}
 				
 					$arr['hidden_fields'][$return_field] = str_replace('http://', 'https://', $arr['hidden_fields'][$return_field]);
@@ -2325,51 +3278,94 @@ class Freeform
 		}
 		
 		/** --------------------------------------------
-        /**  Create and Return Form
+        /**  Override Form Attributes with form:xxx="" parameters
         /** --------------------------------------------*/
+        
+        $extra_attributes = array();
+        
+        if (is_object(ee()->TMPL) AND ! empty(ee()->TMPL->tagparams))
+		{
+			foreach(ee()->TMPL->tagparams as $key => $value)
+			{
+				if (strncmp($key, 'form:', 5) == 0)
+				{
+					if (isset($arr[substr($key, 5)]))
+					{
+						$arr[substr($key, 5)] = $value;
+					}
+					else
+					{
+						$extra_attributes[substr($key, 5)] = $value;
+					}
+				}
+			}
+		}
+		
+		// --------------------------------------------
+        //  Create and Return Form
+        // --------------------------------------------
 				
-        $r		= $FNS->form_declaration( $arr );
+        $r		= ee()->functions->form_declaration( $arr );
         
         $r	.= stripslashes($tagdata);
-        
+
         $r	.= "</form>";
+
+		/**	----------------------------------------
+		/**	 Add <form> attributes from 
+		/**	----------------------------------------*/
+		
+		$allowed = array(
+			'accept', 'accept-charset', 'enctype', 'method', 'action', 'name', 'target', 'class', 'dir', 'id', 'lang', 'style', 'title', 'onclick', 'ondblclick', 'onmousedown', 'onmousemove', 'onmouseout', 'onmouseover', 'onmouseup', 'onkeydown', 'onkeyup', 'onkeypress', 'onreset', 'onsubmit'
+		);
+		
+		foreach($extra_attributes as $key => $value)
+		{
+			if ( in_array($key, $allowed) == FALSE AND strncmp($key, 'data-', 5) != 0) continue;
+			
+			$r = str_replace( "<form", '<form '.$key.'="'.htmlspecialchars($value).'"', $r );
+		}
         
-		//return $this->_chars_decode($r);
 		return $r;
     }
     
-    /**	End form */
+    //	End form 
 	
 	
-    /**	----------------------------------------
-    /**	Chars decode
-    /**	----------------------------------------*/
+    // --------------------------------------------------------------------
+
+	/**
+	 * _chars_decode - decodes characters in a string
+	 *
+	 * @access	public
+	 * @param	(string) str - characters to decode
+	 * @return	string of decoded characters
+	 */
     
     function _chars_decode( $str = '' )
     {
-		global $PREFS;
-		
 		if ( $str == '' ) return;
 		
-		$charset = $PREFS->ini('charset');
+		$charset = ee()->config->item('charset');
 		
 		if ( version_compare('5.0.0', PHP_VERSION, '>') )
 		{
-			$valid_sets = array (	'ISO-8859-1','ISO8859-1',
-									'ISO-8859-15','ISO8859-15',
-									'UTF-8',
-									'cp866','ibm866','866',
-									'cp1251','Windows-1251','win-1251','1251',
-									'cp1252','Windows-1252','1252',
-									'KOI8-R','koi8-ru','koi8r',
-									'BIG5','950',
-									'GB2312','936',
-									'BIG5-HKSCS',
-									'Shift_JIS','SJIS','932',
-									'EUC-JP'
-								);
+			$valid_sets = array (	
+				'ISO-8859-1',	'ISO8859-1',
+				'ISO-8859-15',	'ISO8859-15',
+				'UTF-8',
+				'cp866',		'ibm866',		'866',
+				'cp1251',		'Windows-1251',	'win-1251',	'1251',
+				'cp1252',		'Windows-1252',	'1252',
+				'KOI8-R',		'koi8-ru',		'koi8r',
+				'BIG5',			'950',
+				'GB2312',		'936',
+				'BIG5-HKSCS',
+				'Shift_JIS','	SJIS',			'932',
+				'EUC-JP'
+			);
 			
-			if ( ! in_array($charset, $valid_sets) ) $charset = 'ISO-8859-1';
+			if ( ! in_array($charset, $valid_sets) ) {$charset = 'ISO-8859-1';}
 		}
     	
     	if ( function_exists( 'html_entity_decode' ) === TRUE )
@@ -2383,79 +3379,262 @@ class Freeform
     	
     	return $str;
     }
+	// END _chars_decode
+	
 
+    // --------------------------------------------------------------------
+
+	/**
+	 * _html_entity_decode_full - decodes html entities in a string
+	 *
+	 * @access	public
+	 * @param	(string) string	 - characters to decode
+	 * @param	(string) quotes  - entity type to decode
+	 * @param	(string) charset - charset to decode from
+	 * @return	string of decoded characters
+	 */
+	
 	function _html_entity_decode_full($string, $quotes = ENT_COMPAT, $charset = 'ISO-8859-1')
 	{
-		return html_entity_decode(preg_replace_callback('/&([a-zA-Z][a-zA-Z0-9]+);/', array($this, '_convert_entity'), $string), $quotes, $charset);
+		return html_entity_decode(
+			preg_replace_callback(
+				'/&([a-zA-Z][a-zA-Z0-9]+);/', 
+				array($this, '_convert_entity'), 
+				$string
+			), 
+			$quotes, 
+			$charset
+		);
 	}
+	//END _html_entity_decode_full
 	
-	function _convert_entity($matches, $destroy = true)
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * _convert_entity - decodes entities from regex matches to real
+	 *
+	 * @access	public
+	 * @param	(array)  matches - characters to decode
+	 * @param	(bool) 	 destory - remove without returning string
+	 * @return	string of decoded characters
+	 */
+	
+	function _convert_entity($matches, $destroy = TRUE)
 	{
-		$table = array('quot' => '&#34;','amp' => '&#38;','lt' => '&#60;','gt' => '&#62;','OElig' => '&#338;','oelig' => '&#339;','Scaron' => '&#352;','scaron' => '&#353;','Yuml' => '&#376;','circ' => '&#710;','tilde' => '&#732;','ensp' => '&#8194;','emsp' => '&#8195;','thinsp' => '&#8201;','zwnj' => '&#8204;','zwj' => '&#8205;','lrm' => '&#8206;','rlm' => '&#8207;','ndash' => '&#8211;','mdash' => '&#8212;','lsquo' => '&#8216;','rsquo' => '&#8217;','sbquo' => '&#8218;','ldquo' => '&#8220;','rdquo' => '&#8221;','bdquo' => '&#8222;','dagger' => '&#8224;','Dagger' => '&#8225;','permil' => '&#8240;','lsaquo' => '&#8249;','rsaquo' => '&#8250;','euro' => '&#8364;','fnof' => '&#402;','Alpha' => '&#913;','Beta' => '&#914;','Gamma' => '&#915;','Delta' => '&#916;','Epsilon' => '&#917;','Zeta' => '&#918;','Eta' => '&#919;','Theta' => '&#920;','Iota' => '&#921;','Kappa' => '&#922;','Lambda' => '&#923;','Mu' => '&#924;','Nu' => '&#925;','Xi' => '&#926;','Omicron' => '&#927;','Pi' => '&#928;','Rho' => '&#929;','Sigma' => '&#931;','Tau' => '&#932;','Upsilon' => '&#933;','Phi' => '&#934;','Chi' => '&#935;','Psi' => '&#936;','Omega' => '&#937;','alpha' => '&#945;','beta' => '&#946;','gamma' => '&#947;','delta' => '&#948;','epsilon' => '&#949;','zeta' => '&#950;','eta' => '&#951;','theta' => '&#952;','iota' => '&#953;','kappa' => '&#954;','lambda' => '&#955;','mu' => '&#956;','nu' => '&#957;','xi' => '&#958;','omicron' => '&#959;','pi' => '&#960;','rho' => '&#961;','sigmaf' => '&#962;','sigma' => '&#963;','tau' => '&#964;','upsilon' => '&#965;','phi' => '&#966;','chi' => '&#967;','psi' => '&#968;','omega' => '&#969;','thetasym' => '&#977;','upsih' => '&#978;','piv' => '&#982;','bull' => '&#8226;','hellip' => '&#8230;','prime' => '&#8242;','Prime' => '&#8243;','oline' => '&#8254;','frasl' => '&#8260;','weierp' => '&#8472;','image' => '&#8465;','real' => '&#8476;','trade' => '&#8482;','alefsym' => '&#8501;','larr' => '&#8592;','uarr' => '&#8593;','rarr' => '&#8594;','darr' => '&#8595;','harr' => '&#8596;','crarr' => '&#8629;','lArr' => '&#8656;','uArr' => '&#8657;','rArr' => '&#8658;','dArr' => '&#8659;','hArr' => '&#8660;','forall' => '&#8704;','part' => '&#8706;','exist' => '&#8707;','empty' => '&#8709;','nabla' => '&#8711;','isin' => '&#8712;','notin' => '&#8713;','ni' => '&#8715;','prod' => '&#8719;','sum' => '&#8721;','minus' => '&#8722;','lowast' => '&#8727;','radic' => '&#8730;','prop' => '&#8733;','infin' => '&#8734;','ang' => '&#8736;','and' => '&#8743;','or' => '&#8744;','cap' => '&#8745;','cup' => '&#8746;','int' => '&#8747;','there4' => '&#8756;','sim' => '&#8764;','cong' => '&#8773;','asymp' => '&#8776;','ne' => '&#8800;','equiv' => '&#8801;','le' => '&#8804;','ge' => '&#8805;','sub' => '&#8834;','sup' => '&#8835;','nsub' => '&#8836;','sube' => '&#8838;','supe' => '&#8839;','oplus' => '&#8853;','otimes' => '&#8855;','perp' => '&#8869;','sdot' => '&#8901;','lceil' => '&#8968;','rceil' => '&#8969;','lfloor' => '&#8970;','rfloor' => '&#8971;','lang' => '&#9001;','rang' => '&#9002;','loz' => '&#9674;','spades' => '&#9824;','clubs' => '&#9827;','hearts' => '&#9829;','diams' => '&#9830;','nbsp' => '&#160;','iexcl' => '&#161;','cent' => '&#162;','pound' => '&#163;','curren' => '&#164;','yen' => '&#165;','brvbar' => '&#166;','sect' => '&#167;','uml' => '&#168;','copy' => '&#169;','ordf' => '&#170;','laquo' => '&#171;','not' => '&#172;','shy' => '&#173;','reg' => '&#174;','macr' => '&#175;','deg' => '&#176;','plusmn' => '&#177;','sup2' => '&#178;','sup3' => '&#179;','acute' => '&#180;','micro' => '&#181;','para' => '&#182;','middot' => '&#183;','cedil' => '&#184;','sup1' => '&#185;','ordm' => '&#186;','raquo' => '&#187;','frac14' => '&#188;','frac12' => '&#189;','frac34' => '&#190;','iquest' => '&#191;','Agrave' => '&#192;','Aacute' => '&#193;','Acirc' => '&#194;','Atilde' => '&#195;','Auml' => '&#196;','Aring' => '&#197;','AElig' => '&#198;','Ccedil' => '&#199;','Egrave' => '&#200;','Eacute' => '&#201;','Ecirc' => '&#202;','Euml' => '&#203;','Igrave' => '&#204;','Iacute' => '&#205;','Icirc' => '&#206;','Iuml' => '&#207;','ETH' => '&#208;','Ntilde' => '&#209;','Ograve' => '&#210;','Oacute' => '&#211;','Ocirc' => '&#212;','Otilde' => '&#213;','Ouml' => '&#214;','times' => '&#215;','Oslash' => '&#216;','Ugrave' => '&#217;','Uacute' => '&#218;','Ucirc' => '&#219;','Uuml' => '&#220;','Yacute' => '&#221;','THORN' => '&#222;','szlig' => '&#223;','agrave' => '&#224;','aacute' => '&#225;','acirc' => '&#226;','atilde' => '&#227;','auml' => '&#228;','aring' => '&#229;','aelig' => '&#230;','ccedil' => '&#231;','egrave' => '&#232;','eacute' => '&#233;','ecirc' => '&#234;','euml' => '&#235;','igrave' => '&#236;','iacute' => '&#237;','icirc' => '&#238;','iuml' => '&#239;','eth' => '&#240;','ntilde' => '&#241;','ograve' => '&#242;','oacute' => '&#243;','ocirc' => '&#244;','otilde' => '&#245;','ouml' => '&#246;','divide' => '&#247;','oslash' => '&#248;','ugrave' => '&#249;','uacute' => '&#250;','ucirc' => '&#251;','uuml' => '&#252;','yacute' => '&#253;','thorn' => '&#254;','yuml' => '&#255;');
+		$table = array(
+			'quot' 		=> '&#34;',		'eta' 		=> '&#951;', 	'cup' 		=> '&#8746;',	'Aacute' 	=> '&#193;',
+			'amp' 		=> '&#38;',     'theta' 	=> '&#952;',    'int' 		=> '&#8747;',	'Acirc' 	=> '&#194;',
+			'lt' 		=> '&#60;',     'iota' 		=> '&#953;',    'there4' 	=> '&#8756;',	'Atilde' 	=> '&#195;',
+			'gt' 		=> '&#62;',     'kappa' 	=> '&#954;',    'sim' 		=> '&#8764;',   'Auml' 		=> '&#196;',
+			'OElig' 	=> '&#338;',    'lambda' 	=> '&#955;',    'cong' 		=> '&#8773;',   'Aring' 	=> '&#197;',
+			'oelig' 	=> '&#339;',    'mu' 		=> '&#956;',    'asymp' 	=> '&#8776;',   'AElig' 	=> '&#198;',
+			'Scaron' 	=> '&#352;',    'nu' 		=> '&#957;',    'ne' 		=> '&#8800;',   'Ccedil' 	=> '&#199;',
+			'scaron' 	=> '&#353;',    'xi' 		=> '&#958;',    'equiv' 	=> '&#8801;',   'Egrave' 	=> '&#200;',
+			'Yuml' 		=> '&#376;',    'omicron' 	=> '&#959;',    'le' 		=> '&#8804;',   'Eacute' 	=> '&#201;',
+			'circ' 		=> '&#710;',    'pi' 		=> '&#960;',    'ge' 		=> '&#8805;',   'Ecirc' 	=> '&#202;',
+			'tilde' 	=> '&#732;',    'rho' 		=> '&#961;',    'sub' 		=> '&#8834;',   'Euml' 		=> '&#203;',
+			'ensp' 		=> '&#8194;',   'sigmaf' 	=> '&#962;',    'sup' 		=> '&#8835;',   'Igrave' 	=> '&#204;',
+			'emsp' 		=> '&#8195;',   'sigma' 	=> '&#963;',    'nsub' 		=> '&#8836;',   'Iacute' 	=> '&#205;',
+			'thinsp' 	=> '&#8201;',   'tau' 		=> '&#964;',    'sube' 		=> '&#8838;',   'Icirc' 	=> '&#206;',
+			'zwnj' 		=> '&#8204;',   'upsilon' 	=> '&#965;',    'supe' 		=> '&#8839;',   'Iuml' 		=> '&#207;',
+			'zwj' 		=> '&#8205;',   'phi' 		=> '&#966;',    'oplus' 	=> '&#8853;',   'ETH' 		=> '&#208;',
+			'lrm' 		=> '&#8206;',   'chi' 		=> '&#967;',    'otimes' 	=> '&#8855;',   'Ntilde' 	=> '&#209;',
+			'rlm' 		=> '&#8207;',   'psi' 		=> '&#968;',    'perp' 		=> '&#8869;',   'Ograve' 	=> '&#210;',
+			'ndash' 	=> '&#8211;',   'omega' 	=> '&#969;',    'sdot' 		=> '&#8901;',   'Oacute' 	=> '&#211;',
+			'mdash' 	=> '&#8212;',   'thetasym' 	=> '&#977;',    'lceil' 	=> '&#8968;',   'Ocirc' 	=> '&#212;',
+			'lsquo' 	=> '&#8216;',   'upsih' 	=> '&#978;',    'rceil' 	=> '&#8969;',   'Otilde' 	=> '&#213;',
+			'rsquo' 	=> '&#8217;',   'piv' 		=> '&#982;',    'lfloor' 	=> '&#8970;',   'Ouml' 		=> '&#214;',
+			'sbquo' 	=> '&#8218;',   'bull' 		=> '&#8226;',   'rfloor' 	=> '&#8971;',   'times' 	=> '&#215;',
+			'ldquo' 	=> '&#8220;',   'hellip' 	=> '&#8230;',   'lang' 		=> '&#9001;',   'Oslash' 	=> '&#216;',
+			'rdquo' 	=> '&#8221;',   'prime' 	=> '&#8242;',   'rang' 		=> '&#9002;',   'Ugrave' 	=> '&#217;',
+			'bdquo' 	=> '&#8222;',   'Prime' 	=> '&#8243;',   'loz' 		=> '&#9674;',   'Uacute' 	=> '&#218;',
+			'dagger' 	=> '&#8224;',   'oline' 	=> '&#8254;',   'spades' 	=> '&#9824;',   'Ucirc' 	=> '&#219;',
+			'Dagger' 	=> '&#8225;',   'frasl' 	=> '&#8260;',   'clubs' 	=> '&#9827;',   'Uuml' 		=> '&#220;',
+			'permil' 	=> '&#8240;',   'weierp' 	=> '&#8472;',   'hearts' 	=> '&#9829;',   'Yacute' 	=> '&#221;',
+			'lsaquo' 	=> '&#8249;',   'image' 	=> '&#8465;',   'diams' 	=> '&#9830;',   'THORN' 	=> '&#222;',
+			'rsaquo' 	=> '&#8250;',   'real' 		=> '&#8476;',   'nbsp' 		=> '&#160;',    'szlig' 	=> '&#223;',
+			'euro' 		=> '&#8364;',   'trade' 	=> '&#8482;',   'iexcl' 	=> '&#161;',    'agrave' 	=> '&#224;',
+			'fnof' 		=> '&#402;',    'alefsym' 	=> '&#8501;',   'cent' 		=> '&#162;',    'aacute' 	=> '&#225;',
+			'Alpha' 	=> '&#913;',    'larr' 		=> '&#8592;',   'pound' 	=> '&#163;',    'acirc' 	=> '&#226;',
+			'Beta' 		=> '&#914;',    'uarr' 		=> '&#8593;',   'curren' 	=> '&#164;',    'atilde' 	=> '&#227;',
+			'Gamma' 	=> '&#915;',    'rarr' 		=> '&#8594;',   'yen' 		=> '&#165;',    'auml' 		=> '&#228;',
+			'Delta' 	=> '&#916;',    'darr' 		=> '&#8595;',   'brvbar' 	=> '&#166;',    'aring' 	=> '&#229;',
+			'Epsilon' 	=> '&#917;',    'harr' 		=> '&#8596;',   'sect' 		=> '&#167;',    'aelig' 	=> '&#230;',
+			'Zeta' 		=> '&#918;',    'crarr' 	=> '&#8629;',   'uml' 		=> '&#168;',    'ccedil' 	=> '&#231;',
+			'Eta' 		=> '&#919;',    'lArr' 		=> '&#8656;',   'copy' 		=> '&#169;',    'egrave' 	=> '&#232;',
+			'Theta' 	=> '&#920;',    'uArr' 		=> '&#8657;',   'ordf' 		=> '&#170;',    'eacute' 	=> '&#233;',
+			'Iota' 		=> '&#921;',    'rArr' 		=> '&#8658;',   'laquo' 	=> '&#171;',    'ecirc' 	=> '&#234;',
+			'Kappa' 	=> '&#922;',    'dArr' 		=> '&#8659;',   'not' 		=> '&#172;',    'euml' 		=> '&#235;',
+			'Lambda' 	=> '&#923;',    'hArr' 		=> '&#8660;',   'shy' 		=> '&#173;',    'igrave' 	=> '&#236;',
+			'Mu' 		=> '&#924;',    'forall' 	=> '&#8704;',   'reg' 		=> '&#174;',    'iacute' 	=> '&#237;',
+			'Nu' 		=> '&#925;',    'part' 		=> '&#8706;',   'macr' 		=> '&#175;',    'icirc' 	=> '&#238;',
+			'Xi' 		=> '&#926;',    'exist' 	=> '&#8707;',   'deg' 		=> '&#176;',    'iuml' 		=> '&#239;',
+			'Omicron' 	=> '&#927;',    'empty' 	=> '&#8709;',   'plusmn' 	=> '&#177;',    'eth' 		=> '&#240;',
+			'Pi' 		=> '&#928;',    'nabla' 	=> '&#8711;',   'sup2' 		=> '&#178;',    'ntilde' 	=> '&#241;',
+			'Rho' 		=> '&#929;',    'isin' 		=> '&#8712;',   'sup3' 		=> '&#179;',    'ograve' 	=> '&#242;',
+			'Sigma' 	=> '&#931;',    'notin' 	=> '&#8713;',   'acute' 	=> '&#180;',    'oacute' 	=> '&#243;',
+			'Tau' 		=> '&#932;',    'ni' 		=> '&#8715;',   'micro' 	=> '&#181;',    'ocirc' 	=> '&#244;',
+			'Upsilon' 	=> '&#933;',    'prod' 		=> '&#8719;',   'para' 		=> '&#182;',    'otilde' 	=> '&#245;',
+			'Phi' 		=> '&#934;',    'sum' 		=> '&#8721;',   'middot' 	=> '&#183;',    'ouml' 		=> '&#246;',
+			'Chi' 		=> '&#935;',    'minus' 	=> '&#8722;',   'cedil' 	=> '&#184;',    'divide' 	=> '&#247;',
+			'Psi' 		=> '&#936;',    'lowast' 	=> '&#8727;',   'sup1' 		=> '&#185;',    'oslash' 	=> '&#248;',
+			'Omega' 	=> '&#937;',    'radic' 	=> '&#8730;',   'ordm' 		=> '&#186;',    'ugrave' 	=> '&#249;',
+			'alpha' 	=> '&#945;',    'prop' 		=> '&#8733;',   'raquo' 	=> '&#187;',    'uacute' 	=> '&#250;',
+			'beta' 		=> '&#946;',    'infin' 	=> '&#8734;',   'frac14' 	=> '&#188;',    'ucirc' 	=> '&#251;',
+			'gamma' 	=> '&#947;',    'ang' 		=> '&#8736;',   'frac12' 	=> '&#189;',    'uuml' 		=> '&#252;',
+			'delta' 	=> '&#948;',    'and' 		=> '&#8743;',   'frac34' 	=> '&#190;',    'yacute' 	=> '&#253;',
+			'epsilon' 	=> '&#949;',    'or' 		=> '&#8744;',   'iquest' 	=> '&#191;',    'thorn' 	=> '&#254;',
+		    'zeta' 		=> '&#950;',    'cap' 		=> '&#8745;',   'Agrave' 	=> '&#192;',    'yuml' 		=> '&#255;'
+		);
 		
-		if (isset($table[$matches[1]])) return $table[$matches[1]];
+		if (isset($table[$matches[1]])) {return $table[$matches[1]];}
 	  	// else 
 	  	return $destroy ? '' : $matches[0];
 	}
+	// END _convert_entity
+
+
+	//  ----------------------------------------------------------------------
+	//	email_change
+	//	----------------------------------------------------------------------
+		
+	// --------------------------------------------------------------------
+
+	/**
+	 * _convert_entity - decodes entities from regex matches to real
+	 *
+	 * @access	public
+	 * @param	(array)  matches - characters to decode
+	 * @param	(bool) 	 destory - remove without returning string
+	 * @return	string of decoded characters
+	 */
+
+    function _validate_recipients($str)
+    {
+		//need this for email validation
+		//ee()->load->library('email');
+    
+    	// Remove white space and replace with comma
+		$recipients = preg_replace("/\s*(\S+)\s*/", "\\1,", $str);
+        	
+        // Remove any existing doubles
+        $recipients = str_replace(",,", ",", $recipients);
+        	
+        // Remove any comma at the end
+        if (substr($recipients, -1) == ",")
+		{
+			$recipients = substr($recipients, 0, -1);
+		}
+		
+		// Break into an array via commas and remove duplicates
+		$emails = preg_split('/[;,]/', $recipients);
+		$emails = array_unique($emails);
+			
+		// Emails to send email to...
+		
+		$error = array();
+		$approved_emails = array();
+		
+		foreach ($emails as $email)
+		{
+			 if (trim($email) == '') continue;
+			 			
+		     if (ee()->email->valid_email($email))
+		     {
+		          if ( ! ee()->session->ban_check('email', $email))
+		          {
+		               $approved_emails[] = $email;
+		          }
+		          else
+		          {
+		               $error['ban_recp'] = ee()->lang->line('em_banned_recipient');
+		          }
+		     }
+		     else
+		     {
+		     	$error['bad_recp'] = ee()->lang->line('em_invalid_recipient');
+		     }
+		}
+		
+		return array('approved' => $approved_emails, 'error' => $error);
+    }
+    
+    //	End validate recipients	
+
+
+	// --------------------------------------------------------------------	
 	
-    /**	----------------------------------------
-    /**	Params
-    /**	----------------------------------------*/
+	/**
+	 * _param - gets store paramaters
+	 *
+	 * @access	public
+	 * @param	(string)  which - which param needed
+	 * @param	(string)  type - type of param
+	 * @return	param or FALSE
+	 */
     
     function _param( $which = '', $type = 'all' )
     {
-    	global $DB, $IN, $LOC, $TMPL;
-    	
-		/**	----------------------------------------
-		/**	Which?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Which?
+		//	----------------------------------------
 		
 		if ( $which == '' ) return FALSE;
     	
-		/**	----------------------------------------
-		/**	Params set?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Params set?
+		//	----------------------------------------
 		
 		if ( count( $this->params ) == 0 )
 		{
-			/**	----------------------------------------
-			/**	Empty id?
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Empty id?
+			//	----------------------------------------
 			
-			if ( ! $this->params_id = $IN->GBL('params_id') )
+			if ( ee()->input->get_post('params_id') == FALSE )
 			{
 				return FALSE;
 			}
 			
-			/**	----------------------------------------
-			/**	Select from DB
-			/**	----------------------------------------*/
+			$this->params_id = ee()->security->xss_clean(ee()->input->get_post('params_id'));
 			
-			$query	= $DB->query( "SELECT data FROM $this->params_tbl WHERE params_id = '".$DB->escape_str( $this->params_id )."'" );
+			//	----------------------------------------
+			//	Select from DB
+			//	----------------------------------------
 			
-			/**	----------------------------------------
-			/**	Empty?
-			/**	----------------------------------------*/
+			$query	= ee()->db->query( 
+				"SELECT data 
+				 FROM 	{$this->params_tbl} 
+				 WHERE 	params_id = '" . ee()->db->escape_str( $this->params_id ) . "'" 
+			);
 			
-			if ( $query->num_rows == 0 ) return FALSE;
+			//	----------------------------------------
+			//	Empty?
+			//	----------------------------------------
 			
-			/**	----------------------------------------
-			/**	Unserialize
-			/**	----------------------------------------*/
+			if ( $query->num_rows() == 0 ) return FALSE;
 			
-			$this->params			= unserialize( $query->row['data'] );
+			//	----------------------------------------
+			//	Unserialize
+			//	----------------------------------------
+			
+			$this->params			= unserialize( $query->row('data') );
 			$this->params['set']	= TRUE;
 			
-			/**	----------------------------------------
-			/**	Delete
-			/**	----------------------------------------*/
+			//	----------------------------------------
+			//	Delete
+			//	----------------------------------------
 			
-			$DB->query( "DELETE FROM $this->params_tbl WHERE entry_date < ".$DB->escape_str( ($LOC->now - 7200) )."" );
+			ee()->db->query( 
+				"DELETE FROM {$this->params_tbl} 
+				 WHERE entry_date < " . ee()->db->escape_str( (ee()->localize->now - 7200) ) . "" 
+			);
 		}
 		
-		/**	----------------------------------------
-		/**	Fetch from params array
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Fetch from params array
+		//	----------------------------------------
 		
 		if ( isset( $this->params[$which] ) )
 		{
@@ -2464,36 +3643,43 @@ class Freeform
 			return $return;
 		}
 		
-		/**	----------------------------------------
-		/**	Fetch TMPL
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Fetch TMPL
+		//	----------------------------------------
 		
-		if ( $TMPL AND $TMPL->fetch_param($which) )
+		if ( isset( $GLOBALS['TMPL'] ) AND ee()->TMPL->fetch_param($which) )
 		{
-			return $TMPL->fetch_param($which);
+			return ee()->TMPL->fetch_param($which);
 		}
     	
-		/**	----------------------------------------
-		/**	Return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Return (if which is blank, we are just getting data)
+		//	else if we are looking for something that doesn't exist...
+		//	----------------------------------------
 		
-		return TRUE;
+		return ($which === '');
     }
     
-    /**	End params */
+    //	End params 
 	
 	
-    /**	----------------------------------------
-    /**	Insert params
-    /**	----------------------------------------*/
+	// --------------------------------------------------------------------
+
+	/**
+	 * _insert_params - adds multiple params to stored params
+	 *
+	 * @access	public
+	 * @param	(array)  associative array of params to send
+	 * @return	insert id or false
+	 */
     
     function _insert_params( $params = array() )
     {
-    	global $DB, $LOC;
+
     	
-		/**	----------------------------------------
-		/**	Empty?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Empty?
+		//	----------------------------------------
     	
     	if ( count( $params ) > 0 )
     	{
@@ -2504,65 +3690,75 @@ class Freeform
     		return FALSE;
     	}
     	
-		/**	----------------------------------------
-		/**	Serialize
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Serialize
+		//	----------------------------------------
 		
 		$this->params	= serialize( $this->params );
     	
-		/**	----------------------------------------
-		/**	Delete excess when older than 2 hours
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Delete excess when older than 2 hours
+		//	----------------------------------------
 			
-		$DB->query( "DELETE FROM $this->params_tbl WHERE entry_date < ".$DB->escape_str( ($LOC->now - 7200) )."" );
+		ee()->db->query( 
+			"DELETE FROM {$this->params_tbl} 
+			 WHERE entry_date < " . ee()->db->escape_str( (ee()->localize->now - 7200) ) . "" 
+		);
     	
-		/**	----------------------------------------
-		/**	Insert
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Insert
+		//	----------------------------------------
 		
-		$DB->query( $DB->insert_string( $this->params_tbl, array( 'entry_date' => $LOC->now, 'data' => $this->params ) ) );
+		ee()->db->query( 
+			ee()->db->insert_string( 
+				$this->params_tbl, 
+				array( 
+					'entry_date' 	=> ee()->localize->now, 
+					'data' 			=> $this->params 
+				) 
+			) 
+		);
     	
-		/**	----------------------------------------
-		/**	Return
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Return
+		//	----------------------------------------
 		
-		return $DB->insert_id;
+		return ee()->db->insert_id();
     }
     
-    /**	End insert params */
+    //	End insert params 
     
     
-    /**	----------------------------------------
-    /**	Upload files
-    /**	----------------------------------------*/
+	// --------------------------------------------------------------------
+
+	/**
+	 * _upload_files - loads files from $_POST
+	 *
+	 * @access	public
+	 * @param	(bool)  only check errors
+	 * @return	null or false
+	 */
     
     function _upload_files ( $errors_only = FALSE )
     {
-        global $DB, $IN, $LANG, $LOC, $OUT, $SESS;
+        ee()->lang->loadfile('upload');
         
-        $LANG->fetch_language_file('upload');
-        
-		/**	----------------------------------------
-		/**	Invoke upload class
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Invoke upload class
+		//	----------------------------------------
 		
-		if ( ! class_exists( 'Upload' ) )
-		{
-			require PATH_CORE.'core.upload'.EXT;
-			
-			$this->UP = new Upload();
-		}            
-        
-		/**	----------------------------------------
-        /**	Handle files from submission
-		/**	----------------------------------------
-		/*	Note that if you have trouble getting
-		/*	files to submit, if the FILES array is
-		/*	empty, make sure that you are not
-		/*	submitting the gallery upload form inside
-		/*	of another form. If the forms are nested,
-		/*	the FILES array can be wiped out.
-		/**	----------------------------------------*/
+		ee()->load->library('upload');       
+
+		//	----------------------------------------
+        //	Handle files from submission
+		//	----------------------------------------
+		//	Note that if you have trouble getting
+		//	files to submit, if the FILES array is
+		//	empty, make sure that you are not
+		//	submitting the gallery upload form inside
+		//	of another form. If the forms are nested,
+		//	the FILES array can be wiped out.
+		//	----------------------------------------
         
         if ( ! isset($_FILES) OR count( $_FILES ) == 0 OR count( $_FILES ) > $this->upload_limit )
         {
@@ -2584,53 +3780,90 @@ class Freeform
         	return FALSE;
         }
         
-		/**	----------------------------------------
-		/**	Check destination
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Check destination
+		//	----------------------------------------
 		
-		$query	= $DB->query( "SELECT * FROM exp_upload_prefs WHERE name = '".$DB->escape_str($this->_param('file_upload'))."'" );
+		$query	= ee()->db->query( 
+			"SELECT	* 
+			 FROM 	exp_upload_prefs 
+			 WHERE 	name = '" . ee()->db->escape_str($this->_param('file_upload')) . "'
+			 LIMIT 	1" 
+		);
 		
-		if ( $query->num_rows == 0 )
+		if ( $query->num_rows() == 0 )
 		{
-			return $OUT->show_user_error( 'general', $LANG->line( 'upload_destination_not_exists' ) );
+			return ee()->output->show_user_error( 
+				'general', 
+				ee()->lang->line( 'upload_destination_not_exists' ) 
+			);
 		}
 		else
 		{
-			$this->upload	= $query->row;
+			$result 		= $query->result_array(); 
+			$this->upload 	= $result[0];
 		}
         
-		/**	----------------------------------------
-		/**	Check path
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Check path
+		//	----------------------------------------
        
-        if ( $this->UP->set_upload_path( $this->upload['server_path'] ) !== TRUE )
+        if ( ! @is_dir( $this->upload['server_path'] ) )
         {
         	$this->upload['server_path']	= str_replace( "..", ".", $this->upload['server_path'] );
         	
-			if ( $this->UP->set_upload_path( $this->upload['server_path'] ) !== TRUE )
+			if ( ! @is_dir( $this->upload['server_path'] ) )
 			{
-				return $OUT->show_user_error( 'general', $LANG->line( $this->UP->error_msg ) );
+				return ee()->output->show_user_error( 'general', ee()->lang->line( 'path_does_not_exist' ) );
+			}
+			else
+			{
+				$this->upload_config['upload_path'] = $this->upload['server_path'];
 			}
         }
+		else
+		{
+			$this->upload_config['upload_path'] = $this->upload['server_path'];
+		}
         
-		/**	----------------------------------------
-		/**	Only checking errors?
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Only checking errors?
+		//	----------------------------------------
 		
-		if ( $errors_only ) return;
+		if ( $errors_only ) {return;}
         
-		/**	----------------------------------------
-		/**	Set attributes
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Set attributes
+		//	----------------------------------------
         
-        $this->UP->set_max_width($this->upload['max_width']);
-        $this->UP->set_max_height($this->upload['max_height']);
-        $this->UP->set_max_filesize($this->upload['max_size']);
-        $this->UP->set_allowed_types( ($SESS->userdata['group_id'] == 1) ? 'all' : $this->upload['allowed_types']);
+        $this->upload_config['max_width']		= $this->upload['max_width'];
+        $this->upload_config['max_height']		= $this->upload['max_height'];
+        $this->upload_config['max_size']		= $this->upload['max_size'];
+
+		//if admin, or type = 'all' (ee1 default)
+		if ( ee()->session->userdata['group_id'] 			  == 1		OR 
+			 strtolower(trim($this->upload['allowed_types'])) == 'all' 	OR
+			 trim($this->upload['allowed_types'])			  == '*'
+		   )  									
+		{
+			$allowed_types = '*';
+		}
+		//default for EE2.x is 'img' instead of 'all'
+		elseif ( trim($this->upload['allowed_types']) == 'img' )
+		{
+			$allowed_types = 'gif|png|jpg';
+		}
+		//rely on user preference from CP -_-
+		else
+		{
+			$allowed_types = trim($this->upload['allowed_types']);
+		}	
+			
+        $this->upload_config['allowed_types'] = $allowed_types;							
         
-		/**	----------------------------------------
-		/**	Loop
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Loop
+		//	----------------------------------------
 		
 		$data	= array();
         
@@ -2642,17 +3875,17 @@ class Freeform
         		
         		$n	= ( $match['1'] != '' ) ? $match['1']: 0;
         	
-				/**	----------------------------------------
-				/**	Set data
-				/**	----------------------------------------*/
+				//	----------------------------------------
+				//	Set data
+				//	----------------------------------------
 			
 				$data[$n]['userfile']	= $val;
 			}
 		}
         
-		/**	----------------------------------------
-		/**	Loop and insert
-		/**	----------------------------------------*/
+		//	----------------------------------------
+		//	Loop and insert
+		//	----------------------------------------
 		
 		foreach ( $data as $key => $val )
 		{
@@ -2660,98 +3893,93 @@ class Freeform
 		}
     }
     
-    /**	End upload files */
+    //	End upload files 
     
     
-    /**	----------------------------------------
-    /**	Upload file
-    /**	----------------------------------------*/
+	// --------------------------------------------------------------------
+
+	/**
+	 * _upload_file - loads individual files from _upload_files to $this->attachments
+	 *
+	 * @access	public
+	 * @param	(array)  associative array of values of upload info
+	 * @return	null
+	 */
     
     function _upload_file ( $val )
     {
-        global $IN, $DSP, $DB, $LANG, $LOC, $OUT, $SESS;
-        
-        $LANG->fetch_language_file('upload');
-		
-		/**	----------------------------------------
-        /**	Unset some globals
-		/**	----------------------------------------
-		/*	If we leave this set through every loop,
-		/*	all successive uploads will fail after
-		/*	the first on account of Paul and his
-		/*	silly concatenation.
-		/**	----------------------------------------*/
-		
-		$this->UP->new_name	= '';
-		
-		/**	----------------------------------------
-        /**	Force the userfile in post
-		/**	----------------------------------------*/
+        ee()->lang->loadfile('upload');
+						
+		//	----------------------------------------
+        //	Force the userfile in post
+		//	----------------------------------------
 		
 		$_FILES['userfile']	= $val['userfile'];
 
-		/**	----------------------------------------
-        /**	Perform the upload
-		/**	----------------------------------------*/
-	
-		if ( ! $this->UP->upload_file())
-		{
-        	return $OUT->show_user_error( 'general', $LANG->line( $this->UP->error_msg ) );
-		}
+		$file_name = $this->_rename_file($this->upload['server_path'], $_FILES['userfile']['name']);
 		
-		$file_name = $this->UP->file_name;
-		
-		if ($this->UP->file_exists == TRUE)
-		{        
-			$file_name = $this->_rename_file($this->UP->upload_path, $this->UP->file_name);
-			  
-			if ( ! $this->UP->file_overwrite($this->UP->file_name, $file_name))
-			{
-				// return $this->_fetch_error( $LANG->line('file_overwrite'), $IN->GBL('template') );
-			}
-		}
-
-		/**	----------------------------------------
-        /**	Set filename
-		/**	----------------------------------------*/
+		//	----------------------------------------
+        //	Set filename
+		//	----------------------------------------
         
-        $x = explode(".", $file_name);
-		$extension	= '.'.end($x);
+        $x 			= explode(".", $file_name);
+		$extension	= '.' . end($x);
 		$name		= str_replace($extension, '', $file_name);
+		
+		$this->upload_config['file_name'] = (APP_VER < 2.0) ? $name : $file_name; 
 
-		/**	----------------------------------------
-        /**	Log in DB
-		/**	----------------------------------------*/
+		ee()->upload->initialize($this->upload_config);
+
+		//	----------------------------------------
+        //	Perform the upload
+		//	----------------------------------------
+	
+		if ( ! ee()->upload->do_upload())
+		{
+        	return ee()->output->show_user_error( 'general', ee()->upload->display_errors() );
+		}
+		
+		$this->upload_data = ee()->upload->data();
+
+		//	----------------------------------------
+        //	Log in DB
+		//	----------------------------------------
 		
 		$data	= array(
-						'entry_id'		=> $this->entry_id,
-						'pref_id'		=> $this->upload['id'],
-						'server_path'	=> $this->UP->upload_path,
-						'filename'		=> $name,
-						'extension'		=> $extension,
-						'filesize'		=> $this->UP->file_size,
-						'entry_date'	=> $LOC->now
-						);
+			'entry_id'		=> $this->entry_id,
+			'pref_id'		=> $this->upload['id'],
+			'server_path'	=> $this->upload_data['file_path'],
+			'filename'		=> $this->upload_data['raw_name'],
+			'extension'		=> $this->upload_data['file_ext'],
+			'filesize'		=> $this->upload_data['file_size'],
+			'entry_date'	=> ee()->localize->now
+		);
 						
-		$DB->query( $DB->insert_string( 'exp_freeform_attachments', $data ) );
+		ee()->db->query( ee()->db->insert_string( 'exp_freeform_attachments', $data ) );
 		
-		$this->attachments[ $DB->insert_id ]['filepath']	= $this->UP->upload_path.$file_name;
-		$this->attachments[ $DB->insert_id ]['filename']	= $file_name;
+		$this->attachments[ ee()->db->insert_id() ]['filepath']	= $this->upload_data['full_path'];
+		$this->attachments[ ee()->db->insert_id() ]['filename']	= $this->upload_data['file_name'];
     }
     
-    /**	End upload file */
+    //	End upload file 
   	
-  	
-	/**	----------------------------------------
-    /**	Auto-Rename File
-	/**	----------------------------------------
-    /*	This function determines if a file
-    /*	exists. If so, it'll append a number to
-    /*	the filename and call itself again. It
-    /*	does this as many times as necessary
-    /*	until a filename is clear.
-	/**	----------------------------------------*/
     
+	// --------------------------------------------------------------------
+
+	/**
+	 * _rename_file - determines if a file
+     *	exists. If so, it'll append a number to
+     *	the filename and call itself again. It
+     *	does this as many times as necessary
+     *	until a filename is clear.
+	 *
+	 * @access	public
+	 * @param	(string)  	full path of file
+	 * @param	(string)  	file name
+	 * @param	(int)  		iterator for end of filename
+	 * @return	(string)	filename
+	 */
+
 	function _rename_file($path, $name, $i = 0)
 	{
 		if (file_exists($path.$name))
@@ -2761,24 +3989,38 @@ class Freeform
 			
 			$name = str_replace('.'.$ext, '', $name);
 					
-			if (eregi($i."$", $name))
+			if (preg_match('/' . $i . '$/is', $name))
 			{
-				$name = substr($name, 0, -strlen($i));
+				$name = substr($name, 0, -1);
 			}	
 			
-			$i = $i+1;
+			$i++;
 
-			$name .= $i.'.'.$ext;
+			$name .= $i . '.' . $ext;
 
 			return $this->_rename_file($path, $name, $i);
 		}
-		
+				
 		return $name;
 	}
 	
-	/**	End rename file     */
+	//	End rename file
+	
+	
+	// --------------------------------------------------------------------
+
+	/**
+	 * remove_extra_commas - removes extra commas from strings
+	 *
+	 * @access	public
+	 * @param	(string)  	string to remove commas from
+	 * @return	(string)	parsed string (with less commas :D)
+	 */
+	function remove_extra_commas($str)
+    {
+		// Removes space separated commas as well as leading and trailing commas
+		return implode(',', preg_split('/[\s,]+/', $str, -1,  PREG_SPLIT_NO_EMPTY));
+    }
+	
 }
-
-/**	End class */
-
-?>
+// END CLASS Freeform

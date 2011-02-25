@@ -18,7 +18,7 @@
         
         <div id="posts">
         {exp:weblog:entries
-            weblog="journal"
+            weblog="journal_notes|journal_videos|journal_photos|journal_audio"
             limit="5"
             disable="member_data|trackbacks|categories"
             orderby=""
@@ -26,26 +26,91 @@
             }    
             <div class="post">
                 <h2><a href="{pv_site_url}{comment_url_title_auto_path}">{title}</a></h2>
-                <ul class="post_meta">
-                    <li><time datetime="">{entry_date format="{pv_date_journal}"}</time></li>
-                    <li><a href="{pv_site_url}{comment_url_title_auto_path}">Permalink</a></li>
-                    <li><a href="#">Share on Twitter</a></li>
-                    <li><a href="#">Share on Facebook</a></li>
+                <ul class="post_meta horizontal">
+                    <li><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time></li>
+                    <li class="pm_twitter"><a href="http://twitter.com/share?url={site_url}{comment_url_title_auto_path}&amp;text={exp:tools:url_encode}"{title}"{/exp:tools:url_encode}&amp;via=simoncampbell&amp;related=simoncampbell">Share on Twitter</a></li>
+                    <li class="pm_facebook"><a href="http://www.facebook.com/sharer.php?u={site_url}{comment_url_title_auto_path}">Share on Facebook</a></li>
                 </ul>
                 
-                {cf_journal_image}
-                    {exp:ed_imageresizer 
-                        maxWidth="{ffm_image_position}"
-                        image="{ffm_image_file}" 
-                        alt=""
-                        class="img_right"
-                        }
-                {/cf_journal_image}
-
-                {cf_journal_body}
+                {if weblog_short_name == "journal_notes"}
                 
-                <iframe src="http://player.vimeo.com/video/14029274" width="580" height="325" frameborder="0"></iframe>
+                    {if cf_journal_notes_image != ""}
+                        <div class="post_image note_image size{cf_journal_notes_image_size}">
+                            {exp:ed_imageresizer 
+                                maxWidth="{cf_journal_notes_image_size}"
+                                forceWidth="yes"
+                                image="{cf_journal_notes_image}" 
+                                alt=""
+                                }
+                            {if cf_journal_notes_image_caption != ""}
+                                <span>{cf_journal_notes_image_caption}</span>
+                            {/if}
+                        </div>
+                    {/if}
+                
+                    {cf_journal_notes_note}
+
+                {/if}
+                
+                {if weblog_short_name == "journal_photos"}
+                
+                    {cf_journal_photos_lead}
+                    
+                    {exp:ed_imageresizer 
+                        maxWidth="580"
+                        forceWidth="yes"
+                        image="{cf_journal_photos_image}" 
+                        alt=""
+                        }
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_videos"}
+                
+                    {cf_journal_videos_lead}
+                    
+                    <iframe 
+                        src="http://player.vimeo.com/video/{cf_journal_videos_vimeo}?portrait=0&amp;color=f69b55" 
+                        width="580" 
+                        height="325">
+                    </iframe>
+                
+                {/if}
+                
+                {if weblog_short_name == "journal_audio"}
+                    
+                    {cf_journal_audio_lead}
+                    
+                    {if cf_journal_audio_mp3 != "" AND cf_journal_audio_ogg != ""}
+                    <audio id="audio_player_{entry_id}" controls>
+                        <source src="{cf_journal_audio_mp3}" type="audio/mpeg" />
+                        <source src="{cf_journal_audio_ogg}" type="audio/ogg" />
+                    </audio> <!-- // #audio_player -->
+                    <script>
+                        jwplayer("audio_player_{entry_id}").setup({
+                            players: [
+                                { type: "html5" },
+                                { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
+                            ],
+                            provider: "sound",
+                            controlbar: "bottom",
+                            dock: false,
+                            playlist: "none",
+                            id: "audio_player_{entry_id}",
+                            width: "100%",
+                            height: 29,
+                            icons: false,
+                            skin: "{pv_assets_url}/jwplayer/glow.zip"
+                        });
+                    </script>
+                    {/if}
+                    
+                {/if}
+                
+                <p class="comment"><a href="{pv_site_url}{comment_url_title_auto_path}#comments">Add your comments &raquo;</a></p>
+                
             </div> <!-- // .post -->
+            
             {paginate}
 			{if "{total_pages}" > "1"}
 			<p id="pagination">
@@ -55,8 +120,17 @@
 			{/if}
 			{/paginate}
         {/exp:weblog:entries}
-            
-
+        
+            {!-- UNCOMMENT TO TEST
+            <p id="pagination">
+                Go to page: 
+                <a href="#">1</a> 
+                <a class="cur" href="#">2</a> 
+                <a href="#">3</a> 
+                <a href="#">4</a> 
+                <a href="#">5</a> 
+            </p>
+            --}
             
         </div><!-- // #posts -->
         

@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
- * @copyright	Copyright (c) 2008 - 2009, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2010, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -380,8 +380,14 @@ function set_status_header($code = 200, $text = '')
 * @access	private
 * @return	void
 */
+
+/*
+
+//removed this because it was showing real errors and that made people uncomfortable
+
 function _exception_handler($severity, $message, $filepath, $line)
 {	
+	
 	 // We don't bother with "strict" notices since they will fill up
 	 // the log file with information that isn't normally very
 	 // helpful.  For example, if you are running PHP 5 and you
@@ -414,7 +420,7 @@ function _exception_handler($severity, $message, $filepath, $line)
 
 	$error->log_exception($severity, $message, $filepath, $line);
 }
-
+*/
 
 
 /* End of file Common.php */
