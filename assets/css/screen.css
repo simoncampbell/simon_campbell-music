@@ -703,6 +703,12 @@ div#footer p.credit {
             margin-bottom: 10px;
         }
         
+        div#posts div.post p.comment {
+            clear:both;
+            margin:20px 0 0 0;
+            text-align:left;
+        }
+        
         div#posts div.post ul.post_meta {
             margin-bottom: 15px;
             width: 100%;
@@ -1038,6 +1044,7 @@ div#footer p.credit {
             background: rgb(0, 0, 0) url(../images/site/bgs/thirtysix/thirtysix-album.jpg) no-repeat 0 0;
             border-top: 1px dashed #5B5B5B;
             border-top: 1px dashed rgba(255, 255, 255, 0.3);
+
         }
         body.thirtysix div#content_pri h1,
         body.thirtysix div#content_pri h2,
@@ -1100,8 +1107,11 @@ div#footer p.credit {
             font-size: 14px;
             letter-spacing: 0.1em;
         }
-        body.thirtysix div#content_pri .widget:last-child {
+        body.thirtysix div#content_pri .widget:last-child,
+        body.thirtysix div#content_pri .widget#journey {
             margin-bottom:0;
+            border-bottom: 1px dashed #5B5B5B;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         }
         
         body.thirtysix div#album_promo_inline div.last h3 {
