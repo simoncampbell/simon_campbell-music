@@ -72,7 +72,7 @@
         <div class="last">
             {exp:cartthrob:add_to_cart_form
                 entry_id="{entry_id}"
-                return=""
+                return="store/basket"
                 }
                 <fieldset>
                     <div>
