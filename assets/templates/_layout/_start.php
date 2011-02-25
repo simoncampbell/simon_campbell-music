@@ -165,7 +165,6 @@
         <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/biography/">Bio</a></li>
         <li{if embed:section == "gallery"} class="cur"{/if}><a href="{pv_site_url}/gallery/">Gallery</a></li>
         <li{if embed:section == "contact"} class="cur"{/if}><a href="{pv_site_url}/contact/">Contact</a></li>
-        {!-- Hiding until the next release
         <li class="account"><span class="hide">Account</span>
             <ul>
                 {if logged_out}
@@ -180,5 +179,4 @@
                 {/if}
             </ul>
         </li>
-        --}
     </ul> <!-- // #navigation_pri -->
