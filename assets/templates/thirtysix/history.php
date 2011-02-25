@@ -28,7 +28,7 @@
             </p>
             <p>
                 To do our bit for the environment, Supertone Records haven&rsquo;t produced an insert but full detail about the songs, lyrics, musicians, the recording plus information about live shows can be found on this site. Further details and links to musicians and studio team can be found at <a href="http://www.discogs.com/Simon-Campbell-ThirtySix/release/2600904">Discogs</a> and pictures taken during the recording can be found on <a href="http://www.flickr.com/photos/erskinecorp/sets/72157623649584217/">Flickr</a>.</p>
-            <p>Why not read more about the making of &lsquo;ThirtySix&rsquo; on Simon&rsquo;s blog or <a href="http://vimeo.com/channels/simoncampbell#19387854">watch the series of videos!</a>
+            <p>Why not read more about the making of &lsquo;ThirtySix&rsquo; on <a href="http://blog.simoncampbell.com/">Simon&rsquo;s blog</a> or <a href="http://vimeo.com/channels/simoncampbell#19387854">watch the series of videos!</a>
             </p>
         </div><!-- // .widget -->
         <div class="widget">
