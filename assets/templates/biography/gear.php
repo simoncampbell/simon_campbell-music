@@ -25,10 +25,10 @@
         <div id="gear_guitars" class="widget">
             <h3>Guitars &amp; mandolins</h3>
             <ul>
-                <li>Fender Customshop ‘Nocaster’ relic</li>
+                <li>Fender Customshop &lsquo;Nocaster&rsquo; relic</li>
                 <li>Custom Stratocaster with neck made by Gordon Whittam and body by Brian Eastwood out of ash with specially wound Lindy Fralin pickups. Fitted with Fender style tremolo</li>
                 <li>Custom Telecaster made by Gordon Whittam out of swamp ash with specially wound Lindy Fralin pickups</li>
-                <li>Custom Telecaster neck made by Gordon Whittam and body by Brian Eastwood out of swamp ash with specially wound Lindy Fralin humbucking pickups and Fender style tremolo system</li>
+                <li>Custom Telecaster neck made by Gordon Whittam and body by Brian Eastwood out of swamp ash with specially wound Lindy Fralin humbucking pickups and Fender style tremolo system </li>
                 <li>Gibson Flying V (1974) refinished by Ted Lee, fitted with Vibrola tremolo system and specially wound Lindy Fralin humbucking pickups</li>
                 <li>Gretsch Electromatic D6 Console guitar (1956)</li>
                 <li>Howe-Orme Mandolinetto (c 1885)</li>
@@ -43,10 +43,8 @@
             <ul>
                 <li>Van Weelden Twinkleland 100W Head</li>
                 <li>Bludotone Bludo-Drive 100W Head</li>
-                <li>TwoRock 10th Anniversary 100W Head</li>
-                <li>TwoRock Sapphire 100W Head</li>
-                <li>2 x Two Rock Signature 2×12 cabinets loaded with vintage EVM12L’s</li>
-                <li>1 x Two Rock Signature 1×12 cabinet loaded with vintage EVM12L</li>
+                <li>2 x Two Rock Signature 2x12 cabinets loaded with vintage EVM12L&rsquo;s</li>
+                <li>1 x Two Rock Signature 1x12 cabinet loaded with vintage EVM12L</li>
             </ul>
         </div><!-- // .widget -->
         <div class="widget">
@@ -67,7 +65,7 @@
                 <li>Fulltone OCD</li>
                 <li>Fulltone Clyde Deluxe Wha</li>
                 <li>Moonphaser</li>
-                <li>TexTone FuzzNutz</li>
+                <li>TexTone FuzzNutz Zendrive</li>
                 <li>VoodoLabs Pedal Power 2 plus Power supply</li>
                 <li>EMO Power distribution</li>
             </ul>
@@ -97,9 +95,10 @@
         </div><!-- // .widget -->        
         <div class="widget">
             <h3>On the album ThirtySix</h3>
-            <p>A 1989 Marshall slant front 4×12 was used on the album&hellip;</p>
             <ul>
-                <li>Effects: Vintage Lexicon &lsquo;Prime Time&rsquo; model 97 delay was used on most of the solos in the mix</li>
+                <li>Additional cabinets: 1989 Marshall slant front 4x12</li>
+                <li>Additional amplifiers: TwoRock 10th Anniversary 100W head</li>
+                <li>Effects: Vintage Lexicon &lsquo;Prime Time&rsquo; model 97 delay was used on most of the guitar solos in the mix</li>
                 <li>Speaker cabinets microphones: Sennheiser MD421, AKG C414 and T.Bone RM700</li>
                 <li>Vocal: Neuman U87 with a splash of Publison Infernal Machine Spring Reverberation</li>
                 <li>Acoustic guitar microphones: Shure SM81 &amp; Neumann U87</li>
