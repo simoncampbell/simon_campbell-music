@@ -19,7 +19,7 @@
         <div class="widget">
             <h3>My extensive gear listings</h3>
             <p>
-                I have over the years used a bewildering array of gear on my never ending journey to find the 'perfect tone'. If you are interested, take a look at <a href="http://simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_one/">the articles</a> that I have written on the subject. Below I have annotated the various pieces of musical equipment I have collated over the years.
+                Over the years, Simon has used a bewildering array of gear on his never ending journey to find the &lsquo;perfect tone&rsquo;. If you are interested, take a look at the <a href="http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_one/">articles that he has written</a> on the subject. Below is the current equipment list.
             </p>
         </div><!-- // .widget -->
         <div id="gear_guitars" class="widget">
