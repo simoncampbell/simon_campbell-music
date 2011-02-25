@@ -302,7 +302,7 @@ small {
         border-bottom: 1px dashed #5B5B5B;
         border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         width:100%;
-        margin:1.35em 0 1em 0;
+        margin:0 0 1em 0;
     }
     caption { 
         font-weight:bold;
