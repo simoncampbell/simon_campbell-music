@@ -50,10 +50,15 @@
                                 <td><input type="checkbox" name="delete[{row_id}]"> Delete this item</td>
                             </tr>
                 {if last_row}
+                            <tr>
+                                <td colspan="5">
+                                    <input type="submit" value="Update Cart">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <p class="more">
-                        Subtotal: <strong>{cart_subtotal}</strong> + shipping <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a> or <input type="submit" value="Update Cart">
+                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="/store/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
                     </p>
                     {/exp:cartthrob:update_cart_form}
                 {/if}{!-- // IF LAST ROW --}
