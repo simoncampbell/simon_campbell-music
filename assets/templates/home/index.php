@@ -194,7 +194,8 @@
                         {/if}
 
                     {/if}
-
+                    
+                    <p class="comment"><a href="{pv_site_url}{comment_url_title_auto_path}#comments">Add your comments &raquo;</a></p>
 
                 </div> <!-- // .post -->
             {/exp:weblog:entries}

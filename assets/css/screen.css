@@ -703,6 +703,12 @@ div#footer p.credit {
             margin-bottom: 10px;
         }
         
+        div#posts div.post p.comment {
+            clear:both;
+            margin:20px 0 0 0;
+            text-align:left;
+        }
+        
         div#posts div.post ul.post_meta {
             margin-bottom: 15px;
             width: 100%;
