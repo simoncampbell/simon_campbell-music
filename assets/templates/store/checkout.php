@@ -19,11 +19,21 @@
         <h1 class="hide">Store</h1>
         
         <h2>Checkout</h2>
-        {exp:cartthrob:checkout_form 
-            {!-- NOT SURE ON THESE YET --}
-            gateway=""
-            return=""
+        {exp:cartthrob:checkout_form
+            
+            create_user=""
+            group_id=""
+            
+            cart_empty_redirect="store/basket/"
+            return="account/orders/"
+            
+            authorized_redirect=""
+            failed_redirect=""
+            declined_redirect=""
         }
+        
+        {!-- add the create user OR login details here --}
+        
         {gateway_fields}
         <input type="submit" value="Checkout" />
         {/exp:cartthrob:checkout_form}
