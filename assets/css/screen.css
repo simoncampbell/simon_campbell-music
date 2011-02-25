@@ -302,7 +302,7 @@ small {
         border-bottom: 1px dashed #5B5B5B;
         border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         width:100%;
-        margin:1.35em 0 1em 0;
+        margin:0 0 1em 0;
     }
     caption { 
         font-weight:bold;
@@ -495,7 +495,7 @@ ul#navigation_pri li:first-child {
 ul#navigation_pri a {
     background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
-    padding: 12px 11px 12px 8px;
+    padding: 12px 11px 8px 8px;
     text-decoration: none;
 }
 ul#navigation_pri li:first-child a {

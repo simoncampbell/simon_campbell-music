@@ -113,15 +113,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {exp:weblog:entries
+                            author_id="CURRENT_USER"
+                            disable="categories|trackbacks|pagination"
+                            limit=""
+                            weblog="purchased_items"
+                        }
                         <tr>
-                            <td><a href="#">#145</a></td>
-                            <td><time datetime="">23-02-2011</time></td>
+                            <td><a href="#">#{cf_purchased_order_id}</a></td>
+                            <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
                             <td>
                                 <span class="item"><a href="#">ThirtySix LP</a></span>, 
                                 <span class="item"><a href="#">T-shirt</a></span>
                             </td>
                             <td></td>
                         </tr>
+                        {/exp:weblog:entries}
+                        {!--
                         <tr>
                             <td><a href="#">#121</a></td>
                             <td><time datetime="">19-02-2011</time></td>
@@ -133,22 +141,7 @@
                                 <span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td><a href="#">#109</a></td>
-                            <td><time datetime="">11-02-2011</time></td>
-                            <td>
-                                <span class="item"><a href="#">Simon Campbell mug</a></span>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">#102</a></td>
-                            <td><time datetime="">01-02-2011</time></td>
-                            <td>
-                                <span class="item"><a href="#">ThirtySix EP</a></span>
-                            </td>
-                            <td></td>
-                        </tr>
+                        --}
                     </tbody>
                 </table>
             </div><!-- // .last -->

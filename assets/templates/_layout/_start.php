@@ -165,7 +165,6 @@
         <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/biography/">Bio</a></li>
         <li{if embed:section == "gallery"} class="cur"{/if}><a href="{pv_site_url}/gallery/">Gallery</a></li>
         <li{if embed:section == "contact"} class="cur"{/if}><a href="{pv_site_url}/contact/">Contact</a></li>
-        {!-- Hiding until the next release
         <li class="account"><span class="hide">Account</span>
             <ul>
                 {if logged_out}
@@ -174,11 +173,10 @@
                 {/if}
                 
                 {if logged_in}
-                <li><a href="{pv_site_url}/store/basket/">My basket (3)</a></li>
+                <li><a href="{pv_site_url}/store/basket/">My basket {exp:cartthrob:cart_items_info}({exp:cartthrob:unique_items_count}){/exp:cartthrob:cart_items_info}</a></li>
                 <li><a href="{pv_site_url}/account/">Account</a></li>
                 <li><a href="{path="LOGOUT"}">Log out</a></li>
                 {/if}
             </ul>
         </li>
-        --}
     </ul> <!-- // #navigation_pri -->
