@@ -20,29 +20,50 @@
         
         <div class="first">
             <h2>Your basket</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Type</th>
-                        <th>Quantity</th>
-                        <th>Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {exp:cartthrob:cart_items_info}
-                    <tr>
-                        <td><a href="#">{title}</a></td>
-                        <td>Apparel</td>
-                        <td>{quantity}x</td>
-                        <td>£{item_subtotal}</td>
-                    </tr>
-                    {/exp:cartthrob:cart_items_info}
-                </tbody>
-            </table>
-            <p class="more">
-                Subtotal: <strong>{exp:cartthrob:cart_items_info}£{cart_subtotal}{/exp:cartthrob:cart_items_info}</strong> + shipping <a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
-            </p>
+            
+            {exp:cartthrob:cart_items_info}
+            
+                {if no_results}
+                    <p>There is nothing in your cart</p>
+                {/if}
+                
+                {if first_row}
+                    {exp:cartthrob:update_cart_form
+                        return="store/basket"
+                    }
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th colspan="2">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                {/if}{!-- // IF FIRST ROW --}
+                            <tr>
+                                <td><a href="#">{title}</a>{!--{item_options:select:product_size row_id="yes"}--}</td>
+                                <td>type</td>
+                                <td><input name="quantity[{row_id}]" min="0" max="100" size="5" type="number" value="{quantity}" /></td>
+                                <td>{item_subtotal}</td>
+                                <td><input type="checkbox" name="delete[{row_id}]"> Delete this item</td>
+                            </tr>
+                {if last_row}
+                            <tr>
+                                <td colspan="5">
+                                    <input type="submit" value="Update Cart">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="more">
+                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="/store/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
+                    </p>
+                    {/exp:cartthrob:update_cart_form}
+                {/if}{!-- // IF LAST ROW --}
+            {/exp:cartthrob:cart_items_info}
+            
         </div><!-- // .first -->
         
         <div id="payments_block" class="last">
