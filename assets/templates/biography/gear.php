@@ -17,7 +17,7 @@
     <div id="content_pri">
         <h2 class="hide">Bio</h2>
         <div class="widget">
-            <h3>My extensive gear listings</h3>
+            <h3>Simon&rsquo;s extensive gear list</h3>
             <p>
                 Over the years, Simon has used a bewildering array of gear on his never ending journey to find the &lsquo;perfect tone&rsquo;. If you are interested, take a look at the <a href="http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_one/">articles that he has written</a> on the subject. Below is the current equipment list.
             </p>
@@ -64,8 +64,7 @@
                 <li>Fulltone Ultimate Octave</li>
                 <li>Fulltone OCD</li>
                 <li>Fulltone Clyde Deluxe Wha</li>
-                <li>Moonphaser</li>
-                <li>TexTone FuzzNutz Zendrive</li>
+                <li>Moonphaser TexTone FuzzNutz Zendrive</li>
                 <li>VoodoLabs Pedal Power 2 plus Power supply</li>
                 <li>EMO Power distribution</li>
             </ul>
@@ -79,7 +78,7 @@
                 <li>Radial Engineering JR 5 remote</li>
                 <li>Radial Engineering SGI interface</li>
                 <li>Various Skrystrup custom power supplies</li>
-                <li>&amp; MOOG Etherwave Plus Theremin for hangin&rsquo; around</li>
+                <li>MOOG Etherwave Plus Theremin</li>
             </ul>
         </div><!-- // .widget -->
         <div class="widget">
