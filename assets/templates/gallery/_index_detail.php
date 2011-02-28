@@ -38,7 +38,7 @@
                 }
             
                     {cf_gallery_images sort="random"}
-                        <li>
+                        <li id="image_{row_id}">
                             {exp:ed_imageresizer
                                 image="{ffm_images_image}"
                                 maxWidth="610"
@@ -51,7 +51,7 @@
                                     {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
                                 {/if}
                             </p>
-                            <a href="{pv_site_url}{comment_url_title_auto_path}" class="permalink">
+                            <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
                                 Permalink
                             </a>
                         </li> 

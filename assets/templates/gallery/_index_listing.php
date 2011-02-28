@@ -41,7 +41,7 @@
                                     {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
                                 {/if}
                             </p>
-                            <a href="{pv_site_url}{comment_url_title_auto_path}" class="permalink">
+                            <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
                                 Permalink
                             </a>
                         </li> 
@@ -58,7 +58,7 @@
                 orderby=""
                 sort="asc"
             }
-                <li id="gallery_{count}" {if count == 1}class="cur"{/if}>
+                <li {if count == 1}class="cur"{/if}>
                     <a href="{pv_site_url}{comment_url_title_auto_path}">
                         {cf_gallery_images limit="1" sort="random"}
                             {exp:ed_imageresizer
