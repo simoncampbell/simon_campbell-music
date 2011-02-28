@@ -82,9 +82,10 @@
                     <p>{cf_features_lead}</p>
                 {/if}
                 <p><a href="{cf_features_link_url}">{cf_features_link_label} &raquo;</a></p>
-            </div>
-        </div> <!-- // #tab1 -->
+            </div> <!-- // .slide_content -->
+        </div> <!-- // #tab{count} -->
         {/exp:weblog:entries}
+
     </div> <!-- // #promo -->
 
     <div id="content_pri">

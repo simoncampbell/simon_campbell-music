@@ -1289,18 +1289,28 @@ div#footer p.credit {
     
     /* CONTENT SEC: Widget - Promo Block
     --------------------------------------------- */
-    #promo_block.widget {
-        padding: 0;
+    div#content_sec .promo_block {
+        display:block;
+        padding:0;
         position: relative;
         width: 300px;
+        margin-bottom:40px;
+        border-top: 1px dashed #5B5B5B;
+        border-top: 1px dashed rgba(255, 255, 255, 0.3);
+        border-bottom: 1px dashed #5B5B5B;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
     }
-    #promo_block small {
-        bottom: 0;
+    div#content_sec .promo_block small {
+        display:block;
         position: absolute;
+        bottom:0;
+        right:0;
+        left:0;
         text-align: center;
-        width: 100%;
+        padding:5px 0;
+        background:rgba(0, 0, 0, 0.8);
     }
-    #promo_block a {
+    div#content_sec .promo_block a {
         text-decoration: none;
     }
     
