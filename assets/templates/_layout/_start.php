@@ -86,7 +86,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
-    <script src="{pv_assets_url}/tools/jquery.cycle/jquery.cycle.all.min.js"></script>
+    {if segment_1 == "gallery"}<script src="{pv_assets_url}/js/jquery.carousel.min.js"></script>{/if}
     <script src="{pv_assets_url}/js/onload.js"></script>
     
     <!-- WEBFONTS -->
