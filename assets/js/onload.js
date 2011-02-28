@@ -46,7 +46,7 @@ $(document).ready(function(){
             create_carousel(); // Create carousel
         };
         
-        $("ul#gallery_grid li a").click(function() {
+        $("ul#gallery_grid li a").click(function(event) {
             event.preventDefault(); // Stop link
             $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status
             $(this).parent().addClass("cur"); // Add cur status
