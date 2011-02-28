@@ -21,13 +21,10 @@
         {exp:weblog:entries
             disable="member_data|trackbacks|categories"
             limit="1"
-            weblog="products_music|products_posters|products_tshirts"
+            weblog="products_tshirts"
         }
         
         <h1>{title}</h1>
-        
-        {if weblog_short_name == "products_tshirts"}
-        
         <h2>{cf_products_tshirts_subtitle}</h2>
         
         <div id="gallery_photos">
@@ -89,14 +86,12 @@
                     </div>
                     <div id="price">
                         <h3>Price</h3>
-                        <p><strong>£{cf_products_tshirts_price}</strong> + shipping</p>
+                        <p><strong>{cf_products_tshirts_price}</strong> + shipping</p>
                     </div>
                 </fieldset>
                 <input class="submit" type="submit" value="Add to basket">
             {/exp:cartthrob:add_to_cart_form}
         </div><!-- // .last -->
-        
-        {/if}{!-- // products_tshirts --}
         
         {/exp:weblog:entries}
     </div> <!-- // #content_pri -->
