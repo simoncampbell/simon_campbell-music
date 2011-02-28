@@ -50,7 +50,7 @@ $(document).ready(function(){
             event.preventDefault(); // Stop link
             $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status
             $(this).parent().addClass("cur"); // Add cur status
-            $.get($(this).attr("href") + ' ul#gallery li', function(data) { // Load in data from entry
+            $.get($(this).attr("href") + '/inline/ ul#gallery li', function(data) { // Load in data from entry
         		$("div#gallery").remove(); // Destroy old carousel
         		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
         		var $gallery_items = $(data).find("div#gallery ul"); // Filter data to list
@@ -59,6 +59,10 @@ $(document).ready(function(){
             });
         });
 
+    }
+    
+    if($("body").attr("id") == "gallery_detail") {
+        $("div#gallery ul li a").fancybox();
     }
     
     
