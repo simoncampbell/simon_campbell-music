@@ -19,21 +19,18 @@
             {exp:weblog:entries
                 weblog="homepage_features"
                 limit="4"
-                entry_id="{lv_featured_homepage}"
-                disable="member_data|trackbacks|categories"
-                orderby=""
-                sort=""
+                disable="{pv_disable_default}"
                 dynamic="off"
+                fixed_order="{lv_featured_homepage}"
             }
             <li>
-                <a href="#tab_{entry_id}">
+                <a href="#tab{count}">
                     {exp:ed_imageresizer 
                         maxWidth="60"
-                        maxHeight="38"
                         forceWidth="yes"
-                        cropratio="60:38"
+                        cropratio="60:38" 
                         image="{cf_features_image}" 
-                        alt="{cf_features_title}"
+                        alt=""
                     }
                     {title}
                 </a>
@@ -44,33 +41,28 @@
         {exp:weblog:entries
             weblog="homepage_features"
             limit="4"
-            entry_id="{lv_featured_homepage}"
-            disable="member_data|trackbacks|categories"
-            orderby=""
-            sort=""
+            disable="{pv_disable_default}"
             dynamic="off"
+            fixed_order="{lv_featured_homepage}"
         }
-        
-        <div id="tab_{entry_id}">
-            
+        <div id="tab{count}">
             {exp:ed_imageresizer 
                 maxWidth="640"
-                maxHeight="236"
                 forceWidth="yes"
+                cropratio="640:236" 
                 image="{cf_features_image}" 
-                alt="{cf_features_title}"
+                alt=""
             }
             <div class="slide_content">
-                <h2>{cf_features_title}</h2>
+                <h2>{exp:ee_typography formatting="lite"}{cf_features_title}{/exp:ee_typography}</h2>
                 <h3>{cf_features_subtitle}</h3>
-        
-                {if cf_features_audio_mp3 != "" && cf_features_audio_ogg != ""}
-                    <audio id="audio_player" controls>
+                {if cf_features_audio_mp3 != "" AND cf_features_audio_ogg != ""}
+                    <audio id="audio_player_{entry_id}_{count}" controls>
                         <source src="{cf_features_audio_mp3}" type="audio/mpeg" />
                         <source src="{cf_features_audio_ogg}" type="audio/ogg" />
                     </audio> <!-- // #audio_player -->
                     <script>
-                        jwplayer("audio_player").setup({
+                        jwplayer("audio_player_{entry_id}_{count}").setup({
                             players: [
                                 { type: "html5" },
                                 { type: "flash", src: "{pv_assets_url}/jwplayer/player.swf" }
@@ -79,7 +71,7 @@
                             controlbar: "bottom",
                             dock: false,
                             playlist: "none",
-                            id: "audio_player",
+                            id: "audio_player_{entry_id}_{count}",
                             width: 195,
                             height: 29,
                             icons: false,
@@ -89,15 +81,11 @@
                 {if:else}
                     <p>{cf_features_lead}</p>
                 {/if}
-            
                 <p><a href="{cf_features_link_url}">{cf_features_link_label} &raquo;</a></p>
             </div> <!-- // .slide_content -->
-            
-        </div> <!-- // #tab_{entry_id} -->
-        
+        </div> <!-- // #tab{count} -->
         {/exp:weblog:entries}
-        
-       
+
     </div> <!-- // #promo -->
 
     <div id="content_pri">
