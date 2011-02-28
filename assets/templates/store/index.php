@@ -20,7 +20,7 @@
         
         <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
-            <dd class="cur" {if segment_2 =="music"} class="cur"{/if}><a href="{path='store/music'}">Music</a></dd>
+            <dd {if segment_2 =="music"} class="cur"{/if}><a href="{path='store/music'}">Music</a></dd>
             <dd {if segment_2 =="posters"} class="cur"{/if}><a href="{path='store/posters'}">Posters</a></dd>
             <dd {if segment_2 =="tshirts"} class="cur"{/if}><a href="{path='store/tshirts'}">T-shirts</a></dd>
         </dl><!-- // #categories_list -->
@@ -33,49 +33,53 @@
                 weblog="products_music|products_posters|products_tshirts"
             }
             <li>
-                <a href="{url_title_path='store/product'}">
+                {if weblog_short_name == "products_music"}
+                <a href="{url_title_path='store/music'}">
                     <p>{title}</p>
-                    
-                    {if weblog_short_name == "products_music"}
-                        {cf_products_music_images limit="1"}
-                        {exp:ed_imageresizer
-                            alt=""
-                            cropratio="1:1"
-                            forceWidth="yes"
-                            image="{ffm_images_image}"
-                            maxHeight="180"
-                            maxWidth="180"
-                        }
-                        {/cf_products_music_images}
-                    {/if}
-                    
-                    {if weblog_short_name == "products_posters"}
-                        {cf_products_posters_images limit="1"}
-                        {exp:ed_imageresizer
-                            alt=""
-                            cropratio="1:1"
-                            forceWidth="yes"
-                            image="{ffm_images_image}"
-                            maxHeight="180"
-                            maxWidth="180"
-                        }
-                        {/cf_products_posters_images}
-                    {/if}
-                    
-                    {if weblog_short_name == "products_tshirts"}
-                        {cf_products_tshirts_images limit="1"}
-                        {exp:ed_imageresizer
-                            alt=""
-                            cropratio="1:1"
-                            forceWidth="yes"
-                            image="{ffm_images_image}"
-                            maxHeight="180"
-                            maxWidth="180"
-                        }
-                        {/cf_products_tshirts_images}
-                    {/if}
-                    
+                    {cf_products_music_images limit="1"}
+                    {exp:ed_imageresizer
+                        alt=""
+                        cropratio="1:1"
+                        forceWidth="yes"
+                        image="{ffm_images_image}"
+                        maxHeight="180"
+                        maxWidth="180"
+                    }
+                    {/cf_products_music_images}
                 </a>
+                {/if}
+                
+                {if weblog_short_name == "products_posters"}
+                <a href="{url_title_path='store/posters'}">
+                    <p>{title}</p>
+                    {cf_products_posters_images limit="1"}
+                    {exp:ed_imageresizer
+                        alt=""
+                        cropratio="1:1"
+                        forceWidth="yes"
+                        image="{ffm_images_image}"
+                        maxHeight="180"
+                        maxWidth="180"
+                    }
+                    {/cf_products_posters_images}
+                </a>
+                {/if}
+                
+                {if weblog_short_name == "products_tshirts"}
+                <a href="{url_title_path='store/tshirts'}">
+                    <p>{title}</p>
+                    {cf_products_tshirts_images limit="1"}
+                    {exp:ed_imageresizer
+                        alt=""
+                        cropratio="1:1"
+                        forceWidth="yes"
+                        image="{ffm_images_image}"
+                        maxHeight="180"
+                        maxWidth="180"
+                    }
+                    {/cf_products_tshirts_images}
+                </a>
+                {/if}
             </li>
             {/exp:weblog:entries}
         </ul><!-- // .gallery_grid -->

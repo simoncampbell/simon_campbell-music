@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-02-28 11:39:10 -0600
+# Generation Time: 2011-02-28 12:05:08 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -1302,13 +1302,14 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=333 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=334 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
 	(332,1298915013,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(333,1298916266,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
 	(331,1298914405,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
@@ -2124,7 +2125,7 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1298567199,1298914875,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1298567199,1298916624,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
 	(19,6,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1298805067,1298894748,29,0,0,0,1298635631,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
@@ -3167,6 +3168,15 @@ VALUES
 	(1298900907,'88.97.41.224','811af55efbe87cbae62cf79da8e768f6ce98b944'),
 	(1298900902,'88.97.41.224','8a1a837d1fe4d253147db53f6fd15c08472d3539'),
 	(1298900188,'157.55.116.38','d67940ce03bcc2e5a010f50df72c2f2df6a1e85b'),
+	(1298916656,'98.20.79.244','40b08e7998a7f09f50c771bbc24169fdeaf24ed2'),
+	(1298916653,'98.20.79.244','27194cbc51a1993e4f6a3bc300dff7b70a47aa3f'),
+	(1298916640,'98.20.79.244','a648258a9ba049b3bf780f282d213f816f71f5e0'),
+	(1298916638,'98.20.79.244','00008869a4164fc695b84250378fc8f64e53bdb9'),
+	(1298916634,'98.20.79.244','82dd0f6013e38bf635a113c7c5edd5ab52f9d72b'),
+	(1298916632,'98.20.79.244','827b15b81f3bf56cc7ca056706c33fe6a8a75547'),
+	(1298916632,'98.20.79.244','c7c1ba90fb7c98867c83f700975810539ef48a41'),
+	(1298916632,'98.20.79.244','03ee8fb3134d06e9ab968c96b5b9b19f231044ec'),
+	(1298916627,'98.20.79.244','b5f022749f2b1d645fe706eecee63c6cd8d90d0f'),
 	(1298638687,'84.246.205.199','6b603d7a80948e8c06a2e07da34efbe8d0c07484'),
 	(1298669803,'187.116.174.194','245cc4d1b381d464e1383913fd76a9ac4f503d18'),
 	(1298669773,'187.116.174.194','cf986b926071f8241ccaf176829859559ac1e078'),
@@ -3180,6 +3190,8 @@ VALUES
 	(1298877153,'72.199.253.95','31b79a998bc0460d237f6b694c7a52c676324938'),
 	(1298851900,'84.246.205.199','0853f547197248b9d3eead72cf6fc6d81bcae33f'),
 	(1298828189,'67.195.115.251','89ae7215a2992b1ce0513d04d6d8848730794777'),
+	(1298916624,'98.20.79.244','81217104735879cdd13b3135cc7909d2d30ff4e0'),
+	(1298916266,'67.195.115.251','0e684fae6f4d4e01208bb728b2a3bdfee4fa5c9c'),
 	(1298552570,'195.10.99.109','a229882ff2ed453210be983e00fefa1bdc5ea4ed'),
 	(1298552599,'195.10.99.108','85561e70d1910ef0336b261e9bfab21c3a46521d'),
 	(1298915013,'217.122.216.133','74d422f324dd18d6813bd650aab2a0ffaa5d695b'),
@@ -3240,7 +3252,7 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('7628268127a0926066c1175737173d94d5f83e00',1,18,1,'98.20.79.244','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1298914933);
+	('7628268127a0926066c1175737173d94d5f83e00',1,18,1,'98.20.79.244','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1298916658);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3610,7 +3622,7 @@ CREATE TABLE `exp_templates` (
   PRIMARY KEY (`template_id`),
   KEY `group_id` (`group_id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_templates` WRITE;
 /*!40000 ALTER TABLE `exp_templates` DISABLE KEYS */;
@@ -3665,7 +3677,7 @@ VALUES
 	(119,1,17,'homepage-features','y','webpage','','',1297940216,0,'n',0,'','n','n','o',0),
 	(120,1,25,'music','y','webpage','','',1298914890,0,'n',0,'','n','n','o',0),
 	(121,1,25,'tshirts','y','webpage','','',1298914898,0,'n',0,'','n','n','o',0),
-	(122,1,25,'products','y','webpage','','',1298914910,0,'n',0,'','n','n','o',0);
+	(123,1,25,'posters','y','webpage','','',1298916656,0,'n',0,'','n','n','o',0);
 
 /*!40000 ALTER TABLE `exp_templates` ENABLE KEYS */;
 UNLOCK TABLES;
