@@ -898,6 +898,11 @@ div#footer p.credit {
             z-index: 1;
             border:0;
             font-size:0;
+            cursor:pointer;
+        }
+        
+        body.gallery input.carousel-control:hover {
+            bottom:17px;
         }
 
             body.gallery input.carousel-previous {

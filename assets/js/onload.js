@@ -62,7 +62,9 @@ $(document).ready(function(){
     }
     
     if($("body").attr("id") == "gallery_detail") {
-        $("div#gallery ul li a").fancybox();
+        $("div#gallery ul li a").fancybox({
+            cyclic: true
+        });
     }
     
     
