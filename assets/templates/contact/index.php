@@ -16,41 +16,63 @@
     
     <div id="content_pri">
         
-        {exp:freeform:form
-            notify="mail@simoncampbell.com"
-            required="name|email|message"
-            return="contact/thanks"
-            send_user_email="yes"
-            template="contact_form"
-            user_email_template="contact_form_user"
-        }
-            <fieldset>
-                <div>
-                    <label for="name">Name</label>
-                    <input id="name" name="name" type="text">
-                </div>
-                <div>
-                    <label for="email">Email Address</label>
-                    <input id="email" name="email" type="text">
-                </div>
-                <div>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message"></textarea>
-                </div>
-            </fieldset>
-            <input class="submit" type="submit" value="Send message">
-        {/exp:freeform:form}<!-- // #contact_form -->
+        <div id="contact">
+            
+            <h2>Get in touch!</h2>
         
-        <div id="form_aside">
-        {if segment_2 == 'thanks'}
-            {lv_contact_form_thanks}
-        {if:elseif segment_2 == 'subscribed'}
-            {lv_contact_newsletter_thanks}
-        {if:else}
-            {lv_contact_aside}
-            <p>{lv_contact_presskit_text}</p>
-        {/if}
-        </div><!-- // #form_aside -->
+            {if segment_2 == 'thanks'}
+                {lv_contact_form_thanks}
+            {if:elseif segment_2 == 'subscribed'}
+                {lv_contact_newsletter_thanks}
+            {if:else}
+                {lv_contact_aside}    
+            {/if}
+        
+            {exp:freeform:form
+                notify="mail@simoncampbell.com"
+                required="name|email|message"
+                return="contact/thanks"
+                send_user_email="yes"
+                template="contact_form"
+                user_email_template="contact_form_user"
+            }
+                <fieldset>
+                    <div>
+                        <label for="name">Your name</label>
+                        <input id="name" name="name" type="text" />
+                    </div>
+                    <div>
+                        <label for="email">Email address</label>
+                        <input id="email" name="email" type="text" />
+                    </div>
+                    <div>
+                        <label for="message">Your message</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                </fieldset>
+                <input class="submit" type="submit" value="Send message" />
+            {/exp:freeform:form}<!-- // #contact_form -->
+    
+
+        
+        </div> <!-- // #contact -->
+        
+        <div class="contact_block">
+            
+            <h2>Bookings</h2>
+            
+            {lv_contact_booking}
+        </div> <!-- // #media -->
+        
+        <div class="contact_block">
+            
+            <h2>Media</h2>
+            <p>Check these Simon Campbell Music goodies!</p>
+            <ul class="media">
+                <li class="pdf">{lv_contact_presskit_text}</li>
+            </li>
+            
+        </div> <!-- // #media -->
         
     </div> <!-- // #content_pri -->
     
