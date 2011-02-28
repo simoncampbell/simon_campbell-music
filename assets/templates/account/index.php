@@ -25,12 +25,12 @@
                 <div class="account_details clearfix">
                     <p class="more"><a class="button" href="#">Edit details</a></p>
                     <p>
-                        <strong>Full Name</strong> 
-                        James Willock
+                        <strong>Screen Name</strong> 
+                        {screen_name}
                     </p>
                     <p>
                         <strong>Email address</strong> 
-                        james.willock@gmail.com
+                        {email}
                     </p>
                     <p>
                         <strong>Password</strong> 

@@ -19,6 +19,11 @@
         <h1 class="hide">Store</h1>
         
         <h2>Checkout</h2>
+        {if logged_out}
+        <p>
+            Please <a href="{pv_site_url}/account/">log in</a> or <a href="{pv_site_url}/account/">create an account</a> to complete the checkout process.
+        </p>
+        {/if}
         {exp:cartthrob:checkout_form
             
             create_user=""
