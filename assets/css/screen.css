@@ -566,7 +566,7 @@ dl#definition_links dd {
     padding-left: 0;
 }
 dl#definition_links dd a {
-    background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right center;
+    background: url(../images/site/nav/navigation_pri/bullet_light.png) no-repeat right 7px;
     padding: 0 10px 0 7px;
     text-decoration: none;
 }

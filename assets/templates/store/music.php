@@ -21,14 +21,14 @@
         {exp:weblog:entries
             disable="member_data|trackbacks|categories"
             limit="1"
-            weblog="products_tshirts"
+            weblog="products_music"
         }
         
         <h1>{title}</h1>
-        <h2>{cf_products_tshirts_subtitle}</h2>
+        <h2>{cf_products_music_subtitle}</h2>
         
         <div id="gallery_photos">
-            {cf_products_tshirts_images limit="1"}
+            {cf_products_music_images limit="1"}
             <div class="gallery_photo">
                 {exp:ed_imageresizer
                     image="{ffm_images_image}"
@@ -39,7 +39,7 @@
                     alt=""
                 }
             </div><!-- // .gallery_photo -->
-            {/cf_products_tshirts_images}
+            {/cf_products_music_images}
         </div><!-- // #gallery_photos -->
         <ul class="horizontal gallery_grid">
             <li class="activeSlide">
@@ -64,7 +64,7 @@
             </li>
         </ul>
         <div class="first">
-            {cf_products_tshirts_description}
+            {cf_products_music_description}
         </div><!-- // .first -->
         <div class="last">
             {exp:cartthrob:add_to_cart_form
@@ -73,11 +73,11 @@
                 }
                 <fieldset>
                     <div>
-                        <label for="type">T-Shirt Size</label>
-                        <select name="item_options[cf_products_tshirts_sizes]">
-                            {cf_products_tshirts_sizes}
-                                <option value="{ffm_sizes_short}">{ffm_sizes_full}</option>
-                            {/cf_products_tshirts_sizes}
+                        <label for="type">Select Format</label>
+                        <select name="item_options[cf_products_music_formats]">
+                            {cf_products_music_formats}
+                                <option value="{option}">{option_name} ({price})</option>
+                            {/cf_products_music_formats}
                         </select>
                     </div>
                     <div>
@@ -86,7 +86,7 @@
                     </div>
                     <div id="price">
                         <h3>Price</h3>
-                        <p><strong>{cf_products_tshirts_price}</strong> + shipping</p>
+                        <p><strong>£{cf_products_music_price}</strong> + shipping</p>
                     </div>
                 </fieldset>
                 <input class="submit" type="submit" value="Add to basket">

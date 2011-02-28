@@ -43,7 +43,7 @@
                         <tbody>
                 {/if}{!-- // IF FIRST ROW --}
                             <tr>
-                                <td><a href="#">{title}</a>{!--{item_options:select:product_size row_id="yes"}--}</td>
+                                <td><a href="#">{title}</a></td>
                                 <td>type</td>
                                 <td><input name="quantity[{row_id}]" min="0" max="100" size="5" type="number" value="{quantity}" /></td>
                                 <td>{item_subtotal}</td>

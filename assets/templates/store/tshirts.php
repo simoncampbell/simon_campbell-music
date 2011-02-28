@@ -86,7 +86,7 @@
                     </div>
                     <div id="price">
                         <h3>Price</h3>
-                        <p><strong>{cf_products_tshirts_price}</strong> + shipping</p>
+                        <p><strong>£{cf_products_tshirts_price}</strong> + shipping</p>
                     </div>
                 </fieldset>
                 <input class="submit" type="submit" value="Add to basket">
