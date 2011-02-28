@@ -208,7 +208,7 @@ small {
         background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
         color: rgb(255, 186, 0);
         float: none;
-        margin-left: 95px;
+        margin-left: 0;
         margin-right: 0;
         padding-left: 15px;
         text-align: left;
@@ -232,15 +232,7 @@ small {
         border-radius:3px;
         background:rgb(255, 255, 255);
         color:rgb(123, 123, 123);
-        float:left;
         outline:none;
-    }
-    input[type="text"],
-    textarea {
-        float: none;
-        height: auto;
-        padding: 7px 8px;
-        width: 195px;
     }
     input[type="input"]:focus,
     input[type="input"]:hover,
@@ -252,23 +244,16 @@ small {
     input[type="text"]:hover,
     textarea:focus,
     textarea:hover {
-        padding:5px 6px;
+        padding:6px;
         border:2px solid rgb(253, 154, 75);
-    }
-    input[type="text"]:focus,
-    input[type="text"]:hover,
-    textarea:focus,
-    textarea:hover {
-        padding: 5px 6px;
     }
     input.error,
     input.error:focus,
     input.error:hover,
     textarea.error {
         border: 2px solid rgb(255, 186, 0);
-        padding: 4px 7px;
+        padding: 6px;
     }
-    
     
     textarea {
         height: 95px;
@@ -1266,6 +1251,7 @@ div#footer p.credit {
             font-size: 12px;
         }
         body.store_landing div#content_pri label.error {
+            margin-left: 95px;
             width: auto;
         }
         body.store_landing div#content_pri input[type="text"] {
@@ -1380,6 +1366,9 @@ div#footer p.credit {
             text-align:left;
             margin-bottom:10px;
             font-weight:bold;
+        }
+        body.contact #content_pri form label.error {
+            padding-left: 15px;
         }
         body.contact #content_pri input.submit {
             float: right;
@@ -1534,7 +1523,6 @@ div#footer p.credit {
     }
     #newsletter_signup input.submit {
         float: right;
-        margin-top:2px;
     }
     #newsletter_signup label.error {
         margin-left: 0;
