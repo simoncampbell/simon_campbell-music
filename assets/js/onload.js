@@ -30,7 +30,39 @@ $(document).ready(function(){
     }
     
     // Gallery
-    if($("body").hasClass("gallery")) {
+    if($("div#gallery").length) {
+        
+        function create_carousel() {
+            $("div#gallery").carousel({ // jQuery carousel plugin - http://www.thomaslanciaux.pro/jquery/jquery_carousel.htm
+    		    loop: true,
+    		    effect: "fade",
+    		    animSpeed: "slow",
+    		    autoSlide: false,
+                autoSlideInterval: 3000
+    		});
+        }
+        
+        if ($("body").attr("id") == "gallery_carousel") {
+            create_carousel(); // Create carousel
+        };
+        
+        $("ul#gallery_grid li a").click(function() {
+            event.preventDefault(); // Stop link
+            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status
+            $(this).parent().addClass("cur"); // Add cur status
+            $.get($(this).attr("href") + ' ul#gallery li', function(data) { // Load in data from entry
+        		$("div#gallery").remove(); // Destroy old carousel
+        		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
+        		var $gallery_items = $(data).find("div#gallery ul"); // Filter data to list
+        		$("div#gallery").prepend($gallery_items); // Load items into gallery
+        		create_carousel(); // Recreate carousel
+            });
+        });
+
+    }
+    
+    
+    if($("body").hasClass("gallery-old")) {
      
         // Add gallery nav links
         $("div#content_pri").prepend("<p id=\"gallery_nav\">");
