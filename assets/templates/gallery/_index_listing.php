@@ -42,7 +42,7 @@
                                 {/if}
                             </p>
                             <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
-                                Permalink
+                                Link to photo
                             </a>
                         </li> 
                     {/cf_gallery_images}
