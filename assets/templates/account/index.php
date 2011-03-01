@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="{if logged_in}fullwidth{if:else}centeredwidth{/if}"
+    body_class="login_register {if logged_in}fullwidth{if:else}centeredwidth{/if}"
     body_id="account_landing"
     section="account"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -143,7 +143,7 @@
             {exp:member:login_form 
                 return="account/index"
             }
-                <fieldset id="signin">
+                <fieldset>
                     <div>
                         <label for="signin_username">Username</label>
                         <input type="text" id="signin_username" size="30" name="username" value="" />
