@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="centeredwidth"
+    body_class="centeredwidth profile_edit"
     body_id=""
     section="account"
     {!-- LG BETTER META OPTIONS BELOW --}

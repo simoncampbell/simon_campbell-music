@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="centeredwidth"
+    body_class="centeredwidth forgot_password"
     body_id=""
     section="account"
     {!-- LG BETTER META OPTIONS BELOW --}
