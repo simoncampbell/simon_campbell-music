@@ -143,7 +143,7 @@
             {exp:member:login_form 
                 return="account/index"
             }
-                <fieldset>
+                <fieldset id="signin">
                     <div>
                         <label for="signin_username">Username</label>
                         <input type="text" id="signin_username" size="30" name="username" value="" />

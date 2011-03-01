@@ -70,6 +70,27 @@ $(document).ready(function(){
         });
     }
     
+    // Registration Form Validation
+    $('form#register_form').validate({
+        rules: {
+            username: {
+                required: true,
+                rangelength: [4, 32]
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required:true,
+                rangelength: [5, 32]
+            },
+            password_confirm: {
+                equalTo: "#register_form_password"
+            }
+        }
+    });
+    
     // Campaign Monitor subscribe validation
     $('form.validate_inline').validate();
     $('div#newsletter_signup form').validate();
