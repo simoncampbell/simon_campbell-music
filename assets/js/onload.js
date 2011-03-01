@@ -70,6 +70,45 @@ $(document).ready(function(){
         });
     }
     
+    // Login Form Validation
+    if($("body").hasClass("login_register")) {
+        $('form').validate({
+            rules: {
+                username: {
+                    required: true,
+                    rangelength: [4, 32]
+                },
+                password: {
+                    required:true,
+                    rangelength: [5, 32]
+                }
+            }
+        });
+    }
+    
+    // Registration Form Validation
+    if($("body").hasClass("login_register")) {
+        $('form#register_form').validate({
+            rules: {
+                username: {
+                    required: true,
+                    rangelength: [4, 32]
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required:true,
+                    rangelength: [5, 32]
+                },
+                password_confirm: {
+                    equalTo: "#register_form_password"
+                }
+            }
+        });
+    }
+    
     // Campaign Monitor subscribe validation
     $('form.validate_inline').validate();
     $('div#newsletter_signup form').validate();
