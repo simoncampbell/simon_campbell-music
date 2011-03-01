@@ -29,7 +29,6 @@
                 <input class="submit" type="submit" name="submit" value="Reset my password" />
             </p>
         </fieldset>
-        
         {/exp:user:forgot_password}
         </div>
         <div class="last">
