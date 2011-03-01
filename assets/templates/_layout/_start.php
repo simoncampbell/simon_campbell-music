@@ -71,7 +71,9 @@
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
-    {if segment_1 == "gallery" && segment_2 != ""}<link rel="stylesheet" href="{pv_assets_url}/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />{/if}
+    {if segment_1 == "gallery" && segment_2 != ""}
+    <link rel="stylesheet" href="{pv_assets_url}/css/colorbox.css" type="text/css" media="screen" />
+    {/if}
     
     
     <!--[if lte IE 8]><link href="{pv_assets_url}/css/screen_ie.css" rel="stylesheet" media="screen" /><![endif]-->
@@ -88,8 +90,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
-    {if segment_1 == "gallery"}<script src="{pv_assets_url}/js/jquery.carousel.min.js"></script>{/if}
-    {if segment_1 == "gallery" && segment_2 != ""}<script type="text/javascript" src="{pv_assets_url}/fancybox/jquery.fancybox-1.3.4.pack.js"></script>{/if}
+    {if segment_1 == "gallery"}
+    <script src="{pv_assets_url}/js/jquery.scrollto.min.js"></script>
+    <script src="{pv_assets_url}/js/jquery.carousel.min.js"></script>
+    {/if}
+    {if segment_1 == "gallery" && segment_2 != ""}
+    <script src="{pv_assets_url}/js/jquery.colorbox.min.js"></script>
+    {/if}
     <script src="{pv_assets_url}/js/onload.js"></script>
     
     <!-- WEBFONTS -->
@@ -107,8 +114,10 @@
         </script>
     <![endif]-->
     
+    {!--
     <!-- iOS -->
-    <!-- <meta name="viewport" content="width=device-width, user-scalable=no" /> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    --}
     
     {if ev_environment == "live" AND lv_services_google_analytics_toggle == "On"}
         <!-- GOOGLE ANALYTICS -->

@@ -43,52 +43,40 @@ $(document).ready(function(){
         }
         
         if ($("body").attr("id") == "gallery_carousel") {
-            create_carousel(); // Create carousel
-        };
+            create_carousel(); // Create carousel if we're on the gallery
+        } else if ($("body").attr("id") == "gallery_detail") { 
+            
+            $("div#gallery ul li a").colorbox({ // Create colorbox
+                transition: 'fade',
+                speed: 500
+            }); 
+        
+            if (window.location.hash) { // Check URL for hash
+              $("div#gallery ul li" + window.location.hash).addClass("cur"); // Add current class to correct img
+            }
+        }
         
         $("ul#gallery_grid li a").click(function(event) {
+            
             event.preventDefault(); // Stop link
-            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status
-            $(this).parent().addClass("cur"); // Add cur status
+            
+            $.scrollTo($('div#gallery').offset().top - 20, 400); // Scroll to the gallery element
+            
+            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
+            $(this).parent().addClass("cur"); // Add cur status to selected grid items
+            
+            
             $.get($(this).attr("href") + '/inline/ ul#gallery li', function(data) { // Load in data from entry
         		$("div#gallery").remove(); // Destroy old carousel
         		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
-        		var $gallery_items = $(data).find("div#gallery ul"); // Filter data to list
-        		$("div#gallery").prepend($gallery_items); // Load items into gallery
+        		$("div#gallery").prepend($(data).find("div#gallery ul")); // Load items into gallery, filtered
         		create_carousel(); // Recreate carousel
             });
         });
 
     }
     
-    if($("body").attr("id") == "gallery_detail") {
-        $("div#gallery ul li a").fancybox({
-            cyclic: true
-        });
-    }
-    
-    
-    if($("body").hasClass("gallery-old")) {
-     
-        // Add gallery nav links
-        $("div#content_pri").prepend("<p id=\"gallery_nav\">");
-        $("p#gallery_nav").html("<a href=\"#\" class=\"gallery_skip prev\">Previous image</a> <a href=\"#\" class=\"gallery_skip next\">Next image</a>");
-     
-        // Gallery jQuery Cycle
-        $('#gallery_photos').after('<ul id="gallery_grid" class="horizontal">').cycle({
-            fx: 'fade',
-            speed: 'fast',
-            timeout: 0,
-            prev: '.prev',
-            next: '.next',
-            pager: '#gallery_grid',
-            pagerAnchorBuilder: function(idx, slide) {
-                var img = $(slide).children().eq(0).attr("src");
-                return '<li><a href="#"><img src="' + img + '" width="180" height="118"></a></li>';
-            }
-        });
-         
-    }
+
     
     // Contact Form Validation
     if($("form#freeform").length) {
