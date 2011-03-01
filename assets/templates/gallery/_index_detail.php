@@ -23,7 +23,8 @@
             limit="1"
             sort="asc"
         }
-            <h2>Gallery: &ldquo;{title}&rdquo;</h2>
+            <h2>&ldquo;{title}&rdquo;</h2>
+            <p class="meta">This gallery was first published <time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time>.</p>
         {/exp:weblog:entries}
         
         <div id="gallery">
@@ -37,7 +38,7 @@
                     sort="asc"
                 }
             
-                    {cf_gallery_images sort="random"}
+                    {cf_gallery_images sort="desc"}
                         <li id="image_{row_id}">
                             {if segment_3 == "inline"}
                                 {exp:ed_imageresizer

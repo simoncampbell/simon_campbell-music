@@ -45,9 +45,15 @@ $(document).ready(function(){
         if ($("body").attr("id") == "gallery_carousel") {
             create_carousel(); // Create carousel if we're on the gallery
         } else if ($("body").attr("id") == "gallery_detail") { 
-            $("div#gallery ul li a").fancybox({ // Create fancybox if we're on a detail page
-                cyclic: true
-            });
+            
+            $("div#gallery ul li a").colorbox({ // Create colorbox
+                transition: 'fade',
+                speed: 500
+            }); 
+        
+            if (window.location.hash) { // Check URL for hash
+              $("div#gallery ul li" + window.location.hash).addClass("cur"); // Add current class to correct img
+            }
         }
         
         $("ul#gallery_grid li a").click(function(event) {

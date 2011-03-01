@@ -969,6 +969,10 @@ div#footer p.credit {
                 display:none !important;
             }
             
+            body#gallery_detail p.meta {
+                margin-bottom:20px;
+            }
+            
             body#gallery_detail div#gallery {
                 background:transparent;
                 width:620px;
@@ -990,6 +994,10 @@ div#footer p.credit {
                 padding:5px;
                 background: rgb(43, 43, 43);
                 background: rgba(255, 255, 255, 0.07);
+            }
+            
+            body#gallery_detail div#gallery ul li.cur a img {
+                background: rgb(255, 255, 255);
             }
             
             body#gallery_detail div#gallery ul li a:hover img {

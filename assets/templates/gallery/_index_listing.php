@@ -27,7 +27,7 @@
                     sort="asc"
                 }
                     
-                    {cf_gallery_images sort="random"}
+                    {cf_gallery_images sort="desc"}
                         <li>
                             {exp:ed_imageresizer
                                 image="{ffm_images_image}"
@@ -60,7 +60,7 @@
             }
                 <li {if count == 1}class="cur"{/if}>
                     <a href="{pv_site_url}{comment_url_title_auto_path}">
-                        {cf_gallery_images limit="1" sort="random"}
+                        {cf_gallery_images limit="1" sort="desc"}
                             {exp:ed_imageresizer
                                 image="{ffm_images_image}"
                                 maxWidth="190"
