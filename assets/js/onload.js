@@ -50,68 +50,90 @@ $(document).ready(function(){
         });
     }
     
-    // Contact Form Validation
-    if($("form#freeform").length) {
-        $('form#freeform').validate({
-            rules: {
-                name: {
-                    required: true,
-                    rangelength: [4, 30]
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                message: {
-                    required: true,
-                    rangelength: [15, 250]
-                }
-            }
-        });
-    }
+    // FORM VALIDATION
     
-    // Login Form Validation
-    if($("body").hasClass("login_register")) {
-        $('form').validate({
-            rules: {
-                username: {
-                    required: true,
-                    rangelength: [4, 32]
-                },
-                password: {
-                    required:true,
-                    rangelength: [5, 32]
+        // Contact
+        if($('form#freeform').length) {
+            $('form#freeform').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        rangelength: [4, 30]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    message: {
+                        required: true,
+                        rangelength: [15, 250]
+                    }
                 }
-            }
-        });
-    }
-    
-    // Registration Form Validation
-    if($("body").hasClass("login_register")) {
-        $('form#register_form').validate({
-            rules: {
-                username: {
-                    required: true,
-                    rangelength: [4, 32]
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                password: {
-                    required:true,
-                    rangelength: [5, 32]
-                },
-                password_confirm: {
-                    equalTo: "#register_form_password"
+            });
+        }
+        // Login/Register
+        if($('body').hasClass('login_register')) {
+            
+            // Login
+            $('form').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    password: {
+                        required:true,
+                        rangelength: [5, 32]
+                    }
                 }
-            }
-        });
-    }
+            });
+            
+            // Registration
+            $('form#register_form').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required:true,
+                        rangelength: [5, 32]
+                    },
+                    password_confirm: {
+                        equalTo: "#register_form_password"
+                    }
+                }
+            });
+            
+        }
+        // Forgot Password
+        if($('body').hasClass('forgot_password')) {
+            $('form#forgot_password_form').validate({
+               rules: {
+                   email: {
+                       required: true,
+                       email: true
+                   }
+               } 
+            });
+        }
+        // Edit Profile
+        // if($('body').hasClass('profile_edit')) {
+        //     $('form#profile_edit') {
+        //         rules: {
+        //             
+        //         }
+        //     }
+        // }
+        
+        // Campaign Monitor subscribe
+        $('form.validate_inline').validate();
+        $('div#newsletter_signup form').validate();
     
-    // Campaign Monitor subscribe validation
-    $('form.validate_inline').validate();
-    $('div#newsletter_signup form').validate();
     
     // Email Encoder: Example: <span class="email">name at domainname dot com</span>
     $(function(){
