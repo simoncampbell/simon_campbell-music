@@ -23,9 +23,10 @@
                 <div class="account_details clearfix">
                     <p class="more"><a class="button" href="{path='account/update'}">Edit details</a></p>
                     {exp:user:users
+                        dynamic="off"
                         group_id="1|5|6"
                         limit="1"
-                        member_id="{segment_3}"
+                        member_id="{member_id}"
                     }
                     {!-- not working?????? --}
                     <p>
@@ -144,8 +145,8 @@
             }
                 <fieldset>
                     <div>
-                        <label for="signin_email">Email</label>
-                        <input type="text" id="signin_username" size="30" name="email" />
+                        <label for="signin_username">Username</label>
+                        <input type="text" id="signin_username" size="30" name="username" value="" />
                     </div>
                     <div>
                         <label for="signin_password">Password</label>
@@ -177,16 +178,12 @@
                 group_id="5"
                 override_return="account"
                 return="account"
-                required="mcf_first_name|mcf_last_name|email|password|password_confirm"
+                required="username|email|password|password_confirm"
             }
             <fieldset>
                 <div>
-                    <label for="register_form_firstname">First Name</label>
-                    <input type="text" id="register_form_firstname" size="30" name="mcf_first_name" value="" />
-                </div>
-                <div>
-                    <label for="register_form_lastname">Last Name</label>
-                    <input type="text" id="register_form_lastname" size="30" name="mcf_last_name" value="" />
+                    <label for="register_form_username">Username</label>
+                    <input type="text" id="register_form_username" size="30" name="username" value="" />
                 </div>
                 <div>
                     <label for="register_form_email">Email address</label>

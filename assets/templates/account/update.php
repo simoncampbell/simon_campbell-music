@@ -23,10 +23,14 @@
             error_page=""
             form:id="profile_edit"
             return="account"
-            required="mcf_first_name|mcf_last_name|email"
+            required="username|mcf_first_name|mcf_last_name|email"
             screen_name_password_required="no"
         }
             <fieldset>
+                <div>
+                    <label for="profile_username">Username</label>
+                    <input type="text" id="profile_username" name="username" value="{username}" />
+                </div>
                 <div>
                     <label for="profile_firstname">First Name</label>
                     <input type="text" id="profile_firstname" name="mcf_first_name" value="{mcf_first_name}" />
