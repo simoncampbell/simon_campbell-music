@@ -160,8 +160,8 @@
             }
                 <fieldset>
                     <div>
-                        <label for="signin_username">Username</label>
-                        <input type="text" id="signin_username" size="30" name="username" />
+                        <label for="signin_email">Email</label>
+                        <input type="text" id="signin_username" size="30" name="mcf_email_address" />
                     </div>
                     <div>
                         <label for="signin_password">Password</label>
@@ -189,21 +189,18 @@
             <h3>New customer</h3>
             
             {exp:user:register
-                form:id="register_form" 
-                form:class=""
                 admin_register="yes"
+                form:class=""
+                form:id="register_form"
+                group_id=""
                 override_return="account/pending"
                 return="account/pending"
-                required="email|password|password_confirm"
+                required="mcf_email_address|password|password_confirm"
             }
             <fieldset>
                 <div>
-                    <label for="signin_username">Username</label>
-                    <input type="text" id="signin_username" size="30" name="username" />
-                </div>
-                <div>
                     <label for="register_form_email">Email address</label>
-                    <input type="text" id="register_form_email" size="30" name="email" value="" />
+                    <input type="text" id="register_form_email" size="30" name="mcf_email_address" value="" />
                 </div>
                 <div>
                     <label for="register_form_password">Password</label>
