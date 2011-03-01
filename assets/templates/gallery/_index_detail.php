@@ -73,7 +73,7 @@
             </ul>
         </div>
         
-        <p><a href="{pv_site_url}/gallery/">&laquo; Back to the gallery</a></p>
+        <p><a href="{pv_site_url}/gallery/">&laquo; Back to gallery listings</a></p>
         
     </div> <!-- // #content_pri -->
     
