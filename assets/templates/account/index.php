@@ -161,7 +161,7 @@
                 <fieldset>
                     <div>
                         <label for="signin_email">Email</label>
-                        <input type="text" id="signin_username" size="30" name="mcf_email_address" />
+                        <input type="text" id="signin_username" size="30" name="email" />
                     </div>
                     <div>
                         <label for="signin_password">Password</label>
@@ -195,12 +195,12 @@
                 group_id=""
                 override_return="account/pending"
                 return="account/pending"
-                required="mcf_email_address|password|password_confirm"
+                required="email|password|password_confirm"
             }
             <fieldset>
                 <div>
                     <label for="register_form_email">Email address</label>
-                    <input type="text" id="register_form_email" size="30" name="mcf_email_address" value="" />
+                    <input type="text" id="register_form_email" size="30" name="email" value="" />
                 </div>
                 <div>
                     <label for="register_form_password">Password</label>
