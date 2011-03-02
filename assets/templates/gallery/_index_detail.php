@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="gallery"
-    body_id="gallery_detail"
+    body_class="gallery_slideshow"
+    body_id="detail"
     section="gallery"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Gallery"
@@ -27,7 +27,6 @@
             <p class="meta">This gallery was first published <time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time>.</p>
         {/exp:weblog:entries}
         
-        <div id="gallery">
             <ul id="gallery_carousel">
                 {!-- Default behaviour: load detail gallery --}
                 {exp:weblog:entries
@@ -71,7 +70,6 @@
              
                 {/exp:weblog:entries}
             </ul>
-        </div>
         
         <p><a href="{pv_site_url}/gallery/">&laquo; Back to gallery listings</a></p>
         

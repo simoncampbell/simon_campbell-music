@@ -12,7 +12,7 @@
  };
 })(jQuery);
 
-function create_carousel() {
+function create_carousel1() {
     
     // Add navigation to carousel
     $("div#gallery").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");
@@ -51,7 +51,97 @@ function create_carousel() {
 
 }
 
+function draw_carousel() {
+    
+    function adjust_height(moodular) {    
+
+        // Function to adjust the height of the gallery container and list
+
+        $("ul#gallery_carousel, ul#gallery_carousel li:first-child").animate({
+            'queue' : false,
+            'height' : $("ul#gallery_carousel li:first-child img").height() + 10
+        }, 250, 'swing');
+
+        $("ul#gallery_carousel").closest("div").animate({
+            'queue' : false,
+            'height' : $("ul#gallery_carousel li:first-child img").height() + 10
+        }, 250, 'swing');
+
+    }
+
+    // Carousel: create
+	var moodular = $("ul#gallery_carousel").moodular({
+        speed : 500,
+        dispTimeout : 1000,
+        auto : false,
+        callbacks: [adjust_height],
+        api: true
+    });
+
+    // Carousel: adjust container height
+    adjust_height();
+
+    // Carousel: create nav
+    $("ul#gallery_carousel").closest("div").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");    
+
+    // Carousel: bind nav - next button
+    $("ul#navigation_gallery li#gallery_next a").click(function(event) { 
+        event.preventDefault();
+        moodular.next();
+    });
+
+    // Carousel: bind nav - previous button
+    $("ul#navigation_gallery li#gallery_previous a").click(function(event) { 
+        event.preventDefault();
+        moodular.prev();
+    });
+}
+
 $(document).ready(function(){
+    
+    
+    // Carousel page
+    if($("ul#gallery_carousel").length) {
+        
+        if($("body").attr("id") === "carousel") {
+
+            draw_carousel();
+            
+            // New gallery clicked
+            $("ul#gallery_grid li a").click(function(event) {
+
+                event.preventDefault(); // Stop link
+
+                $.scrollTo($("ul#gallery_carousel").offset().top - 20, 400); // Scroll to the gallery element
+
+                $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
+                $(this).parent().addClass("cur"); // Add cur status to selected grid items
+
+                $.get($(this).attr("href") + '/inline/ ul#gallery_carousel li', function(data) { // Load in data from entry
+            		$("ul#gallery_carousel").closest("div").remove(); // Destroy old carousel
+            		$("div#content_pri").prepend("<ul id=\"gallery_carousel\"></ul>"); // Recreate scaffold for carousel
+            		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
+            		draw_carousel(); // Recreate carousel
+                });
+
+            });
+
+        } else if ($("body").attr("id") === "detail") { 
+
+            $("ul#gallery_carousel li a").colorbox({ // Create colorbox if we're on detail
+                transition: 'fade',
+                speed: 500
+            }); 
+
+            if (window.location.hash) { // Check URL for hash
+              $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
+            }
+        }
+        
+
+        
+    }
+    
     
     // Remove no-js class
     if($("body").hasClass("no-js")) {
@@ -69,11 +159,11 @@ $(document).ready(function(){
     }
     
     // Gallery
-    if($("div#gallery").length) {
+    if($("div#gallery1").length) {
         
         if ($("body").attr("id") === "gallery_carousel") {
             
-            $("div#gallery ul#gallery_carousel").moodular();
+            $("div#gallery ul#gallery_carousel").moodular()
             
             //create_carousel(); // Create carousel if we're on the gallery
             
@@ -108,6 +198,12 @@ $(document).ready(function(){
         });
 
     }
+
+
+
+    
+    
+    
     
 
     
