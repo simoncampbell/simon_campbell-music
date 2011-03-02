@@ -12,6 +12,45 @@
  };
 })(jQuery);
 
+function create_carousel() {
+    
+    // Add navigation to carousel
+    $("div#gallery").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");
+
+    // Function to adjust gallery height based on img height
+    function adjust_gallery_height(moodular) {
+        var img_height = $("div#gallery ul#gallery_carousel li:first-child img").height();
+        $("div#gallery ul#gallery_carousel, div#gallery div").animate({
+            'height' : img_height
+        }, 250, 'swing');
+    }
+
+    // Create carousel            
+    var moodular = $("div#gallery ul#gallery_carousel").moodular({
+        speed : 500,
+        dispTimeout : 1000,
+        auto : false,
+        callbacks: [adjust_gallery_height],
+        api: true
+    });
+    
+    // Bind next button
+    $('li#gallery_next a').click(function(event) { 
+        event.preventDefault();
+        moodular.next();
+    });
+    
+    // Bind previous button
+    $('li#gallery_previous a').click(function(event) { 
+        event.preventDefault();
+        moodular.prev();
+    });
+    
+    // Adjust height of the gallety
+    adjust_gallery_height();
+
+}
+
 $(document).ready(function(){
     
     // Remove no-js class
@@ -32,50 +71,13 @@ $(document).ready(function(){
     // Gallery
     if($("div#gallery").length) {
         
-        function create_carousel() {
+        if ($("body").attr("id") === "gallery_carousel") {
             
-            // Add navigation to carousel
-            $("div#gallery").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");
-
-            // Create carousel            
-            var moodular = jQuery("div#gallery ul#gallery_carousel").moodular({
-                speed : 500,
-                dispTimeout : 1000,
-                auto : false,
-                callbacks: [adjust_gallery_height],
-                api: true
-            });
+            $("div#gallery ul#gallery_carousel").moodular();
             
-            // Bind next button
-            jQuery('li#gallery_next a').click(function () { 
-                moodular.next(); 
-                event.preventDefault(); // Stop link
-            });
+            //create_carousel(); // Create carousel if we're on the gallery
             
-            // Bind previous button
-            jQuery('li#gallery_previous a').click(function () { 
-                moodular.prev();
-                event.preventDefault(); // Stop link    
-            });
-            
-            // Function to adjust gallery height based on img height
-            function adjust_gallery_height(moodular) {
-                var img_height = $("div#gallery ul#gallery_carousel li:first-child img").height();
-                $("div#gallery ul#gallery_carousel, div#gallery div").animate({
-                    'height' : img_height
-                }, 250, 'swing')
-            }
-            
-            // Adjust height of the gallety
-            adjust_gallery_height();
-
-        }
-        
-        if ($("body").attr("id") == "gallery_carousel") {
-            
-            create_carousel("div#gallery"); // Create carousel if we're on the gallery
-            
-        } else if ($("body").attr("id") == "gallery_detail") { 
+        } else if ($("body").attr("id") === "gallery_detail") { 
             
             $("div#gallery ul li a").colorbox({ // Create colorbox if we're on detail
                 transition: 'fade',
@@ -100,7 +102,7 @@ $(document).ready(function(){
         		$("div#gallery").remove(); // Destroy old carousel
         		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
         		$("div#gallery").prepend($(data).find("div#gallery ul#gallery_carousel")); // Load items into gallery, filtered
-        		create_carousel("div#gallery ul#gallery_carousel"); // Recreate carousel
+        		create_carousel(); // Recreate carousel
             });
             
         });
