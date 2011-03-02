@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class=""
+    body_class="checkout"
     body_id=""
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -36,8 +36,6 @@
             failed_redirect=""
             declined_redirect=""
         }
-        
-        {!-- add the create user OR login details here --}
         
         {gateway_fields}
         <input type="submit" value="Checkout" />

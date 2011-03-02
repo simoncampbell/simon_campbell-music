@@ -187,7 +187,12 @@ small {
         overflow:hidden;
         margin:15px 0 0 0;
     }
-    form fieldset {
+    body.checkout form fieldset {
+        margin-bottom: 20px;
+    }
+    body.checkout form fieldset legend {
+        font-size: 18px;
+        padding-bottom: 12px;
     }
     form fieldset div {
         clear: both;
@@ -266,6 +271,7 @@ small {
         form div.submit {
 
         }
+        input[type="submit"],
         input.submit,
         a.button {
             background: rgb(205, 205, 205);
@@ -286,6 +292,10 @@ small {
             -webkit-border-radius:5px;
             border-radius:5px;
         }
+        body.checkout input[type="submit"] {
+            margin-left: 248px;
+        }
+        input[type="submit"]:hover,
         input.submit:hover,
         a.button:hover {
             background: rgb(255, 255, 255);

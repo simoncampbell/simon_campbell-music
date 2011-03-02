@@ -106,16 +106,20 @@
                             author_id="CURRENT_USER"
                             disable="categories|trackbacks|pagination"
                             limit=""
-                            weblog="purchased_items"
+                            status="Paid|Processing"
+                            weblog="orders"
                         }
-                        <tr>
-                            <td><a href="#">#{cf_purchased_order_id}</a></td>
+                        <tr{if status == "Processing"} class="processing"{/if}>
+                            <td><a href="#">#{cf_orders_transaction_id}</a></td>
                             <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
                             <td>
-                                <span class="item"><a href="#">ThirtySix LP</a></span>, 
-                                <span class="item"><a href="#">T-shirt</a></span>
+                                {cf_orders_items}
+                                    <span class="item"><a href="#">{item:title}</a></span>{if item:count != item:total_results}, {/if}
+                                {/cf_orders_items}
                             </td>
-                            <td></td>
+                            <td>
+                                {!-- logic for downloads here --}
+                            </td>
                         </tr>
                         {/exp:weblog:entries}
                         {!--
