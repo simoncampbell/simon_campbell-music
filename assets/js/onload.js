@@ -33,20 +33,51 @@ $(document).ready(function(){
     if($("div#gallery").length) {
         
         function create_carousel() {
-            $("div#gallery").carousel({ // jQuery carousel plugin - http://www.thomaslanciaux.pro/jquery/jquery_carousel.htm
-    		    loop: true,
-    		    effect: "fade",
-    		    animSpeed: "slow",
-    		    autoSlide: false,
-                autoSlideInterval: 3000
-    		});
+            
+            // Add navigation to carousel
+            $("div#gallery").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");
+
+            // Create carousel            
+            var moodular = jQuery("div#gallery ul#gallery_carousel").moodular({
+                speed : 500,
+                dispTimeout : 1000,
+                auto : false,
+                callbacks: [adjust_gallery_height],
+                api: true
+            });
+            
+            // Bind next button
+            jQuery('li#gallery_next a').click(function () { 
+                moodular.next(); 
+                event.preventDefault(); // Stop link
+            });
+            
+            // Bind previous button
+            jQuery('li#gallery_previous a').click(function () { 
+                moodular.prev();
+                event.preventDefault(); // Stop link    
+            });
+            
+            // Function to adjust gallery height based on img height
+            function adjust_gallery_height(moodular) {
+                var img_height = $("div#gallery ul#gallery_carousel li:first-child img").height();
+                $("div#gallery ul#gallery_carousel, div#gallery div").animate({
+                    'height' : img_height
+                }, 250, 'swing')
+            }
+            
+            // Adjust height of the gallety
+            adjust_gallery_height();
+
         }
         
         if ($("body").attr("id") == "gallery_carousel") {
-            create_carousel(); // Create carousel if we're on the gallery
+            
+            create_carousel("div#gallery"); // Create carousel if we're on the gallery
+            
         } else if ($("body").attr("id") == "gallery_detail") { 
             
-            $("div#gallery ul li a").colorbox({ // Create colorbox
+            $("div#gallery ul li a").colorbox({ // Create colorbox if we're on detail
                 transition: 'fade',
                 speed: 500
             }); 
@@ -65,13 +96,13 @@ $(document).ready(function(){
             $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
             $(this).parent().addClass("cur"); // Add cur status to selected grid items
             
-            
             $.get($(this).attr("href") + '/inline/ ul#gallery li', function(data) { // Load in data from entry
         		$("div#gallery").remove(); // Destroy old carousel
         		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
-        		$("div#gallery").prepend($(data).find("div#gallery ul")); // Load items into gallery, filtered
-        		create_carousel(); // Recreate carousel
+        		$("div#gallery").prepend($(data).find("div#gallery ul#gallery_carousel")); // Load items into gallery, filtered
+        		create_carousel("div#gallery ul#gallery_carousel"); // Recreate carousel
             });
+            
         });
 
     }

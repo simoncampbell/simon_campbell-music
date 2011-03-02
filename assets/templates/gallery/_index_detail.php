@@ -28,7 +28,7 @@
         {/exp:weblog:entries}
         
         <div id="gallery">
-            <ul>
+            <ul id="gallery_carousel">
                 {!-- Default behaviour: load detail gallery --}
                 {exp:weblog:entries
                     weblog="gallery"
@@ -45,7 +45,6 @@
                                     image="{ffm_images_image}"
                                     maxWidth="610"
                                     forceWidth="yes"
-                                    cropratio="4:3"
                                     alt=""
                                 }
                                 <p class="meta">
