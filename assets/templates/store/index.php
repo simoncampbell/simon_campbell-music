@@ -20,9 +20,9 @@
         
         <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
-            <dd class="cur"><a href="{pv_site_url}/store/music/">Music</a></dd>
-            <dd class="cur"><a href="{pv_site_url}/store/posters/">Posters</a></dd>
-            <dd class="cur"><a href="{pv_site_url}/store/tshirts/">T-shirts</a></dd>
+            <dd><a href="{pv_site_url}/store/music/">Music</a></dd>
+            <dd><a href="{pv_site_url}/store/posters/">Posters</a></dd>
+            <dd><a href="{pv_site_url}/store/tshirts/">T-shirts</a></dd>
         </dl><!-- // #categories_list -->
         
         <ul class="horizontal gallery_grid">
