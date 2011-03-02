@@ -103,6 +103,7 @@
                     </thead>
                     <tbody>
                         {exp:weblog:entries
+                            author_id="CURRENT_USER"
                             disable="categories|trackbacks|pagination"
                             limit=""
                             status="Paid|Processing"
