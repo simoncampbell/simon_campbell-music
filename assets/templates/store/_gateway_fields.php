@@ -25,6 +25,7 @@
     <div>
         <label for="state">State (US only) </label>
         <select id="state" name="state">
+            <option>Select a State</option>
             <option value="AK">Alaska</option>
             <option value="AL">Alabama</option>
             <option value="AR">Arkansas</option>
