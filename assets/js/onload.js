@@ -103,6 +103,8 @@ $(document).ready(function(){
     // Carousel page
     if($("ul#gallery_carousel").length) {
         
+        
+        
         if($("body").attr("id") === "carousel") {
 
             draw_carousel();
@@ -128,16 +130,15 @@ $(document).ready(function(){
 
         } else if ($("body").attr("id") === "detail") { 
 
-            $("ul#gallery_carousel li a").colorbox({ // Create colorbox if we're on detail
-                transition: 'fade',
-                speed: 500
-            }); 
-
             if (window.location.hash) { // Check URL for hash
               $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
             }
         }
         
+        $("ul#gallery_carousel li a").colorbox({ // Create colorbox if we're on detail
+            transition: 'fade',
+            speed: 500
+        });
 
         
     }

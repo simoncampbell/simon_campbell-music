@@ -28,12 +28,14 @@
                 
                     {cf_gallery_images sort="desc"}
                         <li id="image_{row_id}">
-                            {exp:ed_imageresizer
-                                image="{ffm_images_image}"
-                                maxWidth="610"
-                                maxHeight="400"
-                                alt=""
-                            }
+                            <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}">
+                                {exp:ed_imageresizer
+                                    image="{ffm_images_image}"
+                                    maxWidth="610"
+                                    maxHeight="450"
+                                    alt=""
+                                }
+                            </a>
                             <p class="meta">
                                 {if ffm_images_title}
                                     {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
