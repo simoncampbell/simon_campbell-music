@@ -41,14 +41,13 @@
                         {cf_gallery_images sort="desc"}
                             <li id="image_{row_id}">
                                 {if segment_3 == "inline"}
-                                    <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}" class="slideshow_image">
-                                        {exp:ed_imageresizer
-                                            image="{ffm_images_image}"
-                                            maxWidth="610"
-                                            maxHeight="450"
-                                            alt=""
-                                        }
-                                    </a>
+                                    {exp:ed_imageresizer
+                                        image="{ffm_images_image}"
+                                        maxWidth="610"
+                                        maxHeight="450"
+                                        alt="{ffm_images_image}"
+                                        title=""
+                                    }
                                     <p class="meta">
                                         {if ffm_images_title}
                                             {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}

@@ -40,29 +40,26 @@ $.fn.hAlign = function() {
 
 function draw_carousel() {
     
-    function adjust_height(moodular) {    
-
-        // Function to adjust the height of the gallery container and list
-        // THIS IS NOT IN USE
-
-        $("ul#gallery_carousel, ul#gallery_carousel li:first-child").animate({
-            'queue' : false,
-            'height' : $("ul#gallery_carousel li:first-child img").height()
-        }, 128, 'swing');
-
-        $("ul#gallery_carousel").closest("div").animate({
-            'queue' : false,
-            'height' : $("ul#gallery_carousel li:first-child img").height()
-        }, 128, 'swing');
-
-    }
+    // function adjust_height(moodular) {    
+    // 
+    //     // Function to adjust the height of the gallery container and list
+    //     // THIS IS NOT IN USE
+    // 
+    //     $("ul#gallery_carousel, ul#gallery_carousel li:first-child").animate({
+    //         'queue' : false,
+    //         'height' : $("ul#gallery_carousel li:first-child img").height()
+    //     }, 128, 'swing');
+    // 
+    //     $("ul#gallery_carousel").closest("div").animate({
+    //         'queue' : false,
+    //         'height' : $("ul#gallery_carousel li:first-child img").height()
+    //     }, 128, 'swing');
+    // 
+    // }
     
-    function draw_colorbox(moodular) {
-        $("ul#gallery_carousel li a.slideshow_image").colorbox({ // Create colorbox if we're on detail
-            transition: 'fade',
-            speed: 500,
-            preloading: false
-        });
+    function update_zoom() {
+        $("li#gallery_zoom a").attr("href", $("ul#gallery_carousel li:first-child img").attr("alt"));
+        $("li#gallery_zoom a").attr("title", $("ul#gallery_carousel li:first-child p").html());
     }
     
     // Carousel: create
@@ -70,79 +67,38 @@ function draw_carousel() {
         speed: 250,
         dispTimeout: 200,
         auto: false,
-        callbacks: [draw_colorbox],
+        callbacks: [update_zoom],
         api: true
     });
     
-    draw_colorbox();
-    
-
-    // Carousel: adjust container height
-    //adjust_height();
+   
 
     // Carousel: create nav
-    $("ul#gallery_carousel").closest("div").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");    
+    $("ul#gallery_carousel").closest("div").append("<ul id=\"navigation_gallery\"><li id=\"gallery_zoom\"><a>Zoom</a></li><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");    
 
+    update_zoom();
+    
     // Carousel: bind nav - next button
-    $("ul#navigation_gallery li#gallery_next a").click(function(event) { 
+    $("ul#navigation_gallery li#gallery_next a, #cboxNext").click(function(event) { 
         event.preventDefault();
         moodular.next();
     });
 
     // Carousel: bind nav - previous button
-    $("ul#navigation_gallery li#gallery_previous a").click(function(event) { 
+    $("ul#navigation_gallery li#gallery_previous a, #cboxPrevious").click(function(event) { 
         event.preventDefault();
         moodular.prev();
     });
     
-    $("ul#gallery_carousel li a img").each(function(index) {
+    // Align images centrally within slideshow
+    $("ul#gallery_carousel li img").each(function(index) {
         $(this).vAlign();
         $(this).hAlign();
     });
     
-    
 }
 
 $(document).ready(function(){
-    
-    
-    // Carousel page
-    if($("ul#gallery_carousel").length) {
-        
-        
-        
-        if($("body").attr("id") === "carousel") {
-
-            draw_carousel();
-        
-            // New gallery clicked
-            $("ul#gallery_grid li a").click(function(event) {
-
-                event.preventDefault(); // Stop link
-
-                $.scrollTo($("ul#gallery_carousel").offset().top - 20, 400); // Scroll to the gallery element
-
-                $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
-                $(this).parent().addClass("cur"); // Add cur status to selected grid items
-
-                $.get($(this).attr("href") + '/inline/ ul#gallery_carousel li', function(data) { // Load in data from entry
-            		$("div#gallery").remove(); // Destroy old carousel
-            		$("div#content_pri").prepend("<div id=\"gallery\"><ul id=\"gallery_carousel\"></ul></div>"); // Recreate scaffold for carousel
-            		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
-            		draw_carousel(); // Recreate carousel
-                });
-
-            });
-
-        } else if ($("body").attr("id") === "detail" && window.location.hash) { 
-            
-              $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
-              
-        }
-        
-        
-    }
-    
     
     // Remove no-js class
     if($("body").hasClass("no-js")) {
@@ -160,54 +116,56 @@ $(document).ready(function(){
     }
     
     // Gallery
-    if($("div#gallery1").length) {
+    if($("ul#gallery_carousel").length) {
         
-        if ($("body").attr("id") === "gallery_carousel") {
+        // If not listing page
+        if($("body").attr("id") === "carousel") {
+
+            // Draw carousel
+            draw_carousel();
             
-            $("div#gallery ul#gallery_carousel").moodular()
-            
-            //create_carousel(); // Create carousel if we're on the gallery
-            
-        } else if ($("body").attr("id") === "gallery_detail") { 
-            
-            $("div#gallery ul li a").colorbox({ // Create colorbox if we're on detail
-                transition: 'fade',
-                speed: 500
-            }); 
+            var colorbox_slideshow = $("li#gallery_zoom a").colorbox({
+                transition: 'elastic',
+                speed: 250
+            });
         
-            if (window.location.hash) { // Check URL for hash
-              $("div#gallery ul li" + window.location.hash).addClass("cur"); // Add current class to correct img
-            }
+            // New gallery clicked on grid
+            $("ul#gallery_grid li a").click(function(event) {
+
+                event.preventDefault(); // Stop link
+
+                colorbox_slideshow.remove();
+        		
+                $.scrollTo($("ul#gallery_carousel").offset().top - 20, 400); // Scroll to the gallery element
+
+                $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
+                $(this).parent().addClass("cur"); // Add cur status to selected grid items
+
+                // Load in data from entry
+                $.get($(this).attr("href") + '/inline/ ul#gallery_carousel li', function(data) { 
+            		$("div#gallery").remove(); // Destroy old carousel
+            		$("div#content_pri").prepend("<div id=\"gallery\"><ul id=\"gallery_carousel\"></ul></div>"); // Recreate scaffold for carousel
+            		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
+            		draw_carousel(); // Recreate carousel
+                    var colorbox_slideshow = $("li#gallery_zoom a").colorbox({
+                        transition: 'elastic',
+                        speed: 250
+                    });
+                    update_zoom();
+                    
+                });
+
+            });
+
+        } else if ($("body").attr("id") === "detail" && window.location.hash) { 
+            
+            // If on a listings page with a hash
+            $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
+              
         }
         
-        $("ul#gallery_grid li a").click(function(event) {
-            
-            event.preventDefault(); // Stop link
-            
-            $.scrollTo($('div#gallery').offset().top - 20, 400); // Scroll to the gallery element
-            
-            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid itema
-            $(this).parent().addClass("cur"); // Add cur status to selected grid items
-            
-            $.get($(this).attr("href") + '/inline/ ul#gallery li', function(data) { // Load in data from entry
-        		$("div#gallery").remove(); // Destroy old carousel
-        		$("div#content_pri").prepend("<div id=\"gallery\"></div>"); // Recreate scaffold for carousel
-        		$("div#gallery").prepend($(data).find("div#gallery ul#gallery_carousel")); // Load items into gallery, filtered
-        		create_carousel(); // Recreate carousel
-            });
-            
-        });
-
     }
 
-
-
-    
-    
-    
-    
-
-    
     // Contact Form Validation
     if($("form#freeform").length) {
         $('form#freeform').validate({

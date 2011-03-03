@@ -994,6 +994,21 @@ div#footer p.credit {
                     body.gallery_slideshow ul#navigation_gallery li#gallery_next a:focus {
                         background-position: -25px -16px;
                     }
+                    
+                /* Zoom */
+                
+                    body.gallery_slideshow ul#navigation_gallery li#gallery_zoom {
+                        right:66px;
+                    }
+                
+                    body.gallery_slideshow ul#navigation_gallery li#gallery_zoom a {
+                        background: url(../images/site/icons/zoom.png) no-repeat transparent;
+                    }
+                    body.gallery_slideshow ul#navigation_gallery li#gallery_zoom a:hover,
+                    body.gallery_slideshow ul#navigation_gallery li#gallery_zoom a:focus {
+                        background-position: 0 -16px;
+                        
+                    }
         
         /* Gallery grid */
         
