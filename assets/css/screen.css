@@ -891,18 +891,23 @@ div#footer p.credit {
             
             body#carousel ul#gallery_carousel {
                 width:610px;
-                height:620px;
+                height:450px;
                 list-style:none;
-
                 overflow:hidden;
             }
         
             body#carousel ul#gallery_carousel li {
                 width:610px;
+                height:450px;
                 list-style: none;
                 float: left;
                 position:relative;
                 background:rgb(0, 0, 0);
+            }
+            
+            body#carousel ul#gallery_carousel li a.slideshow_image {
+                display:block;
+                height:450px;
             }
             
             body#carousel ul#gallery_carousel li img {

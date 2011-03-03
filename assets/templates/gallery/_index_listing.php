@@ -28,7 +28,7 @@
                 
                     {cf_gallery_images sort="desc"}
                         <li id="image_{row_id}">
-                            <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}">
+                            <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}" class="slideshow_image">
                                 {exp:ed_imageresizer
                                     image="{ffm_images_image}"
                                     maxWidth="610"

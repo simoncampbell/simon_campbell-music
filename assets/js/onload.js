@@ -12,50 +12,38 @@
  };
 })(jQuery);
 
-function create_carousel1() {
-    
-    // Add navigation to carousel
-    $("div#gallery").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");
+(function ($) {
+$.fn.vAlign = function() {
+	return this.each(function(i){
+	var h = $(this).height();
+	var oh = $(this).outerHeight();
+	var mt = (h + (oh - h)) / 2;	
+	$(this).css("margin-top", "-" + mt + "px");	
+	$(this).css("top", "50%");
+	$(this).css("position", "absolute");	
+	});	
+};
+})(jQuery);
 
-    // Function to adjust gallery height based on img height
-    function adjust_gallery_height(moodular) {
-        var img_height = $("div#gallery ul#gallery_carousel li:first-child img").height();
-        $("div#gallery ul#gallery_carousel, div#gallery div").animate({
-            'height' : img_height
-        }, 250, 'swing');
-    }
-
-    // Create carousel            
-    var moodular = $("div#gallery ul#gallery_carousel").moodular({
-        speed: 500,
-        effects: 'fade',
-        dispTimeout: 1000,
-        auto: false,
-        callbacks: [adjust_gallery_height]
-    });
-    
-    // Bind next button
-    $('li#gallery_next a').click(function(event) { 
-        event.preventDefault();
-        moodular.next();
-    });
-    
-    // Bind previous button
-    $('li#gallery_previous a').click(function(event) { 
-        event.preventDefault();
-        moodular.prev();
-    });
-    
-    // Adjust height of the gallety
-    adjust_gallery_height();
-
-}
+(function ($) {
+$.fn.hAlign = function() {
+	return this.each(function(i){
+	var w = $(this).width();
+	var ow = $(this).outerWidth();	
+	var ml = (w + (ow - w)) / 2;	
+	$(this).css("margin-left", "-" + ml + "px");
+	$(this).css("left", "50%");
+	$(this).css("position", "absolute");
+	});
+};
+})(jQuery);
 
 function draw_carousel() {
     
     function adjust_height(moodular) {    
 
         // Function to adjust the height of the gallery container and list
+        // THIS IS NOT IN USE
 
         $("ul#gallery_carousel, ul#gallery_carousel li:first-child").animate({
             'queue' : false,
@@ -68,18 +56,29 @@ function draw_carousel() {
         }, 128, 'swing');
 
     }
-
+    
+    function draw_colorbox(moodular) {
+        $("ul#gallery_carousel li a.slideshow_image").colorbox({ // Create colorbox if we're on detail
+            transition: 'fade',
+            speed: 500,
+            preloading: false
+        });
+    }
+    
     // Carousel: create
 	var moodular = $("ul#gallery_carousel").moodular({
         speed: 250,
         dispTimeout: 200,
         auto: false,
-        callbacks: [adjust_height],
+        callbacks: [draw_colorbox],
         api: true
     });
+    
+    draw_colorbox();
+    
 
     // Carousel: adjust container height
-    adjust_height();
+    //adjust_height();
 
     // Carousel: create nav
     $("ul#gallery_carousel").closest("div").append("<ul id=\"navigation_gallery\"><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");    
@@ -95,6 +94,13 @@ function draw_carousel() {
         event.preventDefault();
         moodular.prev();
     });
+    
+    $("ul#gallery_carousel li a img").each(function(index) {
+        $(this).vAlign();
+        $(this).hAlign();
+    });
+    
+    
 }
 
 $(document).ready(function(){
@@ -108,7 +114,7 @@ $(document).ready(function(){
         if($("body").attr("id") === "carousel") {
 
             draw_carousel();
-            
+        
             // New gallery clicked
             $("ul#gallery_grid li a").click(function(event) {
 
@@ -128,18 +134,12 @@ $(document).ready(function(){
 
             });
 
-        } else if ($("body").attr("id") === "detail") { 
-
-            if (window.location.hash) { // Check URL for hash
+        } else if ($("body").attr("id") === "detail" && window.location.hash) { 
+            
               $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
-            }
+              
         }
         
-        $("ul#gallery_carousel li a[rel='gallery']").colorbox({ // Create colorbox if we're on detail
-            transition: 'fade',
-            speed: 500
-        });
-
         
     }
     
