@@ -52,11 +52,17 @@ $(document).ready(function(){
     
     // FORM VALIDATION
     
+        // Magic so we can have 'letters only' forms.
+        jQuery.validator.addMethod("accept", function(value, element, param) {
+            return value.match(new RegExp("." + param + "$"));
+        });
+        
         // Contact
         if($('form#freeform').length) {
             $('form#freeform').validate({
                 rules: {
                     name: {
+                        accept: "[a-zA-Z]+",
                         required: true,
                         rangelength: [4, 30]
                     },
@@ -129,6 +135,36 @@ $(document).ready(function(){
         //         }
         //     }
         // }
+        
+        // Checkout Form
+        $('form#checkout_form').validate({
+            rules: {
+                first_name: {
+                    accept: "[a-zA-Z]+",
+                    required: true,
+                    rangelength: [1, 32]
+                },
+                last_name: {
+                    accept: "[a-zA-Z]+",
+                    required: true,
+                    rangelength: [1, 32]
+                },
+                address: {
+                    required: true,
+                },
+                city: {
+                    accept: "[a-zA-Z]+",
+                    required: true
+                },
+                zip: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        });
         
         // Campaign Monitor subscribe
         $('form.validate_inline').validate();

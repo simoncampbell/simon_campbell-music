@@ -220,6 +220,9 @@ small {
         text-align: left;
         width: 200px;
     }
+    body.checkout div#content_pri label.error {
+        margin-left: 95px;
+    }
     input,
     textarea {
         
@@ -292,7 +295,7 @@ small {
             -webkit-border-radius:5px;
             border-radius:5px;
         }
-        body.checkout input[type="submit"] {
+        body.checkout div#content_pri input[type="submit"] {
             margin-left: 248px;
         }
         input[type="submit"]:hover,

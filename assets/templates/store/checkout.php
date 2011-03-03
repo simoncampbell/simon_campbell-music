@@ -32,6 +32,8 @@
             cart_empty_redirect="store/basket/"
             return="account/orders/"
             
+            id="checkout_form"
+            
             authorized_redirect=""
             failed_redirect=""
             declined_redirect=""
