@@ -52,11 +52,17 @@ $(document).ready(function(){
     
     // FORM VALIDATION
     
+        // Magic so we can have 'letters only' forms.
+        jQuery.validator.addMethod("accept", function(value, element, param) {
+            return value.match(new RegExp("." + param + "$"));
+        });
+        
         // Contact
         if($('form#freeform').length) {
             $('form#freeform').validate({
                 rules: {
                     name: {
+                        accept: "[a-zA-Z]+",
                         required: true,
                         rangelength: [4, 30]
                     },
@@ -122,13 +128,69 @@ $(document).ready(function(){
             });
         }
         // Edit Profile
-        // if($('body').hasClass('profile_edit')) {
-        //     $('form#profile_edit') {
-        //         rules: {
-        //             
-        //         }
-        //     }
-        // }
+        if($('body').hasClass('profile_edit')) {
+            $('form#profile_edit').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    mcf_first_name: {
+                        accept: "[a-zA-Z]+",
+                        required: true,
+                        rangelength: [1, 32]
+                    },
+                    mcf_last_name: {
+                        accept: "[a-zA-Z]+",
+                        required: true,
+                        rangelength: [1, 32]
+                    },
+                    city: {
+                        accept: "[a-zA-Z]+"
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        rangelength: [5, 32]
+                    },
+                    password_confirm: {
+                        equalTo: "#profile-new-password"
+                    }
+                }
+            });
+        }
+        
+        // Checkout Form
+        $('form#checkout_form').validate({
+            rules: {
+                first_name: {
+                    accept: "[a-zA-Z]+",
+                    required: true,
+                    rangelength: [1, 32]
+                },
+                last_name: {
+                    accept: "[a-zA-Z]+",
+                    required: true,
+                    rangelength: [1, 32]
+                },
+                address: {
+                    required: true,
+                },
+                city: {
+                    accept: "[a-zA-Z]+",
+                    required: true
+                },
+                zip: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        });
         
         // Campaign Monitor subscribe
         $('form.validate_inline').validate();
