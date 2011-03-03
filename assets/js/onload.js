@@ -67,10 +67,6 @@ function draw_carousel() {
             'height' : $("ul#gallery_carousel li:first-child img").height()
         }, 128, 'swing');
 
-        console.log($("ul#gallery_carousel li:first-child img").height());
-        console.log($("ul#gallery_carousel li:first-child").attr("id"));
-
-
     }
 
     // Carousel: create

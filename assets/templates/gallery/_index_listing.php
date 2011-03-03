@@ -31,7 +31,7 @@
                             {exp:ed_imageresizer
                                 image="{ffm_images_image}"
                                 maxWidth="610"
-                                forceWidth="yes"
+                                maxHeight="400"
                                 alt=""
                             }
                             <p class="meta">

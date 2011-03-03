@@ -902,10 +902,12 @@ div#footer p.credit {
                 list-style: none;
                 float: left;
                 position:relative;
+                background:rgb(0, 0, 0);
             }
             
             body.gallery_slideshow ul#gallery_carousel li img {
                 padding:0;
+                margin:0 auto;
             }
             
             /* Meta */
@@ -918,7 +920,7 @@ div#footer p.credit {
                 padding:10px 85px 10px 10px;
                 margin:0;
                 background:rgb(0, 0, 0);
-                background:rgba(0, 0, 0, 0.9);
+                background:rgba(0, 0, 0, 0.7);
             }
         
             /* Permalink */
@@ -929,8 +931,6 @@ div#footer p.credit {
                 display:inline-block;
                 text-decoration:none;
                 font-size:11px;
-                background:rgb(0, 0, 0);
-                background:rgba(0, 0, 0, 0.8);
             }
 
             
