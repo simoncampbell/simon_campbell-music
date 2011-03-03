@@ -135,7 +135,7 @@ $(document).ready(function(){
             }
         }
         
-        $("ul#gallery_carousel li a").colorbox({ // Create colorbox if we're on detail
+        $("ul#gallery_carousel li a[rel='gallery']").colorbox({ // Create colorbox if we're on detail
             transition: 'fade',
             speed: 500
         });
