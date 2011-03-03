@@ -1392,6 +1392,12 @@ div#footer p.credit {
             text-align: right;
             width: 112px;
         }
+        body#account_landing #content_pri div.account_details p span.multi_line {
+            display: inline-block;
+            float: none;
+            word-wrap: break-word;
+            max-width: 210px;
+        }
         body#account_landing #content_pri div.account_details p span {
             float: left;
         }
@@ -1404,12 +1410,15 @@ div#footer p.credit {
         body#account_landing #content_pri div.account_details p.more a.button {
             font-size: 10px;
         }
+        body#account_landing #content_pri div.account_details span.multi_line {
+            
+        }
         
         body#account_landing.fullwidth #content_pri form#account_settings div,
         body#account_landing.fullwidth #content_pri form#account_settings label,
         body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
             float: left;
-        c}
+        }
         body#account_landing.fullwidth #content_pri form#account_settings div {
             padding: 6px;
             width: 428px;

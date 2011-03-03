@@ -21,7 +21,7 @@
         <input type="text" id="address" name="mcf_address" value="{mcf_address}" />
     </div>
     <div>
-        <label for="address2">Street Address</label>
+        <label for="address2">Address 2</label>
         <input type="text" id="address2" name="mcf_address2" value="{mcf_address2}" />
     </div>
     <div>
