@@ -55,7 +55,7 @@
                                         {/if}
                                     </p>
                                     <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
-                                        Link to photo
+                                        View gallery
                                     </a>
                                 {if:else}
                                     <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}">
