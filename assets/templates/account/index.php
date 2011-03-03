@@ -35,7 +35,7 @@
                     {/if}
                     <p>
                         <strong>Email address</strong> 
-                        {email}
+                        <span class="multi_line">{email}</span>
                     </p>
                     <p>
                         <strong>Password</strong> 
