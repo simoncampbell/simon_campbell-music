@@ -1566,6 +1566,7 @@ div#footer p.credit {
                 border-top: 1px dashed rgba(255, 255, 255, 0.3);
                 border-bottom: 1px dashed #5B5B5B;
                 border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                margin-top: 10px;
                 width: 290px;
             }
             body#product_detail div#content_pri form {

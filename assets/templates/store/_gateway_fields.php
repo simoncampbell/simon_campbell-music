@@ -1,4 +1,6 @@
-{!-- DEFAULT GATEWAY FIELDS --}
+{!-- DEFAULT GATEWAY FIELDS
+    (For the future, we could make this a shared embed w/ the account edit form)
+--}
 {exp:user:stats
     dynamic="off"
     log_views="off"
