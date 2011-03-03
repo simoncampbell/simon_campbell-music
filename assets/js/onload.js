@@ -165,24 +165,24 @@ $(document).ready(function(){
         // Checkout Form
         $('form#checkout_form').validate({
             rules: {
-                first_name: {
+                mcf_first_name: {
                     accept: "[a-zA-Z]+",
                     required: true,
                     rangelength: [1, 32]
                 },
-                last_name: {
+                mcf_last_name: {
                     accept: "[a-zA-Z]+",
                     required: true,
                     rangelength: [1, 32]
                 },
-                address: {
+                mcf_address: {
                     required: true,
                 },
-                city: {
+                mcf_city: {
                     accept: "[a-zA-Z]+",
                     required: true
                 },
-                zip: {
+                mcf_zip: {
                     required: true,
                 },
                 email: {
