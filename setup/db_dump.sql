@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-03-03 13:14:22 -0600
+# Generation Time: 2011-03-03 16:34:35 -0600
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -244,7 +244,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=390 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=393 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -638,7 +638,10 @@ VALUES
 	(386,1,18,'garrett.winder','71.30.187.8',1299103262,'Logged in'),
 	(387,1,18,'garrett.winder','71.30.187.8',1299125382,'Logged in'),
 	(388,1,7,'gregwood','88.97.41.224',1299166646,'Logged in'),
-	(389,1,18,'garrett.winder','71.30.187.8',1299178250,'Logged in');
+	(389,1,18,'garrett.winder','71.30.187.8',1299178250,'Logged in'),
+	(390,1,18,'garrett.winder','71.30.187.8',1299186283,'Logged in'),
+	(391,1,18,'garrett.winder','71.30.187.8',1299191605,'Logged in'),
+	(392,1,18,'garrett.winder','71.30.187.8',1299191920,'Member profile created:&nbsp;&nbsp;test.buyer');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1323,12 +1326,13 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=345 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=346 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
+	(345,1299183123,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
 	(344,1299177451,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
@@ -1522,7 +1526,7 @@ CREATE TABLE `exp_lg_better_meta` (
   `append_default_keywords` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `entry_id` (`entry_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_lg_better_meta` WRITE;
 /*!40000 ALTER TABLE `exp_lg_better_meta` DISABLE KEYS */;
@@ -1593,7 +1597,8 @@ VALUES
 	(63,1,91,22,'thirtysix-t-shirts-have-arrived','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
 	(64,1,93,22,'raven-n-blues','Simon Campbell on the Raven \'n Blues show',NULL,'The Raven\'n\'Blues Podcast is is a weekly 60 minute show featuring the best in blues. Hot as Hell from the album ThirtySix will be played tonight.','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
 	(65,1,95,19,'making-the-album-thirtysix-edition-4','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
-	(66,1,98,22,'its-non-very-often-you-see-an-arp-2600','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0);
+	(66,1,98,22,'its-not-very-often-you-see-an-arp-2600','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0),
+	(67,1,100,22,'interview-with-joshua-dillon-on-energy-fm-tonight','',NULL,'','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','','',0);
 
 /*!40000 ALTER TABLE `exp_lg_better_meta` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1795,7 +1800,7 @@ CREATE TABLE `exp_matrix_data` (
   KEY `site_id` (`site_id`),
   KEY `entry_id` (`entry_id`),
   KEY `row_order` (`row_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_matrix_data` WRITE;
 /*!40000 ALTER TABLE `exp_matrix_data` DISABLE KEYS */;
@@ -1828,7 +1833,19 @@ VALUES
 	(32,1,96,93,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'M','Medium',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(33,1,96,93,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'S','Small',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(34,1,97,97,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'mp3_format','MP3 format','-2','0','','',NULL,NULL,NULL,NULL),
-	(35,1,97,97,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'wav_format','WAV/AAIF format','-0.10','0','','',NULL,NULL,NULL,NULL);
+	(35,1,97,97,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'wav_format','WAV/AAIF format','-0.10','0','','',NULL,NULL,NULL,NULL),
+	(36,1,101,75,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4767625041_cc8e0d79ae_o.jpg','Checking the guitar sound!','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(37,1,101,75,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4767642522_ee5ef0bf0f_o.jpg','Looking into the live room.','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(38,1,101,75,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4767678470_7828eac6c5_o.jpg','Intense listening back.','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(39,1,101,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4768219534_26e80337f7_o.jpg','Digital assistant, Viktor SigurjÃ³nsson','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(40,1,101,75,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4768301198_3308f60abb_o.jpg','Steve Boyce-Buckley','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(41,1,101,75,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4794483838_71bf81d813_o.jpg','Simon Campbell following a 10 hour guitar session','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(42,1,101,75,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4770573475_56ace6feda_o.jpg','Lea Mullen, Percussionist.','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(43,1,101,75,7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4493228572_439efbeb5f_z.jpg','Guitar rig set up in the dining room!','2010 Simon Campbell',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(44,1,102,75,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4874700671_3c671279bb_o.jpg','The face of rock: main stage Mannifest','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(45,1,102,75,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4874934709_9dec511f8c_o.jpg','Red guitar: main stage Mannifest','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(46,1,102,75,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4874955051_f86a9ef3fb_o.jpg','Steve Rowe: main stage, Mannifest','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(47,1,102,75,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4875052751_8dddd2953a_o.jpg','Nick Collings: main stage, Mannifest','2010 Phil Kneen',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `exp_matrix_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1894,7 +1911,8 @@ VALUES
 	(16,'','','','','','','','','','','','','','','','','',''),
 	(17,'','','','','','','','','','','','','','','','','',''),
 	(18,'','','','','','','','','','','','','','','','','',''),
-	(19,'','','','','','','','','','','','','','','','','','');
+	(19,'','','','','','','','','','','','','','','','','',''),
+	(20,'','','','','','','','','','','','','','','','','','');
 
 /*!40000 ALTER TABLE `exp_member_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2071,7 +2089,8 @@ VALUES
 	(16,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(17,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(18,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
-	(19,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
+	(19,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
+	(20,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
 
 /*!40000 ALTER TABLE `exp_member_homepage` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2183,21 +2202,22 @@ CREATE TABLE `exp_members` (
   KEY `group_id` (`group_id`),
   KEY `unique_id` (`unique_id`),
   KEY `password` (`password`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
 INSERT INTO `exp_members` (`member_id`,`group_id`,`weblog_id`,`tmpl_group_id`,`upload_id`,`username`,`screen_name`,`password`,`unique_id`,`authcode`,`email`,`url`,`location`,`occupation`,`interests`,`bday_d`,`bday_m`,`bday_y`,`aol_im`,`yahoo_im`,`msn_im`,`icq`,`bio`,`signature`,`avatar_filename`,`avatar_width`,`avatar_height`,`photo_filename`,`photo_width`,`photo_height`,`sig_img_filename`,`sig_img_width`,`sig_img_height`,`ignore_list`,`private_messages`,`accept_messages`,`last_view_bulletins`,`last_bulletin_date`,`ip_address`,`join_date`,`last_visit`,`last_activity`,`total_entries`,`total_comments`,`total_forum_topics`,`total_forum_posts`,`last_entry_date`,`last_comment_date`,`last_forum_post_date`,`last_email_date`,`in_authorlist`,`accept_admin_email`,`accept_user_email`,`notify_by_default`,`notify_of_pm`,`display_avatars`,`display_signatures`,`smart_notifications`,`language`,`timezone`,`daylight_savings`,`localization_is_site_default`,`time_format`,`cp_theme`,`profile_theme`,`forum_theme`,`tracker`,`template_size`,`notepad`,`notepad_size`,`quick_links`,`quick_tabs`,`pmember_id`,`profile_views`)
 VALUES
-	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1299065292,1299174366,12,0,0,0,1299063798,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
+	(1,1,0,0,0,'jamiepittock','Jamie Pittock','c6960548ec9a52fbd201591b5745da2e3f22b254','b77b70550c67daa6fd01469bebb4a5fc1da8142a','','jamie@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1246621579,1299174366,1299183098,12,0,0,0,1299063798,0,0,0,'n','y','y','y','y','y','y','y','english','UTC','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(15,1,0,0,0,'mattsmith','Matt Smith','3f5005aab17d0ac4ac1327237c53ad461fb34e8a','8490cf5bc2d236a7b8964bf48c3124f959302078','','matt@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090769,1278091001,1292416546,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|2\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|3',0,0),
 	(8,1,0,0,0,'philswan','Phil Swan','0b008451e769666699eeb7823ee6c11a69c4ffe9','a7d3f69e59651eebf2c20f3b1324e3d0fdc10875','','phil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873664,1265134003,1278090879,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(7,1,0,0,0,'gregwood','Greg Wood','f62facfb886a502eeb4183136fcb56225ce1a852','7a87cf17375270d378ae21e48d2c284769a5d4ac','','greg@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.224',1246873640,1299073708,1299174683,2,0,0,0,1298901068,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1299125382,1299179912,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(19,1,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1299166646,1299178191,32,0,0,0,1299178337,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0);
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1299125382,1299191908,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(19,1,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1299166646,1299188167,35,0,0,0,1299186549,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0),
+	(20,5,0,0,0,'test.buyer','Willy Nelson','cf5e574d7f914533ff07f06b10fbe29d9b9758a4','f151ca18028001895509ea521fc3cb4112997c91','','buyer_1299106426_per@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'71.30.187.8',1299191920,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2651,14 +2671,6 @@ CREATE TABLE `exp_password_lockout` (
   KEY `user_agent` (`user_agent`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-LOCK TABLES `exp_password_lockout` WRITE;
-/*!40000 ALTER TABLE `exp_password_lockout` DISABLE KEYS */;
-INSERT INTO `exp_password_lockout` (`login_date`,`ip_address`,`user_agent`,`username`)
-VALUES
-	(1299166642,'88.97.41.224','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ','gregwood');
-
-/*!40000 ALTER TABLE `exp_password_lockout` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 # Dump of table exp_ping_servers
@@ -2894,6 +2906,7 @@ VALUES
 	(1297253395,'84.246.205.199','7484feab6959b1e78759639ce8171190b39260d4'),
 	(1297252718,'84.246.205.199','b0caf24d1d88673ba8dbbb43e84bd93861f00111'),
 	(1297252629,'84.246.205.199','23a5271227cfd9fa67f6704b08525b1e175d88c5'),
+	(1299181506,'92.39.196.149','a5ca3826692296715e9f7fd5ee35545f74759663'),
 	(1297443586,'71.30.180.219','14f3efabc2e8c2c1ea4754bdac1f915e0b7eb03d'),
 	(1296754757,'82.10.223.13','86e98332f2022b92b255de7e618565f5900f209c'),
 	(1296754749,'82.10.223.13','63cabe0abf8a9356909c6e0c91affab6b38f8575'),
@@ -2913,7 +2926,14 @@ VALUES
 	(1296754401,'82.10.223.13','93eb9fb683e1979eda80b92f1b2b58709b7c57ee'),
 	(1296754312,'82.10.223.13','559658907dabf3fb3142cbc25562fff7fdd549de'),
 	(1296754033,'82.10.223.13','441704afd00e10a2517b4cbec9d8646102907cc9'),
+	(1299181722,'92.39.196.149','10ea6b163d736b95070f0ff4037339e52c2c3d15'),
 	(1296753673,'82.10.223.13','83a98f1c438c1738de35278d90ea647baf259fea'),
+	(1299181722,'92.39.196.149','9007884b07ee112529ee2eaed6a9a91cb05e0707'),
+	(1299181524,'92.39.196.149','0002149b7b7a446af353dd6f97006e709b44e8b4'),
+	(1299181518,'92.39.196.149','0324ef668aee1a0d9526779f5aaba682ef7fae9b'),
+	(1299181518,'92.39.196.149','c4670d6a85f4476d95aa26ee1378c863d079b170'),
+	(1299181517,'92.39.196.149','0644ac1e293b2f87bed448a8227d67395dbce79f'),
+	(1299181517,'92.39.196.149','b1fc81588d506e72153d3a22c65b114781758b2f'),
 	(1296753425,'82.10.223.13','741bd50f8c535f78a8f02cf4023402ade1098888'),
 	(1296831187,'173.185.20.98','d0ee3468d067f225ce610478f291931cb77639f4'),
 	(1296753343,'82.10.223.13','db7de23b71b8ca93dd8339d4226b898682d352bc'),
@@ -2933,6 +2953,7 @@ VALUES
 	(1296753030,'82.10.223.13','7b2ff48f496ceec52071fed44ee5732cc13a02ae'),
 	(1296830927,'173.185.20.98','a137fbb0f52b79d45dc93633cbb17b7d4cca159f'),
 	(1296830926,'173.185.20.98','86819deefd2f0457bbcaf0727f86ab6026bb1f60'),
+	(1299181516,'92.39.196.149','47730d48e4d5ce70c26d657980e7ab199d8d2e9e'),
 	(1296752782,'82.10.223.13','3ce23478d98517656fffb670146243dacae35b52'),
 	(1299070914,'88.97.41.224','0b09e26d0e7703144b1fbbe64d2dd5062351a775'),
 	(1299070912,'88.97.41.224','9910bd00dc8d22a22f7f4754d54062317243d8d2'),
@@ -2953,6 +2974,7 @@ VALUES
 	(1296830795,'173.185.20.98','6168ecbba1116fdff7a855e0de5f01611fac1c35'),
 	(1298540710,'130.88.123.167','b5909177772a39cdd357e4a131daf8eaca50eddc'),
 	(1296749931,'82.10.223.13','2c1c146252ce420e428723257156f9f0ec427fd8'),
+	(1299181062,'92.39.196.149','91bac17046e881fa974543be23f2f7f660d187f5'),
 	(1299179465,'71.30.187.8','ea18c639dcf3ab79f22ff106feb38c963dd4e25c'),
 	(1299179913,'71.30.187.8','62a76b7b1db6933e1d481e683eb1890df6c793ca'),
 	(1299179913,'71.30.187.8','dbc55ade4ac7a9d5f3917a0b8b3b3c77326732e0'),
@@ -2983,6 +3005,7 @@ VALUES
 	(1296830038,'173.185.20.98','2926dfb0c720e60b0d4a16c0e05b9fd1a18b736a'),
 	(1296830010,'173.185.20.98','36d8ccdee38e4bb97b2596467bfd5ffa3a76020a'),
 	(1296750826,'128.30.52.90','459a4c1925d8447be0e3e0b444ead1f69f60fed3'),
+	(1299181058,'92.39.196.149','5e38b6561c1b053395e048d5b89e7a638620aad8'),
 	(1298786789,'72.199.253.95','c638f5d9510319551d7574b6efacbeeacdc40b91'),
 	(1296830007,'173.185.20.98','e783a297ba9b64d8584ed47332388e8a3490731e'),
 	(1298785429,'72.199.253.95','f61091d6b24fe1c50b4dd46b5ffee9bbbf772c52'),
@@ -3010,6 +3033,9 @@ VALUES
 	(1296751191,'82.10.223.13','478eb9b2e3e2cc9a7387052bedfceb53bc63eb21'),
 	(1296751207,'82.10.223.13','e74931ad54670cbf2fe774e4d8449bde586b9495'),
 	(1296751207,'82.10.223.13','6e49ec6847427f45fe98c3d59f45047b8b5c6207'),
+	(1299180319,'92.39.196.149','86b5eeb277c01b110d21be7d62a30322c283ccc2'),
+	(1299180318,'92.39.196.149','6737c1b1a998c26dcda8c0af9edf4ee50b77abac'),
+	(1299180315,'92.39.196.149','bfeef69f46eb6bc71e1ea1e0ab06981472630be9'),
 	(1296752126,'82.10.223.13','c55f38cf0ddbbe4ff6aae8cdf0851330c5c5552f'),
 	(1298477412,'78.148.150.183','8bb75e49fc96d548528c891eeb7c9256db3ef496'),
 	(1296991896,'178.16.4.96','db5bb89f913e63512073e8af8667b727835c01fd'),
@@ -3267,6 +3293,8 @@ VALUES
 	(1298926989,'98.20.79.244','55065ddce68b2d2261970ba719e25eae0c2e40f3'),
 	(1298926963,'98.20.79.244','91a59e1d14a6a40b35c018aa45a260d631150025'),
 	(1298926950,'98.20.79.244','11fa751e19519799b9ee909362de430595d5adba'),
+	(1299181481,'92.39.196.149','fe95e0fbd0ed8a82aaed27eff820580375f3a39d'),
+	(1299181063,'92.39.196.149','3f3cd32fa875878a36dd6a0e9750ff0ca122de86'),
 	(1298900188,'157.55.116.38','d67940ce03bcc2e5a010f50df72c2f2df6a1e85b'),
 	(1298926946,'98.20.79.244','002df62d0b8c713308ca929f3034a895855745fd'),
 	(1298926944,'98.20.79.244','740db0c0b9bea84c20a216011f3c45fa8dcec14e'),
@@ -3313,6 +3341,7 @@ VALUES
 	(1298904979,'86.28.203.145','47833576c1d612d0dc0ab3a72fb07153b3dff7df'),
 	(1298926383,'98.20.79.244','d0cf5c9ae487174f9bd84c41c8ce2c3294caf064'),
 	(1299063657,'88.97.41.226','28fa9502376aa8c2b7334bdaad8e4aef57eaf353'),
+	(1299181516,'92.39.196.149','e0cbeb33dc91a8fd9cc3217e798b28050e45ce2a'),
 	(1299166642,'88.97.41.224','66e3be660c72d48d27688fff7810d59d'),
 	(1299063527,'88.97.41.226','f4272cd21f7c6e0775d5a1dcf4c4417d54661a2d'),
 	(1299063377,'88.97.41.226','5e75b54e8740179c106b8f72d3c25db7b226ada5'),
@@ -3341,9 +3370,9 @@ VALUES
 	(1299178225,'92.39.196.149','37c1c7182bb3637b756192843c3a2ed5c2414152'),
 	(1299178201,'92.39.196.149','c2cb901fd45310ac7c5e1dfaab57df8870e6bf64'),
 	(1299177452,'195.93.21.4','e6e102ae08d0669b82b98748eeaf0499ee21a159'),
-	(1299166655,'92.39.196.149','03b8b93360dca50ab5cf4ea4767e4259d39c4e9e'),
-	(1299166655,'92.39.196.149','d75c07f1dbc12b7b4e1ef9a51f844f1fa9993416'),
-	(1299166651,'92.39.196.149','9eaa9e6286700474b8aa1909eae78c3fe0d31a93'),
+	(1299181401,'92.39.196.149','f046f5adaa9af205901e2ab6dbf43303852ddbb8'),
+	(1299181362,'92.39.196.149','96097c29ec3c2df3d05c3914847646b9057c589f'),
+	(1299181327,'92.39.196.149','1b7aa06e541e888fe908367d67688e3218d8b99f'),
 	(1299108334,'188.72.230.156','eb4112851378c55387421310aaea11bf7c4d19f8'),
 	(1299178484,'92.39.196.149','3e76e8269b7ed38ba0ed33d56c6a6918e7758e77'),
 	(1299178392,'92.39.196.149','c4292c46d8a27458a82003a43c169a3fdb5ac02a'),
@@ -3366,7 +3395,60 @@ VALUES
 	(1299063175,'88.97.41.226','fee12cc7f289ac8755294e1ad53e0531c81d4e7c'),
 	(1299063189,'88.97.41.226','141ddc6384964fdd293e08da354c6937538aafc3'),
 	(1299063201,'88.97.41.226','4e4e6f8de36f711e5e90392ae57a21dc43edb29b'),
-	(1299063211,'88.97.41.226','2a912cbea3c03d885ab63b77ada05994a4c7f677');
+	(1299063211,'88.97.41.226','2a912cbea3c03d885ab63b77ada05994a4c7f677'),
+	(1299181725,'92.39.196.149','1662adbb56fb48ebaaee5a860c7e9625b185297b'),
+	(1299181733,'92.39.196.149','162ab0b0208b4fafe102d812b0840132f1ae3c3a'),
+	(1299181736,'92.39.196.149','cf8df95ad28cf6e247eced98ed5b90798552876d'),
+	(1299182219,'92.39.196.149','5014f69afdf25f489b1c968fdf2ca85d5e62310f'),
+	(1299182246,'92.39.196.149','bb7ac186181d3c8f7fe55d04a91cbe245c30c3b8'),
+	(1299182246,'92.39.196.149','e140fa733d2ad3925d486e1042a3fb7cbec9f507'),
+	(1299182261,'92.39.196.149','aa3108bc4fd737cf00b797629a2e6e9cdbbbcd59'),
+	(1299182261,'92.39.196.149','d2e2b2baf896b85d262ede4e65a38ab249d96b13'),
+	(1299182386,'92.39.196.149','ca22b9d7621feb14c1dbba6e792ab34ccab15ae3'),
+	(1299182392,'92.39.196.149','e244038b3dca9bc6d73d4eb233a03ab4cf5fe1f5'),
+	(1299182392,'92.39.196.149','e2a1388060367bfe8731c5d001b5877a40a72a91'),
+	(1299182393,'92.39.196.149','33b306ccd961c5c3658097c406b065425009aaa5'),
+	(1299182393,'92.39.196.149','1456ae2726d9195971f5cde1772a7d6891d3ccb2'),
+	(1299182409,'92.39.196.149','7b63f8f03eccf50f630d94d6652db1648f164431'),
+	(1299182422,'92.39.196.149','92451147e54671c721fab8b20a69f40ac0083325'),
+	(1299183123,'88.97.41.226','349ac79f2e5c945a5faffc7c076fe2dcfd491c8b'),
+	(1299184221,'92.39.196.149','7248fdf6d6452bcd9b20c9af69fec0591b63e745'),
+	(1299184288,'92.39.196.149','c2e0d0f54b59069d7ebd899d264a996ffa4e5cfa'),
+	(1299185139,'92.39.196.149','011267e9d28c63514f6db068c824719fd32cc28f'),
+	(1299185139,'92.39.196.149','ab35744b319076e2592b9987648089d472433495'),
+	(1299185153,'92.39.196.149','a56ee26aaa4fa20382b6157deff8003413627b9a'),
+	(1299185185,'92.39.196.149','2657c7ea18087e127346254385ca9b2a9ae99283'),
+	(1299185185,'92.39.196.149','38d62bf45b8afb4df1a1e0e1e6b1c75979d3c016'),
+	(1299185190,'92.39.196.149','4ef293e927333f2c73dac35f4c8a007a2ba36c61'),
+	(1299185242,'92.39.196.149','092233c5bbac0f3e530f5bbfb14588c762354dac'),
+	(1299185306,'92.39.196.149','18d27bea1b1c5cea659c50fae09339ccce0911c9'),
+	(1299185928,'92.39.196.149','0b06f5550f7a2a3bd38a2cf5d78f1f911ff3f8db'),
+	(1299185963,'92.39.196.149','ecdc06af4bbdbeebbe0af26afb3c8a0cce75c5f1'),
+	(1299185963,'92.39.196.149','8031eab84983fb486a8be0c5df760784baec417c'),
+	(1299185980,'92.39.196.149','0ee9de92d943e6f7fafbcef8cfd4ce33b8c2d4c6'),
+	(1299185980,'92.39.196.149','7311a4ee81290e3aeb066209837a460dd0440521'),
+	(1299185980,'92.39.196.149','364655a9835bec4aa80966373de88937f5e9ef27'),
+	(1299185980,'92.39.196.149','a4d5789ac5453077e61c5047a1448bce7207dc1c'),
+	(1299186281,'71.30.187.8','fbaf6cdfa8e3d058d26b0c96469bb6d081522eb2'),
+	(1299186283,'71.30.187.8','fe4158bfc50eef7b870a381c3c386ee8f23a61a5'),
+	(1299186285,'71.30.187.8','60933071dfd58d2348850f91e2dfa327872ae89b'),
+	(1299186441,'92.39.196.149','8feef28ba1ebe6967673f81c93ca9a4db1c79945'),
+	(1299186441,'92.39.196.149','d7923267d43befe82501bb8ab50193a34890e927'),
+	(1299186483,'92.39.196.149','4d348c93a60cbf492cf8fb09bbabdb9b5706f0a5'),
+	(1299186550,'92.39.196.149','2537eaecf84753db06d7991e72cc8611bf2112fd'),
+	(1299186587,'92.39.196.149','b00fc16fa1de54e49b83450933ced46ef0670dc6'),
+	(1299186594,'92.39.196.149','80349d7d1bf822766271b529e2619dc689345c8a'),
+	(1299186649,'92.39.196.149','07821da0fa15ad45d1094a21bc129547512ee3d8'),
+	(1299186687,'92.39.196.149','a4b3040389a79109c8620b7b6f253e2b55b969af'),
+	(1299186832,'92.39.196.149','83479e1dadccf1101f78ceb2929c6fa0cf66ffeb'),
+	(1299191603,'71.30.187.8','f268ea07ca18ff365d099dbfb011d78bbf97d189'),
+	(1299191605,'71.30.187.8','fc4090b62ae7cd8db3552cf096c297b1676c1c81'),
+	(1299191608,'71.30.187.8','c319cf7da8e03ef8e1d87ef29d86ec22898c6087'),
+	(1299191676,'71.30.187.8','9a4cfe95f5ef0ec60039d2d037e1994ed7e976bf'),
+	(1299191879,'71.30.187.8','4ed54a3727e761996b915220cd5655bc732c5ab2'),
+	(1299191911,'71.30.187.8','0cd1c21f01bf33cd6a6b5dee21d4df62520c352f'),
+	(1299191920,'71.30.187.8','8c2c6565472045debaa390617aa985b1662cbbe0'),
+	(1299191920,'71.30.187.8','8d5441a33e1d0c334bae4311ecd18ff617b2df31');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3394,8 +3476,9 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('ffc5ff2e8fee96a7e0df744c8e7cddd3f6521869',1,19,1,'92.39.196.149','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en',1299178490),
-	('f4f4fe99c6da4a425794c3c441cc9876868e18a9',1,18,1,'71.30.187.8','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1299180041);
+	('be65b83e5d80d01184f37c256856f073e7263c06',1,18,1,'71.30.187.8','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1299191603),
+	('21dfa1b7521f903ce0028c1bd7451cc789b5f859',1,18,1,'71.30.187.8','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1299191605),
+	('003a6be891697ae4a6873f978ff2f3241bc5813a',1,18,1,'71.30.187.8','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; ',1299191921);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3506,7 +3589,7 @@ LOCK TABLES `exp_stats` WRITE;
 /*!40000 ALTER TABLE `exp_stats` DISABLE KEYS */;
 INSERT INTO `exp_stats` (`weblog_id`,`site_id`,`total_members`,`recent_member_id`,`recent_member`,`total_entries`,`total_forum_topics`,`total_forum_posts`,`total_comments`,`total_trackbacks`,`last_entry_date`,`last_forum_post_date`,`last_comment_date`,`last_trackback_date`,`last_visitor_date`,`most_visitors`,`most_visitor_date`,`last_cache_clear`)
 VALUES
-	(0,1,9,19,'Simon Campbell',44,0,0,0,0,1299178243,0,0,0,1265120889,4,1249281451,1297265301);
+	(0,1,10,20,'Willy Nelson',45,0,0,0,0,1299181025,0,0,0,1265120889,4,1249281451,1297265301);
 
 /*!40000 ALTER TABLE `exp_stats` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -4350,9 +4433,9 @@ VALUES
 	(83,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Delighted to announce \"Kevin Whitehead\":http://www.barclayjamesharvest.com/biog.htm#kev (Drums with Barclay James Harvest and Lisa Stansfield), the Islands very own \"Steve Rowe\":http://www.flickr.com/photos/erskinecorp/4875369605/in/set-72157624149401627/ (Bass) and \"Christian Madden\":http://www.flickr.com/photos/erskinecorp/4588740608/in/set-72157623649584217/#/photos/erskinecorp/4588740608/in/set-72157623649584217/lightbox/ (Keyboards with Paul Heaton, The Earlies) of Simon\'s regular touring band will be playing at the \"ThirtySix launch event\":http://www.facebook.com/SimonCampbellBand?v=app_2344061033#!/event.php?eid=127886567271836&index=1. \n\nThey are joined by Nicky Madden (The Earlies and I Am Kloot) on Saxophone, \"Yvonne Shelton\":http://music.simoncampbell.com/journal/the-delta-sisters-confirm-gig/ and \"Jackie Gilbert\":http://music.simoncampbell.com/journal/the-delta-sisters-confirm-gig/. More details to follow. ','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Kevin-Whitehead.png','none','260','none','Kevin Whitehead on drums','none','','none','','none','','none'),
 	(82,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Simon has been asked to play guitar on \"David Tyrrell\'s\":http://www.myspace.com/davidtyrrellmusic new solo material. \n\nDavid, who is known for his excellent song writing and rapid vocals, is a well known face on the northern music scene and will be recording the album at Abbey Road Studios with \"Brian Nash\":http://en.wikipedia.org/wiki/Brian_Nash (Frankie Goes to Hollywood) and \"Geoff Pesche\":http://www.discogs.com/artist/Geoff+Pesche (Radiohead, Snoopdog, Kylie).','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'David-Tyrrell-585.jpg','none','260','none','','none','','none','','none','','none'),
 	(78,1,19,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'20014332','none','This is a number three in a series of five videos about the making of the album \"Thirty Six\". Here I talk about technology, guitar tone and how I selected the studio to record. Why not take five minutes out of your day, brew some tea and read the article The Album \"ThirtySix: Part Two\":http://blog.simoncampbell.com/blog/perma/the-album-thirtysix-part-two/ on Simonâ€™s personal blog. Enjoy!','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','none','','none'),
-	(79,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Thanks to Stu for playing \'I like it like that\' and \'Preacher\' on his \"Saturday Rock Show\":http://www.manxradio.com/blog.aspx?blog. The tracks were interspersed in his three hour show which features a blend of mix of classic and progressive rock. Good work! \n ','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Stu-Peters.jpg','none','100','none','','none','','none','','none','','none'),
+	(79,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Thanks to Stu for playing \'I like it like that\' and \'Preacher\' on his \"Saturday Rock Show\":http://www.manxradio.com/blog.aspx?blog. The tracks were interspersed in his three hour show which features a blend of mix of classic and progressive rock. Good work! \n ','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Stu-Peters-Manx-FM.jpg','none','100','none','','none','','none','','none','','none'),
 	(80,1,17,'The Albert','none','Douglas','none','1298592001','none','http://www.facebook.com/SimonCampbellBand#!/event.php?eid=153729968016119','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','none','','none'),
-	(81,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'On Wednesday 23 February at around 8:20pm (GMT), the \"Evening Extra with Bob Harrison\":http://www.manxradio.com/blog.aspx?blogid=23896 will be playing an interview with Simon, plus three tracks from the new album, \"\'ThirtySix\'\":http://music.simoncampbell.com/thirtysix/. Bob\'s show starts at 1830 so tune in or \"listen later\":http://www.manxradio.com/listen.aspx!\n\n','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','100','none','','none','','none','','none','','none'),
+	(81,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'On Wednesday 23 February at around 8:20pm (GMT), the \"Evening Extra with Bob Harrison\":http://www.manxradio.com/blog.aspx?blogid=23896 will be playing an interview with Simon, plus three tracks from the new album, \"\'ThirtySix\'\":http://music.simoncampbell.com/thirtysix/. Bob\'s show starts at 1830 so tune in or \"listen later\":http://www.manxradio.com/listen.aspx!\n\n','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Bob-Harrison.jpg','none','100','none','','none','','none','','none','','none'),
 	(85,1,21,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'flight-cases.jpg','none','It always looks arsey when you see names on cases, but in the after gig confusion with multiple bands, it is so easy for your prize amp ending up in the wrong van...','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'','none','','none','','none'),
 	(87,1,29,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'&ldquo;Brother&rdquo;','none','Preview the lead single','none','','none','Read more about ThirtySix','none','/thirtysix/','none','thirtysix_brother.jpg','none','/assets/audio/brother.mp3','none','/assets/audio/brother.ogg','none','',NULL,'',NULL,'',NULL,'brother.jpg','none','','none','','none'),
 	(88,1,29,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Let&rsquo;s party!','none','Album launch event','none','March 26 will see Simon launch ThirtySix at the Centenary Centre, Peel.','none','Join the event on Facebook','none','http://www.facebook.com/event.php?eid=127886567271836','none','thirtysix_launch.jpg','none','','none','','none','',NULL,'',NULL,'',NULL,'event_promo.jpg','none','','none','','none'),
@@ -4366,7 +4449,10 @@ VALUES
 	(96,1,24,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'What is this subtitle supposed to be?','none','We need Simon to add a nice description here.','textile','12.00','none','1.95','none','1','none','','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL),
 	(97,1,25,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'This is a subtitle','none','This is a description.','textile','1','none','','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'0.95','none','8.95','none'),
 	(98,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Danny Kneale will be playing on Simon\'s \"Manx Radio\":http://www.manxradio.com/contenttabs.aspx?fol=18178&sec=29836 session, to be broadcast on March 20th and presented by \"Ashlea Tracey\":http://www.facebook.com/ConnectionswithAshleaTracey.\n\nHe will be bringing along two vintage ARP 2600 analogue \"synths\":http://en.wikipedia.org/wiki/Synthesizer, one of which was used on the ground-breaking \"Blue Monday\":http://en.wikipedia.org/wiki/Blue_Monday_%28New_Order_song%29.\n\nThey hiss, they don\'t stay in tune for long but sound fantastic! Make sure you tune in.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'ARP-2600.jpg','none','260','none','Two mighty ARP 2600\'s','none','',NULL,'',NULL,'',NULL),
-	(99,1,17,'Villa Marina Arcade','none','Douglas','none','1301871601','none','http://www.facebook.com/event.php?eid=169391933110942','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL);
+	(99,1,17,'Villa Marina Arcade','none','Douglas','none','1301871601','none','http://www.facebook.com/event.php?eid=169391933110942','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL),
+	(100,1,22,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Interview, live playing and tracks from the album \'ThirtySix\' tonight with Mark Burrows and Joshua Dillon on \"Energy FM\":http://www.energyfm.net/ tonight after 10pm.\n\nGet yourself a little of what you fancy, relax and listen to the \"Late Lounge\":http://www.energyfm.net/cms/show_page_36740.html.','textile','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'Energy-FM.jpg','none','100','none','','none','',NULL,'',NULL,'',NULL),
+	(101,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL),
+	(102,1,18,'',NULL,'',NULL,'',NULL,'',NULL,'1','none','',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL,'',NULL);
 
 /*!40000 ALTER TABLE `exp_weblog_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -4573,7 +4659,7 @@ CREATE TABLE `exp_weblog_titles` (
   KEY `entry_date` (`entry_date`),
   KEY `expiration_date` (`expiration_date`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_weblog_titles` WRITE;
 /*!40000 ALTER TABLE `exp_weblog_titles` DISABLE KEYS */;
@@ -4607,9 +4693,9 @@ VALUES
 	(76,1,22,19,0,0,'92.39.196.149','Tone Workshop','tone-workshop','open','y',0,0,0,0,'y','n','n',1269006482,'n','2010','03','19',0,0,20110217135203,0,0,0,'',0),
 	(82,1,22,1,0,0,'88.97.41.226','Sessions with David Tyrrell','sessions-with-david-tyrrell','open','y',0,0,0,0,'y','n','n',1297957512,'n','2011','02','17',0,0,20110222154613,0,0,0,'',0),
 	(78,1,19,19,0,0,'92.39.196.149','Making the album ThirtySix: edition #3','making-the-album-thirtysix-edition-3','open','y',0,0,0,0,'y','n','n',1298285110,'n','2011','02','21',0,0,20110221105011,0,0,0,'',0),
-	(79,1,22,19,0,0,'92.39.196.149','Stu Peters plays \'ThirtySix\' on Manx Radio','stu-peters-plays-thirtysix-on-manx-radio','open','y',0,0,0,0,'y','n','n',1298127079,'n','2011','02','19',0,0,20110222134620,0,0,0,'',0),
+	(79,1,22,19,0,0,'92.39.196.149','Stu Peters plays \'ThirtySix\' on Manx Radio','stu-peters-plays-thirtysix-on-manx-radio','open','y',0,0,0,0,'y','n','n',1298127104,'n','2011','02','19',0,0,20110303195945,0,0,0,'',0),
 	(80,1,17,19,0,0,'88.97.41.224','Acoustic set for the Live Lounge','acoustic-set-for-the-live-lounge','open','y',0,0,0,0,'y','n','n',1298302664,'n','2011','02','21',1298632424,0,20110224111346,0,0,0,'',0),
-	(81,1,22,19,0,0,'92.39.196.149','Interview with Bob Harrison on Manx Radio','interview-with-bob-harrison-on-manx-radio','open','y',0,0,0,0,'y','n','n',1298380236,'n','2011','02','22',0,0,20110222134737,0,0,0,'',0),
+	(81,1,22,19,0,0,'92.39.196.149','Interview with Bob Harrison on Manx Radio','interview-with-bob-harrison-on-manx-radio','open','y',0,0,0,0,'y','n','n',1298380221,'n','2011','02','22',0,0,20110303200022,0,0,0,'',0),
 	(84,1,22,19,0,0,'92.39.196.149','Christian Madden of King Creosote and The Earlies on 6Music','christian-madden-king-kreosote-and-the-earlies-on-6music','open','y',0,0,0,0,'y','n','n',1298394477,'n','2011','02','22',0,0,20110222182758,0,0,0,'',0),
 	(85,1,21,19,0,0,'92.39.196.149','Gentleman, prepare to tour','gentleman-prepare-to-tour','open','y',0,0,0,0,'y','n','n',1298460974,'n','2011','02','23',0,0,20110223114815,0,0,0,'',0),
 	(87,1,29,1,0,0,'88.97.41.224','Preview &ldquo;Brother&rdquo;','preview-brother','open','y',0,0,0,0,'n','n','n',1298472970,'n','2011','02','23',0,0,20110224103111,0,0,0,'',0),
@@ -4623,8 +4709,11 @@ VALUES
 	(95,1,19,19,0,0,'92.39.196.149','Making the album ThirtySix: edition #4','making-the-album-thirtysix-edition-4','open','y',0,0,0,0,'y','n','n',1298974163,'n','2011','03','01',0,0,20110301103824,0,0,0,'',0),
 	(96,1,24,1,0,0,'88.97.41.226','ThirtySix t-shirts','thirtysix-t-shirts','open','y',0,0,0,0,'y','y','n',1299063406,'n','2011','03','02',0,0,20110302105847,0,0,0,'',0),
 	(97,1,25,1,0,0,'88.97.41.226','ThirtySix Album','thirtysix-album','open','y',0,0,0,0,'y','y','n',1299063617,'n','2011','03','02',0,0,20110302110318,0,0,0,'',0),
-	(98,1,22,19,0,0,'92.39.196.149','It\'s non very often you see an ARP 2600','its-non-very-often-you-see-an-arp-2600','open','y',0,0,0,0,'y','n','n',1299112401,'n','2011','03','03',0,0,20110303010322,0,0,0,'',0),
-	(99,1,17,19,0,0,'92.39.196.149','The GIGhibition: a simultaneous art exhibition and music concert','the-gighibition-a-simultaneous-art-exhibition-and-music-concert','open','y',0,0,0,0,'y','n','n',1299178243,'n','2011','03','03',0,0,20110303185444,0,0,0,'',0);
+	(98,1,22,19,0,0,'92.39.196.149','It\'s not very often you see an ARP 2600','its-not-very-often-you-see-an-arp-2600','open','y',0,0,0,0,'y','n','n',1299112435,'n','2011','03','03',0,0,20110303194856,0,0,0,'',0),
+	(99,1,17,19,0,0,'92.39.196.149','The GIGhibition: a simultaneous art exhibition and music concert','the-gighibition-a-simultaneous-art-exhibition-and-music-concert','open','y',0,0,0,0,'y','n','n',1299178243,'n','2011','03','03',0,0,20110303185444,0,0,0,'',0),
+	(100,1,22,19,0,0,'92.39.196.149','Interview with Joshua Dillon on Energy FM tonight!','interview-with-joshua-dillon-on-energy-fm-tonight','open','y',0,0,0,0,'y','n','n',1299181025,'n','2011','03','03',0,0,20110303194506,0,0,0,'',0),
+	(101,1,18,19,0,0,'92.39.196.149','Recording','recording','closed','y',0,0,0,0,'y','n','n',1299180319,'n','2011','03','03',0,0,20110303204720,0,0,0,'',0),
+	(102,1,18,19,0,0,'92.39.196.149','Live','live','closed','y',0,0,0,0,'y','n','n',1299186531,'n','2011','03','03',0,0,20110303211352,0,0,0,'',0);
 
 /*!40000 ALTER TABLE `exp_weblog_titles` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -4727,7 +4816,7 @@ VALUES
 	(19,1,'n','journal_videos','Journal: Videos','/journal/','','en','utf-8',4,0,0,1298974163,0,0,'',1,'open',19,79,'n','n',5,78,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(20,1,'n','journal_audio','Journal: Audio','/journal/','','en','utf-8',0,0,0,0,0,0,'',1,'open',18,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(21,1,'n','journal_photos','Journal: Photos','/journal/','','en','utf-8',1,0,0,1298460974,0,0,'',1,'open',20,82,'n','n',5,81,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
-	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',24,0,0,1299112401,0,0,'',1,'open',21,83,'n','n',5,83,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
+	(22,1,'n','journal_notes','Journal: Notes','/journal/','','en','utf-8',25,0,0,1299181025,0,0,'',1,'open',21,83,'n','n',5,83,'','y','n','y',0,'all','y','n','n','','/journal/','y','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','y','','n','n',10,'','',111),
 	(23,1,'n','pages','Site pages (privacy policy, etc)','/pages/','','en','utf-8',1,0,0,1296658583,0,0,'',1,'open',22,77,'n','n',5,76,'','y','n','y',0,'all','y','n','n','','/pages/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'','','','y','n','n','n','n','n','n','y','y','n','n','y','n','n','','n','n',10,'','',111),
 	(24,1,'n','products_tshirts','Products: T-shirts','/store/tshirts/','','en','utf-8',1,0,0,1299063406,0,0,'',1,'open',23,0,'n','n',5,89,'','y','y','y',0,'all','y','y','n','','/store/tshirts/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'/store/tshirts/','','','y','n','n','n','n','n','n','y','y','n','y','y','n','y','','n','n',10,'','',0),
 	(25,1,'n','products_music','Products: Music','/store/music/','','en','utf-8',1,0,0,1299063617,0,0,'',1,'open',24,0,'n','n',5,95,'','y','y','y',0,'all','y','y','n','','/store/music/','n','n','n','n',0,0,'y','xhtml','safe','n','y','n','n','',0,'/store/music/','','','y','n','n','n','n','n','n','y','y','n','y','y','n','y','','n','n',10,'','',0),
