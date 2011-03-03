@@ -83,59 +83,70 @@
                     </fieldset>
                 </form>
             </div><!-- // .first -->
+            
             <div class="last">
                 <h2>Your order history</h2>
-                <table>
-                    <colgroup>
-                        <col style="width:20%;"/>
-                        <col style="width:20%;"/>
-                        <col style="width:30%;"/>
-                        <col style="width:30%"/>
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">Order no.</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Items</th>
-                            <th scope="col">Downloads</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {exp:weblog:entries
-                            author_id="CURRENT_USER"
-                            disable="categories|trackbacks|pagination"
-                            limit=""
-                            status="Paid|Processing"
-                            weblog="orders"
-                        }
-                        <tr{if status == "Processing"} class="processing"{/if}>
-                            <td><a href="#">#{cf_orders_transaction_id}</a></td>
-                            <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
-                            <td>
-                                {cf_orders_items}
-                                    <span class="item"><a href="#">{item:title}</a></span>{if item:count != item:total_results}, {/if}
-                                {/cf_orders_items}
-                            </td>
-                            <td>
-                                {!-- logic for downloads here --}
-                            </td>
-                        </tr>
-                        {/exp:weblog:entries}
-                        {!--
-                        <tr>
-                            <td><a href="#">#121</a></td>
-                            <td><time datetime="">19-02-2011</time></td>
-                            <td>
-                                <span class="item"><a href="#">ThirtySix digital download</a> WAV &amp; MP3</span>
-                            </td>
-                            <td>
-                                <span class="item music_file"><a href="">mp3</a> ~50mb .zip</span>
-                                <span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
-                            </td>
-                        </tr>
-                        --}
-                    </tbody>
-                </table>
+                {exp:weblog:entries
+                    author_id="CURRENT_USER"
+                    disable="categories|trackbacks|pagination"
+                    limit=""
+                    status="Paid|Processing"
+                    weblog="orders"
+                }
+                    {if no_results}
+                    <p>You don't have any order history, etc, etc.</p>
+                    {/if}
+                    {if count == "1"}
+                    <table>
+                        <colgroup>
+                            <col style="width:20%;"/>
+                            <col style="width:20%;"/>
+                            <col style="width:30%;"/>
+                            <col style="width:30%"/>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">Order no.</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Items</th>
+                                <th scope="col">Downloads</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    {/if}
+                            <tr{if status == "Processing"} class="processing"{/if}>
+                                <td><a href="#">#{cf_orders_transaction_id}</a></td>
+                                <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
+                                <td>
+                                    {cf_orders_items}
+                                        <span class="item"><a href="#">{item:title}</a></span>{if item:count != item:total_results}, {/if}
+                                    {/cf_orders_items}
+                                </td>
+                                <td>
+                                    {!-- logic for downloads here --}
+                                </td>
+                            </tr>
+                    {if count == total_results}
+                        </tbody>
+                    </table>
+                    {/if}
+                {/exp:weblog:entries}
+                
+                {!--
+                FULL ORDERS TABLE STYLING
+                <tr>
+                    <td><a href="#">#121</a></td>
+                    <td><time datetime="">19-02-2011</time></td>
+                    <td>
+                        <span class="item"><a href="#">ThirtySix digital download</a> WAV &amp; MP3</span>
+                    </td>
+                    <td>
+                        <span class="item music_file"><a href="">mp3</a> ~50mb .zip</span>
+                        <span class="item music_file"><a href="">wav</a> ~275mb .zip</span>
+                    </td>
+                </tr>
+                --}
+                
             </div><!-- // .last -->
         {/if}
         
