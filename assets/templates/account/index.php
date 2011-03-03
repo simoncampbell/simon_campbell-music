@@ -22,13 +22,11 @@
                 <h2>Your account details</h2>
                 <div class="account_details clearfix">
                     <p class="more"><a class="button" href="{path='account/update'}">Edit details</a></p>
-                    {exp:user:users
+                    {exp:user:stats
                         dynamic="off"
-                        group_id="1|5|6"
-                        limit="1"
-                        member_id="{member_id}"
+                        log_views="off"
+                        member_id="CURRENT_USER"
                     }
-                    {!-- not working?????? --}
                     <p>
                         <strong>Name</strong> 
                         {mcf_first_name} {mcf_last_name}
@@ -63,7 +61,7 @@
                         </span>
                         {/if}
                     </p>
-                    {/exp:user:users}
+                    {/exp:user:stats}
                 </div>
                 <h2>Account settings</h2>
                 <form id="account_settings">
