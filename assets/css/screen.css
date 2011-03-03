@@ -883,28 +883,38 @@ div#footer p.credit {
         
         /* Carousel page */
         
+            body.gallery_slideshow div#gallery {
+                padding:5px;
+                background: rgb(43, 43, 43);
+                background: rgba(255, 255, 255, 0.07);
+            }
+            
             body.gallery_slideshow ul#gallery_carousel {
-                width:620px;
+                width:610px;
                 height:620px;
                 list-style:none;
+
+                overflow:hidden;
             }
         
             body.gallery_slideshow ul#gallery_carousel li {
-                width:620px;
-                background: rgb(43, 43, 43);
-                background: rgba(255, 255, 255, 0.07);
+                width:610px;
                 list-style: none;
                 float: left;
                 position:relative;
+            }
+            
+            body.gallery_slideshow ul#gallery_carousel li img {
+                padding:0;
             }
             
             /* Meta */
             body.gallery_slideshow ul#gallery_carousel li p.meta {
                 display:block;
                 position:absolute;
-                bottom:5px;
-                right:5px;
-                left:5px;
+                bottom:0;
+                right:0;
+                left:0;
                 padding:10px 85px 10px 10px;
                 margin:0;
                 background:rgb(0, 0, 0);
@@ -914,8 +924,8 @@ div#footer p.credit {
             /* Permalink */
             body.gallery_slideshow ul#gallery_carousel li a.permalink {
                 position:absolute;
-                bottom:15px;
-                right:15px;
+                bottom:10px;
+                right:10px;
                 display:inline-block;
                 text-decoration:none;
                 font-size:11px;

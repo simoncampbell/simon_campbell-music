@@ -15,38 +15,39 @@
 }
     
     <div id="content_pri">
-        
-        <ul id="gallery_carousel">
-            {!-- Default behaviour: load latest gallery --}
-            {exp:weblog:entries
-                weblog="gallery"
-                disable="{pv_disable_defaults}"
-                orderby=""
-                limit="1"
-                sort="asc"
-            }
+        <div id="gallery">
+            <ul id="gallery_carousel">
+                {!-- Default behaviour: load latest gallery --}
+                {exp:weblog:entries
+                    weblog="gallery"
+                    disable="{pv_disable_defaults}"
+                    orderby=""
+                    limit="1"
+                    sort="asc"
+                }
                 
-                {cf_gallery_images sort="desc"}
-                    <li>
-                        {exp:ed_imageresizer
-                            image="{ffm_images_image}"
-                            maxWidth="610"
-                            forceWidth="yes"
-                            alt=""
-                        }
-                        <p class="meta">
-                            {if ffm_images_title}
-                                {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
-                            {/if}
-                        </p>
-                        <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
-                            Link to photo
-                        </a>
-                    </li>
-                {/cf_gallery_images}
+                    {cf_gallery_images sort="desc"}
+                        <li id="image_{row_id}">
+                            {exp:ed_imageresizer
+                                image="{ffm_images_image}"
+                                maxWidth="610"
+                                forceWidth="yes"
+                                alt=""
+                            }
+                            <p class="meta">
+                                {if ffm_images_title}
+                                    {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
+                                {/if}
+                            </p>
+                            <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
+                                Link to photo
+                            </a>
+                        </li>
+                    {/cf_gallery_images}
                  
-            {/exp:weblog:entries}
-        </ul>
+                {/exp:weblog:entries}
+            </ul> <!-- // #gallery_carousel -->
+        </div> <!-- // #gallery -->
         
         <ul id="gallery_grid">
             {exp:weblog:entries

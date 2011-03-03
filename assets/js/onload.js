@@ -59,20 +59,23 @@ function draw_carousel() {
 
         $("ul#gallery_carousel, ul#gallery_carousel li:first-child").animate({
             'queue' : false,
-            'height' : $("ul#gallery_carousel li:first-child img").height() + 10
-        }, 250, 'swing');
+            'height' : $("ul#gallery_carousel li:first-child img").height()
+        }, 128, 'swing');
 
         $("ul#gallery_carousel").closest("div").animate({
             'queue' : false,
-            'height' : $("ul#gallery_carousel li:first-child img").height() + 10
-        }, 250, 'swing');
+            'height' : $("ul#gallery_carousel li:first-child img").height()
+        }, 128, 'swing');
+
+        console.log($("ul#gallery_carousel li:first-child img").height());
+        console.log($("ul#gallery_carousel li:first-child").attr("id"));
+
 
     }
 
     // Carousel: create
 	var moodular = $("ul#gallery_carousel").moodular({
-        speed: 200,
-        effects: 'fade',
+        speed: 250,
         dispTimeout: 200,
         auto: false,
         callbacks: [adjust_height],
@@ -119,8 +122,8 @@ $(document).ready(function(){
                 $(this).parent().addClass("cur"); // Add cur status to selected grid items
 
                 $.get($(this).attr("href") + '/inline/ ul#gallery_carousel li', function(data) { // Load in data from entry
-            		$("ul#gallery_carousel").closest("div").remove(); // Destroy old carousel
-            		$("div#content_pri").prepend("<ul id=\"gallery_carousel\"></ul>"); // Recreate scaffold for carousel
+            		$("div#gallery").remove(); // Destroy old carousel
+            		$("div#content_pri").prepend("<div id=\"gallery\"><ul id=\"gallery_carousel\"></ul></div>"); // Recreate scaffold for carousel
             		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
             		draw_carousel(); // Recreate carousel
                 });

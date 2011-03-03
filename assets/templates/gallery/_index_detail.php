@@ -27,49 +27,51 @@
             <p class="meta">This gallery was first published <time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_journal}"}</time>.</p>
         {/exp:weblog:entries}
         
-            <ul id="gallery_carousel">
-                {!-- Default behaviour: load detail gallery --}
-                {exp:weblog:entries
-                    weblog="gallery"
-                    disable="{pv_disable_defaults}"
-                    orderby=""
-                    limit="1"
-                    sort="asc"
-                }
+            <div id="gallery">
+                <ul id="gallery_carousel">
+                    {!-- Default behaviour: load detail gallery --}
+                    {exp:weblog:entries
+                        weblog="gallery"
+                        disable="{pv_disable_defaults}"
+                        orderby=""
+                        limit="1"
+                        sort="asc"
+                    }
             
-                    {cf_gallery_images sort="desc"}
-                        <li id="image_{row_id}">
-                            {if segment_3 == "inline"}
-                                {exp:ed_imageresizer
-                                    image="{ffm_images_image}"
-                                    maxWidth="610"
-                                    forceWidth="yes"
-                                    alt=""
-                                }
-                                <p class="meta">
-                                    {if ffm_images_title}
-                                        {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
-                                    {/if}
-                                </p>
-                                <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
-                                    Link to photo
-                                </a>
-                            {if:else}
-                                <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}">
+                        {cf_gallery_images sort="desc"}
+                            <li id="image_{row_id}">
+                                {if segment_3 == "inline"}
                                     {exp:ed_imageresizer
                                         image="{ffm_images_image}"
-                                        maxWidth="190"
+                                        maxWidth="610"
                                         forceWidth="yes"
-                                        cropratio="4:3"
                                         alt=""
                                     }
-                                </a>
-                            {/if}   
-                        </li> 
-                    {/cf_gallery_images}
+                                    <p class="meta">
+                                        {if ffm_images_title}
+                                            {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
+                                        {/if}
+                                    </p>
+                                    <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
+                                        Link to photo
+                                    </a>
+                                {if:else}
+                                    <a href="{ffm_images_image}" rel="gallery" title="{if ffm_images_title}{ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}{/if}">
+                                        {exp:ed_imageresizer
+                                            image="{ffm_images_image}"
+                                            maxWidth="190"
+                                            forceWidth="yes"
+                                            cropratio="4:3"
+                                            alt=""
+                                        }
+                                    </a>
+                                {/if}   
+                            </li> 
+                        {/cf_gallery_images}
              
-                {/exp:weblog:entries}
-            </ul>
+                    {/exp:weblog:entries}
+                </ul>   <!-- // #gallery_carousel -->
+            </div> <!-- // #gallery -->
         
         <p><a href="{pv_site_url}/gallery/">&laquo; Back to gallery listings</a></p>
         
