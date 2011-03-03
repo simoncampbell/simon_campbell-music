@@ -4,23 +4,23 @@
     <legend>Billing info</legend>
     <div>
         <label for="first_name">First Name</label>
-        <input type="text" id="first_name" class="required" name="first_name" value="{mcf_first_name}" />
+        <input type="text" id="first_name" name="first_name" value="{mcf_first_name}" />
     </div>
     <div>
         <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" class="required" name="last_name" value="{mcf_last_name}" />
+        <input type="text" id="last_name" name="last_name" value="{mcf_last_name}" />
     </div>
     <div>
         <label for="address">Street Address</label>
-        <input type="text" id="address" class="required" name="address" value="{mcf_address}" />
+        <input type="text" id="address" name="address" value="{mcf_address}" />
     </div>
     <div>
         <label for="address2">Street Address</label>
         <input type="text" id="address2" name="address2" value="{mcf_address2}" />
     </div>
     <div>
-        <label for="city">City</label>
-        <input type="text" id="city" class="required" name="city" value="{mcf_city}" />
+        <label for="city">Town/City</label>
+        <input type="text" id="city" name="city" value="{mcf_city}" />
     </div>
     <div>
         <label for="state">State (US only) </label>
@@ -80,8 +80,8 @@
         </select>
     </div>
     <div>
-        <label for="zip">Zip Code</label>
-        <input type="text" id="zip" class="required" name="zip" value="" />
+        <label for="zip">Postcode/Zip</label>
+        <input type="text" id="zip" name="zip" value="" />
     </div>
     <div>
         <label for="country_code">Country</label>
@@ -98,7 +98,7 @@
     <legend>Additional Information</legend>
     <div>
         <label for="email_address">Email Address</label>
-        <input  id="email_address" class="required email" type="text" name="email_address" value="{email}" />
+        <input  id="email_address" type="text" name="email_address" value="{email}" />
     </div>
     <input type="hidden" name="transaction_type" value="_cart" />
     <input type="hidden" name="weight_unit" value="lbs">

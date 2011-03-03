@@ -53,7 +53,7 @@
                     <input type="text" id="profile_address2" name="mcf_address2" value="{mcf_address2}" />
                 </div>
                 <div>
-                    <label for="profile_city">City</label>
+                    <label for="profile_city">Town/City</label>
                     <input type="text" id="profile_city" name="mcf_city" value="{mcf_city}" />
                 </div>
                 <div>
@@ -114,7 +114,7 @@
                     </select>
                 </div>
                 <div>
-                    <label for="profile_zip">Zip</label>
+                    <label for="profile_zip">Postcode/Zip</label>
                     <input type="text" id="profile_zip" name="mcf_zip" value="{mcf_zip}" />
                 </div>
                 <fieldset class="password">

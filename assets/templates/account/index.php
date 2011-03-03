@@ -65,6 +65,7 @@
                 </div>
                 <h2>Account settings</h2>
                 <form id="account_settings">
+                    {!-- CAMPAIGNER: http://experienceinternet.co.uk/software/campaigner/ --}
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
@@ -74,7 +75,7 @@
                         <div>
                             <strong>Special Offers</strong>
                             <input type="checkbox" id="" name="" />
-                            <label for="">Remember me</label>
+                            <label for="">Send me special offers</label>
                         </div>
                         <div class="submit">
                             <input class="submit" type="submit" value="Submit new settings" />
