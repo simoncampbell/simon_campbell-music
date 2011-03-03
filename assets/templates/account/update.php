@@ -49,11 +49,11 @@
                 <fieldset>
                     <legend>Billing Information</legend>
                     <div>
-                        <label for="profile_address">Address</label>
+                        <label for="profile_address">Street Address</label>
                         <input type="text" id="profile_address" name="mcf_address" value="{mcf_address}" />
                     </div>
                     <div>
-                        <label for="profile_address2">Address 2</label>
+                        <label for="profile_address2">Street Address 2</label>
                         <input type="text" id="profile_address2" name="mcf_address2" value="{mcf_address2}" />
                     </div>
                     <div>
@@ -72,6 +72,15 @@
                     <div>
                         <label for="profile_zip">Postcode/Zip</label>
                         <input type="text" id="profile_zip" name="mcf_zip" value="{mcf_zip}" />
+                    </div>
+                    <div>
+                        <label for="profile_country_code">Country</label>
+                        <select id="profile_country_code" name="mcf_country_code">
+                            <option value="">Select a Country</option>
+                            {select_mcf_country_code}
+                            <option value="{value}" {selected}>{value}</option>
+                            {/select_mcf_country_code}
+                        </select>
                     </div>
                 </fieldset>
                 <fieldset class="password">

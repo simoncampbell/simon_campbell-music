@@ -25,20 +25,13 @@
         </p>
         {/if}
         {exp:cartthrob:checkout_form
-            
-            create_user=""
-            group_id=""
-            
             cart_empty_redirect="store/basket/"
             return="account/orders/"
-            
             id="checkout_form"
-            
             authorized_redirect=""
             failed_redirect=""
             declined_redirect=""
         }
-        
         {gateway_fields}
         <input type="submit" value="Checkout" />
         {/exp:cartthrob:checkout_form}
