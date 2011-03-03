@@ -147,20 +147,29 @@ $(document).ready(function(){
             		$("div#content_pri").prepend("<div id=\"gallery\"><ul id=\"gallery_carousel\"></ul></div>"); // Recreate scaffold for carousel
             		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
             		draw_carousel(); // Recreate carousel
+            		
                     var colorbox_slideshow = $("li#gallery_zoom a").colorbox({
                         transition: 'elastic',
                         speed: 250
                     });
+                    
                     update_zoom();
                     
                 });
 
             });
 
-        } else if ($("body").attr("id") === "detail" && window.location.hash) { 
+        } else if ($("body").attr("id") === "detail") { 
             
-            // If on a listings page with a hash
-            $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
+            if (window.location.hash) {
+                // If on a listings page with a hash
+                $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
+            }
+            
+            var colorbox_slideshow = $("ul#gallery_carousel li a").colorbox({
+                transition: 'elastic',
+                speed: 250
+            });
               
         }
         
