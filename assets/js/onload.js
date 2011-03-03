@@ -58,7 +58,7 @@ function draw_carousel() {
     // }
     
     function update_zoom() {
-        $("li#gallery_zoom a").attr("href", $("ul#gallery_carousel li:first-child img").attr("alt"));
+        $("li#gallery_zoom a").attr("href", $("ul#gallery_carousel li:first-child img").attr("title"));
         $("li#gallery_zoom a").attr("title", $("ul#gallery_carousel li:first-child p").html());
     }
     
@@ -72,10 +72,10 @@ function draw_carousel() {
     });
     
    
-
     // Carousel: create nav
     $("ul#gallery_carousel").closest("div").append("<ul id=\"navigation_gallery\"><li id=\"gallery_zoom\"><a>Zoom</a></li><li id=\"gallery_next\"><a>Next</a></li><li id=\"gallery_previous\"><a>Previous</a></li></ul>");    
 
+    // Carousel: update zoom nav
     update_zoom();
     
     // Carousel: bind nav - next button
@@ -124,6 +124,7 @@ $(document).ready(function(){
             // Draw carousel
             draw_carousel();
             
+            // Create colorbox
             var colorbox_slideshow = $("li#gallery_zoom a").colorbox({
                 transition: 'elastic',
                 speed: 250
@@ -133,8 +134,8 @@ $(document).ready(function(){
             $("ul#gallery_grid li a").click(function(event) {
 
                 event.preventDefault(); // Stop link
-
-                colorbox_slideshow.remove();
+                
+                colorbox_slideshow.remove(); // Destroy colorbox
         		
                 $.scrollTo($("ul#gallery_carousel").offset().top - 20, 400); // Scroll to the gallery element
 
@@ -148,11 +149,13 @@ $(document).ready(function(){
             		$("ul#gallery_carousel").prepend($(data).find("ul#gallery_carousel li")); // Load items into gallery, filtered
             		draw_carousel(); // Recreate carousel
             		
+            		// Recreate colorbox
                     var colorbox_slideshow = $("li#gallery_zoom a").colorbox({
                         transition: 'elastic',
                         speed: 250
                     });
                     
+                    // Update zoom nav item
                     update_zoom();
                     
                 });
@@ -166,7 +169,8 @@ $(document).ready(function(){
                 $("ul#gallery_carousel li" + window.location.hash).addClass("cur"); // Add current class to correct img
             }
             
-            var colorbox_slideshow = $("ul#gallery_carousel li a").colorbox({
+            // Create colorbox
+            $("ul#gallery_carousel li a").colorbox({
                 transition: 'elastic',
                 speed: 250
             });

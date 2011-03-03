@@ -32,8 +32,8 @@
                                 image="{ffm_images_image}"
                                 maxWidth="610"
                                 maxHeight="450"
-                                alt="{ffm_images_image}"
-                                title=""
+                                alt=""
+                                title="{ffm_images_image}"
                             }
                             <p class="meta">
                                 {if ffm_images_title}
