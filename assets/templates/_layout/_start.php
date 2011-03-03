@@ -93,6 +93,7 @@
     {if segment_1 == "gallery"}
     <script src="{pv_assets_url}/js/jquery.scrollto.min.js"></script>
     <script src="{pv_assets_url}/js/jquery.moodular.js"></script>
+    <script src="{pv_assets_url}/js/jquery.moodular.effects.js"></script>
     {/if}
     {if segment_1 == "gallery" && segment_2 != ""}
     <script src="{pv_assets_url}/js/jquery.colorbox.min.js"></script>

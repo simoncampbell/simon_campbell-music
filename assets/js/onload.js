@@ -27,11 +27,11 @@ function create_carousel1() {
 
     // Create carousel            
     var moodular = $("div#gallery ul#gallery_carousel").moodular({
-        speed : 500,
-        dispTimeout : 1000,
-        auto : false,
-        callbacks: [adjust_gallery_height],
-        api: true
+        speed: 500,
+        effects: 'fade',
+        dispTimeout: 1000,
+        auto: false,
+        callbacks: [adjust_gallery_height]
     });
     
     // Bind next button
@@ -71,9 +71,10 @@ function draw_carousel() {
 
     // Carousel: create
 	var moodular = $("ul#gallery_carousel").moodular({
-        speed : 500,
-        dispTimeout : 1000,
-        auto : false,
+        speed: 200,
+        effects: 'fade',
+        dispTimeout: 200,
+        auto: false,
         callbacks: [adjust_height],
         api: true
     });
