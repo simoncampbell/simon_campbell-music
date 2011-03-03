@@ -128,13 +128,39 @@ $(document).ready(function(){
             });
         }
         // Edit Profile
-        // if($('body').hasClass('profile_edit')) {
-        //     $('form#profile_edit') {
-        //         rules: {
-        //             
-        //         }
-        //     }
-        // }
+        if($('body').hasClass('profile_edit')) {
+            $('form#profile_edit').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    mcf_first_name: {
+                        accept: "[a-zA-Z]+",
+                        required: true,
+                        rangelength: [1, 32]
+                    },
+                    mcf_last_name: {
+                        accept: "[a-zA-Z]+",
+                        required: true,
+                        rangelength: [1, 32]
+                    },
+                    city: {
+                        accept: "[a-zA-Z]+"
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        rangelength: [5, 32]
+                    },
+                    password_confirm: {
+                        equalTo: "#profile-new-password"
+                    }
+                }
+            });
+        }
         
         // Checkout Form
         $('form#checkout_form').validate({
