@@ -23,7 +23,7 @@
             error_page=""
             form:id="profile_edit"
             return="account"
-            required="username|mcf_first_name|mcf_last_name|email"
+            required="username|email"
             screen_name_password_required="no"
         }
             <fieldset>

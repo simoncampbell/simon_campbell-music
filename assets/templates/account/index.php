@@ -27,10 +27,12 @@
                         log_views="off"
                         member_id="CURRENT_USER"
                     }
+                    {if mcf_first_name}
                     <p>
                         <strong>Name</strong> 
                         {mcf_first_name} {mcf_last_name}
                     </p>
+                    {/if}
                     <p>
                         <strong>Email address</strong> 
                         {email}
@@ -39,6 +41,7 @@
                         <strong>Password</strong> 
                         *********
                     </p>
+                    {if mcf_address}
                     <p>
                         <strong>Delivery Address</strong> 
                         {!--
@@ -52,15 +55,14 @@
                         </span>
                         --}
                         {!-- US ADDRESS/CARTHROB DEFAULT --}
-                        {if mcf_address}
                         <span>
                             {mcf_address}<br>
                             {if mcf_address2}{mcf_address2}<br>{/if}
                             {mcf_city}, {mcf_state}<br>
                             {mcf_zip}
                         </span>
-                        {/if}
                     </p>
+                    {/if}
                     {/exp:user:stats}
                 </div>
                 <h2>Account settings</h2>

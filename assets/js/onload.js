@@ -135,16 +135,6 @@ $(document).ready(function(){
                         required: true,
                         rangelength: [4, 32]
                     },
-                    mcf_first_name: {
-                        accept: "[a-zA-Z]+",
-                        required: true,
-                        rangelength: [1, 32]
-                    },
-                    mcf_last_name: {
-                        accept: "[a-zA-Z]+",
-                        required: true,
-                        rangelength: [1, 32]
-                    },
                     city: {
                         accept: "[a-zA-Z]+"
                     },
