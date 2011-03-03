@@ -1469,6 +1469,17 @@ div#footer p.credit {
             font-size: 10px;
             font-weight: bold;
         }
+        body#basket div#content_pri table input[type="submit"] {
+            background: none;
+            color: rgb(255, 255, 255);
+            font-size: 12px;
+            font-weight: normal;
+            padding: 0;
+            text-decoration: underline;
+        }
+        body#basket div#content_pri table input[type="submit"]:hover {
+            text-decoration: none;
+        }
         
         /*
         VERSION 1: STORE LANDING
