@@ -17,25 +17,22 @@
     <div id="content_pri">
         <h2 class="hide">Bio</h2>
         <div class="widget">
-            <h3>My extensive gear listings</h3>
+            <h3>Simon&rsquo;s extensive gear list</h3>
             <p>
                 Over the years, Simon has used a bewildering array of gear on his never ending journey to find the &lsquo;perfect tone&rsquo;. If you are interested, take a look at the <a href="http://blog.simoncampbell.com/blog/perma/search_for_the_ultimate_tone_part_one/">articles that he has written</a> on the subject. Below is the current equipment list.
             </p>
         </div><!-- // .widget -->
         <div id="gear_guitars" class="widget">
-            <h3>Guitars &amp; mandolins</h3>
+            <h3>Guitars</h3>
             <ul>
                 <li>Fender Customshop &lsquo;Nocaster&rsquo; relic</li>
                 <li>Custom Stratocaster with neck made by Gordon Whittam and body by Brian Eastwood out of ash with specially wound Lindy Fralin pickups. Fitted with Fender style tremolo</li>
                 <li>Custom Telecaster made by Gordon Whittam out of swamp ash with specially wound Lindy Fralin pickups</li>
                 <li>Custom Telecaster neck made by Gordon Whittam and body by Brian Eastwood out of swamp ash with specially wound Lindy Fralin humbucking pickups and Fender style tremolo system </li>
                 <li>Gibson Flying V (1974) refinished by Ted Lee, fitted with Vibrola tremolo system and specially wound Lindy Fralin humbucking pickups</li>
-                <li>Gretsch Electromatic D6 Console guitar (1956)</li>
-                <li>Howe-Orme Mandolinetto (c 1885)</li>
+                <li>Gretsch Electromatic D6 Console guitar (1956)</li>                
                 <li>Guitar Taylor GA fitted with Headway HE2/G.FEQ pickup</li>
-                <li>Collings OM2H fitted with Highlander IP2 pickup</li>
-                <li>Gibson SJ-45 Deluxe fitted with Headway HE2/G.FEQ pickup</li>
-                <li>Collings 0001 fitted with Headway HE2/G.FEQ pickup</li>
+                <li>Collings OM2H fitted with Highlander IP2 pickup</li>                 
             </ul>
         </div><!-- // .widget -->
         <div class="widget">
@@ -65,7 +62,8 @@
                 <li>Fulltone OCD</li>
                 <li>Fulltone Clyde Deluxe Wha</li>
                 <li>Moonphaser</li>
-                <li>TexTone FuzzNutz Zendrive</li>
+                <li>TexTone FuzzNutz</li>
+                <li>Zendrive</li>
                 <li>VoodoLabs Pedal Power 2 plus Power supply</li>
                 <li>EMO Power distribution</li>
             </ul>
@@ -79,7 +77,7 @@
                 <li>Radial Engineering JR 5 remote</li>
                 <li>Radial Engineering SGI interface</li>
                 <li>Various Skrystrup custom power supplies</li>
-                <li>&amp; MOOG Etherwave Plus Theremin for hangin&rsquo; around</li>
+                <li>MOOG Etherwave Plus Theremin</li>
             </ul>
         </div><!-- // .widget -->
         <div class="widget">
