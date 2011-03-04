@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="gallery"
-    body_id="gallery_carousel"
+    body_class="gallery_slideshow"
+    body_id="carousel"
     section="gallery"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Gallery"
@@ -15,9 +15,8 @@
 }
     
     <div id="content_pri">
-        
         <div id="gallery">
-            <ul>
+            <ul id="gallery_carousel">
                 {!-- Default behaviour: load latest gallery --}
                 {exp:weblog:entries
                     weblog="gallery"
@@ -26,15 +25,15 @@
                     limit="1"
                     sort="asc"
                 }
-                    
+                
                     {cf_gallery_images sort="desc"}
-                        <li>
+                        <li id="image_{row_id}">
                             {exp:ed_imageresizer
                                 image="{ffm_images_image}"
                                 maxWidth="610"
-                                forceWidth="yes"
-                                cropratio="4:3"
+                                maxHeight="450"
                                 alt=""
+                                title="{ffm_images_image}"
                             }
                             <p class="meta">
                                 {if ffm_images_title}
@@ -42,13 +41,13 @@
                                 {/if}
                             </p>
                             <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
-                                Link to photo
+                                View gallery
                             </a>
-                        </li> 
+                        </li>
                     {/cf_gallery_images}
-                     
+                 
                 {/exp:weblog:entries}
-            </ul>
+            </ul> <!-- // #gallery_carousel -->
         </div> <!-- // #gallery -->
         
         <ul id="gallery_grid">

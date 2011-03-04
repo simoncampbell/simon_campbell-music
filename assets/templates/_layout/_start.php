@@ -71,7 +71,7 @@
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
-    {if segment_1 == "gallery" && segment_2 != ""}
+    {if segment_1 == "gallery"}
     <link rel="stylesheet" href="{pv_assets_url}/css/colorbox.css" type="text/css" media="screen" />
     {/if}
     
@@ -92,9 +92,7 @@
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
     {if segment_1 == "gallery"}
     <script src="{pv_assets_url}/js/jquery.scrollto.min.js"></script>
-    <script src="{pv_assets_url}/js/jquery.carousel.min.js"></script>
-    {/if}
-    {if segment_1 == "gallery" && segment_2 != ""}
+    <script src="{pv_assets_url}/js/jquery.moodular.js"></script>
     <script src="{pv_assets_url}/js/jquery.colorbox.min.js"></script>
     {/if}
     <script src="{pv_assets_url}/js/onload.js"></script>
@@ -110,7 +108,7 @@
     <!--[if IE 6]>
         <script src="{pv_assets_url}/js/ie6/DD_belatedPNG_0.0.8a.js"></script>
         <script>
-            DD_belatedPNG.fix('.png, body#gear div#gear_guitars, body#bio #beginnings, body#bio #tribute, body.history #thejourney');
+            DD_belatedPNG.fix('.png, body#gear div#gear_guitars, body#bio #beginnings, body#bio #tribute, body.history #thejourney, ul#navigation_gallery li a');
         </script>
     <![endif]-->
     
