@@ -1722,6 +1722,11 @@ div.half {
         height:36px;
         display:block;
     }
+    #dsq-content img {
+        display:inline;
+        padding:0;
+        background:transparent;
+    }
     #dsq-content .dsq-avatar img {
         border:0 !important;
         -webkit-border-radius:0 !important;
