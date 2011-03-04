@@ -1412,15 +1412,17 @@ div#footer p.credit {
         }
         body.contact div#content_pri div.contact_block ul.media li {
             margin-bottom:7px;
+            padding-left:18px;
+            background:url(../images/site/icons/download.png) 0 5px no-repeat;
         }
         body.contact div#content_pri div.contact_block ul.media li:last-child {
             margin-bottom:0px;
         }
         
-        body.contact div#content_pri div.contact_block ul.media li.pdf {
+/*        body.contact div#content_pri div.contact_block ul.media li.pdf {
             padding-left:18px;
             background:url(../images/site/icons/pdf.png) 0 5px no-repeat;
-        }
+        }*/
         
         body.contact div#content_pri div.contact_block ul.media li span {
             font-size:11px;
