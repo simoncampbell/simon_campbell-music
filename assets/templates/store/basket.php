@@ -43,7 +43,15 @@
                         <tbody>
                 {/if}{!-- // IF FIRST ROW --}
                             <tr>
-                                <td><a href="#">{title}</a></td>
+                                {if "{weblog_id}" == "24"}
+                                <td><a href="{pv_site_url}/{segment_1}/tshirts/{url_title}/">{title}</a></td>
+                                {/if}
+                                {if "{weblog_id}" == "25"}
+                                <td><a href="{pv_site_url}/{segment_1}/music/{url_title}/">{title}</a></td>
+                                {/if}
+                                {if "{weblog_id}" == "26"}
+                                <td><a href="{pv_site_url}/{segment_1}/posters/{url_title}/">{title}</a></td>
+                                {/if}
                                 <td>type</td>
                                 <td><input name="quantity[{row_id}]" min="0" max="100" size="5" type="number" value="{quantity}" /></td>
                                 <td>{item_subtotal}</td>
@@ -58,7 +66,7 @@
                         </tbody>
                     </table>
                     <p class="more">
-                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="/store/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
+                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
                     </p>
                     {/exp:cartthrob:update_cart_form}
                 {/if}{!-- // IF LAST ROW --}
