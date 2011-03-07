@@ -44,13 +44,13 @@
                 {/if}{!-- // IF FIRST ROW --}
                             <tr>
                                 {if "{weblog_id}" == "24"}
-                                <td><a href="{pv_site_url}/store/tshirts/{url_title}/">{title}</a></td>
+                                <td><a href="{pv_site_url}/{segment_1}/tshirts/{url_title}/">{title}</a></td>
                                 {/if}
                                 {if "{weblog_id}" == "25"}
-                                <td><a href="{pv_site_url}/store/music/{url_title}/">{title}</a></td>
+                                <td><a href="{pv_site_url}/{segment_1}/music/{url_title}/">{title}</a></td>
                                 {/if}
                                 {if "{weblog_id}" == "26"}
-                                <td><a href="{pv_site_url}/store/posters/{url_title}/">{title}</a></td>
+                                <td><a href="{pv_site_url}/{segment_1}/posters/{url_title}/">{title}</a></td>
                                 {/if}
                                 <td>type</td>
                                 <td><input name="quantity[{row_id}]" min="0" max="100" size="5" type="number" value="{quantity}" /></td>
