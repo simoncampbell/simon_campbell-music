@@ -66,24 +66,32 @@
                     {/exp:user:stats}
                 </div>
                 <h2>Account settings</h2>
+                {exp:user:edit
+                    allowed_groups="1|5|6"
+                    dynamic="off"
+                    form:id="account_settings"
+                    return="account"
+                    screen_name_password_required="no"
+                }
                 <form id="account_settings">
-                    {!-- CAMPAIGNER: http://experienceinternet.co.uk/software/campaigner/ --}
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
-                            <input type="checkbox" id="" name="" />
-                            <label for="">Subscribe to the Newsletter</label>
+                            <label for="newsletter_subcribe">Subscribe to Newsletter</label>
+                            <input type="checkbox" name="newsletter_subcribe" value="yes" {if mcf_newsletter_default == "yes"}checked="checked"{/if}>
                         </div>
+                        {!--
                         <div>
                             <strong>Special Offers</strong>
                             <input type="checkbox" id="" name="" />
                             <label for="">Send me special offers</label>
                         </div>
+                        --}
                         <div class="submit">
                             <input class="submit" type="submit" value="Submit new settings" />
                         </div>
                     </fieldset>
-                </form>
+                {/exp:user:edit}
             </div><!-- // .first -->
             
             <div class="last">

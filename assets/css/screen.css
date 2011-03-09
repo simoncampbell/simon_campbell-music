@@ -1380,6 +1380,13 @@ div#footer p.credit {
             margin-bottom: 0;
             padding: 8px 6px;
         }
+        body#account_landing.fullwidth #content_pri form#account_settings div.hiddenFields {
+            display: none;
+        }
+        body#account_landing.fullwidth #content_pri form#account_settings div.submit {
+            padding-bottom: 12px;
+            padding-top: 12px;
+        }
         body#account_landing #content_pri div.account_details p:nth-of-type(even),
         body#account_landing.fullwidth #content_pri form#account_settings div:nth-of-type(odd) {
             background:rgba(255, 255, 255, 0.06);
