@@ -1,6 +1,6 @@
 {embed="_layout/_start"
-    body_class="gallery"
-    body_id=""
+    body_class="gallery_slideshow"
+    body_id="carousel"
     section="gallery"
     {!-- LG BETTER META OPTIONS BELOW --}
     title="Gallery"
@@ -15,31 +15,69 @@
 }
     
     <div id="content_pri">
+        <div id="gallery">
+            <ul id="gallery_carousel">
+                {!-- Default behaviour: load latest gallery --}
+                {exp:weblog:entries
+                    weblog="gallery"
+                    disable="{pv_disable_defaults}"
+                    orderby=""
+                    limit="1"
+                    sort="asc"
+                }
+                
+                    {cf_gallery_images sort="desc"}
+                        <li id="image_{row_id}">
+                            {exp:ed_imageresizer
+                                image="{ffm_images_image}"
+                                maxWidth="610"
+                                maxHeight="450"
+                                alt=""
+                                title="{ffm_images_image}"
+                            }
+                            <p class="meta">
+                                {if ffm_images_title}
+                                    {ffm_images_title} &ndash; {if ffm_images_credit}<em>&copy; {ffm_images_credit}</em>{/if}
+                                {/if}
+                            </p>
+                            <a href="{pv_site_url}{comment_url_title_auto_path}#image_{row_id}" class="permalink">
+                                View gallery
+                            </a>
+                        </li>
+                    {/cf_gallery_images}
+                 
+                {/exp:weblog:entries}
+            </ul> <!-- // #gallery_carousel -->
+        </div> <!-- // #gallery -->
         
-        <div id="gallery_photos">
+        <ul id="gallery_grid">
             {exp:weblog:entries
                 weblog="gallery"
                 disable="{pv_disable_defaults}"
-                limit="1"
                 orderby=""
                 sort="asc"
             }
-            {cf_gallery_images limit="6" sort="random"}
-            <div class="gallery_photo">
-                {exp:ed_imageresizer
-                    image="{ffm_images_image}"
-                    maxWidth="580"
-                    maxHeight="380"
-                    cropratio="1.3:0.85"
-                    alt=""
-                    }
-                <p class="photo_meta"><em>{ffm_images_title}</em> &ndash; &copy; {ffm_images_credit}</p>
-            </div><!-- // .gallery_photo -->
-            {/cf_gallery_images}
+                <li {if count == 1}class="cur"{/if}>
+                    <a href="{pv_site_url}{comment_url_title_auto_path}">
+                        {cf_gallery_images limit="1" sort="desc"}
+                            {exp:ed_imageresizer
+                                image="{ffm_images_image}"
+                                maxWidth="190"
+                                maxHeight="190"
+                                forceWidth="yes"
+                                cropratio="4:3"
+                                alt=""
+                            }
+                        {/cf_gallery_images}
+                        <p class="meta">
+                            {title}
+                        </p>
+                    </a>
+                </li>
             {/exp:weblog:entries}
-        </div><!-- // #gallery_photos -->
-        
-        <p class="more"><a href="http://www.flickr.com/photos/erskinecorp/sets/">Check out Simon&rsquo;s other sets on Flickr</a></p>
+            
+            
+        </ul> <!-- // #gallery_grid -->
         
     </div> <!-- // #content_pri -->
     
