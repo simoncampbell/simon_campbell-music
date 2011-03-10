@@ -23,11 +23,11 @@
             
             {exp:cartthrob:cart_items_info}
             
-                {if no_results}
+                {if no_results}     
                     <p>There is nothing in your cart</p>
-                {/if}
+                {/if}       
                 
-                {if first_row}
+                {if first_row}      
                     {exp:cartthrob:update_cart_form
                         return="store/basket"
                     }
@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                {/if}{!-- // IF FIRST ROW --}
+                {/if}{!-- // IF FIRST ROW --}       
                             <tr>
                                 {if "{weblog_id}" == "24"}
                                 <td><a href="{pv_site_url}/{segment_1}/tshirts/{url_title}/">{title}</a></td>
@@ -57,7 +57,7 @@
                                 <td>{item_subtotal}</td>
                                 <td><input type="checkbox" name="delete[{row_id}]"> Delete this item</td>
                             </tr>
-                {if last_row}
+                {if last_row}       
                             <tr>
                                 <td colspan="5">
                                     <input type="submit" value="Update Cart">
@@ -69,7 +69,7 @@
                         Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
                     </p>
                     {/exp:cartthrob:update_cart_form}
-                {/if}{!-- // IF LAST ROW --}
+                {/if}{!-- // IF LAST ROW --}        
             {/exp:cartthrob:cart_items_info}
             
         </div><!-- // .first -->

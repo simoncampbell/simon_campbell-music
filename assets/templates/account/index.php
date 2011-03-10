@@ -16,7 +16,7 @@
     
     <div id="content_pri">
         
-        {if logged_in}
+        {if logged_in}      
             <h1>My account</h1>
             <div class="first">
                 <h2>Your account details</h2>
@@ -27,12 +27,12 @@
                         log_views="off"
                         member_id="CURRENT_USER"
                     }
-                    {if mcf_first_name}
+                    {if mcf_first_name}     
                     <p>
                         <strong>Name</strong> 
                         {mcf_first_name} {mcf_last_name}
                     </p>
-                    {/if}
+                    {/if}       
                     <p>
                         <strong>Email address</strong> 
                         <span class="multi_line">{email}</span>
@@ -41,7 +41,7 @@
                         <strong>Password</strong> 
                         *********
                     </p>
-                    {if mcf_address}
+                    {if mcf_address}        
                     <p>
                         <strong>Delivery Address</strong> 
                         {!--
@@ -62,7 +62,7 @@
                             {mcf_zip}
                         </span>
                     </p>
-                    {/if}
+                    {/if}       
                     {/exp:user:stats}
                 </div>
                 <h2>Account settings</h2>
@@ -103,10 +103,10 @@
                     status="Paid|Processing"
                     weblog="orders"
                 }
-                    {if no_results}
+                    {if no_results}     
                     <p>You don't have any order history, etc, etc.</p>
-                    {/if}
-                    {if count == "1"}
+                    {/if}       
+                    {if count == "1"}       
                     <table>
                         <colgroup>
                             <col style="width:20%;"/>
@@ -123,7 +123,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                    {/if}
+                    {/if}       
                             <tr{if status == "Processing"} class="processing"{/if}>
                                 <td>{if cf_orders_transaction_id}#{cf_orders_transaction_id}{/if}</td>
                                 <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
@@ -136,10 +136,10 @@
                                     {!-- logic for downloads here --}
                                 </td>
                             </tr>
-                    {if count == total_results}
+                    {if count == total_results}     
                         </tbody>
                     </table>
-                    {/if}
+                    {/if}       
                 {/exp:weblog:entries}
                 
                 {!--
