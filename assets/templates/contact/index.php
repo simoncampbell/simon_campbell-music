@@ -68,10 +68,23 @@
             
             <h2>Media</h2>
             <p>Check these Simon Campbell Music goodies!</p>
+            {!--
             <ul class="media">
                 <li class="pdf">{lv_contact_presskit_text}</li>
             </li>
-            
+            --}
+            <ul class="media">
+                {exp:weblog:entries
+                    weblog="media"
+                    disable="{pv_disable_default}"
+                    dynamic="off"
+                    limit="100"
+                }
+                <li class="{cf_media_file_extension}">
+                    <a href="{cf_media_file}">{title}</a> &mdash; {cf_media_file_desc} {if cf_media_file_size != "" && cf_media_file_extension != ""}<span>{cf_media_file_size} .{cf_media_file_extension} download</span>{/if}
+                </li>
+                {/exp:weblog:entries}
+            </ul> <!-- // .media -->
         </div> <!-- // #media -->
         
     </div> <!-- // #content_pri -->
