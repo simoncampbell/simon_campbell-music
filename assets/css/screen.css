@@ -2143,6 +2143,12 @@ div.half {
         -moz-border-radius:1px !important;
         border-radius:1px !important;
     }
+    
+    #dsq-content table {
+        background: none;
+        border-top: none;
+        border-bottom: none;
+    }
 
 /*
     HORIZONTAL LISTS (.horizontal)
