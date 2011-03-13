@@ -94,9 +94,9 @@
                     <div>
                         <label for="type">Select Format</label>
                         <select name="item_options[cf_products_music_formats]">
-                            <option value="physical-copy">Physical Copy ({cf_products_music_price})</option>
+                            <option value="physical-copy">Physical Copy  - £{cf_products_music_price}</option>
                             {cf_products_music_formats}
-                            <option value="{option}">{option_name} ({price})</option>
+                            <option value="{option}">{option_name} - £{price}</option>
                             {/cf_products_music_formats}
                         </select>
                     </div>
