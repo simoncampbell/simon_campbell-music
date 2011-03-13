@@ -45,14 +45,16 @@
                             <tr>
                                 {if "{weblog_id}" == "24"}
                                 <td><a href="{pv_site_url}/{segment_1}/tshirts/{url_title}/">{title}</a></td>
+                                <td>T-shirt</td>
                                 {/if}
                                 {if "{weblog_id}" == "25"}
                                 <td><a href="{pv_site_url}/{segment_1}/music/{url_title}/">{title}</a></td>
+                                <td>Music</td>
                                 {/if}
                                 {if "{weblog_id}" == "26"}
                                 <td><a href="{pv_site_url}/{segment_1}/posters/{url_title}/">{title}</a></td>
+                                <td>Poster</td>
                                 {/if}
-                                <td>type</td>
                                 <td><input name="quantity[{row_id}]" min="0" max="100" size="5" type="number" value="{quantity}" /></td>
                                 <td>{item_subtotal}</td>
                                 <td><input type="checkbox" name="delete[{row_id}]"> Delete this item</td>
