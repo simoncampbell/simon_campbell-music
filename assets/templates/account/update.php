@@ -15,8 +15,7 @@
 }
     
     <div id="content_pri">
-        <h3>Edit Profile</h3>
-        {!-- Need to fix the layout --}
+        <h3>Edit Account</h3>
         {exp:user:edit
             allowed_groups="1|5|6"
             dynamic="off"
