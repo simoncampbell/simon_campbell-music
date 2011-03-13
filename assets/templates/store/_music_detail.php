@@ -9,7 +9,7 @@
     {redirect="404"}
 {/if}
 {embed="_layout/_start"
-    body_class=""
+    body_class="music_detail"
     body_id="product_detail"
     section="store"
     {!-- LG BETTER META OPTIONS BELOW --}
@@ -93,10 +93,10 @@
                 <fieldset>
                     <div>
                         <label for="type">Select Format</label>
-                        <select name="item_options[cf_products_music_formats]">
-                            <option value="physical-copy">Physical Copy  - £{cf_products_music_price}</option>
+                        <select id="music_formats" name="item_options[cf_products_music_formats]">
+                            <option value="{cf_products_music_price}">Physical Copy</option>
                             {cf_products_music_formats}
-                            <option value="{option}">{option_name} - £{exp:simple_math calculate="{cf_products_music_price} + {price}"}</option>
+                            <option value="{exp:simple_math calculate='{cf_products_music_price} + {price}'}">{option_name}</option>
                             {/cf_products_music_formats}
                         </select>
                     </div>

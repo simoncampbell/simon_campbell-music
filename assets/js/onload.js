@@ -315,6 +315,12 @@ $(document).ready(function(){
         $('form.validate_inline').validate();
         $('div#newsletter_signup form').validate();
     
+    // Music detail price adjustments
+    if($('body').hasClass('music_detail')) {
+        $('form select#music_formats').live('change', function() {
+            $('#price strong').html('£' + $(this).val());
+        });
+    }
     
     // Email Encoder: Example: <span class="email">name at domainname dot com</span>
     $(function(){
