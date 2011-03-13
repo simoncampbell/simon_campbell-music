@@ -100,10 +100,12 @@
                             {/cf_products_tshirts_sizes}
                         </select>
                     </div>
+                    {!--
                     <div>
                         <label for="quantity">Quantity</label>
                         <input id="quantity" name="quantity" min="1" max="100" size="5" type="number" value="1">
                     </div>
+                    --}
                     <div id="price">
                         <h3>Price</h3>
                         <p><strong>£{cf_products_tshirts_price}</strong> + shipping</p>
