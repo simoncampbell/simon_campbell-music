@@ -56,10 +56,10 @@
                         --}
                         {!-- US ADDRESS/CARTHROB DEFAULT --}
                         <span>
-                            {mcf_address}<br>
+                            {if mcf_address}{mcf_address}<br>{/if}
                             {if mcf_address2}{mcf_address2}<br>{/if}
-                            {mcf_city}, {mcf_state}<br>
-                            {mcf_zip}
+                            {if mcf_city}{mcf_city}, {/if}{if mcf_state}{mcf_state}{/if}{if mcf_city OR mcf_state}<br>{/if}
+                            {if mcf_zip}{mcf_zip}{/if}
                         </span>
                     </p>
                     {/if}       
