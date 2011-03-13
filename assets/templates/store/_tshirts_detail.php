@@ -94,8 +94,9 @@
                     <div>
                         <label for="type">T-Shirt Size</label>
                         <select name="item_options[cf_products_tshirts_sizes]">
+                            <option value="">Select size</option>
                             {cf_products_tshirts_sizes}
-                                <option value="{ffm_sizes_short}">{ffm_sizes_full}</option>
+                            <option value="{ffm_sizes}">{ffm_sizes:label}</option>
                             {/cf_products_tshirts_sizes}
                         </select>
                     </div>
