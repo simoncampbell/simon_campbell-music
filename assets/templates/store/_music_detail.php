@@ -96,7 +96,7 @@
                         <select name="item_options[cf_products_music_formats]">
                             <option value="physical-copy">Physical Copy  - £{cf_products_music_price}</option>
                             {cf_products_music_formats}
-                            <option value="{option}">{option_name} - £{price}</option>
+                            <option value="{option}">{option_name} - £{exp:simple_math calculate="{cf_products_music_price} + {price}"}</option>
                             {/cf_products_music_formats}
                         </select>
                     </div>
