@@ -94,9 +94,9 @@
                     <div>
                         <label for="type">Select Format</label>
                         <select id="music_formats" name="item_options[cf_products_music_formats]">
-                            <option value="{cf_products_music_price}">Physical Copy</option>
+                            <option value="{cf_products_music_price}" title="{cf_products_music_price}">Physical Copy</option>
                             {cf_products_music_formats}
-                            <option value="{exp:simple_math calculate='{cf_products_music_price} + {price}'}">{option_name}</option>
+                            <option value="{option}" title="{exp:simple_math calculate='{cf_products_music_price} + {price}'}">{option_name} - £{exp:simple_math calculate='{cf_products_music_price} + {price}'}</option>
                             {/cf_products_music_formats}
                         </select>
                     </div>

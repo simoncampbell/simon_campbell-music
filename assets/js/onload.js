@@ -317,9 +317,11 @@ $(document).ready(function(){
     
     // Music detail price adjustments
     if($('body').hasClass('music_detail')) {
+        
         $('form select#music_formats').live('change', function() {
-            $('#price strong').html('£' + $(this).val());
+            $('#price strong').html('£' + $(this).find('option:selected').attr('title'));
         });
+        
     }
     
     // Email Encoder: Example: <span class="email">name at domainname dot com</span>
