@@ -96,7 +96,7 @@
         <h2>Basket</h2>
         {exp:cartthrob:cart_items_info}
             {if no_results}
-                <p>There is nothing in your cart</p>
+                <p>There is nothing in your basket</p>
             {/if}
             {if first_row}
                 <ul class="item_listing">
