@@ -86,12 +86,11 @@
     {/exp:weblog:entries}
     
     <div id="store_block" class="widget">
-        {if logged_out}
         <h2>From the store</h2>
-        <a href="#">
+        <a href="{pv_site_url}/store/tshirts/thirtysix-t-shirts/">
             <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268" height="230" alt="ThirtySix album t-shirt">
         </a>
-        {/if}{!-- // IF LOGGED OUT --}
+        {!--
         {if logged_in}
         <h2>Basket</h2>
         {exp:cartthrob:cart_items_info}
@@ -120,7 +119,8 @@
                 </p>
             {/if}
         {/exp:cartthrob:cart_items_info}
-        {/if}{!-- // IF LOGGED IN --}
+        {/if}
+        --}
     </div> <!-- // #store_block -->
     
     <div id="payments_block" class="widget">
