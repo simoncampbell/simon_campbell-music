@@ -179,6 +179,17 @@ $(document).ready(function(){
         
     }
     
+    // PRODUCT DETAIL GALLERY
+    if ($("body").attr("id") === "product_detail") {
+        
+        $("ul.gallery_grid li a").click(function(event) {
+            
+            event.preventDefault(); // Stop link
+            
+        });
+        
+    }
+    
     // FORM VALIDATION
     
         // Magic so we can have 'letters only' forms.
