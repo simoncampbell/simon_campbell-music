@@ -112,17 +112,17 @@
             </div> <!-- // .post -->
             
             {paginate}
-			{if "{total_pages}" > "1"}
-			<p id="pagination">
-			    Go to page: 
-				{pagination_links}
-	        </p><!-- // #pagination -->
-			{/if}
-			{/paginate}
+            {if "{total_pages}" > "1"}
+            <p class="pagination">
+                Go to page: 
+                {pagination_links}
+            </p><!-- // .pagination -->
+            {/if}
+            {/paginate}
         {/exp:weblog:entries}
         
             {!-- UNCOMMENT TO TEST
-            <p id="pagination">
+            <p class="pagination">
                 Go to page: 
                 <a href="#">1</a> 
                 <a class="cur" href="#">2</a> 

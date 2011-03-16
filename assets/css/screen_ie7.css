@@ -28,6 +28,13 @@ body.editorial div#beginnings h3 + p:first-letter {
     padding: 0;
 }
 
+/* Account (logged in) */
+body#account_landing #content_pri div.account_details,
+body#account_landing.fullwidth #content_pri form#account_settings {
+    width: 100%;
+    height: 100%;
+}
+
 /* CONTENT SEC */
 div#content_sec input {
     width: 175px;
@@ -36,6 +43,6 @@ div#content_sec {
     padding-bottom: 50px;
 }
 div#content_sec input.submit {
-    line-height: 20px;
+    padding: 6px;
     width: 70px;
 }
