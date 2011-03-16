@@ -32,54 +32,52 @@
         <h2>{cf_products_music_subtitle}</h2>
         
         {cf_products_music_images}
-            {if "{total_rows}" == "1"}
+        {if "{total_rows}" == "1"}      
+        <div id="gallery_photos" class="{row_id}">
+            <div class="gallery_photo">
+                {exp:ed_imageresizer
+                    image="{ffm_images_image}"
+                    forceWidth="yes"
+                    maxWidth="580"
+                    alt=""
+                }
+            </div><!-- // .gallery_photo -->
+        </div><!-- // #gallery_photos -->
+        {/if}   
+        {if "{total_rows}" > "1"}   
+            {if "{row_count}" == "1"}   
             <div id="gallery_photos" class="{row_id}">
                 <div class="gallery_photo">
                     {exp:ed_imageresizer
                         image="{ffm_images_image}"
                         forceWidth="yes"
-                        maxWidth="580"
+                        maxWidth="280"
+                        maxHeight="280"
+                        cropratio="1:1"
                         alt=""
                     }
                 </div><!-- // .gallery_photo -->
             </div><!-- // #gallery_photos -->
             {/if}
-            {if "{total_rows}" > "1"}
-                {if "{row_count}" == "1"}
-                <div id="gallery_photos" class="{row_id}">
-                    <div class="gallery_photo">
+            {if "{row_count}" == "1"}   
+            <ul class="horizontal gallery_grid">
+            {/if}   
+                <li>
+                    <a href="#">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
                             forceWidth="yes"
-                            maxWidth="280"
-                            maxHeight="280"
+                            maxWidth="130"
+                            maxHeight="130"
                             cropratio="1:1"
                             alt=""
                         }
-                    </div><!-- // .gallery_photo -->
-                </div><!-- // #gallery_photos -->
-                {/if}
-                {if "{row_count}" == "2"}
-                <ul class="horizontal gallery_grid">
-                {/if}
-                {if "{row_count}" > "1"}
-                    <li>
-                        <a href="#">
-                            {exp:ed_imageresizer
-                                image="{ffm_images_image}"
-                                forceWidth="yes"
-                                maxWidth="130"
-                                maxHeight="130"
-                                cropratio="1:1"
-                                alt=""
-                            }
-                        </a>
-                    </li>
-                {/if}
-                {if "{row_count}" == "{total_rows}"}
-                </ul>
-                {/if}
+                    </a>
+                </li>
+            {if "{row_count}" == "{total_rows}"}    
+            </ul>
             {/if}
+        {/if}
         {/cf_products_music_images}
         
         <div class="first">

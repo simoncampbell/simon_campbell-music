@@ -1764,6 +1764,9 @@ div#footer p.credit {
                 margin-right: 20px;
                 width: 280px;
             }
+            body#product_detail div#gallery_photos {
+                margin-bottom: 10px;
+            }
             body#product_detail ul.gallery_grid {
                 margin-top: 0;
                 margin-bottom: 0;
