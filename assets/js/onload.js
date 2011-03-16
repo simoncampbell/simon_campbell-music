@@ -186,6 +186,9 @@ $(document).ready(function(){
             
             event.preventDefault(); // Stop link
             
+            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid item
+            $(this).parent().addClass("cur"); // Add cur status to selected grid items
+            
         });
         
     }
