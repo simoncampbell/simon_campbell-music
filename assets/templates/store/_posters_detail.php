@@ -46,7 +46,7 @@
         {/if}   
         {if "{total_rows}" > "1"}   
             {if "{row_count}" == "1"}   
-            <div id="gallery_photos" class="{row_id}">
+            <div id="gallery_photos">
                 <div class="gallery_photo">
                     {exp:ed_imageresizer
                         image="{ffm_images_image}"
