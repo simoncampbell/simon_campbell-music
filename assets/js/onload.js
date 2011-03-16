@@ -278,12 +278,18 @@ $(document).ready(function(){
                         required: true,
                         rangelength: [4, 32]
                     },
-                    city: {
-                        accept: "[a-zA-Z]+"
-                    },
                     email: {
                         required: true,
                         email: true
+                    },
+                    mcf_address: {
+                        required: true
+                    },
+                    mcf_city: {
+                        required: true
+                    },
+                    mcf_zip: {
+                        required: true
                     },
                     password: {
                         rangelength: [5, 32]

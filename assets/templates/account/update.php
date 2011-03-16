@@ -22,7 +22,7 @@
             error_page=""
             form:id="profile_edit"
             return="account"
-            required="username|email"
+            required="username|email|mcf_address|mcf_city|mcf_zip"
             screen_name_password_required="no"
         }
             <fieldset>
@@ -48,7 +48,7 @@
                 <fieldset>
                     <legend>Billing Information</legend>
                     <div>
-                        <label for="profile_address">Street Address</label>
+                        <label for="profile_address">Street Address <em>*</em></label>
                         <input type="text" id="profile_address" name="mcf_address" value="{mcf_address}" />
                     </div>
                     <div>
@@ -56,7 +56,7 @@
                         <input type="text" id="profile_address2" name="mcf_address2" value="{mcf_address2}" />
                     </div>
                     <div>
-                        <label for="profile_city">Town/City</label>
+                        <label for="profile_city">Town/City <em>*</em></label>
                         <input type="text" id="profile_city" name="mcf_city" value="{mcf_city}" />
                     </div>
                     <div>
@@ -69,7 +69,7 @@
                         </select>
                     </div>
                     <div>
-                        <label for="profile_zip">Postcode/Zip</label>
+                        <label for="profile_zip">Postcode/Zip <em>*</em></label>
                         <input type="text" id="profile_zip" name="mcf_zip" value="{mcf_zip}" />
                     </div>
                     <div>
