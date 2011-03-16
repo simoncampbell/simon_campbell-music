@@ -39,7 +39,7 @@
                     image="{ffm_images_image}"
                     forceWidth="yes"
                     maxWidth="580"
-                    alt=""
+                    alt="{ffm_images_description}"
                 }
             </div><!-- // .gallery_photo -->
         </div><!-- // #gallery_photos -->
@@ -54,7 +54,7 @@
                         maxWidth="280"
                         maxHeight="280"
                         cropratio="1:1"
-                        alt=""
+                        alt="{ffm_images_description}"
                     }
                 </div><!-- // .gallery_photo -->
             </div><!-- // #gallery_photos -->
@@ -63,14 +63,14 @@
             <ul class="horizontal gallery_grid">
             {/if}   
                 <li>
-                    <a href="#">
+                    <a href="{ffm_images_image}">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
                             forceWidth="yes"
                             maxWidth="130"
                             maxHeight="130"
                             cropratio="1:1"
-                            alt=""
+                            alt="{ffm_images_description}"
                         }
                     </a>
                 </li>
