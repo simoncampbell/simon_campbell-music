@@ -2237,7 +2237,8 @@ dl.horizontal dt:after {
     padding: 5px;
 }
 #content_pri ul.gallery_grid a:hover img,
-#content_pri ul.gallery_grid li.activeSlide a img {
+#content_pri ul.gallery_grid li.activeSlide a img,
+#content_pri ul.gallery_grid li.cur a img {
     background: rgba(255, 255, 255,0.12);
     padding: 5px;
 }

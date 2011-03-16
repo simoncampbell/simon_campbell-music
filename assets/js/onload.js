@@ -186,6 +186,9 @@ $(document).ready(function(){
             
             event.preventDefault(); // Stop link
             
+            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid item
+            $(this).parent().addClass("cur"); // Add cur status to selected grid items
+            
         });
         
     }
@@ -275,12 +278,18 @@ $(document).ready(function(){
                         required: true,
                         rangelength: [4, 32]
                     },
-                    city: {
-                        accept: "[a-zA-Z]+"
-                    },
                     email: {
                         required: true,
                         email: true
+                    },
+                    mcf_address: {
+                        required: true
+                    },
+                    mcf_city: {
+                        required: true
+                    },
+                    mcf_zip: {
+                        required: true
                     },
                     password: {
                         rangelength: [5, 32]
