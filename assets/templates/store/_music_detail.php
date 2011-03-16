@@ -33,7 +33,7 @@
         
         {cf_products_music_images}
         {if "{total_rows}" == "1"}      
-        <div id="gallery_photos" class="{row_id}">
+        <div id="gallery_photos">
             <div class="gallery_photo">
                 {exp:ed_imageresizer
                     image="{ffm_images_image}"
@@ -62,7 +62,7 @@
             {if "{row_count}" == "1"}   
             <ul class="horizontal gallery_grid">
             {/if}   
-                <li>
+                <li {if "{row_count}" == "1"}class="cur"{/if}>
                     <a href="{ffm_images_image}">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
