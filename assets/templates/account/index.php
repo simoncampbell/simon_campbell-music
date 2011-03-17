@@ -100,7 +100,7 @@
                     author_id="CURRENT_USER"
                     disable="categories|trackbacks|pagination"
                     limit=""
-                    status="Paid|Processing"
+                    status="Paid"
                     weblog="orders"
                 }
                     {if no_results}     
@@ -124,12 +124,12 @@
                         </thead>
                         <tbody>
                     {/if}       
-                            <tr{if status == "Processing"} class="processing"{/if}>
+                            <tr>
                                 <td>{if cf_orders_transaction_id}#{cf_orders_transaction_id}{/if}</td>
                                 <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
                                 <td>
                                     {cf_orders_items}
-                                        <span class="item"><a href="{pv_site_url}/store/{item:segment_2}/{item:url_title}/">{item:title}</a></span>{if item:count != item:total_results}, {/if}
+                                        <span class="item"><a href="{pv_site_url}/store/{item:product_url}/">{item:title}</a></span>{if item:count != item:total_results}, {/if}
                                     {/cf_orders_items}
                                 </td>
                                 <td>
