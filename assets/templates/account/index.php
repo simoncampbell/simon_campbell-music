@@ -124,16 +124,24 @@
                         </thead>
                         <tbody>
                     {/if}       
-                            <tr{if status == "Processing"} class="processing"{/if}>
+                            <tr>
                                 <td>{if cf_orders_transaction_id}#{cf_orders_transaction_id}{/if}</td>
                                 <td><time datetime="{entry_date format='{DATE_ATOM}'}">{entry_date format="{pv_date_event}"}</time></td>
                                 <td>
                                     {cf_orders_items}
-                                        <span class="item"><a href="{pv_site_url}/store/{item:segment_2}/{item:url_title}/">{item:title}</a></span>{if item:count != item:total_results}, {/if}
+                                        <span class="item"><a href="{pv_site_url}/store/{item:product_url}/">{item:title}</a></span>{if item:count != item:total_results}, {/if}
                                     {/cf_orders_items}
                                 </td>
                                 <td>
-                                    {!-- logic for downloads here --}
+                                    {cf_orders_items}
+                                    {if "{item:cf_products_music_formats}"}     
+                                        {embed="store/_music_download"
+                                            entry_id="{item:entry_id}"
+                                            download_format="{item:cf_products_music_formats}"
+                                            download_format_text="{if '{item:cf_products_music_formats}' == 'mp3_format'}mp3{/if}{if '{item:cf_products_music_formats}' == 'wav_format'}wav/aiff{/if}"
+                                        }
+                                    {/if}       
+                                    {/cf_orders_items}
                                 </td>
                             </tr>
                     {if count == total_results}     

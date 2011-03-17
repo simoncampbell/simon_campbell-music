@@ -109,8 +109,7 @@
                         <p><strong>£{cf_products_tshirts_price}</strong> + shipping</p>
                     </div>
                 </fieldset>
-                <input type="hidden" name="item_options[segment_2]" value="{segment_2}" />
-                <input type="hidden" name="item_options[url_title]" value="{url_title}" />
+                <input type="hidden" name="item_options[product_url]" value="{segment_2}/{url_title}" />
                 <input class="submit" type="submit" value="Add to basket">
             {/exp:cartthrob:add_to_cart_form}
         </div><!-- // .last -->
