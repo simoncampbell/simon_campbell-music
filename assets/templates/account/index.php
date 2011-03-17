@@ -100,7 +100,7 @@
                     author_id="CURRENT_USER"
                     disable="categories|trackbacks|pagination"
                     limit=""
-                    status="Paid"
+                    status="Paid|Processing"
                     weblog="orders"
                 }
                     {if no_results}     
@@ -133,7 +133,15 @@
                                     {/cf_orders_items}
                                 </td>
                                 <td>
-                                    {!-- logic for downloads here --}
+                                    {cf_orders_items}
+                                    {if "{item:cf_products_music_formats}"}     
+                                        {embed="store/_music_download"
+                                            entry_id="{item:entry_id}"
+                                            download_format="{item:cf_products_music_formats}"
+                                            download_format_text="{if '{item:cf_products_music_formats}' == 'mp3_format'}mp3{/if}{if '{item:cf_products_music_formats}' == 'wav_format'}wav/aiff{/if}"
+                                        }
+                                    {/if}       
+                                    {/cf_orders_items}
                                 </td>
                             </tr>
                     {if count == total_results}     
