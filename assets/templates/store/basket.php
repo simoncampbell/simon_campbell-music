@@ -68,7 +68,7 @@
                         </tbody>
                     </table>
                     <p class="more">
-                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + shipping <a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
+                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + <span title="{cart_shipping}">shipping</span><a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
                     </p>
                     {/exp:cartthrob:update_cart_form}
                 {/if}{!-- // IF LAST ROW --}        
