@@ -153,17 +153,17 @@
     
     <div id="header">
         
-        {if segment_1 == ""}
+        {if segment_1 == ""}        
             <h1 id="branding">
                 <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907" height="61" class="title" />
             </h1>
-        {if:else}
+        {if:else}       
             <p id="branding">
                 <a href="{pv_site_url}/">
                     <img src="{pv_assets_url}/images/site/titles/main_title.png" alt="Simon Campbell Music" width="907" height="61" class="title" />
                 </a>
             </p>
-        {/if}
+        {/if}       
         
     </div> <!-- // #header -->
     
@@ -175,20 +175,17 @@
         <li{if embed:section == "bio"} class="cur"{/if}><a href="{pv_site_url}/biography/">Bio</a></li>
         <li{if embed:section == "gallery"} class="cur"{/if}><a href="{pv_site_url}/gallery/">Gallery</a></li>
         <li{if embed:section == "contact"} class="cur"{/if}><a href="{pv_site_url}/contact/">Contact</a></li>
-        {!-- Hiding until the next release
         <li class="account"><span class="hide">Account</span>
             <ul>
-                {if logged_out}
+                {if logged_out}     
                 <li><a href="{pv_site_url}/account/">Store login</a></li>
                 <li><a href="{pv_site_url}/account/">Register</a></li>
-                {/if}
-                
-                {if logged_in}
-                <li><a href="{pv_site_url}/store/basket/">My basket (3)</a></li>
+                {/if}       
+                {if logged_in}      
+                <li><a href="{pv_site_url}/store/basket/">My basket ({exp:cartthrob:total_items_count})</a></li>
                 <li><a href="{pv_site_url}/account/">Account</a></li>
                 <li><a href="{path="LOGOUT"}">Log out</a></li>
-                {/if}
+                {/if}       
             </ul>
         </li>
-        --}
     </ul> <!-- // #navigation_pri -->

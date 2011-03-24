@@ -1,5 +1,5 @@
 {embed="_layout/_start"
-    body_class="newsletter"
+    body_class="centeredwidth"
     body_id=""
     section=""
     {!-- LG BETTER META OPTIONS BELOW --}

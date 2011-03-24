@@ -6,6 +6,7 @@ $(document).ready(function(){
     $('div#posts div.post:last').addClass('last');
     $('div#posts div.post ul.post_meta li:first').addClass('first');
     $('body.newsletter div#content_pri div:first').addClass('first');
+    $('dl#definition_links dd:last').addClass('last');
     
     if($("ul#gallery_grid").length) {
         $("ul#gallery_grid li:nth-child(3n+3)").css("margin-right", "0");

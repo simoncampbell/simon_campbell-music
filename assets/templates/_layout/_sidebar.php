@@ -85,44 +85,42 @@
         {/if}
     {/exp:weblog:entries}
     
-    {!-- hiding until the next release
-    
     <div id="store_block" class="widget">
-        <!-- LOGGED OUT -->
         <h2>From the store</h2>
-        <a href="#">
+        <a href="{pv_site_url}/store/tshirts/thirtysix-t-shirts/">
             <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268" height="230" alt="ThirtySix album t-shirt">
         </a>
-        <!-- LOGGED IN -->
-        <ul class="item_listing">
-            <li>
-                <a href="#">
-                    <h3>ThirtySix digital download</h3>
-                    <p><strong>£8.00</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Album art t-shirt</h3>
-                    <p><strong>£12.00</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Poster</h3>
-                    <p><strong>£9.99</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Sub-total</h3>
-                    <p><strong>£39.99</strong> + shipping</p>
-                </a>
-            </li>
-        </ul>
-        <p class="more">
-            <span class="hide">View </span><a href="#">Your basket</a> <span class="hide">or </span><a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
-        </p>
+        {!--
+        {if logged_in}
+        <h2>Basket</h2>
+        {exp:cartthrob:cart_items_info}
+            {if no_results}
+                <p>There is nothing in your basket</p>
+            {/if}
+            {if first_row}
+                <ul class="item_listing">
+            {/if}
+                    <li>
+                        <a href="#">
+                            <h3>{title}{if {quantity} > 1} ({quantity}){/if}</h3>
+                            <p><strong>{item_subtotal}</strong></p>
+                        </a>
+                    </li>
+            {if last_row}
+                    <li>
+                        <a href="#">
+                            <h3>Sub-total</h3>
+                            <p><strong>{cart_subtotal}</strong> + shipping</p>
+                        </a>
+                    </li>
+                </ul>
+                <p class="more">
+                    <span class="hide">View </span><a href="/store/basket/">Your basket</a> <span class="hide">or </span><a class="button" href="/store/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
+                </p>
+            {/if}
+        {/exp:cartthrob:cart_items_info}
+        {/if}
+        --}
     </div> <!-- // #store_block -->
     
     <div id="payments_block" class="widget">
@@ -135,8 +133,5 @@
             <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28" height="18" alt="Paypal"></li>
         </ul>
     </div> <!-- // #payments_block -->
-    
-    --}
-
     
 </div> <!-- // #content_sec -->
