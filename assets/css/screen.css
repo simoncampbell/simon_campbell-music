@@ -195,6 +195,7 @@ small {
     }
     form fieldset legend {
         font-size: 15px;
+        font-weight:bold;
         padding: 12px 0;
     }
     body.checkout form fieldset legend {
@@ -1612,12 +1613,8 @@ div#footer p.credit {
             top: 8px;
         }
         body#account_landing #content_pri div.account_details p.more a.button {
-            font-size: 10px;
+            font-size:11px;
         }
-        body#account_landing #content_pri div.account_details span.multi_line {
-            
-        }
-        
         body#account_landing.fullwidth #content_pri form#account_settings div,
         body#account_landing.fullwidth #content_pri form#account_settings label,
         body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
@@ -1637,9 +1634,9 @@ div#footer p.credit {
         }
         body#account_landing.fullwidth div#content_pri form#account_settings input.submit {
             float: right;
-            font-size: 10px;
             min-height: 22px;
             padding: 4px 8px;
+            font-size:11px;
         }
         
         body#account_landing.fullwidth #content_pri table {
