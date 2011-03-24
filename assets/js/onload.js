@@ -182,14 +182,16 @@ $(document).ready(function(){
     // PRODUCT DETAIL GALLERY
     if ($("body").attr("id") === "product_detail") {
         
-        $("ul.gallery_grid li a").click(function(event) {
-            
-            event.preventDefault(); // Stop link
-            
-            $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid item
-            $(this).parent().addClass("cur"); // Add cur status to selected grid items
-            
-        });
+        $("ul.gallery_grid a, div.gallery_photo a").colorbox();
+        
+        // $("ul.gallery_grid li a").click(function(event) {
+        //     
+        //     event.preventDefault(); // Stop link
+        //     
+        //     $(this).parent().parent().children("li").removeClass("cur"); // Remove cur status from grid item
+        //     $(this).parent().addClass("cur"); // Add cur status to selected grid items
+        //     
+        // });
         
     }
     
