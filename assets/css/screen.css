@@ -1774,13 +1774,11 @@ div#footer p.credit {
                 margin-top: 5px;
             }
             body#product_detail div#content_pri div.last {
-                background: rgba(255, 255, 255, 0.02);
-                border-top: 1px dashed #5B5B5B;
-                border-top: 1px dashed rgba(255, 255, 255, 0.3);
-                border-bottom: 1px dashed #5B5B5B;
-                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid #5B5B5B;
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 margin-top: 10px;
-                width: 290px;
+                width: 288px;
             }
             body#product_detail div#content_pri form {
                 margin: 0;
