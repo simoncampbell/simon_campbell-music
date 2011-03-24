@@ -195,6 +195,7 @@ small {
     }
     form fieldset legend {
         font-size: 15px;
+        font-weight:bold;
         padding: 12px 0;
     }
     body.checkout form fieldset legend {
@@ -315,11 +316,6 @@ small {
         
 /* TABLES ---------- */
     table { 
-        background:rgba(255, 255, 255, 0.025);
-        border-top: 1px dashed #5B5B5B;
-        border-top: 1px dashed rgba(255, 255, 255, 0.3);
-        border-bottom: 1px dashed #5B5B5B;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         width:100%;
         margin:0 0 1em 0;
     }
@@ -333,10 +329,12 @@ small {
     }
     thead th {
         font-weight:bold;
-        background:rgba(255, 255, 255, 0.06);
+        background:transparent;
+        border-bottom: 1px solid #5B5B5B;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
-    tbody tr:nth-child(even) th,
-    tbody tr:nth-child(even) td { 
+    tbody tr:nth-child(odd) th,
+    tbody tr:nth-child(odd) td { 
         background:rgba(255, 255, 255, 0.06);
     }
     tbody th { 
@@ -1612,12 +1610,8 @@ div#footer p.credit {
             top: 8px;
         }
         body#account_landing #content_pri div.account_details p.more a.button {
-            font-size: 10px;
+            font-size:11px;
         }
-        body#account_landing #content_pri div.account_details span.multi_line {
-            
-        }
-        
         body#account_landing.fullwidth #content_pri form#account_settings div,
         body#account_landing.fullwidth #content_pri form#account_settings label,
         body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
@@ -1637,9 +1631,9 @@ div#footer p.credit {
         }
         body#account_landing.fullwidth div#content_pri form#account_settings input.submit {
             float: right;
-            font-size: 10px;
             min-height: 22px;
             padding: 4px 8px;
+            font-size:11px;
         }
         
         body#account_landing.fullwidth #content_pri table {
@@ -1679,7 +1673,7 @@ div#footer p.credit {
             margin-bottom: 5px;
         }
         body#basket div#content_pri p.more a.button {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: bold;
         }
         body#basket div#content_pri table input[type="submit"] {
@@ -1777,13 +1771,11 @@ div#footer p.credit {
                 margin-top: 5px;
             }
             body#product_detail div#content_pri div.last {
-                background: rgba(255, 255, 255, 0.02);
-                border-top: 1px dashed #5B5B5B;
-                border-top: 1px dashed rgba(255, 255, 255, 0.3);
-                border-bottom: 1px dashed #5B5B5B;
-                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid #5B5B5B;
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 margin-top: 10px;
-                width: 290px;
+                width: 288px;
             }
             body#product_detail div#content_pri form {
                 margin: 0;
