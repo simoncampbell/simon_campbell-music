@@ -50,7 +50,7 @@
             {if "{row_count}" == "1"}   
             <div id="gallery_photos">
                 <div class="gallery_photo">
-                    <a href="{ffm_images_image}" rel="gallery">
+                    <a href="{ffm_images_image}" rel="gallery" title="{ffm_images_description}">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
                             forceWidth="yes"
@@ -68,7 +68,7 @@
             {/if}   
             {if "{row_count}" > "1"}        
                 <li>
-                    <a href="{ffm_images_image}" rel="gallery">
+                    <a href="{ffm_images_image}" rel="gallery" title="{ffm_images_description}">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
                             forceWidth="yes"
