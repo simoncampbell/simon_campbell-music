@@ -1668,14 +1668,28 @@ div#footer p.credit {
             margin-top: 42px;
         }
         /* maybe generalize later */
-        body#basket div#content_pri p.more {
+        body#basket div#content_pri ul#basket_info {
+            float: right;
             font-weight: normal;
-            margin-bottom: 5px;
+            list-style: none;
+            width: 140px;
         }
-        body#basket div#content_pri p.more a.button {
-            font-size: 11px;
-            font-weight: bold;
-        }
+            body#basket div#content_pri ul#basket_info li {
+                text-align: right;
+                margin-bottom: 0;
+            }
+            body#basket div#content_pri ul#basket_info span {
+                display: inline-block;
+                width: 60px;
+            }
+            body#basket div#content_pri ul#basket_info li.total {
+                margin-bottom: 10px;
+            }
+            body#basket div#content_pri ul#basket_info a.button {
+                font-size: 11px;
+                font-weight: bold;
+            }
+            
         body#basket div#content_pri table input[type="submit"] {
             background: none;
             color: rgb(255, 255, 255);

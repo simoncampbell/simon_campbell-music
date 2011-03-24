@@ -62,14 +62,19 @@
                 {if last_row}       
                             <tr>
                                 <td colspan="5">
-                                    <input type="submit" value="Update Cart">
+                                    <input type="submit" value="Update basket">
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <p class="more">
-                        Subtotal: &nbsp;<strong>{cart_subtotal}</strong> + <span title="{cart_shipping}">shipping</span><a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a>
-                    </p>
+                    
+                    <ul id="basket_info">
+                        <li>Subtotal: &nbsp;<strong>{cart_subtotal}</strong></li>
+                        <li>Shipping: &nbsp;<strong>{cart_shipping}</strong></li>
+                        <li class="total">Total: &nbsp;<strong>{cart_total}</strong></li>
+                        <li><a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a></li>
+                    </ul>
+                    
                     {/exp:cartthrob:update_cart_form}
                 {/if}{!-- // IF LAST ROW --}        
             {/exp:cartthrob:cart_items_info}
