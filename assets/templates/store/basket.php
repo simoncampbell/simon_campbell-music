@@ -69,8 +69,8 @@
                     </table>
                     
                     <ul id="basket_info">
-                        <li>Subtotal: &nbsp;<strong>{cart_subtotal}</strong></li>
-                        <li>Shipping: &nbsp;<strong>{cart_shipping}</strong></li>
+                        <li>Subtotal: &nbsp;{cart_subtotal}</li>
+                        <li>Shipping: &nbsp;{cart_shipping}</li>
                         <li class="total">Total: &nbsp;<strong>{cart_total}</strong></li>
                         <li><a class="button" href="{pv_site_url}/{segment_1}/checkout/">Go to checkout &rsaquo;&rsaquo;</a></li>
                     </ul>
