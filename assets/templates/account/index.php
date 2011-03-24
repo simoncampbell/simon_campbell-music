@@ -106,7 +106,7 @@
                     author_id="CURRENT_USER"
                     disable="categories|trackbacks|pagination"
                     limit=""
-                    status="Paid|Processing"
+                    status="Paid"
                     weblog="orders"
                 }
                     {if no_results}     

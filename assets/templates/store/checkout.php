@@ -26,7 +26,7 @@
         {/if}
         {exp:cartthrob:checkout_form
             cart_empty_redirect="store/basket/"
-            return="account/orders/"
+            return="account/index/"
             id="checkout_form"
             authorized_redirect=""
             failed_redirect=""
