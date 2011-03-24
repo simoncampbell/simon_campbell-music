@@ -215,7 +215,7 @@ $(document).ready(function(){
         if($('body').hasClass('login_register')) {
             
             // Login
-            $('form').validate({
+            $('div.first form').validate({
                 rules: {
                     username: {
                         required: true,
