@@ -79,7 +79,7 @@
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
-                            <label for="newsletter_subcribe">Subscribe to Newsletter</label>
+                            <label class="hide" for="newsletter_subcribe">Subscribe to Newsletter</label>
                             <select name="mcf_newsletter_default">
                             {select_mcf_newsletter_default}
                             <option value="{value}" {selected}>{value}</option>
