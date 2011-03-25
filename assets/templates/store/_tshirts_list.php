@@ -20,6 +20,7 @@
         
         <dl id="definition_links" class="horizontal">
             <dt>Categories</dt>
+            <dd><a href="{pv_site_url}/store/">All</a></dd>
             <dd><a href="{pv_site_url}/store/music/">Music</a></dd>
             <dd><a href="{pv_site_url}/store/posters/">Posters</a></dd>
             <dd class="cur"><a href="{pv_site_url}/store/tshirts/">T-shirts</a></dd>
