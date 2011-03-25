@@ -178,30 +178,162 @@ $(document).ready(function(){
         }
         
     }
-
-    // Contact Form Validation
-    if($("form#freeform").length) {
-        $('form#freeform').validate({
+    
+    // PRODUCT DETAIL GALLERY
+    if ($("body").attr("id") === "product_detail") {
+        $("ul.gallery_grid a, div.gallery_photo a").colorbox();
+    }
+    
+    // FORM VALIDATION
+    
+        // Magic so we can have 'letters only' forms.
+        jQuery.validator.addMethod("accept", function(value, element, param) {
+            return value.match(new RegExp("." + param + "$"));
+        });
+        
+        // Contact
+        if($('form#freeform').length) {
+            $('form#freeform').validate({
+                rules: {
+                    name: {
+                        accept: "[a-zA-Z]+",
+                        required: true,
+                        rangelength: [4, 30]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    message: {
+                        required: true,
+                        rangelength: [15, 250]
+                    }
+                }
+            });
+        }
+        // Login/Register
+        if($('body').hasClass('login_register')) {
+            
+            // Login
+            $('div.first form').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    password: {
+                        required:true,
+                        rangelength: [5, 32]
+                    }
+                }
+            });
+            
+            // Registration
+            $('form#register_form').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required:true,
+                        rangelength: [5, 32]
+                    },
+                    password_confirm: {
+                        equalTo: "#register_form_password"
+                    }
+                }
+            });
+            
+        }
+        // Forgot Password
+        if($('body').hasClass('forgot_password')) {
+            $('form#forgot_password_form').validate({
+               rules: {
+                   email: {
+                       required: true,
+                       email: true
+                   }
+               } 
+            });
+        }
+        // Edit Profile
+        if($('body').hasClass('profile_edit')) {
+            $('form#profile_edit').validate({
+                rules: {
+                    username: {
+                        required: true,
+                        rangelength: [4, 32]
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    mcf_address: {
+                        required: true
+                    },
+                    mcf_city: {
+                        required: true
+                    },
+                    mcf_zip: {
+                        required: true
+                    },
+                    password: {
+                        rangelength: [5, 32]
+                    },
+                    password_confirm: {
+                        equalTo: "#profile-new-password"
+                    }
+                }
+            });
+        }
+        
+        // Checkout Form
+        $('form#checkout_form').validate({
             rules: {
-                name: {
+                mcf_first_name: {
+                    accept: "[a-zA-Z]+",
                     required: true,
-                    rangelength: [4, 30]
+                    rangelength: [1, 32]
+                },
+                mcf_last_name: {
+                    accept: "[a-zA-Z]+",
+                    required: true,
+                    rangelength: [1, 32]
+                },
+                mcf_address: {
+                    required: true,
+                },
+                mcf_city: {
+                    accept: "[a-zA-Z]+",
+                    required: true
+                },
+                mcf_zip: {
+                    required: true,
                 },
                 email: {
                     required: true,
                     email: true
-                },
-                message: {
-                    required: true,
-                    rangelength: [15, 250]
                 }
             }
         });
-    }
+        
+        // Campaign Monitor subscribe
+        $('form.validate_inline').validate();
+        $('div#newsletter_signup form').validate();
     
-    // Campaign Monitor subscribe validation
-    $('form.validate_inline').validate();
-    $('div#newsletter_signup form').validate();
+    // Music detail price adjustments
+    if($('body').hasClass('music_detail')) {
+        
+        $('form select#music_formats').live('change', function() {
+            $('#price strong').html('£' + $(this).find('option:selected').attr('title'));
+        });
+        
+    }
     
     // Email Encoder: Example: <span class="email">name at domainname dot com</span>
     $(function(){

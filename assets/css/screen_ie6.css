@@ -13,7 +13,7 @@ div#navigation_network ul a {
     padding: 12px 4px;
 }
 
-ul#gallery_grid {
+ul.gallery_grid {
     margin-left: -5px;
 }
 div#content_pri,
@@ -45,13 +45,13 @@ div#posts div.post ul.post_meta li.first {
     padding-left: 0;
 }
 
-div#posts p#pagination a {
+p.pagination a {
     background: none;
     display: inline;
     text-decoration: none;
 }
-div#posts p#pagination a:hover,
-div#posts p#pagination a.cur {
+p.pagination a:hover,
+p.pagination a.cur {
     background: none;
     font-weight: bold;
     text-decoration: underline;
@@ -86,4 +86,7 @@ body.thirtysix div#journey ul.social li.facebook a {
 body.thirtysix div#content_sec {
     float: right;
     margin-left: 0;
+}
+body#account_landing #content_pri div.account_details, body#account_landing.fullwidth #content_pri form#account_settings, table {
+    background: none;
 }
