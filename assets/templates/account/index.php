@@ -70,6 +70,8 @@
                     allowed_groups="1|5|6"
                     dynamic="off"
                     form:id="account_settings"
+                    member_id="CURRENT_USER"
+                    password_required="n"
                     return="account"
                     screen_name_password_required="no"
                 }
@@ -77,8 +79,12 @@
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
-                            <label for="newsletter_subcribe">Subscribe to Newsletter</label>
-                            <input type="checkbox" name="newsletter_subcribe" value="yes" {if mcf_newsletter_default == "yes"}checked="checked"{/if}>
+                            <label class="hide" for="newsletter_subcribe">Subscribe to Newsletter</label>
+                            <select name="mcf_newsletter_default">
+                            {select_mcf_newsletter_default}
+                            <option value="{value}" {selected}>{value}</option>
+                            {/select_mcf_newsletter_default}
+                            </select>
                         </div>
                         {!--
                         <div>
@@ -100,11 +106,11 @@
                     author_id="CURRENT_USER"
                     disable="categories|trackbacks|pagination"
                     limit=""
-                    status="Paid|Processing"
+                    status="Paid"
                     weblog="orders"
                 }
                     {if no_results}     
-                    <p>You don't have any order history, etc, etc.</p>
+                    <p>You haven't purchased anything yet.</p>
                     {/if}       
                     {if count == "1"}       
                     <table>

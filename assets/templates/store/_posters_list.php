@@ -37,12 +37,12 @@
                     <p>{title}</p>
                     {cf_products_posters_images limit="1"}
                     {exp:ed_imageresizer
-                        alt=""
-                        cropratio="1:1"
-                        forceWidth="yes"
                         image="{ffm_images_image}"
-                        maxHeight="180"
+                        default="/assets/images/site/bgs/placeholder.gif"
                         maxWidth="180"
+                        maxHeight="180"
+                        cropratio="1:1"
+                        alt=""
                     }
                     {/cf_products_posters_images}
                 </a>
