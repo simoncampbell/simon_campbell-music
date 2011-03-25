@@ -218,6 +218,12 @@ small {
     label em {
 
     }
+    body.checkout form p.notice {
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 12px;
+        margin: 0 0 20px 95px;
+        padding: 8px;
+    }
     label.error {
         background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
         color: rgb(255, 186, 0);
@@ -303,7 +309,7 @@ small {
             border-radius:5px;
         }
         body.checkout div#content_pri input[type="submit"] {
-            margin-left: 248px;
+            margin-left: 95px;
         }
         input[type="submit"]:hover,
         input.submit:hover,
