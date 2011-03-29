@@ -68,11 +68,6 @@
             
             <h2>Media</h2>
             <p>Check these Simon Campbell Music goodies!</p>
-            {!--
-            <ul class="media">
-                <li class="pdf">{lv_contact_presskit_text}</li>
-            </li>
-            --}
             <ul class="media">
                 {exp:weblog:entries
                     weblog="media"
