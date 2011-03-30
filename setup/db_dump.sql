@@ -4,7 +4,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.1.41-3ubuntu12.8)
 # Database: simoncampbell_music
-# Generation Time: 2011-03-29 15:36:11 -0500
+# Generation Time: 2011-03-30 09:27:52 -0500
 # ************************************************************
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -272,7 +272,7 @@ CREATE TABLE `exp_cp_log` (
   `action` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=436 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=437 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_cp_log` WRITE;
 /*!40000 ALTER TABLE `exp_cp_log` DISABLE KEYS */;
@@ -712,7 +712,8 @@ VALUES
 	(432,1,19,'simoncampbell','92.39.196.149',1301300908,'Logged in'),
 	(433,1,1,'jamiepittock','88.97.41.226',1301301298,'Logged in'),
 	(434,1,7,'gregwood','88.97.41.224',1301302295,'Logged in'),
-	(435,1,18,'garrett.winder','173.185.19.245',1301427284,'Logged in');
+	(435,1,18,'garrett.winder','173.185.19.245',1301427284,'Logged in'),
+	(436,1,18,'garrett.winder','173.185.19.245',1301488005,'Logged in');
 
 /*!40000 ALTER TABLE `exp_cp_log` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1375,7 +1376,7 @@ CREATE TABLE `exp_freeform_entries` (
   `message` text NOT NULL,
   PRIMARY KEY (`entry_id`),
   KEY `author_id` (`author_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_entries` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_entries` DISABLE KEYS */;
@@ -1385,7 +1386,8 @@ VALUES
 	(2,1,0,1,'88.97.41.226','freeform_form','contact_form',1296664721,1296664721,'open','Jamie Pittock','jamie@erskinedesign.com','Any underscores this time?'),
 	(3,3,0,0,'82.10.223.13','freeform_form','contact_form',1296752125,1296752125,'open','Greg','hello@gregorywood.co.uk','Testing the form. Simon let me know if you receive this. Greg.'),
 	(4,3,0,0,'81.141.82.206','freeform_form','contact_form',1299413746,1299413746,'open','Mr Toby Gower','toby.gower@yahoo.com','Hello,\nCan you please confirm, either way, that the ThirtySix Album is to be realeased as a CD - and to download??  I ask because I prefer to collect CD\\\'s ;)\n\nWith thanks,\n\nToby Gower'),
-	(5,3,0,0,'92.16.41.244','freeform_form','contact_form',1299961699,1299961699,'open','Andy Comstive','a.comstive@burnley.ac.uk','Just wandered into the Bridge for a pint on Friday and was blown away! I just kept thinking \\\'how did they land a act like this in here\\\' Fantastic, best band ive seen in ages, cant wait to se you again.\nCheers');
+	(5,3,0,0,'92.16.41.244','freeform_form','contact_form',1299961699,1299961699,'open','Andy Comstive','a.comstive@burnley.ac.uk','Just wandered into the Bridge for a pint on Friday and was blown away! I just kept thinking \\\'how did they land a act like this in here\\\' Fantastic, best band ive seen in ages, cant wait to se you again.\nCheers'),
+	(6,3,0,0,'195.194.86.150','freeform_form','contact_form',1301486957,1301486957,'open','Andy','a.comstive@burnley.ac.uk','Hi, Is your album available as hard copy anywhere else?\nI am trying to sign up on the store page, but its not having any of the e-mail addresses I give it, so I have given up after too many atempts! Very frustrating.');
 
 /*!40000 ALTER TABLE `exp_freeform_entries` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1438,13 +1440,14 @@ CREATE TABLE `exp_freeform_params` (
   `entry_date` int(10) NOT NULL,
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=486 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=493 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_freeform_params` WRITE;
 /*!40000 ALTER TABLE `exp_freeform_params` DISABLE KEYS */;
 INSERT INTO `exp_freeform_params` (`params_id`,`entry_date`,`data`)
 VALUES
-	(485,1301427144,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
+	(492,1301486957,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}'),
+	(491,1301486819,'a:18:{s:15:\"require_captcha\";s:2:\"no\";s:9:\"form_name\";s:13:\"freeform_form\";s:10:\"require_ip\";s:0:\"\";s:11:\"ee_required\";s:18:\"name|email|message\";s:9:\"ee_notify\";s:22:\"mail@simoncampbell.com\";s:10:\"recipients\";s:1:\"n\";s:15:\"recipient_limit\";s:2:\"10\";s:17:\"static_recipients\";b:0;s:22:\"static_recipients_list\";a:0:{}s:18:\"recipient_template\";s:16:\"default_template\";s:13:\"discard_field\";s:0:\"\";s:15:\"send_attachment\";s:0:\"\";s:15:\"send_user_email\";s:3:\"yes\";s:20:\"send_user_attachment\";s:0:\"\";s:19:\"user_email_template\";s:17:\"contact_form_user\";s:8:\"template\";s:12:\"contact_form\";s:20:\"prevent_duplicate_on\";s:0:\"\";s:11:\"file_upload\";s:0:\"\";}');
 
 /*!40000 ALTER TABLE `exp_freeform_params` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1524,7 +1527,7 @@ CREATE TABLE `exp_global_variables` (
   PRIMARY KEY (`variable_id`),
   KEY `variable_name` (`variable_name`),
   KEY `site_id` (`site_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_global_variables` WRITE;
 /*!40000 ALTER TABLE `exp_global_variables` DISABLE KEYS */;
@@ -1541,6 +1544,7 @@ VALUES
 	(32,1,'lv_services_master_rss','http://feeds.feedburner.com/SimonCampbellMusic',0),
 	(35,1,'lv_featured_homepage','92|87|73|130',0),
 	(36,1,'lv_comments_toggle','On',0),
+	(40,1,'lv_accounts_pending_intro','',0),
 	(37,1,'lv_contact_booking','<p>If you want to get in touch with Simon&rsquo;s record company for booking details, contact Suzy:</p>\n<address>\n<strong>Suzy Starlite</strong><br />\nSupertone Records<br />\n<a href=\"mailto:suzy@supertonerecords.com\">suzy@supertonerecords.com</a><br />\n+44 7624 245881<br />\n</address>',0),
 	(38,1,'lv_featured_sidebar','92',0);
 
@@ -1737,7 +1741,7 @@ CREATE TABLE `exp_low_variable_groups` (
   `group_notes` text NOT NULL,
   `group_order` int(4) unsigned NOT NULL,
   PRIMARY KEY (`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_low_variable_groups` WRITE;
 /*!40000 ALTER TABLE `exp_low_variable_groups` DISABLE KEYS */;
@@ -1748,7 +1752,8 @@ VALUES
 	(3,1,'Journal','',0),
 	(4,1,'Homepage','',0),
 	(5,1,'Comments','',0),
-	(6,1,'Featured','',0);
+	(6,1,'Featured','',0),
+	(7,1,'Accounts','',0);
 
 /*!40000 ALTER TABLE `exp_low_variable_groups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -1785,6 +1790,7 @@ VALUES
 	(30,1,'Facebook URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(31,1,'Twitter URL','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(32,1,'Master RSS feed','','low_text_input','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
+	(40,7,'Pending introduction','This message appears on the pending page during registration.','low_textarea','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(35,6,'Homepage featured content','Choose the 4 entries you want to promote on the homepage by dragging them to the right. They will be displayed in the order you select.','low_select_entries','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:4:{s:7:\"weblogs\";a:1:{i:0;s:2:\"29\";}s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:9:\"drag-list\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(36,5,'Turn Disqus on/off','','low_select','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:4:{s:7:\"options\";s:6:\"On\nOff\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";s:8:\"multiple\";s:0:\"\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
 	(37,2,'Booking information','','low_textarea','a:10:{s:12:\"low_checkbox\";a:1:{s:5:\"label\";s:0:\"\";}s:18:\"low_checkbox_group\";a:2:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";}s:15:\"low_radio_group\";a:1:{s:7:\"options\";s:0:\"\";}s:10:\"low_select\";a:3:{s:7:\"options\";s:0:\"\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:21:\"low_select_categories\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_entries\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:16:\"low_select_files\";a:3:{s:6:\"upload\";s:1:\"0\";s:9:\"separator\";s:7:\"newline\";s:15:\"multi_interface\";s:6:\"select\";}s:18:\"low_select_weblogs\";a:3:{s:8:\"multiple\";s:1:\"y\";s:9:\"separator\";s:4:\"pipe\";s:15:\"multi_interface\";s:6:\"select\";}s:14:\"low_text_input\";a:3:{s:9:\"maxlength\";s:0:\"\";s:4:\"size\";s:6:\"medium\";s:7:\"pattern\";s:0:\"\";}s:12:\"low_textarea\";a:1:{s:4:\"rows\";s:1:\"3\";}}',0,'y','n'),
@@ -2065,7 +2071,9 @@ VALUES
 	(19,'','','','','','','','','','','','','','','','','','',''),
 	(20,'','','','','','','','','','','','','','','','','','',''),
 	(21,'','','','','','','','','','','','','','','','','','','No, don\\\'t subscribe me to the newsletter'),
-	(22,'','','','','','','','','','','','','','','','','','','');
+	(22,'','','','','','','','','','','','','','','','','','',''),
+	(23,'','','','','','','','','','','','','','','','','','',''),
+	(24,'','','','','','','','','','','','','','','','','','','');
 
 /*!40000 ALTER TABLE `exp_member_data` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2246,7 +2254,9 @@ VALUES
 	(19,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(20,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
 	(21,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
-	(22,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
+	(22,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
+	(23,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0),
+	(24,'l',0,'l',0,'n',0,'r',0,'n',0,'r',0,'r',0,'n',0);
 
 /*!40000 ALTER TABLE `exp_member_homepage` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2358,7 +2368,7 @@ CREATE TABLE `exp_members` (
   KEY `group_id` (`group_id`),
   KEY `unique_id` (`unique_id`),
   KEY `password` (`password`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `exp_members` WRITE;
 /*!40000 ALTER TABLE `exp_members` DISABLE KEYS */;
@@ -2371,11 +2381,13 @@ VALUES
 	(10,1,0,0,0,'wil.linssen','Wil Linssen','431f3be4311312d8f6797650aa6b68dee3400e0f','2672d99660bfd02f706205db7408f38ebc4fd625','','wil@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1265121233,1276523330,1278090933,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(16,1,0,0,0,'jameswillock','James Willock','45a94bd18a0f1473c227f0a9005d22ea0164e344','3662e62db7aa6661e450aa939796204b70e20828','','james@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1278090813,1278091072,1278091072,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4',0,0),
 	(17,1,0,0,0,'philhowell','Phil Howell','51b945d3ba3c297c10c16f25fa1c04eaa66302c7','282ff1f0c069d5e3ee77946e297c5fbfaa4f2a54','','phil.howell@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'127.0.0.1',1292409816,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
-	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1301199810,1301427285,0,0,0,0,1301075588,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
+	(18,1,0,0,0,'garrett.winder','Garrett Winder','09b427cf5f4db125f294bf49ea0cdcc8ba9ff8c7','4540bd829211b44f0d8ea3c824d61012ac38423c','','garrett@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296232888,1301428083,1301491307,0,0,0,0,1301075588,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1\nExtensions|C=admin&M=utilities&P=extensions_manager|3\nFieldtypes|C=admin&M=utilities&P=fieldtypes_manager|4\nSearch Log|C=admin&M=utilities&P=view_search_log|5',0,0),
 	(19,1,0,0,0,'simoncampbell','Simon Campbell','f1818d8a9fdfe11e67602d39667f33571fa5ad0f','8e0d2a4c85e783648727c20d9d148bf43937e280','','simon@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'88.97.41.226',1296657072,1301303145,1301328749,56,0,0,0,1301317807,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','Snippets|C=modules&M=Low_variables|1',0,0),
 	(20,5,0,0,0,'test.buyer','Willy Nelson','cf5e574d7f914533ff07f06b10fbe29d9b9758a4','f151ca18028001895509ea521fc3cb4112997c91','','buyer_1299106426_per@erskinedesign.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'71.30.187.8',1299191920,1301098582,1301098582,0,0,0,0,1301098671,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','us','','','','','28','','18','','',0,0),
 	(21,5,0,0,0,'chrisfinlay','chrisfinlay','11e2e7b514f0abab4e0e35f1e85505edef0e16c8','6df6b5b57e9abbd8a39bff47528eeab21883966d','','margera2002@hotmail.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'87.254.89.64',1301254357,1301254963,1301381969,1,0,0,0,1301254647,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','','','','','','28','','18','','',0,0),
-	(22,5,0,0,0,'simontest','simontest','8b892d94935353a06cf89f97116a2e88042c14d5','5ffc3dc598265e0f937066ff36bdbafdb80b7edc','','simonjcampbell@gmail.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'92.39.196.149',1301322893,1301324289,1301326698,1,0,0,0,1301326698,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','','','','','','28','','18','','',0,0);
+	(22,5,0,0,0,'simontest','simontest','8b892d94935353a06cf89f97116a2e88042c14d5','5ffc3dc598265e0f937066ff36bdbafdb80b7edc','','simonjcampbell@gmail.com','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'92.39.196.149',1301322893,1301324289,1301326698,1,0,0,0,1301326698,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','','','','','','28','','18','','',0,0),
+	(23,4,0,0,0,'andy Comstive','andy Comstive','bf46eb10a6694be1a770a575c486bd85cba9a413','6b3ebdb180671299b2846b89b9c811d94da5348e','kBdvtSdvGF','andy.com@talktalk.net','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'195.194.86.150',1301486121,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','','','','','','28','','18','','',0,0),
+	(24,4,0,0,0,'Andy C','Andy C','bf46eb10a6694be1a770a575c486bd85cba9a413','08d068c423c68d74cc5c05a3ea78230308993062','hEBYAS7O8n','a.comstive@burnley.ac.uk','','','','',0,0,0,'','','','','','','',0,0,'',0,0,'',0,0,'',0,'y',0,0,'195.194.86.150',1301486242,0,0,0,0,0,0,0,0,0,0,'n','y','y','y','y','y','y','y','','','n','n','','','','','','28','','18','','',0,0);
 
 /*!40000 ALTER TABLE `exp_members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2834,7 +2846,8 @@ LOCK TABLES `exp_password_lockout` WRITE;
 /*!40000 ALTER TABLE `exp_password_lockout` DISABLE KEYS */;
 INSERT INTO `exp_password_lockout` (`login_date`,`ip_address`,`user_agent`,`username`)
 VALUES
-	(1301327871,'92.39.196.149','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; ','simontext');
+	(1301327871,'92.39.196.149','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; ','simontext'),
+	(1301490279,'195.194.86.150','Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1;','Andycom');
 
 /*!40000 ALTER TABLE `exp_password_lockout` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3053,46 +3066,66 @@ LOCK TABLES `exp_security_hashes` WRITE;
 /*!40000 ALTER TABLE `exp_security_hashes` DISABLE KEYS */;
 INSERT INTO `exp_security_hashes` (`date`,`ip_address`,`hash`)
 VALUES
-	(1301385547,'128.30.52.71','e6266752cfa92c224bb818bd407984cc60133b91'),
-	(1301385547,'128.30.52.71','439bd3cb180b8159fcdf1c87d235c6c8bb1e2e09'),
-	(1301385540,'128.30.52.70','542887e351a44f8a117bc588c05c60d34a9dd966'),
-	(1301385540,'128.30.52.70','7ee365da055b1ce043707b86de63bd806c1d053c'),
-	(1301385539,'77.87.179.62','ea06cc838cd3d3a73a996683a8ba6a482f86f333'),
-	(1301385539,'77.87.179.62','89de04e2410e8e7b72bc5815350c21bff721b101'),
-	(1301383189,'84.246.205.199','0e2e98d9c6d5bf3a37a0887500afad8d5e644b6a'),
-	(1301383028,'84.246.205.199','1abaf5fe4c54ce3cb3f47bbf556cc5e4dbf9532d'),
-	(1301430920,'173.185.19.245','62416c2278f7f6e77513061e5b862c45a11b879e'),
-	(1301430911,'173.185.19.245','cf747a5efd66bf48812ba368313ca7b49882187b'),
-	(1301430908,'173.185.19.245','c540fb8c6d00adea6e3c75cee1fef1569e5e36f4'),
-	(1301430898,'173.185.19.245','ec07c92c027fb6365187693b512a176d657af9df'),
-	(1301430891,'173.185.19.245','69800a89a61d6cee97c41e4214827047be29225a'),
-	(1301430888,'173.185.19.245','3b803288d5297408695e0ec28386691c58c01681'),
-	(1301430886,'173.185.19.245','bba6783284cf2b6b6b00a4a26472d8e6505882b2'),
-	(1301430883,'173.185.19.245','c6cf30273748ae5fc5b3151aaaa32163c660145d'),
-	(1301430804,'82.20.38.138','d90427f3b176392f928883a72b9a807ee8781fbc'),
-	(1301430804,'82.20.38.138','2bfe4e6cf89be6b67084493c890c0cb3cf4057d9'),
-	(1301430802,'82.20.38.138','eb22289fe88cd2f829cc595b0e429b17e53c26f6'),
-	(1301430802,'82.20.38.138','f821e2ebbec252637baee95b86abeef3d2da015d'),
-	(1301430744,'82.20.38.138','b1bd39b14daa544455a38c91ec6e066134aca74a'),
-	(1301418931,'82.12.229.136','fdd503f6262a699719eb09994d4cb30b2b0379ea'),
-	(1301418187,'67.195.110.163','45dc82efc69b0a392ea0a7e5e702c3118f0afcaa'),
-	(1301415716,'92.39.196.149','2f3f22ea679173db2789f703494d11ce1018cf4a'),
-	(1301410523,'92.39.196.149','61574a2a6d586fbca81f2168115f3c6b3f2721ef'),
-	(1301408783,'70.64.112.184','2dde6fd14509a230517eedc7dbf9aba344570fe3'),
-	(1301408727,'70.64.112.184','c946a869fbb326475fbd3d3c49e1f5a508dc26bb'),
-	(1301404805,'86.8.50.108','b69fc64125b5f27c858ba9a4186454c79576f231'),
-	(1301401207,'46.208.86.148','18ab41eace6f74c43d2dd0376d2eb72f8b7ab50f'),
-	(1301401168,'46.208.86.148','a75867f79b3f876984a0ffc80e3c66a8d3b1700f'),
-	(1301399200,'92.39.196.149','5ffa73df1d854fe285e574e4f6626b5cde817314'),
-	(1301398023,'129.215.149.96','8f57095ad631d86b34ae0d20d035c1defd241004'),
-	(1301397856,'129.215.149.96','f31a937f531063294416d42dc5256c15a187f723'),
-	(1301393288,'209.191.87.216','156a5424a99591fedff66b7307b91ce5a76256d8'),
-	(1301393258,'209.191.87.216','d71e6e7d1cea157362500e67ac7691993e2aa114'),
-	(1301389071,'77.107.177.11','1f9b5dd2b5c5eb094019bb53f643bb82b17c2c42'),
-	(1301389067,'77.107.177.11','7af55a4f11016af504aaf52738639ebabd8be727'),
-	(1301388934,'77.107.177.11','a4a6b04913a1ad208700c69d4e515d7fac1c026b'),
-	(1301388915,'77.107.177.11','dd853df87ae95bcfaf17a402b97f1e7be0edca2b'),
-	(1301385569,'77.87.179.62','5409e9d4caec395acacc6bb852cce3f9bc5661ee');
+	(1301489662,'195.194.86.150','ae7d7d6077b06fe38d57f42686caea0a946576f7'),
+	(1301489678,'195.194.86.150','74c100f8b98e44547c7c6aa65a8c8a6c50f1c284'),
+	(1301495202,'173.185.19.245','24208709d0455c5e2fcace347a02172ae546e10f'),
+	(1301495199,'173.185.19.245','1726adc85beed15177896ffb21e6d5bd3da22d2a'),
+	(1301495193,'173.185.19.245','2ae05c297e7355ef88073a048df199316a3d9a17'),
+	(1301495188,'173.185.19.245','91614e8a2527da6c74ba9cb04d73bbe7e7a4d679'),
+	(1301489644,'195.194.86.150','f00d5f76f3e5970a182f0c9251620a2bea862c3b'),
+	(1301495186,'173.185.19.245','35bcb2711656d171746b7dbde590d9ef115c4a22'),
+	(1301495173,'173.185.19.245','b910737c807eb13fa557b2040901e3c1bfb0a786'),
+	(1301495162,'173.185.19.245','9d6afb67b6ed658a475b5b3e23c0aeab0a97e1c8'),
+	(1301495059,'173.185.19.245','56e5e3344cd3238426a11c8764dc9cb165b05641'),
+	(1301494985,'173.185.19.245','4d2d1728ff8015139895f68844a7658302eb10b2'),
+	(1301494980,'173.185.19.245','58e35a164d82f209ff7b16691b3a3761b493167f'),
+	(1301494941,'173.185.19.245','50bb9578d94970c70fa74af23d01420965d286ce'),
+	(1301494910,'173.185.19.245','7ed58979d915f2997ba4934f9dc90ba633e5e5e7'),
+	(1301493583,'173.185.19.245','1e3abd08aa02503f37c9b4ede0159999bde30f4a'),
+	(1301493570,'173.185.19.245','a905f758aa6127c9160304dfbf076639205c81ef'),
+	(1301493567,'173.185.19.245','da19a78237601d3ea77cacd559219981105707e5'),
+	(1301493560,'173.185.19.245','d0baabaf6ca188ab54c4ffbe7145c62371925339'),
+	(1301493481,'173.185.19.245','46921e1e82dbc7113f72411391795855998e546d'),
+	(1301493370,'173.185.19.245','add1fa561d3b8e0aec0e697e95174a4bef97fa81'),
+	(1301493370,'173.185.19.245','1aa81ff09cc45f2c26b02c6bef78ff2d99aca54e'),
+	(1301493364,'173.185.19.245','8d2a3457e2cbeed552fc3150c40a1b97071e3446'),
+	(1301493362,'173.185.19.245','1d08c95f4e1eaa73849cced8f7868e6f17e2b5c5'),
+	(1301492851,'92.39.196.149','dd869247ff42e472bda2863c51c036100d073f0c'),
+	(1301492843,'92.39.196.149','e634c9e0abb2a81093dba2d1682182d9db5f8688'),
+	(1301491616,'173.185.19.245','c842938f36b9b63bee0e0fd409ad429f16bc127d'),
+	(1301491616,'173.185.19.245','a1f6a395cfd18c9973e594444143180b614c3674'),
+	(1301491609,'173.185.19.245','cf2f791454879e497304bae43b84e2388f972d7b'),
+	(1301491605,'173.185.19.245','d8476d199741559c57a45cd460211513b5e77b18'),
+	(1301491603,'173.185.19.245','557d5687d572c3f323100cfa1a727b35df39127b'),
+	(1301490557,'195.194.86.150','4773bdd1ec86f525ce68a199c93e9d5a02a96836'),
+	(1301490390,'195.194.86.150','023a6a5b41c405131ac9693d2b6be41687561ebb'),
+	(1301490390,'195.194.86.150','8ddfa97b5b2f3e9a5b6f2f00e756d4410ca0e4b3'),
+	(1301490353,'195.194.86.150','89ff9710ef63a27f0630b89b50250fe46a106a23'),
+	(1301490353,'195.194.86.150','a97c30d5a2a38480026d2efe766dc66b24f0be9f'),
+	(1301490321,'195.194.86.150','a933542dfab426a31a79cb6bac383575a74a2898'),
+	(1301490321,'195.194.86.150','a3dc47baf7155efb036f0ed00406a3b14248cff0'),
+	(1301490283,'195.194.86.150','29a05776eb2ca67f28e9ffd8595445b5ef5cc0cb'),
+	(1301490283,'195.194.86.150','a91dbbcb8fecacee7968ee312ff062527a4cecb4'),
+	(1301490267,'195.194.86.150','b7b90d7888b8275d563a8d2ea472d9ce50ae1fb4'),
+	(1301490267,'195.194.86.150','6111492b89a3725dcf12ad54f48e693ce25eb628'),
+	(1301490211,'195.194.86.150','1a25274a658b51500cdf713a5574c71167f67ee4'),
+	(1301490211,'195.194.86.150','44fb104a3fae2d1636b64ea2be995ae8a0648bc8'),
+	(1301490140,'195.194.86.150','7fff6c42486f384bcdbb22d2d76c584808dc902b'),
+	(1301490140,'195.194.86.150','5fcd22cf322fdf9156392a6c7edf846c03a9d916'),
+	(1301490095,'195.194.86.150','b62fb3cf3e511cdfbf16a33b4660f7417a71eab2'),
+	(1301490095,'195.194.86.150','c1ddedb4ab237fd4ebb635e903c1c730b36c3397'),
+	(1301490089,'195.194.86.150','115a2b837525295f38365e7c3e1d0fee7adeaac6'),
+	(1301490080,'195.194.86.150','fb29cf3481fe7f7bab25c2e835cbf4c2b5a0c6b6'),
+	(1301490074,'195.194.86.150','de20cb3229ab05b77d1f5e9384f720f14122267b'),
+	(1301489893,'195.194.86.150','7c0b6921d3ab83ff719d9e0dde57d50f22c2190d'),
+	(1301489893,'195.194.86.150','7079bc3d6c601ab31799761e19071ca26955d4f4'),
+	(1301489843,'195.194.86.150','39c0841a55b453d95c0ec2d2d8ac5f097bc4c9d2'),
+	(1301489843,'195.194.86.150','534f2babfab378ed321e895760f91df5c6580f81'),
+	(1301489814,'195.194.86.150','779974ad6b09ff2fc6650746b74fe3b104b7eaca'),
+	(1301489776,'195.194.86.150','208179acc7f1c5f59531b86f7118c1828165f908'),
+	(1301489776,'195.194.86.150','668c5fbb8821ebfbd6cdc5e75c38e2e70cc5b546'),
+	(1301489722,'195.194.86.150','29c25a908c63d04d67c969c61cfb48c9440acf87'),
+	(1301489722,'195.194.86.150','f428851fafd456c5cee467cade7c36edfe900f73');
 
 /*!40000 ALTER TABLE `exp_security_hashes` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3120,7 +3153,7 @@ LOCK TABLES `exp_sessions` WRITE;
 /*!40000 ALTER TABLE `exp_sessions` DISABLE KEYS */;
 INSERT INTO `exp_sessions` (`session_id`,`site_id`,`member_id`,`admin_sess`,`ip_address`,`user_agent`,`last_activity`)
 VALUES
-	('c898cece73403c4e09608dfeed5f2915b7d20955',1,18,1,'173.185.19.245','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; ',1301427321);
+	('9330655c1ebe4150ddac250e9fcd009066526751',1,18,1,'173.185.19.245','Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; ',1301491602);
 
 /*!40000 ALTER TABLE `exp_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3698,7 +3731,9 @@ LOCK TABLES `exp_user_activation_group` WRITE;
 INSERT INTO `exp_user_activation_group` (`member_id`,`group_id`)
 VALUES
 	(21,5),
-	(22,5);
+	(22,5),
+	(23,5),
+	(24,5);
 
 /*!40000 ALTER TABLE `exp_user_activation_group` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -3788,14 +3823,26 @@ CREATE TABLE `exp_user_params` (
   `data` text NOT NULL,
   PRIMARY KEY (`params_id`),
   KEY `hash` (`hash`)
-) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=91 DEFAULT CHARSET=utf8;
 
 LOCK TABLES `exp_user_params` WRITE;
 /*!40000 ALTER TABLE `exp_user_params` DISABLE KEYS */;
 INSERT INTO `exp_user_params` (`params_id`,`hash`,`entry_date`,`data`)
 VALUES
-	(72,'sxEivsdfLnZNjuvHG4Ks1Am5d',1301427203,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
-	(71,'SljTYWAgVTShGvHBz9dRt00zV',1301427201,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}');
+	(89,'nXdabY6osP5Dsb7bBSGO9Rs0w',1301486753,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(88,'4RDm4J1zL7J48sk0OQelKDnpN',1301486721,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(87,'GMKgVe5VCGWYwXtkrwriBUuAx',1301486683,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(86,'LcDwKbDMT32X4sjLjtCScaY2u',1301486667,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(85,'e6DjZuo5pvy8rhgE18ObXvKXn',1301486611,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(84,'6ymjyalnUJUO99kzEJPd75sRa',1301486540,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(83,'oxXPCrp24lOjwp8hvkH1aCsaJ',1301486495,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(82,'h8dUI8l3hTmm0cBwPLIP88cWI',1301486293,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(81,'H8at0ksiWKgCdeEIviT2zqK1x',1301486243,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(80,'EUtgjXXtWfFxHBT8pwZlxuusM',1301486214,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(79,'oWxdXF9atpMnkgZ7E9D1rHFJc',1301486176,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(78,'tUVDazZ75Vc55ZjN8moVGtlcs',1301486122,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(77,'c2mn6rIlpYJtzOXpaLRHHMp9M',1301486078,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}'),
+	(90,'3dRDqSZKfqEdSsoLdfcf5CKoh',1301486790,'a:11:{s:8:\"group_id\";s:1:\"5\";s:6:\"notify\";s:0:\"\";s:20:\"screen_name_override\";s:0:\"\";s:16:\"exclude_username\";s:0:\"\";s:11:\"require_key\";s:0:\"\";s:15:\"key_email_match\";s:0:\"\";s:3:\"key\";s:0:\"\";s:13:\"secure_action\";s:2:\"no\";s:14:\"admin_register\";s:3:\"yes\";s:8:\"required\";s:40:\"username|email|password|password_confirm\";s:15:\"override_return\";s:7:\"account\";}');
 
 /*!40000 ALTER TABLE `exp_user_params` ENABLE KEYS */;
 UNLOCK TABLES;
