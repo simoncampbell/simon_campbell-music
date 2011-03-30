@@ -3,7 +3,7 @@
     body_id=""
     section=""
     {!-- LG BETTER META OPTIONS BELOW --}
-    title="Newsletter"
+    title="Almost there"
     title_suffix=""   
     title_prefix=""   
     description=""
