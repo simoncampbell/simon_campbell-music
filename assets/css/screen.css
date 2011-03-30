@@ -1927,6 +1927,9 @@ div#footer p.credit {
     
     /* CONTENT SEC: Widget - Store Block
     --------------------------------------------- */
+    #store_block {
+        position: relative;
+    }
     #store_block ul.item_listing {
         margin-bottom: 15px;
     }
@@ -1934,11 +1937,24 @@ div#footer p.credit {
         float: right;
         margin-top: -12px;
     }
+    #store_block a {
+        text-decoration:none;
+    }
     #store_block a img {
         border: 1px solid rgb(75, 75, 75);
     }
     #store_block a:hover img {
         border: 1px solid rgb(95, 95, 95);
+    }
+    #store_block small {
+        background:rgba(0, 0, 0, 0.8);
+        bottom:16px;
+        display:block;
+        left:16px;
+        padding:5px 0;
+        position:absolute;
+        text-align:center;
+        width:268px;
     }
     
     /* CONTENT SEC: Widget - Payments
