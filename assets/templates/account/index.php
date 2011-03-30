@@ -214,8 +214,8 @@
                 form:class=""
                 form:id="register_form"
                 group_id="5"
-                override_return="account"
-                return="account"
+                override_return="account/pending"
+                return="account/pending"
                 required="username|email|password|password_confirm"
             }
             <fieldset>
