@@ -179,7 +179,7 @@
         <div class="first">
             <h3>Returning customer</h3>
             {exp:member:login_form 
-                return="account/index"
+                return="store"
             }
                 <fieldset>
                     <div>
