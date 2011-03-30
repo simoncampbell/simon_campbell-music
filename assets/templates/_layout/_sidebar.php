@@ -80,7 +80,7 @@
                 </li>
         {if count == total_results}        
             </ul>
-            <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events on Facebook</a></p>
+            <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?sk=events">See all events on Facebook</a></p>
         </div> <!-- // #tour_dates -->
         {/if}
     {/exp:weblog:entries}
