@@ -16,7 +16,7 @@
     
     <div id="content_pri">
         
-        <h2>Account pending</h2>
+        <h2>Almost there</h2>
         {exp:low_variables:parse var="lv_accounts_pending_intro" format="textile"}
         
     </div> <!-- // #content_pri -->
