@@ -86,17 +86,18 @@
     {/exp:weblog:entries}
     
     {if lv_featured_sidebar_store != ""}    
+    {exp:weblog:entries
+        weblog="products_music|products_posters|products_tshirts"
+        limit="1"
+        entry_id="{lv_featured_sidebar_store}"
+        disable="member_data|trackbacks|categories"
+        orderby=""
+        sort=""
+        dynamic="off"
+    }
+    {if segment_3 != url_title}
     <div id="store_block" class="widget">
         <h2>From the store</h2>
-        {exp:weblog:entries
-            weblog="{weblog_short_name}"
-            limit="1"
-            entry_id="{lv_featured_sidebar_store}"
-            disable="member_data|trackbacks|categories"
-            orderby=""
-            sort=""
-            dynamic="off"
-        }
         {if weblog_short_name == 'products_music'}  
         <a href="{pv_site_url}/store/music/{url_title}/">
             {cf_products_music_images limit="1"}
@@ -136,8 +137,9 @@
             <small>{title}</small>
         </a>
         {/if}   
-        {/exp:weblog:entries}
     </div> <!-- // #store_block -->
+    {/if}
+    {/exp:weblog:entries}
     {/if}   
     
     <div id="payments_block" class="widget">
