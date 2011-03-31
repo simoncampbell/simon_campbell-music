@@ -175,7 +175,9 @@
         {/if}
         
         {if logged_out}
-        <p>To purchase items, please log in or create an account.</p>
+        <p>
+            To purchase, please log on, or create a new account. As an account holder, you will have priority on new items and access to exclusive content that will be released from time to time.
+        </p>
         <div class="first">
             <h3>Returning customer</h3>
             {exp:member:login_form 

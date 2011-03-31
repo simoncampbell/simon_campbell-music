@@ -1664,8 +1664,8 @@ div#footer p.credit {
         }
         
         body#account_landing div#content_pri > p {
-            line-height: 1;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 30px;
         }
         body#account_landing div#content_pri div.half:first-of-type {
             min-height: 245px;
