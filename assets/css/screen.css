@@ -131,6 +131,7 @@ hr {
 blockquote {
     padding:10px;
     margin-bottom:10px;
+    overflow:hidden;
     background:rgba(255, 255, 255, 0.1);
 }
 blockquote:nth-child(odd) {
