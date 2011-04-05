@@ -146,6 +146,10 @@ blockquote cite a {
     font-style:normal;
 }
 
+    div.post blockquote {
+        background:transparent !important;
+    }
+
 code {
 
 }
