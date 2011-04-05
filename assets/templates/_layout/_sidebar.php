@@ -80,50 +80,67 @@
                 </li>
         {if count == total_results}        
             </ul>
-            <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?v=app_2344061033">See all events on Facebook</a></p>
+            <p class="more"><a href="http://www.facebook.com/SimonCampbellBand?sk=events">See all events on Facebook</a></p>
         </div> <!-- // #tour_dates -->
         {/if}
     {/exp:weblog:entries}
     
-    {!-- hiding until the next release
-    
+    {if lv_featured_sidebar_store != ""}    
+    {exp:weblog:entries
+        weblog="products_music|products_posters|products_tshirts"
+        limit="1"
+        entry_id="{lv_featured_sidebar_store}"
+        disable="member_data|trackbacks|categories"
+        orderby=""
+        sort=""
+        dynamic="off"
+    }
+    {if segment_3 != url_title}
     <div id="store_block" class="widget">
-        <!-- LOGGED OUT -->
         <h2>From the store</h2>
-        <a href="#">
-            <img src="{pv_assets_url}/images/content/widget_store.jpg" width="268" height="230" alt="ThirtySix album t-shirt">
+        {if weblog_short_name == 'products_music'}  
+        <a href="{pv_site_url}/store/music/{url_title}/">
+            {cf_products_music_images limit="1"}
+            {exp:ed_imageresizer 
+                maxWidth="268"
+                forceWidth="yes"
+                image="{ffm_images_image}"
+                alt=""
+            }
+            {/cf_products_music_images}
+            <small>{title}</small>
         </a>
-        <!-- LOGGED IN -->
-        <ul class="item_listing">
-            <li>
-                <a href="#">
-                    <h3>ThirtySix digital download</h3>
-                    <p><strong>£8.00</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Album art t-shirt</h3>
-                    <p><strong>£12.00</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Poster</h3>
-                    <p><strong>£9.99</strong></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <h3>Sub-total</h3>
-                    <p><strong>£39.99</strong> + shipping</p>
-                </a>
-            </li>
-        </ul>
-        <p class="more">
-            <span class="hide">View </span><a href="#">Your basket</a> <span class="hide">or </span><a class="button" href="#">Go to checkout &rsaquo;&rsaquo;</a>
-        </p>
+        {/if}   
+        {if weblog_short_name == 'products_posters'}    
+        <a href="{pv_site_url}/store/posters/{url_title}/">
+            {cf_products_posters_images limit="1"}
+            {exp:ed_imageresizer 
+                maxWidth="268"
+                forceWidth="yes"
+                image="{ffm_images_image}"
+                alt=""
+            }
+            {/cf_products_posters_images}
+            <small>{title}</small>
+        </a>
+        {/if}   
+        {if weblog_short_name == 'products_tshirts'}    
+        <a href="{pv_site_url}/store/tshirts/{url_title}/">
+            {cf_products_tshirts_images limit="1"}
+            {exp:ed_imageresizer 
+                maxWidth="268"
+                forceWidth="yes"
+                image="{ffm_images_image}"
+                alt=""
+            }
+            {/cf_products_tshirts_images}
+            <small>{title}</small>
+        </a>
+        {/if}   
     </div> <!-- // #store_block -->
+    {/if}
+    {/exp:weblog:entries}
+    {/if}   
     
     <div id="payments_block" class="widget">
         <h2>Payments</h2>
@@ -135,8 +152,5 @@
             <li><img src="{pv_assets_url}/images/site/icons/paypal.jpg" width="28" height="18" alt="Paypal"></li>
         </ul>
     </div> <!-- // #payments_block -->
-    
-    --}
-
     
 </div> <!-- // #content_sec -->
