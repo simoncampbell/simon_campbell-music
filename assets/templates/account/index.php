@@ -79,7 +79,7 @@
                     <fieldset>
                         <div>
                             <strong>Newsletter</strong>
-                            <label for="newsletter_subcribe">Subscribe to Newsletter</label>
+                            <label class="hide" for="newsletter_subcribe">Subscribe to Newsletter</label>
                             <select name="mcf_newsletter_default">
                             {select_mcf_newsletter_default}
                             <option value="{value}" {selected}>{value}</option>
@@ -106,7 +106,7 @@
                     author_id="CURRENT_USER"
                     disable="categories|trackbacks|pagination"
                     limit=""
-                    status="Paid|Processing"
+                    status="Paid"
                     weblog="orders"
                 }
                     {if no_results}     
@@ -175,11 +175,13 @@
         {/if}
         
         {if logged_out}
-        <p>To purchase items, please log in or create an account.</p>
+        <p>
+            To purchase, please log on, or create a new account. As an account holder, you will have priority on new items and access to exclusive content that will be released from time to time.
+        </p>
         <div class="first">
             <h3>Returning customer</h3>
             {exp:member:login_form 
-                return="account/index"
+                return="store"
             }
                 <fieldset>
                     <div>
@@ -214,8 +216,8 @@
                 form:class=""
                 form:id="register_form"
                 group_id="5"
-                override_return="account"
-                return="account"
+                override_return="account/pending"
+                return="account/pending"
                 required="username|email|password|password_confirm"
             }
             <fieldset>

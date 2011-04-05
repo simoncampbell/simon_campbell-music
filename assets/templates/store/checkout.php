@@ -26,13 +26,14 @@
         {/if}
         {exp:cartthrob:checkout_form
             cart_empty_redirect="store/basket/"
-            return="account/orders/"
+            return="account/index/"
             id="checkout_form"
             authorized_redirect=""
             failed_redirect=""
             declined_redirect=""
         }
         {gateway_fields}
+        <p class="notice">The rest of the registration process will be handled at PayPal after clicking <strong>checkout</strong>. Once finished, you will be redirected back to Simon Campbell Music.</p>
         <input type="submit" value="Checkout" />
         {/exp:cartthrob:checkout_form}
         

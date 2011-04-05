@@ -71,7 +71,7 @@
     <!-- CSS -->
     <link href="{pv_assets_url}/css/screen.css" rel="stylesheet" media="screen" />
     <link href="{pv_assets_url}/css/campbell-nav.css" rel="stylesheet" media="screen" />
-    {if segment_1 == "gallery"}
+    {if segment_1 == "gallery" OR segment_1 == "store"}
     <link rel="stylesheet" href="{pv_assets_url}/css/colorbox.css" type="text/css" media="screen" />
     {/if}
     
@@ -93,6 +93,8 @@
     {if segment_1 == "gallery"}
     <script src="{pv_assets_url}/js/jquery.scrollto.min.js"></script>
     <script src="{pv_assets_url}/js/jquery.moodular.js"></script>
+    {/if}
+    {if segment_1 == "gallery" OR segment_1 == "store"}
     <script src="{pv_assets_url}/js/jquery.colorbox.min.js"></script>
     {/if}
     <script src="{pv_assets_url}/js/onload.js"></script>

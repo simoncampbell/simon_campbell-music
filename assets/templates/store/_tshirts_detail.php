@@ -35,35 +35,40 @@
         {if "{total_rows}" == "1"}      
         <div id="gallery_photos">
             <div class="gallery_photo">
-                {exp:ed_imageresizer
-                    image="{ffm_images_image}"
-                    forceWidth="yes"
-                    maxWidth="580"
-                    alt="{ffm_images_description}"
-                }
+                <a href="{ffm_images_image}">
+                    {exp:ed_imageresizer
+                        image="{ffm_images_image}"
+                        forceWidth="yes"
+                        maxWidth="580"
+                        alt="{ffm_images_description}"
+                    }
+                </a>
             </div><!-- // .gallery_photo -->
         </div><!-- // #gallery_photos -->
         {/if}   
         {if "{total_rows}" > "1"}   
             {if "{row_count}" == "1"}   
             <div id="gallery_photos">
-                <div class="gallery_photo" id="image_{row_id}">
-                    {exp:ed_imageresizer
-                        image="{ffm_images_image}"
-                        forceWidth="yes"
-                        maxWidth="280"
-                        maxHeight="280"
-                        cropratio="1:1"
-                        alt="{ffm_images_description}"
-                    }
+                <div class="gallery_photo">
+                    <a href="{ffm_images_image}" rel="gallery" title="{ffm_images_description}">
+                        {exp:ed_imageresizer
+                            image="{ffm_images_image}"
+                            forceWidth="yes"
+                            maxWidth="280"
+                            maxHeight="280"
+                            cropratio="1:1"
+                            alt="{ffm_images_description}"
+                        }
+                    </a>
                 </div><!-- // .gallery_photo -->
             </div><!-- // #gallery_photos -->
             {/if}
             {if "{row_count}" == "1"}   
             <ul class="horizontal gallery_grid">
             {/if}   
-                <li {if "{row_count}" == "1"}class="cur"{/if}>
-                    <a href="{ffm_images_image}">
+            {if "{row_count}" > "1"}        
+                <li>
+                    <a href="{ffm_images_image}" rel="gallery" title="{ffm_images_description}">
                         {exp:ed_imageresizer
                             image="{ffm_images_image}"
                             forceWidth="yes"
@@ -74,6 +79,7 @@
                         }
                     </a>
                 </li>
+            {/if}       
             {if "{row_count}" == "{total_rows}"}    
             </ul>
             {/if}

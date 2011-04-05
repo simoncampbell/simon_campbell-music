@@ -131,6 +131,7 @@ hr {
 blockquote {
     padding:10px;
     margin-bottom:10px;
+    overflow:hidden;
     background:rgba(255, 255, 255, 0.1);
 }
 blockquote:nth-child(odd) {
@@ -195,6 +196,7 @@ small {
     }
     form fieldset legend {
         font-size: 15px;
+        font-weight:bold;
         padding: 12px 0;
     }
     body.checkout form fieldset legend {
@@ -216,6 +218,12 @@ small {
     }
     label em {
 
+    }
+    body.checkout form p.notice {
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 12px;
+        margin: 0 0 20px 95px;
+        padding: 8px;
     }
     label.error {
         background: url(../images/site/icons/form_error.png) no-repeat 0 5px;
@@ -302,7 +310,7 @@ small {
             border-radius:5px;
         }
         body.checkout div#content_pri input[type="submit"] {
-            margin-left: 248px;
+            margin-left: 95px;
         }
         input[type="submit"]:hover,
         input.submit:hover,
@@ -315,11 +323,6 @@ small {
         
 /* TABLES ---------- */
     table { 
-        background:rgba(255, 255, 255, 0.025);
-        border-top: 1px dashed #5B5B5B;
-        border-top: 1px dashed rgba(255, 255, 255, 0.3);
-        border-bottom: 1px dashed #5B5B5B;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
         width:100%;
         margin:0 0 1em 0;
     }
@@ -333,10 +336,12 @@ small {
     }
     thead th {
         font-weight:bold;
-        background:rgba(255, 255, 255, 0.06);
+        background:transparent;
+        border-bottom: 1px solid #5B5B5B;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
-    tbody tr:nth-child(even) th,
-    tbody tr:nth-child(even) td { 
+    tbody tr:nth-child(odd) th,
+    tbody tr:nth-child(odd) td { 
         background:rgba(255, 255, 255, 0.06);
     }
     tbody th { 
@@ -517,7 +522,7 @@ ul#navigation_pri li:first-child {
 ul#navigation_pri a {
     background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
-    padding: 12px 11px 8px 8px;
+    padding: 12px 11px 12px 8px;
     text-decoration: none;
 }
 ul#navigation_pri li:first-child a {
@@ -1612,12 +1617,8 @@ div#footer p.credit {
             top: 8px;
         }
         body#account_landing #content_pri div.account_details p.more a.button {
-            font-size: 10px;
+            font-size:11px;
         }
-        body#account_landing #content_pri div.account_details span.multi_line {
-            
-        }
-        
         body#account_landing.fullwidth #content_pri form#account_settings div,
         body#account_landing.fullwidth #content_pri form#account_settings label,
         body#account_landing.fullwidth #content_pri form#account_settings input[type="checkbox"] {
@@ -1637,9 +1638,9 @@ div#footer p.credit {
         }
         body#account_landing.fullwidth div#content_pri form#account_settings input.submit {
             float: right;
-            font-size: 10px;
             min-height: 22px;
             padding: 4px 8px;
+            font-size:11px;
         }
         
         body#account_landing.fullwidth #content_pri table {
@@ -1664,8 +1665,8 @@ div#footer p.credit {
         }
         
         body#account_landing div#content_pri > p {
-            line-height: 1;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 30px;
         }
         body#account_landing div#content_pri div.half:first-of-type {
             min-height: 245px;
@@ -1674,14 +1675,28 @@ div#footer p.credit {
             margin-top: 42px;
         }
         /* maybe generalize later */
-        body#basket div#content_pri p.more {
+        body#basket div#content_pri ul#basket_info {
+            float: right;
             font-weight: normal;
-            margin-bottom: 5px;
+            list-style: none;
+            width: 140px;
         }
-        body#basket div#content_pri p.more a.button {
-            font-size: 10px;
-            font-weight: bold;
-        }
+            body#basket div#content_pri ul#basket_info li {
+                text-align: right;
+                margin-bottom: 0;
+            }
+            body#basket div#content_pri ul#basket_info span {
+                display: inline-block;
+                width: 60px;
+            }
+            body#basket div#content_pri ul#basket_info li.total {
+                margin-bottom: 10px;
+            }
+            body#basket div#content_pri ul#basket_info a.button {
+                font-size: 11px;
+                font-weight: bold;
+            }
+            
         body#basket div#content_pri table input[type="submit"] {
             background: none;
             color: rgb(255, 255, 255);
@@ -1777,13 +1792,11 @@ div#footer p.credit {
                 margin-top: 5px;
             }
             body#product_detail div#content_pri div.last {
-                background: rgba(255, 255, 255, 0.02);
-                border-top: 1px dashed #5B5B5B;
-                border-top: 1px dashed rgba(255, 255, 255, 0.3);
-                border-bottom: 1px dashed #5B5B5B;
-                border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid #5B5B5B;
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 margin-top: 10px;
-                width: 290px;
+                width: 288px;
             }
             body#product_detail div#content_pri form {
                 margin: 0;
@@ -1795,7 +1808,7 @@ div#footer p.credit {
                 font-size: 12px;
             }
             body#product_detail div#content_pri form select {
-                width: 165px;
+                width: 162px;
             }
             body#product_detail div#content_pri form h3 {
                 float: left;
@@ -1915,6 +1928,9 @@ div#footer p.credit {
     
     /* CONTENT SEC: Widget - Store Block
     --------------------------------------------- */
+    #store_block {
+        position: relative;
+    }
     #store_block ul.item_listing {
         margin-bottom: 15px;
     }
@@ -1922,11 +1938,24 @@ div#footer p.credit {
         float: right;
         margin-top: -12px;
     }
+    #store_block a {
+        text-decoration:none;
+    }
     #store_block a img {
         border: 1px solid rgb(75, 75, 75);
     }
     #store_block a:hover img {
         border: 1px solid rgb(95, 95, 95);
+    }
+    #store_block small {
+        background:rgba(0, 0, 0, 0.8);
+        bottom:16px;
+        display:block;
+        left:16px;
+        padding:5px 0;
+        position:absolute;
+        text-align:center;
+        width:268px;
     }
     
     /* CONTENT SEC: Widget - Payments
