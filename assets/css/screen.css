@@ -131,6 +131,7 @@ hr {
 blockquote {
     padding:10px;
     margin-bottom:10px;
+    overflow:hidden;
     background:rgba(255, 255, 255, 0.1);
 }
 blockquote:nth-child(odd) {
@@ -521,7 +522,7 @@ ul#navigation_pri li:first-child {
 ul#navigation_pri a {
     background: url(../images/site/nav/navigation_pri/bullet_heavy.png) no-repeat right center;
     color: rgb(157, 157, 157);
-    padding: 12px 11px 8px 8px;
+    padding: 12px 11px 12px 8px;
     text-decoration: none;
 }
 ul#navigation_pri li:first-child a {
@@ -1131,7 +1132,7 @@ div#footer p.credit {
                 text-transform:uppercase;
                 right:5px;
                 left:5px;
-                padding:10px 5px 5px 5px;
+                padding:5px;
                 margin:0;
                 background:rgb(0, 0, 0);
                 background:rgba(0, 0, 0, 0.8);
@@ -1664,14 +1665,14 @@ div#footer p.credit {
         }
         
         body#account_landing div#content_pri > p {
-            line-height: 1;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 30px;
         }
         body#account_landing div#content_pri div.half:first-of-type {
             min-height: 245px;
         }
         body#basket div.last {
-            margin-top: 42px;
+            margin-top: 2px;
         }
         /* maybe generalize later */
         body#basket div#content_pri ul#basket_info {
@@ -1708,65 +1709,37 @@ div#footer p.credit {
             text-decoration: none;
         }
         
-        /*
-        VERSION 1: STORE LANDING
-        body.store_landing div#content_pri {
-            padding-bottom: 20px;
-            padding-top: 20px;
-        }
-        body.store_landing div#content_pri div.widget {
-            background: none;
-            border: none;
-            border-right: 1px dashed #585858;
-            border-right: 1px dashed rgba(255, 255, 255, 0.3);
-            margin: 0 0 0 5px;
-            padding: 0 20px 0 0;
-            width: 280px;
-        }
-        body.store_landing div#content_pri img {
+        body#basket div#content_pri p.more,
+        body#product_detail div#content_pri p.more {
             float: right;
-            margin-right: 5px;
+            margin-top: 4px;
         }
-        body.store_landing div#content_pri form {
-            margin-left: 15px;
+        body#basket div#content_pri p.more {
+            float:none;
+            position:absolute;
+            right:340px;
         }
-        body.store_landing div#content_pri label {
-            font-size: 12px;
+        body#basket div#content_pri p.more a,
+        body#product_detail div#content_pri p.more a {
+            background-color: #000;
+            background-color: rgba(255, 255, 255, 0.06);
+            display: block;
+            padding: 4px 8px;
+            text-decoration: none;
+            
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
         }
-        body.store_landing div#content_pri label.error {
-            width: auto;
+        body#basket div#content_pri p.more a:hover,
+        body#product_detail div#content_pri p.more a:hover {
+            background-color: 333px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: rgb(255, 255, 255);
         }
-        body.store_landing div#content_pri input[type="text"] {
-            width: 148px;
-        }
-        body.store_landing div#content_pri input.submit {
-            float: right;
-            margin-right: 4px;
-        }
-        */
+        
             /* CONTENT PRI: Product Detail
             --------------------------------------------- */
-            
-            body#product_detail div#content_pri p.more {
-                float: right;
-                margin-top: 4px;
-            }
-            body#product_detail div#content_pri p.more a {
-                background-color: #000;
-                background-color: rgba(255, 255, 255, 0.06);
-                display: block;
-                padding: 4px 8px;
-                text-decoration: none;
-                
-                -moz-border-radius: 4px;
-                -webkit-border-radius: 4px;
-                border-radius: 4px;
-            }
-            body#product_detail div#content_pri p.more a:hover {
-                background-color: 333px;
-                background-color: rgba(255, 255, 255, 0.1);
-                color: rgb(255, 255, 255);
-            }
             body#product_detail div#gallery_photos,
             body#product_detail ul.gallery_grid,
             body#product_detail div#content_pri div.first,
@@ -1927,6 +1900,9 @@ div#footer p.credit {
     
     /* CONTENT SEC: Widget - Store Block
     --------------------------------------------- */
+    #store_block {
+        position: relative;
+    }
     #store_block ul.item_listing {
         margin-bottom: 15px;
     }
@@ -1934,11 +1910,24 @@ div#footer p.credit {
         float: right;
         margin-top: -12px;
     }
+    #store_block a {
+        text-decoration:none;
+    }
     #store_block a img {
         border: 1px solid rgb(75, 75, 75);
     }
     #store_block a:hover img {
         border: 1px solid rgb(95, 95, 95);
+    }
+    #store_block small {
+        background:rgba(0, 0, 0, 0.8);
+        bottom:16px;
+        display:block;
+        left:16px;
+        padding:5px 0;
+        position:absolute;
+        text-align:center;
+        width:268px;
     }
     
     /* CONTENT SEC: Widget - Payments
@@ -1982,8 +1971,10 @@ div#footer p.credit {
     MISCELLANEOUS
     ----------------------------------------------------------
     
-    - Misc
+    - Promo section
+    - Disqus override
     - Horizontal Lists
+    - Gallery Grid
     - Pagination
     
     ----------------------------------------------------------

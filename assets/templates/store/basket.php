@@ -16,6 +16,8 @@
     
     <div id="content_pri">
         
+        <p class="more"><a href="{pv_site_url}/store/">Continue shopping</a></p>
+        
         <h1 class="hide">Store</h1>
         
         <div class="first">
