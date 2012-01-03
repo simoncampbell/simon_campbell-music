@@ -33,6 +33,9 @@
     {if embed:og_title != ""}
     <meta property="og:title" content="{embed:og_title}" /> 
     {/if}
+    {if embed:og_url != ""}
+    <meta property="og:url" content="{embed:og_url}" /> 
+    {/if}
     {if embed:og_description != ""}
     <meta property="og:description" content="{embed:og_description}" />
     {/if}
@@ -113,11 +116,6 @@
             DD_belatedPNG.fix('.png, body#gear div#gear_guitars, body#bio #beginnings, body#bio #tribute, body.history #thejourney, ul#navigation_gallery li a');
         </script>
     <![endif]-->
-    
-    {!--
-    <!-- iOS -->
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-    --}
     
     {if ev_environment == "live" AND lv_services_google_analytics_toggle == "On"}
         <!-- GOOGLE ANALYTICS -->
