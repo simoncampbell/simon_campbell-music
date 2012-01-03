@@ -25,6 +25,7 @@
     {!-- FACEBOOK META OPTIONS BELOW --}
     og_title="{title} | Simon Campbell Music"
     og_url="{site_url}{comment_url_title_auto_path}"
+    og_type="article"
     og_description="{exp:html_strip}{cf_journal_videos_lead}{cf_journal_photos_lead}{cf_journal_audio_lead}{cf_journal_notes_note}{/exp:html_strip}"
     {if weblog_short_name == "journal_photos"}
     og_image="{site_url}{cf_journal_photos_image}"

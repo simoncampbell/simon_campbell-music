@@ -36,6 +36,9 @@
     {if embed:og_url != ""}
     <meta property="og:url" content="{embed:og_url}" /> 
     {/if}
+    {if embed:og_type != ""}
+    <meta property="og:type" content="{embed:og_type}" /> 
+    {/if}
     {if embed:og_description != ""}
     <meta property="og:description" content="{embed:og_description}" />
     {/if}
