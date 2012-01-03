@@ -33,6 +33,9 @@
     {if embed:og_title != ""}
     <meta property="og:title" content="{embed:og_title}" /> 
     {/if}
+    {if embed:og_url != ""}
+    <meta property="og:url" content="{embed:og_url}" /> 
+    {/if}
     {if embed:og_description != ""}
     <meta property="og:description" content="{embed:og_description}" />
     {/if}
