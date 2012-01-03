@@ -8,9 +8,9 @@ from girru.environments import *
 #    env.path = '/var/www/example.com':tabnext
 #
 
-# def production():
-#     env.hosts = [default_production_server]
-#     env.path = '/var/www/music.simoncampbell.com/'
+def production():
+    env.hosts = [default_production_server]
+    env.path = '/var/www/music.simoncampbell.com/'
 # 
 # def staging():
 #     env.hosts = [default_staging_server]
