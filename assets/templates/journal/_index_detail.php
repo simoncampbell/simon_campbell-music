@@ -31,7 +31,6 @@
     og_image="{site_url}{cf_journal_photos_image}"
     {/if}
     {if weblog_short_name == "journal_audio"}
-    og_image="{site_url}/assets/images/site/icons/music_note.png"
     og_audio="{cf_journal_audio_mp3}"
     og_audio_type="application/mp3"
     og_audio_title="{cf_journal_audio_fbtitle}"
