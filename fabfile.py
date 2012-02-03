@@ -1,6 +1,9 @@
 # Default environments for testing, staging and production are included.
 from girru.environments import *
 
+# This is specific to Django projects
+env.project = ''
+
 # You can specify environments here
 
 #def production():
